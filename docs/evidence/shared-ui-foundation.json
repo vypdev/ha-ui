@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T04:03:52.911705+00:00",
+  "recordedAtUTC": "2026-11-04T04:15:29.176261+00:00",
   "status": "Partial source increment; no rendered component, adapter, Storybook, framework support, published release or app adoption accepted.",
   "issue": 7,
   "nativePublication": {
@@ -17,7 +17,7 @@
   "implemented": [
     "DOM-independent closed navigation/panel data contract; immutable snapshots, bounded text/items, explicit selection and safe links.",
     "Pinned Node24.20.0/pnpm10.34.0/TypeScript6.0.3/Vitest5.1.0 build and test foundation.",
-    "105 passing unit/architecture/CI-contract tests; separate filesystem-inventory coverage audit and actual packed-consumer integration both pass.",
+    "138 passing unit/architecture/CI-contract tests; separate filesystem-inventory coverage audit and actual packed-consumer integration both pass.",
     "Strict four-metric per-module/global coverage; every authored package/tool inventoried including the zero-executable re-export module.",
     "Every-PR-commit CI Check uses frozen dependencies, all implemented gates, actual package compilation/consumption and the unchanged pinned original catalog SDK."
   ],
@@ -29,8 +29,8 @@
       "pct": 100
     },
     "branches": {
-      "total": 77,
-      "covered": 77,
+      "total": 78,
+      "covered": 78,
       "skipped": 0,
       "pct": 100
     },
@@ -48,14 +48,14 @@
     }
   },
   "sourceIdentities": {
-    "packages/core/src/contracts.ts": "6c37990359192c056daf54764870288aa20d4422fa88cfaf9186ccfae8fb101f",
+    "packages/core/src/contracts.ts": "a786f32769cd69d0653d6292ae8b231b19986a07ad46c998a02d3948c2d5006e",
     "packages/core/src/index.ts": "10bd6958315d1ae23d216c0b752126e3fc7153f442f8c71e206cfa7e9757f86d",
     "tooling/coverage.mjs": "2272a671a4d039fb40866f3535f6cd371b891623b64bf1b9a23a63677ad2387b"
   },
   "packedContract": {
     "scope": "Core data contract only; no rendered component, adapter or application adoption",
-    "sha256": "6d7a0da478ee9d1f5654323ca6cc9232d9f2bc07c94962313f17b7d7ecb0862c",
-    "bytes": 4399,
+    "sha256": "fa68300cb8494e7ff9a52435c03f99b3fc8d896c269f184378044e8821b35e65",
+    "bytes": 4396,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "compiledWithoutDomTypes": true,
@@ -68,5 +68,11 @@
     "Fresh hosted CI and complete native review are required for the final source head."
   ],
   "copilotModified": false,
-  "capabilityComplete": false
+  "capabilityComplete": false,
+  "reviewRegression": {
+    "finding": 4463468597,
+    "before": "32 C1 cases failed; 78 contract cases passed.",
+    "after": "All 138 unit/architecture/CI-contract cases pass; every C1 code point rejected in group labels, item labels and links; visible U+00A0/U+00A1 preserved.",
+    "manualResolution": false
+  }
 }

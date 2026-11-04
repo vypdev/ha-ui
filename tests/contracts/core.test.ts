@@ -66,3 +66,17 @@ describe('framework-neutral navigation contracts', () => {
   test.each(['javascript:alert(1)', 'data:text/html,unsafe', 'file:///private/data', '//example.invalid', '\\example.invalid', 'https://user:password@example.invalid', 'https://user@example.invalid', 'https://:password@example.invalid', 'http://[invalid', ' #tasks', '#tasks ', '', null, 3, 'x'.repeat(2049)])('rejects unsafe or malformed links %j', href => rejected(state({items: [section({href})]})));
   test('rejects a link in panel mode instead of silently changing interaction semantics', () => rejected(state({kind: 'panels'})));
 });
+
+// Regression for the reviewed Unicode control boundary.
+test.each(Array.from({length: 32}, (_, index) => (0x80 + index).toString(16)))(
+  'rejects Unicode C1 control U+%s in labels and links', code => {
+    const control = String.fromCodePoint(Number.parseInt(code, 16));
+    rejected(state({label: 'A' + control + 'B'}));
+    rejected(state({items: [section({label: 'A' + control + 'B'})]}));
+    rejected(state({items: [section({href: '#A' + control + 'B'})]}));
+  },
+);
+test('preserves visible Unicode just beyond the C1 boundary', () => {
+  const label = 'A\u00a0¡B';
+  expect(navigationState(state({label, items: [section({label})]})).items[0].label).toBe(label);
+});

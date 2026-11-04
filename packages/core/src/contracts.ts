@@ -26,7 +26,7 @@ function text(value: unknown, maximum: number): string {
   if (typeof value !== 'string' || !value.trim() || Array.from(value).length > maximum) invalid();
   for (const character of value) {
     const point = character.codePointAt(0)!;
-    if (point < 32 || point === 127 || point >= 0xd800 && point <= 0xdfff) invalid();
+    if (point < 32 || point >= 0x7f && point <= 0x9f || point >= 0xd800 && point <= 0xdfff) invalid();
   }
   return value;
 }

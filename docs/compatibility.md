@@ -19,7 +19,7 @@ Do not infer support from custom-element interoperability or compiler metadata a
 
 The controlled navigation model requires kind, label, selected and items. Kind is navigation or panels;
 selected is an existing enabled item ID or null. IDs use 1..128 ASCII letters, digits, underscore or
-hyphen; accessible labels contain 1..256 Unicode code points without control/unpaired surrogate values.
+hyphen; accessible labels contain 1..256 Unicode code points without C0, DEL, C1 or unpaired surrogate values.
 At most 64 items are accepted, without truncation. Navigation items require an explicit HTTP(S) or
 relative application link; panel items omit links and use item IDs for future named panel slots.
 Disabled defaults to false. Labels and links retain their original values; snapshots are deeply frozen.
