@@ -1,3 +1,4 @@
+import {nativeHostAttributes} from './native-host-attributes.js';
 import {defineComponent,h,onMounted,onBeforeUnmount,shallowRef,watch,type PropType} from 'vue';
 import {fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
 import type {TextFieldState} from '@vypdev/ha-ui/field-contracts';
@@ -19,6 +20,6 @@ export const TextField=defineComponent({
     onMounted(()=>{apply();element.value!.addEventListener('ha-value-request',handle);});
     watch(()=>[props.state,props.modelValue,props.name,props.defaultValue,props.disabled,props.form],apply,{flush:'post'});
     onBeforeUnmount(()=>element.value!.removeEventListener('ha-value-request',handle));
-    return ()=>h('vyp-ha-field',{ref:element,id:attrs.id,class:attrs.class,style:attrs.style,dir:attrs.dir,lang:attrs.lang});
+    return ()=>h('vyp-ha-field',{...nativeHostAttributes(attrs),ref:element});
   },
 });

@@ -1,3 +1,4 @@
+import {nativeHostAttributes} from './native-host-attributes.js';
 import {defineComponent,h,onMounted,onBeforeUnmount,shallowRef,watch,type PropType} from 'vue';
 import type {NavigationState} from '@vypdev/ha-ui/contracts';
 import type {HaTabs,NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
@@ -16,7 +17,7 @@ export const Tabs=defineComponent({
     });
     watch(()=>props.state,state=>{element.value!.state=state;},{flush:'post'});
     onBeforeUnmount(()=>{element.value!.removeEventListener('ha-selection-request',handle);});
-    return ()=>h('vyp-ha-tabs',{ref:element,id:attrs.id,class:attrs.class,style:attrs.style,dir:attrs.dir,lang:attrs.lang},slots.default?.());
+    return ()=>h('vyp-ha-tabs',{...nativeHostAttributes(attrs),ref:element},slots.default?.());
   },
 });
 export {TextField} from './text-field.js';

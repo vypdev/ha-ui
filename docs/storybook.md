@@ -98,13 +98,17 @@ a passing functional or accessibility test alone does not establish visual equiv
 The independent static accessibility scan waits for Storybook's public STORY_FINISHED event and
 requires its real automatic a11y reports to pass first. It then resets axe to default rules and
 scans the component surface independently. Neither scan is disabled; this prevents concurrent
-axe instances from racing. The completion witness retains status metadata only and cleans up
-its event listener. Browser test projects prebundle the event protocol before collecting tests.
+axe instances from racing. The completion witness clears previous results when preparation,
+loading or rendering starts and records a monotonic page-local revision with bounded status
+metadata. Waiters can require a revision newer than a previous run. The compiled manager gate
+uses the real Reload story button twice on the same story and requires fresh automatic a11y
+completion each time. Cleanup removes both channel listeners. Browser test projects prebundle
+the event protocol before collecting tests.
 
 ## Native reset and live status
 
 The four form demonstrations use a non-resettable `role="status"` region for controlled draft,
-submission and request feedback. In measured Firefox157 and WebKit27.2, native form reset removes
+submission and request feedback. In measured Firefox 157 and WebKit 27.2, native form reset removes
 Lit text markers inside an `output` element; a later update then fails. A minimal native form
 reproduces this independently of shared components. The status region retains the same polite
 announcement semantics and survives native reset.

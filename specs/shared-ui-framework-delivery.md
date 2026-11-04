@@ -202,7 +202,7 @@ accepted bytes. Consumer pins do not change while the cohort is partial.
 
 ## Links
 
-[Issue #7](https://github.com/vypdev/ha-ui/issues/7) · [Release run](<run link>) · [Compatibility record](../docs/compatibility.md)
+[Issue #7](https://github.com/vypdev/ha-ui/issues/7) · Release run: not published (example) · [Compatibility record](../docs/compatibility.md)
 
 <details><summary>Technical details</summary>Source revision, package coordinates, versions, digests, and sanitized provider diagnostics.</details>
 ```
@@ -940,6 +940,8 @@ Prospective repository files (current documents are classified against the immut
 | `tests/storybook/field-visual.ts` | create |
 | `tests/consumers/implicit-submit.ts` | create |
 | `tests/storybook/form-lifecycle.ts` | create |
+| `tests/browser/vue-host-attributes.test.ts` | create |
+| `packages/vue/src/native-host-attributes.ts` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

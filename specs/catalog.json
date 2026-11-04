@@ -7,7 +7,7 @@
       "status": "proposed",
       "scope": "One DOM component implementation with React, Vue, Angular and Svelte adapters, direct Lit/DOM use, shared Storybook and verified Gateway/Domus adoption. Partial source; no complete capability or release accepted.",
       "owner": "vypdev maintainers; Efrain Espada (accountable product/publication owner)",
-      "lastVerified": "2026-11-04",
+      "lastVerified": "2026-11-05",
       "specs": [
         "specs/shared-ui-foundation.md",
         "specs/shared-ui-framework-delivery.md"
@@ -83,7 +83,8 @@
         "stories/catalog-completion.ts",
         "stories/navigation-icons.ts",
         "packages/core/src/navigation-scroll.ts",
-        "packages/core/src/components/navigation-overflow.ts"
+        "packages/core/src/components/navigation-overflow.ts",
+        "packages/vue/src/native-host-attributes.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -599,7 +600,8 @@
         "tests/browser/implicit-submit-native.test.ts",
         "tests/storybook/field-visual.ts",
         "tests/consumers/implicit-submit.ts",
-        "tests/storybook/form-lifecycle.ts"
+        "tests/storybook/form-lifecycle.ts",
+        "tests/browser/vue-host-attributes.test.ts"
       ],
       "documentation": [
         "README.md",

@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T22:12:32.682218+00:00",
+  "recordedAtUTC": "2026-11-04T23:05:14.818518+00:00",
   "status": "Partial library: shared navigation/panels, native-form buttons, fields, typed selects and checkbox with four real bindings. Scoped navigation/checkbox/button/filled-field visuals are calibrated against original HA; selects, remaining visual families and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, text field, native-form button, typed single/multiple select and boolean checkbox; immutable DOM-free contracts, explicit registration, typed cancelable intent and one renderer per family.",
     "Real React/Vue/Angular/Svelte bindings for all five current families. Angular includes actual field/select/checkbox Forms bridges. Runtime adapter imports stay within pure contracts and the selected framework; no alternate visuals.",
-    "1149 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 51 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
+    "1155 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 52 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four clean frozen offline compiled installed-package consumers exercise navigation, field, button, typed selects and boolean checkboxes, native validation/entries/reset/disabled behavior, cancellation, EN/ES/themes and teardown/remount. Actual tested five-coordinate archives are retained with their digests.",
@@ -39,30 +39,32 @@
     "HA button surfaces match 96 independently captured original states per measured platform, including real active pointers. Both original campaigns repeat byte-identically; all 192 current candidate/reference PNG pairs also match byte for byte. Small/medium painted geometry is separated from the native 44px target, verified with actual mouse clicks in its invisible margin and all four compiled framework bindings. Accessible catalog palette overrides are explicit differences from original HA tokens.",
     "Filled fields match 44 original HA states per measured platform; all88 compiled candidate/reference PNG pairs are byte-identical. Floating/resting labels, painted/native56px controls, required marker, help/error/placeholder/narrow states, real padding clicks, hidden hosts, standalone/OS motion and actual compiled four-framework geometry are exercised. Independent accessible catalog colors pass16 resting/hover/focus combinations, separate from original HA palette parity.",
     "The four compiled catalog forms preserve live status after native reset and subsequent user edits/submissions. Twelve real journeys plus automatic a11y/interactions pass across offline Linux Chromium/Firefox/WebKit. A minimal native output/Lit reproducer fails in the latter two engines; non-resettable polite status regions remove that failure. This is scoped catalog evidence, not full browser support.",
-    "Real pointer counterexamples preserve the production renderer/controller: measured gutter clicks lie before the native input; a fresh mousedown clears drag-click suppression before later activation. Nine actual-archive gutter cases and12 navigation journeys pass across Chromium/Firefox/WebKit. Four permanent source cases and the packaged outside-release journey retain the evidence for native reassessment; no finding is manually dismissed."
+    "Real pointer counterexamples preserve the production renderer/controller: measured gutter clicks lie before the native input; a fresh mousedown clears drag-click suppression before later activation. Nine actual-archive gutter cases and12 navigation journeys pass across Chromium/Firefox/WebKit. Four permanent source cases and the packaged outside-release journey retain the evidence for native reassessment; no finding is manually dismissed.",
+    "All five Vue bindings forward live native/ARIA/data attributes and listeners while one shared helper blocks content setters. All five core hosts honor hidden without altering controlled form values. Five new source regressions reproduce lost attributes; four subsequent failures reproduce hidden-host CSS. Ten actual compiled Vue hosts verify forwarded attributes, visibility and unchanged FormData.",
+    "Storybook clears prior completion at new preparation/loading/rendering and records a page-local revision. Two real same-story Reload actions require fresh successful automatic a11y reports; static and Chrome both observe revisions3,5,7. All12 compiled form journeys and existing exact HA pixel gates remain passing on measured engines/platforms."
   ],
   "coverage": {
     "lines": {
-      "total": 855,
-      "covered": 855,
+      "total": 860,
+      "covered": 860,
       "skipped": 0,
       "pct": 100
     },
     "statements": {
-      "total": 1919,
-      "covered": 1919,
+      "total": 1929,
+      "covered": 1929,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 497,
-      "covered": 497,
+      "total": 500,
+      "covered": 500,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 1232,
-      "covered": 1232,
+      "total": 1234,
+      "covered": 1234,
       "skipped": 0,
       "pct": 100
     },
@@ -83,19 +85,19 @@
     "packages/angular/src/text-field.ts": "fe0e40f32969c5e3d43bc721f1f0474ecc2fca45e33e12415c30af64a23f4ea4",
     "packages/core/src/button-contracts.ts": "fcbb48c8776a72d27e8b61e664de1318aec2edc31a4eeb87313780678533ba99",
     "packages/core/src/checkbox-contracts.ts": "9e42c7b7b7756626528a811157b55bed217b3c8516c5346878350e5d94027382",
-    "packages/core/src/components/button.ts": "03af61cb4b9bd47e6d76fd5d8215396ac0d6e59290a3050f48367e292a0044fc",
-    "packages/core/src/components/checkbox.ts": "d51856706dfe69d4562a3da4fcb8d9db1158a0d3b546f282d06e4a72673069f4",
-    "packages/core/src/components/field.ts": "dd48b4fa97171b73a0a7826273ba43f2d32f2cbc2581b806f8f0aca84a3d4843",
-    "packages/core/src/components/implicit-submit.ts": "b4cc1f28d7e31c12984ea6018ddb70df9c0cb48c06a5dfc2402731ca7527f6ca",
-    "packages/core/src/components/navigation-overflow.ts": "0e709f2ea4d700b0a712bfb0d853adfe928478228bc1b9dcdf75de3ea4d13a86",
-    "packages/core/src/components/select.ts": "99cbe2ec19a17ea465511a7a65a3e74eafc9df85dee66df3990d00ad4f1fd128",
-    "packages/core/src/components/tabs.ts": "ff868eb9f6476403fbfee15698e4359b6602811d6a6e92e64e7adda1e951f3de",
     "packages/core/src/contracts.ts": "f1960ec11de84f7d0ef4271a903a86c5d83fc4f9353c5409070795c134e24561",
     "packages/core/src/field-contracts.ts": "130e143f3f69dfaa6e0397cf68cd2ec824823b44ff3f4488d92b19180d50b738",
     "packages/core/src/index.ts": "557499ed9c2281f045f46b19e96ab594aafc130c26e3f2b5f01e222338ba71d8",
     "packages/core/src/navigation-scroll.ts": "add9d3a9235af2704287df8eb54fef5f061bbecbb85f594de5d573e6d146bd3e",
     "packages/core/src/presentation-text.ts": "ad2eb8396a26638ba8d2f2f7cee3656195646aaea077cdc0d3ecd06fc95b3df2",
     "packages/core/src/select-contracts.ts": "8a14a57d1ed75a368d0a756f55cbc043b3e8817c9ecca622808752c05f2c29ed",
+    "packages/core/src/components/button.ts": "ad62d9426a43f969d8f54a828334950cfc7789006a63549bcb09a8268a11132a",
+    "packages/core/src/components/checkbox.ts": "2c774155517e161ac583f58d04bd2b9403eb0bac4b6ebf0cac4fd7bf27d903ee",
+    "packages/core/src/components/field.ts": "dd48b4fa97171b73a0a7826273ba43f2d32f2cbc2581b806f8f0aca84a3d4843",
+    "packages/core/src/components/implicit-submit.ts": "b4cc1f28d7e31c12984ea6018ddb70df9c0cb48c06a5dfc2402731ca7527f6ca",
+    "packages/core/src/components/navigation-overflow.ts": "0e709f2ea4d700b0a712bfb0d853adfe928478228bc1b9dcdf75de3ea4d13a86",
+    "packages/core/src/components/select.ts": "08b69a049ad846eea1ca2a8266150f0a38d4bb9fa69329b42e29f6478fecc811",
+    "packages/core/src/components/tabs.ts": "c3be3d4e88d8b781883776209c25f775e8d698a4ee578c7a3247de495cc18981",
     "packages/react/src/button.ts": "dfe36710fb8db11e674efb43715525bfd246f6819086c3a3628a662920df04eb",
     "packages/react/src/checkbox.ts": "7c92ee1e6cd60058434db3e0bad8bd8aba668dfbcb6a59c39a9fb54684583266",
     "packages/react/src/index.ts": "a51b2e15ea715c8f6ff0b7f233f0ac1860d6a25889e013417e4a2fe048d1fe0b",
@@ -108,13 +110,14 @@
     "packages/svelte/src/Tabs.svelte": "974845c12ec9d760b6f76a43ae89fd4c1618d7b4d56381d98d16f65abc5b27c4",
     "packages/svelte/src/index.ts": "98d05367b973b46542dc7b26e4c38678caa865936d94b53a9e01b54cff47dda4",
     "packages/svelte/src/types.ts": "6a9e3a332182daad03e85898d18583eebe9de156cdb98adf494433e90a7a4009",
-    "packages/vue/src/button.ts": "886e33cb28661a0e51489a9c9d4505df0187ec95a7d666a25cc5c6d6778575d6",
-    "packages/vue/src/checkbox.ts": "aac60d9309f76714436e49ecd864a4cc0cd85272d1bea9af4c8d50cd97ca5338",
-    "packages/vue/src/index.ts": "ac1b97f764068ab3c4b846cbf83fb81a0e422718df07fd0c9eb553ba7f9f0c5f",
-    "packages/vue/src/select.ts": "3314b91488c76259e8d5c44d3c6a9a4ef18aba2bdfba6142fab12b03be8a0e2e",
-    "packages/vue/src/text-field.ts": "e160d93f62669ffb989e3d8d78fb28b0da287226d8157676d5842b6a7c83f612",
+    "packages/vue/src/button.ts": "da2c92b4a721e7b678dbd2ff37fadf1dcc65940b22bcb3b83db3e7094f12fd7a",
+    "packages/vue/src/checkbox.ts": "5e365ba3ad2433127c18267f0552829688f2ea0ba3851415ccdbf51f9550de67",
+    "packages/vue/src/index.ts": "6a0c9570ad1ff3c1b6b5359ac0231e4a663fdf961621401696ad994c854166d2",
+    "packages/vue/src/native-host-attributes.ts": "0e757b4e845296680368a219ddf19848d46baee33686863b624839fe881991da",
+    "packages/vue/src/select.ts": "dc38601adb59d9b819969bbdd9fdb66824e7131145c315c1a5fcb11a0db5810e",
+    "packages/vue/src/text-field.ts": "f50a666721cad4f46a26e48ed35d121f9b658f64bbebe01415eb85ce040da87b",
     "stories/button.example.ts": "7753c6b779243e592a658100a823eb0b05c9692d3b64a038787f4e5ba48747f6",
-    "stories/catalog-completion.ts": "10c01f134e4e3b64fc0a9f72d55c15b81043e2f040d5c111133b2d8cc9e12ebd",
+    "stories/catalog-completion.ts": "cf400926387599c270f15774827cc03f5cf0f4581c10df117808f88bdd03f9b5",
     "stories/catalog-example.ts": "c5fa904779d81d2f081573051234b2d57f98c74c5c4ca99cbc8717584c2494e8",
     "stories/catalog-frame.ts": "eee19d46cd88ae4169ac7853c0a8ef406c9f18f61dbb59b0f80adc395d82f943",
     "stories/catalog-state.ts": "bdf543ab1dae6bb9e840e248d3167c31c37791f1f58c895a61db50afbbdba304",
@@ -128,8 +131,8 @@
   },
   "packedContract": {
     "scope": "Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required",
-    "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3",
-    "bytes": 108649,
+    "sha256": "c5ad881fdfef1f657f1f7dd6da10d20b60b2e6f147f18b1384c870c1e333788f",
+    "bytes": 108732,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -276,7 +279,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3"
+            "sha256": "c5ad881fdfef1f657f1f7dd6da10d20b60b2e6f147f18b1384c870c1e333788f"
           }
         ],
         "props": true,
@@ -350,6 +353,7 @@
           "defaultAndCustomPayload": true,
           "enterUsesSharedSubmitter": true,
           "frameworkReset": true,
+          "angularResetModels": null,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -363,11 +367,11 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz",
-            "sha256": "23e36ee7c64f6a5778746ed324fa231b658aabbfa14e4f8d4aabf14a15b184c0"
+            "sha256": "a7cd17241850ba98587ab252b43c9add647aa913e43a7cbcfddc28783f1b9343"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3"
+            "sha256": "c5ad881fdfef1f657f1f7dd6da10d20b60b2e6f147f18b1384c870c1e333788f"
           }
         ],
         "props": true,
@@ -377,6 +381,168 @@
         "runtimeSpanishAndTheme": true,
         "keyboard": true,
         "teardownAndRemount": true,
+        "nativeHostAttributes": [
+          {
+            "tag": "vyp-ha-tabs",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 56,
+            "before": null,
+            "whileHidden": null
+          },
+          {
+            "tag": "vyp-ha-field",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 84,
+            "before": [
+              [
+                "task",
+                "Kitchen"
+              ]
+            ],
+            "whileHidden": [
+              [
+                "task",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "tag": "vyp-ha-button",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 44,
+            "before": [
+              [
+                "task",
+                "Kitchen"
+              ]
+            ],
+            "whileHidden": [
+              [
+                "task",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "tag": "vyp-ha-button",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 44,
+            "before": [
+              [
+                "task",
+                "Kitchen"
+              ]
+            ],
+            "whileHidden": [
+              [
+                "task",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "tag": "vyp-ha-select",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 103.078125,
+            "before": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "whileHidden": [
+              [
+                "category",
+                "1"
+              ]
+            ]
+          },
+          {
+            "tag": "vyp-ha-button",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 44,
+            "before": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "whileHidden": [
+              [
+                "category",
+                "1"
+              ]
+            ]
+          },
+          {
+            "tag": "vyp-ha-button",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 44,
+            "before": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "whileHidden": [
+              [
+                "category",
+                "1"
+              ]
+            ]
+          },
+          {
+            "tag": "vyp-ha-checkbox",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 39,
+            "before": [],
+            "whileHidden": []
+          },
+          {
+            "tag": "vyp-ha-button",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 44,
+            "before": [],
+            "whileHidden": []
+          },
+          {
+            "tag": "vyp-ha-button",
+            "title": "Vue host attributes",
+            "description": "Installed Vue host attributes",
+            "proof": "forwarded",
+            "hidden": "none",
+            "visibleHeight": 44,
+            "before": [],
+            "whileHidden": []
+          }
+        ],
         "navigationIcons": {
           "complexIconData": true,
           "iconOnlyAccessibleName": true,
@@ -441,6 +607,7 @@
           "defaultAndCustomPayload": true,
           "enterUsesSharedSubmitter": true,
           "frameworkReset": true,
+          "angularResetModels": null,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -458,7 +625,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3"
+            "sha256": "c5ad881fdfef1f657f1f7dd6da10d20b60b2e6f147f18b1384c870c1e333788f"
           }
         ],
         "props": true,
@@ -532,6 +699,10 @@
           "defaultAndCustomPayload": true,
           "enterUsesSharedSubmitter": true,
           "frameworkReset": true,
+          "angularResetModels": [
+            false,
+            false
+          ],
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -549,7 +720,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3"
+            "sha256": "c5ad881fdfef1f657f1f7dd6da10d20b60b2e6f147f18b1384c870c1e333788f"
           }
         ],
         "props": true,
@@ -623,6 +794,7 @@
           "defaultAndCustomPayload": true,
           "enterUsesSharedSubmitter": true,
           "frameworkReset": true,
+          "angularResetModels": null,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -636,8 +808,8 @@
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3",
-        "bytes": 108649
+        "sha256": "c5ad881fdfef1f657f1f7dd6da10d20b60b2e6f147f18b1384c870c1e333788f",
+        "bytes": 108732
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
@@ -660,8 +832,8 @@
       {
         "coordinate": "@vypdev/ha-ui-vue",
         "version": "0.1.0-next.1",
-        "sha256": "23e36ee7c64f6a5778746ed324fa231b658aabbfa14e4f8d4aabf14a15b184c0",
-        "bytes": 7908
+        "sha256": "a7cd17241850ba98587ab252b43c9add647aa913e43a7cbcfddc28783f1b9343",
+        "bytes": 8648
       }
     ],
     "reproducible": true,
@@ -729,6 +901,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--long-labels",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -746,6 +919,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--unselected",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -763,6 +937,7 @@
         "automatic": {
           "storyId": "forms-text-field--read-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -780,6 +955,7 @@
         "automatic": {
           "storyId": "forms-text-field--error",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -797,6 +973,7 @@
         "automatic": {
           "storyId": "forms-text-field--empty-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -814,6 +991,7 @@
         "automatic": {
           "storyId": "forms-text-field--focused-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -831,6 +1009,7 @@
         "automatic": {
           "storyId": "buttons-actions--variants",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -848,6 +1027,7 @@
         "automatic": {
           "storyId": "buttons-actions--loading",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -865,6 +1045,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -882,6 +1063,7 @@
         "automatic": {
           "storyId": "forms-select--multiple",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -899,6 +1081,7 @@
         "automatic": {
           "storyId": "forms-checkbox--partial",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -916,6 +1099,7 @@
         "automatic": {
           "storyId": "forms-checkbox--long-label",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -933,6 +1117,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--mixed",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -950,6 +1135,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--icon-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -967,6 +1153,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -984,6 +1171,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1001,6 +1189,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--long-labels",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1018,6 +1207,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--unselected",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1035,6 +1225,7 @@
         "automatic": {
           "storyId": "forms-text-field--read-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1052,6 +1243,7 @@
         "automatic": {
           "storyId": "forms-text-field--error",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1069,6 +1261,7 @@
         "automatic": {
           "storyId": "forms-text-field--empty-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1086,6 +1279,7 @@
         "automatic": {
           "storyId": "forms-text-field--focused-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1103,6 +1297,7 @@
         "automatic": {
           "storyId": "buttons-actions--variants",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1120,6 +1315,7 @@
         "automatic": {
           "storyId": "buttons-actions--loading",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1137,6 +1333,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1154,6 +1351,7 @@
         "automatic": {
           "storyId": "forms-select--multiple",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1171,6 +1369,7 @@
         "automatic": {
           "storyId": "forms-checkbox--partial",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1188,6 +1387,7 @@
         "automatic": {
           "storyId": "forms-checkbox--long-label",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1205,6 +1405,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--mixed",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1222,6 +1423,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--icon-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1239,6 +1441,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1256,6 +1459,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1273,6 +1477,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--long-labels",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1290,6 +1495,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--unselected",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1307,6 +1513,7 @@
         "automatic": {
           "storyId": "forms-text-field--read-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1324,6 +1531,7 @@
         "automatic": {
           "storyId": "forms-text-field--error",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1341,6 +1549,7 @@
         "automatic": {
           "storyId": "forms-text-field--empty-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1358,6 +1567,7 @@
         "automatic": {
           "storyId": "forms-text-field--focused-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1375,6 +1585,7 @@
         "automatic": {
           "storyId": "buttons-actions--variants",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1392,6 +1603,7 @@
         "automatic": {
           "storyId": "buttons-actions--loading",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1409,6 +1621,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1426,6 +1639,7 @@
         "automatic": {
           "storyId": "forms-select--multiple",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1443,6 +1657,7 @@
         "automatic": {
           "storyId": "forms-checkbox--partial",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1460,6 +1675,7 @@
         "automatic": {
           "storyId": "forms-checkbox--long-label",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1477,6 +1693,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--mixed",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1494,6 +1711,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--icon-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1511,6 +1729,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1528,6 +1747,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1545,6 +1765,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--long-labels",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1562,6 +1783,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--unselected",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1579,6 +1801,7 @@
         "automatic": {
           "storyId": "forms-text-field--read-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1596,6 +1819,7 @@
         "automatic": {
           "storyId": "forms-text-field--error",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1613,6 +1837,7 @@
         "automatic": {
           "storyId": "forms-text-field--empty-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1630,6 +1855,7 @@
         "automatic": {
           "storyId": "forms-text-field--focused-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1647,6 +1873,7 @@
         "automatic": {
           "storyId": "buttons-actions--variants",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1664,6 +1891,7 @@
         "automatic": {
           "storyId": "buttons-actions--loading",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1681,6 +1909,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1698,6 +1927,7 @@
         "automatic": {
           "storyId": "forms-select--multiple",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1715,6 +1945,7 @@
         "automatic": {
           "storyId": "forms-checkbox--partial",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1732,6 +1963,7 @@
         "automatic": {
           "storyId": "forms-checkbox--long-label",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1749,6 +1981,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--mixed",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1766,6 +1999,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--icon-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1783,6 +2017,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1800,6 +2035,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1817,6 +2053,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--long-labels",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1834,6 +2071,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--unselected",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1851,6 +2089,7 @@
         "automatic": {
           "storyId": "forms-text-field--read-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1868,6 +2107,7 @@
         "automatic": {
           "storyId": "forms-text-field--error",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1885,6 +2125,7 @@
         "automatic": {
           "storyId": "forms-text-field--empty-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1902,6 +2143,7 @@
         "automatic": {
           "storyId": "forms-text-field--focused-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1919,6 +2161,7 @@
         "automatic": {
           "storyId": "buttons-actions--variants",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1936,6 +2179,7 @@
         "automatic": {
           "storyId": "buttons-actions--loading",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1953,6 +2197,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1970,6 +2215,7 @@
         "automatic": {
           "storyId": "forms-select--multiple",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -1987,6 +2233,7 @@
         "automatic": {
           "storyId": "forms-checkbox--partial",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2004,6 +2251,7 @@
         "automatic": {
           "storyId": "forms-checkbox--long-label",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2021,6 +2269,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--mixed",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2038,6 +2287,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--icon-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2055,6 +2305,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2072,6 +2323,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2089,6 +2341,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--long-labels",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2106,6 +2359,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--unselected",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2123,6 +2377,7 @@
         "automatic": {
           "storyId": "forms-text-field--read-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2140,6 +2395,7 @@
         "automatic": {
           "storyId": "forms-text-field--error",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2157,6 +2413,7 @@
         "automatic": {
           "storyId": "forms-text-field--empty-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2174,6 +2431,7 @@
         "automatic": {
           "storyId": "forms-text-field--focused-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2191,6 +2449,7 @@
         "automatic": {
           "storyId": "buttons-actions--variants",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2208,6 +2467,7 @@
         "automatic": {
           "storyId": "buttons-actions--loading",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2225,6 +2485,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2242,6 +2503,7 @@
         "automatic": {
           "storyId": "forms-select--multiple",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2259,6 +2521,7 @@
         "automatic": {
           "storyId": "forms-checkbox--partial",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2276,6 +2539,7 @@
         "automatic": {
           "storyId": "forms-checkbox--long-label",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2293,6 +2557,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--mixed",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2310,6 +2575,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--icon-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2327,6 +2593,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2344,6 +2611,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2361,6 +2629,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--long-labels",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2378,6 +2647,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--unselected",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2395,6 +2665,7 @@
         "automatic": {
           "storyId": "forms-text-field--read-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2412,6 +2683,7 @@
         "automatic": {
           "storyId": "forms-text-field--error",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2429,6 +2701,7 @@
         "automatic": {
           "storyId": "forms-text-field--empty-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2446,6 +2719,7 @@
         "automatic": {
           "storyId": "forms-text-field--focused-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2463,6 +2737,7 @@
         "automatic": {
           "storyId": "buttons-actions--variants",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2480,6 +2755,7 @@
         "automatic": {
           "storyId": "buttons-actions--loading",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2497,6 +2773,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2514,6 +2791,7 @@
         "automatic": {
           "storyId": "forms-select--multiple",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2531,6 +2809,7 @@
         "automatic": {
           "storyId": "forms-checkbox--partial",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2548,6 +2827,7 @@
         "automatic": {
           "storyId": "forms-checkbox--long-label",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2565,6 +2845,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--mixed",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2582,6 +2863,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--icon-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2599,6 +2881,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2616,6 +2899,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2633,6 +2917,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--long-labels",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2650,6 +2935,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--unselected",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2667,6 +2953,7 @@
         "automatic": {
           "storyId": "forms-text-field--read-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2684,6 +2971,7 @@
         "automatic": {
           "storyId": "forms-text-field--error",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2701,6 +2989,7 @@
         "automatic": {
           "storyId": "forms-text-field--empty-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2718,6 +3007,7 @@
         "automatic": {
           "storyId": "forms-text-field--focused-optional",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2735,6 +3025,7 @@
         "automatic": {
           "storyId": "buttons-actions--variants",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2752,6 +3043,7 @@
         "automatic": {
           "storyId": "buttons-actions--loading",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2769,6 +3061,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2786,6 +3079,7 @@
         "automatic": {
           "storyId": "forms-select--multiple",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2803,6 +3097,7 @@
         "automatic": {
           "storyId": "forms-checkbox--partial",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2820,6 +3115,7 @@
         "automatic": {
           "storyId": "forms-checkbox--long-label",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2837,6 +3133,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--mixed",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2854,6 +3151,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--icon-only",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2871,6 +3169,7 @@
         "automatic": {
           "storyId": "navigation-household-sections--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2888,6 +3187,7 @@
         "automatic": {
           "storyId": "tabs-local-panels--overflow",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2910,12 +3210,48 @@
       "controlledReset": true
     },
     "localRoboto": true,
+    "sameStoryRerender": {
+      "firstRun": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 3,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      },
+      "secondRun": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 5,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      },
+      "thirdRun": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 7,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      }
+    },
     "catalogForms": [
       {
         "story": "forms-text-field--default",
         "automatic": {
           "storyId": "forms-text-field--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2931,6 +3267,7 @@
         "automatic": {
           "storyId": "forms-select--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2946,6 +3283,7 @@
         "automatic": {
           "storyId": "forms-checkbox--default",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -2961,6 +3299,7 @@
         "automatic": {
           "storyId": "buttons-actions--reset",
           "status": "success",
+          "revision": 3,
           "reports": [
             {
               "type": "a11y",
@@ -22427,8 +22766,934 @@
     "productionSourceChanged": false,
     "gutterReport": "https://github.com/vypdev/copilot/issues/891",
     "dragReport": "https://github.com/vypdev/copilot/issues/892",
-    "nativeReassessmentRequired": true,
+    "nativeReassessmentRequired": false,
     "manuallyResolvedOrDismissed": false,
-    "scope": "Measured real pointer input only. The Chromium source assertion remains exact; Firefox retargets the disabled padding click to the host, which is recorded rather than treated as universal target identity."
+    "scope": "Measured real pointer input only. The Chromium source assertion remains exact; Firefox retargets the disabled padding click to the host, which is recorded rather than treated as universal target identity.",
+    "laterNativeHead": "61baa504b79baa482f913c22839c72c2c7d7f4b7",
+    "laterDisposition": "Both pointer claims are absent from the complete native open aggregate at61baa50; no manual finding dismissal/resolution."
+  },
+  "hostAttributeReview": {
+    "sourceTests": 1155,
+    "runtimeFiles": 52,
+    "newSourceCases": 5,
+    "initialRed": "Six failures: five Vue native-attribute cases and same-story completion. After forwarding, four hosts still ignored hidden; those additional renderer regressions were corrected.",
+    "vueInstalledHosts": [
+      {
+        "tag": "vyp-ha-tabs",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 56,
+        "before": null,
+        "whileHidden": null
+      },
+      {
+        "tag": "vyp-ha-field",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 84,
+        "before": [
+          [
+            "task",
+            "Kitchen"
+          ]
+        ],
+        "whileHidden": [
+          [
+            "task",
+            "Kitchen"
+          ]
+        ]
+      },
+      {
+        "tag": "vyp-ha-button",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 44,
+        "before": [
+          [
+            "task",
+            "Kitchen"
+          ]
+        ],
+        "whileHidden": [
+          [
+            "task",
+            "Kitchen"
+          ]
+        ]
+      },
+      {
+        "tag": "vyp-ha-button",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 44,
+        "before": [
+          [
+            "task",
+            "Kitchen"
+          ]
+        ],
+        "whileHidden": [
+          [
+            "task",
+            "Kitchen"
+          ]
+        ]
+      },
+      {
+        "tag": "vyp-ha-select",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 103.078125,
+        "before": [
+          [
+            "category",
+            "1"
+          ]
+        ],
+        "whileHidden": [
+          [
+            "category",
+            "1"
+          ]
+        ]
+      },
+      {
+        "tag": "vyp-ha-button",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 44,
+        "before": [
+          [
+            "category",
+            "1"
+          ]
+        ],
+        "whileHidden": [
+          [
+            "category",
+            "1"
+          ]
+        ]
+      },
+      {
+        "tag": "vyp-ha-button",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 44,
+        "before": [
+          [
+            "category",
+            "1"
+          ]
+        ],
+        "whileHidden": [
+          [
+            "category",
+            "1"
+          ]
+        ]
+      },
+      {
+        "tag": "vyp-ha-checkbox",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 39,
+        "before": [],
+        "whileHidden": []
+      },
+      {
+        "tag": "vyp-ha-button",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 44,
+        "before": [],
+        "whileHidden": []
+      },
+      {
+        "tag": "vyp-ha-button",
+        "title": "Vue host attributes",
+        "description": "Installed Vue host attributes",
+        "proof": "forwarded",
+        "hidden": "none",
+        "visibleHeight": 44,
+        "before": [],
+        "whileHidden": []
+      }
+    ],
+    "contentSetterBoundary": "One shared Vue helper rejects innerHTML, outerHTML, textContent and innerText, including forced-property spelling. Declared controlled props/emits remain explicit; native attribute and listener replacement/removal pass.",
+    "hidden": "All five core hosts remove their painted box while retaining controlled state and successful FormData.",
+    "scopeComplete": false
+  },
+  "storyCompletionReview": {
+    "static": {
+      "firstRun": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 3,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      },
+      "secondRun": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 5,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      },
+      "thirdRun": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 7,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      }
+    },
+    "chrome": {
+      "first": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 3,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      },
+      "second": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 5,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      },
+      "third": {
+        "storyId": "forms-text-field--default",
+        "status": "success",
+        "revision": 7,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      }
+    },
+    "sameDocument": true,
+    "freshAutomaticA11yRequired": true,
+    "startPhases": [
+      "preparing",
+      "loading",
+      "rendering"
+    ],
+    "listenersRemovedOnCleanup": 2,
+    "scope": "Pinned Storybook10.6.5 public channel protocol and actual manager Reload story control; full library/browser acceptance remains incomplete."
+  },
+  "angularCheckboxResetCounterexample": {
+    "report": "https://github.com/vypdev/copilot/issues/893",
+    "analyzedHead": "61baa504b79baa482f913c22839c72c2c7d7f4b7",
+    "nativeRun": "https://github.com/vypdev/ha-ui/actions/runs/41923510781",
+    "ci": "https://github.com/vypdev/ha-ui/actions/runs/41923510895",
+    "adapterSourceChanged": false,
+    "actualModelValuesAtResetRequest": [
+      false,
+      false
+    ],
+    "sourceDifferentDefaults": {
+      "frameworkDefault": false,
+      "componentDefaultChecked": true,
+      "observedAtResetRequest": {
+        "model": false,
+        "proposal": true
+      },
+      "finalChecked": false,
+      "pristine": true,
+      "untouched": true
+    },
+    "explanation": "Angular FormGroupDirective owns native reset and updates the CVA model before the FACE reset callback; the adapter reacknowledges that current framework value.",
+    "manuallyResolvedOrDismissed": false,
+    "freshNativeReassessmentRequired": true
+  },
+  "latestLocalVerification": {
+    "baseHead": "61baa504b79baa482f913c22839c72c2c7d7f4b7",
+    "sourceTests": 1155,
+    "runtimeFiles": 52,
+    "coverage": {
+      "lines": {
+        "total": 860,
+        "covered": 860,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 1929,
+        "covered": 1929,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 500,
+        "covered": 500,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 1234,
+        "covered": 1234,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "cohort": {
+      "scope": "Unpublished navigation, text-field, button, checkbox and typed-select preview with four framework bindings; no registry publication or full capability acceptance",
+      "cohort": [
+        {
+          "coordinate": "@vypdev/ha-ui",
+          "version": "0.1.0-next.1",
+          "sha256": "c5ad881fdfef1f657f1f7dd6da10d20b60b2e6f147f18b1384c870c1e333788f",
+          "bytes": 108732
+        },
+        {
+          "coordinate": "@vypdev/ha-ui-angular",
+          "version": "0.1.0-next.1",
+          "sha256": "cd072396d71f9d3c46596b5e1498b71bc05f70e954371c229ae494da45effa85",
+          "bytes": 10097
+        },
+        {
+          "coordinate": "@vypdev/ha-ui-react",
+          "version": "0.1.0-next.1",
+          "sha256": "f52ee057d281272bc360bff435678ae871ca3ce4b509eb23b2ebe4610c98cea7",
+          "bytes": 7467
+        },
+        {
+          "coordinate": "@vypdev/ha-ui-svelte",
+          "version": "0.1.0-next.1",
+          "sha256": "ab634e99415376b8f8c021808454f6e45519572640c6b5c08349310d41a47aba",
+          "bytes": 4403
+        },
+        {
+          "coordinate": "@vypdev/ha-ui-vue",
+          "version": "0.1.0-next.1",
+          "sha256": "a7cd17241850ba98587ab252b43c9add647aa913e43a7cbcfddc28783f1b9343",
+          "bytes": 8648
+        }
+      ],
+      "reproducible": true,
+      "sourceLockSha256": "31ba0c22064513fb8b94f469bf10f075bbd20f5ced92901cd13f951f1a207f92"
+    },
+    "coldSource": {
+      "trees": 5,
+      "files": 124,
+      "restoredIdentically": true,
+      "exitCode": 0,
+      "command": [
+        "pnpm",
+        "test"
+      ]
+    },
+    "coldTypes": {
+      "trees": 5,
+      "files": 124,
+      "restoredIdentically": true,
+      "exitCode": 0,
+      "command": [
+        "pnpm",
+        "check"
+      ]
+    },
+    "coldNote": "All124 prior compiled files were restored byte-identically after cold source/type checks. The subsequently accepted reproducible cohort adds four Vue helper output files; final strict checks pass against that128-file cohort.",
+    "linuxVisual": {
+      "node": "v26.13.0",
+      "browser": "156.0.8078.80",
+      "text": 16,
+      "icons": 48,
+      "overflow": 40,
+      "buttons": 96,
+      "fields": 44,
+      "implicitSubmit": {
+        "nativeDifferential": true,
+        "realKeyboard": true,
+        "proxyAddsNoFormData": true,
+        "cases": [
+          {
+            "mode": "single",
+            "first": "native",
+            "expected": 1,
+            "submissions": 1,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "single",
+            "first": "shared",
+            "expected": 1,
+            "submissions": 1,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "enabled-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "enabled-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "enabled-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "enabled-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "disabled-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "disabled-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "disabled-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "disabled-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "fieldset-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "fieldset-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "fieldset-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "fieldset-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "readonly-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "readonly-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "readonly-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "readonly-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-type",
+            "first": "native",
+            "expected": 1,
+            "submissions": 1,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-type",
+            "first": "shared",
+            "expected": 1,
+            "submissions": 1,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "external-disabled",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "external-disabled",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          }
+        ]
+      },
+      "network": "none",
+      "errors": []
+    },
+    "threeEngineForms": {
+      "node": "v26.13.0",
+      "network": "none",
+      "scope": "Four actual compiled Storybook form journeys in three engines; automatic accessibility completion plus real native reset and subsequent model/status updates. Full component/browser matrix remains pending.",
+      "results": [
+        {
+          "engine": "chromium",
+          "version": "156.0.8078.80",
+          "proof": [
+            {
+              "story": "forms-text-field--default",
+              "automatic": {
+                "storyId": "forms-text-field--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Example submitted: After reset"
+            },
+            {
+              "story": "forms-select--default",
+              "automatic": {
+                "storyId": "forms-select--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"category\",\"1\"]]"
+            },
+            {
+              "story": "forms-checkbox--default",
+              "automatic": {
+                "storyId": "forms-checkbox--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"notify\",\"on\"]]"
+            },
+            {
+              "story": "buttons-actions--reset",
+              "automatic": {
+                "storyId": "buttons-actions--reset",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "157.0",
+          "proof": [
+            {
+              "story": "forms-text-field--default",
+              "automatic": {
+                "storyId": "forms-text-field--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Example submitted: After reset"
+            },
+            {
+              "story": "forms-select--default",
+              "automatic": {
+                "storyId": "forms-select--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"category\",\"1\"]]"
+            },
+            {
+              "story": "forms-checkbox--default",
+              "automatic": {
+                "storyId": "forms-checkbox--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"notify\",\"on\"]]"
+            },
+            {
+              "story": "buttons-actions--reset",
+              "automatic": {
+                "storyId": "buttons-actions--reset",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "27.2",
+          "proof": [
+            {
+              "story": "forms-text-field--default",
+              "automatic": {
+                "storyId": "forms-text-field--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Example submitted: After reset"
+            },
+            {
+              "story": "forms-select--default",
+              "automatic": {
+                "storyId": "forms-select--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"category\",\"1\"]]"
+            },
+            {
+              "story": "forms-checkbox--default",
+              "automatic": {
+                "storyId": "forms-checkbox--default",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"notify\",\"on\"]]"
+            },
+            {
+              "story": "buttons-actions--reset",
+              "automatic": {
+                "storyId": "buttons-actions--reset",
+                "status": "success",
+                "revision": 3,
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+            }
+          ],
+          "errors": []
+        }
+      ]
+    },
+    "hostedValidation": "Prior61baa50 CI passed and native review has4open findings. Local fixes/counterexamples require publication and fresh current-head CI/native review.",
+    "capabilityComplete": false
   }
 }

@@ -11,6 +11,7 @@ export class HaSelect extends LitElement {
  // Geometry adapted from Gateway's MIT field/select catalog; semantic behavior is authored here.
  static styles=css`
   :host{display:block;min-width:0;font:400 14px/1.35 var(--vyp-ha-font-family,var(--primary-font-family,Roboto,Noto,sans-serif));color:var(--vyp-ha-text,var(--primary-text-color,#1c1c1c));}
+    :host([hidden]){display:none;}
   .field{display:grid;gap:6px;}label{font-size:14px;line-height:1.35;}
   select{box-sizing:border-box;width:100%;min-width:0;min-height:56px;border:1px solid var(--vyp-ha-border,var(--divider-color,#e0e0e0));border-radius:var(--vyp-ha-field-radius,4px);padding:16px;color:inherit;background:var(--vyp-ha-surface,var(--card-background-color,#fff));font:inherit;}
   select:focus-visible{outline:2px solid var(--vyp-ha-primary,var(--primary-color,#0075b5));outline-offset:1px;}

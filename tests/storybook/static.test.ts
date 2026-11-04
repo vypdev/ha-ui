@@ -83,6 +83,12 @@ test('the complete static catalog works at the repository subpath with local ass
     await page.keyboard.press('ArrowRight');assert.equal(await page.getByRole('tab',{name:'Tasks',exact:true}).evaluate(element=>element===(element.getRootNode() as ShadowRoot).activeElement),true);
     assert.equal(await page.getByRole('tab',{name:'Overview',exact:true}).getAttribute('aria-selected'),'true');await page.keyboard.press('Enter');
     await page.getByRole('tabpanel',{name:'Tasks'}).waitFor({state:'visible'});
+    await page.goto(origin+'/ha-ui/?path=/story/forms-text-field--default');
+    const iframe=await page.locator('#storybook-preview-iframe').elementHandle();assert.ok(iframe);const liveFrame=await iframe.contentFrame();assert.ok(liveFrame);
+    const firstRun=await waitForCatalogStory(liveFrame,'forms-text-field--default');
+    await page.getByRole('button',{name:'Reload story',exact:true}).click();const secondRun=await waitForCatalogStory(liveFrame,'forms-text-field--default',firstRun.revision);
+    await page.getByRole('button',{name:'Reload story',exact:true}).click();const thirdRun=await waitForCatalogStory(liveFrame,'forms-text-field--default',secondRun.revision);
+    const sameStoryRerender={firstRun,secondRun,thirdRun};
     await page.goto(origin+'/ha-ui/?path=/docs/forms-text-field--docs');
     const docs=page.frameLocator('#storybook-preview-iframe');await docs.getByRole('heading',{name:'Text field',exact:true}).waitFor();
     await page.screenshot({path:resolve(output,'manager-autodocs.png')});
@@ -102,6 +108,6 @@ test('the complete static catalog works at the repository subpath with local ass
     const buttonVisual=await exerciseButtonVisual(page,origin,output);
     const fieldVisual=await exerciseFieldVisual(page,origin,output);
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
-    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,catalogForms,checkboxVisual,navigationVisual,navigationIconsVisual,navigationOverflowVisual,buttonVisual,fieldVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
+    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,sameStoryRerender,catalogForms,checkboxVisual,navigationVisual,navigationIconsVisual,navigationOverflowVisual,buttonVisual,fieldVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
 });

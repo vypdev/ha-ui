@@ -23,9 +23,11 @@ export async function exerciseFrameworkCheckbox(page:Page,root:string,framework:
  await page.getByRole('button',{name:'Toggle check disabled',exact:true}).click();assert.equal(await control.isDisabled(),true);assert.deepEqual(await entries(),[]);await page.getByRole('button',{name:'Toggle check disabled',exact:true}).click();assert.equal(await control.isDisabled(),false);
  await page.getByRole('button',{name:'Reset notification',exact:true}).click();await model(false);await events(4);assert.equal(await control.isChecked(),false);assert.deepEqual(await entries(),[]);
  await control.focus();await page.keyboard.press('Space');await model(true);await events(5);await page.getByRole('button',{name:'Reset notification',exact:true}).click();await model(false);await events(6);
+ const angularResetModels=framework==='angular'?JSON.parse((await host.getAttribute('data-angular-reset-models'))!):null;
+ if(framework==='angular')assert.deepEqual(angularResetModels,[false,false],'Angular resets its FormControl before the FACE reset request is observed');
  const retained=await host.elementHandle();assert.ok(retained);await page.getByRole('button',{name:'Toggle checkbox',exact:true}).click();await host.waitFor({state:'detached'});await retained.evaluate(element=>element.dispatchEvent(new CustomEvent('ha-check-request',{detail:{checked:true,reason:'change'},cancelable:true})));await events(6);await model(false);
  await page.getByRole('button',{name:'Toggle checkbox',exact:true}).click();await control.click();await model(true);await events(7);await host.screenshot({path:join(root,'test-results','packed-'+framework+'-checkbox-light.png')});
- return {strictBoolean:true,indeterminateSeparateFromChecked:true,nativeLabelAndSpace:true,originalRequestExactlyOnce:true,cancellation:true,programmaticWritesEmitNoIntent:true,requiredNativeValidation:true,disabledSubmission:true,defaultAndCustomPayload:true,enterUsesSharedSubmitter:true,frameworkReset:true,teardownAndRemount:true};
+ return {strictBoolean:true,indeterminateSeparateFromChecked:true,nativeLabelAndSpace:true,originalRequestExactlyOnce:true,cancellation:true,programmaticWritesEmitNoIntent:true,requiredNativeValidation:true,disabledSubmission:true,defaultAndCustomPayload:true,enterUsesSharedSubmitter:true,frameworkReset:true,angularResetModels,teardownAndRemount:true};
 }
 
 export async function exerciseInstalledCheckbox(page:Page){

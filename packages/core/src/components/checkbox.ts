@@ -11,6 +11,7 @@ export class HaCheckbox extends LitElement {
  // Visual geometry follows the measured HA ha-checkbox; source and icon notices ship with the package.
  static styles=css`
   :host{display:block;min-width:0;font:400 14px/1.2 var(--vyp-ha-font-family,var(--ha-font-family-body,var(--primary-font-family,Roboto,Noto,sans-serif)));color:var(--vyp-ha-text,var(--primary-text-color,#141414));-webkit-tap-highlight-color:transparent;}
+    :host([hidden]){display:none;}
   .field{display:grid;gap:7px;}.row{display:flex;align-items:center;gap:8px;min-height:20px;cursor:pointer;user-select:none;}.copy{min-width:0;line-height:1;overflow-wrap:anywhere;}
   .control{box-sizing:border-box;display:inline-flex;position:relative;flex:0 0 var(--ha-checkbox-size,20px);width:var(--ha-checkbox-size,20px);height:var(--ha-checkbox-size,20px);align-items:center;justify-content:center;border:var(--ha-checkbox-border-width,var(--ha-border-width-md,2px)) solid var(--ha-checkbox-border-color,var(--ha-color-border-neutral-normal,#989898));border-radius:var(--ha-checkbox-border-radius,var(--ha-border-radius-sm,4px));background:var(--ha-checkbox-background-color,transparent);}
   input{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);box-sizing:border-box;width:44px;height:44px;min-width:var(--ha-checkbox-min-touch-size,44px);min-height:var(--ha-checkbox-min-touch-size,44px);margin:0;padding:0;opacity:0;cursor:inherit;}

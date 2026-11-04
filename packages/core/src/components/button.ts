@@ -15,6 +15,7 @@ export class HaButton extends LitElement {
  // HA/Web Awesome visible geometry with a separate native 44px hit target; see NOTICE.
  static styles=css`
   :host{display:inline-block;max-width:100%;font:var(--ha-font-weight-medium,500) var(--ha-font-size-m,14px)/1 var(--vyp-ha-font-family,var(--primary-font-family,Roboto,Noto,sans-serif));}
+    :host([hidden]){display:none;}
   button{--_height:var(--vyp-ha-button-height,var(--ha-button-height,var(--button-height,40px)));--_padding:var(--vyp-ha-button-padding,var(--ha-space-4,16px));
     --_fill:var(--vyp-ha-surface,transparent);--_text:var(--vyp-ha-text,var(--ha-color-on-neutral-quiet,var(--primary-text-color,#5e5e5e)));--_border:var(--vyp-ha-border,var(--wa-color-neutral-border-loud,var(--ha-color-fill-neutral-loud-resting,var(--divider-color,#5e5e5e))));
     box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:max(44px,var(--_height));max-width:100%;margin:0;padding:0;border:0;border-radius:var(--vyp-ha-button-radius,var(--ha-button-border-radius,var(--ha-border-radius-pill,9999px)));font:inherit;line-height:1;cursor:pointer;background:transparent;color:var(--_text);vertical-align:middle;}

@@ -1,3 +1,4 @@
+import {nativeHostAttributes} from './native-host-attributes.js';
 import {defineComponent,h,onMounted,onBeforeUnmount,shallowRef,watch,type PropType} from 'vue';
 import {buttonPressDetail,type ButtonState,type ButtonType,type ButtonPressDetail} from '@vypdev/ha-ui/button-contracts';
 import type {HaButton,ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -17,6 +18,6 @@ export const Button=defineComponent({
     onMounted(()=>{apply();element.value!.addEventListener('ha-press-request',handle);});
     watch(()=>[props.state,props.type,props.name,props.value,props.disabled,props.formNoValidate,props.form],apply,{flush:'post'});
     onBeforeUnmount(()=>element.value!.removeEventListener('ha-press-request',handle));
-    return ()=>h('vyp-ha-button',{ref:element,id:attrs.id,class:attrs.class,style:attrs.style,dir:attrs.dir,lang:attrs.lang},[slots.leading?h('span',{slot:'leading'},slots.leading()):null,slots.trailing?h('span',{slot:'trailing'},slots.trailing()):null]);
+    return ()=>h('vyp-ha-button',{...nativeHostAttributes(attrs),ref:element},[slots.leading?h('span',{slot:'leading'},slots.leading()):null,slots.trailing?h('span',{slot:'trailing'},slots.trailing()):null]);
   },
 });

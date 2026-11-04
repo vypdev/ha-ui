@@ -11,6 +11,7 @@ export class HaTabs extends LitElement {
   // Measured HA dashboard tab and SVG styles; native semantics, local data, see NOTICE.
   static styles = css`
     :host { display:block; min-width:0; font:500 14px/1.6 var(--vyp-ha-font-family,var(--primary-font-family,Roboto,Noto,sans-serif)); }
+    :host([hidden]){display:none;}
     .frame { position:relative; height:56px; min-width:0; overflow:hidden; box-sizing:border-box;
       background:var(--vyp-ha-surface,var(--app-header-background-color,var(--card-background-color,#fff)));
       border-bottom:var(--vyp-ha-tab-border,var(--app-header-border-bottom,1px solid var(--vyp-ha-border,var(--divider-color,#e0e0e0)))); }

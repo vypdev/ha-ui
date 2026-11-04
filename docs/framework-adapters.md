@@ -39,8 +39,13 @@ Strict Mode, rerenders, callback replacement/removal and a retained former host 
 host attributes are id, className, style, dir and lang; raw HTML strings are not a binding API.
 
 Vue uses mounted/unmount hooks, a shallow host ref and a post-render state watch. Its typed emit
-preserves the native event. It forwards id, class, style, dir and lang without accepting arbitrary
-DOM content setters. Both supplied and absent content/callbacks, prop replacement and teardown pass.
+preserves the native event. Native fallthrough attributes and listeners reach the actual custom
+element, including ARIA/data attributes, title, tabindex and hidden; updates and removals follow
+Vue's normal lifecycle. Controlled props and emitted requests remain explicit bindings. A shared
+adapter helper excludes HTML/text content setters, including Vue's forced-property spelling, so
+fallthrough cannot replace owned markup or slots. All five core hosts honor hidden while retaining
+their controlled values and form data. Both supplied and absent content/callbacks, prop replacement
+and teardown pass.
 
 Angular uses its standard Package Format with partial compilation, published FESM and declarations,
 and retained authored source. It is a component on `vyp-ha-tabs` itself, with a projection-only Angular

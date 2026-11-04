@@ -74,6 +74,17 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       await server.listen();const address=server.httpServer!.address();assert.ok(address&&typeof address==='object');
       await page.goto('http://127.0.0.1:'+address.port);
       await page.evaluate(()=>document.fonts.ready);
+      let nativeHostAttributes;
+      if(framework==='vue'){
+        nativeHostAttributes=await page.locator('vyp-ha-tabs,vyp-ha-field,vyp-ha-button,vyp-ha-select,vyp-ha-checkbox').evaluateAll(elements=>elements.map(element=>{
+          const host=element as HTMLElement&{form?:HTMLFormElement|null},owner=host.form;
+          const entries=()=>owner?[...new FormData(owner)]:null,before=entries();host.hidden=true;
+          const hidden=getComputedStyle(host).display,whileHidden=entries();host.hidden=false;
+          return{tag:host.localName,title:host.title,description:host.getAttribute('aria-description'),proof:host.getAttribute('data-host-attributes'),hidden,visibleHeight:host.getBoundingClientRect().height,before,whileHidden};
+        }));
+        assert.deepEqual([...new Set(nativeHostAttributes.map(row=>row.tag))].sort(),['vyp-ha-tabs','vyp-ha-field','vyp-ha-button','vyp-ha-select','vyp-ha-checkbox'].sort());
+        for(const row of nativeHostAttributes){assert.equal(row.title,'Vue host attributes');assert.equal(row.description,'Installed Vue host attributes');assert.equal(row.proof,'forwarded');assert.equal(row.hidden,'none');assert.ok(row.visibleHeight>0);assert.deepEqual(row.whileHidden,row.before);}
+      }
       const textField=await exerciseField(page);
       const button=await exerciseFrameworkButton(page,root,framework);
       const select=await exerciseFrameworkSelect(page,root,framework);
@@ -129,7 +140,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       assert.equal(await page.locator('vyp-ha-field #error').evaluate(element=>getComputedStyle(element).color),'rgb(242, 139, 130)');
       await page.locator('vyp-ha-field').screenshot({path:join(root,'test-results','packed-'+framework+'-field-error-dark-es.png')});
       assert.deepEqual(errors,[]);
-      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,navigationIcons,textField,button,select,checkbox,browser:browser.version(),errors});
+      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,nativeHostAttributes,navigationIcons,textField,button,select,checkbox,browser:browser.version(),errors});
       console.log('Packed '+framework+' compiler, bindings and real Chromium lifecycle passed');
     } finally {await page.close();await server.close();}
   }
