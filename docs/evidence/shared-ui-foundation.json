@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T08:40:19.745238+00:00",
+  "recordedAtUTC": "2026-11-04T08:51:11.091446+00:00",
   "status": "Partial source increment: shared navigation/panels and one controlled text field, four framework form bridges and a real Storybook catalog. Other families and complete delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels and a single-line text field; immutable pure contracts, explicit client registration, original typed cancelable events and one visual implementation per family.",
     "Real React/Vue/Angular/Svelte navigation and single-line text-field bindings. Renderer imports stay type-only; runtime shared imports are DOM-independent validation policies plus each adapter own framework. No alternate visuals.",
-    "389 passing Node/Chromium contract, architecture, CI, component/binding and Storybook interaction/a11y tests; all 25 authored runtime modules are inventoried independently, including Svelte and three zero-executable modules. CSF test definitions delegate runtime composition to covered example modules.",
+    "391 passing Node/Chromium contract, architecture, CI, component/binding and Storybook interaction/a11y tests; all 25 authored runtime modules are inventoried independently, including Svelte and three zero-executable modules. CSF test definitions delegate runtime composition to covered example modules.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four real clean frozen offline consumers compile installed package declarations and exercise navigation plus controlled text-field editing/cancellation/model writes/native default submitter/validation/disable/reset/EN-ES/themes/teardown/remount in Chromium; no foreign framework is installed.",
@@ -419,7 +419,8 @@
     "coverage": "100% statements/branches/functions/lines per authored file and globally",
     "restoration": "Every previous compiled distribution restored byte-for-byte",
     "reason": "All five distributions absent: strict source/consumer/Storybook/Svelte checks and the full source browser campaign pass. Installed-package fixtures have no source alias.",
-    "restoredFiles": 55
+    "restoredFiles": 55,
+    "sourceHead": "b753030595c64bd8223b63625c651882eaf8c657"
   },
   "restoreReviewRegression": {
     "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4464672339",
@@ -681,5 +682,15 @@
     "publicPagesDeployed": false,
     "ownerHAInstallation": false,
     "humanAcceptance": false
+  },
+  "registrationReviewRegression": {
+    "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4465466812",
+    "problem": "Registration tests assumed the dependency-provided customElements shim existed in a Node runtime.",
+    "red": "Explicitly removing customElements reproduced two TypeErrors before either registration assertion; two original cases passed.",
+    "correction": "Optional registry inspection plus explicit no-registry cases for both tags. Globals restore after every case; both registrations must reject without creating tags.",
+    "validation": "391 source tests pass, including four server registration cases; strict checks and all four runtime coverage metrics remain 100%.",
+    "runtimeAndCompiledDistributionsUnchangedFrom": "b753030595c64bd8223b63625c651882eaf8c657",
+    "compiledFilesByteIdentical": 55,
+    "manualResolution": false
   }
 }
