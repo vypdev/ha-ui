@@ -49,7 +49,7 @@ Consuming apps supply their fonts as HA does; the shared component performs no f
 |---|---|---|
 | 1 | Checkbox and catalog font baseline | Candidate calibrated against measured HA states; source, packed and static gates are recorded separately |
 | 2 | Upper dashboard navigation | Text-only controls plus three icon/text presentations calibrated against measured HA states in both semantics; overflow calibrated separately below; custom theme/font breadth and installed-app acceptance remain required |
-| 3 | Buttons | Recompare actual HA geometry, variants, colors, focus, hover and disabled states; current accessible fixture accent is not an assertion of HA palette equality |
+| 3 | Buttons | Original HA variants/states, native target and four bindings are calibrated below; accessible application accent overrides remain an explicit palette difference |
 | 4 | Text fields and single/multiple selects | Current border/native-control presentation differs from the HA reference; revise before visual acceptance |
 | 5 | Remaining families | Capture the current HA counterpart and establish the same reference before implementing their visual layer |
 | 6 | Gateway and Domus | Compare their real installed flows using the same accepted component cohort; app UX and human acceptance remain separate |
@@ -162,3 +162,36 @@ Paging uses the viewport width with the measured one-pixel edge tolerance. The f
 edge-retention accessibility exception is documented in the component API and tested
 separately from the matching visual states. Custom font/theme breadth, complete browser
 support and Gateway/Domus adoption remain open.
+
+## Button surfaces and native targets
+
+The [button reference](evidence/ha-button-reference.json) records 96 original states per
+measured platform: eight mapped variants in resting/hover/focus/disabled/active states,
+light/dark, sizes, decorative leading/trailing/both/icon-only content and loading. Original
+public HA functions remain unchanged. The fixture uses the public height override for
+extra-large and the published HA icon-button part layout for icon-only composition.
+Original images, fonts and theme values are independent of the candidate.
+
+The native target remains at least 44px. A separately painted surface matches HA's 32/40/48px
+small/medium/large controls; extra-large is 56px with HA large typography. The source gate
+checks eighty settled geometry/color cases; the compiled gate additionally uses real pointer
+presses and requires every measured original PNG to match byte for byte. Original color
+transitions and label overflow clipping matter to raster equality. Focus and the controlled
+pressed indicator follow the visible surface; loading keeps dimensions and centers a local
+spinner. OS reduced motion bounds the surface transition to HA's imperceptible 1ms
+maximum (an explicit host zero remains zero) and disables spinner motion. Long labels can grow instead of becoming unreadable in a fixed-height control.
+
+The original HA light palette has measured text-contrast conflicts at 14px: brand accent
+is 3.26:1, brand filled is 2.85:1 and warning accent is 2.21:1. Exact reference-token equality
+and accessible application palettes are separate evidence. The standalone library fallbacks
+are tested without a host theme. The catalog declares explicit accessible accent overrides,
+including light brand #006fae, while retaining both automatic and independent axe scans.
+This documented palette difference is not represented as exact original-palette acceptance.
+Host applications own their final token pairs and their corresponding visual/accessibility
+review. Other families, browser breadth and actual application acceptance remain required.
+
+Each original and candidate state starts in a fresh browser document. A diagnostic original-HA
+replay proved that reusing a document after earlier states can retain different Linux focus-ring
+compositing, even after consecutive frames agree. Fresh original campaigns must agree independently;
+no production paint workaround, edited image or raster threshold increase is used. All previously
+accepted navigation references remain unchanged.

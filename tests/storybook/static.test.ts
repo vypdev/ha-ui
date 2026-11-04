@@ -1,3 +1,4 @@
+import {exerciseButtonVisual} from './button-visual.ts';
 import {exerciseNavigationOverflowVisual} from './navigation-overflow-visual.ts';
 import {exerciseNavigationIconsVisual} from './navigation-icons-visual.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
@@ -17,7 +18,7 @@ import type {HaSelect} from '@vypdev/ha-ui/select';
 import type {HaTextField} from '@vypdev/ha-ui/field';
 
 const require=createRequire(import.meta.url);
-test('the complete static catalog works at the repository subpath with local assets and real production controls',{timeout:120_000},async()=>{
+test('the complete static catalog works at the repository subpath with local assets and real production controls',{timeout:180_000},async()=>{
   const root=resolve(process.env.STORYBOOK_OUTPUT_DIR??'build/storybook'),output=resolve('test-results/storybook');await mkdir(output,{recursive:true});
   const index=JSON.parse(await readFile(resolve(root,'index.json'),'utf8'));
   const entries=Object.values(index.entries) as {id:string;type:string}[];
@@ -46,7 +47,7 @@ test('the complete static catalog works at the repository subpath with local ass
         const last=page.getByRole('link').last();await last.focus();const box=await last.boundingBox();assert.ok(box&&box.x>=0&&box.x+box.width<=width+1,'Overflow destination scrolls into view: '+JSON.stringify({box,width,locale,theme}));
       }
       if(story.startsWith('forms-text-field'))await page.screenshot({path:resolve(output,(story.endsWith('--error')?'error-':'field-')+locale+'-'+theme+'-'+width+'.png')});
-      if(story==='buttons-actions--loading')assert.equal(await page.locator('vyp-ha-button .spinner').evaluate(element=>getComputedStyle(element).animationName),'none');
+      if(story==='buttons-actions--loading')assert.equal(await page.locator('vyp-ha-button .spinner svg').evaluate(element=>getComputedStyle(element).animationName),'none');
       if(story.startsWith('forms-checkbox'))await page.screenshot({path:resolve(output,story+'-'+locale+'-'+theme+'-'+width+'.png')});
       if(story.startsWith('forms-select'))await page.screenshot({path:resolve(output,story+'-'+locale+'-'+theme+'-'+width+'.png')});
       if(story.startsWith('buttons-'))await page.screenshot({path:resolve(output,story+'-'+locale+'-'+theme+'-'+width+'.png')});
@@ -95,7 +96,8 @@ test('the complete static catalog works at the repository subpath with local ass
     const navigationVisual=await exerciseNavigationVisual(page,origin,output);
     const navigationIconsVisual=await exerciseNavigationIconsVisual(page,origin,output);
     const navigationOverflowVisual=await exerciseNavigationOverflowVisual(page,origin,output);
+    const buttonVisual=await exerciseButtonVisual(page,origin,output);
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
-    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,checkboxVisual,navigationVisual,navigationIconsVisual,navigationOverflowVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
+    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,checkboxVisual,navigationVisual,navigationIconsVisual,navigationOverflowVisual,buttonVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
 });

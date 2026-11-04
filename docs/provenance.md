@@ -122,3 +122,9 @@ The two unmodified Font Awesome Free 7.0.0 chevron paths retain their CC BY 4.0 
 and license. The package NOTICE names both official SVG sources and all modifications.
 This is style adaptation with authored geometry/gesture policy; no new runtime dependency
 or external icon/font loader is introduced.
+
+Button/spinner visual calibration uses the unchanged public HA button component and the same
+published Web Awesome artifact as navigation. Source links, copyright headers, public icon-only
+composition and modifications are retained in the core NOTICE. The native 44px target and its
+separate painted surface, controlled form behavior and local projection are authored here.
+No additional runtime package, external icon loader or font request is introduced.

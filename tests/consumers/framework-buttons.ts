@@ -8,6 +8,8 @@ export async function exerciseFrameworkButton(page:Page,root:string,framework:st
   const action=page.locator('#bound-submit'),button=action.getByRole('button',{name:'Save task',exact:true});
   const count=async(label:string)=>Number(await page.getByLabel(label,{exact:true}).textContent());
   const waitCount=async(label:string,expected:number)=>page.waitForFunction(({label,expected})=>document.querySelector('output[aria-label="'+label+'"]')!.textContent===String(expected),{label,expected});
+  const geometry=await action.evaluate(host=>{const button=host.shadowRoot!.querySelector('button')!,surface=host.shadowRoot!.querySelector<HTMLElement>('[part=surface]')!;return{hit:button.getBoundingClientRect().height,paint:surface.getBoundingClientRect().height,line:getComputedStyle(surface).lineHeight};});
+  assert.equal(geometry.paint,40);assert.ok(geometry.hit>=44);assert.equal(geometry.line,'14px');
   const start=await count('Press events'),accepted=await count('Accepted presses'),submitted=await count('Submit events');
   assert.equal(start,2,'The field Enter and invalid save must reach the real button binding');assert.equal(accepted,2);assert.equal(submitted,1);
   const proxy=await action.evaluateHandle(host=>(host as HaButton).submitter);

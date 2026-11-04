@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T18:44:45.705475+00:00",
-  "status": "Partial source: narrow navigation/panels with paging, focus reveal, mouse panning, local icons and labels; field, button, typed selects and checkbox with four real bindings. Measured dashboard overflow is calibrated; custom theme/font breadth, other visual families and full delivery/application acceptance remain required.",
+  "recordedAtUTC": "2026-11-04T20:32:52.106554+00:00",
+  "status": "Partial library: shared navigation/panels, native-form buttons, fields, typed selects and checkbox with four real bindings. Scoped navigation/checkbox/button visuals are calibrated against original HA; fields/selects, remaining visual families and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, text field, native-form button, typed single/multiple select and boolean checkbox; immutable DOM-free contracts, explicit registration, typed cancelable intent and one renderer per family.",
     "Real React/Vue/Angular/Svelte bindings for all five current families. Angular includes actual field/select/checkbox Forms bridges. Runtime adapter imports stay within pure contracts and the selected framework; no alternate visuals.",
-    "982 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 51 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
+    "1075 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 51 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four clean frozen offline compiled installed-package consumers exercise navigation, field, button, typed selects and boolean checkboxes, native validation/entries/reset/disabled behavior, cancellation, EN/ES/themes and teardown/remount. Actual tested five-coordinate archives are retained with their digests.",
@@ -35,30 +35,31 @@
     "Independent Linux replay proves the actual HA control and compiled candidate share91px Overview width versus89.484375px in macOS. Matching measured platform references preserve strict tests; no runtime renderer, package bytes, tolerance or source coverage exclusion changed in this correction.",
     "Four additional browser cases and a12-case compiled production-component probe across Linux Chromium/Firefox/WebKit verify standard form behavior. Trusted submit/reset emits one request and no auxiliary click; direct native requestSubmit/reset emits no press/click. The runtime is unchanged. This counters the recorded Bugbot premise; native reassessment remains required and no finding was manually resolved/dismissed.",
     "Local icon-only, icon-and-text and mixed dashboard navigation share the same native renderer. Twenty-four original HA states per measured platform back 52 source-browser cases and 48 static comparisons per platform. All 96 current icon sample PNGs are byte-identical to their corresponding original HA references; all 32 current text-tab samples also remain byte-identical. Six direct installed-core journeys and four actual compiled framework consumers verify local decorative SVG data, accessible names and runtime Spanish updates.",
-    "Shared overflow adds logical LTR/RTL paging, localized native controls, selection/focus reveal, measured mouse-panning threshold and observer/gesture lifecycle cleanup. Forty original HA states across macOS/Linux back forty source geometry cases and eighty compiled raster comparisons. All 208 current navigation sample PNGs match their corresponding original references byte for byte. Four actual installed-core mouse/keyboard journeys and four compiled framework consumers pass narrow EN/ES paging without selection."
+    "Shared overflow adds logical LTR/RTL paging, localized native controls, selection/focus reveal, measured mouse-panning threshold and observer/gesture lifecycle cleanup. Forty original HA states across macOS/Linux back forty source geometry cases and eighty compiled raster comparisons. All 208 current navigation sample PNGs match their corresponding original references byte for byte. Four actual installed-core mouse/keyboard journeys and four compiled framework consumers pass narrow EN/ES paging without selection.",
+    "HA button surfaces match 96 independently captured original states per measured platform, including real active pointers. Both original campaigns repeat byte-identically; all 192 current candidate/reference PNG pairs also match byte for byte. Small/medium painted geometry is separated from the native 44px target, verified with actual mouse clicks in its invisible margin and all four compiled framework bindings. Accessible catalog palette overrides are explicit differences from original HA tokens."
   ],
   "coverage": {
     "lines": {
-      "total": 842,
-      "covered": 842,
+      "total": 847,
+      "covered": 847,
       "skipped": 0,
       "pct": 100
     },
     "statements": {
-      "total": 1880,
-      "covered": 1880,
+      "total": 1892,
+      "covered": 1892,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 491,
-      "covered": 491,
+      "total": 493,
+      "covered": 493,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 1204,
-      "covered": 1204,
+      "total": 1208,
+      "covered": 1208,
       "skipped": 0,
       "pct": 100
     },
@@ -79,7 +80,7 @@
     "packages/angular/src/text-field.ts": "fe0e40f32969c5e3d43bc721f1f0474ecc2fca45e33e12415c30af64a23f4ea4",
     "packages/core/src/button-contracts.ts": "fcbb48c8776a72d27e8b61e664de1318aec2edc31a4eeb87313780678533ba99",
     "packages/core/src/checkbox-contracts.ts": "9e42c7b7b7756626528a811157b55bed217b3c8516c5346878350e5d94027382",
-    "packages/core/src/components/button.ts": "5301c32f9c5cc716b0eb805f8952704c37e07acf4d3996f78e8e07d523020f12",
+    "packages/core/src/components/button.ts": "03af61cb4b9bd47e6d76fd5d8215396ac0d6e59290a3050f48367e292a0044fc",
     "packages/core/src/components/checkbox.ts": "d51856706dfe69d4562a3da4fcb8d9db1158a0d3b546f282d06e4a72673069f4",
     "packages/core/src/components/field.ts": "000de1c10dc65a17cc8d72163a1ff3fede62d8fbaf53b8230e937510e3ce7bc7",
     "packages/core/src/components/implicit-submit.ts": "dcf4f39ed20e6ce2ba05c6324a0ab12d511c9ddb3bb7d8f51806938736eb919c",
@@ -112,7 +113,7 @@
     "stories/button.example.ts": "06773480e755be6526d292df9026ad0abace6825e17fd4e0b1ef81215d63680e",
     "stories/catalog-completion.ts": "10c01f134e4e3b64fc0a9f72d55c15b81043e2f040d5c111133b2d8cc9e12ebd",
     "stories/catalog-example.ts": "c5fa904779d81d2f081573051234b2d57f98c74c5c4ca99cbc8717584c2494e8",
-    "stories/catalog-frame.ts": "a38d1de225cb3684e170aab80a178cef79c79d252f3c24b2e6e5f1a28b3b0fa0",
+    "stories/catalog-frame.ts": "276e14a874fdb030d81a4e06902e9150b73dc1ee2262cb47de67e910c85d1aff",
     "stories/catalog-state.ts": "bdf543ab1dae6bb9e840e248d3167c31c37791f1f58c895a61db50afbbdba304",
     "stories/checkbox.example.ts": "fab0aa50221dd990506805d56f30a979e87932e5a25aa87e76feb21d6ec78765",
     "stories/field.example.ts": "d76da5e2692e57e3e529fe083e6127d74363440b47c24d03efdc13ccf3c72385",
@@ -124,8 +125,8 @@
   },
   "packedContract": {
     "scope": "Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required",
-    "sha256": "ad0ce4b3199393c95584f2471a9094b36c3e166e2f7e2af320080dbbfcee3585",
-    "bytes": 97350,
+    "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2",
+    "bytes": 102959,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -160,7 +161,7 @@
     "Gateway and Domus adoption, installed deployment/recovery and human UX acceptance remain unverified.",
     "All 64 original baseline cases and six additional delivery cases remain required; no partial increment completes issue #7.",
     "Fresh hosted CI and complete native Bugbot review are required for the source head.",
-    "Default-theme text/icon samples are calibrated on measured macOS/Linux Chromium. Custom font/theme breadth and broader responsive composition remain required, as do button/field/select visual calibration and full library/app UX acceptance."
+    "Default-theme text/icon samples are calibrated on measured macOS/Linux Chromium. Custom font/theme breadth and broader responsive composition remain required, as do field/select visual calibration and full library/app UX acceptance."
   ],
   "copilotModified": false,
   "capabilityComplete": false,
@@ -272,7 +273,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "ad0ce4b3199393c95584f2471a9094b36c3e166e2f7e2af320080dbbfcee3585"
+            "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2"
           }
         ],
         "props": true,
@@ -354,7 +355,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "ad0ce4b3199393c95584f2471a9094b36c3e166e2f7e2af320080dbbfcee3585"
+            "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2"
           }
         ],
         "props": true,
@@ -436,7 +437,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "ad0ce4b3199393c95584f2471a9094b36c3e166e2f7e2af320080dbbfcee3585"
+            "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2"
           }
         ],
         "props": true,
@@ -518,7 +519,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "ad0ce4b3199393c95584f2471a9094b36c3e166e2f7e2af320080dbbfcee3585"
+            "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2"
           }
         ],
         "props": true,
@@ -596,8 +597,8 @@
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "ad0ce4b3199393c95584f2471a9094b36c3e166e2f7e2af320080dbbfcee3585",
-        "bytes": 97350
+        "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2",
+        "bytes": 102959
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
@@ -13116,6 +13117,2120 @@
         }
       }
     ],
+    "buttonVisual": [
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "primary-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-primary-resting.png",
+          "sha256": "00146c7d196c8566e20d247063f07b036a239f2cbb5b921cd20aad8b760c6eec"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "00146c7d196c8566e20d247063f07b036a239f2cbb5b921cd20aad8b760c6eec"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "primary-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-primary-hover.png",
+          "sha256": "97f2b648bbc1c6c54a1e6b5cf5f60e2f92bce154b5752b2ba03e72b47be0a01d"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "97f2b648bbc1c6c54a1e6b5cf5f60e2f92bce154b5752b2ba03e72b47be0a01d"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "primary-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-primary-focus.png",
+          "sha256": "1afb84bead4516818e6f394707a4ac2d9d92b3ff315cdd8281113ae852df9c41"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1afb84bead4516818e6f394707a4ac2d9d92b3ff315cdd8281113ae852df9c41"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "primary-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-primary-disabled.png",
+          "sha256": "b460dc960cea56d9e0a5a0a8169009960585482c51c5d778fd5ba51134229e96"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "b460dc960cea56d9e0a5a0a8169009960585482c51c5d778fd5ba51134229e96"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "primary-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-primary-active.png",
+          "sha256": "00146c7d196c8566e20d247063f07b036a239f2cbb5b921cd20aad8b760c6eec"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "00146c7d196c8566e20d247063f07b036a239f2cbb5b921cd20aad8b760c6eec"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "neutral-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-neutral-resting.png",
+          "sha256": "dab13426013135fc53c20b5e42eb495ac1c46b00624184ecc17bfcd8fd95c6e2"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dab13426013135fc53c20b5e42eb495ac1c46b00624184ecc17bfcd8fd95c6e2"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "neutral-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-neutral-hover.png",
+          "sha256": "c59ab4c58e13dfa872aacc96aaf2dab2c117ab6d454be745488617166b96d6f0"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "c59ab4c58e13dfa872aacc96aaf2dab2c117ab6d454be745488617166b96d6f0"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "neutral-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-neutral-focus.png",
+          "sha256": "6b991fc242dfcaca59f735670884ee0afebd0cca5c8925ed6907d606d01ee162"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6b991fc242dfcaca59f735670884ee0afebd0cca5c8925ed6907d606d01ee162"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "neutral-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-neutral-disabled.png",
+          "sha256": "7e3eb961dd9150d91e8d9f689ce8ef2e736498f804cc65b0075763939f275ee3"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "7e3eb961dd9150d91e8d9f689ce8ef2e736498f804cc65b0075763939f275ee3"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "neutral-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-neutral-active.png",
+          "sha256": "dab13426013135fc53c20b5e42eb495ac1c46b00624184ecc17bfcd8fd95c6e2"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dab13426013135fc53c20b5e42eb495ac1c46b00624184ecc17bfcd8fd95c6e2"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "danger-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-danger-resting.png",
+          "sha256": "d2b9d2181b1eb59c21abd226831ca798edc40feb184540609eb94d602809c92c"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d2b9d2181b1eb59c21abd226831ca798edc40feb184540609eb94d602809c92c"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "danger-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-danger-hover.png",
+          "sha256": "88092b131089205aefac0cdddf194ec9f69aa466088b3ac51ba527e31fc079a5"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "88092b131089205aefac0cdddf194ec9f69aa466088b3ac51ba527e31fc079a5"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "danger-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-danger-focus.png",
+          "sha256": "5708db688816267099b364a3ecbacaa815614be79945b22160d331069924b7f1"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5708db688816267099b364a3ecbacaa815614be79945b22160d331069924b7f1"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "danger-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-danger-disabled.png",
+          "sha256": "b460dc960cea56d9e0a5a0a8169009960585482c51c5d778fd5ba51134229e96"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "b460dc960cea56d9e0a5a0a8169009960585482c51c5d778fd5ba51134229e96"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "danger-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-danger-active.png",
+          "sha256": "d2b9d2181b1eb59c21abd226831ca798edc40feb184540609eb94d602809c92c"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d2b9d2181b1eb59c21abd226831ca798edc40feb184540609eb94d602809c92c"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "success-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-success-resting.png",
+          "sha256": "f3c0d4e08f8996d4115715fe5ff298ceef01ff8a772047f0cef6a0256c82f5e2"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "f3c0d4e08f8996d4115715fe5ff298ceef01ff8a772047f0cef6a0256c82f5e2"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "success-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-success-hover.png",
+          "sha256": "d51bd55b6407ef952027a7d658dfaa717b5d77b3c24cc44279257aefa41fba86"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d51bd55b6407ef952027a7d658dfaa717b5d77b3c24cc44279257aefa41fba86"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "success-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-success-focus.png",
+          "sha256": "5ae4e6d2b26c7097a8e296705b91cc0ca3336d117e8242963ef6187f490d3054"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5ae4e6d2b26c7097a8e296705b91cc0ca3336d117e8242963ef6187f490d3054"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "success-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-success-disabled.png",
+          "sha256": "b460dc960cea56d9e0a5a0a8169009960585482c51c5d778fd5ba51134229e96"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "b460dc960cea56d9e0a5a0a8169009960585482c51c5d778fd5ba51134229e96"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "success-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-success-active.png",
+          "sha256": "f3c0d4e08f8996d4115715fe5ff298ceef01ff8a772047f0cef6a0256c82f5e2"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "f3c0d4e08f8996d4115715fe5ff298ceef01ff8a772047f0cef6a0256c82f5e2"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "warning-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-warning-resting.png",
+          "sha256": "04296d7a0de6dd80c863edadb99f55def434a01f1aa1b71379b177992994c8b9"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "04296d7a0de6dd80c863edadb99f55def434a01f1aa1b71379b177992994c8b9"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "warning-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-warning-hover.png",
+          "sha256": "cc987fb35dc69211eba76078bf1e726bdf48ab67eafafb27d66b80232ea5549d"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "cc987fb35dc69211eba76078bf1e726bdf48ab67eafafb27d66b80232ea5549d"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "warning-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-warning-focus.png",
+          "sha256": "479637bcb1ad0ca75b6dde4829e7d4a9591985bb4446c43f0d3b857cf622eaf7"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "479637bcb1ad0ca75b6dde4829e7d4a9591985bb4446c43f0d3b857cf622eaf7"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "warning-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-warning-disabled.png",
+          "sha256": "b460dc960cea56d9e0a5a0a8169009960585482c51c5d778fd5ba51134229e96"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "b460dc960cea56d9e0a5a0a8169009960585482c51c5d778fd5ba51134229e96"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "warning-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-warning-active.png",
+          "sha256": "04296d7a0de6dd80c863edadb99f55def434a01f1aa1b71379b177992994c8b9"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "04296d7a0de6dd80c863edadb99f55def434a01f1aa1b71379b177992994c8b9"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "plain-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-plain-resting.png",
+          "sha256": "b0d55107655fff0b52c2b254339f774ccb8e5c1a350f142427efe48e0b68ed8a"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "b0d55107655fff0b52c2b254339f774ccb8e5c1a350f142427efe48e0b68ed8a"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "plain-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-plain-hover.png",
+          "sha256": "1606850a0421254d31ac6683df2aa6a3603b0f95661e26b018a432571a1090bd"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1606850a0421254d31ac6683df2aa6a3603b0f95661e26b018a432571a1090bd"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "plain-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-plain-focus.png",
+          "sha256": "49edbe6ef9f2814759da0c71c760bdfe7f3d81b68f54ca9df09c8d4afb1e66e3"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "49edbe6ef9f2814759da0c71c760bdfe7f3d81b68f54ca9df09c8d4afb1e66e3"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "plain-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-plain-disabled.png",
+          "sha256": "2aecc1082fb1fb6b47cbfa32ef5e5bfe093ab064e136b44fbea10c6969c0fe19"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "2aecc1082fb1fb6b47cbfa32ef5e5bfe093ab064e136b44fbea10c6969c0fe19"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "plain-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-plain-active.png",
+          "sha256": "9862f38f156a822e18ca025480bec4bcd3e62f444b6703a8ea296cbbc87a14b6"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "9862f38f156a822e18ca025480bec4bcd3e62f444b6703a8ea296cbbc87a14b6"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "outlined-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-outlined-resting.png",
+          "sha256": "268ae5cf93b78ad50f07d27f82adeae3e47951567b67a47a6fb5ab44bda49228"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "268ae5cf93b78ad50f07d27f82adeae3e47951567b67a47a6fb5ab44bda49228"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "outlined-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-outlined-hover.png",
+          "sha256": "0ad4dda84adc63138c2a1d0a4465ec64e7b2a0818eb23a2be2fa8e03b3e5fa8a"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "0ad4dda84adc63138c2a1d0a4465ec64e7b2a0818eb23a2be2fa8e03b3e5fa8a"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "outlined-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-outlined-focus.png",
+          "sha256": "fa5fdfbdcdaddbde629bcdf21356810b52a18e8d8bdf245ef89e83247ba9a526"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "fa5fdfbdcdaddbde629bcdf21356810b52a18e8d8bdf245ef89e83247ba9a526"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "outlined-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-outlined-disabled.png",
+          "sha256": "7e3eb961dd9150d91e8d9f689ce8ef2e736498f804cc65b0075763939f275ee3"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "7e3eb961dd9150d91e8d9f689ce8ef2e736498f804cc65b0075763939f275ee3"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "outlined-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-outlined-active.png",
+          "sha256": "268ae5cf93b78ad50f07d27f82adeae3e47951567b67a47a6fb5ab44bda49228"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "268ae5cf93b78ad50f07d27f82adeae3e47951567b67a47a6fb5ab44bda49228"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "filled-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-filled-resting.png",
+          "sha256": "1606850a0421254d31ac6683df2aa6a3603b0f95661e26b018a432571a1090bd"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1606850a0421254d31ac6683df2aa6a3603b0f95661e26b018a432571a1090bd"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "filled-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-filled-hover.png",
+          "sha256": "1769d3320cd9e7bf4331685d8f5cbb64cfc70a17bddc7a9fdcb113f411fe7691"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1769d3320cd9e7bf4331685d8f5cbb64cfc70a17bddc7a9fdcb113f411fe7691"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "filled-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-filled-focus.png",
+          "sha256": "3f06fad2e983c2c5657001d593f973002d7fbf688a4368ccbf4f1ac5fd0a6b5e"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "3f06fad2e983c2c5657001d593f973002d7fbf688a4368ccbf4f1ac5fd0a6b5e"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "filled-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-filled-disabled.png",
+          "sha256": "25ff442e3ebf4b90937cf952757685fa629b0efddc3dc4cca71e169676eb35de"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "25ff442e3ebf4b90937cf952757685fa629b0efddc3dc4cca71e169676eb35de"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "filled-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-filled-active.png",
+          "sha256": "1606850a0421254d31ac6683df2aa6a3603b0f95661e26b018a432571a1090bd"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1606850a0421254d31ac6683df2aa6a3603b0f95661e26b018a432571a1090bd"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "size-small",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 86.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-size-small.png",
+          "sha256": "654a76285358f3b4b1868512dafe7365f47678b1fb830e0a2099fa6863d5e622"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "654a76285358f3b4b1868512dafe7365f47678b1fb830e0a2099fa6863d5e622"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "size-large",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 103.171875,
+          "height": 48
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-size-large.png",
+          "sha256": "098c750b057a5029d6e30632a6257ddfbad8a206a1677f57608e97c65f960939"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "098c750b057a5029d6e30632a6257ddfbad8a206a1677f57608e97c65f960939"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "size-extra-large",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 103.171875,
+          "height": 56
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-size-extra-large.png",
+          "sha256": "c9b87d4fcda54e3805c74208669914d862e52ac68ee6dc1b78c27a0e28a4e818"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "c9b87d4fcda54e3805c74208669914d862e52ac68ee6dc1b78c27a0e28a4e818"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "icon-leading",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 114.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-icon-leading.png",
+          "sha256": "30cf0af3a1bf2a9bf3031b279e7b72d96cabe4f9f22a84cf0c86b1d9bf7a96e9"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "30cf0af3a1bf2a9bf3031b279e7b72d96cabe4f9f22a84cf0c86b1d9bf7a96e9"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "icon-trailing",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 114.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-icon-trailing.png",
+          "sha256": "1cd747372f33a4fec7e3a531f8aef17e09fb9675d3501dbb48d36ebaf697155a"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1cd747372f33a4fec7e3a531f8aef17e09fb9675d3501dbb48d36ebaf697155a"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "icon-both",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 134.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-icon-both.png",
+          "sha256": "d267e01ea62c721ed07c2f92638a19e08362e011e36ffcb0a18339f69c06d74e"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d267e01ea62c721ed07c2f92638a19e08362e011e36ffcb0a18339f69c06d74e"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "icon-only",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 44,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-icon-only.png",
+          "sha256": "e3b2df59a12a597fa6aa91e852ebdbbb89601d27923862c9b977d27645160885"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "e3b2df59a12a597fa6aa91e852ebdbbb89601d27923862c9b977d27645160885"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "loading",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/light-loading.png",
+          "sha256": "36e93e6a84d20e5df267dee5b9dcf00775a639e1e049d60c3941a25498a05ffa"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "36e93e6a84d20e5df267dee5b9dcf00775a639e1e049d60c3941a25498a05ffa"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "primary-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-primary-resting.png",
+          "sha256": "8accb35d0b121093395a1696dcd7a8da00def7fa4c6028befdeb95b7b9562fea"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "8accb35d0b121093395a1696dcd7a8da00def7fa4c6028befdeb95b7b9562fea"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "primary-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-primary-hover.png",
+          "sha256": "53c6d3c80e14deab51eab16bb5fffc3d088ff419ee08e4983e03126bc5ff4bc8"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "53c6d3c80e14deab51eab16bb5fffc3d088ff419ee08e4983e03126bc5ff4bc8"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "primary-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-primary-focus.png",
+          "sha256": "ce0a9aeb93bd70c025121b0176f29bd2d1e8f1db7b6d964a0eba14b3428e4f7c"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "ce0a9aeb93bd70c025121b0176f29bd2d1e8f1db7b6d964a0eba14b3428e4f7c"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "primary-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-primary-disabled.png",
+          "sha256": "d085856afe509152789e6c19992017a45fff98fcc363c8ab5085ffc858b91b13"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d085856afe509152789e6c19992017a45fff98fcc363c8ab5085ffc858b91b13"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "primary-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-primary-active.png",
+          "sha256": "8accb35d0b121093395a1696dcd7a8da00def7fa4c6028befdeb95b7b9562fea"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "8accb35d0b121093395a1696dcd7a8da00def7fa4c6028befdeb95b7b9562fea"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "neutral-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-neutral-resting.png",
+          "sha256": "1984bf8ecadb3885740e291b05e6eafc3e834d3fdf8e346a134701b8dafe1ea1"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1984bf8ecadb3885740e291b05e6eafc3e834d3fdf8e346a134701b8dafe1ea1"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "neutral-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-neutral-hover.png",
+          "sha256": "27dc5240fd7fa46ae8955df68a65d18239a772452a5cd6e07e97aaef82836943"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "27dc5240fd7fa46ae8955df68a65d18239a772452a5cd6e07e97aaef82836943"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "neutral-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-neutral-focus.png",
+          "sha256": "c12eea35e1a85e7deedcb57783957edd8d845aab335e81f82c9641b9700c1f29"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "c12eea35e1a85e7deedcb57783957edd8d845aab335e81f82c9641b9700c1f29"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "neutral-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-neutral-disabled.png",
+          "sha256": "8ba5b33e65adbb7e1e135a3687a6e10d29cad9fdac995fa2f74446d45a8e472c"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "8ba5b33e65adbb7e1e135a3687a6e10d29cad9fdac995fa2f74446d45a8e472c"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "neutral-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-neutral-active.png",
+          "sha256": "1984bf8ecadb3885740e291b05e6eafc3e834d3fdf8e346a134701b8dafe1ea1"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1984bf8ecadb3885740e291b05e6eafc3e834d3fdf8e346a134701b8dafe1ea1"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "danger-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-danger-resting.png",
+          "sha256": "ae86520d43a2b1a33da5cc8db7abaa95c7b9da840b09b0882290f1f475c43266"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "ae86520d43a2b1a33da5cc8db7abaa95c7b9da840b09b0882290f1f475c43266"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "danger-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-danger-hover.png",
+          "sha256": "213c1f179410ba784d701ce1b28d253e429827c5ea1474c8c9f89a3ada2b6cee"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "213c1f179410ba784d701ce1b28d253e429827c5ea1474c8c9f89a3ada2b6cee"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "danger-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-danger-focus.png",
+          "sha256": "fba403a72c60642ccbb211037f912fd1fc9d6d40085219e160caab1e16d0cb35"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "fba403a72c60642ccbb211037f912fd1fc9d6d40085219e160caab1e16d0cb35"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "danger-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-danger-disabled.png",
+          "sha256": "d085856afe509152789e6c19992017a45fff98fcc363c8ab5085ffc858b91b13"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d085856afe509152789e6c19992017a45fff98fcc363c8ab5085ffc858b91b13"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "danger-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-danger-active.png",
+          "sha256": "ae86520d43a2b1a33da5cc8db7abaa95c7b9da840b09b0882290f1f475c43266"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "ae86520d43a2b1a33da5cc8db7abaa95c7b9da840b09b0882290f1f475c43266"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "success-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-success-resting.png",
+          "sha256": "5e716e436c4f486173bbb607ef7a5c77ebe1a30f7537842ab4a617f775880d56"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5e716e436c4f486173bbb607ef7a5c77ebe1a30f7537842ab4a617f775880d56"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "success-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-success-hover.png",
+          "sha256": "69531f02bb160090818ad3e7c33a179c950944da54034781721fe2cd80c5995f"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "69531f02bb160090818ad3e7c33a179c950944da54034781721fe2cd80c5995f"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "success-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-success-focus.png",
+          "sha256": "6e091b0360f5c79c459d9884243397bdf5490484f645511f0a352728f2c14502"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6e091b0360f5c79c459d9884243397bdf5490484f645511f0a352728f2c14502"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "success-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-success-disabled.png",
+          "sha256": "d085856afe509152789e6c19992017a45fff98fcc363c8ab5085ffc858b91b13"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d085856afe509152789e6c19992017a45fff98fcc363c8ab5085ffc858b91b13"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "success-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-success-active.png",
+          "sha256": "5e716e436c4f486173bbb607ef7a5c77ebe1a30f7537842ab4a617f775880d56"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5e716e436c4f486173bbb607ef7a5c77ebe1a30f7537842ab4a617f775880d56"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "warning-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-warning-resting.png",
+          "sha256": "1c3f5a9b3667fb0bd490f7a3c7c853c96e7036a713437f394718fd3f72c69335"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1c3f5a9b3667fb0bd490f7a3c7c853c96e7036a713437f394718fd3f72c69335"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "warning-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-warning-hover.png",
+          "sha256": "11aa580eb7d146d1169236ef62325561d420df9a00d829009fb7a4ce0ca3a9e8"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "11aa580eb7d146d1169236ef62325561d420df9a00d829009fb7a4ce0ca3a9e8"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "warning-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-warning-focus.png",
+          "sha256": "306fa506e48d8a6e3dc1b648d735a20782d9b85cececd3ea8d7eca50c33707ff"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "306fa506e48d8a6e3dc1b648d735a20782d9b85cececd3ea8d7eca50c33707ff"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "warning-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-warning-disabled.png",
+          "sha256": "d085856afe509152789e6c19992017a45fff98fcc363c8ab5085ffc858b91b13"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d085856afe509152789e6c19992017a45fff98fcc363c8ab5085ffc858b91b13"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "warning-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-warning-active.png",
+          "sha256": "1c3f5a9b3667fb0bd490f7a3c7c853c96e7036a713437f394718fd3f72c69335"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "1c3f5a9b3667fb0bd490f7a3c7c853c96e7036a713437f394718fd3f72c69335"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "plain-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-plain-resting.png",
+          "sha256": "641b91855063757e57c5d11fe9380f853f7fbd5c0ee0e9d7d176edd3465be277"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "641b91855063757e57c5d11fe9380f853f7fbd5c0ee0e9d7d176edd3465be277"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "plain-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-plain-hover.png",
+          "sha256": "29b18caa3953a26925ee6d9a6360d435f67ae8c992fae99bd7fe4d899f9f38cb"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "29b18caa3953a26925ee6d9a6360d435f67ae8c992fae99bd7fe4d899f9f38cb"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "plain-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-plain-focus.png",
+          "sha256": "23ec3d365d65dd190688e5e317083612965b0e73b7a117a3557fe8993be06e9b"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "23ec3d365d65dd190688e5e317083612965b0e73b7a117a3557fe8993be06e9b"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "plain-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-plain-disabled.png",
+          "sha256": "b2d736daf7602cb0d7f106fa92fd013acb3c4ea38823aa8eb57949026061aa89"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "b2d736daf7602cb0d7f106fa92fd013acb3c4ea38823aa8eb57949026061aa89"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "plain-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-plain-active.png",
+          "sha256": "8c87d5ea4cd0e958b69059d37560f1610eb92c2a41362f58dd66cb3784709adf"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "8c87d5ea4cd0e958b69059d37560f1610eb92c2a41362f58dd66cb3784709adf"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "outlined-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-outlined-resting.png",
+          "sha256": "0cee1236b940300fb979bb05c36ec3f85a22279a57d674f39a64cddec69e01f5"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "0cee1236b940300fb979bb05c36ec3f85a22279a57d674f39a64cddec69e01f5"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "outlined-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-outlined-hover.png",
+          "sha256": "161d98c11a5923da8413d75a7ffb8c197206c6c8905ff101bc72581e30db1599"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "161d98c11a5923da8413d75a7ffb8c197206c6c8905ff101bc72581e30db1599"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "outlined-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-outlined-focus.png",
+          "sha256": "d5712e1ec4dba2f9e629effd89f7cc4743d47c6085ded388b9b237ebf72ba8cf"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d5712e1ec4dba2f9e629effd89f7cc4743d47c6085ded388b9b237ebf72ba8cf"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "outlined-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-outlined-disabled.png",
+          "sha256": "8ba5b33e65adbb7e1e135a3687a6e10d29cad9fdac995fa2f74446d45a8e472c"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "8ba5b33e65adbb7e1e135a3687a6e10d29cad9fdac995fa2f74446d45a8e472c"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "outlined-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-outlined-active.png",
+          "sha256": "0cee1236b940300fb979bb05c36ec3f85a22279a57d674f39a64cddec69e01f5"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "0cee1236b940300fb979bb05c36ec3f85a22279a57d674f39a64cddec69e01f5"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "filled-resting",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-filled-resting.png",
+          "sha256": "29b18caa3953a26925ee6d9a6360d435f67ae8c992fae99bd7fe4d899f9f38cb"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "29b18caa3953a26925ee6d9a6360d435f67ae8c992fae99bd7fe4d899f9f38cb"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "filled-hover",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-filled-hover.png",
+          "sha256": "0c352ba586e4eb67ce2dcbe51847fbfd5a7c9f0b28dbbffe55e9853bc5b7fe53"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "0c352ba586e4eb67ce2dcbe51847fbfd5a7c9f0b28dbbffe55e9853bc5b7fe53"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "filled-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-filled-focus.png",
+          "sha256": "30eac769d5be15f39828292fee463897e9d369c0d0dec1ce67d80933ed659750"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "30eac769d5be15f39828292fee463897e9d369c0d0dec1ce67d80933ed659750"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "filled-disabled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-filled-disabled.png",
+          "sha256": "af30f7b84f3af142d6004df6b2dc90e7b4080a7b5b3cd525acb8754bc33e857c"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "af30f7b84f3af142d6004df6b2dc90e7b4080a7b5b3cd525acb8754bc33e857c"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "filled-active",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-filled-active.png",
+          "sha256": "29b18caa3953a26925ee6d9a6360d435f67ae8c992fae99bd7fe4d899f9f38cb"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "29b18caa3953a26925ee6d9a6360d435f67ae8c992fae99bd7fe4d899f9f38cb"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "size-small",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 86.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-size-small.png",
+          "sha256": "dfd940d3ff9d2a1e92a7bb5c4f7a1fe5de39b74e48da64148a29a29d75340c03"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dfd940d3ff9d2a1e92a7bb5c4f7a1fe5de39b74e48da64148a29a29d75340c03"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "size-large",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 103.171875,
+          "height": 48
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-size-large.png",
+          "sha256": "2e89a754cbfc5ed4481fa9b64f1923f4ee27117e5406c37110e37bec74517d92"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "2e89a754cbfc5ed4481fa9b64f1923f4ee27117e5406c37110e37bec74517d92"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "size-extra-large",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 103.171875,
+          "height": 56
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-size-extra-large.png",
+          "sha256": "d4ef962dcf3c31d0626ae4bb522244cc66a5843990a6d172059c9517eb4b08fa"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d4ef962dcf3c31d0626ae4bb522244cc66a5843990a6d172059c9517eb4b08fa"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "icon-leading",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 114.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-icon-leading.png",
+          "sha256": "41568eb0a5ce4c98c83881c85ddeba6334794be73dc144b235548c77e5d164bb"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "41568eb0a5ce4c98c83881c85ddeba6334794be73dc144b235548c77e5d164bb"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "icon-trailing",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 114.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-icon-trailing.png",
+          "sha256": "e0b7122c4c68f7e63dd23dacd3b4d9517439da50baad55442da8f0c9df98d45e"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "e0b7122c4c68f7e63dd23dacd3b4d9517439da50baad55442da8f0c9df98d45e"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "icon-both",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 134.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-icon-both.png",
+          "sha256": "5a194266516633c89097a075df7b6b84da5fff624d6d669f2ea4449a9e95c345"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5a194266516633c89097a075df7b6b84da5fff624d6d669f2ea4449a9e95c345"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "icon-only",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 44,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-icon-only.png",
+          "sha256": "21b3a5f5b2022db56ac9670f128e93501bee4a7262dc01500f2f751365288263"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "21b3a5f5b2022db56ac9670f128e93501bee4a7262dc01500f2f751365288263"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "loading",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "hitArea": {
+          "x": 8,
+          "y": 8,
+          "width": 94.53125,
+          "height": 44
+        },
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-button/macos/dark-loading.png",
+          "sha256": "f82d45b465de6d77360fbfc1720ea00304d32707abc2d717c823475eb9dd8a79"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "f82d45b465de6d77360fbfc1720ea00304d32707abc2d717c823475eb9dd8a79"
+        }
+      }
+    ],
     "managerDocs": true,
     "managerControls": true,
     "buttonReducedMotionVerified": true,
@@ -13136,6 +15251,22 @@
   "button": {
     "contract": "docs/button-contract.md",
     "installedCore": {
+      "hitArea": [
+        {
+          "size": "small",
+          "nativeHeight": 44,
+          "visibleHeight": 32,
+          "outsidePaintClickExactlyOnce": true,
+          "keyboardExactlyOnce": true
+        },
+        {
+          "size": "medium",
+          "nativeHeight": 44,
+          "visibleHeight": 40,
+          "outsidePaintClickExactlyOnce": true,
+          "keyboardExactlyOnce": true
+        }
+      ],
       "realNativeSubmitter": true,
       "nativeValidation": true,
       "noValidate": true,
@@ -13151,18 +15282,19 @@
     "frameworkAdapters": true,
     "sourceCases": 25,
     "purePolicyCases": 57,
-    "visualReview": "Original installed Spanish/dark button and narrow light/dark variant/loading representatives inspected. Public accent/on-accent pairs pass axe in all 48 static combinations. No owner HA/human acceptance is inferred.",
+    "visualReview": "Actual HA Spanish/dark Create area dialog observed read-only; Cancel is 40px high, 500 14px/14px Roboto and pill radius. Compiled variants and one additional submit were observed in Chrome. Original public component fixtures supply the full independent state matrix. No owner or installed-application acceptance is inferred.",
     "regressions": {
       "implicitClick": "Two real Enter cases observed zero native clicks/press requests before correcting the field default-submitter path. A first API-absence red also displayed the Vite import overlay, explaining its unrelated external-label click timeout.",
       "iconSpacing": "Empty icon wrappers added 16 px; the regression failed before using layout-free wrappers.",
       "busyAndPressed": "Two source cases failed on a leaked busy click and missing pressed shape before the common fixes. Cursor/size assertions were authored before their corrections but were not reached in that red run.",
       "packedResetTiming": "The first installed consumer checked the value before the deferred cancelable reset completed. Its actual fixture and original helper are retained; the corrected driver waits for the real Kitchen state instead of writing it or weakening the expected value.",
       "staticReadiness": "The first static campaign waited for only old control families in a button-only story. The driver now asserts readiness and motion on every real control, including buttons.",
-      "formMethodCollisions": "Two legal names, requestSubmit and getRootNode, reproduced zero submissions and two native TypeErrors before the field used native prototypes. The corrected 490-test source campaign, strict checks, actual package consumers and static catalog pass; no legal name is forbidden or rewritten."
+      "formMethodCollisions": "Two legal names, requestSubmit and getRootNode, reproduced zero submissions and two native TypeErrors before the field used native prototypes. The corrected 490-test source campaign, strict checks, actual package consumers and static catalog pass; no legal name is forbidden or rewritten.",
+      "presentation": "Initial new size/icon/loading tests and original style probes reproduced the missing HA presentation. Empty projected slots, trailing-only/dual icon-only content, stable loading geometry, public legacy tokens, default fallback contrast, native invisible-margin mouse input and standalone OS reduced motion are now explicitly exercised."
     },
     "frameworkSourceCases": 32,
     "frameworkAPIAbsenceRed": "The first source run rejected the missing React Button export before implementation. Vite also reported the not-yet-created Svelte component. This is an API-absence red, not an asserted behavioral failure.",
-    "frameworkVisualReview": "Eight original installed framework button images form two byte-identical groups (light English and dark Spanish). Both unique originals were inspected. No real HA or human app acceptance is inferred."
+    "frameworkVisualReview": "All four actual compiled installed-package bindings assert the same 40px medium surface, native target of at least 44px and 14px line height. Representative core/catalog images and actual HA were observed; application UX and human acceptance remain separate."
   },
   "readonlyReviewRegression": {
     "finding": 4466647535,
@@ -15620,7 +17752,7 @@
     "packages/react/package.json": "c841566365bb3ef7f93a55337af3ba8325cdb9d2c968fb3576ac229b52a58c67",
     "packages/svelte/package.json": "e95023ed5d9b7d8567d22114803bdb1862feb4e4b43decfebf5d41fdac189182",
     "packages/vue/package.json": "313b324d4d31bfbc03a082f65f2c92f03e38d346868e40b688b5c482fd51649e",
-    "packages/core/NOTICE": "91c2960551c29f8466a2058a98e8c76feba7dbf05d7a30773933912880c7f448"
+    "packages/core/NOTICE": "f3e4fba99fac54f796aec13d2932be48e936cd867f816b9dde884e5171409855"
   },
   "nativeFormReviewEvidence": {
     "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4469512642",
@@ -15921,5 +18053,63 @@
     },
     "capabilityComplete": false,
     "hostedValidation": "Fresh current-head CI and native review are required separately after publication."
+  },
+  "buttonCalibration": {
+    "reference": "docs/evidence/ha-button-reference.json",
+    "sourcePresentationCases": 13,
+    "sourceOriginalGeometryCases": 80,
+    "originalStatesPerPlatform": 96,
+    "independentOriginalRepeatPairs": 192,
+    "compiledComparisonsPerPlatform": 96,
+    "all192CandidateReferencePngPairsByteIdentical": true,
+    "scope": "Pinned measured macOS/Linux Chromium, exact original public HA tokens/fonts and original fixture glyphs; no universal raster, complete family breadth or installed-app/human acceptance claim.",
+    "fullSourceTests": 1075,
+    "runtimeFiles": 51,
+    "coldDistFilesRestoredIdentically": 124,
+    "nativeHitArea": [
+      {
+        "size": "small",
+        "nativeHeight": 44,
+        "visibleHeight": 32,
+        "outsidePaintClickExactlyOnce": true,
+        "keyboardExactlyOnce": true
+      },
+      {
+        "size": "medium",
+        "nativeHeight": 44,
+        "visibleHeight": 40,
+        "outsidePaintClickExactlyOnce": true,
+        "keyboardExactlyOnce": true
+      }
+    ],
+    "fourCompiledBindings": [
+      "react",
+      "vue",
+      "angular",
+      "svelte"
+    ],
+    "reducedMotion": "Without host theme tokens, real media emulation changes the ordinary 150ms transition to at most 1ms, matching HA's imperceptible reduced duration. Explicit host zero stays zero. Spinner animations stop.",
+    "paletteDifference": "Original HA light 14px brand accent 3.26:1, filled 2.85:1, warning accent 2.21:1, outlined 2.21:1 and neutral 4.29:1. Standalone fallbacks and explicit accessible catalog overrides pass contrast checks; exact reference palette parity does not establish its accessibility acceptance.",
+    "referenceHistoryRegression": "The original HA light primary focus raster changes by 44 gray antialias pixels when a document retains earlier component states. A fresh original focus capture exactly reproduces the candidate raster. Earlier captures and paint diagnostics are retained as evidence; fresh-document original campaigns agree independently. No production isolation/transform workaround or increased raster tolerance is used.",
+    "linuxReplay": {
+      "node": "v26.13.0",
+      "browser": "156.0.8078.80",
+      "text": 16,
+      "icons": 48,
+      "overflow": 40,
+      "buttons": 96,
+      "network": "none",
+      "errors": []
+    },
+    "chrome": {
+      "profile": "Efra",
+      "group": "HA UI comparison",
+      "url": "http://127.0.0.1:6009/ha-ui/?path=/story/buttons-actions--variants",
+      "proof": "/private/tmp/ha-ui-button-reference/chrome-buttons-final.jpg",
+      "originalDialog": "/private/tmp/ha-ui-button-reference/chrome-original-dialog.jpg",
+      "observed": "All eight compiled variants, exactly one additional native submit/request, and actual HA Cancel/disabled Create controls. Original dialog was canceled and the initial HA dashboard restored; no backend data changed."
+    },
+    "capabilityComplete": false,
+    "hostedValidation": "Fresh current-head CI and complete native review remain required separately after publication."
   }
 }

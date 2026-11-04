@@ -38,3 +38,15 @@ The embedded chevron-left and chevron-right SVG paths are unmodified Font Awesom
 Copyright 2025 Fonticons, Inc., CC BY 4.0, under the same icon license above:
 https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/chevron-left.svg
 https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/chevron-right.svg
+
+Button visual surfaces adapt Home Assistant frontend ha-button (Apache License 2.0) and
+@home-assistant/webawesome 3.14.0-ha.2 button/spinner styles (MIT). Additional component
+headers carry Copyright 2026 Fonticons, Inc.; the published package license is reproduced
+in LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt. HA source at the same reviewed revision above:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-button.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-icon-button.ts
+Modifications: a native minimum-44px hit target surrounds the separately painted HA surface;
+controlled native form behavior, local decorative projection, accessible names/status, local
+SVG spinner, reduced motion and long-label wrapping remain authored here. Extra-large uses
+the public 56px HA height override with large typography. Icon-only uses HA's public part
+layout with a 40px size. No HA/Web Awesome runtime or icon loader is imported.

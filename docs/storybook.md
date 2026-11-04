@@ -126,3 +126,11 @@ English/Spanish paging names. The static gate checks forty original overflow sta
 platform across both modes, themes, directions and start/middle/end/hover/focus states.
 Source-browser measurements and packed framework overflow journeys are separate checks.
 The full library and installed-app UX remain incomplete; see [visual parity](visual-parity.md).
+
+
+The button gate additionally compares 96 original HA states per measured platform against
+the built core, including real pointer-active states. The painted surface follows the HA
+geometry while the native hit area remains at least 44px. Packed core journeys click the
+invisible native margin, and all four compiled bindings verify the same surface/target sizes.
+Standalone fallback text contrast and the catalog's explicit accessible palette are tested
+separately from exact original-token calibration. Both a11y scans remain enabled.

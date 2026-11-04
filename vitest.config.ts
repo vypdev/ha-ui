@@ -8,7 +8,7 @@ const contractSources=Object.fromEntries([['@vypdev/ha-ui/contracts','contracts.
 export default defineConfig({test: {
   projects: [
     {resolve:{alias:contractSources},test: {name:'node', include:['tests/**/*.test.{ts,mjs}'], exclude:['tests/browser/**','tests/coverage-evidence.test.mjs','tests/consumers/packed.test.ts','tests/storybook/**']}},
-    {resolve:{alias:contractSources},optimizeDeps:{include:['storybook/internal/core-events','storybook/internal/channels']},plugins:[svelte({configFile:'packages/svelte/svelte.config.js'})],test: {name:'browser', include:['tests/browser/**/*.test.{ts,mjs}'], browser:{enabled:true,provider:playwright(),headless:true,instances:[{browser:'chromium'}]}}},
+    {resolve:{alias:contractSources},optimizeDeps:{include:['storybook/internal/core-events','storybook/internal/channels','axe-core']},plugins:[svelte({configFile:'packages/svelte/svelte.config.js'})],test: {name:'browser', include:['tests/browser/**/*.test.{ts,mjs}'], browser:{enabled:true,provider:playwright(),headless:true,instances:[{browser:'chromium'}]}}},
     {extends:true,resolve:{alias:contractSources},optimizeDeps:{include:['lit','lit/directives/style-map.js','storybook/internal/core-events']},plugins:[storybookTest({configDir:fileURLToPath(new URL('./.storybook',import.meta.url))})],test:{name:'storybook',browser:{enabled:true,provider:playwright(),headless:true,instances:[{browser:'chromium'}]}}},
   ],
   coverage: completeCoverage(['packages/*/src', 'tooling', 'stories', '.storybook'], 'coverage'),

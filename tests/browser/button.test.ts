@@ -73,7 +73,7 @@ test('keeps decorative icon slots inert and label text accessible in icon-only m
 test('renders all documented variants and sizes through public theme tokens',async()=>{
  const {button}=await mount();for(const variant of ['primary','neutral','danger','success','warning','plain','outlined','filled']){button.state=model({variant});await button.updateComplete;expect(control(button).dataset.variant).toBe(variant);}
  for(const [size,height] of [['small','44px'],['medium','44px'],['large','48px'],['extra-large','56px']]){button.state=model({size});await button.updateComplete;expect(getComputedStyle(control(button)).minHeight).toBe(height);}
- button.state=model({variant:'primary',pressed:false});button.style.setProperty('--vyp-ha-primary','#0075b5');button.style.setProperty('--vyp-ha-on-accent','#ffffff');await button.updateComplete;expect(getComputedStyle(control(button)).backgroundColor).toBe('rgb(0, 117, 181)');expect(getComputedStyle(control(button)).color).toBe('rgb(255, 255, 255)');expect(control(button).getAttribute('aria-pressed')).toBe('false');button.state=model();await button.updateComplete;expect(control(button).hasAttribute('aria-pressed')).toBe(false);
+ button.state=model({variant:'primary',pressed:false});button.style.setProperty('--vyp-ha-primary','#0075b5');button.style.setProperty('--vyp-ha-on-accent','#ffffff');await button.updateComplete;await expect.poll(()=>getComputedStyle(button.shadowRoot!.querySelector('[part=surface]')!).backgroundColor).toBe('rgb(0, 117, 181)');expect(getComputedStyle(button.shadowRoot!.querySelector('[part=surface]')!).backgroundColor).toBe('rgb(0, 117, 181)');expect(getComputedStyle(control(button)).color).toBe('rgb(255, 255, 255)');expect(control(button).getAttribute('aria-pressed')).toBe('false');button.state=model();await button.updateComplete;expect(control(button).hasAttribute('aria-pressed')).toBe(false);
 });
 
 test('empty decorative slots add no visual spacing to the native button',async()=>{
@@ -84,7 +84,7 @@ test('busy clicks never reach application bubble listeners and disabled cursors 
  const {button}=await mount('button',{loading:true});const clicks=vi.fn();button.addEventListener('click',clicks);button.click();await settle();expect(clicks).not.toHaveBeenCalled();expect(getComputedStyle(control(button)).cursor).toBe('wait');button.state=model();button.disabled=true;await button.updateComplete;expect(getComputedStyle(control(button)).cursor).toBe('not-allowed');
 });
 test('pressed state has a visible shape indicator and large icon buttons remain square',async()=>{
- const {button}=await mount('button',{pressed:true,iconOnly:true,size:'extra-large'});expect(getComputedStyle(control(button)).boxShadow).not.toBe('none');const box=control(button).getBoundingClientRect();expect(box.width).toBe(box.height);
+ const {button}=await mount('button',{pressed:true,iconOnly:true,size:'extra-large'});expect(getComputedStyle(button.shadowRoot!.querySelector('[part=surface]')!).boxShadow).not.toBe('none');const box=control(button).getBoundingClientRect();expect(box.width).toBe(box.height);
 });
 
 test('detached old buttons and removed submitters cannot perform or bubble actions',async()=>{
@@ -94,7 +94,7 @@ test('keeps native implicit activation blocked if the request handler makes the 
  const {button,form}=await mount('submit');const submit=vi.fn();form.addEventListener('submit',event=>{event.preventDefault();submit();});button.addEventListener('ha-press-request',()=>button.state=model({loading:true}),{once:true});button.submitter!.click();await settle();expect(submit).not.toHaveBeenCalled();
 });
 test('preserves visible keyboard focus and wraps long labels inside a narrow target',async()=>{
- const {button}=await mount('button',{label:'Complete the unusually long household maintenance task'});button.style.width='120px';await button.updateComplete;await userEvent.tab();expect(control(button).matches(':focus-visible')).toBe(true);expect(getComputedStyle(control(button)).outlineStyle).toBe('solid');expect(control(button).getBoundingClientRect().width).toBeLessThanOrEqual(120);expect(control(button).getBoundingClientRect().height).toBeGreaterThan(44);expect(control(button).scrollWidth).toBeLessThanOrEqual(control(button).clientWidth);
+ const {button}=await mount('button',{label:'Complete the unusually long household maintenance task'});button.style.width='120px';await button.updateComplete;await userEvent.tab();expect(control(button).matches(':focus-visible')).toBe(true);expect(getComputedStyle(button.shadowRoot!.querySelector('[part=surface]')!).outlineStyle).toBe('solid');expect(control(button).getBoundingClientRect().width).toBeLessThanOrEqual(120);expect(control(button).getBoundingClientRect().height).toBeGreaterThan(44);expect(control(button).scrollWidth).toBeLessThanOrEqual(control(button).clientWidth);
 });
 
 test.each(['submit','reset'] as const)('one trusted %s activation emits one request and no auxiliary click',async type=>{

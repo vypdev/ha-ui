@@ -45,10 +45,30 @@ form APIs may be called directly and do not synthesize a press request. No unive
 submitter or additional HTMLButtonElement API is promised. Framework bindings must preserve this
 same equivalence and must not add another visual/form controller.
 
-Visual geometry comes from Gateway's MIT ui-catalog.css at e47dde303e475a6d03e1d6697ec87a934e93263b:
-pill shape, 8 px gap, 8/16 px padding and 14/16 px text. Compact/default targets are raised to44 px;
-large is 48 px and extra-large 56 px. Public semantic colors need a corresponding on-accent text color;
-the catalog supplies tested light/dark pairs. No Gateway or private HA runtime is imported.
+The painted surface is calibrated against the original HA button modules: small/medium/large
+are 32/40/48px, with 14/14/16px Medium Roboto and line-height 1. Extra-large uses HA's public
+56px height override with large typography. The native button remains at least 44px in both
+axes, centering the smaller painted surface. Its full native area activates the same single
+request. `part="surface"` exposes the painted boundary; `part="button"` remains the actual
+native target. Visible keyboard focus and the controlled pressed indicator follow the surface.
+
+Leading/trailing icons are 24px, with a 4px adjacent gap and 8px padding on the icon side.
+Empty slots add no spacing. Loading keeps dimensions and focus, hides the content visually
+and centers a local SVG spinner; its separate localized status remains available to assistive
+technology. The spinner respects reduced motion. Long labels may grow vertically to preserve
+readability; they are not silently clipped to the original fixed HA height.
+
+`--vyp-ha-button-height` overrides HA's `--ha-button-height`/`--button-height` and size defaults.
+`--vyp-ha-button-radius` overrides HA's radius. Typography/spacing and semantic HA colors are
+inherited through public tokens, with existing library overrides taking precedence. The neutral
+variant maps to HA neutral/outlined; primary/danger/success/warning map to their accent tone,
+and plain/outlined/filled map to HA brand with that appearance. No native form, validation or
+request contract changes with this visual calibration. See [visual parity](visual-parity.md).
+
+The catalog declares accessible accent overrides for its light/dark demonstration palette.
+Original HA token colors are calibrated independently; exact token fidelity does not establish
+contrast acceptance of arbitrary host palettes. The original reference and the demonstration
+palette are recorded distinctly. No private HA or Web Awesome runtime is imported.
 
 The four thin [framework bindings](framework-adapters.md#button-binding-contract) preserve this
 contract through their own typed property, event and projection APIs. They add no visual renderer
@@ -63,3 +83,12 @@ emits its own single cancelable request; its handler must preserve that behavior
 regressions and separate compiled Chromium/Firefox/WebKit probe count requests, auxiliary clicks
 and actual form effects independently. See the [requestSubmit method](https://html.spec.whatwg.org/multipage/forms.html#dom-form-requestsubmit)
 and [form reset algorithm](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#resetting-a-form).
+
+Icon-only hides the label without discarding projected content. Either leading or trailing
+projection can supply the icon. When both slots are supplied, the painted control can widen
+so both remain visible; the ordinary one-icon/no-icon target remains square. Empty or removed
+projections release their spacing after updates and reconnects.
+
+The OS reduced-motion preference bounds surface transitions to at most 1ms, following
+HA's effective reduced duration; an explicit zero-duration host token remains zero.
+Spinner motion stops completely. The compiled gate verifies this outside catalog styles.

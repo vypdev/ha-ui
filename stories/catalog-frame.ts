@@ -13,6 +13,9 @@ export const catalogFrame:Decorator=(Story,context)=>{
     .catalog-frame {box-sizing:border-box;width:100%;margin:0 auto;padding:16px;min-height:160px;font:400 14px/1.4 Roboto,Noto,sans-serif;-webkit-font-smoothing:var(--ha-font-smoothing,antialiased);-moz-osx-font-smoothing:grayscale;color:var(--primary-text-color);background:var(--card-background-color);}
     .catalog-frame[data-motion=reduced] {--vyp-ha-motion-duration:0ms;}
     @media(prefers-reduced-motion:reduce){.catalog-frame {--vyp-ha-motion-duration:0ms;}}
+    /* Explicit accessible demo accents; original HA palettes are measured independently. */
+    .catalog-frame vyp-ha-button {--vyp-ha-primary:var(--primary-color);--vyp-ha-on-accent:var(--text-primary-color);--vyp-ha-danger:var(--error-color);--vyp-ha-success:var(--success-color);--vyp-ha-warning:var(--warning-color,#ffcc80);--vyp-ha-on-warning:#241b0c;}
+    .catalog-frame[data-theme=light] vyp-ha-button {--vyp-ha-primary:#006fae;}
     .example-content {padding:16px 0;} .example-content h2 {font-size:20px;margin:0 0 8px;} .example-content p {margin:0;}
     .example-form {display:grid;gap:16px;} .example-actions {display:flex;flex-wrap:wrap;gap:8px;}
     .example-actions > button {min-height:44px;padding:8px 16px;font:inherit;}

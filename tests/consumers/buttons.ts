@@ -21,5 +21,11 @@ export async function exerciseCoreButton(page:Page,root:string){
  await page.getByRole('button',{name:'Reset task',exact:true}).click();await page.waitForFunction(()=>document.querySelector('vyp-ha-field')!.value==='Kitchen');
  await save.evaluate(host=>{const button=host as HaButton;button.state={...button.state,label:'Guardar tarea',variant:'primary'};button.style.cssText='--primary-text-color:#ebebeb;--card-background-color:#141414;--primary-color:#03a9f4;--text-primary-color:#001e2b';});
  await page.getByRole('button',{name:'Guardar tarea',exact:true}).waitFor();await save.screenshot({path:resolve(root,'test-results/packed-button-dark-es.png')});
- return {realNativeSubmitter:true,nativeValidation:true,noValidate:true,successfulNameValue:true,cancellation:true,exactlyOnce:true,loadingRetainsFocus:true,disabledSubmission:true,fieldImplicitClick:true,reset:true,runtimeSpanishAndTheme:true};
+ const hitArea=[];
+ for(const size of ['small','medium'] as const){
+  await page.evaluate(async size=>{const host=document.createElement('vyp-ha-button');host.id='painted-hit-proof';host.style.cssText='position:fixed;left:20px;top:200px;z-index:9999';host.state={label:'Hit proof',variant:'primary',size,loading:false,loadingLabel:'Working…',iconOnly:false,pressed:null};host.addEventListener('ha-press-request',()=>host.dataset.requests=String(Number(host.dataset.requests??0)+1));document.body.append(host);await host.updateComplete;},size);
+  const proof=page.locator('#painted-hit-proof'),native=proof.getByRole('button',{name:'Hit proof',exact:true}),box=await native.boundingBox(),paint=await proof.locator('[part=surface]').boundingBox();assert.ok(box&&paint);assert.ok(box.height>=44&&box.width>=44);assert.equal(paint.height,size==='small'?32:40);assert.ok(paint.y>box.y+1);
+  await page.mouse.click(box.x+box.width/2,box.y+.5);assert.equal(await proof.getAttribute('data-requests'),'1','The invisible native margin must activate exactly once');await native.focus();await page.keyboard.press('Space');assert.equal(await proof.getAttribute('data-requests'),'2');hitArea.push({size,nativeHeight:box.height,visibleHeight:paint.height,outsidePaintClickExactlyOnce:true,keyboardExactlyOnce:true});await proof.evaluate(el=>el.remove());
+ }
+ return {hitArea,realNativeSubmitter:true,nativeValidation:true,noValidate:true,successfulNameValue:true,cancellation:true,exactlyOnce:true,loadingRetainsFocus:true,disabledSubmission:true,fieldImplicitClick:true,reset:true,runtimeSpanishAndTheme:true};
 }
