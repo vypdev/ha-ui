@@ -100,3 +100,9 @@ requires its real automatic a11y reports to pass first. It then resets axe to de
 scans the component surface independently. Neither scan is disabled; this prevents concurrent
 axe instances from racing. The completion witness retains status metadata only and cleans up
 its event listener. Browser test projects prebundle the event protocol before collecting tests.
+
+The offline navigation visual gate also checks the built core element in both link and local-panel
+modes against eight original HA text-tab captures. It verifies fonts, label geometry, selected and
+disabled opacity, and actual keyboard focus; candidate images and structured results are retained
+under `test-results/storybook`. Icons, overflow affordances and installed-app/human review remain
+required. Reference collection uses no household credentials or API; see [visual parity](visual-parity.md).

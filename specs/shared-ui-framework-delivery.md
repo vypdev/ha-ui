@@ -526,6 +526,17 @@ Prospective repository files (current documents are classified against the immut
 | `tests/storybook/reference/ha-checkbox/light-unchecked.png` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
+| `tests/browser/navigation-visual.test.ts` | create |
+| `tests/storybook/navigation-visual.ts` | create |
+| `docs/evidence/ha-navigation-reference.json` | create |
+| `tests/storybook/reference/ha-navigation/dark-disabled.png` | create |
+| `tests/storybook/reference/ha-navigation/dark-focus.png` | create |
+| `tests/storybook/reference/ha-navigation/dark-hover.png` | create |
+| `tests/storybook/reference/ha-navigation/dark-resting.png` | create |
+| `tests/storybook/reference/ha-navigation/light-disabled.png` | create |
+| `tests/storybook/reference/ha-navigation/light-focus.png` | create |
+| `tests/storybook/reference/ha-navigation/light-hover.png` | create |
+| `tests/storybook/reference/ha-navigation/light-resting.png` | create |
 
 ## 16. Acceptance scenarios
 

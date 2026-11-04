@@ -143,7 +143,7 @@ test('HA theme tokens update live, the 56px bar scrolls narrowly, and keyboard f
   expect(getComputedStyle(bar).backgroundColor).toBe('rgb(20, 20, 20)');
   controls(element)[0].focus(); await userEvent.keyboard('{End}');
   const current=root(element).activeElement!; expect(current).toBe(controls(element)[9]);
-  expect(current.matches(':focus-visible')).toBe(true); expect(getComputedStyle(current).outlineStyle).toBe('solid');
+  expect(current.matches(':focus-visible')).toBe(true); expect(getComputedStyle(current.querySelector('[part=content]')!).outlineStyle).toBe('solid');
   expect(getComputedStyle(current).animationName).toBe('none'); expect(getComputedStyle(current).transitionDuration).toBe('0s');
   expect(bar.scrollLeft).toBeGreaterThan(0);
 });

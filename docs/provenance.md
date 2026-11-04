@@ -101,3 +101,15 @@ These are catalog/app font assets; the shared renderer makes no remote request.
 The core package SPDX expression is `(MIT AND Apache-2.0 AND CC-BY-4.0)` to represent its
 authored code and bundled attributed visual material. Adapter packages retain their own MIT
 license and depend on that core; they include no alternative copy of these visual assets.
+
+## Measured HA dashboard text tabs
+
+The dashboard text-tab revision adapts Apache 2.0 HA `ha-tab-group`, `ha-tab-group-tab` and
+`hui-root` styles at reviewed source `027d9578ec9663b8aa22f50c24274a7cd9d001c1`. Their source
+links and modifications are retained in the core package NOTICE. The [reference record](evidence/ha-navigation-reference.json)
+fingerprints the actual installed public assets independently; the upstream commit is not
+represented as the installed revision. Native anchors/buttons, controlled intent, real panel
+relationships, lifecycle and instant focus scrolling remain authored here. The published library
+imports no HA, Web Awesome or Sortable runtime. The reference fixture exposes the public module
+loader instead of running the app entrypoint; it does not alter the referenced component modules.
+Its original unedited images are test evidence, not SDK runtime assets.

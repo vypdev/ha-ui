@@ -192,7 +192,17 @@
         "tests/storybook/reference/ha-checkbox/light-hover.png",
         "tests/storybook/reference/ha-checkbox/light-mixed.png",
         "tests/storybook/reference/ha-checkbox/light-required.png",
-        "tests/storybook/reference/ha-checkbox/light-unchecked.png"
+        "tests/storybook/reference/ha-checkbox/light-unchecked.png",
+        "tests/browser/navigation-visual.test.ts",
+        "tests/storybook/navigation-visual.ts",
+        "tests/storybook/reference/ha-navigation/dark-disabled.png",
+        "tests/storybook/reference/ha-navigation/dark-focus.png",
+        "tests/storybook/reference/ha-navigation/dark-hover.png",
+        "tests/storybook/reference/ha-navigation/dark-resting.png",
+        "tests/storybook/reference/ha-navigation/light-disabled.png",
+        "tests/storybook/reference/ha-navigation/light-focus.png",
+        "tests/storybook/reference/ha-navigation/light-hover.png",
+        "tests/storybook/reference/ha-navigation/light-resting.png"
       ],
       "documentation": [
         "README.md",
@@ -210,7 +220,8 @@
         "packages/core/NOTICE",
         "packages/core/LICENSES/Home-Assistant-Apache-2.0.txt",
         "packages/core/LICENSES/Font-Awesome-Free-7.0.0.txt",
-        "LICENSES/Roboto-Apache-2.0.txt"
+        "LICENSES/Roboto-Apache-2.0.txt",
+        "docs/evidence/ha-navigation-reference.json"
       ],
       "readiness": {
         "status": "draft",
@@ -221,7 +232,7 @@
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
         ],
-        "implementationEvidence": "Partial: navigation/panels, field, button, typed single/multiple select and boolean checkbox have four real framework bindings and compiled packed consumers. The50-story catalog and checkbox HA visual gate are recorded separately. Other families, visual calibration of earlier controls, full SSR/browser matrix, live hosting, publication and both application adoptions remain required."
+        "implementationEvidence": "Partial: navigation/panels, field, button, typed single/multiple select and boolean checkbox have four real bindings and compiled packed consumers. The50-story catalog, checkbox baseline and eight-state text-tab HA baseline are recorded separately. Remaining families, navigation icons/overflow, other visual calibration, full SSR/browser matrix, hosting, publication and both application adoptions remain required."
       }
     }
   ]

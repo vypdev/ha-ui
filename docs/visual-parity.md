@@ -48,7 +48,7 @@ Consuming apps supply their fonts as HA does; the shared component performs no f
 | Order | Surface | Current status |
 |---|---|---|
 | 1 | Checkbox and catalog font baseline | Candidate calibrated against measured HA states; source, packed and static gates are recorded separately |
-| 2 | Upper dashboard navigation | Recompare actual HA bar, indicators, spacing, focus and overflow before accepting adoption |
+| 2 | Upper dashboard navigation | Text-only controls calibrated in eight measured HA states and both semantics; icons, overflow affordances and installed-app acceptance remain required |
 | 3 | Buttons | Recompare actual HA geometry, variants, colors, focus, hover and disabled states; current accessible fixture accent is not an assertion of HA palette equality |
 | 4 | Text fields and single/multiple selects | Current border/native-control presentation differs from the HA reference; revise before visual acceptance |
 | 5 | Remaining families | Capture the current HA counterpart and establish the same reference before implementing their visual layer |
@@ -68,3 +68,31 @@ controls in the dedicated Efra-profile window, then restored selection mode with
 The catalog also inherits the measured HA antialiased font smoothing. Matching the WOFF2 file
 and CSS font weight alone did not make its text raster match HA. The comparison asserts the
 effective smoothing as well; small icon subpixel differences are not called pixel identity.
+
+## Dashboard text-tab baseline
+
+The [navigation reference](evidence/ha-navigation-reference.json) records the original public
+`ha-tab-group`/`ha-tab-group-tab` modules with the reviewed `hui-root` dashboard styles. The
+fixture exports the installed public bundle loader instead of starting the application; the
+component module functions and styles are unchanged. It uses an isolated, unauthenticated
+fictional document, the actual public theme values and exact Roboto files. It reads no
+household API or credentials. Its bootstrap, original public asset digests and limitations
+are recorded separately from the direct Efra-profile Chrome observation of HA and Gateway.
+
+Eight original light/dark resting, hover, focus and disabled captures are retained unchanged.
+The 17 source-browser cases reproduced the earlier mismatch before correction (16 state
+cases initially failed on line height), then verify both native-link and panel-tab semantics
+plus live public-theme overrides. The built-catalog gate independently compares both modes
+against those eight states. Native 56px targets, 14px Medium Roboto/22.4px line height, label
+position, 0.8 inactive opacity, additional 0.5 disabled-content opacity and the gray inset focus
+ring match the scoped measurements. Text layout rounding has a tolerance below one CSS pixel.
+
+This baseline accepts neither icon presentation nor the overflow affordances and responsive
+composition. Those remain part of the full navigation family and both application-adoption
+reviews. A matching text-tab measurement or passing functional/coverage check does not complete
+that family or the library. The first candidate exposed a different bottom track row and the native button label
+0.796875px below the reference. Both were corrected in the shared renderer. Read-only decoding
+of all16 final local samples finds zero changed pixels against their original references.
+This is scoped to the pinned local Chromium/macOS captures; the hosted cross-platform gate
+checks exact styles and geometry, rather than requiring platform-specific raster identity.
+No full navigation or human UX acceptance is claimed.

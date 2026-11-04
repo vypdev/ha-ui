@@ -123,13 +123,23 @@ targets. Arrow keys skip disabled tabs and wrap; Home/End move focus. RTL revers
 arrows. Activation is manual through native Enter/Space/click, while Tab follows normal focus
 order. Null selection keeps a keyboard entry without silently selecting a panel.
 
-The common 56px dashboard bar, 16px horizontal item padding, 2px current indicator and inset
-focus outline adapt Gateway's MIT dashboard geometry. Domus still owns section names and layout.
+The common dashboard bar uses the measured HA text-tab geometry: 56px targets, 14px Medium
+Roboto with a 1.6 line height, 16px horizontal padding and a 2px current indicator. The inner
+content uses 18px top and 14px bottom padding; inactive items retain the header text color at
+0.8 opacity, with another 0.5 factor for disabled content. Keyboard focus uses HA's gray 2px
+ring inset by 5px. The header surface/text inherit `--app-header-background-color` and
+`--app-header-text-color` before the ordinary card/text fallbacks. Domus still owns its sections
+and layout. Icons, overflow affordances and full installed-app visual acceptance remain required.
 Public CSS tokens are `--vyp-ha-font-family`, `--vyp-ha-border`, `--vyp-ha-surface`,
-`--vyp-ha-tab-padding`, `--vyp-ha-text-secondary`, `--vyp-ha-text` and `--vyp-ha-primary`.
+`--vyp-ha-tab-padding`, `--vyp-ha-text-secondary`, `--vyp-ha-text`, `--vyp-ha-tab-indicator-color`,
+`--vyp-ha-focus-ring`, `--vyp-ha-tab-border` and `--vyp-ha-primary`. The focus ring inherits HA's `--wa-focus-ring`; the
+indicator inherits `--app-header-selection-bar-color`/`--ha-tab-indicator-color` before current text.
+The bar border inherits `--app-header-border-bottom`, falling back to a 1px
+`--vyp-ha-border`/`--divider-color` rule. `--vyp-ha-tab-border` overrides the full border.
 Defaults inherit the corresponding HA theme variables where available. Overrides update live;
 no global styles, network, storage, timers or animation are introduced. Exposed shadow parts are
-`bar`, `item` and `panel`. Navigation binding and packed browser evidence are in the [framework guide](framework-adapters.md);
+`bar`, `item`, `content` and `panel`. The `content` part owns the visible focus ring;
+links/buttons retain the actual keyboard focus and semantics. Navigation binding and packed browser evidence are in the [framework guide](framework-adapters.md);
 forms, other families and the complete framework/client boundary matrix remain separate gates.
 
 The interaction model follows [WAI-ARIA APG tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)
@@ -241,6 +251,7 @@ The catalog adds eleven checkbox stories and the exact locally bundled HA Roboto
 
 The [HA visual-equivalence procedure](visual-parity.md) is a required review gate for every family.
 A matching functional API or 100% coverage does not establish appearance. Checkbox measurements
-are scoped to the actual recorded HA states; navigation, buttons, text fields and selects still
-require the same direct comparison and correction before acceptance. This work precedes further
+are scoped to the actual recorded HA states. Text-only navigation controls now have their own
+measured baseline; icons and overflow affordances still require review. Buttons, text fields and
+selects still require direct comparison and correction before acceptance. This work precedes further
 visual families and application adoption, so those apps do not adopt an uncalibrated visual layer.

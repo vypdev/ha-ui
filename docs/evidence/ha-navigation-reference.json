@@ -1,0 +1,1332 @@
+{
+  "schemaVersion": 1,
+  "observedAtUTC": "2026-11-04T14:54:07.289Z",
+  "scope": "Measured text-only dashboard tabs, normal/hover/focus/disabled, light/dark. Icons, icon-only/mixed presentation, custom theme overrides, overflow affordances and full application UX still require acceptance.",
+  "surface": "Original public modules from the local Home Assistant frontend loaded in an isolated, unauthenticated fictional document. No household API, account, credential or service was used.",
+  "bootstrap": "The fixture exposes the original public app module loader instead of invoking its app entrypoint. Component module functions and their styles are unchanged. The reviewed hui-root dashboard CSS is applied around those original components. This is a component fixture; direct Chrome observations are recorded separately.",
+  "upstreamSourceMeaning": "Reviewed source/provenance references; not a claim about the installed HA git revision. Exact installed public assets are fingerprinted separately.",
+  "upstreamSources": [
+    "https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-tab-group.ts",
+    "https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-tab-group-tab.ts",
+    "https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/panels/lovelace/hui-root.ts"
+  ],
+  "publicAssets": [
+    {
+      "path": "/frontend_latest/core.d18c2184997b3d3d.js",
+      "bytes": 53538,
+      "sha256": "da8ce324a89c76f12e124e9e0dcb74f319dcdc5bde13464feb9c1dc0630efb27"
+    },
+    {
+      "path": "/frontend_latest/app.d6c28fc2e48aeea4.js",
+      "bytes": 577102,
+      "sha256": "7b0d03a0c75c971cd3084c988430c512414209ca2c8bba8d506724d3be2827ec"
+    },
+    {
+      "path": "/frontend_latest/9287.09045b2bbbaec3ff.js",
+      "bytes": 16586,
+      "sha256": "458ff250f1f58d0f3353e5e4db02ecd81c18d5118da63784e4460ad350f0479b"
+    },
+    {
+      "path": "/frontend_latest/79871.0cd7505014fef7fb.js",
+      "bytes": 8829,
+      "sha256": "3a613295ac4ee48fc19ddadff4baa1c147e98108731f224d1d640906e5b1df65"
+    },
+    {
+      "path": "/frontend_latest/40523.1e09f4c93f125c24.js",
+      "bytes": 14720,
+      "sha256": "926458359cfc4067dea446422401e81fcc82e9e2a127c7c066a48bb1dfe2acb8"
+    },
+    {
+      "path": "/frontend_latest/37532.79d0d1bb37c67bc0.js",
+      "bytes": 7382,
+      "sha256": "4a73e707cfcacda888e13fc3dd8a849e78b9f987ef7c5f006ee4624ce0f70f38"
+    },
+    {
+      "path": "/frontend_latest/54353.5437d2f3817bda05.js",
+      "bytes": 28665,
+      "sha256": "46837596efa4541d206731639acd701c312dc4e256dbbe1b47f490023d26fd35"
+    },
+    {
+      "path": "/frontend_latest/57539.27d7cefd99dace6a.js",
+      "bytes": 30004,
+      "sha256": "8be1aa5585c10687ef9b740ca03edbd7d03f2dce527d98bcb392bf98c2a27a9f"
+    },
+    {
+      "path": "/frontend_latest/8099.739711f91e051b08.js",
+      "bytes": 24201,
+      "sha256": "085891bfde6d7bcc99feee1d23bd218811559da0524fbd716a341834729f5610"
+    },
+    {
+      "path": "/frontend_latest/83083.fe45ed5de283dceb.js",
+      "bytes": 26848,
+      "sha256": "c0387a9445b6540bdbb9248fa7f36654d6efbbd4822b14d77ee1257ce0f2653c"
+    },
+    {
+      "path": "/frontend_latest/49227.905c893829033053.js",
+      "bytes": 16153,
+      "sha256": "d81915b48e9020c18239e551210bb9f688acc13ea161097b6d6b237eeb5aff97"
+    },
+    {
+      "path": "/frontend_latest/24519.eb7116b32c634736.js",
+      "bytes": 10948,
+      "sha256": "bfc6f1fc208db0980494f7fce3d7cf66fdb56b49b7aebe6d7dc81a11f8ad0294"
+    },
+    {
+      "path": "/frontend_latest/75395.cc5150b9b2a1eaab.js",
+      "bytes": 43325,
+      "sha256": "8106a40d2e3422a76c07862bd704905ed7e17ce5c293ed86dc2b29cd45bddda5"
+    },
+    {
+      "path": "/frontend_latest/15204.4ba98d3a7e1188ba.js",
+      "bytes": 11586,
+      "sha256": "af5ac046919202876888a099621d3f4ac232409a2c06e0fad53ae5ca10e9c9d7"
+    },
+    {
+      "path": "/frontend_latest/85803.5b2b792a7300e3b1.js",
+      "bytes": 9833,
+      "sha256": "0d120e26671cf33a96ed8cb7c49d9a49d0d94510d4b799edd4bc91350509cfaa"
+    },
+    {
+      "path": "/frontend_latest/88836.82d8c061e321f700.js",
+      "bytes": 20779,
+      "sha256": "f0f86b486ac1bc1a4317ab31652d751442431d6c71dc4fef9132e4d784351e30"
+    },
+    {
+      "path": "/frontend_latest/41649.246763083c75df64.js",
+      "bytes": 5853,
+      "sha256": "c57a1d6ad874fe05971ce2f5e2be0f64e3a64b56fd80c1d8c17a846908fe8d52"
+    },
+    {
+      "path": "/frontend_latest/19662.02bfe987bcf02fae.js",
+      "bytes": 37879,
+      "sha256": "a961b6fc841d4d3e3ca4fab591bf737d3c6186b67ada466944f67a138d2827ea"
+    },
+    {
+      "path": "/frontend_latest/51808.00d17dbc5c336819.js",
+      "bytes": 56168,
+      "sha256": "c77cc7ee51ed09359b42e90a45c7b94bd5162fa9187481fd85faa8352a84152b"
+    },
+    {
+      "path": "/frontend_latest/54076.4e72607dd775669c.js",
+      "bytes": 334098,
+      "sha256": "aed795f3496c91f8ed83d792866430784e226d71141da3a286c3db82ae139bd7"
+    },
+    {
+      "path": "/frontend_latest/86151.a018324031dccf64.js",
+      "bytes": 21981,
+      "sha256": "b066cb7d0b813ba3963068c795c83b667e1623743ffe8116aeca52620e8237cc"
+    },
+    {
+      "path": "/frontend_latest/44518.60aafb0dd7361a8a.js",
+      "bytes": 12454,
+      "sha256": "51fb962c1f10b8b55e33240aafcae94bbf08d29c11c8d4ba5e11735cc25b1963"
+    },
+    {
+      "path": "/frontend_latest/27885.b2722f12c8ea5f0d.js",
+      "bytes": 14763,
+      "sha256": "9b50005b75b8ae380f82ac4b152acd05b93fa6f63b72db015a76f7e1a634634e"
+    },
+    {
+      "path": "/frontend_latest/53224.cf6a4ce6a1632ae3.js",
+      "bytes": 22424,
+      "sha256": "159d3c58f915157201dbeb8a03bd85627bd132e86d62a157dfd14fc512e0d114"
+    },
+    {
+      "path": "/frontend_latest/91441.f4e291d27370bd0e.js",
+      "bytes": 9318,
+      "sha256": "6cb720571975c708cb319a6edaf59add5976981b71e6f9a2deff4f5f51f12b05"
+    },
+    {
+      "path": "/frontend_latest/53047.2ff52aed1ea1d58d.js",
+      "bytes": 22445,
+      "sha256": "a07fa2ea375bbc9d9c48d9f23cc41c9021d93bdb8b1fd85f2d473c32722b8e04"
+    },
+    {
+      "path": "/frontend_latest/23322.127ad1a39e017ad1.js",
+      "bytes": 15104,
+      "sha256": "b75ec9e8e58297341494a01cb136719ad2ade2ef581dce65dce3fcd4d22e5b74"
+    },
+    {
+      "path": "/frontend_latest/2066.619086da7335e894.js",
+      "bytes": 14652,
+      "sha256": "9fa71dd59b3d55070ecd5e1a54d20cff4662f77d3216403e2288738647fcd517"
+    },
+    {
+      "path": "/frontend_latest/17332.cfc44d92e55e41b1.js",
+      "bytes": 14891,
+      "sha256": "e4774bb25ac5042926b065e281949267503b1764d88f2a96218a5209f9006948"
+    },
+    {
+      "path": "/frontend_latest/65819.c67beedb2569fde2.js",
+      "bytes": 14389,
+      "sha256": "3b849b691fc05ffcf8b0275bacafb417d9ca2df774638d431a6022c3617fb78b"
+    },
+    {
+      "path": "/frontend_latest/38402.e30322de1fd7e232.js",
+      "bytes": 20205,
+      "sha256": "a04e3e4608e892f4b2dc44e2a4c3279170c94c352523764546fb1b9aa4268634"
+    },
+    {
+      "path": "/frontend_latest/4274.9a41952ea24b0c35.js",
+      "bytes": 14848,
+      "sha256": "44379e6950a12f261bb118e88bc81694308ea6e807965acd8a68552da0bf8886"
+    },
+    {
+      "path": "/frontend_latest/90488.1801cdc1bce0d252.js",
+      "bytes": 19522,
+      "sha256": "4b42a382c681c8045a19d4f004ce9e508ea709fe9b27ef2845cbfcd103a8e43a"
+    },
+    {
+      "path": "/frontend_latest/56327.669df9212b1bbd57.js",
+      "bytes": 23575,
+      "sha256": "379f817c3ef286f94fa228adea8bf2a3abbe7e9ca115a8eab9772bee1697e35b"
+    },
+    {
+      "path": "/frontend_latest/11164.4007f39963ca53fe.js",
+      "bytes": 13671,
+      "sha256": "cbe80d4a20c692baac50bcd2f4f25a11532722be4f3a2bc74afc36fc0e87d251"
+    },
+    {
+      "path": "/frontend_latest/4556.3b8bc343b186ac7f.js",
+      "bytes": 28448,
+      "sha256": "ab338cdf594607256a05dec14798f81914c38c1009d5f718824be3ea22ee5702"
+    },
+    {
+      "path": "/frontend_latest/63105.5db3fbaa75461e58.js",
+      "bytes": 13739,
+      "sha256": "ff7a67cfa7f9a8262c33e13ba9bb54ac0e38727ff88eb464d93d620aa6a97b4d"
+    },
+    {
+      "path": "/frontend_latest/89316.4c8a52fd9476e18d.js",
+      "bytes": 18823,
+      "sha256": "4a7a2d0a04ec62c54234bfbe575f3c90334f5be8dadb992271c1d4d04e5cb91b"
+    },
+    {
+      "path": "/frontend_latest/59392.7c213f7ec058e53a.js",
+      "bytes": 13547,
+      "sha256": "ac168d5e749cde3f0f858b13765766f769b336f375a5296b37f3898c789db167"
+    },
+    {
+      "path": "/frontend_latest/79358.df250c7f378eb741.js",
+      "bytes": 20790,
+      "sha256": "47504e1e798d1299996a11832d08c73b4ac5508d3f7cc54671f1f376ec227ea8"
+    },
+    {
+      "path": "/frontend_latest/37877.3e4fcac2e2136e85.js",
+      "bytes": 12199,
+      "sha256": "acda63df1944dadb1d1021f10aa1667f88439c8d3df2185ac4167b2364e9218b"
+    },
+    {
+      "path": "/frontend_latest/61346.23c39a21bb727e57.js",
+      "bytes": 35839,
+      "sha256": "e3bca0f2e4b1159beead5846f8dc8cac5def8038251be7509268450cb127fa6f"
+    },
+    {
+      "path": "/frontend_latest/58068.496636f152f989b6.js",
+      "bytes": 14843,
+      "sha256": "2f60fa77098d87558e7c2ad463eb98261ec35fcf3a830030131d98c4689a5554"
+    },
+    {
+      "path": "/frontend_latest/78918.284a9604258fe27b.js",
+      "bytes": 10950,
+      "sha256": "d9136df59278b2364da59b5ae4be98b6f83017ce94bcfc6f9879aae7c07a4bd0"
+    },
+    {
+      "path": "/frontend_latest/1027.26a15473845250e8.js",
+      "bytes": 14240,
+      "sha256": "06f76e762bfb07360abae7abe3b1dc1ab239472c8445f131b9c41fa234366208"
+    },
+    {
+      "path": "/frontend_latest/4558.e20b3760d07801a7.js",
+      "bytes": 48720,
+      "sha256": "43fa2969e6ba2676d21e0e5ae9a887e05a4857d7640c4537faaaf3a6793897a5"
+    },
+    {
+      "path": "/frontend_latest/97769.cb1c5172b385ed95.js",
+      "bytes": 12926,
+      "sha256": "56d7d415776d66dda6b00c284eecb8d5284374ec43147e986fde88e3f52ce1a6"
+    },
+    {
+      "path": "/frontend_latest/64334.af08239c2ebb5f72.js",
+      "bytes": 62089,
+      "sha256": "8a9bb136f5a75989c0249652d2437f71c95c56c5e57c552423bd7634ded28592"
+    },
+    {
+      "path": "/frontend_latest/84656.b37270a3ef77878d.js",
+      "bytes": 35511,
+      "sha256": "b5520eaac50bef5c56bf9c34f78248bfffe859d2660b69a0c2bb092401972047"
+    },
+    {
+      "path": "/frontend_latest/89437.7a0c267598dbedf7.js",
+      "bytes": 31196,
+      "sha256": "93b97f57d2103714bd6b000d84d66a6e5eb1abcb0e3d70ced5b68a778574452e"
+    },
+    {
+      "path": "/frontend_latest/30295.44550b6ede673685.js",
+      "bytes": 18250,
+      "sha256": "c05dd5e1a5fadc0e367a1fdd726ba106f9b7ec2f2e9141b5f9278a34ec61d295"
+    },
+    {
+      "path": "/frontend_latest/75312.5646a5160728e6b0.js",
+      "bytes": 13589,
+      "sha256": "487b478ae0fd9a627d755b3e0ebff32d4fd389db2f3e790fbe1ba7f8922d7a12"
+    },
+    {
+      "path": "/frontend_latest/8885.0d1314825734b9ba.js",
+      "bytes": 10824,
+      "sha256": "f96524fc829f4ca06a65671dfb65343fc4ac5fc3a0775fc9fcdda4ec9b31ef1f"
+    },
+    {
+      "path": "/frontend_latest/84962.17ced8e504bf6331.js",
+      "bytes": 12868,
+      "sha256": "c672f4824f9a91b1a349f85f1960ded234e32349dc48916ee32e3a2b1eb7b6f3"
+    },
+    {
+      "path": "/frontend_latest/38416.72b67af26ef89a66.js",
+      "bytes": 15700,
+      "sha256": "b0acadf75c26ae79ef27521207f5e625b98225f4cfd627211b9054339ed3ca41"
+    },
+    {
+      "path": "/frontend_latest/50560.8660644d0f8ae049.js",
+      "bytes": 26364,
+      "sha256": "8988a5ade0606c481a3febf6a572a4bd54848a7f8f03be75813e3a7b6c70fb5d"
+    },
+    {
+      "path": "/frontend_latest/16507.a01c0a650d7bdf12.js",
+      "bytes": 39680,
+      "sha256": "3cd1825b5822cc44025ba52b950bfcba634795ff078bc4ef7bd1867bd6c8a794"
+    },
+    {
+      "path": "/frontend_latest/84956.2ab0e4e5dfbc712c.js",
+      "bytes": 14278,
+      "sha256": "e5c0f30aa9c533d4a6c98f08e290080e523844d9e83323a80f186d1cd90fb0f8"
+    },
+    {
+      "path": "/frontend_latest/32425.69983054c1ddb489.js",
+      "bytes": 418581,
+      "sha256": "7bcdf7b58c77c00baf193a8b30b012d08e031682f7cd8ddbacd16e7e3c3e9c94"
+    },
+    {
+      "path": "/frontend_latest/92811.0f15037d3b10a2c3.js",
+      "bytes": 13267,
+      "sha256": "cd7255a05902ce487ea9763a06b3d3a7a2dddcaf01a068415eb0b7239a0d30ed"
+    },
+    {
+      "path": "/frontend_latest/25481.23ddd5d2ec866816.js",
+      "bytes": 14691,
+      "sha256": "eff9c4785b1b13110a6c8d2dd9d06d0abb5038e05f3ee78af0144ac5cda41b4f"
+    },
+    {
+      "path": "/frontend_latest/54537.f4833c5913c76cf2.js",
+      "bytes": 9818,
+      "sha256": "097d10625d7cfefcf5f45646e1abe71e189870ac62677b8ff655189ffa818d52"
+    },
+    {
+      "path": "/frontend_latest/46565.e3d80a51d865ed5c.js",
+      "bytes": 12790,
+      "sha256": "5f911bddaecb5761fb312d30ee6d5c54c0729681d67a6938510743a92461bdda"
+    },
+    {
+      "path": "/frontend_latest/94121.0e44a112e95ac8c8.js",
+      "bytes": 14742,
+      "sha256": "b8867abd42ff8397dfb27af640d00be262547b6dc1476bdc3a9d907b520bf020"
+    },
+    {
+      "path": "/frontend_latest/58992.1d29f9136bc3c796.js",
+      "bytes": 20956,
+      "sha256": "403801a586fc76ed2c42c7a246d318cf115f9f8dc3e6b51736770fb0d27eab0d"
+    },
+    {
+      "path": "/frontend_latest/28858.17df029135a17ae3.js",
+      "bytes": 12216,
+      "sha256": "cb20a7108b88881b05d9cb192f6e668bbdd02be64b5d594d3ce0caeac7439ffd"
+    },
+    {
+      "path": "/frontend_latest/47578.fba66e0739297711.js",
+      "bytes": 27140,
+      "sha256": "c8f7aa9acf22e7f4d9a18a32015ee5ad62b9f383a80a96144bda5005be7c0d60"
+    },
+    {
+      "path": "/frontend_latest/90012.9945d8238ffa5a3a.js",
+      "bytes": 32550,
+      "sha256": "bf1e417679e1f11a69f523da19d45b7a286f69cfff3e17a1b715081b412cde7f"
+    },
+    {
+      "path": "/frontend_latest/14883.0a68bf6c727a2e22.js",
+      "bytes": 38920,
+      "sha256": "10c72f142d4b19619a223e1d67cbe3b1e5e079605903afda730c5df1f96b9ffe"
+    },
+    {
+      "path": "/frontend_latest/5496.c0eba59802d17a07.js",
+      "bytes": 9450,
+      "sha256": "6d9a293389b0632626eec6f452dabf8172953aa4238f70b111aa9b43088e777e"
+    },
+    {
+      "path": "/frontend_latest/49589.23a2870d61954701.js",
+      "bytes": 13433,
+      "sha256": "2fda7fb7e84778e196807fa82ba3f657f14ce335e9f8f3795b551d485a6641eb"
+    }
+  ],
+  "fonts": [
+    {
+      "weight": "Regular",
+      "bytes": 64632,
+      "sha256": "47107401d0adb375ab9aa167f9d62489a849d510e740a307b5a4db60e5db3562",
+      "sameAsLiveHA": true,
+      "package": "roboto-fontface@0.10.0",
+      "license": "Apache-2.0"
+    },
+    {
+      "weight": "Medium",
+      "bytes": 65484,
+      "sha256": "96025fe9db6578d8bc7f4b8be739750b1490e07221c2b1f16acde2ea7669cedf",
+      "sameAsLiveHA": true,
+      "package": "roboto-fontface@0.10.0",
+      "license": "Apache-2.0"
+    }
+  ],
+  "rasterCapture": {
+    "minimumCaptures": 3,
+    "maximumCaptures": 6,
+    "twoConsecutiveEqualRequired": true,
+    "noImageEditing": true
+  },
+  "chromeObservation": {
+    "profile": "Efra",
+    "dedicatedWindow": true,
+    "dashboard": {
+      "heightCssPx": 56,
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "lineHeight": "22.4px",
+      "inactiveOpacity": "0.8",
+      "activeIndicatorCssPx": 2,
+      "focusOutline": "rgb(152, 152, 152) solid 2px",
+      "focusOffsetCssPx": -5
+    },
+    "gatewayObserved": true,
+    "meaning": "Agent observation only; not human acceptance or full library acceptance."
+  },
+  "states": [
+    {
+      "theme": "light",
+      "state": "resting",
+      "items": [
+        {
+          "selected": true,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 89.484375,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 57.484375,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 89.484375,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 68.6875,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 36.6875,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 68.6875,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 90.15625,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 58.15625,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 90.15625,
+            "height": 54.390625
+          }
+        }
+      ],
+      "image": {
+        "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+        "width": 600,
+        "height": 56,
+        "path": "tests/storybook/reference/ha-navigation/light-resting.png"
+      },
+      "captures": 3
+    },
+    {
+      "theme": "light",
+      "state": "hover",
+      "items": [
+        {
+          "selected": true,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 89.484375,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 57.484375,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 89.484375,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 68.6875,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 36.6875,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 68.6875,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 90.15625,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 58.15625,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 90.15625,
+            "height": 54.390625
+          }
+        }
+      ],
+      "image": {
+        "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+        "width": 600,
+        "height": 56,
+        "path": "tests/storybook/reference/ha-navigation/light-hover.png"
+      },
+      "captures": 3
+    },
+    {
+      "theme": "light",
+      "state": "focus",
+      "items": [
+        {
+          "selected": true,
+          "disabled": false,
+          "focusVisible": true,
+          "geometry": {
+            "width": 89.484375,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 57.484375,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(152, 152, 152) solid 2px",
+            "outlineOffset": "-5px",
+            "borderRadius": "0px",
+            "width": 89.484375,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 68.6875,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 36.6875,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 68.6875,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 90.15625,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 58.15625,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 90.15625,
+            "height": 54.390625
+          }
+        }
+      ],
+      "image": {
+        "sha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f",
+        "width": 600,
+        "height": 56,
+        "path": "tests/storybook/reference/ha-navigation/light-focus.png"
+      },
+      "captures": 3
+    },
+    {
+      "theme": "light",
+      "state": "disabled",
+      "items": [
+        {
+          "selected": true,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 89.484375,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 57.484375,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 89.484375,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": true,
+          "focusVisible": false,
+          "geometry": {
+            "width": 68.6875,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 36.6875,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.5",
+            "cursor": "not-allowed",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 68.6875,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 90.15625,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 58.15625,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(20, 20, 20)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(20, 20, 20)"
+          },
+          "base": {
+            "color": "rgb(20, 20, 20)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(20, 20, 20) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 90.15625,
+            "height": 54.390625
+          }
+        }
+      ],
+      "image": {
+        "sha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41",
+        "width": 600,
+        "height": 56,
+        "path": "tests/storybook/reference/ha-navigation/light-disabled.png"
+      },
+      "captures": 3
+    },
+    {
+      "theme": "dark",
+      "state": "resting",
+      "items": [
+        {
+          "selected": true,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 89.484375,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 57.484375,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 89.484375,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 68.6875,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 36.6875,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 68.6875,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 90.15625,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 58.15625,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 90.15625,
+            "height": 54.390625
+          }
+        }
+      ],
+      "image": {
+        "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+        "width": 600,
+        "height": 56,
+        "path": "tests/storybook/reference/ha-navigation/dark-resting.png"
+      },
+      "captures": 3
+    },
+    {
+      "theme": "dark",
+      "state": "hover",
+      "items": [
+        {
+          "selected": true,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 89.484375,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 57.484375,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 89.484375,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 68.6875,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 36.6875,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 68.6875,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 90.15625,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 58.15625,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 90.15625,
+            "height": 54.390625
+          }
+        }
+      ],
+      "image": {
+        "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+        "width": 600,
+        "height": 56,
+        "path": "tests/storybook/reference/ha-navigation/dark-hover.png"
+      },
+      "captures": 3
+    },
+    {
+      "theme": "dark",
+      "state": "focus",
+      "items": [
+        {
+          "selected": true,
+          "disabled": false,
+          "focusVisible": true,
+          "geometry": {
+            "width": 89.484375,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 57.484375,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(152, 152, 152) solid 2px",
+            "outlineOffset": "-5px",
+            "borderRadius": "0px",
+            "width": 89.484375,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 68.6875,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 36.6875,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 68.6875,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 90.15625,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 58.15625,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 90.15625,
+            "height": 54.390625
+          }
+        }
+      ],
+      "image": {
+        "sha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe",
+        "width": 600,
+        "height": 56,
+        "path": "tests/storybook/reference/ha-navigation/dark-focus.png"
+      },
+      "captures": 3
+    },
+    {
+      "theme": "dark",
+      "state": "disabled",
+      "items": [
+        {
+          "selected": true,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 89.484375,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 57.484375,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "borderBottomWidth": "2px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 89.484375,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": true,
+          "focusVisible": false,
+          "geometry": {
+            "width": 68.6875,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 36.6875,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.5",
+            "cursor": "not-allowed",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 68.6875,
+            "height": 54.390625
+          }
+        },
+        {
+          "selected": false,
+          "disabled": false,
+          "focusVisible": false,
+          "geometry": {
+            "width": 90.15625,
+            "height": 56,
+            "textX": 16,
+            "textY": 21,
+            "textWidth": 58.15625,
+            "textHeight": 16
+          },
+          "style": {
+            "fontFamily": "Roboto, Noto, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "lineHeight": "22.4px",
+            "color": "rgb(225, 225, 225)",
+            "opacity": "0.8",
+            "borderBottomWidth": "0px",
+            "borderBottomColor": "rgb(225, 225, 225)"
+          },
+          "base": {
+            "color": "rgb(225, 225, 225)",
+            "opacity": "1",
+            "cursor": "pointer",
+            "padding": "18px 16px 14px",
+            "outline": "rgb(225, 225, 225) none 3px",
+            "outlineOffset": "0px",
+            "borderRadius": "0px",
+            "width": 90.15625,
+            "height": 54.390625
+          }
+        }
+      ],
+      "image": {
+        "sha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0",
+        "width": 600,
+        "height": 56,
+        "path": "tests/storybook/reference/ha-navigation/dark-disabled.png"
+      },
+      "captures": 3
+    }
+  ]
+}

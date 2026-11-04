@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T14:09:14.535366+00:00",
-  "status": "Partial source: shared navigation/panels, text field, native-form button, typed select and controlled checkbox with four bindings each. HA checkbox visuals and local font identity are calibrated; other families, earlier-control visual calibration and full delivery/application acceptance remain required.",
+  "recordedAtUTC": "2026-11-04T15:15:29.136587+00:00",
+  "status": "Partial source: shared navigation/panels, field, native-form button, typed selects and checkbox with four real bindings each. Checkbox and text-only dashboard tab baselines are calibrated; navigation icons/overflow, other visual calibration and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, text field, native-form button, typed single/multiple select and boolean checkbox; immutable DOM-free contracts, explicit registration, typed cancelable intent and one renderer per family.",
     "Real React/Vue/Angular/Svelte bindings for all five current families. Angular includes actual field/select/checkbox Forms bridges. Runtime adapter imports stay within pure contracts and the selected framework; no alternate visuals.",
-    "775 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 48 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
+    "792 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 48 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four clean frozen offline compiled installed-package consumers exercise navigation, field, button, typed selects and boolean checkboxes, native validation/entries/reset/disabled behavior, cancellation, EN/ES/themes and teardown/remount. Actual tested five-coordinate archives are retained with their digests.",
@@ -30,7 +30,8 @@
     "Typed selects preserve numeric/string/boolean model distinctions and frozen multiple selections. Missing, disabled or mode-mismatched values remain explicit and invalid rather than being replaced. Native entries, controlled reset/restoration, disabled fieldsets, external owners, labels, keyboard and all four form bridges pass source and actual installed consumers.",
     "Boolean checkbox has independent app-controlled mixed presentation, one native input and 44px invisible target, strict literal payloads, controlled reset/restoration and all four real framework bindings.",
     "Direct Chrome comparison used a dedicated window/group in the Efra profile, observed entity-table marked/mixed controls and restored selection mode without entity changes. This is agent observation, not owner acceptance of the full UX.",
-    "A reproduced stale Enter could submit after a text field or checkbox was disconnected and reattached to the same form. Both now bind deferred Enter to the original connection; a fresh Enter remains accepted."
+    "A reproduced stale Enter could submit after a text field or checkbox was disconnected and reattached to the same form. Both now bind deferred Enter to the original connection; a fresh Enter remains accepted.",
+    "Measured text-only dashboard tabs match eight original HA light/dark resting/hover/focus/disabled states in both navigation and panel modes. The source campaign adds17 cases; the static gate adds16 comparisons. Read-only decoded-pixel inspection finds zero changed pixels in all16 local samples; this does not claim cross-platform raster or full navigation/app acceptance."
   ],
   "coverage": {
     "lines": {
@@ -79,7 +80,7 @@
     "packages/core/src/components/field.ts": "000de1c10dc65a17cc8d72163a1ff3fede62d8fbaf53b8230e937510e3ce7bc7",
     "packages/core/src/components/implicit-submit.ts": "dcf4f39ed20e6ce2ba05c6324a0ab12d511c9ddb3bb7d8f51806938736eb919c",
     "packages/core/src/components/select.ts": "99cbe2ec19a17ea465511a7a65a3e74eafc9df85dee66df3990d00ad4f1fd128",
-    "packages/core/src/components/tabs.ts": "53e476dde73ab0307a658985f4f2ec91b2086e69df42155d6fdb67925c6a5bb0",
+    "packages/core/src/components/tabs.ts": "7c634bb068e6062fcb45d4de08f4ffbc4870493b24a0f546469ca353242d1e58",
     "packages/core/src/contracts.ts": "457c418cbfcafe5ebb1f834a1f8c2c19f484bad15ea8df5bc65502eec6e19c91",
     "packages/core/src/field-contracts.ts": "130e143f3f69dfaa6e0397cf68cd2ec824823b44ff3f4488d92b19180d50b738",
     "packages/core/src/index.ts": "557499ed9c2281f045f46b19e96ab594aafc130c26e3f2b5f01e222338ba71d8",
@@ -106,7 +107,7 @@
     "stories/catalog-completion.ts": "10c01f134e4e3b64fc0a9f72d55c15b81043e2f040d5c111133b2d8cc9e12ebd",
     "stories/catalog-example.ts": "c5fa904779d81d2f081573051234b2d57f98c74c5c4ca99cbc8717584c2494e8",
     "stories/catalog-frame.ts": "a38d1de225cb3684e170aab80a178cef79c79d252f3c24b2e6e5f1a28b3b0fa0",
-    "stories/catalog-state.ts": "56b6a9b14bd8694ef6dbcf7e84d3d0c45c49f56128d1b2916f9ab9cc9863e490",
+    "stories/catalog-state.ts": "7375cdd33ffd838c478c9f36778e1d92df42916e98d8989b21d0cef055a4fb20",
     "stories/checkbox.example.ts": "fab0aa50221dd990506805d56f30a979e87932e5a25aa87e76feb21d6ec78765",
     "stories/field.example.ts": "d76da5e2692e57e3e529fe083e6127d74363440b47c24d03efdc13ccf3c72385",
     "stories/foundation.example.ts": "6fc175e9a44ff0504c46271bd45837f6a4799d9815614a2389b9a238c85ab42b",
@@ -116,8 +117,8 @@
   },
   "packedContract": {
     "scope": "Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required",
-    "sha256": "a820acdd8d789f4a9500cdf061a9c8e8e1106d4579ce3df415fc4d714254d0c6",
-    "bytes": 80874,
+    "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d",
+    "bytes": 81758,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -152,7 +153,7 @@
     "Gateway and Domus adoption, installed deployment/recovery and human UX acceptance remain unverified.",
     "All 64 original baseline cases and six additional delivery cases remain required; no partial increment completes issue #7.",
     "Fresh hosted CI and complete native Bugbot review are required for the source head.",
-    "HA visual calibration of navigation, buttons, fields and selectors remains required before adoption. Checkbox computed-style equivalence and observed near-identical raster states do not accept those other families or full app UX."
+    "Navigation text-only default-theme samples are calibrated. Icons, overflow affordances, responsive composition and custom font/theme breadth remain required, as do button/field/select visual calibration and full library/app UX acceptance."
   ],
   "copilotModified": false,
   "capabilityComplete": false,
@@ -264,7 +265,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "a820acdd8d789f4a9500cdf061a9c8e8e1106d4579ce3df415fc4d714254d0c6"
+            "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d"
           }
         ],
         "props": true,
@@ -340,7 +341,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "a820acdd8d789f4a9500cdf061a9c8e8e1106d4579ce3df415fc4d714254d0c6"
+            "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d"
           }
         ],
         "props": true,
@@ -416,7 +417,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "a820acdd8d789f4a9500cdf061a9c8e8e1106d4579ce3df415fc4d714254d0c6"
+            "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d"
           }
         ],
         "props": true,
@@ -492,7 +493,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "a820acdd8d789f4a9500cdf061a9c8e8e1106d4579ce3df415fc4d714254d0c6"
+            "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d"
           }
         ],
         "props": true,
@@ -564,8 +565,8 @@
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "a820acdd8d789f4a9500cdf061a9c8e8e1106d4579ce3df415fc4d714254d0c6",
-        "bytes": 80874
+        "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d",
+        "bytes": 81758
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
@@ -627,21 +628,13 @@
     "selectFrameworkBindings": true
   },
   "coldSourceValidation": {
-    "compiledDistributionsPresent": false,
-    "packages": [
-      "core",
-      "react",
-      "vue",
-      "angular",
-      "svelte"
+    "distAbsentForChecks": true,
+    "commands": [
+      "pnpm check",
+      "pnpm test"
     ],
-    "types": "Strict source, consumer, Storybook and both Svelte checks pass without any of five compiled distributions",
-    "unitAndBrowserTests": 775,
-    "coverage": "100% statements/branches/functions/lines per authored file and globally",
-    "restoration": "Every previous compiled distribution restored byte-for-byte",
-    "reason": "Actual source campaign runs while all five dist trees are absent; compiled bytes are restored and independently verified.",
     "restoredFiles": 116,
-    "identityBasis": "The sourceIdentities SHA-256 map binds this increment; the owning PR supplies its exact Git revision."
+    "restoredBytesUnchanged": true
   },
   "restoreReviewRegression": {
     "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4464672339",
@@ -651,1645 +644,3216 @@
     "manualResolution": false
   },
   "storybook": {
-    "version": "10.6.5",
-    "a11y": "4.14.0",
-    "runtimeCoverageInventory": 48,
-    "testDefinitionsExcludedByVitest": "Six CSF test definitions; all runtime render composition and completion observation are independently inventoried.",
-    "staticBrowser": {
-      "subpath": "/ha-ui/",
-      "storyCount": 50,
-      "docsCount": 6,
-      "matrix": [
-        {
-          "story": "navigation-household-sections--long-labels",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "navigation-household-sections--long-labels",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "tabs-local-panels--unselected",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "tabs-local-panels--unselected",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--read-only",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--read-only",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--error",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--error",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--variants",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--variants",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--loading",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--loading",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--default",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--default",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--multiple",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--multiple",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--partial",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--partial",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--long-label",
-          "locale": "en",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--long-label",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "navigation-household-sections--long-labels",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "navigation-household-sections--long-labels",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "tabs-local-panels--unselected",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "tabs-local-panels--unselected",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--read-only",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--read-only",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--error",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--error",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--variants",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--variants",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--loading",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--loading",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--default",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--default",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--multiple",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--multiple",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--partial",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--partial",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--long-label",
-          "locale": "en",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--long-label",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "navigation-household-sections--long-labels",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "navigation-household-sections--long-labels",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "tabs-local-panels--unselected",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "tabs-local-panels--unselected",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--read-only",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--read-only",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--error",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--error",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--variants",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--variants",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--loading",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--loading",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--default",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--default",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--multiple",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--multiple",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--partial",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--partial",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--long-label",
-          "locale": "en",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--long-label",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "navigation-household-sections--long-labels",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "navigation-household-sections--long-labels",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "tabs-local-panels--unselected",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "tabs-local-panels--unselected",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--read-only",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--read-only",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--error",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--error",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--variants",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--variants",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--loading",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--loading",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--default",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--default",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--multiple",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--multiple",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--partial",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--partial",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--long-label",
-          "locale": "en",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--long-label",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "navigation-household-sections--long-labels",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "navigation-household-sections--long-labels",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "tabs-local-panels--unselected",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "tabs-local-panels--unselected",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--read-only",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--read-only",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--error",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--error",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--variants",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--variants",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--loading",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--loading",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--default",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--default",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--multiple",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--multiple",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--partial",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--partial",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--long-label",
-          "locale": "es",
-          "theme": "light",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--long-label",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "navigation-household-sections--long-labels",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "navigation-household-sections--long-labels",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "tabs-local-panels--unselected",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "tabs-local-panels--unselected",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--read-only",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--read-only",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--error",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--error",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--variants",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--variants",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--loading",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--loading",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--default",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--default",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--multiple",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--multiple",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--partial",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--partial",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--long-label",
-          "locale": "es",
-          "theme": "light",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--long-label",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "navigation-household-sections--long-labels",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "navigation-household-sections--long-labels",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "tabs-local-panels--unselected",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "tabs-local-panels--unselected",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--read-only",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--read-only",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--error",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--error",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--variants",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--variants",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--loading",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--loading",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--default",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--default",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--multiple",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--multiple",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--partial",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--partial",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--long-label",
-          "locale": "es",
-          "theme": "dark",
-          "width": 360,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--long-label",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "navigation-household-sections--long-labels",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "navigation-household-sections--long-labels",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "tabs-local-panels--unselected",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "tabs-local-panels--unselected",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--read-only",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--read-only",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-text-field--error",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-text-field--error",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--variants",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--variants",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "buttons-actions--loading",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "buttons-actions--loading",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--default",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--default",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-select--multiple",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-select--multiple",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--partial",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--partial",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
-        },
-        {
-          "story": "forms-checkbox--long-label",
-          "locale": "es",
-          "theme": "dark",
-          "width": 960,
-          "a11yViolations": 0,
-          "automatic": {
-            "storyId": "forms-checkbox--long-label",
-            "status": "success",
-            "reports": [
-              {
-                "type": "a11y",
-                "status": "passed"
-              }
-            ]
-          }
+    "subpath": "/ha-ui/",
+    "storyCount": 50,
+    "docsCount": 6,
+    "matrix": [
+      {
+        "story": "navigation-household-sections--long-labels",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--long-labels",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
         }
-      ],
-      "keyboard": true,
-      "nativeForm": true,
-      "selectForms": {
-        "typedDropdownTypeahead": true,
-        "multipleRepeatedEntries": true
       },
-      "checkboxForms": {
-        "nativeSpace": true,
-        "labelClick": true,
-        "requiredValidation": true,
-        "controlledReset": true
-      },
-      "localRoboto": true,
-      "checkboxVisual": [
-        {
-          "theme": "light",
-          "state": "unchecked",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/light-unchecked.png",
-            "sha256": "7cb0fe688748e0d4f219188eb08e3bb6e604cdf63f0a0ee033041da4763218a8",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "7cb0fe688748e0d4f219188eb08e3bb6e604cdf63f0a0ee033041da4763218a8"
-          }
-        },
-        {
-          "theme": "light",
-          "state": "checked",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/light-checked.png",
-            "sha256": "e22ea96d768e10852da0925e1e3b5f9f93a15406f181c85ce279f2b728049747",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "9603e7c27135af99b0fb6a790f0d3b64e7e40eefd1b9709a4c1a1a8694fc48f9"
-          }
-        },
-        {
-          "theme": "light",
-          "state": "mixed",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/light-mixed.png",
-            "sha256": "8bf15711a75b80d9549de7e8c037fb1c3d670c85d717812a77328d9e2886b338",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "620f742faf8990d8b473864fa36e244eea5ae2629888a7580d88ee322784ac8a"
-          }
-        },
-        {
-          "theme": "light",
-          "state": "disabled",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/light-disabled.png",
-            "sha256": "081d1d769eb7ccf987615e29fff820ef34c282a5c8d8457ae3462a711a960b76",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "3be885a317505f914b014898e4a456357c807b4365ac3c058efae9362b64360e"
-          }
-        },
-        {
-          "theme": "light",
-          "state": "required",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/light-required.png",
-            "sha256": "3c238a342b38e83ac371b53697bd356c9210d4a46dc25aadf9a4364c087edcb4",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "e44e58d786b63e2800da7e5519bf07ba0506f27036e4a97900a2acb4e70623ab"
-          }
-        },
-        {
-          "theme": "light",
-          "state": "hover",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/light-hover.png",
-            "sha256": "6cf4a5318a5c6c0898dc7c856a30cbc20287609b11558d8d35c337cd2053e5ef",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "6cf4a5318a5c6c0898dc7c856a30cbc20287609b11558d8d35c337cd2053e5ef"
-          }
-        },
-        {
-          "theme": "light",
-          "state": "focus",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/light-focus.png",
-            "sha256": "38d8577650e61c2b459cf553b250bdd385dc4e4fdcdcb02d7b950c9001c9f3de",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "38d8577650e61c2b459cf553b250bdd385dc4e4fdcdcb02d7b950c9001c9f3de"
-          }
-        },
-        {
-          "theme": "dark",
-          "state": "unchecked",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/dark-unchecked.png",
-            "sha256": "7488c107807464a5ec937f8823f68ad208c9c895679935d472d175d7fa38ca1e",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "7488c107807464a5ec937f8823f68ad208c9c895679935d472d175d7fa38ca1e"
-          }
-        },
-        {
-          "theme": "dark",
-          "state": "checked",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/dark-checked.png",
-            "sha256": "ab5851926a2867ac396f8227331612f43dbb013802ba4eb78afa6ceb851ba5b5",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "6fad550f85c1ae1c246edfcf679b105cfe26f4483b043721dba52644efe10b49"
-          }
-        },
-        {
-          "theme": "dark",
-          "state": "mixed",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/dark-mixed.png",
-            "sha256": "e4a3debcd62ca954efe68e7c55206678878fe92ad40ea009b55b235099034664",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "44588f987d7eacac083cb71d2a047bfe19073dd143cecaa0040beaafeba2d9d8"
-          }
-        },
-        {
-          "theme": "dark",
-          "state": "disabled",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/dark-disabled.png",
-            "sha256": "937281c31c83274765b3dc026ab6d482cbc3d12f66d172f8158376456dfdf421",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "dde3fa96612ac0c37d7d5f76882ef7415ffdfe77701ebdc87fee174734f6e135"
-          }
-        },
-        {
-          "theme": "dark",
-          "state": "required",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/dark-required.png",
-            "sha256": "9d87f0397175874e7274ca1894377beacd371c952f36954683a99b9c34de3413",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "e18efc74be4cf3ebdd0131378870a21444d3a1fafc5511ca1c34e603ac35a706"
-          }
-        },
-        {
-          "theme": "dark",
-          "state": "hover",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/dark-hover.png",
-            "sha256": "7ebf2711f5994c208a06b9b6d3dfc0be91da1c4bb1dc815dc0e44f790cfbfdd5",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "7ebf2711f5994c208a06b9b6d3dfc0be91da1c4bb1dc815dc0e44f790cfbfdd5"
-          }
-        },
-        {
-          "theme": "dark",
-          "state": "focus",
-          "geometryAndStylesMatch": true,
-          "textGeometryToleranceCssPx": 1,
-          "referenceImage": {
-            "path": "tests/storybook/reference/ha-checkbox/dark-focus.png",
-            "sha256": "3d91ac873f034fffd1f1feea122e5b39a983a2d7688edd6a22a42bef10c79e48",
-            "width": 296,
-            "height": 44
-          },
-          "raster": {
-            "frames": 3,
-            "twoConsecutiveEqual": true,
-            "sha256": "3d91ac873f034fffd1f1feea122e5b39a983a2d7688edd6a22a42bef10c79e48"
-          }
+      {
+        "story": "tabs-local-panels--unselected",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--unselected",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
         }
-      ],
-      "managerDocs": true,
-      "managerControls": true,
-      "buttonReducedMotionVerified": true,
-      "external": [],
-      "badAssets": [],
-      "errors": []
+      },
+      {
+        "story": "forms-text-field--read-only",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--read-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--error",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--variants",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--variants",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--loading",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--loading",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--default",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--multiple",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--multiple",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--partial",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--partial",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--long-label",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "navigation-household-sections--long-labels",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--long-labels",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--unselected",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--unselected",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--read-only",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--read-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--error",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--variants",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--variants",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--loading",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--loading",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--default",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--multiple",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--multiple",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--partial",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--partial",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--long-label",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "navigation-household-sections--long-labels",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--long-labels",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--unselected",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--unselected",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--read-only",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--read-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--error",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--variants",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--variants",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--loading",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--loading",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--default",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--multiple",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--multiple",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--partial",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--partial",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--long-label",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "navigation-household-sections--long-labels",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--long-labels",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--unselected",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--unselected",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--read-only",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--read-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--error",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--variants",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--variants",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--loading",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--loading",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--default",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--multiple",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--multiple",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--partial",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--partial",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--long-label",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "navigation-household-sections--long-labels",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--long-labels",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--unselected",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--unselected",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--read-only",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--read-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--error",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--variants",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--variants",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--loading",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--loading",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--default",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--multiple",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--multiple",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--partial",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--partial",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--long-label",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "navigation-household-sections--long-labels",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--long-labels",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--unselected",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--unselected",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--read-only",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--read-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--error",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--variants",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--variants",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--loading",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--loading",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--default",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--multiple",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--multiple",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--partial",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--partial",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--long-label",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "navigation-household-sections--long-labels",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--long-labels",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--unselected",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--unselected",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--read-only",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--read-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--error",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--variants",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--variants",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--loading",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--loading",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--default",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--multiple",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--multiple",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--partial",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--partial",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--long-label",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "navigation-household-sections--long-labels",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--long-labels",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--unselected",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--unselected",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--read-only",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--read-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--error",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--variants",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--variants",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "buttons-actions--loading",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "buttons-actions--loading",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--default",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-select--multiple",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-select--multiple",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--partial",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--partial",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-checkbox--long-label",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      }
+    ],
+    "keyboard": true,
+    "nativeForm": true,
+    "selectForms": {
+      "typedDropdownTypeahead": true,
+      "multipleRepeatedEntries": true
     },
-    "declarationPatch": {
-      "changedFile": "dist/index.d.ts",
-      "otherOriginalFilesByteIdentical": 36,
-      "javascriptChanged": false,
-      "skipLibCheck": false
+    "checkboxForms": {
+      "nativeSpace": true,
+      "labelClick": true,
+      "requiredValidation": true,
+      "controlledReset": true
     },
-    "publicPagesDeployed": false,
-    "ownerHAInstallation": false,
-    "humanAcceptance": false
+    "localRoboto": true,
+    "checkboxVisual": [
+      {
+        "theme": "light",
+        "state": "unchecked",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/light-unchecked.png",
+          "sha256": "7cb0fe688748e0d4f219188eb08e3bb6e604cdf63f0a0ee033041da4763218a8",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "7cb0fe688748e0d4f219188eb08e3bb6e604cdf63f0a0ee033041da4763218a8"
+        }
+      },
+      {
+        "theme": "light",
+        "state": "checked",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/light-checked.png",
+          "sha256": "e22ea96d768e10852da0925e1e3b5f9f93a15406f181c85ce279f2b728049747",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "9603e7c27135af99b0fb6a790f0d3b64e7e40eefd1b9709a4c1a1a8694fc48f9"
+        }
+      },
+      {
+        "theme": "light",
+        "state": "mixed",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/light-mixed.png",
+          "sha256": "8bf15711a75b80d9549de7e8c037fb1c3d670c85d717812a77328d9e2886b338",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "620f742faf8990d8b473864fa36e244eea5ae2629888a7580d88ee322784ac8a"
+        }
+      },
+      {
+        "theme": "light",
+        "state": "disabled",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/light-disabled.png",
+          "sha256": "081d1d769eb7ccf987615e29fff820ef34c282a5c8d8457ae3462a711a960b76",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "3be885a317505f914b014898e4a456357c807b4365ac3c058efae9362b64360e"
+        }
+      },
+      {
+        "theme": "light",
+        "state": "required",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/light-required.png",
+          "sha256": "3c238a342b38e83ac371b53697bd356c9210d4a46dc25aadf9a4364c087edcb4",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "e44e58d786b63e2800da7e5519bf07ba0506f27036e4a97900a2acb4e70623ab"
+        }
+      },
+      {
+        "theme": "light",
+        "state": "hover",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/light-hover.png",
+          "sha256": "6cf4a5318a5c6c0898dc7c856a30cbc20287609b11558d8d35c337cd2053e5ef",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6cf4a5318a5c6c0898dc7c856a30cbc20287609b11558d8d35c337cd2053e5ef"
+        }
+      },
+      {
+        "theme": "light",
+        "state": "focus",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/light-focus.png",
+          "sha256": "38d8577650e61c2b459cf553b250bdd385dc4e4fdcdcb02d7b950c9001c9f3de",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "38d8577650e61c2b459cf553b250bdd385dc4e4fdcdcb02d7b950c9001c9f3de"
+        }
+      },
+      {
+        "theme": "dark",
+        "state": "unchecked",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/dark-unchecked.png",
+          "sha256": "7488c107807464a5ec937f8823f68ad208c9c895679935d472d175d7fa38ca1e",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "7488c107807464a5ec937f8823f68ad208c9c895679935d472d175d7fa38ca1e"
+        }
+      },
+      {
+        "theme": "dark",
+        "state": "checked",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/dark-checked.png",
+          "sha256": "ab5851926a2867ac396f8227331612f43dbb013802ba4eb78afa6ceb851ba5b5",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6fad550f85c1ae1c246edfcf679b105cfe26f4483b043721dba52644efe10b49"
+        }
+      },
+      {
+        "theme": "dark",
+        "state": "mixed",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/dark-mixed.png",
+          "sha256": "e4a3debcd62ca954efe68e7c55206678878fe92ad40ea009b55b235099034664",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "44588f987d7eacac083cb71d2a047bfe19073dd143cecaa0040beaafeba2d9d8"
+        }
+      },
+      {
+        "theme": "dark",
+        "state": "disabled",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/dark-disabled.png",
+          "sha256": "937281c31c83274765b3dc026ab6d482cbc3d12f66d172f8158376456dfdf421",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dde3fa96612ac0c37d7d5f76882ef7415ffdfe77701ebdc87fee174734f6e135"
+        }
+      },
+      {
+        "theme": "dark",
+        "state": "required",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/dark-required.png",
+          "sha256": "9d87f0397175874e7274ca1894377beacd371c952f36954683a99b9c34de3413",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "e18efc74be4cf3ebdd0131378870a21444d3a1fafc5511ca1c34e603ac35a706"
+        }
+      },
+      {
+        "theme": "dark",
+        "state": "hover",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/dark-hover.png",
+          "sha256": "7ebf2711f5994c208a06b9b6d3dfc0be91da1c4bb1dc815dc0e44f790cfbfdd5",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "7ebf2711f5994c208a06b9b6d3dfc0be91da1c4bb1dc815dc0e44f790cfbfdd5"
+        }
+      },
+      {
+        "theme": "dark",
+        "state": "focus",
+        "geometryAndStylesMatch": true,
+        "textGeometryToleranceCssPx": 1,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-checkbox/dark-focus.png",
+          "sha256": "3d91ac873f034fffd1f1feea122e5b39a983a2d7688edd6a22a42bef10c79e48",
+          "width": 296,
+          "height": 44
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "3d91ac873f034fffd1f1feea122e5b39a983a2d7688edd6a22a42bef10c79e48"
+        }
+      }
+    ],
+    "navigationVisual": [
+      {
+        "kind": "navigation",
+        "theme": "light",
+        "state": "resting",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/light-resting.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5"
+        }
+      },
+      {
+        "kind": "navigation",
+        "theme": "light",
+        "state": "hover",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/light-hover.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5"
+        }
+      },
+      {
+        "kind": "navigation",
+        "theme": "light",
+        "state": "focus",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(152, 152, 152) solid 2px",
+              "outlineOffset": "-5px"
+            },
+            "focusVisible": true
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/light-focus.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f"
+        }
+      },
+      {
+        "kind": "navigation",
+        "theme": "light",
+        "state": "disabled",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "0.5",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/light-disabled.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41"
+        }
+      },
+      {
+        "kind": "navigation",
+        "theme": "dark",
+        "state": "resting",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/dark-resting.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360"
+        }
+      },
+      {
+        "kind": "navigation",
+        "theme": "dark",
+        "state": "hover",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/dark-hover.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360"
+        }
+      },
+      {
+        "kind": "navigation",
+        "theme": "dark",
+        "state": "focus",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(152, 152, 152) solid 2px",
+              "outlineOffset": "-5px"
+            },
+            "focusVisible": true
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/dark-focus.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe"
+        }
+      },
+      {
+        "kind": "navigation",
+        "theme": "dark",
+        "state": "disabled",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "0.5",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/dark-disabled.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0"
+        }
+      },
+      {
+        "kind": "panels",
+        "theme": "light",
+        "state": "resting",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/light-resting.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5"
+        }
+      },
+      {
+        "kind": "panels",
+        "theme": "light",
+        "state": "hover",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/light-hover.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5"
+        }
+      },
+      {
+        "kind": "panels",
+        "theme": "light",
+        "state": "focus",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(152, 152, 152) solid 2px",
+              "outlineOffset": "-5px"
+            },
+            "focusVisible": true
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/light-focus.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f"
+        }
+      },
+      {
+        "kind": "panels",
+        "theme": "light",
+        "state": "disabled",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "0.5",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(20, 20, 20)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(20, 20, 20)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(20, 20, 20) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/light-disabled.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41"
+        }
+      },
+      {
+        "kind": "panels",
+        "theme": "dark",
+        "state": "resting",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/dark-resting.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360"
+        }
+      },
+      {
+        "kind": "panels",
+        "theme": "dark",
+        "state": "hover",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/dark-hover.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360"
+        }
+      },
+      {
+        "kind": "panels",
+        "theme": "dark",
+        "state": "focus",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(152, 152, 152) solid 2px",
+              "outlineOffset": "-5px"
+            },
+            "focusVisible": true
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/dark-focus.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe"
+        }
+      },
+      {
+        "kind": "panels",
+        "theme": "dark",
+        "state": "disabled",
+        "typographyStateAndGeometryMatch": true,
+        "layoutToleranceCssPx": 1,
+        "textVerticalToleranceCssPx": 0.1,
+        "actual": [
+          {
+            "geometry": {
+              "width": 89.484375,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 57.484375,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "1",
+              "borderBottomWidth": "2px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 68.6875,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 36.6875,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "0.5",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          },
+          {
+            "geometry": {
+              "width": 90.15625,
+              "height": 56,
+              "textX": 16,
+              "textY": 21,
+              "textWidth": 58.15625,
+              "textHeight": 16
+            },
+            "style": {
+              "fontFamily": "Roboto, Noto, sans-serif",
+              "fontSize": "14px",
+              "fontWeight": "500",
+              "lineHeight": "22.4px",
+              "color": "rgb(225, 225, 225)",
+              "opacity": "0.8",
+              "borderBottomWidth": "0px",
+              "borderBottomColor": "rgb(225, 225, 225)"
+            },
+            "base": {
+              "opacity": "1",
+              "outline": "rgb(225, 225, 225) none 3px",
+              "outlineOffset": "0px"
+            },
+            "focusVisible": false
+          }
+        ],
+        "referenceImage": {
+          "sha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0",
+          "width": 600,
+          "height": 56,
+          "path": "tests/storybook/reference/ha-navigation/dark-disabled.png"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0"
+        }
+      }
+    ],
+    "managerDocs": true,
+    "managerControls": true,
+    "buttonReducedMotionVerified": true,
+    "external": [],
+    "badAssets": [],
+    "errors": []
   },
   "registrationReviewRegression": {
     "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4465466812",
@@ -2826,5 +4390,184 @@
       "referenceCapture": "Original captures could contain stale frames; the dark wrapper also failed its intended rectangle after cssText concatenation with inherited tokens. Its independent construction and actual rectangle are checked, and captures require at least three originals with two equal consecutive frames. No image editing was used."
     },
     "automaticBrowserRestorationVerified": false
+  },
+  "navigationVisual": {
+    "scope": "Text-only dashboard controls in the measured default themes; no icons/overflow or full app acceptance.",
+    "reference": "docs/evidence/ha-navigation-reference.json",
+    "sourceCases": 17,
+    "staticComparisons": 16,
+    "originalReferences": 8,
+    "localRasterInspection": {
+      "scope": "Local pinned macOS Chromium original samples only; no cross-platform raster or full UX acceptance",
+      "results": [
+        {
+          "kind": "navigation",
+          "theme": "light",
+          "state": "resting",
+          "referenceSha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "candidateSha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "navigation",
+          "theme": "light",
+          "state": "hover",
+          "referenceSha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "candidateSha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "navigation",
+          "theme": "light",
+          "state": "focus",
+          "referenceSha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f",
+          "candidateSha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "navigation",
+          "theme": "light",
+          "state": "disabled",
+          "referenceSha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41",
+          "candidateSha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "resting",
+          "referenceSha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "candidateSha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "hover",
+          "referenceSha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "candidateSha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "focus",
+          "referenceSha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe",
+          "candidateSha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "disabled",
+          "referenceSha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0",
+          "candidateSha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "panels",
+          "theme": "light",
+          "state": "resting",
+          "referenceSha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "candidateSha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "panels",
+          "theme": "light",
+          "state": "hover",
+          "referenceSha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "candidateSha256": "6824588f84379b7143ee8b590609cc9aeee1da13df71f53961a7504d7ef930e5",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "panels",
+          "theme": "light",
+          "state": "focus",
+          "referenceSha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f",
+          "candidateSha256": "6ff49f4b7cc062f33921ce6da5281b51d3374ff34a408f6d65759b3de109131f",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "panels",
+          "theme": "light",
+          "state": "disabled",
+          "referenceSha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41",
+          "candidateSha256": "5481d9420b59dd7337110b4f668aadcd6ccc01075c6b988ec9dcfb240bc6ea41",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "panels",
+          "theme": "dark",
+          "state": "resting",
+          "referenceSha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "candidateSha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "panels",
+          "theme": "dark",
+          "state": "hover",
+          "referenceSha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "candidateSha256": "dd9bccce01e26563fadfc9c752ca3cae7f7082c0870be9c46f388d8c6b85c360",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "panels",
+          "theme": "dark",
+          "state": "focus",
+          "referenceSha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe",
+          "candidateSha256": "c6fa223e9c78b4d4f6d6c3faa6d21c1b8c18f4b35a921644521837148f29acfe",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "kind": "panels",
+          "theme": "dark",
+          "state": "disabled",
+          "referenceSha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0",
+          "candidateSha256": "37a9e9d8a7d6b55c6534d0c97d28d75743cf524151a60b30c2b75bf59cf2a7d0",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        }
+      ]
+    },
+    "regressions": [
+      "The first16 state cases reproduced the old14px line height against HA22.4px.",
+      "A stricter label-position check reproduced eight native-button cases0.796875px below the reference; the shared flex layout corrects it.",
+      "The first original candidate captures retained a different bottom track row; the actual header border and clipping now match."
+    ],
+    "originalImagesInspected": true,
+    "referenceCollection": "Actual public modules, original source asset bytes, fictional isolated document, no credentials or household API. Fixture-only bootstrap exposure is recorded in the reference.",
+    "copilotModified": false,
+    "chromeInteraction": {
+      "profile": "Efra",
+      "isolatedWindow": true,
+      "preview": "http://127.0.0.1:6008/ha-ui/",
+      "selectedOverview": true,
+      "scope": "Actual built catalog; agent observation, no owner or installed-app acceptance."
+    }
+  },
+  "packageInputIdentities": {
+    "packages/angular/package.json": "97b3097ba39413738ba6c434a7eef19ceeaf28d37f73172809b9670f5dd5855e",
+    "packages/core/package.json": "97310f265f4ddd1df21b22f71b494b33fc2d8ec8cbfc9ec8d88db49f0f43b876",
+    "packages/react/package.json": "c841566365bb3ef7f93a55337af3ba8325cdb9d2c968fb3576ac229b52a58c67",
+    "packages/svelte/package.json": "e95023ed5d9b7d8567d22114803bdb1862feb4e4b43decfebf5d41fdac189182",
+    "packages/vue/package.json": "313b324d4d31bfbc03a082f65f2c92f03e38d346868e40b688b5c482fd51649e",
+    "packages/core/NOTICE": "0596e1f409d35474defb296862a4ccd2f20e649473d0fc3cba56ff70a8808d7c"
   }
 }

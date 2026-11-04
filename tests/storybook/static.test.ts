@@ -1,4 +1,5 @@
 import {waitForCatalogStory} from './lifecycle.ts';
+import {exerciseNavigationVisual} from './navigation-visual.ts';
 import {exerciseCheckboxVisual} from './checkbox-visual.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -89,7 +90,8 @@ test('the complete static catalog works at the repository subpath with local ass
     await page.waitForFunction(()=>{const frame=document.querySelector<HTMLIFrameElement>('#storybook-preview-iframe')!,main=frame.contentDocument!.querySelector<HTMLElement>('main.catalog-frame')!;return main?.lang==='es'&&main.dataset.theme==='dark'&&main.dataset.motion==='reduced'&&main.style.maxWidth==='360px';});
     await page.screenshot({path:resolve(output,'manager-controls-dark-es.png')});
     const checkboxVisual=await exerciseCheckboxVisual(page,origin,output);
+    const navigationVisual=await exerciseNavigationVisual(page,origin,output);
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
-    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,checkboxVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
+    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,checkboxVisual,navigationVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
 });
