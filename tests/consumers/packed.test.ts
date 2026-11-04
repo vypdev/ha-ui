@@ -4,11 +4,12 @@ import {promisify} from 'node:util';
 import {execFile} from 'node:child_process';
 import {mkdtemp, mkdir, readFile, writeFile, readdir, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
-import {resolve, join} from 'node:path';
+import {resolve, join, relative} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {createServer} from 'vite';
 import {chromium} from 'playwright';
+import {parse, stringify} from 'yaml';
 
 const execute = promisify(execFile);
 const root = fileURLToPath(new URL('../../', import.meta.url));
@@ -32,7 +33,42 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
     assert.deepEqual(first, second, 'Repeated independent builds must produce the same packed bytes');
     const consumer = join(scratch, 'consumer'); await mkdir(consumer);
     await writeFile(join(consumer, 'package.json'), JSON.stringify({name:'packed-contract-fixture', private:true, type:'module', packageManager:'pnpm@10.34.0', dependencies:{'@vypdev/ha-ui':'file:'+archives[0]}}));
-    await execute('pnpm', ['install', '--offline', '--ignore-scripts'], {cwd: consumer});
+    const cache=join(scratch,'empty-metadata-cache');
+    const configuration=stringify({packages:[],autoInstallPeers:false,cacheDir:cache});
+    await writeFile(join(consumer,'pnpm-workspace.yaml'),configuration);
+    // A separate negative fixture reproduces the exact hosted failure with no ambient metadata.
+    const negative=join(scratch,'without-lock'); await mkdir(negative);
+    await writeFile(join(negative,'package.json'),await readFile(join(consumer,'package.json')));
+    await writeFile(join(negative,'pnpm-workspace.yaml'),configuration);
+    await assert.rejects(execute('pnpm',['install','--offline','--ignore-scripts'],{cwd:negative}),error=>{
+      assert.ok(error instanceof Error && 'stdout' in error);
+      assert.match(String(error.stdout),/ERR_PNPM_NO_OFFLINE_META/u); return true;
+    });
+    const sourceLock=parse(await readFile(resolve(root,'pnpm-lock.yaml'),'utf8'));
+    const manifest=JSON.parse(await readFile(resolve(root,'packages/core/package.json'),'utf8'));
+    const direct=sourceLock.importers['packages/core'].dependencies as Record<string,{specifier:string;version:string}>;
+    const runtime: Record<string,string>={};
+    for (const [name,pin] of Object.entries(direct)) {
+      assert.equal(pin.specifier,manifest.dependencies[name]); runtime[name]=pin.version;
+    }
+    const packages: Record<string,unknown>={}, snapshots: Record<string,unknown>={};
+    const pending=Object.entries(runtime).map(([name,version])=>name+'@'+version);
+    for (const key of pending) {
+      if (Object.hasOwn(snapshots,key)) continue;
+      assert.ok(Object.hasOwn(sourceLock.packages,key) && Object.hasOwn(sourceLock.snapshots,key),'Every runtime node must have a reviewed exact source lock entry: '+key);
+      packages[key]=sourceLock.packages[key]; snapshots[key]=sourceLock.snapshots[key];
+      for (const [name,version] of Object.entries(sourceLock.snapshots[key].dependencies ?? {})) pending.push(name+'@'+String(version));
+    }
+    const fileVersion='file:'+relative(consumer,archives[0]).replaceAll('\\','/');
+    const archiveKey=manifest.name+'@'+fileVersion;
+    packages[archiveKey]={resolution:{integrity:'sha512-'+createHash('sha512').update(first).digest('base64'),tarball:fileVersion},version:manifest.version};
+    snapshots[archiveKey]={dependencies:runtime};
+    const frozenLock=stringify({lockfileVersion:sourceLock.lockfileVersion,settings:sourceLock.settings,importers:{'.':{dependencies:{[manifest.name]:{specifier:'file:'+archives[0],version:fileVersion}}}},packages,snapshots});
+    await writeFile(join(consumer,'pnpm-lock.yaml'),frozenLock);
+    const cacheConfiguration=await execute('pnpm',['config','get','cache-dir'],{cwd:consumer}); assert.equal(cacheConfiguration.stdout.trim(),cache);
+    await execute('pnpm', ['install', '--frozen-lockfile', '--offline', '--ignore-scripts'], {cwd: consumer});
+    assert.equal(await readFile(join(consumer,'pnpm-lock.yaml'),'utf8'),frozenLock);
+    await assert.rejects(readFile(join(cache,'metadata-v1.3/registry.npmjs.org/lit.json')),{code:'ENOENT'});
     await writeFile(join(consumer, 'contract.ts'), `import {navigationState, type NavigationKind} from '@vypdev/ha-ui/contracts';
 const kind: NavigationKind = 'panels';
 const selected: string | null = navigationState({kind, label:'Sections', selected:null, items:[]}).selected;
@@ -93,7 +129,7 @@ document.querySelector('main')!.append(element);`);
     assert.deepEqual(errors,[]);
     const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
     await mkdir(resolve(root, 'test-results'), {recursive:true});
-    await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data and navigation component only; no framework adapter or application adoption',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
+    await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data and navigation component only; no framework adapter or application adoption',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
     passed = true;
   } finally {
     await browser?.close(); await server?.close();

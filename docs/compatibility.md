@@ -35,3 +35,9 @@ a DOM-free contract and a compiled browser client, and the original pinned Copil
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
 and reduced motion. It does not establish other browser engines, framework adapters or framework SSR.
 Packed framework fixtures, Storybook, publication and actual application acceptance remain required.
+
+The clean package fixture derives its runtime-only graph and integrity records from the reviewed
+workspace lock, binds the actual tarball's integrity, and installs offline with a frozen lock. A fresh
+metadata cache is selected and verified; the lock must remain byte-identical. A separate unlocked
+negative fixture must reproduce the missing-metadata failure. This prevents developer cache contents
+from making package acceptance pass when a fresh hosted runner cannot resolve the same dependency.

@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T04:26:46.483795+00:00",
+  "recordedAtUTC": "2026-11-04T04:34:29.482308+00:00",
   "status": "Partial source increment: data contract and one real navigation/panel component. No framework support, Storybook, published release or app adoption accepted.",
   "issue": 7,
   "nativePublication": {
@@ -60,6 +60,9 @@
     "bytes": 9585,
     "reproducible": true,
     "cleanOfflineInstall": true,
+    "frozenRuntimeLock": true,
+    "isolatedMetadataCache": true,
+    "negativeWithoutLockRejected": true,
     "compiledWithoutDomTypes": true,
     "serverImport": true,
     "packedBrowser": {
@@ -100,5 +103,14 @@
     "imagesInspected": true,
     "focusRegression": "focus-return-red.log reproduces the stale tab-stop; full green run has no skipped tests.",
     "initialTestAttempt": "Browser cases were authored before the renderer. The first attempted execution could not start because the pinned Chromium binary was absent; no behavioral red result is claimed for that attempt. After runtime provisioning, the first actual run found two fixture/server-boundary issues, recorded in browser-first-execution.log."
+  },
+  "consumerIsolationRegression": {
+    "failedHostedRun": "https://github.com/vypdev/ha-ui/actions/runs/41773354203/job/126387929863",
+    "reason": "Unlocked offline fixture attempted to resolve Lit through absent ambient registry metadata. Product unit/browser coverage and build passed.",
+    "localRed": "isolated-metadata-red.log reproduces ERR_PNPM_NO_OFFLINE_META with a fresh fixture cache.",
+    "correction": "Derive the exact runtime dependency graph and integrity records from the reviewed workspace lock; bind the actual tarball integrity, use a frozen offline install and assert the fixture lock remains byte-identical.",
+    "permanentNegativeControl": "An independent unlocked fixture must reject with ERR_PNPM_NO_OFFLINE_META against the same empty metadata cache.",
+    "localGreen": "frozen-packed-green.log; strict types, frozen isolated install, DOM-free compilation/import and real packed Chromium journeys pass.",
+    "freshHostedRequired": true
   }
 }
