@@ -202,7 +202,15 @@
         "tests/storybook/reference/ha-navigation/light-disabled.png",
         "tests/storybook/reference/ha-navigation/light-focus.png",
         "tests/storybook/reference/ha-navigation/light-hover.png",
-        "tests/storybook/reference/ha-navigation/light-resting.png"
+        "tests/storybook/reference/ha-navigation/light-resting.png",
+        "tests/storybook/reference/ha-navigation/linux/light-resting.png",
+        "tests/storybook/reference/ha-navigation/linux/light-hover.png",
+        "tests/storybook/reference/ha-navigation/linux/light-focus.png",
+        "tests/storybook/reference/ha-navigation/linux/light-disabled.png",
+        "tests/storybook/reference/ha-navigation/linux/dark-resting.png",
+        "tests/storybook/reference/ha-navigation/linux/dark-hover.png",
+        "tests/storybook/reference/ha-navigation/linux/dark-focus.png",
+        "tests/storybook/reference/ha-navigation/linux/dark-disabled.png"
       ],
       "documentation": [
         "README.md",

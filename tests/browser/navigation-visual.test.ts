@@ -4,7 +4,7 @@ import {registerTabs} from '../../packages/core/src/components/tabs.js';
 import {navigationState} from '../../packages/core/src/contracts.js';
 
 type Appearance={fontFamily:string;fontSize:string;fontWeight:string;lineHeight:string;color:string;opacity:string;};
-type Reference={states:{theme:string;state:string;items:{geometry:{width:number;height:number;textX:number;textY:number;textWidth:number;textHeight:number};style:Appearance;base:{opacity:string;outline:string;outlineOffset:string;}}[]}[]};
+type Reference={states:{platform:string;theme:string;state:string;items:{geometry:{width:number;height:number;textX:number;textY:number;textWidth:number;textHeight:number};style:Appearance;base:{opacity:string;outline:string;outlineOffset:string;}}[]}[]};
 let reference:Reference;
 const fonts:FontFace[]=[];
 beforeAll(async()=>{
@@ -14,7 +14,8 @@ beforeAll(async()=>{
 afterAll(()=>{for(const font of fonts)document.fonts.delete(font);});
 afterEach(()=>document.body.replaceChildren());
 for(const kind of ['navigation','panels'] as const)for(const theme of ['light','dark'])test.each(['resting','hover','focus','disabled'])(`matches measured HA text-only dashboard ${kind}, ${theme}, %s`,async state=>{
- const row=reference.states.find(row=>row.theme===theme&&row.state===state)!;
+ const platform=/Linux/u.test(navigator.userAgent)?'linux':/Mac OS X/u.test(navigator.userAgent)?'macos':null;expect(platform,'A measured browser platform is required').not.toBeNull();
+ const row=reference.states.find(row=>row.platform===platform&&row.theme===theme&&row.state===state);expect(row,'Missing measured HA platform/state').toBeDefined();if(!row)throw new Error('Missing measured HA reference');
  registerTabs();const element=document.createElement('vyp-ha-tabs');
  element.style.cssText=`width:600px;--app-header-text-color:${theme==='light'?'#141414':'#e1e1e1'};--app-header-background-color:${theme==='light'?'#fff':'#1c1c1c'};--wa-focus-ring:solid 2px #989898;-webkit-font-smoothing:antialiased`;
  element.state=navigationState({kind,label:'Household sections',selected:'overview',items:['Overview','Tasks','Inventory'].map((label,n)=>({id:['overview','tasks','inventory'][n],label,...(kind==='navigation'?{href:'#section-'+n}:{}),disabled:n===1&&state==='disabled'}))});

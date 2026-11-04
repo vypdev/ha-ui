@@ -96,3 +96,19 @@ of all16 final local samples finds zero changed pixels against their original re
 This is scoped to the pinned local Chromium/macOS captures; the hosted cross-platform gate
 checks exact styles and geometry, rather than requiring platform-specific raster identity.
 No full navigation or human UX acceptance is claimed.
+
+
+### Measured Linux baseline
+
+The first hosted source campaign at `c81b559` failed16 cases because Linux was compared with
+macOS glyph advances. Independent replay of the original public HA modules in the official
+Playwright1.64.1 Noble image reproduces91px for Overview in both HA and the candidate; macOS
+measures89.484375px. The verified font bytes and14px/500 typography are identical. The Linux
+capture uses no network and preserves the original public module bytes, recorded themes and
+fonts. It is a component fixture, not a full Node/toolchain CI reproduction.
+
+The reference now retains eight original states per measured platform. Source and built-catalog
+checks require an explicitly measured browser platform and all four states per theme. They retain
+the same style assertions, less-than-one-pixel layout tolerance and0.1px vertical-position bound;
+no broad threshold increase, ignored state or automatic baseline update is used. Unmeasured
+platforms fail rather than silently choosing another platform's reference.

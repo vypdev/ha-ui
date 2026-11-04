@@ -106,3 +106,8 @@ modes against eight original HA text-tab captures. It verifies fonts, label geom
 disabled opacity, and actual keyboard focus; candidate images and structured results are retained
 under `test-results/storybook`. Icons, overflow affordances and installed-app/human review remain
 required. Reference collection uses no household credentials or API; see [visual parity](visual-parity.md).
+
+The text-tab reference is platform-specific: eight original captures each for macOS and Linux.
+The source and static gates choose an explicitly measured browser platform and keep the same
+style/state and geometry bounds. Independent offline Linux replay compares the unchanged
+original HA modules and the compiled candidate; it does not widen the SDK's Node support range.

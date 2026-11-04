@@ -537,6 +537,14 @@ The catalog/index update registers the companion under the existing owner; it do
 | `tests/storybook/reference/ha-navigation/light-focus.png` | create |
 | `tests/storybook/reference/ha-navigation/light-hover.png` | create |
 | `tests/storybook/reference/ha-navigation/light-resting.png` | create |
+| `tests/storybook/reference/ha-navigation/linux/light-resting.png` | create |
+| `tests/storybook/reference/ha-navigation/linux/light-hover.png` | create |
+| `tests/storybook/reference/ha-navigation/linux/light-focus.png` | create |
+| `tests/storybook/reference/ha-navigation/linux/light-disabled.png` | create |
+| `tests/storybook/reference/ha-navigation/linux/dark-resting.png` | create |
+| `tests/storybook/reference/ha-navigation/linux/dark-hover.png` | create |
+| `tests/storybook/reference/ha-navigation/linux/dark-focus.png` | create |
+| `tests/storybook/reference/ha-navigation/linux/dark-disabled.png` | create |
 
 ## 16. Acceptance scenarios
 

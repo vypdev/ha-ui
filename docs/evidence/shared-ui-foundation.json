@@ -31,7 +31,8 @@
     "Boolean checkbox has independent app-controlled mixed presentation, one native input and 44px invisible target, strict literal payloads, controlled reset/restoration and all four real framework bindings.",
     "Direct Chrome comparison used a dedicated window/group in the Efra profile, observed entity-table marked/mixed controls and restored selection mode without entity changes. This is agent observation, not owner acceptance of the full UX.",
     "A reproduced stale Enter could submit after a text field or checkbox was disconnected and reattached to the same form. Both now bind deferred Enter to the original connection; a fresh Enter remains accepted.",
-    "Measured text-only dashboard tabs match eight original HA light/dark resting/hover/focus/disabled states in both navigation and panel modes. The source campaign adds17 cases; the static gate adds16 comparisons. Read-only decoded-pixel inspection finds zero changed pixels in all16 local samples; this does not claim cross-platform raster or full navigation/app acceptance."
+    "Measured text-only dashboard tabs match eight original HA light/dark resting/hover/focus/disabled states in both navigation and panel modes. The source campaign adds17 cases; the static gate adds16 comparisons. Read-only decoded-pixel inspection finds zero changed pixels in all16 local samples; this does not claim cross-platform raster or full navigation/app acceptance.",
+    "Independent Linux replay proves the actual HA control and compiled candidate share91px Overview width versus89.484375px in macOS. Matching measured platform references preserve strict tests; no runtime renderer, package bytes, tolerance or source coverage exclusion changed in this correction."
   ],
   "coverage": {
     "lines": {
@@ -2264,6 +2265,7 @@
     ],
     "navigationVisual": [
       {
+        "platform": "macos",
         "kind": "navigation",
         "theme": "light",
         "state": "resting",
@@ -2363,6 +2365,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "navigation",
         "theme": "light",
         "state": "hover",
@@ -2462,6 +2465,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "navigation",
         "theme": "light",
         "state": "focus",
@@ -2561,6 +2565,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "navigation",
         "theme": "light",
         "state": "disabled",
@@ -2660,6 +2665,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "navigation",
         "theme": "dark",
         "state": "resting",
@@ -2759,6 +2765,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "navigation",
         "theme": "dark",
         "state": "hover",
@@ -2858,6 +2865,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "navigation",
         "theme": "dark",
         "state": "focus",
@@ -2957,6 +2965,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "navigation",
         "theme": "dark",
         "state": "disabled",
@@ -3056,6 +3065,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "panels",
         "theme": "light",
         "state": "resting",
@@ -3155,6 +3165,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "panels",
         "theme": "light",
         "state": "hover",
@@ -3254,6 +3265,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "panels",
         "theme": "light",
         "state": "focus",
@@ -3353,6 +3365,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "panels",
         "theme": "light",
         "state": "disabled",
@@ -3452,6 +3465,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "panels",
         "theme": "dark",
         "state": "resting",
@@ -3551,6 +3565,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "panels",
         "theme": "dark",
         "state": "hover",
@@ -3650,6 +3665,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "panels",
         "theme": "dark",
         "state": "focus",
@@ -3749,6 +3765,7 @@
         }
       },
       {
+        "platform": "macos",
         "kind": "panels",
         "theme": "dark",
         "state": "disabled",
@@ -4396,7 +4413,7 @@
     "reference": "docs/evidence/ha-navigation-reference.json",
     "sourceCases": 17,
     "staticComparisons": 16,
-    "originalReferences": 8,
+    "originalReferences": 16,
     "localRasterInspection": {
       "scope": "Local pinned macOS Chromium original samples only; no cross-platform raster or full UX acceptance",
       "results": [
@@ -4552,7 +4569,7 @@
       "The first original candidate captures retained a different bottom track row; the actual header border and clipping now match."
     ],
     "originalImagesInspected": true,
-    "referenceCollection": "Actual public modules, original source asset bytes, fictional isolated document, no credentials or household API. Fixture-only bootstrap exposure is recorded in the reference.",
+    "referenceCollection": "Original public HA modules, identical recorded themes and verified fonts; eight original references each for macOS and Linux. Linux replay has no network. Recorded bootstrap exposure leaves component module functions unchanged.",
     "copilotModified": false,
     "chromeInteraction": {
       "profile": "Efra",
@@ -4560,6 +4577,1790 @@
       "preview": "http://127.0.0.1:6008/ha-ui/",
       "selectedOverview": true,
       "scope": "Actual built catalog; agent observation, no owner or installed-app acceptance."
+    },
+    "originalReferencesPerPlatform": 8,
+    "linuxRasterInspection": {
+      "scope": "Pinned Linux arm64 component-fixture samples; not whole-container source CI or unmeasured platform acceptance",
+      "results": [
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "light",
+          "state": "resting",
+          "referenceSha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+          "candidateSha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "light",
+          "state": "hover",
+          "referenceSha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+          "candidateSha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "light",
+          "state": "focus",
+          "referenceSha256": "f9bca46b3c48762873df667d00c485d9fb117da1e92a6a92feeddb45d92b9053",
+          "candidateSha256": "f9bca46b3c48762873df667d00c485d9fb117da1e92a6a92feeddb45d92b9053",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "light",
+          "state": "disabled",
+          "referenceSha256": "b2b5f04f8b3a288b45540e291bfc6b0cfec6e05e8a5b03a224ad79bdc31e15f8",
+          "candidateSha256": "b2b5f04f8b3a288b45540e291bfc6b0cfec6e05e8a5b03a224ad79bdc31e15f8",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "resting",
+          "referenceSha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+          "candidateSha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "hover",
+          "referenceSha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+          "candidateSha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "focus",
+          "referenceSha256": "2d61675ff065506864e8ffb78ec0092c33cacad2c7a687728b984beceb08859c",
+          "candidateSha256": "2d61675ff065506864e8ffb78ec0092c33cacad2c7a687728b984beceb08859c",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "disabled",
+          "referenceSha256": "e127f6ade3ee6af49fe08d1437814b48a0778726b833f10ff6ec017b6ccb7002",
+          "candidateSha256": "e127f6ade3ee6af49fe08d1437814b48a0778726b833f10ff6ec017b6ccb7002",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "light",
+          "state": "resting",
+          "referenceSha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+          "candidateSha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "light",
+          "state": "hover",
+          "referenceSha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+          "candidateSha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "light",
+          "state": "focus",
+          "referenceSha256": "f9bca46b3c48762873df667d00c485d9fb117da1e92a6a92feeddb45d92b9053",
+          "candidateSha256": "f9bca46b3c48762873df667d00c485d9fb117da1e92a6a92feeddb45d92b9053",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "light",
+          "state": "disabled",
+          "referenceSha256": "b2b5f04f8b3a288b45540e291bfc6b0cfec6e05e8a5b03a224ad79bdc31e15f8",
+          "candidateSha256": "b2b5f04f8b3a288b45540e291bfc6b0cfec6e05e8a5b03a224ad79bdc31e15f8",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "dark",
+          "state": "resting",
+          "referenceSha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+          "candidateSha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "dark",
+          "state": "hover",
+          "referenceSha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+          "candidateSha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "dark",
+          "state": "focus",
+          "referenceSha256": "2d61675ff065506864e8ffb78ec0092c33cacad2c7a687728b984beceb08859c",
+          "candidateSha256": "2d61675ff065506864e8ffb78ec0092c33cacad2c7a687728b984beceb08859c",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "dark",
+          "state": "disabled",
+          "referenceSha256": "e127f6ade3ee6af49fe08d1437814b48a0778726b833f10ff6ec017b6ccb7002",
+          "candidateSha256": "e127f6ade3ee6af49fe08d1437814b48a0778726b833f10ff6ec017b6ccb7002",
+          "differentPixels": 0,
+          "totalPixels": 33600
+        }
+      ]
+    },
+    "linuxCompiledCatalog": {
+      "browser": "156.0.8078.80",
+      "node": "v26.13.0",
+      "arch": "arm64",
+      "results": [
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "light",
+          "state": "resting",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/light-resting.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "light",
+          "state": "hover",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/light-hover.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "light",
+          "state": "focus",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(152, 152, 152) solid 2px",
+                "outlineOffset": "-5px"
+              },
+              "focusVisible": true
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "f9bca46b3c48762873df667d00c485d9fb117da1e92a6a92feeddb45d92b9053",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/light-focus.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "f9bca46b3c48762873df667d00c485d9fb117da1e92a6a92feeddb45d92b9053"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "light",
+          "state": "disabled",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "0.5",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "b2b5f04f8b3a288b45540e291bfc6b0cfec6e05e8a5b03a224ad79bdc31e15f8",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/light-disabled.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "b2b5f04f8b3a288b45540e291bfc6b0cfec6e05e8a5b03a224ad79bdc31e15f8"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "resting",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/dark-resting.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "hover",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/dark-hover.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "focus",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(152, 152, 152) solid 2px",
+                "outlineOffset": "-5px"
+              },
+              "focusVisible": true
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "2d61675ff065506864e8ffb78ec0092c33cacad2c7a687728b984beceb08859c",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/dark-focus.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "2d61675ff065506864e8ffb78ec0092c33cacad2c7a687728b984beceb08859c"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "navigation",
+          "theme": "dark",
+          "state": "disabled",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "0.5",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "e127f6ade3ee6af49fe08d1437814b48a0778726b833f10ff6ec017b6ccb7002",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/dark-disabled.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "e127f6ade3ee6af49fe08d1437814b48a0778726b833f10ff6ec017b6ccb7002"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "light",
+          "state": "resting",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/light-resting.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "light",
+          "state": "hover",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/light-hover.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "d623308759f009a183bb62ad73b9ab86208c2895a124f36feefcfcd2f2c252b7"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "light",
+          "state": "focus",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(152, 152, 152) solid 2px",
+                "outlineOffset": "-5px"
+              },
+              "focusVisible": true
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "f9bca46b3c48762873df667d00c485d9fb117da1e92a6a92feeddb45d92b9053",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/light-focus.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "f9bca46b3c48762873df667d00c485d9fb117da1e92a6a92feeddb45d92b9053"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "light",
+          "state": "disabled",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "0.5",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(20, 20, 20)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(20, 20, 20)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(20, 20, 20) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "b2b5f04f8b3a288b45540e291bfc6b0cfec6e05e8a5b03a224ad79bdc31e15f8",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/light-disabled.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "b2b5f04f8b3a288b45540e291bfc6b0cfec6e05e8a5b03a224ad79bdc31e15f8"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "dark",
+          "state": "resting",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/dark-resting.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "dark",
+          "state": "hover",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/dark-hover.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "589e6dbe26fb2f96d06254b93e4a4be5436adc9a090a4935a087c5c6bf82180f"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "dark",
+          "state": "focus",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(152, 152, 152) solid 2px",
+                "outlineOffset": "-5px"
+              },
+              "focusVisible": true
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "2d61675ff065506864e8ffb78ec0092c33cacad2c7a687728b984beceb08859c",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/dark-focus.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "2d61675ff065506864e8ffb78ec0092c33cacad2c7a687728b984beceb08859c"
+          }
+        },
+        {
+          "platform": "linux",
+          "kind": "panels",
+          "theme": "dark",
+          "state": "disabled",
+          "typographyStateAndGeometryMatch": true,
+          "layoutToleranceCssPx": 1,
+          "textVerticalToleranceCssPx": 0.1,
+          "actual": [
+            {
+              "geometry": {
+                "width": 91,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 59,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "1",
+                "borderBottomWidth": "2px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 69,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 37,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "0.5",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            },
+            {
+              "geometry": {
+                "width": 92,
+                "height": 56,
+                "textX": 16,
+                "textY": 21,
+                "textWidth": 60,
+                "textHeight": 16
+              },
+              "style": {
+                "fontFamily": "Roboto, Noto, sans-serif",
+                "fontSize": "14px",
+                "fontWeight": "500",
+                "lineHeight": "22.4px",
+                "color": "rgb(225, 225, 225)",
+                "opacity": "0.8",
+                "borderBottomWidth": "0px",
+                "borderBottomColor": "rgb(225, 225, 225)"
+              },
+              "base": {
+                "opacity": "1",
+                "outline": "rgb(225, 225, 225) none 3px",
+                "outlineOffset": "0px"
+              },
+              "focusVisible": false
+            }
+          ],
+          "referenceImage": {
+            "sha256": "e127f6ade3ee6af49fe08d1437814b48a0778726b833f10ff6ec017b6ccb7002",
+            "width": 600,
+            "height": 56,
+            "path": "tests/storybook/reference/ha-navigation/linux/dark-disabled.png"
+          },
+          "raster": {
+            "frames": 3,
+            "twoConsecutiveEqual": true,
+            "sha256": "e127f6ade3ee6af49fe08d1437814b48a0778726b833f10ff6ec017b6ccb7002"
+          }
+        }
+      ],
+      "external": [],
+      "errors": []
+    },
+    "platformRegression": {
+      "ciRun": 41856741772,
+      "ciJob": 126667306923,
+      "head": "c81b559a4f435b5a96966b04092bd6050e933dc3",
+      "mergeCandidate": "86bb27c944610f97e986ac6f3381f230ab3f4491",
+      "observedFailure": "All16 state cases rejected the macOS Overview width: Linux91px versus macOS89.484375px.",
+      "independentReplay": "The actual HA original control and the built candidate both measure91px in Linux. The same verified medium font, both alone and with the regular face, gives59px label advance in Linux versus57.484375px in macOS.",
+      "correction": "Choose only an explicitly measured browser platform reference; retain all exact style/state assertions and existing subpixel geometry tolerances."
     }
   },
   "packageInputIdentities": {
