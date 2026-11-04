@@ -21,3 +21,7 @@ export interface ButtonProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'clas
   state:ButtonState;type?:ButtonType;name?:string;value?:string;disabled?:boolean;formNoValidate?:boolean;form?:string;
   onPressRequest?:(event:ButtonPressEvent)=>void;onPress?:(detail:ButtonPressDetail)=>void;leading?:Snippet;trailing?:Snippet;
 }
+
+import type {SelectState,SelectSelection} from '@vypdev/ha-ui/select-contracts';
+import type {SelectValueEvent} from '@vypdev/ha-ui/select';
+export interface SelectProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {state:SelectState;value:SelectSelection;name?:string;defaultValue?:SelectSelection;disabled?:boolean;form?:string;onValueRequest?:(event:SelectValueEvent)=>void;onValueChange?:(value:SelectSelection)=>void;}

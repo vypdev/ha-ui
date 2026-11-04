@@ -67,3 +67,10 @@ pairs, instead of assuming every host-supplied pair meets contrast.
 The four button bindings are authored here. They use the DOM-independent request validator and
 the one registered core renderer. Their framework lifecycle and decorative projection glue adds
 no copied third-party component, CSS or second native-form controller.
+
+
+The selector adapts the same reviewed Gateway MIT field/select geometry at ui-catalog.css
+lines 143–146: a 56px minimum control, 16px padding and public semantic theme colors. Its native
+single/multiple select, typed primitive model policies, successful repeated entries, controlled
+requests/reset, state restoration and four framework bindings are authored here. No Gateway or
+private HA runtime, third-party component source, menu asset or icon is copied into this family.

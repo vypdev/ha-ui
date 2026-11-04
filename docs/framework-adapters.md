@@ -1,6 +1,6 @@
 # Framework bindings
 
-This unpublished preview has shared navigation, one controlled text field and native-form buttons,
+This unpublished preview has shared navigation, one controlled text field, native-form buttons and typed single/multiple selects,
 with four real framework bindings and text-field form bridges. Other controls and their bridges, framework
 SSR/client fixtures, broader browser support, public Storybook hosting, publication and app adoption remain required.
 
@@ -77,7 +77,7 @@ Every framework consumer compiles against installed declarations and runs real p
 events, content projection, disabled booleans, English/Spanish, live theme, keyboard, removal and remount
 journeys. Installed authored source must match the repository. Published manifests contain neither
 workspace nor file references. The resulting artifacts include the exact cohort digests and original
-browser screenshots. These checks cover navigation, one text-field family and native-form buttons, and do not complete the retained 70-case
+browser screenshots. These checks cover navigation, one text-field family, native-form buttons and typed selects, and do not complete the retained 70-case
 capability acceptance inventory or prove a real npm publication.
 
 The complete source/type/browser check sequence also passes with all five dist trees absent.
@@ -211,3 +211,53 @@ installed React/Vue/Angular/Svelte consumers compile the published declarations 
 Enter, Space activation, cancellation, submitter/FormData, required validation, model reset, busy/
 disabled state, projection changes and remount, plus English/Spanish and theme updates. These are
 preview checks for the recorded pins, not SSR, other-engine or complete component-family acceptance.
+
+
+## Select binding contract
+
+`Select` is exported by every adapter; register `vyp-ha-select` with `registerSelect` from the
+client-only `/select` entrypoint. The [select contract](select-contract.md) defines its closed
+state, primitive/array types, unsuccessful unavailable values, native form entries and restoration.
+The core owns the one native select, including keyboard, labels and disabled-option behavior.
+
+React accepts controlled value and onValueRequest/onValueChange. Vue's modelValue and
+update:modelValue preserve number/string/boolean distinctions and readonly arrays through v-model.
+Svelte uses controlled value, typed callbacks and application rune state. Angular supports
+ControlValueAccessor/Validator, reactive forms and ngModel, nullable/nonnullable resets, dirty/touched,
+disable/enable and updateOn blur/submit. Without a forms directive, its value/valueChange inputs and
+output support explicit two-way value binding. The forms directive owns the model when present.
+All bindings validate a foreign request before observers and use its frozen snapshot afterward.
+
+```tsx
+<Select state={categoryState} value={category} onValueChange={setCategory}
+  name="category" defaultValue={1} />
+```
+
+```vue
+<Select v-model="category" :state="categoryState" name="category" :default-value="1" />
+```
+
+```svelte
+<Select state={categoryState} value={category} onValueChange={(next)=>category=next}
+  name="category" defaultValue={1} />
+```
+
+```html
+<form ngNativeValidate [formGroup]="group">
+  <vyp-ha-select [state]="categoryState" formControlName="category" name="category" />
+</form>
+```
+
+Angular normally adds novalidate when a forms module is imported. The sample opts into native
+browser blocking with ngNativeValidate; an application can instead validate explicitly in its own
+submit handler. The component honors that form policy. See [Angular's native-validation notes](https://angular.dev/api/forms/NgForm#native-dom-validation-ui).
+Typed model values and events remain distinct; standard HTML FormData serializes primitives as
+strings. Applications that require wire-level type preservation should submit their typed model as
+JSON or map records to distinct string IDs rather than infer a primitive type from FormData text.
+
+The source and actual compiled consumers exercise single/multiple selection, original request
+cancellation, programmatic writes, missing option updates, native entries/required validation,
+framework reset, disabled submission, EN/ES/themes and teardown/remount. Native dropdown typeahead
+and visible-list arrow navigation are exercised. On the local headless Chromium, dropdown arrows
+also leave a standalone native select unchanged; that observed driver/platform limitation is not
+represented as a component behavior fix or broader browser support claim.

@@ -38,6 +38,12 @@
       ],
       "@vypdev/ha-ui/button": [
         "./packages/core/src/components/button.ts"
+      ],
+      "@vypdev/ha-ui/select-contracts": [
+        "./packages/core/src/select-contracts.ts"
+      ],
+      "@vypdev/ha-ui/select": [
+        "./packages/core/src/components/select.ts"
       ]
     }
   },

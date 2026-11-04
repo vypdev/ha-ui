@@ -28,7 +28,9 @@
         "packages/core/src/field-contracts.ts",
         ".storybook/main.ts",
         "packages/core/src/button-contracts.ts",
-        "packages/core/src/components/button.ts"
+        "packages/core/src/components/button.ts",
+        "packages/core/src/select-contracts.ts",
+        "packages/core/src/components/select.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
@@ -60,7 +62,14 @@
         "packages/react/src/button.ts",
         "packages/vue/src/button.ts",
         "packages/angular/src/button.ts",
-        "packages/svelte/src/Button.svelte"
+        "packages/svelte/src/Button.svelte",
+        "packages/core/src/select-contracts.ts",
+        "packages/core/src/components/select.ts",
+        "packages/react/src/select.ts",
+        "packages/vue/src/select.ts",
+        "packages/angular/src/select.ts",
+        "packages/svelte/src/Select.svelte",
+        "stories/select.example.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -132,7 +141,17 @@
         "tests/browser/angular-button.test.ts",
         "tests/browser/svelte-button.test.mjs",
         "tests/browser/fixtures/SvelteButton.svelte",
-        "tests/consumers/framework-buttons.ts"
+        "tests/consumers/framework-buttons.ts",
+        "tests/contracts/select.test.ts",
+        "tests/browser/select.test.ts",
+        "tests/browser/select-framework-fixture.ts",
+        "tests/browser/react-select.test.ts",
+        "tests/browser/vue-select.test.ts",
+        "tests/browser/angular-select.test.ts",
+        "tests/browser/svelte-select.test.mjs",
+        "tests/browser/fixtures/SvelteSelect.svelte",
+        "tests/consumers/selects.ts",
+        "stories/select.stories.ts"
       ],
       "documentation": [
         "README.md",
@@ -142,7 +161,8 @@
         "docs/evidence/shared-ui-foundation.json",
         "docs/framework-adapters.md",
         "docs/storybook.md",
-        "docs/button-contract.md"
+        "docs/button-contract.md",
+        "docs/select-contract.md"
       ],
       "readiness": {
         "status": "draft",

@@ -1,13 +1,18 @@
 <script lang="ts">
-  import {Tabs,TextField,Button} from '@vypdev/ha-ui-svelte';
+  import {Tabs,TextField,Button,Select} from '@vypdev/ha-ui-svelte';
   import type {NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
   import type {FieldValueEvent} from '@vypdev/ha-ui/field';
   import type {ButtonPressEvent} from '@vypdev/ha-ui/button';
-  import {model,fieldModel,actionModel,resetModel} from './model.js';
+  import type {SelectValueEvent} from '@vypdev/ha-ui/select';
+  import type {SelectSelection} from '@vypdev/ha-ui/select-contracts';
+  import {model,fieldModel,actionModel,resetModel,categoryModel,categoryAction} from './model.js';
   let viewState=$state.raw(model()),spanish=$state(false),dark=$state(false),disabled=$state(false),visible=$state(true),count=$state(0);
   let value=$state('Kitchen'),fieldDisabled=$state(false),fieldVisible=$state(true),reject=$state(false),fieldEvents=$state(0),saved=$state('');
   let busy=$state(false),buttonDisabled=$state(false),buttonVisible=$state(true),cancelPress=$state(false),icons=$state(true),presses=$state(0),accepted=$state(0),submits=$state(0),metadata=$state(false);
   function press(event:ButtonPressEvent){presses++;if(cancelPress)event.preventDefault();}
+  let category=$state.raw<SelectSelection>(1),categoryMultiple=$state(false),categoryDisabled=$state(false),categoryVisible=$state(true),categoryReject=$state(false),categoryAvailable=$state(true),categoryEvents=$state(0),categorySaved=$state(''),categorySubmits=$state(0);
+  function categoryRequest(event:SelectValueEvent){categoryEvents++;if(categoryReject)event.preventDefault();}
+  function categorySave(event:SubmitEvent){event.preventDefault();categorySaved=JSON.stringify([...new FormData(event.currentTarget as HTMLFormElement)]);categorySubmits++;}
   function observe(event:FieldValueEvent){fieldEvents++;if(reject)event.preventDefault();}
   function save(event:SubmitEvent){event.preventDefault();const form=event.currentTarget as HTMLFormElement;if(form.reportValidity()){saved=JSON.stringify([...new FormData(form,event.submitter)]);submits++;metadata=event.submitter===form.querySelector('vyp-ha-button')!.submitter;}}
   function select(event:NavigationSelectionEvent){event.preventDefault();viewState=model(spanish,event.detail.id,disabled);count++;}
@@ -29,5 +34,11 @@
   <form aria-label="Task form" onsubmit={save}>
     {#if fieldVisible}<TextField state={fieldModel(spanish)} {value} name="task" defaultValue="Kitchen" disabled={fieldDisabled} onValueRequest={observe} onValueChange={(next)=>value=next} />{/if}
     {#if buttonVisible}<Button id="bound-submit" state={actionModel(spanish,busy)} type="submit" name="action" value="save" disabled={buttonDisabled} onPressRequest={press} onPress={()=>accepted++} leading={icons?leading:undefined} />{/if}<Button state={resetModel()} type="reset" />
+  </form>
+  <button onclick={()=>{categoryMultiple=!categoryMultiple;category=categoryMultiple?[1,false]:1;}}>Toggle category mode</button><button onclick={()=>category=categoryMultiple?['1',false]:false}>Set category value</button><button onclick={()=>category=categoryMultiple?[]:null}>Clear category</button><button onclick={()=>categoryReject=!categoryReject}>Reject category changes</button><button onclick={()=>categoryDisabled=!categoryDisabled}>Toggle category disabled</button><button onclick={()=>categoryAvailable=!categoryAvailable}>Toggle category options</button><button onclick={()=>categoryVisible=!categoryVisible}>Toggle category</button>
+  <output aria-label="Category model">{JSON.stringify(category)}</output><output aria-label="Category events">{categoryEvents}</output><output aria-label="Saved categories">{categorySaved}</output><output aria-label="Category submits">{categorySubmits}</output>
+  <form aria-label="Category form" onsubmit={categorySave}>
+   {#if categoryVisible}<Select id="bound-category" state={categoryModel(spanish,categoryMultiple,categoryAvailable)} value={category} defaultValue={categoryMultiple?[1,false]:1} name="category" disabled={categoryDisabled} onValueRequest={categoryRequest} onValueChange={(next)=>category=next} />{/if}
+   <Button state={categoryAction(spanish)} type="submit" /><Button state={categoryAction(spanish,true)} type="reset" />
   </form>
 </section>

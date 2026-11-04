@@ -5,3 +5,5 @@ export type {TextFieldState,TextFieldValidity,FieldValueReason,FieldValueDetail}
 
 export {buttonState,buttonType,buttonName,buttonValue,buttonPressDetail,ButtonInputError} from './button-contracts.js';
 export type {ButtonType,ButtonVariant,ButtonSize,ButtonState,ButtonPressDetail} from './button-contracts.js';
+export {SelectInputError,selectState,selectSelection,selectName,selectValidity,selectEntries,selectValueDetail,selectRestoreState,selectRestoreValue} from './select-contracts.js';
+export type {SelectValue,SelectSelection,SelectOption,SelectState,SelectValidity,SelectValueReason,SelectValueDetail} from './select-contracts.js';

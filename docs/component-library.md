@@ -1,8 +1,8 @@
 # Shared component library
 
 The current source implements the DOM-independent navigation contract, one controlled upper
-navigation/panel renderer, a single-line text field, a native-form button and the tested quality/build foundation. The renderer passes direct
-Chromium and clean actual-package browser consumers. Four navigation, text-field form and button adapters now also pass real compiled package consumers. Other component families,
+navigation/panel renderer, a single-line text field, a native-form button, typed single/multiple selects and the tested quality/build foundation. The renderer passes direct
+Chromium and clean actual-package browser consumers. Four navigation, text-field form, button and select adapters now also pass real compiled package consumers. Other component families,
 other form bridges, framework SSR, public Storybook hosting, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
@@ -164,7 +164,7 @@ The public form/labels/validity APIs, focus, blur, custom validity, reset, repar
 submission are exercised in actual Chromium forms. Import `HaTextField` and `registerField` from
 `@vypdev/ha-ui/field`, and call registration at the explicit client boundary. Import the pure
 contracts from `@vypdev/ha-ui/field-contracts`; these require no DOM globals or DOM types. The initial field is text-only; other input types,
-selects, checkboxes and dialogs remain required separate work. React, Vue, Angular and
+checkboxes and dialogs remain required separate work. React, Vue, Angular and
 Svelte text-field bindings and native form-model bridges pass the pinned compiled consumers; other
 control families and their bridges remain required. Browser state-restoration callbacks are exercised
 explicitly; automatic history restoration, real device IME behavior and other engines remain
@@ -215,3 +215,19 @@ submission/validation, name/value inclusion, default Enter, disabled behavior, b
 React/Vue/Angular/Svelte button exports and actual installed compiled consumers pass alongside
 navigation and text-field bindings. The catalog uses the actual
 shared button in field forms and has twelve button stories, including all eight visual variants.
+
+
+## Typed single/multiple select
+
+The [select contract](select-contract.md) defines the shared native selector and its pure policies.
+It preserves string/number/boolean model values and frozen arrays, including distinct 1 and "1"
+options. Null is unselected. Missing/disabled options and mode mismatches preserve the model as an
+explicit invalid selection; no replacement is invented. Successful FormData entries remain strings
+and follow option order. Native keyboard, labels, localized errors, focus, validation, external form
+owners, disabled fieldsets, reset and explicit typed restoration are exercised.
+
+All four [framework bindings](framework-adapters.md#select-binding-contract) delegate to that same
+renderer. Angular includes its value-accessor/validator bridge and documented native-validation form
+opt-in. The catalog has eleven select stories covering single/multiple, required, disabled/error,
+missing/disabled options, empty lists, cancellation and Spanish dark/narrow content. Other families,
+framework SSR, broader browser engines and full application adoption remain required.

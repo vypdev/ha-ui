@@ -43,6 +43,14 @@
     "./button": {
       "types": "./dist/components/button.d.ts",
       "import": "./dist/components/button.js"
+    },
+    "./select-contracts": {
+      "types": "./dist/select-contracts.d.ts",
+      "import": "./dist/select-contracts.js"
+    },
+    "./select": {
+      "types": "./dist/components/select.d.ts",
+      "import": "./dist/components/select.js"
     }
   },
   "publishConfig": {

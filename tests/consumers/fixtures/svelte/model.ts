@@ -10,3 +10,7 @@ export function fieldModel(spanish=false){return textFieldState({label:spanish?'
 import {buttonState} from '@vypdev/ha-ui/button-contracts';
 export const actionModel=(spanish:boolean,loading=false)=>buttonState({label:spanish?'Guardar tarea':'Save task',loading,loadingLabel:spanish?'Guardando…':'Saving…'});
 export const resetModel=()=>buttonState({label:'Reset task'});
+
+import {selectState} from '@vypdev/ha-ui/select-contracts';
+export const categoryModel=(spanish:boolean,multiple=false,available=true)=>selectState({label:spanish?'Categoría':'Category',description:spanish?'Una categoría para esta tarea.':'A category for this task.',required:true,multiple,requiredMessage:spanish?'Elige una categoría.':'Choose a category.',unavailableMessage:spanish?'Elige una categoría disponible.':'Choose an available category.',options:[{value:1,label:spanish?'Mantenimiento':'Maintenance'},{value:'1',label:spanish?'Compra':'Shopping'},{value:false,label:spanish?'Otra':'Other'},{value:'',label:spanish?'Sin categoría':'No category'},{value:'archived',label:spanish?'Archivada':'Archived',disabled:true}].filter(option=>available||option.value!==false)});
+export const categoryAction=(spanish:boolean,reset=false)=>buttonState({label:reset?(spanish?'Restablecer categoría':'Reset category'):(spanish?'Guardar categoría':'Save category')});

@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T11:07:07.361142+00:00",
-  "status": "Partial source: shared navigation/panels, text field, native-form button and real Storybook; all three families have four framework bindings. Other families and complete delivery/application acceptance remain required.",
+  "recordedAtUTC": "2026-11-04T12:04:45.871898+00:00",
+  "status": "Partial source: shared navigation/panels, text field, native-form button, typed single/multiple select and real Storybook; all four families have four framework bindings. Remaining families and complete delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -15,41 +15,42 @@
     "allStillRequired": true
   },
   "implemented": [
-    "Shared controlled navigation/panels, single-line field and core button; immutable pure contracts, explicit registration, typed cancelable intent and one visual renderer per family.",
-    "Real React/Vue/Angular/Svelte navigation, single-line text-field and native-form button bindings. Renderer imports stay type-only; runtime shared imports are DOM-independent validation policies plus each adapter own framework. No alternate visuals.",
-    "527 passing Node/Chromium contract, architecture, CI, component/binding and Storybook tests. All 32 runtime modules are independently inventoried, including example composition and three zero-executable modules. CSF files remain collected test definitions.",
+    "Shared controlled navigation/panels, single-line field, native-form button and typed single/multiple select; immutable pure contracts, explicit registration, typed cancelable intent and one visual renderer per family.",
+    "Real React/Vue/Angular/Svelte bindings for navigation, single-line field, button and typed selects. Renderer imports stay type-only; runtime shared imports are DOM-independent validation policies plus each adapter own framework. No alternate visuals.",
+    "664 passing Node/Chromium contract, architecture, CI, component/binding and Storybook tests. All 39 runtime modules are independently inventoried, including example composition and three zero-executable modules. CSF files remain collected test definitions.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
-    "Four real clean frozen offline consumers compile installed package declarations and exercise navigation, controlled text-field models and native-form button requests/cancellation/default Enter/Space/submitter metadata/validation/disable/busy/reset/projection/EN-ES/themes/teardown/remount in Chromium; no foreign framework is installed.",
+    "Four real clean frozen offline consumers compile installed package declarations and exercise navigation, text-field models, native-form buttons and typed single/multiple selects, including original requests/cancellation, model/option updates, native entries/validation/reset/disabled behavior, EN-ES/themes and teardown/remount; no foreign framework is installed.",
     "Angular actual consumer is AOT compiled and uses the official linker for all partial framework libraries, without a JIT fallback.",
     "Core text field passes actual form ownership/submission, default submitter, required/length/custom validation, disabled fieldsets, readonly, reset, explicit restoration callbacks, focus/labels, controlled caret, composition-boundary and invalid-input regression tests. Its actual installed package passes compiled Chromium form journeys.",
     "Angular text field implements ControlValueAccessor and the shared pure Validator: reactive controls, ngModel, nullable/nonnullable reset, dirty/touched and updateOn change/blur/submit pass. Foreign malformed event payloads are rejected before callbacks; validated snapshots survive observer payload mutation.",
-    "Twenty-eight real production-backed CSF stories and four autodocs pages; static /ha-ui/ matrix covers 48 locale/theme/width combinations, reduced motion, local-only assets, native forms, manual keyboard panels, actual manager controls and toolbar updates.",
+    "Thirty-nine real production-backed CSF stories and five autodocs pages; static /ha-ui/ matrix covers 64 locale/theme/width combinations, reduced motion, local-only assets, native field/select forms, manual keyboard panels, actual manager controls and toolbar updates.",
     "Storybook found and regressed two shared renderer issues: insufficient light error contrast and partially clipped focused navigation destinations. Both reproduce before their common fixes.",
-    "Core button preserves native form validation/submitter/name-value/reset/default Enter using a documented real native auxiliary submitter; state, focus, busy prevention, slots and stale lifecycle/owner guards are exercised in source and actual installed-package consumers. All four button bindings pass source-browser and actual compiled installed-package consumers."
+    "Core button preserves native form validation/submitter/name-value/reset/default Enter using a documented real native auxiliary submitter; state, focus, busy prevention, slots and stale lifecycle/owner guards are exercised in source and actual installed-package consumers. All four button bindings pass source-browser and actual compiled installed-package consumers.",
+    "Typed selects preserve numeric/string/boolean model distinctions and frozen multiple selections. Missing, disabled or mode-mismatched values remain explicit and invalid rather than being replaced. Native entries, controlled reset/restoration, disabled fieldsets, external owners, labels, keyboard and all four form bridges pass source and actual installed consumers."
   ],
   "coverage": {
     "lines": {
-      "total": 463,
-      "covered": 463,
+      "total": 610,
+      "covered": 610,
       "skipped": 0,
       "pct": 100
     },
     "statements": {
-      "total": 927,
-      "covered": 927,
+      "total": 1324,
+      "covered": 1324,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 253,
-      "covered": 253,
+      "total": 352,
+      "covered": 352,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 588,
-      "covered": 588,
+      "total": 821,
+      "covered": 821,
       "skipped": 0,
       "pct": 100
     },
@@ -62,28 +63,34 @@
   },
   "sourceIdentities": {
     ".storybook/main.ts": "922a2ae0b23bb08fab4dc00303af285b1f9eb47e78566cc60d4376149b70a11c",
-    ".storybook/preview.ts": "5b9f531cbde4c1e911b985a1e1ee6f655381fa3db2e4a0659b883d6a3c5b67a4",
+    ".storybook/preview.ts": "66040184c3494c13294435b771072a832e436ba0eb4203415fa77bf612f38b95",
     "packages/angular/src/button.ts": "41ae6d56d8812a99984e71367276b12801f322ea3de7afb550867e79f698dc66",
-    "packages/angular/src/index.ts": "5d9f98655d83b437684b3129554ba0f692aa949740f1fe413aa5e12ed182fb3d",
+    "packages/angular/src/index.ts": "2333d6b2143b83bfd9ba0a568ef64d32bed50ccb9f0262909338b802fe40cd6a",
+    "packages/angular/src/select.ts": "673b08ba21277e1d15899ab7e994c9e0c7d83ed35e6fde1cedada9a9ca3fe6f7",
     "packages/angular/src/text-field.ts": "fe0e40f32969c5e3d43bc721f1f0474ecc2fca45e33e12415c30af64a23f4ea4",
     "packages/core/src/button-contracts.ts": "fcbb48c8776a72d27e8b61e664de1318aec2edc31a4eeb87313780678533ba99",
     "packages/core/src/components/button.ts": "5301c32f9c5cc716b0eb805f8952704c37e07acf4d3996f78e8e07d523020f12",
     "packages/core/src/components/field.ts": "620e3211f24135c6f89440087eacdc36f488b8402cd704c1832f282755e7ecdd",
+    "packages/core/src/components/select.ts": "99cbe2ec19a17ea465511a7a65a3e74eafc9df85dee66df3990d00ad4f1fd128",
     "packages/core/src/components/tabs.ts": "53e476dde73ab0307a658985f4f2ec91b2086e69df42155d6fdb67925c6a5bb0",
     "packages/core/src/contracts.ts": "457c418cbfcafe5ebb1f834a1f8c2c19f484bad15ea8df5bc65502eec6e19c91",
     "packages/core/src/field-contracts.ts": "130e143f3f69dfaa6e0397cf68cd2ec824823b44ff3f4488d92b19180d50b738",
-    "packages/core/src/index.ts": "73cf124d7066161ffe40967f338b17ff376c0c928e9a3c51a2ca979539c839bc",
+    "packages/core/src/index.ts": "9d100647ddad27ac18d30398b3f2ad11f6d47e7f144814b257a96e94f76aea42",
     "packages/core/src/presentation-text.ts": "ad2eb8396a26638ba8d2f2f7cee3656195646aaea077cdc0d3ecd06fc95b3df2",
+    "packages/core/src/select-contracts.ts": "8a14a57d1ed75a368d0a756f55cbc043b3e8817c9ecca622808752c05f2c29ed",
     "packages/react/src/button.ts": "dfe36710fb8db11e674efb43715525bfd246f6819086c3a3628a662920df04eb",
-    "packages/react/src/index.ts": "85eaf31079a164e1690a68877c87fe4ce7456a8561ff49c193596f9e7ff4f2ad",
+    "packages/react/src/index.ts": "4fd4064efb110f5cb73733a134779b1a13a3174fc3e4a1d40b7666ad846e0d68",
+    "packages/react/src/select.ts": "9ef616bc827366efc8dfd596c40e0b9c6f04d0c674e03792a2b55f56630875aa",
     "packages/react/src/text-field.ts": "1d9249cb835aa1205bcb634fee2f75af01bc5c7833f9f71391e72de560c67656",
     "packages/svelte/src/Button.svelte": "61f2927ec5b878bfa6cee124692b5191b960116e6d861418dca5ee6effcefadc",
     "packages/svelte/src/Field.svelte": "174e62b2fd01af8279ab42ce58ab530a0ee14d370bcdb646139f5a143052b8a0",
+    "packages/svelte/src/Select.svelte": "39fe9d4b286a30774f1dd8b6a893f9e021dcf72b2d24a39a3f549d3b43c99d8a",
     "packages/svelte/src/Tabs.svelte": "974845c12ec9d760b6f76a43ae89fd4c1618d7b4d56381d98d16f65abc5b27c4",
-    "packages/svelte/src/index.ts": "7a8c5088266a336df3eda4e773a78fcfb03288b36b226529bfc3586b7a26b9b2",
-    "packages/svelte/src/types.ts": "7e0870b952d6661f4d8d74877047451cb97f64130fbeff8ec747c9b9c776f1ef",
+    "packages/svelte/src/index.ts": "6513dac1429f7a72609044c1592c8adda2ce79c65368f9e155e2c99ca9e4d52b",
+    "packages/svelte/src/types.ts": "142caae1d17e375b7b8c32f7a8d45f61ca804ea12b93c377b4d614e77c17db3e",
     "packages/vue/src/button.ts": "886e33cb28661a0e51489a9c9d4505df0187ec95a7d666a25cc5c6d6778575d6",
-    "packages/vue/src/index.ts": "2b9d6904e92b85dcb3f4d2b7b1cdc138cfc9c2511c4609e3c4c34aea05292ad2",
+    "packages/vue/src/index.ts": "d63f58b8bb1db544efa84467cbc03d1b2ed653d864d39dfc839b74be100198cc",
+    "packages/vue/src/select.ts": "3314b91488c76259e8d5c44d3c6a9a4ef18aba2bdfba6142fab12b03be8a0e2e",
     "packages/vue/src/text-field.ts": "e160d93f62669ffb989e3d8d78fb28b0da287226d8157676d5842b6a7c83f612",
     "stories/button.example.ts": "06773480e755be6526d292df9026ad0abace6825e17fd4e0b1ef81215d63680e",
     "stories/catalog-example.ts": "c5fa904779d81d2f081573051234b2d57f98c74c5c4ca99cbc8717584c2494e8",
@@ -92,12 +99,13 @@
     "stories/field.example.ts": "d76da5e2692e57e3e529fe083e6127d74363440b47c24d03efdc13ccf3c72385",
     "stories/foundation.example.ts": "6fc175e9a44ff0504c46271bd45837f6a4799d9815614a2389b9a238c85ab42b",
     "stories/panels.example.ts": "dec84608d463dc340acf874d44f2cae3c7cd188390e23221cd728a4bdbf0a04f",
+    "stories/select.example.ts": "f463a883a738ef3f95673c3eea43ead2fc8209ee940fe8d0f78c03c418e4fbb0",
     "tooling/coverage.mjs": "ad527a5d04517adb1992ac65a9abfffcabb9a2001f7f652c732dbe35899b56c8"
   },
   "packedContract": {
     "scope": "Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required",
-    "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d",
-    "bytes": 43049,
+    "sha256": "de304c54d56224bc0322ec9c59580fcac30316c40061069d623b12633c92cc50",
+    "bytes": 58010,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -124,9 +132,9 @@
     }
   },
   "limitations": [
-    "Navigation/panels, text field and native-form button have four bindings. Selects, checkboxes, dialogs and remaining families and form bridges are required.",
+    "Navigation/panels, text field, native-form button and typed single/multiple select have four bindings. Checkboxes, dialogs and remaining families/form bridges are still required.",
     "Text-field composition events and restoration callbacks are explicitly exercised; real device IME and automatic browser history restoration remain unverified.",
-    "Exact recorded framework pins pass navigation, one text-field and native-form button compiled consumers. Full cohort support and broader public peer ranges cannot be inferred from those three families.",
+    "Exact recorded framework pins pass navigation, text-field, button and typed-select compiled consumers. Full cohort support and broader public peer ranges cannot be inferred from those four families.",
     "Next.js, Nuxt and SvelteKit explicit server-shell/client fixtures, hydration behavior and other browser engines remain unverified.",
     "All six delivery refinements, accepted-candidate promotion/publication recovery, public Storybook hosting, publisher authority and live publication remain required.",
     "Gateway and Domus adoption, installed deployment/recovery and human UX acceptance remain unverified.",
@@ -151,6 +159,10 @@
       "test-results/packed-angular-dark-es.png",
       "test-results/packed-angular-field-dark-es.png",
       "test-results/packed-angular-field-error-dark-es.png",
+      "test-results/packed-angular-select-dark-es.png",
+      "test-results/packed-angular-select-light.png",
+      "test-results/packed-angular-select-multiple-dark-es.png",
+      "test-results/packed-angular-select-multiple-light.png",
       "test-results/packed-field-dark-es.png",
       "test-results/packed-navigation-light.png",
       "test-results/packed-panels-dark-es.png",
@@ -159,16 +171,28 @@
       "test-results/packed-react-dark-es.png",
       "test-results/packed-react-field-dark-es.png",
       "test-results/packed-react-field-error-dark-es.png",
+      "test-results/packed-react-select-dark-es.png",
+      "test-results/packed-react-select-light.png",
+      "test-results/packed-react-select-multiple-dark-es.png",
+      "test-results/packed-react-select-multiple-light.png",
       "test-results/packed-svelte-button-dark-es.png",
       "test-results/packed-svelte-button-light.png",
       "test-results/packed-svelte-dark-es.png",
       "test-results/packed-svelte-field-dark-es.png",
       "test-results/packed-svelte-field-error-dark-es.png",
+      "test-results/packed-svelte-select-dark-es.png",
+      "test-results/packed-svelte-select-light.png",
+      "test-results/packed-svelte-select-multiple-dark-es.png",
+      "test-results/packed-svelte-select-multiple-light.png",
       "test-results/packed-vue-button-dark-es.png",
       "test-results/packed-vue-button-light.png",
       "test-results/packed-vue-dark-es.png",
       "test-results/packed-vue-field-dark-es.png",
-      "test-results/packed-vue-field-error-dark-es.png"
+      "test-results/packed-vue-field-error-dark-es.png",
+      "test-results/packed-vue-select-dark-es.png",
+      "test-results/packed-vue-select-light.png",
+      "test-results/packed-vue-select-multiple-dark-es.png",
+      "test-results/packed-vue-select-multiple-light.png"
     ],
     "imagesInspected": true,
     "focusRegression": "focus-return-red.log reproduces the stale tab-stop; full green run has no skipped tests.",
@@ -199,7 +223,9 @@
     "frameworkFieldRed": "invalid-event-red.log reproduced four failing adapter cases before the pure payload guard. The final source campaign includes those regressions and observer-mutation cases.",
     "packedFieldInitialAttempts": "packed.log stopped before any browser launch because the local browser path variable was absent. packed-with-runtime.log then exposed a premature React UI-counter assertion; the driver now waits for the observed render state. current-packed.log passes all actual compiled forms; no unsupported behavioral red claim is made for the launch failure.",
     "buttonCases": 25,
-    "frameworkButtonCases": 32
+    "frameworkButtonCases": 32,
+    "selectCoreCases": 20,
+    "selectFrameworkCases": 45
   },
   "consumerIsolationRegression": {
     "failedHostedRun": "https://github.com/vypdev/ha-ui/actions/runs/41773354203/job/126387929863",
@@ -211,7 +237,7 @@
     "freshHostedRequired": true
   },
   "packedFrameworks": {
-    "scope": "Navigation, one controlled text field and native-form buttons with four framework bindings; other controls, framework SSR and application adoption remain required",
+    "scope": "Navigation, one controlled text field, native-form buttons and typed single/multiple selects with four framework bindings; other controls, framework SSR and application adoption remain required",
     "frameworks": [
       {
         "framework": "react",
@@ -221,11 +247,11 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz",
-            "sha256": "f1326caee89a253aca078a618bbfca36c585dd79c9e83756d27d6bda520ddb06"
+            "sha256": "65853604726fc82dfeb965e81a7d0bf1d77efca1172d356fad3f4171c8a81baf"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d"
+            "sha256": "de304c54d56224bc0322ec9c59580fcac30316c40061069d623b12633c92cc50"
           }
         ],
         "props": true,
@@ -256,6 +282,20 @@
           "frameworkReset": true,
           "disabledAndBusy": true,
           "projectionPreservesSubmitter": true,
+          "teardownAndRemount": true
+        },
+        "select": {
+          "typedNumberStringBoolean": true,
+          "nativeDropdownTypeahead": true,
+          "originalRequestExactlyOnce": true,
+          "cancellation": true,
+          "programmaticWritesEmitNoIntent": true,
+          "asyncOptionsPreserveModel": true,
+          "requiredValidation": true,
+          "disabledSubmission": true,
+          "nativeFormData": true,
+          "multipleTypedValues": true,
+          "frameworkReset": true,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -269,11 +309,11 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz",
-            "sha256": "66c2462cc39862b3c1428d8111afa5bc7973e5db18a2e8a2ec8538dbb3c75dfc"
+            "sha256": "9587d2b33fc820f243084e4174a45c88080ef8b9c23567e82b2e014b9f2ac088"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d"
+            "sha256": "de304c54d56224bc0322ec9c59580fcac30316c40061069d623b12633c92cc50"
           }
         ],
         "props": true,
@@ -304,6 +344,20 @@
           "frameworkReset": true,
           "disabledAndBusy": true,
           "projectionPreservesSubmitter": true,
+          "teardownAndRemount": true
+        },
+        "select": {
+          "typedNumberStringBoolean": true,
+          "nativeDropdownTypeahead": true,
+          "originalRequestExactlyOnce": true,
+          "cancellation": true,
+          "programmaticWritesEmitNoIntent": true,
+          "asyncOptionsPreserveModel": true,
+          "requiredValidation": true,
+          "disabledSubmission": true,
+          "nativeFormData": true,
+          "multipleTypedValues": true,
+          "frameworkReset": true,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -317,11 +371,11 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-angular-0.1.0-next.1.tgz",
-            "sha256": "4464491fb1848a21be7c19fbc402b3513355a37a60da6f836c3c6167d9a85407"
+            "sha256": "a724a46d3c9cbd7c045ea903d4dc54b8b001201f908640e20753bf792dbe4356"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d"
+            "sha256": "de304c54d56224bc0322ec9c59580fcac30316c40061069d623b12633c92cc50"
           }
         ],
         "props": true,
@@ -352,6 +406,20 @@
           "frameworkReset": true,
           "disabledAndBusy": true,
           "projectionPreservesSubmitter": true,
+          "teardownAndRemount": true
+        },
+        "select": {
+          "typedNumberStringBoolean": true,
+          "nativeDropdownTypeahead": true,
+          "originalRequestExactlyOnce": true,
+          "cancellation": true,
+          "programmaticWritesEmitNoIntent": true,
+          "asyncOptionsPreserveModel": true,
+          "requiredValidation": true,
+          "disabledSubmission": true,
+          "nativeFormData": true,
+          "multipleTypedValues": true,
+          "frameworkReset": true,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -365,11 +433,11 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz",
-            "sha256": "515d72338e3f6409d4a314733bd4bbef445f6f6e6612ab89c7933fc48f024f59"
+            "sha256": "bf9e8e9e5d2a43c216459314bedd9d6391fb333ed59a0beb7140749e2ac9216e"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d"
+            "sha256": "de304c54d56224bc0322ec9c59580fcac30316c40061069d623b12633c92cc50"
           }
         ],
         "props": true,
@@ -402,43 +470,57 @@
           "projectionPreservesSubmitter": true,
           "teardownAndRemount": true
         },
+        "select": {
+          "typedNumberStringBoolean": true,
+          "nativeDropdownTypeahead": true,
+          "originalRequestExactlyOnce": true,
+          "cancellation": true,
+          "programmaticWritesEmitNoIntent": true,
+          "asyncOptionsPreserveModel": true,
+          "requiredValidation": true,
+          "disabledSubmission": true,
+          "nativeFormData": true,
+          "multipleTypedValues": true,
+          "frameworkReset": true,
+          "teardownAndRemount": true
+        },
         "browser": "156.0.8078.4",
         "errors": []
       }
     ]
   },
   "packedCohort": {
-    "scope": "Unpublished navigation, text-field and button preview with four framework bindings; no registry publication or full capability acceptance",
+    "scope": "Unpublished navigation, text-field, button and typed-select preview with four framework bindings; no registry publication or full capability acceptance",
     "cohort": [
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d",
-        "bytes": 43049
+        "sha256": "de304c54d56224bc0322ec9c59580fcac30316c40061069d623b12633c92cc50",
+        "bytes": 58010
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
         "version": "0.1.0-next.1",
-        "sha256": "4464491fb1848a21be7c19fbc402b3513355a37a60da6f836c3c6167d9a85407",
-        "bytes": 6487
+        "sha256": "a724a46d3c9cbd7c045ea903d4dc54b8b001201f908640e20753bf792dbe4356",
+        "bytes": 7891
       },
       {
         "coordinate": "@vypdev/ha-ui-react",
         "version": "0.1.0-next.1",
-        "sha256": "f1326caee89a253aca078a618bbfca36c585dd79c9e83756d27d6bda520ddb06",
-        "bytes": 5497
+        "sha256": "65853604726fc82dfeb965e81a7d0bf1d77efca1172d356fad3f4171c8a81baf",
+        "bytes": 6418
       },
       {
         "coordinate": "@vypdev/ha-ui-svelte",
         "version": "0.1.0-next.1",
-        "sha256": "515d72338e3f6409d4a314733bd4bbef445f6f6e6612ab89c7933fc48f024f59",
-        "bytes": 3530
+        "sha256": "bf9e8e9e5d2a43c216459314bedd9d6391fb333ed59a0beb7140749e2ac9216e",
+        "bytes": 3911
       },
       {
         "coordinate": "@vypdev/ha-ui-vue",
         "version": "0.1.0-next.1",
-        "sha256": "66c2462cc39862b3c1428d8111afa5bc7973e5db18a2e8a2ec8538dbb3c75dfc",
-        "bytes": 5874
+        "sha256": "9587d2b33fc820f243084e4174a45c88080ef8b9c23567e82b2e014b9f2ac088",
+        "bytes": 6892
       }
     ],
     "reproducible": true,
@@ -459,10 +541,11 @@
     "angularForms": "22.2.4"
   },
   "frameworkBoundaries": {
-    "validated": "Navigation, one controlled single-line text field and native-form buttons; other controls remain required",
+    "validated": "Navigation, one controlled single-line text field, native-form buttons and typed single/multiple selects; remaining controls are still required",
     "forms": {
       "singleLineTextField": true,
-      "otherControls": false
+      "otherControls": false,
+      "typedSingleAndMultipleSelect": true
     },
     "frameworkSSRAndHydration": false,
     "otherBrowserEngines": false,
@@ -471,7 +554,8 @@
     "storybook": "Implemented catalog/static subpath verified for current families; public Pages deployment and complete-family/human acceptance pending",
     "coreNativeTextField": true,
     "buttonFrameworkBindings": true,
-    "coreButton": true
+    "coreButton": true,
+    "selectFrameworkBindings": true
   },
   "coldSourceValidation": {
     "compiledDistributionsPresent": false,
@@ -483,11 +567,11 @@
       "svelte"
     ],
     "types": "Strict source, consumer, Storybook and both Svelte checks pass without any of five compiled distributions",
-    "unitAndBrowserTests": 527,
+    "unitAndBrowserTests": 664,
     "coverage": "100% statements/branches/functions/lines per authored file and globally",
     "restoration": "Every previous compiled distribution restored byte-for-byte",
     "reason": "Actual source campaign runs while all five dist trees are absent; compiled bytes are restored and independently verified.",
-    "restoredFiles": 74,
+    "restoredFiles": 93,
     "identityBasis": "The sourceIdentities SHA-256 map binds this increment; the owning PR supplies its exact Git revision."
   },
   "restoreReviewRegression": {
@@ -500,12 +584,12 @@
   "storybook": {
     "version": "10.6.5",
     "a11y": "4.14.0",
-    "runtimeCoverageInventory": 28,
-    "testDefinitionsExcludedByVitest": "Four CSF test files; all runtime rendering remains in independently inventoried examples.",
+    "runtimeCoverageInventory": 39,
+    "testDefinitionsExcludedByVitest": "Five CSF test files; all runtime rendering remains in independently inventoried examples.",
     "staticBrowser": {
       "subpath": "/ha-ui/",
-      "storyCount": 28,
-      "docsCount": 4,
+      "storyCount": 39,
+      "docsCount": 5,
       "matrix": [
         {
           "story": "navigation-household-sections--long-labels",
@@ -550,6 +634,20 @@
           "a11yViolations": 0
         },
         {
+          "story": "forms-select--default",
+          "locale": "en",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--multiple",
+          "locale": "en",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
           "story": "navigation-household-sections--long-labels",
           "locale": "en",
           "theme": "light",
@@ -592,6 +690,20 @@
           "a11yViolations": 0
         },
         {
+          "story": "forms-select--default",
+          "locale": "en",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--multiple",
+          "locale": "en",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
           "story": "navigation-household-sections--long-labels",
           "locale": "en",
           "theme": "dark",
@@ -634,6 +746,20 @@
           "a11yViolations": 0
         },
         {
+          "story": "forms-select--default",
+          "locale": "en",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--multiple",
+          "locale": "en",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
           "story": "navigation-household-sections--long-labels",
           "locale": "en",
           "theme": "dark",
@@ -676,6 +802,20 @@
           "a11yViolations": 0
         },
         {
+          "story": "forms-select--default",
+          "locale": "en",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--multiple",
+          "locale": "en",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
           "story": "navigation-household-sections--long-labels",
           "locale": "es",
           "theme": "light",
@@ -718,6 +858,20 @@
           "a11yViolations": 0
         },
         {
+          "story": "forms-select--default",
+          "locale": "es",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--multiple",
+          "locale": "es",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
           "story": "navigation-household-sections--long-labels",
           "locale": "es",
           "theme": "light",
@@ -760,6 +914,20 @@
           "a11yViolations": 0
         },
         {
+          "story": "forms-select--default",
+          "locale": "es",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--multiple",
+          "locale": "es",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
           "story": "navigation-household-sections--long-labels",
           "locale": "es",
           "theme": "dark",
@@ -802,6 +970,20 @@
           "a11yViolations": 0
         },
         {
+          "story": "forms-select--default",
+          "locale": "es",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--multiple",
+          "locale": "es",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
           "story": "navigation-household-sections--long-labels",
           "locale": "es",
           "theme": "dark",
@@ -838,6 +1020,20 @@
         },
         {
           "story": "buttons-actions--loading",
+          "locale": "es",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--default",
+          "locale": "es",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-select--multiple",
           "locale": "es",
           "theme": "dark",
           "width": 960,
@@ -846,6 +1042,10 @@
       ],
       "keyboard": true,
       "nativeForm": true,
+      "selectForms": {
+        "typedDropdownTypeahead": true,
+        "multipleRepeatedEntries": true
+      },
       "managerDocs": true,
       "managerControls": true,
       "buttonReducedMotionVerified": true,
@@ -1086,5 +1286,39 @@
     ],
     "initialAttempt": "All five new cases initially stopped before submission on an incorrect expectation that ElementInternals.validationMessage becomes empty for readonly controls. Its normative getter retains the stored message. That test expectation was corrected without any renderer change; the complete native submission assertions then passed. The original test and failure log are retained.",
     "manualResolution": false
+  },
+  "select": {
+    "contract": "docs/select-contract.md",
+    "purePolicyCases": 59,
+    "sourceBrowserCases": 20,
+    "frameworkSourceCases": 45,
+    "stories": 11,
+    "runtimeFilesAdded": 7,
+    "installedCore": {
+      "typedSingleSelection": true,
+      "typedMultipleSelection": true,
+      "nativeTypeahead": true,
+      "nativeFormData": true,
+      "explicitTypedRestorationAndReset": {
+        "restored": false,
+        "reset": 1,
+        "entries": [
+          [
+            "category",
+            "1"
+          ]
+        ]
+      }
+    },
+    "allFourInstalledFrameworks": true,
+    "visualReview": "Sixteen original installed-framework images form five byte-identity groups across single/multiple, English/light and Spanish/dark states; one original from every group was inspected. No owner HA or human application acceptance is inferred.",
+    "regressions": {
+      "apiAbsence": "Initial policy, renderer and adapter runs rejected missing modules/exports before implementation; no behavioral-red claim is made for those API-absence runs. The first pure test table also failed during naming of a BigInt and spread array rows; rows were explicitly wrapped so the actual arrays reach the policy.",
+      "nativeKeyboard": "The initial dropdown-arrow test left both the shared control and a standalone native reference unchanged. A direct Playwright probe observed the same result for native size=1 arrow/Enter/Space combinations, while native typeahead and size=4 arrows worked. Permanent tests verify dropdown typeahead and visible-list arrows. No runtime override was introduced for this platform/driver observation.",
+      "angularValidationPolicy": "The first actual Angular consumer recorded empty Saved categories although its current model and later FormData were correct. Its earlier invalid submit was permitted because Angular added novalidate; a UI-counter assertion was premature. A permanent native-submit test observed one invalid submit before the fixture opted into standard ngNativeValidate. The compiled consumer now also asserts noValidate=false and waits for the actual native invalid event before checking blocked submission. Product runtime was unchanged for this fixture correction.",
+      "staticDriver": "The first static selector journey searched for f despite the fictional option label Other. The driver now uses o; no component behavior or expected typed value was changed. The static receipt now derives actual story/doc counts from its built index instead of retaining the previous hardcoded counts."
+    },
+    "nativeFormDataTypes": "Standard HTML FormData serializes primitive values as strings; typed property/request models remain distinct. Wire-level type preservation requires JSON models or unique string IDs.",
+    "automaticBrowserRestorationVerified": false
   }
 }

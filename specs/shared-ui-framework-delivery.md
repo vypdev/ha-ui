@@ -460,6 +460,24 @@ Prospective repository files (current documents are classified against the immut
 | `tests/browser/svelte-button.test.mjs` | create |
 | `tests/browser/fixtures/SvelteButton.svelte` | create |
 | `tests/consumers/framework-buttons.ts` | create |
+| `packages/core/src/select-contracts.ts` | create |
+| `packages/core/src/components/select.ts` | create |
+| `packages/react/src/select.ts` | create |
+| `packages/vue/src/select.ts` | create |
+| `packages/angular/src/select.ts` | create |
+| `packages/svelte/src/Select.svelte` | create |
+| `docs/select-contract.md` | create |
+| `tests/contracts/select.test.ts` | create |
+| `tests/browser/select.test.ts` | create |
+| `tests/browser/select-framework-fixture.ts` | create |
+| `tests/browser/react-select.test.ts` | create |
+| `tests/browser/vue-select.test.ts` | create |
+| `tests/browser/angular-select.test.ts` | create |
+| `tests/browser/svelte-select.test.mjs` | create |
+| `tests/browser/fixtures/SvelteSelect.svelte` | create |
+| `tests/consumers/selects.ts` | create |
+| `stories/select.example.ts` | create |
+| `stories/select.stories.ts` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

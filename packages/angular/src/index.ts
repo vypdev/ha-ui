@@ -15,3 +15,4 @@ export class Tabs implements OnChanges,OnDestroy {
 }
 export {TextField} from './text-field.js';
 export {Button} from './button.js';
+export {Select} from './select.js';

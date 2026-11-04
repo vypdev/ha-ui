@@ -24,3 +24,5 @@ export {TextField} from './text-field.js';
 export type {TextFieldProps} from './text-field.js';
 export {Button} from './button.js';
 export type {ButtonProps} from './button.js';
+export {Select} from './select.js';
+export type {SelectProps} from './select.js';

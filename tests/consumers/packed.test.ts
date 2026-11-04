@@ -11,6 +11,7 @@ import {createServer} from 'vite';
 import {chromium} from 'playwright';
 import {parse, stringify} from 'yaml';
 import type {HaTextField} from '../../packages/core/src/components/field.js';
+import {exerciseInstalledSelect} from './selects.ts';
 import {exerciseReadonlyField} from './fields.ts';
 import {exerciseCoreButton} from './buttons.ts';
 import {exerciseFrameworks} from './frameworks.ts';
@@ -88,6 +89,8 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
     await writeFile(join(consumer, 'contract.ts'), `import {navigationState, type NavigationKind} from '@vypdev/ha-ui/contracts';
 import {textFieldState,textFieldValidity,fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
 import {buttonState,buttonPressDetail,type ButtonType} from '@vypdev/ha-ui/button-contracts';
+import {selectState,selectSelection,selectEntries,selectRestoreState,selectRestoreValue,type SelectSelection} from '@vypdev/ha-ui/select-contracts';
+const choice:SelectSelection=selectSelection([1,'1',false]);const choices=selectState({label:'Category',multiple:true,options:[{value:1,label:'Number'},{value:'1',label:'Text'},{value:false,label:'Other'}]});if(selectEntries(choice,choices).length!==3||!Array.isArray(selectRestoreValue(selectRestoreState(choice))))throw Error('Expected typed pure select policy');
 const action:ButtonType='submit';if(buttonState({label:'Save'}).loading||buttonPressDetail({type:action}).type!=='submit')throw Error('Expected pure button policy');
 const field=textFieldState({label:'Name',required:true});
 if(!textFieldValidity('',field).flags.valueMissing)throw Error('Expected pure field validation');
@@ -99,6 +102,8 @@ void selected;`);
     await execute(process.execPath, [resolve(root, 'node_modules/typescript/bin/tsc'), '-p', 'tsconfig.json'], {cwd: consumer});
     const probe = await execute(process.execPath, ['--input-type=module', '-e', `import {navigationState} from '@vypdev/ha-ui/contracts';
 import {fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
+import {selectSelection,selectRestoreValue,selectRestoreState} from '@vypdev/ha-ui/select-contracts';
+if(!Object.isFrozen(selectSelection([1,'1',false]))||selectRestoreValue(selectRestoreState(false))!==false)throw Error('Expected DOM-free select policy');
 import {buttonState,buttonPressDetail} from '@vypdev/ha-ui/button-contracts';
 if(!Object.isFrozen(buttonState({label:'Save'}))||buttonPressDetail({type:'button'}).type!=='button')throw Error('Expected DOM-free button policy');
 if(!Object.isFrozen(fieldValueDetail({value:'Kitchen',reason:'input'})))throw Error('Expected immutable DOM-free request contract');
@@ -109,7 +114,7 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
     assert.match(probe.stdout, /Packed contract imported without DOM globals/u);
     const installed = join(consumer, 'node_modules/@vypdev/ha-ui');
     const packageFiles=['LICENSE'];
-    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button']) {
+    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select']) {
       packageFiles.push('src/'+module+'.ts');
       for (const suffix of ['.js','.js.map','.d.ts','.d.ts.map']) packageFiles.push('dist/'+module+suffix);
     }
@@ -119,6 +124,7 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
     await writeFile(join(consumer,'client.ts'), `import {registerTabs} from '@vypdev/ha-ui/tabs';
 import {registerField} from '@vypdev/ha-ui/field';
 import {registerButton} from '@vypdev/ha-ui/button';
+import {registerSelect} from '@vypdev/ha-ui/select';
 import {buttonState} from '@vypdev/ha-ui/button-contracts';
 import {textFieldState} from '@vypdev/ha-ui/field-contracts';
 import {navigationState} from '@vypdev/ha-ui/contracts';
@@ -127,7 +133,7 @@ const element=document.createElement('vyp-ha-tabs');
 element.state=navigationState({kind:'navigation',label:'Household sections',selected:'overview',items:[{id:'overview',label:'Overview',href:'#overview'},{id:'tasks',label:'Tasks',href:'#tasks'}]});
 element.addEventListener('ha-selection-request',event=>{event.preventDefault();element.state=navigationState({...element.state,selected:event.detail.id});});
 document.querySelector('main')!.append(element);
-registerField();registerButton();
+registerField();registerButton();registerSelect();
 const form=document.createElement('form'),field=document.createElement('vyp-ha-field');
 field.state=textFieldState({label:'Task name',description:'A name for this task.',required:true});field.name='task';field.defaultValue='Kitchen';
 field.addEventListener('ha-value-request',event=>{if(!event.defaultPrevented)field.value=event.detail.value;});
@@ -186,14 +192,16 @@ document.querySelector('main')!.append(form);`);
     const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,textField:{controlledInput:true,nativeSubmitter:true,requiredValidation:true,reset:true,disabledSubmission:true},runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
     await mkdir(resolve(root, 'test-results'), {recursive:true});
     await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
+    const select=await exerciseInstalledSelect(browserPage);
+    await writeFile(resolve(root,'test-results/packed-select.json'),JSON.stringify(select,null,2)+'\n');
     const readonlyField=await exerciseReadonlyField(browserPage);
     await writeFile(resolve(root,'test-results/packed-readonly-field.json'),JSON.stringify(readonlyField,null,2)+'\n');
     const coreButton=await exerciseCoreButton(browserPage,root);
     await writeFile(resolve(root,'test-results/packed-button.json'),JSON.stringify(coreButton,null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;
     const frameworks=await exerciseFrameworks(root,scratch,browser);
-    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, one controlled text field and native-form buttons with four framework bindings; other controls, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
-    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, text-field and button preview with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, one controlled text field, native-form buttons and typed single/multiple selects with four framework bindings; other controls, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, text-field, button and typed-select preview with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
     passed = true;
   } finally {
     await browser?.close(); await server?.close();

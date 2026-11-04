@@ -1,7 +1,7 @@
 # Shared component catalog
 
 The current catalog displays the implemented upper navigation, local panels and single-line text
-field and button using the real package entrypoints. Twenty-eight CSF stories have automatic documentation,
+field, button and typed single/multiple select using the real package entrypoints. Thirty-nine CSF stories have automatic documentation,
 controls, interaction tests and accessibility checks. This is an incremental preview; other
 families, the full framework/SSR/browser matrix and application adoption are still required.
 
@@ -26,6 +26,7 @@ are local to the static build; the browser gate rejects external requests and fa
 | Tabs / Local panels | The same renderer, `kind: panels` | Named slots, manual keyboard activation, disabled and unselected |
 | Buttons / Actions | `@vypdev/ha-ui/button` | Eight variants, native submit/reset, busy, pressed, icon-only, disabled and canceled |
 | Forms / Text field | `@vypdev/ha-ui/field` | Controlled draft, native submit/reset, required, readonly, disabled and error |
+| Forms / Select | `@vypdev/ha-ui/select` | Typed single/multiple values, required, disabled/error, unavailable/disabled options, empty, cancellation and reset |
 
 The toolbar chooses English/Spanish, light/dark, narrow/wide and reduced/system motion. Unsupported
 locale values fall back to English. System reduced-motion preferences are always respected. The
@@ -55,7 +56,7 @@ imported from independently measured `*.example.ts` modules; architecture checks
 renderers or duplicate control markup in those test definitions. No runtime example is excluded.
 
 The static gate builds the manager, autodocs and previews, then serves only the repository base
-`/ha-ui/`. It checks 48 locale/theme/width combinations with axe, real focus/overflow and manual
+`/ha-ui/`. It checks 64 locale/theme/width combinations with axe, real focus/overflow and manual
 panel activation, native form editing/validation/submit/reset, controls-driven value changes and
 all four manager toolbar settings. It records original screenshots and `test-results/storybook/evidence.json`.
 The contrast and partial-focus regressions fail against the earlier renderer and pass after the
