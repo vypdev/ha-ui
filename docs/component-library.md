@@ -1,8 +1,9 @@
 # Shared component library
 
-The first source increment implements the DOM-independent navigation data contract and its
-tested quality/build foundation. Rendered components, adapters, Storybook and consumer migrations
-are not implemented or published yet. The [primary Draft](../specs/shared-ui-foundation.md),
+The current source implements the DOM-independent navigation contract, one controlled upper
+navigation/panel renderer and the tested quality/build foundation. The renderer passes direct
+Chromium and clean actual-package browser consumers. Other component families, framework adapters,
+Storybook, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
 
@@ -39,8 +40,10 @@ Next.js, Nuxt and SvelteKit need explicit tested client/import boundaries; a gen
 claim does not prove SSR or hydration support. The initial goal is a server shell with client-mounted
 components, not universal server rendering of Shadow DOM.
 
-Before extraction, verify packed consumers for Lit/DOM and all four adapters. Then pin the Gateway
-source/license baseline, retain MIT and asset notices, and extract behavior once. Actual Gateway and
+The first navigation preview exercises the proposed DOM contract and reviewed Gateway dashboard
+geometry. It does not establish broad extraction or a supported framework cohort. Before extending
+extraction to additional families, verify the packed consumers for Lit/DOM and all four adapters,
+retain the Gateway source/license baseline and MIT/asset notices, and extract behavior once. Actual Gateway and
 Domus migrations happen under their own admitted repository work, using the same reviewed cohort.
 Retire local duplicates only after equivalent app, recovery, locale and accessibility journeys pass.
 Core/adapter publication, Storybook delivery and each app's acceptance are distinct gates.

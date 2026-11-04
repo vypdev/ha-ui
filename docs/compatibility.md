@@ -24,7 +24,7 @@ The controlled navigation model requires kind, label, selected and items. Kind i
 selected is an existing enabled item ID or null. IDs use 1..128 ASCII letters, digits, underscore or
 hyphen; accessible labels contain 1..256 Unicode code points without C0, DEL, C1 or unpaired surrogate values.
 At most 64 items are accepted, without truncation. Navigation items require an explicit HTTP(S) or
-relative application link; panel items omit links and use item IDs for future named panel slots.
+relative application link; panel items omit links and use item IDs for named panel slots.
 Disabled defaults to false. Labels and links retain their original values; snapshots are deeply frozen.
 Invalid/extra fields, conflicting selection and unsafe or credential-bearing links raise the bounded
 NavigationInputError with code invalid_navigation. This validates data, not authorization or rendering.
