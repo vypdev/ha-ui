@@ -129,7 +129,7 @@ content uses 18px top and 14px bottom padding; inactive items retain the header 
 0.8 opacity, with another 0.5 factor for disabled content. Keyboard focus uses HA's gray 2px
 ring inset by 5px. The header surface/text inherit `--app-header-background-color` and
 `--app-header-text-color` before the ordinary card/text fallbacks. Domus still owns its sections
-and layout. Icons, overflow affordances and full installed-app visual acceptance remain required.
+and layout. Local icon-only, icon-and-text and mixed items use the same renderer; overflow affordances and full installed-app visual acceptance remain required.
 Public CSS tokens are `--vyp-ha-font-family`, `--vyp-ha-border`, `--vyp-ha-surface`,
 `--vyp-ha-tab-padding`, `--vyp-ha-text-secondary`, `--vyp-ha-text`, `--vyp-ha-tab-indicator-color`,
 `--vyp-ha-focus-ring`, `--vyp-ha-tab-border` and `--vyp-ha-primary`. The focus ring inherits HA's `--wa-focus-ring`; the
@@ -138,13 +138,35 @@ The bar border inherits `--app-header-border-bottom`, falling back to a 1px
 `--vyp-ha-border`/`--divider-color` rule. `--vyp-ha-tab-border` overrides the full border.
 Defaults inherit the corresponding HA theme variables where available. Overrides update live;
 no global styles, network, storage, timers or animation are introduced. Exposed shadow parts are
-`bar`, `item`, `content` and `panel`. The `content` part owns the visible focus ring;
+`bar`, `item`, `content`, `icon`, `label` and `panel`. The `content` part owns the visible focus ring;
 links/buttons retain the actual keyboard focus and semantics. Navigation binding and packed browser evidence are in the [framework guide](framework-adapters.md);
 forms, other families and the complete framework/client boundary matrix remain separate gates.
 
 The interaction model follows [WAI-ARIA APG tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)
 and uses Lit's documented [reactive properties](https://lit.dev/docs/components/properties/)
 and [events](https://lit.dev/docs/components/events/).
+
+### Local navigation icons and labels
+
+Each item may supply `iconPath`, an inert local SVG path command string in a fixed `0 0 24 24`
+view box, and `showLabel`, which defaults to true. A missing/null path retains text-only display.
+A hidden visible label requires an icon; the nonempty `label` is always required and remains the
+native link/tab's accessible name. Icon-only controls also expose the label as a native hover title.
+The SVG is decorative, not focusable, and contains only the controlled path attribute. It adds no
+independent keyboard target or event subscription. Routes, selection and cancellation stay unchanged.
+
+The contract bounds path data to 16,384 characters, an initial M/m and local SVG command/number
+characters. This is a lexical data boundary, not a general SVG geometry parser. Consumers provide
+reviewed path geometry; no HTML, URLs, external images, icon-name lookup, HA registry or application
+API is part of the input. The same immutable state passes through all four framework bindings.
+No binding draws a second icon or installs another framework or an icon pack.
+
+Measured HA icon tabs use 24px glyphs and a 56px target. Their content has 16px top/12px bottom
+padding, with an 8px logical icon/text gap when text is shown. Text-only padding and geometry are
+preserved. `--vyp-ha-tab-icon-size` and `--vyp-ha-tab-icon-gap` override the size and gap; the defaults
+inherit `--mdc-icon-size` and `--ha-space-2`. Fill and path opacity inherit HA's `--icon-primary-color`
+and `--icon-primary-opactity` (the upstream variable spelling), with currentColor/1 fallbacks.
+Names, visibility, path data and theme overrides update on the same live control without an intent.
 
 ## Controlled text field
 

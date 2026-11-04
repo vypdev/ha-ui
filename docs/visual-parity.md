@@ -48,7 +48,7 @@ Consuming apps supply their fonts as HA does; the shared component performs no f
 | Order | Surface | Current status |
 |---|---|---|
 | 1 | Checkbox and catalog font baseline | Candidate calibrated against measured HA states; source, packed and static gates are recorded separately |
-| 2 | Upper dashboard navigation | Text-only controls calibrated in eight measured HA states and both semantics; icons, overflow affordances and installed-app acceptance remain required |
+| 2 | Upper dashboard navigation | Text-only controls plus three icon/text presentations calibrated against measured HA states in both semantics; overflow affordances and installed-app acceptance remain required |
 | 3 | Buttons | Recompare actual HA geometry, variants, colors, focus, hover and disabled states; current accessible fixture accent is not an assertion of HA palette equality |
 | 4 | Text fields and single/multiple selects | Current border/native-control presentation differs from the HA reference; revise before visual acceptance |
 | 5 | Remaining families | Capture the current HA counterpart and establish the same reference before implementing their visual layer |
@@ -109,6 +109,36 @@ fonts. It is a component fixture, not a full Node/toolchain CI reproduction.
 
 The reference now retains eight original states per measured platform. Source and built-catalog
 checks require an explicitly measured browser platform and all four states per theme. They retain
-the same style assertions, less-than-one-pixel layout tolerance and0.1px vertical-position bound;
+the same style assertions, less-than-one-pixel layout tolerance and 0.1px vertical-position bound;
 no broad threshold increase, ignored state or automatic baseline update is used. Unmeasured
 platforms fail rather than silently choosing another platform's reference.
+
+
+## Dashboard icon/text baseline
+
+The [icon navigation reference](evidence/ha-navigation-icons-reference.json) retains 24 unedited
+original captures on each of macOS and Linux. The same actual public HA component modules render
+original fixture glyphs through `ha-svg-icon`, with the reviewed dashboard icon spacing applied.
+The fixture replays recorded public module bytes, theme tokens and fonts without network or HA
+application startup. Component module functions remain unchanged. The reviewed source revision is
+not claimed to be the installed HA git revision. These are controlled component observations,
+separate from actual installed-app and human UX acceptance.
+
+Icon-only controls measure 56px by 56px, containing a 24px icon at x16/y16. Icon-and-text controls
+retain that icon position and an 8px gap; the 14px/500 text uses the measured platform's glyph advance.
+The visible content's top/bottom padding is 16px/12px. Selected, inactive, disabled and focused states
+use the same header palette, opacity and focus rules as text tabs. Both semantic modes are tested.
+Runtime labels remain required and accessible even when hidden visually; SVGs remain decorative.
+
+The new source cases were red before the renderer supported these fields. Adding an explicit label
+span also exposed a measurement problem in the older text gate: a Range over the enclosing span
+included the child's line box, rather than only its text glyphs. The corrected probe selects the
+label's text contents and retains the original reference images, exact style assertions and 0.1px
+vertical bound. Original failure diagnostics remain evidence; no tolerance was increased.
+
+The compiled catalog asserts exact measured state/style values and less-than-one-pixel geometry,
+with a 0.1px vertical bound, against all three icon/text presentations. Original images are verified
+by digest and dimensions before each comparison. Scoped raster inspection and current package
+identities are recorded separately in the [implementation evidence](evidence/shared-ui-foundation.json).
+Custom font/theme breadth, overflow affordances, other component families and both application
+adoptions remain required under the unchanged 64 foundation and 6 delivery cases.

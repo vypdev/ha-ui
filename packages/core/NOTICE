@@ -19,3 +19,10 @@ https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7c
 https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/panels/lovelace/hui-root.ts
 Modifications: native controlled anchors/buttons, fixed 56px bar, authored inert labels,
 scroll-to-focus, no Web Awesome/Sortable runtime, no HA application state or theme mutation.
+
+Dashboard icon-tab spacing and decorative SVG presentation also adapt hui-root and ha-svg-icon:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-svg-icon.ts
+Modifications: native link/button content with optional inert local 24-unit SVG path data,
+explicit accessible names, optional visible labels, logical spacing and public override tokens.
+No HA icon registry, application API, icon pack or runtime module is used by the shared renderer.
+Storybook fixture glyphs are original paths authored in this repository.

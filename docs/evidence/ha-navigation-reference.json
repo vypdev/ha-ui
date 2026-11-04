@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "observedAtUTC": "2026-11-04T14:54:07.289Z",
-  "scope": "Measured text-only dashboard tabs, normal/hover/focus/disabled, light/dark. Icons, icon-only/mixed presentation, custom theme overrides, overflow affordances and full application UX still require acceptance.",
+  "scope": "Measured text-only dashboard tabs, normal/hover/focus/disabled, light/dark. Icon-only/icon-and-text/mixed presentation is recorded separately in ha-navigation-icons-reference.json. Custom theme/font breadth, overflow affordances and full application UX remain required.",
   "surface": "Original public modules from the local Home Assistant frontend loaded in an isolated, unauthenticated fictional document. No household API, account, credential or service was used.",
   "bootstrap": "The fixture exposes the original public app module loader instead of invoking its app entrypoint. Component module functions and their styles are unchanged. The reviewed hui-root dashboard CSS is applied around those original components. This is a component fixture; direct Chrome observations are recorded separately.",
   "upstreamSourceMeaning": "Reviewed source/provenance references; not a claim about the installed HA git revision. Exact installed public assets are fingerprinted separately.",

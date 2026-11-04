@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T15:15:29.136587+00:00",
-  "status": "Partial source: shared navigation/panels, field, native-form button, typed selects and checkbox with four real bindings each. Checkbox and text-only dashboard tab baselines are calibrated; navigation icons/overflow, other visual calibration and full delivery/application acceptance remain required.",
+  "recordedAtUTC": "2026-11-04T17:14:30.993371+00:00",
+  "status": "Partial source: shared navigation/panels with local icons and labels, field, native-form button, typed selects and checkbox with four real bindings each. Checkbox and text/icon dashboard tab baselines are calibrated; overflow, other visual calibration and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, text field, native-form button, typed single/multiple select and boolean checkbox; immutable DOM-free contracts, explicit registration, typed cancelable intent and one renderer per family.",
     "Real React/Vue/Angular/Svelte bindings for all five current families. Angular includes actual field/select/checkbox Forms bridges. Runtime adapter imports stay within pure contracts and the selected framework; no alternate visuals.",
-    "796 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 48 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
+    "881 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 49 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four clean frozen offline compiled installed-package consumers exercise navigation, field, button, typed selects and boolean checkboxes, native validation/entries/reset/disabled behavior, cancellation, EN/ES/themes and teardown/remount. Actual tested five-coordinate archives are retained with their digests.",
@@ -33,30 +33,31 @@
     "A reproduced stale Enter could submit after a text field or checkbox was disconnected and reattached to the same form. Both now bind deferred Enter to the original connection; a fresh Enter remains accepted.",
     "Measured text-only dashboard tabs match eight original HA light/dark resting/hover/focus/disabled states in both navigation and panel modes. The source campaign adds17 cases; the static gate adds16 comparisons. Read-only decoded-pixel inspection finds zero changed pixels in all16 local samples; this does not claim cross-platform raster or full navigation/app acceptance.",
     "Independent Linux replay proves the actual HA control and compiled candidate share91px Overview width versus89.484375px in macOS. Matching measured platform references preserve strict tests; no runtime renderer, package bytes, tolerance or source coverage exclusion changed in this correction.",
-    "Four additional browser cases and a12-case compiled production-component probe across Linux Chromium/Firefox/WebKit verify standard form behavior. Trusted submit/reset emits one request and no auxiliary click; direct native requestSubmit/reset emits no press/click. The runtime is unchanged. This counters the recorded Bugbot premise; native reassessment remains required and no finding was manually resolved/dismissed."
+    "Four additional browser cases and a12-case compiled production-component probe across Linux Chromium/Firefox/WebKit verify standard form behavior. Trusted submit/reset emits one request and no auxiliary click; direct native requestSubmit/reset emits no press/click. The runtime is unchanged. This counters the recorded Bugbot premise; native reassessment remains required and no finding was manually resolved/dismissed.",
+    "Local icon-only, icon-and-text and mixed dashboard navigation share the same native renderer. Twenty-four original HA states per measured platform back 52 source-browser cases and 48 static comparisons per platform. All 96 current icon sample PNGs are byte-identical to their corresponding original HA references; all 32 current text-tab samples also remain byte-identical. Six direct installed-core journeys and four actual compiled framework consumers verify local decorative SVG data, accessible names and runtime Spanish updates."
   ],
   "coverage": {
     "lines": {
-      "total": 727,
-      "covered": 727,
+      "total": 736,
+      "covered": 736,
       "skipped": 0,
       "pct": 100
     },
     "statements": {
-      "total": 1688,
-      "covered": 1688,
+      "total": 1699,
+      "covered": 1699,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 456,
-      "covered": 456,
+      "total": 458,
+      "covered": 458,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 1012,
-      "covered": 1012,
+      "total": 1044,
+      "covered": 1044,
       "skipped": 0,
       "pct": 100
     },
@@ -77,17 +78,17 @@
     "packages/angular/src/text-field.ts": "fe0e40f32969c5e3d43bc721f1f0474ecc2fca45e33e12415c30af64a23f4ea4",
     "packages/core/src/button-contracts.ts": "fcbb48c8776a72d27e8b61e664de1318aec2edc31a4eeb87313780678533ba99",
     "packages/core/src/checkbox-contracts.ts": "9e42c7b7b7756626528a811157b55bed217b3c8516c5346878350e5d94027382",
+    "packages/core/src/contracts.ts": "4c7c699221dae7ad9d0e9bdae217e4bed84036a4d513f7298ea471195ee45d76",
+    "packages/core/src/field-contracts.ts": "130e143f3f69dfaa6e0397cf68cd2ec824823b44ff3f4488d92b19180d50b738",
+    "packages/core/src/index.ts": "557499ed9c2281f045f46b19e96ab594aafc130c26e3f2b5f01e222338ba71d8",
+    "packages/core/src/presentation-text.ts": "ad2eb8396a26638ba8d2f2f7cee3656195646aaea077cdc0d3ecd06fc95b3df2",
+    "packages/core/src/select-contracts.ts": "8a14a57d1ed75a368d0a756f55cbc043b3e8817c9ecca622808752c05f2c29ed",
     "packages/core/src/components/button.ts": "5301c32f9c5cc716b0eb805f8952704c37e07acf4d3996f78e8e07d523020f12",
     "packages/core/src/components/checkbox.ts": "d51856706dfe69d4562a3da4fcb8d9db1158a0d3b546f282d06e4a72673069f4",
     "packages/core/src/components/field.ts": "000de1c10dc65a17cc8d72163a1ff3fede62d8fbaf53b8230e937510e3ce7bc7",
     "packages/core/src/components/implicit-submit.ts": "dcf4f39ed20e6ce2ba05c6324a0ab12d511c9ddb3bb7d8f51806938736eb919c",
     "packages/core/src/components/select.ts": "99cbe2ec19a17ea465511a7a65a3e74eafc9df85dee66df3990d00ad4f1fd128",
-    "packages/core/src/components/tabs.ts": "7c634bb068e6062fcb45d4de08f4ffbc4870493b24a0f546469ca353242d1e58",
-    "packages/core/src/contracts.ts": "457c418cbfcafe5ebb1f834a1f8c2c19f484bad15ea8df5bc65502eec6e19c91",
-    "packages/core/src/field-contracts.ts": "130e143f3f69dfaa6e0397cf68cd2ec824823b44ff3f4488d92b19180d50b738",
-    "packages/core/src/index.ts": "557499ed9c2281f045f46b19e96ab594aafc130c26e3f2b5f01e222338ba71d8",
-    "packages/core/src/presentation-text.ts": "ad2eb8396a26638ba8d2f2f7cee3656195646aaea077cdc0d3ecd06fc95b3df2",
-    "packages/core/src/select-contracts.ts": "8a14a57d1ed75a368d0a756f55cbc043b3e8817c9ecca622808752c05f2c29ed",
+    "packages/core/src/components/tabs.ts": "b41104e26b5dcd69de19bdef6e646b7a7b724b1aaf6b730926eeb68c9f1fd59a",
     "packages/react/src/button.ts": "dfe36710fb8db11e674efb43715525bfd246f6819086c3a3628a662920df04eb",
     "packages/react/src/checkbox.ts": "7c92ee1e6cd60058434db3e0bad8bd8aba668dfbcb6a59c39a9fb54684583266",
     "packages/react/src/index.ts": "a51b2e15ea715c8f6ff0b7f233f0ac1860d6a25889e013417e4a2fe048d1fe0b",
@@ -112,15 +113,16 @@
     "stories/catalog-state.ts": "7375cdd33ffd838c478c9f36778e1d92df42916e98d8989b21d0cef055a4fb20",
     "stories/checkbox.example.ts": "fab0aa50221dd990506805d56f30a979e87932e5a25aa87e76feb21d6ec78765",
     "stories/field.example.ts": "d76da5e2692e57e3e529fe083e6127d74363440b47c24d03efdc13ccf3c72385",
-    "stories/foundation.example.ts": "6fc175e9a44ff0504c46271bd45837f6a4799d9815614a2389b9a238c85ab42b",
-    "stories/panels.example.ts": "dec84608d463dc340acf874d44f2cae3c7cd188390e23221cd728a4bdbf0a04f",
+    "stories/foundation.example.ts": "5821fe5c3f607f483fafecb0f1f7cbeee17c0f0506406bd4a406f2ef98783880",
+    "stories/navigation-icons.ts": "95f7888a174b67175d9304af53b2f8b06b4164d149bdb896d0fc57252a202196",
+    "stories/panels.example.ts": "38f691f91e68e4a148f39ac67b73c425d99352a3e5974a9e9b7e71eb2d7263ed",
     "stories/select.example.ts": "f463a883a738ef3f95673c3eea43ead2fc8209ee940fe8d0f78c03c418e4fbb0",
     "tooling/coverage.mjs": "ad527a5d04517adb1992ac65a9abfffcabb9a2001f7f652c732dbe35899b56c8"
   },
   "packedContract": {
     "scope": "Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required",
-    "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d",
-    "bytes": 81758,
+    "sha256": "1126622e6f49d22e3d959c7161dc6c4df831b9499b2fe18665f43046443d8e6f",
+    "bytes": 83681,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -155,7 +157,7 @@
     "Gateway and Domus adoption, installed deployment/recovery and human UX acceptance remain unverified.",
     "All 64 original baseline cases and six additional delivery cases remain required; no partial increment completes issue #7.",
     "Fresh hosted CI and complete native Bugbot review are required for the source head.",
-    "Navigation text-only default-theme samples are calibrated. Icons, overflow affordances, responsive composition and custom font/theme breadth remain required, as do button/field/select visual calibration and full library/app UX acceptance."
+    "Default-theme text/icon samples are calibrated on measured macOS/Linux Chromium. Overflow affordances, responsive composition and custom font/theme breadth remain required, as do button/field/select visual calibration and full library/app UX acceptance."
   ],
   "copilotModified": false,
   "capabilityComplete": false,
@@ -167,7 +169,6 @@
   },
   "lockSha256": "31ba0c22064513fb8b94f469bf10f075bbd20f5ced92901cd13f951f1a207f92",
   "browserEvidence": {
-    "componentCases": 83,
     "engine": "Chromium 156.0.8078.4",
     "actualPackageImages": [
       "test-results/packed-angular-button-dark-es.png",
@@ -241,7 +242,8 @@
     "buttonCases": 25,
     "frameworkButtonCases": 32,
     "selectCoreCases": 20,
-    "selectFrameworkCases": 45
+    "selectFrameworkCases": 45,
+    "fullSourceCases": 881
   },
   "consumerIsolationRegression": {
     "failedHostedRun": "https://github.com/vypdev/ha-ui/actions/runs/41773354203/job/126387929863",
@@ -267,7 +269,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d"
+            "sha256": "1126622e6f49d22e3d959c7161dc6c4df831b9499b2fe18665f43046443d8e6f"
           }
         ],
         "props": true,
@@ -277,6 +279,12 @@
         "runtimeSpanishAndTheme": true,
         "keyboard": true,
         "teardownAndRemount": true,
+        "navigationIcons": {
+          "complexIconData": true,
+          "iconOnlyAccessibleName": true,
+          "visibleLabel": true,
+          "decorative": true
+        },
         "textField": {
           "controlledModel": true,
           "exactlyOnce": true,
@@ -343,7 +351,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d"
+            "sha256": "1126622e6f49d22e3d959c7161dc6c4df831b9499b2fe18665f43046443d8e6f"
           }
         ],
         "props": true,
@@ -353,6 +361,12 @@
         "runtimeSpanishAndTheme": true,
         "keyboard": true,
         "teardownAndRemount": true,
+        "navigationIcons": {
+          "complexIconData": true,
+          "iconOnlyAccessibleName": true,
+          "visibleLabel": true,
+          "decorative": true
+        },
         "textField": {
           "controlledModel": true,
           "exactlyOnce": true,
@@ -419,7 +433,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d"
+            "sha256": "1126622e6f49d22e3d959c7161dc6c4df831b9499b2fe18665f43046443d8e6f"
           }
         ],
         "props": true,
@@ -429,6 +443,12 @@
         "runtimeSpanishAndTheme": true,
         "keyboard": true,
         "teardownAndRemount": true,
+        "navigationIcons": {
+          "complexIconData": true,
+          "iconOnlyAccessibleName": true,
+          "visibleLabel": true,
+          "decorative": true
+        },
         "textField": {
           "controlledModel": true,
           "exactlyOnce": true,
@@ -495,7 +515,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d"
+            "sha256": "1126622e6f49d22e3d959c7161dc6c4df831b9499b2fe18665f43046443d8e6f"
           }
         ],
         "props": true,
@@ -505,6 +525,12 @@
         "runtimeSpanishAndTheme": true,
         "keyboard": true,
         "teardownAndRemount": true,
+        "navigationIcons": {
+          "complexIconData": true,
+          "iconOnlyAccessibleName": true,
+          "visibleLabel": true,
+          "decorative": true
+        },
         "textField": {
           "controlledModel": true,
           "exactlyOnce": true,
@@ -567,8 +593,8 @@
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "ad855c8d2d7e31020cb8fffef52e385334b28029654be6547cba1522a1fd929d",
-        "bytes": 81758
+        "sha256": "1126622e6f49d22e3d959c7161dc6c4df831b9499b2fe18665f43046443d8e6f",
+        "bytes": 83681
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
@@ -647,7 +673,7 @@
   },
   "storybook": {
     "subpath": "/ha-ui/",
-    "storyCount": 50,
+    "storyCount": 56,
     "docsCount": 6,
     "matrix": [
       {
@@ -821,6 +847,40 @@
         }
       },
       {
+        "story": "navigation-household-sections--mixed",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--mixed",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--icon-only",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--icon-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "navigation-household-sections--long-labels",
         "locale": "en",
         "theme": "light",
@@ -991,6 +1051,40 @@
         }
       },
       {
+        "story": "navigation-household-sections--mixed",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--mixed",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--icon-only",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--icon-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "navigation-household-sections--long-labels",
         "locale": "en",
         "theme": "dark",
@@ -1161,6 +1255,40 @@
         }
       },
       {
+        "story": "navigation-household-sections--mixed",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--mixed",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--icon-only",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--icon-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "navigation-household-sections--long-labels",
         "locale": "en",
         "theme": "dark",
@@ -1331,6 +1459,40 @@
         }
       },
       {
+        "story": "navigation-household-sections--mixed",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--mixed",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--icon-only",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--icon-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "navigation-household-sections--long-labels",
         "locale": "es",
         "theme": "light",
@@ -1501,6 +1663,40 @@
         }
       },
       {
+        "story": "navigation-household-sections--mixed",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--mixed",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--icon-only",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--icon-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "navigation-household-sections--long-labels",
         "locale": "es",
         "theme": "light",
@@ -1671,6 +1867,40 @@
         }
       },
       {
+        "story": "navigation-household-sections--mixed",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--mixed",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--icon-only",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--icon-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "navigation-household-sections--long-labels",
         "locale": "es",
         "theme": "dark",
@@ -1841,6 +2071,40 @@
         }
       },
       {
+        "story": "navigation-household-sections--mixed",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--mixed",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--icon-only",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--icon-only",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "navigation-household-sections--long-labels",
         "locale": "es",
         "theme": "dark",
@@ -2001,6 +2265,40 @@
         "a11yViolations": 0,
         "automatic": {
           "storyId": "forms-checkbox--long-label",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "navigation-household-sections--mixed",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "navigation-household-sections--mixed",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "tabs-local-panels--icon-only",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "tabs-local-panels--icon-only",
           "status": "success",
           "reports": [
             {
@@ -3866,6 +4164,15 @@
         }
       }
     ],
+    "navigationIconsVisual": {
+      "comparisons": 48,
+      "allMeasuredGeometryAndStateMatch": true,
+      "currentMacPngPairsByteIdentical": 48,
+      "rawEvidence": "test-results/storybook/ha-navigation-icons-parity.json",
+      "rawEvidenceSha256": "9e82cf5ea0cdb738b5823e8df349530e07b0a2876fe2c15145619c30fafcd06b",
+      "originalReference": "docs/evidence/ha-navigation-icons-reference.json",
+      "scope": "Pinned current macOS Chromium sample; independent Linux results are recorded in navigationIcons and retained raw evidence."
+    },
     "managerDocs": true,
     "managerControls": true,
     "buttonReducedMotionVerified": true,
@@ -6370,7 +6677,7 @@
     "packages/react/package.json": "c841566365bb3ef7f93a55337af3ba8325cdb9d2c968fb3576ac229b52a58c67",
     "packages/svelte/package.json": "e95023ed5d9b7d8567d22114803bdb1862feb4e4b43decfebf5d41fdac189182",
     "packages/vue/package.json": "313b324d4d31bfbc03a082f65f2c92f03e38d346868e40b688b5c482fd51649e",
-    "packages/core/NOTICE": "0596e1f409d35474defb296862a4ccd2f20e649473d0fc3cba56ff70a8808d7c"
+    "packages/core/NOTICE": "91c2960551c29f8466a2058a98e8c76feba7dbf05d7a30773933912880c7f448"
   },
   "nativeFormReviewEvidence": {
     "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4469512642",
@@ -6525,5 +6832,58 @@
       "https://html.spec.whatwg.org/multipage/forms.html#dom-form-requestsubmit",
       "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#resetting-a-form"
     ]
+  },
+  "navigationIcons": {
+    "scope": "Optional local 24-unit path data and label visibility in the existing renderer, both semantic modes and four bindings. No icon registry/network/framework-specific renderer. No full navigation/library/app acceptance.",
+    "reference": "docs/evidence/ha-navigation-icons-reference.json",
+    "originalReferenceStates": 48,
+    "originalReferenceStatesPerPlatform": 24,
+    "sourceBrowserCases": 52,
+    "compiledDirectJourneys": 6,
+    "compiledFrameworkBindings": [
+      "react",
+      "vue",
+      "angular",
+      "svelte"
+    ],
+    "staticIconComparisonsPerPlatform": 48,
+    "staticTextRegressionComparisonsPerPlatform": 16,
+    "pixelEquality": {
+      "icons": 96,
+      "text": 32,
+      "allActualPngBytesEqual": true,
+      "evidence": "/private/tmp/ha-ui-navigation-icons/pixel-equality.json",
+      "scope": "Pinned measured local macOS/Linux Chromium; not all browsers or application UX."
+    },
+    "staticMatrix": 96,
+    "storyCount": 56,
+    "docsCount": 6,
+    "readOnlyOriginalReferenceCollection": true,
+    "referenceGlyphs": "Original authored fixture paths, rendered by the original public HA ha-svg-icon modules. No external icon pack in core.",
+    "strictSourceValidation": {
+      "tests": 881,
+      "runtimeFiles": 49,
+      "executableFiles": 46,
+      "zeroExecutableFiles": 3,
+      "supportedMetrics": "100% globally and per file; independent filesystem inventory"
+    },
+    "sourceRegression": {
+      "contracts": "Five new passing-input/default cases failed before contract implementation; malformed inputs were also retained.",
+      "renderer": "All 51 initial new browser cases failed before icon/label rendering; final 52 include real legacy-catalog rendering without the new control.",
+      "measurement": "The older text probe initially included the new span line box. Selecting its text contents preserves original glyph references and the 0.1px bound.",
+      "coverage": "The 100% per-file gate caught the missing legacy catalog input. A real DOM-rendered example now exercises that default; no threshold or inventory change.",
+      "static": "Initial structured comparison accidentally included private HA wrapper display/margin fields. Final comparison asserts path/fill plus all measured icon/label/content geometry, styles, opacity and focus with unchanged bounds."
+    },
+    "chrome": {
+      "profile": "Efra",
+      "isolatedWindow": 1082196824,
+      "group": "HA UI comparison",
+      "storybook": "http://127.0.0.1:6008/ha-ui/?path=/story/navigation-household-sections--mixed",
+      "proof": "/private/tmp/ha-ui-navigation-icons/chrome-icons.png",
+      "observed": "Selected Family through its icon-only link, then switched real Storybook controls to icon-and-title. Actual HA dashboard upper icons observed read-only alongside it.",
+      "limitation": "HA showed a reconnect notification; this visual observation does not assert backend availability or live entity behavior."
+    },
+    "copilotModified": false,
+    "capabilityComplete": false
   }
 }

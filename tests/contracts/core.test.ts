@@ -16,7 +16,7 @@ function rejected(value: unknown) {
 describe('framework-neutral navigation contracts', () => {
   test('imports and validates without browser globals or application identity', () => {
     expect(typeof document).toBe('undefined');
-    expect(navigationState(state())).toEqual({...state(), items: [{...section(), disabled: false}]});
+    expect(navigationState(state())).toEqual({...state(), items: [{...section(), disabled: false, iconPath:null, showLabel:true}]});
   });
   test('takes immutable independent snapshots without altering caller objects', () => {
     const source = state(), value = navigationState(source);
@@ -39,7 +39,7 @@ describe('framework-neutral navigation contracts', () => {
   });
   test('panel mode uses IDs for slots and accepts no link target', () => {
     const value = navigationState(state({kind: 'panels', items: [{id: 'tasks', label: 'Tasks'}]}));
-    expect(value.items[0]).toEqual({id: 'tasks', label: 'Tasks', disabled: false, href: null});
+    expect(value.items[0]).toEqual({id: 'tasks', label: 'Tasks', disabled: false, href: null, iconPath:null, showLabel:true});
     expect(navigationState(state({kind: 'panels', items: [section({href: null})]}))).toEqual(value);
   });
   test('disabled items remain identifiable but cannot become selected', () => {
@@ -80,3 +80,26 @@ test('preserves visible Unicode just beyond the C1 boundary', () => {
   const label = 'A\u00a0¡B';
   expect(navigationState(state({label, items: [section({label})]})).items[0].label).toBe(label);
 });
+
+test('navigation icons default to visible labels and no path without changing selection authority',()=>{
+ const value=navigationState(state());expect(value.items[0].iconPath).toBeNull();expect(value.items[0].showLabel).toBe(true);
+});
+test('local path data and the visible-label choice survive immutable snapshots in either semantic mode',()=>{
+ for(const kind of ['navigation','panels']){
+  const item:Record<string,unknown>=section({href:kind==='navigation'?'#tasks':null,iconPath:'M3 11L12 3L21 11V21H3Z',showLabel:false});
+  const value=navigationState(state({kind,items:[item]}));item.iconPath='M0 0H1V1Z';item.showLabel=true;
+  expect(value.items[0].iconPath).toBe('M3 11L12 3L21 11V21H3Z');expect(value.items[0].showLabel).toBe(false);
+  expect(value.items[0].label).toBe('Tasks');expect(Object.isFrozen(value.items[0])).toBe(true);
+ }
+});
+test.each([undefined,null])('an omitted/null path keeps the text presentation: %s',iconPath=>{
+ expect(navigationState(state({items:[section({iconPath})]})).items[0].iconPath).toBeNull();
+});
+test('accepts bounded local SVG path command data, including relative/arc/exponent forms',()=>{
+ for(const iconPath of ['M0 0L24 24Z','m1.5 2e-1c0 1 2 3 4 5s1 2 3 4q1 2 3 4t1 2a1 1 0 0 1 2 2z','M0 0'+' L0 0'.repeat(3276)])
+  expect(navigationState(state({items:[section({iconPath,showLabel:true})]})).items[0].iconPath).toBe(iconPath);
+});
+test.each(['', ' ', 'M', '0 0L1 1', '<svg onload="alert(1)">', 'https://example.invalid/icon.svg', 'javascript:alert(1)', 'M0 0\u0080L1 1', 'M0 0\nL1 1', 'M0 0'+' L0 0'.repeat(3277), 3, false, {}, []])('rejects malformed/local-path boundary %j',iconPath=>rejected(state({items:[section({iconPath})]})));
+test.each([null,0,1,'false',{}])('does not coerce visible-label choice %j',showLabel=>rejected(state({items:[section({iconPath:'M0 0H24V24Z',showLabel})]})));
+test.each([undefined,null])('cannot hide a label without a local icon: %s',iconPath=>rejected(state({items:[section({iconPath,showLabel:false})]})));
+test('an icon-only item still requires its full nonempty accessible label',()=>rejected(state({items:[section({label:'',iconPath:'M0 0H24V24Z',showLabel:false})]})));

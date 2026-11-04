@@ -3,7 +3,7 @@ import {page} from 'vitest/browser';
 import {createApp, h, nextTick, shallowRef, type App} from 'vue';
 import {Tabs} from '../../packages/vue/src/index.js';
 import {registerTabs, type NavigationSelectionEvent} from '../../packages/core/src/components/tabs.js';
-import {panelState, view, tab} from './framework-fixture.js';
+import {panelState, view, tab, expectNavigationIcons} from './framework-fixture.js';
 let app: App | undefined;
 afterEach(()=>{app?.unmount();app=undefined;document.body.replaceChildren();});
 function mount(handler?: (event:NavigationSelectionEvent)=>void, content=true) {
@@ -15,13 +15,13 @@ function mount(handler?: (event:NavigationSelectionEvent)=>void, content=true) {
 test('preserves pre-upgrade property state with no serialized object attribute',async()=>{
   mount();const element=view();expect(customElements.get('vyp-ha-tabs')).toBeUndefined();
   expect(element.state.kind).toBe('panels');registerTabs();await element.updateComplete;
-  expect(element.id).toBe('vue-tabs');expect(element.className).toBe('household');expect(element.hasAttribute('state')).toBe(false);expect(tab(element,'overview').textContent).toBe('Overview');
+  expect(element.id).toBe('vue-tabs');expect(element.className).toBe('household');expect(element.hasAttribute('state')).toBe(false);expect(tab(element,'overview').textContent).toBe('Overview');expectNavigationIcons(element);
 });
 test('prop and callback replacements keep one current event and native cancellation',async()=>{
   registerTabs();const old=vi.fn(),current=vi.fn((event:NavigationSelectionEvent)=>event.preventDefault());
   const input=mount(old);const element=view();await element.updateComplete;
   input.state.value=panelState(true);input.listener.value=current;await nextTick();await element.updateComplete;
-  expect(view()).toBe(element);await page.getByRole('tab',{name:'Tareas',exact:true}).click();
+  expect(view()).toBe(element);expectNavigationIcons(element,true);await page.getByRole('tab',{name:'Tareas',exact:true}).click();
   expect(old).not.toHaveBeenCalled();expect(current).toHaveBeenCalledTimes(1);expect(current.mock.calls[0][0].defaultPrevented).toBe(true);
   expect(current.mock.calls[0][0].detail).toEqual({kind:'panels',id:'tasks'});expect(element.state.selected).toBe('overview');
   input.state.value={...input.state.value,selected:'tasks'};await nextTick();await element.updateComplete;

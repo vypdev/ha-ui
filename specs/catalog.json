@@ -80,7 +80,8 @@
         "packages/angular/src/checkbox.ts",
         "packages/svelte/src/Checkbox.svelte",
         "stories/checkbox.example.ts",
-        "stories/catalog-completion.ts"
+        "stories/catalog-completion.ts",
+        "stories/navigation-icons.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -210,7 +211,58 @@
         "tests/storybook/reference/ha-navigation/linux/dark-resting.png",
         "tests/storybook/reference/ha-navigation/linux/dark-hover.png",
         "tests/storybook/reference/ha-navigation/linux/dark-focus.png",
-        "tests/storybook/reference/ha-navigation/linux/dark-disabled.png"
+        "tests/storybook/reference/ha-navigation/linux/dark-disabled.png",
+        "tests/browser/navigation-icons.test.ts",
+        "tests/consumers/navigation-icons.ts",
+        "tests/storybook/navigation-icons-visual.ts",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-icon-and-title-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-icon-and-title-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-icon-and-title-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-icon-and-title-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-icon-only-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-icon-only-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-icon-only-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-icon-only-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-mixed-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-mixed-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-mixed-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/dark-mixed-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-icon-and-title-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-icon-and-title-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-icon-and-title-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-icon-and-title-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-icon-only-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-icon-only-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-icon-only-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-icon-only-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-mixed-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-mixed-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-mixed-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/linux/light-mixed-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-icon-and-title-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-icon-and-title-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-icon-and-title-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-icon-and-title-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-icon-only-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-icon-only-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-icon-only-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-icon-only-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-mixed-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-mixed-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-mixed-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/dark-mixed-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-icon-and-title-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-icon-and-title-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-icon-and-title-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-icon-and-title-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-icon-only-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-icon-only-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-icon-only-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-icon-only-resting.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-mixed-disabled.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-mixed-focus.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-mixed-hover.png",
+        "tests/storybook/reference/ha-navigation-icons/macos/light-mixed-resting.png"
       ],
       "documentation": [
         "README.md",
@@ -229,7 +281,8 @@
         "packages/core/LICENSES/Home-Assistant-Apache-2.0.txt",
         "packages/core/LICENSES/Font-Awesome-Free-7.0.0.txt",
         "LICENSES/Roboto-Apache-2.0.txt",
-        "docs/evidence/ha-navigation-reference.json"
+        "docs/evidence/ha-navigation-reference.json",
+        "docs/evidence/ha-navigation-icons-reference.json"
       ],
       "readiness": {
         "status": "draft",
@@ -240,7 +293,7 @@
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
         ],
-        "implementationEvidence": "Partial: navigation/panels, field, button, typed single/multiple select and boolean checkbox have four real bindings and compiled packed consumers. The50-story catalog, checkbox baseline and eight-state text-tab HA baseline are recorded separately. Remaining families, navigation icons/overflow, other visual calibration, full SSR/browser matrix, hosting, publication and both application adoptions remain required."
+        "implementationEvidence": "Partial: navigation/panels with local icons and labels, field, button, typed single/multiple select and boolean checkbox have four real bindings and compiled packed consumers. The 56-story catalog, checkbox baseline, eight text-tab states and 24 icon/text states per measured platform are recorded separately. Remaining families, overflow affordances, other visual calibration, full SSR/browser matrix, hosting, publication and both application adoptions remain required."
       }
     }
   ]

@@ -1,3 +1,4 @@
+import {exerciseNavigationIconsVisual} from './navigation-icons-visual.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
 import {exerciseNavigationVisual} from './navigation-visual.ts';
 import {exerciseCheckboxVisual} from './checkbox-visual.ts';
@@ -19,7 +20,7 @@ test('the complete static catalog works at the repository subpath with local ass
   const root=resolve(process.env.STORYBOOK_OUTPUT_DIR??'build/storybook'),output=resolve('test-results/storybook');await mkdir(output,{recursive:true});
   const index=JSON.parse(await readFile(resolve(root,'index.json'),'utf8'));
   const entries=Object.values(index.entries) as {id:string;type:string}[];
-  assert.equal(entries.filter(entry=>entry.type==='story').length,50);assert.equal(entries.filter(entry=>entry.type==='docs').length,6);
+  assert.equal(entries.filter(entry=>entry.type==='story').length,56);assert.equal(entries.filter(entry=>entry.type==='docs').length,6);
   const server=await preview({configFile:false,base:'/ha-ui/',appType:'mpa',build:{outDir:root},preview:{host:'127.0.0.1',port:0},logLevel:'error'});
   const browser=await chromium.launch();const errors:string[]=[],external:string[]=[],badAssets:string[]=[];
   const address=server.httpServer.address();assert.ok(address&&typeof address==='object');const origin='http://127.0.0.1:'+address.port;
@@ -28,7 +29,7 @@ test('the complete static catalog works at the repository subpath with local ass
   context.on('page',page=>{page.on('pageerror',error=>errors.push(error.message));page.on('response',response=>{if(response.status()>=400)badAssets.push(response.status()+' '+new URL(response.url()).pathname);});});
   const page=await context.newPage();const results=[];
   try {
-    for(const locale of ['en','es'])for(const theme of ['light','dark'])for(const width of [360,960])for(const story of ['navigation-household-sections--long-labels','tabs-local-panels--unselected','forms-text-field--read-only','forms-text-field--error','buttons-actions--variants','buttons-actions--loading','forms-select--default','forms-select--multiple','forms-checkbox--partial','forms-checkbox--long-label']) {
+    for(const locale of ['en','es'])for(const theme of ['light','dark'])for(const width of [360,960])for(const story of ['navigation-household-sections--long-labels','tabs-local-panels--unselected','forms-text-field--read-only','forms-text-field--error','buttons-actions--variants','buttons-actions--loading','forms-select--default','forms-select--multiple','forms-checkbox--partial','forms-checkbox--long-label','navigation-household-sections--mixed','tabs-local-panels--icon-only']) {
       await page.setViewportSize({width,height:900});
       await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story&globals=locale:'+locale+';theme:'+theme+';width:'+(width===360?'narrow':'wide')+';motion:reduced');
       const automatic=await waitForCatalogStory(page,story);
@@ -91,7 +92,8 @@ test('the complete static catalog works at the repository subpath with local ass
     await page.screenshot({path:resolve(output,'manager-controls-dark-es.png')});
     const checkboxVisual=await exerciseCheckboxVisual(page,origin,output);
     const navigationVisual=await exerciseNavigationVisual(page,origin,output);
+    const navigationIconsVisual=await exerciseNavigationIconsVisual(page,origin,output);
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
-    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,checkboxVisual,navigationVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
+    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,checkboxVisual,navigationVisual,navigationIconsVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
 });

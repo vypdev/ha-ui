@@ -2,8 +2,8 @@ import type {Meta,StoryObj} from '@storybook/web-components-vite';
 import {renderExample,type Args} from './panels.example.js';
 import {expect} from 'storybook/test';
 import type {HaTabs,NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
-const meta={title:'Tabs/Local panels',component:'vyp-ha-tabs',tags:['autodocs'],args:{selected:'overview',disabled:false},
-  argTypes:{selected:{control:'select',options:['overview','tasks',null]},disabled:{control:'boolean'}},
+const meta={title:'Tabs/Local panels',component:'vyp-ha-tabs',tags:['autodocs'],args:{selected:'overview',icons:'none',disabled:false},
+  argTypes:{icons:{control:'select',options:['none','icon-only','icon-and-title','mixed']},selected:{control:'select',options:['overview','tasks',null]},disabled:{control:'boolean'}},
   parameters:{docs:{description:{component:'The same core element with tab/tabpanel semantics and real named slots. Arrow/Home/End move focus; Enter/Space activate. App sections use the separate navigation mode.'}}},
   render:renderExample,
 } satisfies Meta<Args>;
@@ -17,3 +17,7 @@ export const Default:Story={play:async({canvasElement})=>{
 export const Disabled:Story={args:{disabled:true}};
 export const Unselected:Story={args:{selected:null}};
 export const SpanishDarkNarrow:Story={globals:{locale:'es',theme:'dark',width:'narrow',motion:'reduced'}};
+
+export const IconOnly:Story={args:{icons:'icon-only'}};
+export const IconAndTitle:Story={args:{icons:'icon-and-title'}};
+export const Mixed:Story={args:{icons:'mixed'}};

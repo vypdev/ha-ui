@@ -27,7 +27,7 @@ for(const kind of ['navigation','panels'] as const)for(const theme of ['light','
   const expected=row.items[index],css=getComputedStyle(control),content=control.querySelector<HTMLElement>('[part=content]')??control,base=getComputedStyle(content);
   for(const key of ['fontFamily','fontSize','fontWeight','lineHeight','color','opacity'] as const)expect(css[key],key).toBe(expected.style[key]);
   expect(base.opacity).toBe(expected.base.opacity);
-  const box=control.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(content);const text=range.getBoundingClientRect();
+  const box=control.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(content.querySelector('[part=label]')??content);const text=range.getBoundingClientRect();
   const actual={width:box.width,height:box.height,textX:text.x-box.x,textY:text.y-box.y,textWidth:text.width,textHeight:text.height};
   for(const[key,value]of Object.entries(actual))expect(Math.abs(value-expected.geometry[key as keyof typeof actual]),key).toBeLessThan(key==='textY'?0.1:1);
   if(state==='focus'&&index===0){expect(control.matches(':focus-visible')).toBe(true);expect(base.outline).toBe(expected.base.outline);expect(base.outlineOffset).toBe(expected.base.outlineOffset);}

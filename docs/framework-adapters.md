@@ -1,6 +1,6 @@
 # Framework bindings
 
-This unpublished preview has shared navigation, one controlled text field, native-form buttons and typed single/multiple selects,
+This unpublished preview has shared navigation with local icons/labels, one controlled text field, native-form buttons, boolean checkboxes and typed single/multiple selects,
 with four real framework bindings and text-field form bridges. Other controls and their bridges, framework
 SSR/client fixtures, broader browser support, public Storybook hosting, publication and app adoption remain required.
 
@@ -12,6 +12,9 @@ framework adapters import the renderer only as types; runtime imports are their 
 and DOM-independent core validation policies. No binding imports Lit or registers a tag.
 All use the same `vyp-ha-tabs` element, validated `NavigationState`, CSS tokens and typed native
 `ha-selection-request` event. No routing, household state or authorization belongs in a binding.
+Optional `iconPath` and `showLabel` remain presentation data in that same state. Source and actual
+compiled consumers verify decorative SVGs, icon-only accessible names and runtime Spanish updates
+through each binding. Rendering, icon geometry and label visibility belong to the shared core.
 
 The app accepts selection by supplying a new state object. A native event callback may call
 `preventDefault()` synchronously; the original event object and its cancellation are preserved.

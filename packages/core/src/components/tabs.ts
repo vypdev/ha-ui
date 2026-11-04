@@ -7,7 +7,7 @@ export type NavigationSelectionEvent = CustomEvent<NavigationSelectionDetail>;
 /** A controlled HA-style navigation bar or local, manually activated panel tabs. */
 export class HaTabs extends LitElement {
   static properties = {state: {attribute: false, noAccessor: true}};
-  // Gateway dashboard geometry and measured HA ha-tab-group-tab/hui-root styles; see NOTICE.
+  // Measured HA dashboard tab and SVG styles; native semantics, local data, see NOTICE.
   static styles = css`
     :host { display:block; min-width:0; font:500 14px/1.6 var(--vyp-ha-font-family,var(--primary-font-family,Roboto,Noto,sans-serif)); }
     .bar { display:flex; align-items:flex-start; gap:0; overflow-x:auto; overflow-y:hidden; height:56px;
@@ -21,6 +21,11 @@ export class HaTabs extends LitElement {
       background:transparent; opacity:.8; cursor:pointer; text-decoration:none; }
     .content { display:flex; box-sizing:border-box; align-items:center; justify-content:center;
       padding:18px var(--vyp-ha-tab-padding,16px) 14px; }
+    .content.has-icon { padding-block:16px 12px; }
+    .icon { display:block; flex:none; width:var(--vyp-ha-tab-icon-size,var(--mdc-icon-size,24px));
+      height:var(--vyp-ha-tab-icon-size,var(--mdc-icon-size,24px)); fill:var(--icon-primary-color,currentColor); pointer-events:none; }
+    .icon path { opacity:var(--icon-primary-opactity,1); }
+    .icon + .label:not([hidden]) { margin-inline-start:var(--vyp-ha-tab-icon-gap,var(--ha-space-2,8px)); }
     [aria-current=page],[aria-selected=true] { opacity:1;
       color:var(--vyp-ha-text,var(--app-header-text-color,var(--primary-text-color,#141414)));
       border-bottom:2px solid var(--vyp-ha-tab-indicator-color,var(--app-header-selection-bar-color,var(--ha-tab-indicator-color,currentColor))); }
@@ -74,21 +79,24 @@ export class HaTabs extends LitElement {
       this.#focused=null; this.requestUpdate();
     }
   }
+  #content(item: NavigationItem) {
+    return html`<span class=${item.iconPath ? 'content has-icon' : 'content'} part="content">${item.iconPath ? html`<svg class="icon" part="icon" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" aria-hidden="true"><path d=${item.iconPath}></path></svg>` : nothing}<span class="label" part="label" ?hidden=${item.showLabel === false}>${item.label}</span></span>`;
+  }
   protected render() {
     const snapshot=this.state;
     if (snapshot.kind === 'navigation') return html`<nav class="bar" part="bar" aria-label=${snapshot.label} @focusin=${this.#reveal}>
-      ${snapshot.items.map(item => html`<a part="item" href=${item.disabled ? nothing : item.href!}
+      ${snapshot.items.map(item => html`<a part="item" aria-label=${item.label} title=${item.showLabel === false ? item.label : nothing} href=${item.disabled ? nothing : item.href!}
         aria-current=${snapshot.selected === item.id ? 'page' : nothing} aria-disabled=${item.disabled ? 'true' : nothing}
-        tabindex=${item.disabled ? '-1' : nothing} @click=${(event: MouseEvent) => this.#activate(event,item,snapshot)}><span class="content" part="content">${item.label}</span></a>`)}
+        tabindex=${item.disabled ? '-1' : nothing} @click=${(event: MouseEvent) => this.#activate(event,item,snapshot)}>${this.#content(item)}</a>`)}
     </nav>`;
     const enabled=snapshot.items.filter(item=>!item.disabled);
     const tabStop=enabled.find(item=>item.id === this.#focused)?.id ?? snapshot.selected ?? enabled[0]?.id;
     return html`<div class="bar" part="bar" role="tablist" aria-label=${snapshot.label} aria-orientation="horizontal" @focusout=${this.#leave} @focusin=${this.#reveal}>
-      ${snapshot.items.map(item => html`<button part="item" id=${'tab-'+item.id} type="button" role="tab"
+      ${snapshot.items.map(item => html`<button part="item" aria-label=${item.label} title=${item.showLabel === false ? item.label : nothing} id=${'tab-'+item.id} type="button" role="tab"
         aria-selected=${String(snapshot.selected === item.id)} aria-controls=${'panel-'+item.id}
         ?disabled=${item.disabled} tabindex=${item.id === tabStop ? 0 : -1}
         @click=${(event: MouseEvent) => this.#activate(event,item,snapshot)}
-        @keydown=${(event: KeyboardEvent) => this.#move(event,item,snapshot)}><span class="content" part="content">${item.label}</span></button>`)}
+        @keydown=${(event: KeyboardEvent) => this.#move(event,item,snapshot)}>${this.#content(item)}</button>`)}
     </div>${snapshot.items.map(item => html`<section part="panel" id=${'panel-'+item.id} role="tabpanel"
       aria-labelledby=${'tab-'+item.id} tabindex="0" ?hidden=${snapshot.selected !== item.id}><slot name=${item.id}></slot></section>`)}`;
   }

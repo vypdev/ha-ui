@@ -1,3 +1,4 @@
+import {assertBoundNavigationIcons} from './navigation-icons.ts';
 import {fixtureFonts} from './fonts.ts';
 import {exerciseFrameworkCheckbox} from './checkboxes.ts';
 import {exerciseFrameworkSelect} from './selects.ts';
@@ -77,12 +78,14 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       const button=await exerciseFrameworkButton(page,root,framework);
       const select=await exerciseFrameworkSelect(page,root,framework);
       const checkbox=await exerciseFrameworkCheckbox(page,root,framework);
+      const navigationIcons=await assertBoundNavigationIcons(page);
       await page.getByRole('tab',{name:'Tasks',exact:true}).click();
       await page.getByRole('button',{name:'Add task',exact:true}).waitFor({state:'visible'});
       assert.equal(await page.getByLabel('Selection events').textContent(),'1');
       assert.equal(await page.locator('vyp-ha-tabs').getAttribute('state'),null);
       await page.getByRole('button',{name:'Switch language',exact:true}).click();
       await page.getByRole('tab',{name:'Tareas',exact:true}).waitFor({state:'visible'});
+      await assertBoundNavigationIcons(page,true);
       assert.equal(await page.getByRole('tab',{name:'Tareas',exact:true}).getAttribute('aria-selected'),'true');
       await page.getByRole('button',{name:'Toggle theme',exact:true}).click();
       await page.waitForFunction(()=>getComputedStyle(document.querySelector('vyp-ha-tabs')!.shadowRoot!.querySelector('.bar')!).backgroundColor==='rgb(20, 20, 20)');
@@ -126,7 +129,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       assert.equal(await page.locator('vyp-ha-field #error').evaluate(element=>getComputedStyle(element).color),'rgb(242, 139, 130)');
       await page.locator('vyp-ha-field').screenshot({path:join(root,'test-results','packed-'+framework+'-field-error-dark-es.png')});
       assert.deepEqual(errors,[]);
-      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,textField,button,select,checkbox,browser:browser.version(),errors});
+      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,navigationIcons,textField,button,select,checkbox,browser:browser.version(),errors});
       console.log('Packed '+framework+' compiler, bindings and real Chromium lifecycle passed');
     } finally {await page.close();await server.close();}
   }

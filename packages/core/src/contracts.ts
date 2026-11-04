@@ -6,6 +6,9 @@ export interface NavigationItem {
   readonly label: string;
   readonly disabled: boolean;
   readonly href: string | null;
+  /** Inert local SVG path command data in a 24-unit view box; no URL or markup. */
+  readonly iconPath?: string | null;
+  readonly showLabel?: boolean;
 }
 export interface NavigationState {
   readonly kind: NavigationKind;
@@ -48,12 +51,16 @@ export function navigationState(raw: unknown): NavigationState {
   const label = text(source.label, 256);
   if (!Array.isArray(source.items) || source.items.length > 64) invalid();
   const items = source.items.map((value: unknown): NavigationItem => {
-    const row = object(value, ['id', 'label', 'disabled', 'href'], ['id', 'label']);
+    const row = object(value, ['id', 'label', 'disabled', 'href', 'iconPath', 'showLabel'], ['id', 'label']);
     const id = identifier(row.id), itemLabel = text(row.label, 256);
     const disabled = row.disabled === undefined ? false : row.disabled;
     if (typeof disabled !== 'boolean') invalid();
     const href = kind === 'navigation' ? link(row.href) : row.href == null ? null : invalid();
-    return Object.freeze({id, label: itemLabel, disabled, href});
+    const iconPath = row.iconPath == null ? null : text(row.iconPath, 16_384);
+    if (iconPath !== null && !/^[Mm][0-9MmLlHhVvCcSsQqTtAaZzEe.,+ -]+$/u.test(iconPath)) invalid();
+    const showLabel = row.showLabel === undefined ? true : row.showLabel;
+    if (typeof showLabel !== 'boolean' || (!showLabel && iconPath === null)) invalid();
+    return Object.freeze({id, label: itemLabel, disabled, href, iconPath, showLabel});
   });
   if (new Set(items.map(item => item.id)).size !== items.length) invalid();
   const selected = source.selected === null ? null : identifier(source.selected);

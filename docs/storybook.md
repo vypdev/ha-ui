@@ -1,7 +1,7 @@
 # Shared component catalog
 
 The current catalog displays the implemented upper navigation, local panels and single-line text
-field, button, boolean checkbox and typed single/multiple select using the real package entrypoints. Fifty CSF stories have automatic documentation,
+field, button, boolean checkbox and typed single/multiple select using the real package entrypoints. Fifty-six CSF stories have automatic documentation,
 controls, interaction tests and accessibility checks. This is an incremental preview; other
 families, the full framework/SSR/browser matrix and application adoption are still required.
 
@@ -91,7 +91,7 @@ Storybook release passes those same checks without it. See [provenance](provenan
 The [visual-equivalence gate](visual-parity.md) compares actual HA states against the built shared
 component. The catalog now bundles the same Roboto Regular/Medium font bytes as the measured HA
 frontend, with local license notices. The static browser gate explicitly waits for both font
-faces to load, exercises 80 locale/theme/width combinations and compares fourteen recorded
+faces to load, exercises 96 locale/theme/width combinations and compares fourteen recorded
 checkbox visual states. Other families still need the same HA comparison and any corrections;
 a passing functional or accessibility test alone does not establish visual equivalence.
 
@@ -104,10 +104,18 @@ its event listener. Browser test projects prebundle the event protocol before co
 The offline navigation visual gate also checks the built core element in both link and local-panel
 modes against eight original HA text-tab captures. It verifies fonts, label geometry, selected and
 disabled opacity, and actual keyboard focus; candidate images and structured results are retained
-under `test-results/storybook`. Icons, overflow affordances and installed-app/human review remain
+under `test-results/storybook`. Overflow affordances and installed-app/human review remain
 required. Reference collection uses no household credentials or API; see [visual parity](visual-parity.md).
 
 The text-tab reference is platform-specific: eight original captures each for macOS and Linux.
 The source and static gates choose an explicitly measured browser platform and keep the same
 style/state and geometry bounds. Independent offline Linux replay compares the unchanged
 original HA modules and the compiled candidate; it does not widen the SDK's Node support range.
+
+
+The icon/text gate additionally compares 24 original HA states per measured platform: three
+presentations, two themes and resting/hover/focus/disabled. It exercises both link and panel modes,
+retaining 48 compiled-catalog comparisons per platform. Six new production-backed stories expose
+icon-only, icon-and-text and mixed items in both modes. The locale/theme/width accessibility matrix
+also scans mixed navigation and icon-only panels. All glyph paths in these examples are original
+fixture data; public package consumers choose their own local reviewed path data.

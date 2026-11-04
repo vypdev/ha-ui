@@ -1,3 +1,4 @@
+import {exerciseInstalledNavigationIcons} from './navigation-icons.ts';
 import {fixtureFonts} from './fonts.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -200,6 +201,8 @@ document.querySelector('main')!.append(form);`);
     const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,textField:{controlledInput:true,nativeSubmitter:true,requiredValidation:true,reset:true,disabledSubmission:true},runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
     await mkdir(resolve(root, 'test-results'), {recursive:true});
     await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
+    const navigationIcons=await exerciseInstalledNavigationIcons(browserPage);
+    await writeFile(resolve(root,'test-results/packed-navigation-icons.json'),JSON.stringify(navigationIcons,null,2)+'\n');
     const checkbox=await exerciseInstalledCheckbox(browserPage);
     await writeFile(resolve(root,'test-results/packed-checkbox.json'),JSON.stringify(checkbox,null,2)+'\n');
     const select=await exerciseInstalledSelect(browserPage);
