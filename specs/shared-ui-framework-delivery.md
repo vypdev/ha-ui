@@ -200,7 +200,7 @@ accepted bytes. Consumer pins do not change while the cohort is partial.
 
 ## Links
 
-[Issue #7](https://github.com/vypdev/ha-ui/issues/7) · [Release run](<run link>) · [Compatibility record](docs/compatibility.md)
+[Issue #7](https://github.com/vypdev/ha-ui/issues/7) · [Release run](<run link>) · [Compatibility record](../docs/compatibility.md)
 
 <details><summary>Technical details</summary>Source revision, package coordinates, versions, digests, and sanitized provider diagnostics.</details>
 ```
