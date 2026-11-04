@@ -18,6 +18,7 @@ import {exerciseInstalledCheckbox} from './checkboxes.ts';
 import {exerciseInstalledSelect} from './selects.ts';
 import {exerciseReadonlyField} from './fields.ts';
 import {exerciseCoreButton} from './buttons.ts';
+import {exerciseInstalledImplicitSubmit} from './implicit-submit.ts';
 import {exerciseFrameworks} from './frameworks.ts';
 
 const execute = promisify(execFile);
@@ -212,6 +213,8 @@ document.querySelector('main')!.append(form);`);
     await writeFile(resolve(root,'test-results/packed-select.json'),JSON.stringify(select,null,2)+'\n');
     const readonlyField=await exerciseReadonlyField(browserPage);
     await writeFile(resolve(root,'test-results/packed-readonly-field.json'),JSON.stringify(readonlyField,null,2)+'\n');
+    const implicitSubmit=await exerciseInstalledImplicitSubmit(browserPage);
+    await writeFile(resolve(root,'test-results/packed-implicit-submit.json'),JSON.stringify(implicitSubmit,null,2)+'\n');
     const coreButton=await exerciseCoreButton(browserPage,root);
     await writeFile(resolve(root,'test-results/packed-button.json'),JSON.stringify(coreButton,null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;

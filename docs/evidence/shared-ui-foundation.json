@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T20:32:52.106554+00:00",
-  "status": "Partial library: shared navigation/panels, native-form buttons, fields, typed selects and checkbox with four real bindings. Scoped navigation/checkbox/button visuals are calibrated against original HA; fields/selects, remaining visual families and full delivery/application acceptance remain required.",
+  "recordedAtUTC": "2026-11-04T21:49:50.516771+00:00",
+  "status": "Partial library: shared navigation/panels, native-form buttons, fields, typed selects and checkbox with four real bindings. Scoped navigation/checkbox/button/filled-field visuals are calibrated against original HA; selects, remaining visual families and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -17,14 +17,14 @@
   "implemented": [
     "Shared controlled navigation/panels, text field, native-form button, typed single/multiple select and boolean checkbox; immutable DOM-free contracts, explicit registration, typed cancelable intent and one renderer per family.",
     "Real React/Vue/Angular/Svelte bindings for all five current families. Angular includes actual field/select/checkbox Forms bridges. Runtime adapter imports stay within pure contracts and the selected framework; no alternate visuals.",
-    "1075 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 51 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
+    "1145 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 51 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four clean frozen offline compiled installed-package consumers exercise navigation, field, button, typed selects and boolean checkboxes, native validation/entries/reset/disabled behavior, cancellation, EN/ES/themes and teardown/remount. Actual tested five-coordinate archives are retained with their digests.",
     "Angular actual consumer is AOT compiled and uses the official linker for all partial framework libraries, without a JIT fallback.",
     "Core text field passes actual form ownership/submission, default submitter, required/length/custom validation, disabled fieldsets, readonly, reset, explicit restoration callbacks, focus/labels, controlled caret, composition-boundary and invalid-input regression tests. Its actual installed package passes compiled Chromium form journeys.",
     "Angular text field implements ControlValueAccessor and the shared pure Validator: reactive controls, ngModel, nullable/nonnullable reset, dirty/touched and updateOn change/blur/submit pass. Foreign malformed event payloads are rejected before callbacks; validated snapshots survive observer payload mutation.",
-    "Fifty-eight production-backed CSF stories and six autodocs pages. Static /ha-ui/ acceptance covers 112 locale/theme/width combinations with passing automatic and independent default-rule axe scans, plus fourteen frame-stable measured HA checkbox states. Both exact HA Roboto fonts are bundled locally.",
+    "Sixty production-backed CSF stories and six autodocs pages. Static /ha-ui/ acceptance covers 128 locale/theme/width combinations with passing automatic and independent default-rule axe scans, plus fourteen frame-stable measured HA checkbox states. Both exact HA Roboto fonts are bundled locally.",
     "Storybook found and regressed two shared renderer issues: insufficient light error contrast and partially clipped focused navigation destinations. Both reproduce before their common fixes.",
     "Core button preserves native form validation/submitter/name-value/reset/default Enter using a documented real native auxiliary submitter; state, focus, busy prevention, slots and stale lifecycle/owner guards are exercised in source and actual installed-package consumers. All four button bindings pass source-browser and actual compiled installed-package consumers.",
     "Typed selects preserve numeric/string/boolean model distinctions and frozen multiple selections. Missing, disabled or mode-mismatched values remain explicit and invalid rather than being replaced. Native entries, controlled reset/restoration, disabled fieldsets, external owners, labels, keyboard and all four form bridges pass source and actual installed consumers.",
@@ -36,30 +36,31 @@
     "Four additional browser cases and a12-case compiled production-component probe across Linux Chromium/Firefox/WebKit verify standard form behavior. Trusted submit/reset emits one request and no auxiliary click; direct native requestSubmit/reset emits no press/click. The runtime is unchanged. This counters the recorded Bugbot premise; native reassessment remains required and no finding was manually resolved/dismissed.",
     "Local icon-only, icon-and-text and mixed dashboard navigation share the same native renderer. Twenty-four original HA states per measured platform back 52 source-browser cases and 48 static comparisons per platform. All 96 current icon sample PNGs are byte-identical to their corresponding original HA references; all 32 current text-tab samples also remain byte-identical. Six direct installed-core journeys and four actual compiled framework consumers verify local decorative SVG data, accessible names and runtime Spanish updates.",
     "Shared overflow adds logical LTR/RTL paging, localized native controls, selection/focus reveal, measured mouse-panning threshold and observer/gesture lifecycle cleanup. Forty original HA states across macOS/Linux back forty source geometry cases and eighty compiled raster comparisons. All 208 current navigation sample PNGs match their corresponding original references byte for byte. Four actual installed-core mouse/keyboard journeys and four compiled framework consumers pass narrow EN/ES paging without selection.",
-    "HA button surfaces match 96 independently captured original states per measured platform, including real active pointers. Both original campaigns repeat byte-identically; all 192 current candidate/reference PNG pairs also match byte for byte. Small/medium painted geometry is separated from the native 44px target, verified with actual mouse clicks in its invisible margin and all four compiled framework bindings. Accessible catalog palette overrides are explicit differences from original HA tokens."
+    "HA button surfaces match 96 independently captured original states per measured platform, including real active pointers. Both original campaigns repeat byte-identically; all 192 current candidate/reference PNG pairs also match byte for byte. Small/medium painted geometry is separated from the native 44px target, verified with actual mouse clicks in its invisible margin and all four compiled framework bindings. Accessible catalog palette overrides are explicit differences from original HA tokens.",
+    "Filled fields match 44 original HA states per measured platform; all88 compiled candidate/reference PNG pairs are byte-identical. Floating/resting labels, painted/native56px controls, required marker, help/error/placeholder/narrow states, real padding clicks, hidden hosts, standalone/OS motion and actual compiled four-framework geometry are exercised. Independent accessible catalog colors pass16 resting/hover/focus combinations, separate from original HA palette parity."
   ],
   "coverage": {
     "lines": {
-      "total": 847,
-      "covered": 847,
+      "total": 855,
+      "covered": 855,
       "skipped": 0,
       "pct": 100
     },
     "statements": {
-      "total": 1892,
-      "covered": 1892,
+      "total": 1919,
+      "covered": 1919,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 493,
-      "covered": 493,
+      "total": 497,
+      "covered": 497,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 1208,
-      "covered": 1208,
+      "total": 1232,
+      "covered": 1232,
       "skipped": 0,
       "pct": 100
     },
@@ -82,8 +83,8 @@
     "packages/core/src/checkbox-contracts.ts": "9e42c7b7b7756626528a811157b55bed217b3c8516c5346878350e5d94027382",
     "packages/core/src/components/button.ts": "03af61cb4b9bd47e6d76fd5d8215396ac0d6e59290a3050f48367e292a0044fc",
     "packages/core/src/components/checkbox.ts": "d51856706dfe69d4562a3da4fcb8d9db1158a0d3b546f282d06e4a72673069f4",
-    "packages/core/src/components/field.ts": "000de1c10dc65a17cc8d72163a1ff3fede62d8fbaf53b8230e937510e3ce7bc7",
-    "packages/core/src/components/implicit-submit.ts": "dcf4f39ed20e6ce2ba05c6324a0ab12d511c9ddb3bb7d8f51806938736eb919c",
+    "packages/core/src/components/field.ts": "dd48b4fa97171b73a0a7826273ba43f2d32f2cbc2581b806f8f0aca84a3d4843",
+    "packages/core/src/components/implicit-submit.ts": "b4cc1f28d7e31c12984ea6018ddb70df9c0cb48c06a5dfc2402731ca7527f6ca",
     "packages/core/src/components/navigation-overflow.ts": "0e709f2ea4d700b0a712bfb0d853adfe928478228bc1b9dcdf75de3ea4d13a86",
     "packages/core/src/components/select.ts": "99cbe2ec19a17ea465511a7a65a3e74eafc9df85dee66df3990d00ad4f1fd128",
     "packages/core/src/components/tabs.ts": "ff868eb9f6476403fbfee15698e4359b6602811d6a6e92e64e7adda1e951f3de",
@@ -113,10 +114,10 @@
     "stories/button.example.ts": "06773480e755be6526d292df9026ad0abace6825e17fd4e0b1ef81215d63680e",
     "stories/catalog-completion.ts": "10c01f134e4e3b64fc0a9f72d55c15b81043e2f040d5c111133b2d8cc9e12ebd",
     "stories/catalog-example.ts": "c5fa904779d81d2f081573051234b2d57f98c74c5c4ca99cbc8717584c2494e8",
-    "stories/catalog-frame.ts": "276e14a874fdb030d81a4e06902e9150b73dc1ee2262cb47de67e910c85d1aff",
+    "stories/catalog-frame.ts": "eee19d46cd88ae4169ac7853c0a8ef406c9f18f61dbb59b0f80adc395d82f943",
     "stories/catalog-state.ts": "bdf543ab1dae6bb9e840e248d3167c31c37791f1f58c895a61db50afbbdba304",
     "stories/checkbox.example.ts": "fab0aa50221dd990506805d56f30a979e87932e5a25aa87e76feb21d6ec78765",
-    "stories/field.example.ts": "d76da5e2692e57e3e529fe083e6127d74363440b47c24d03efdc13ccf3c72385",
+    "stories/field.example.ts": "e2e81d2544d2658c84a29be6e6b6579866c23993104e6929f3bd097f4f46f075",
     "stories/foundation.example.ts": "527c4037f1fcd1306ba021ee3636193efb72e54381d4da2940f0fa9f1bbb665a",
     "stories/navigation-icons.ts": "95f7888a174b67175d9304af53b2f8b06b4164d149bdb896d0fc57252a202196",
     "stories/panels.example.ts": "43360759af3020195576a8fbbee37774351e1f3c45109798642805b25fbb67b2",
@@ -125,8 +126,8 @@
   },
   "packedContract": {
     "scope": "Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required",
-    "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2",
-    "bytes": 102959,
+    "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3",
+    "bytes": 108649,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -156,12 +157,12 @@
     "Five current families have four real bindings. Dialogs, cards/rows/layout/tokens/status and remaining families/form bridges are still required.",
     "Text-field composition events and restoration callbacks are explicitly exercised; real device IME and automatic browser history restoration remain unverified.",
     "Exact recorded framework pins pass the five implemented families; full cohort support and broader public peer ranges remain unaccepted.",
-    "Next.js, Nuxt and SvelteKit explicit server-shell/client fixtures, hydration behavior and other browser engines remain unverified.",
+    "Next.js, Nuxt and SvelteKit explicit server-shell/client fixtures, hydration behavior and the full cross-engine component matrix remain unverified. The scoped native/shared Enter differential passes Chromium, Firefox and WebKit only.",
     "All six delivery refinements, accepted-candidate promotion/publication recovery, public Storybook hosting, publisher authority and live publication remain required.",
     "Gateway and Domus adoption, installed deployment/recovery and human UX acceptance remain unverified.",
     "All 64 original baseline cases and six additional delivery cases remain required; no partial increment completes issue #7.",
     "Fresh hosted CI and complete native Bugbot review are required for the source head.",
-    "Default-theme text/icon samples are calibrated on measured macOS/Linux Chromium. Custom font/theme breadth and broader responsive composition remain required, as do field/select visual calibration and full library/app UX acceptance."
+    "Default-theme text/icon samples are calibrated on measured macOS/Linux Chromium. Custom font/theme breadth and broader responsive composition remain required, as do select visual calibration and full library/app UX acceptance."
   ],
   "copilotModified": false,
   "capabilityComplete": false,
@@ -273,7 +274,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2"
+            "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3"
           }
         ],
         "props": true,
@@ -298,7 +299,16 @@
           "requiredValidation": true,
           "disabledSubmission": true,
           "frameworkReset": true,
-          "teardownAndRemount": true
+          "teardownAndRemount": true,
+          "materialGeometry": {
+            "x": 8,
+            "y": 211,
+            "paintedHeight": 56,
+            "nativeHeight": 56,
+            "labelSize": "10px",
+            "blockers": 1
+          },
+          "paintedGutterFocusWithoutModelIntent": true
         },
         "button": {
           "sharedRenderer": true,
@@ -355,7 +365,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2"
+            "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3"
           }
         ],
         "props": true,
@@ -380,7 +390,16 @@
           "requiredValidation": true,
           "disabledSubmission": true,
           "frameworkReset": true,
-          "teardownAndRemount": true
+          "teardownAndRemount": true,
+          "materialGeometry": {
+            "x": 8,
+            "y": 211,
+            "paintedHeight": 56,
+            "nativeHeight": 56,
+            "labelSize": "10px",
+            "blockers": 1
+          },
+          "paintedGutterFocusWithoutModelIntent": true
         },
         "button": {
           "sharedRenderer": true,
@@ -437,7 +456,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2"
+            "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3"
           }
         ],
         "props": true,
@@ -462,7 +481,16 @@
           "requiredValidation": true,
           "disabledSubmission": true,
           "frameworkReset": true,
-          "teardownAndRemount": true
+          "teardownAndRemount": true,
+          "materialGeometry": {
+            "x": 8,
+            "y": 211,
+            "paintedHeight": 56,
+            "nativeHeight": 56,
+            "labelSize": "10px",
+            "blockers": 1
+          },
+          "paintedGutterFocusWithoutModelIntent": true
         },
         "button": {
           "sharedRenderer": true,
@@ -519,7 +547,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2"
+            "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3"
           }
         ],
         "props": true,
@@ -544,7 +572,16 @@
           "requiredValidation": true,
           "disabledSubmission": true,
           "frameworkReset": true,
-          "teardownAndRemount": true
+          "teardownAndRemount": true,
+          "materialGeometry": {
+            "x": 8,
+            "y": 211,
+            "paintedHeight": 56,
+            "nativeHeight": 56,
+            "labelSize": "10px",
+            "blockers": 1
+          },
+          "paintedGutterFocusWithoutModelIntent": true
         },
         "button": {
           "sharedRenderer": true,
@@ -597,8 +634,8 @@
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "78240670ea135199037502c49650fa06f385088939187ef903e693b01e0b78b2",
-        "bytes": 102959
+        "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3",
+        "bytes": 108649
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
@@ -678,7 +715,7 @@
   },
   "storybook": {
     "subpath": "/ha-ui/",
-    "storyCount": 58,
+    "storyCount": 60,
     "docsCount": 6,
     "matrix": [
       {
@@ -750,6 +787,40 @@
         }
       },
       {
+        "story": "forms-text-field--empty-optional",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--empty-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--focused-optional",
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--focused-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "buttons-actions--variants",
         "locale": "en",
         "theme": "light",
@@ -988,6 +1059,40 @@
         }
       },
       {
+        "story": "forms-text-field--empty-optional",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--empty-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--focused-optional",
+        "locale": "en",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--focused-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "buttons-actions--variants",
         "locale": "en",
         "theme": "light",
@@ -1226,6 +1331,40 @@
         }
       },
       {
+        "story": "forms-text-field--empty-optional",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--empty-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--focused-optional",
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--focused-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "buttons-actions--variants",
         "locale": "en",
         "theme": "dark",
@@ -1464,6 +1603,40 @@
         }
       },
       {
+        "story": "forms-text-field--empty-optional",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--empty-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--focused-optional",
+        "locale": "en",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--focused-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "buttons-actions--variants",
         "locale": "en",
         "theme": "dark",
@@ -1702,6 +1875,40 @@
         }
       },
       {
+        "story": "forms-text-field--empty-optional",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--empty-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--focused-optional",
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--focused-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "buttons-actions--variants",
         "locale": "es",
         "theme": "light",
@@ -1940,6 +2147,40 @@
         }
       },
       {
+        "story": "forms-text-field--empty-optional",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--empty-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--focused-optional",
+        "locale": "es",
+        "theme": "light",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--focused-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "buttons-actions--variants",
         "locale": "es",
         "theme": "light",
@@ -2178,6 +2419,40 @@
         }
       },
       {
+        "story": "forms-text-field--empty-optional",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--empty-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--focused-optional",
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--focused-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
         "story": "buttons-actions--variants",
         "locale": "es",
         "theme": "dark",
@@ -2406,6 +2681,40 @@
         "a11yViolations": 0,
         "automatic": {
           "storyId": "forms-text-field--error",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--empty-optional",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--empty-optional",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        }
+      },
+      {
+        "story": "forms-text-field--focused-optional",
+        "locale": "es",
+        "theme": "dark",
+        "width": 960,
+        "a11yViolations": 0,
+        "automatic": {
+          "storyId": "forms-text-field--focused-optional",
           "status": "success",
           "reports": [
             {
@@ -15231,6 +15540,712 @@
         }
       }
     ],
+    "fieldVisual": [
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-empty.png",
+          "sha256": "c229be953288e2ff08527395b936c90aabb06b624d32ef0efe656af8c16cb989"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "c229be953288e2ff08527395b936c90aabb06b624d32ef0efe656af8c16cb989"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "hover-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-hover-empty.png",
+          "sha256": "686468cd01a5d851075eb2c92eafd0f1627df0b6073e626b9dcccca2e01a3da5"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "686468cd01a5d851075eb2c92eafd0f1627df0b6073e626b9dcccca2e01a3da5"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "focus-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-focus-empty.png",
+          "sha256": "8fc87a113c9ac63ca496d2f40a1bd27354df32a527d0961bcef362dca1ad4f65"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "8fc87a113c9ac63ca496d2f40a1bd27354df32a527d0961bcef362dca1ad4f65"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "disabled-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-disabled-empty.png",
+          "sha256": "5ab972da255dc2b0a2a86b880bc8890cfbc482d3b9626aa989168cd37647fb5f"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5ab972da255dc2b0a2a86b880bc8890cfbc482d3b9626aa989168cd37647fb5f"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "readonly-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-readonly-empty.png",
+          "sha256": "c229be953288e2ff08527395b936c90aabb06b624d32ef0efe656af8c16cb989"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "c229be953288e2ff08527395b936c90aabb06b624d32ef0efe656af8c16cb989"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "required-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-required-empty.png",
+          "sha256": "3547945744c08eafe17b3ee2737d5d7a0ba0c948d35a3e7d3fa6ea2df6554f72"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "3547945744c08eafe17b3ee2737d5d7a0ba0c948d35a3e7d3fa6ea2df6554f72"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "description-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-description-empty.png",
+          "sha256": "751738d947a88f8962bb3b61c7317189c0edef087ecccaaabe21c1a2c5ed6d16"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "751738d947a88f8962bb3b61c7317189c0edef087ecccaaabe21c1a2c5ed6d16"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "error-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-error-empty.png",
+          "sha256": "f4c8becf6dc1d039a080a50821410f3e7899aa44fc0acdbf6d8f910188dcbce6"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "f4c8becf6dc1d039a080a50821410f3e7899aa44fc0acdbf6d8f910188dcbce6"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "placeholder-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-placeholder-empty.png",
+          "sha256": "236ad24f04ebd0bf22f7e6bb1dcb89b1318cb00d15a6f184b923b6532fa78007"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "236ad24f04ebd0bf22f7e6bb1dcb89b1318cb00d15a6f184b923b6532fa78007"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "narrow-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-narrow-empty.png",
+          "sha256": "a32b1964ecc0c40826f0215674b3aabd557eb1d15168484fe9c52eee6458c522"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "a32b1964ecc0c40826f0215674b3aabd557eb1d15168484fe9c52eee6458c522"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-filled.png",
+          "sha256": "10b839872a360cdc8a4c3d9ce9bb6d88e822a2a9346bcf1b499511a43a61d928"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "10b839872a360cdc8a4c3d9ce9bb6d88e822a2a9346bcf1b499511a43a61d928"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "hover-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-hover-filled.png",
+          "sha256": "36b888b580b41cd744593340260b21aa839e78a057af2f69954ec36bbea5cfb0"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "36b888b580b41cd744593340260b21aa839e78a057af2f69954ec36bbea5cfb0"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "focus-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-focus-filled.png",
+          "sha256": "ee479c28aacee10b3df0c6367ccbd2bf7e5d7b374c703aa3109b4a4faf0bc447"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "ee479c28aacee10b3df0c6367ccbd2bf7e5d7b374c703aa3109b4a4faf0bc447"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "disabled-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-disabled-filled.png",
+          "sha256": "786e96113ec133a08e74610345fe2f11556ceb6c09e6adaef5322778ee54aacf"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "786e96113ec133a08e74610345fe2f11556ceb6c09e6adaef5322778ee54aacf"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "readonly-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-readonly-filled.png",
+          "sha256": "10b839872a360cdc8a4c3d9ce9bb6d88e822a2a9346bcf1b499511a43a61d928"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "10b839872a360cdc8a4c3d9ce9bb6d88e822a2a9346bcf1b499511a43a61d928"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "required-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-required-filled.png",
+          "sha256": "848665ad3157ece2458039605111b2011da69d31098dedad4976c020cd5464cf"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "848665ad3157ece2458039605111b2011da69d31098dedad4976c020cd5464cf"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "description-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-description-filled.png",
+          "sha256": "014fb0218f8773ba75652b3a9916b6cd5988c76b2bf982e5f41f2f69c20c5084"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "014fb0218f8773ba75652b3a9916b6cd5988c76b2bf982e5f41f2f69c20c5084"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "error-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-error-filled.png",
+          "sha256": "d7969f25133564875ca226fd1f354ac613a64638bce09b0a250204c615810e60"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d7969f25133564875ca226fd1f354ac613a64638bce09b0a250204c615810e60"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "placeholder-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-placeholder-filled.png",
+          "sha256": "10b839872a360cdc8a4c3d9ce9bb6d88e822a2a9346bcf1b499511a43a61d928"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "10b839872a360cdc8a4c3d9ce9bb6d88e822a2a9346bcf1b499511a43a61d928"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "narrow-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-narrow-filled.png",
+          "sha256": "54d8af631849029b091675cdeb7a15b5a547d97ceca994e9ac39aa2f5718fe4f"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "54d8af631849029b091675cdeb7a15b5a547d97ceca994e9ac39aa2f5718fe4f"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "required-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-required-focus.png",
+          "sha256": "c6b177f51bb8d8fba547883caa294998c648bf5aceeb946a84017baa07636447"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "c6b177f51bb8d8fba547883caa294998c648bf5aceeb946a84017baa07636447"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "light",
+        "name": "error-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/light-error-focus.png",
+          "sha256": "5f898b9009755414fdae2279c1a4e5613908aaa4ed44c63aa6d6905149063f3b"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "5f898b9009755414fdae2279c1a4e5613908aaa4ed44c63aa6d6905149063f3b"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-empty.png",
+          "sha256": "eec38e42d547777ea034b0998d167c3503c9f8667a1af00c130258ee1f2831f4"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "eec38e42d547777ea034b0998d167c3503c9f8667a1af00c130258ee1f2831f4"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "hover-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-hover-empty.png",
+          "sha256": "dfd7d6e812331b0e211e6c9b4debd659724458d72053587ca33fb0cab1fd6aaf"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "dfd7d6e812331b0e211e6c9b4debd659724458d72053587ca33fb0cab1fd6aaf"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "focus-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-focus-empty.png",
+          "sha256": "2538c47978937e51c7fb170ea98aaba651112d35c22db4ae4ee329f3f6e99c61"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "2538c47978937e51c7fb170ea98aaba651112d35c22db4ae4ee329f3f6e99c61"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "disabled-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-disabled-empty.png",
+          "sha256": "6ecc0caab45f46b161ad18d3af66a493edbb0d73e8997315f213eddf439015f6"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "6ecc0caab45f46b161ad18d3af66a493edbb0d73e8997315f213eddf439015f6"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "readonly-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-readonly-empty.png",
+          "sha256": "eec38e42d547777ea034b0998d167c3503c9f8667a1af00c130258ee1f2831f4"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "eec38e42d547777ea034b0998d167c3503c9f8667a1af00c130258ee1f2831f4"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "required-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-required-empty.png",
+          "sha256": "4b7e4111c5b2ce48fa7c933980e232b848f505fc64b30caf56ef7ad9896a3171"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "4b7e4111c5b2ce48fa7c933980e232b848f505fc64b30caf56ef7ad9896a3171"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "description-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-description-empty.png",
+          "sha256": "38dbc4d550e713564bb6b2460bc87d7d71525d482b559039cec22c9df3a2e8f8"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "38dbc4d550e713564bb6b2460bc87d7d71525d482b559039cec22c9df3a2e8f8"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "error-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-error-empty.png",
+          "sha256": "47a860ec968e10938c6da67f148758dcf6cfaf9054efa80a22747265e06c4bc6"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "47a860ec968e10938c6da67f148758dcf6cfaf9054efa80a22747265e06c4bc6"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "placeholder-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-placeholder-empty.png",
+          "sha256": "21b3f47da5ad0093bb691c40ae463115ffe53d2f2012bbb38ed0d6e7c86a330e"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "21b3f47da5ad0093bb691c40ae463115ffe53d2f2012bbb38ed0d6e7c86a330e"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "narrow-empty",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-narrow-empty.png",
+          "sha256": "995b7b66fb6b130b02f2e30f14a1b84e1e7f3a259593c5a43fa4b1fb5c65f7a0"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "995b7b66fb6b130b02f2e30f14a1b84e1e7f3a259593c5a43fa4b1fb5c65f7a0"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-filled.png",
+          "sha256": "926dbbfcf3c51d95b86a7de57c39bff0d38cd93a675a288f0d8d4abd81ad8dde"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "926dbbfcf3c51d95b86a7de57c39bff0d38cd93a675a288f0d8d4abd81ad8dde"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "hover-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-hover-filled.png",
+          "sha256": "ddcd6a217c55faaf063417b76e1faacc3f7e832d87cf202bf08697be6a7383ae"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "ddcd6a217c55faaf063417b76e1faacc3f7e832d87cf202bf08697be6a7383ae"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "focus-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-focus-filled.png",
+          "sha256": "aadad027ee280748bc0944690bb9bd32dbbbabf078e87cfa043ce81772a5f228"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "aadad027ee280748bc0944690bb9bd32dbbbabf078e87cfa043ce81772a5f228"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "disabled-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-disabled-filled.png",
+          "sha256": "230ae54bab93248b232bc90cbf7f135d68e6dbb29c7c933fe9178c4aa35d82b4"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "230ae54bab93248b232bc90cbf7f135d68e6dbb29c7c933fe9178c4aa35d82b4"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "readonly-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-readonly-filled.png",
+          "sha256": "926dbbfcf3c51d95b86a7de57c39bff0d38cd93a675a288f0d8d4abd81ad8dde"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "926dbbfcf3c51d95b86a7de57c39bff0d38cd93a675a288f0d8d4abd81ad8dde"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "required-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-required-filled.png",
+          "sha256": "d8b5e2471fd93d29a6d99402ad3eea44d9cda9cb7e6f3efd6bd901d6ea60792f"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d8b5e2471fd93d29a6d99402ad3eea44d9cda9cb7e6f3efd6bd901d6ea60792f"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "description-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-description-filled.png",
+          "sha256": "2e1574487d67bea86a9fb9943840b64cae394f5d1844d24f61630a98fb8a3d19"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "2e1574487d67bea86a9fb9943840b64cae394f5d1844d24f61630a98fb8a3d19"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "error-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-error-filled.png",
+          "sha256": "13139df13590e7a42d2ac53b4b3e44a78274b8ae51900ee4aefa03f2454b9300"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "13139df13590e7a42d2ac53b4b3e44a78274b8ae51900ee4aefa03f2454b9300"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "placeholder-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-placeholder-filled.png",
+          "sha256": "926dbbfcf3c51d95b86a7de57c39bff0d38cd93a675a288f0d8d4abd81ad8dde"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "926dbbfcf3c51d95b86a7de57c39bff0d38cd93a675a288f0d8d4abd81ad8dde"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "narrow-filled",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-narrow-filled.png",
+          "sha256": "62502e3f451bdaab6559f8553ec58e2dfd3cf9fd2e7c6c499ade1be718383d34"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "62502e3f451bdaab6559f8553ec58e2dfd3cf9fd2e7c6c499ade1be718383d34"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "required-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-required-focus.png",
+          "sha256": "d0d1147cfdf17d695222e1b35747e0e1c6041811d493d27136a2ee3ea2a2e072"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "d0d1147cfdf17d695222e1b35747e0e1c6041811d493d27136a2ee3ea2a2e072"
+        }
+      },
+      {
+        "platform": "macos",
+        "theme": "dark",
+        "name": "error-focus",
+        "geometryMatch": true,
+        "identicalPixels": true,
+        "referenceImage": {
+          "path": "tests/storybook/reference/ha-field/macos/dark-error-focus.png",
+          "sha256": "4368b8ea9a9377b84a106055597282274717371d1a1bbc1426470a9ca361f9c6"
+        },
+        "raster": {
+          "frames": 3,
+          "twoConsecutiveEqual": true,
+          "sha256": "4368b8ea9a9377b84a106055597282274717371d1a1bbc1426470a9ca361f9c6"
+        }
+      }
+    ],
     "managerDocs": true,
     "managerControls": true,
     "buttonReducedMotionVerified": true,
@@ -17752,7 +18767,7 @@
     "packages/react/package.json": "c841566365bb3ef7f93a55337af3ba8325cdb9d2c968fb3576ac229b52a58c67",
     "packages/svelte/package.json": "e95023ed5d9b7d8567d22114803bdb1862feb4e4b43decfebf5d41fdac189182",
     "packages/vue/package.json": "313b324d4d31bfbc03a082f65f2c92f03e38d346868e40b688b5c482fd51649e",
-    "packages/core/NOTICE": "f3e4fba99fac54f796aec13d2932be48e936cd867f816b9dde884e5171409855"
+    "packages/core/NOTICE": "a73417c6962660597d421c4bc421572975927bd2070574e2cd046f62d3cc98b9"
   },
   "nativeFormReviewEvidence": {
     "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4469512642",
@@ -18111,5 +19126,2174 @@
     },
     "capabilityComplete": false,
     "hostedValidation": "Fresh current-head CI and complete native review remain required separately after publication."
+  },
+  "fieldCalibration": {
+    "reference": "docs/evidence/ha-field-reference.json",
+    "sourcePresentationCases": 10,
+    "sourceOriginalGeometryCases": 44,
+    "nativeSourceCases": 14,
+    "originalStatesPerPlatform": 44,
+    "independentOriginalRepeatPairs": 88,
+    "all88CompiledCandidateReferencePngPairsByteIdentical": true,
+    "fullSourceTests": 1145,
+    "runtimeFiles": 51,
+    "coldDistFilesRestoredIdentically": 124,
+    "packedNativeDifferential": {
+      "nativeDifferential": true,
+      "realKeyboard": true,
+      "proxyAddsNoFormData": true,
+      "cases": [
+        {
+          "mode": "single",
+          "first": "native",
+          "expected": 1,
+          "submissions": 1,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "single",
+          "first": "shared",
+          "expected": 1,
+          "submissions": 1,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "enabled-native",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "enabled-native",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "enabled-shared",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "enabled-shared",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "disabled-native",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "disabled-native",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "disabled-shared",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "disabled-shared",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "fieldset-native",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "fieldset-native",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "fieldset-shared",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "fieldset-shared",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "readonly-native",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "readonly-native",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "readonly-shared",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "readonly-shared",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "hidden-native",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "hidden-native",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "hidden-shared",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "hidden-shared",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "hidden-type",
+          "first": "native",
+          "expected": 1,
+          "submissions": 1,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "hidden-type",
+          "first": "shared",
+          "expected": 1,
+          "submissions": 1,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "external-disabled",
+          "first": "native",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        },
+        {
+          "mode": "external-disabled",
+          "first": "shared",
+          "expected": 0,
+          "submissions": 0,
+          "entries": [
+            [
+              "first",
+              "Kitchen"
+            ]
+          ]
+        }
+      ]
+    },
+    "packedReadonly": {
+      "cases": [
+        {
+          "name": "required empty",
+          "value": "",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              ""
+            ],
+            [
+              ""
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              ""
+            ]
+          ]
+        },
+        {
+          "name": "too short",
+          "value": "x",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              "x"
+            ],
+            [
+              "x"
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              "x"
+            ]
+          ]
+        },
+        {
+          "name": "too long",
+          "value": "Long value",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              "Long value"
+            ],
+            [
+              "Long value"
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              "Long value"
+            ]
+          ]
+        },
+        {
+          "name": "state error",
+          "value": "Valid",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              "Valid"
+            ],
+            [
+              "Valid"
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              "Valid"
+            ]
+          ]
+        },
+        {
+          "name": "custom error",
+          "value": "Valid",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              "Valid"
+            ],
+            [
+              "Valid"
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              "Valid"
+            ]
+          ]
+        }
+      ],
+      "readonlyValidationPolicyChanged": false,
+      "allNativeSubmissionsPassed": true
+    },
+    "linuxVisual": {
+      "node": "v26.13.0",
+      "browser": "156.0.8078.80",
+      "text": 16,
+      "icons": 48,
+      "overflow": 40,
+      "buttons": 96,
+      "fields": 44,
+      "implicitSubmit": {
+        "nativeDifferential": true,
+        "realKeyboard": true,
+        "proxyAddsNoFormData": true,
+        "cases": [
+          {
+            "mode": "single",
+            "first": "native",
+            "expected": 1,
+            "submissions": 1,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "single",
+            "first": "shared",
+            "expected": 1,
+            "submissions": 1,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "enabled-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "enabled-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "enabled-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "enabled-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "disabled-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "disabled-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "disabled-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "disabled-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "fieldset-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "fieldset-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "fieldset-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "fieldset-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "readonly-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "readonly-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "readonly-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "readonly-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-native",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-native",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-shared",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-shared",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-type",
+            "first": "native",
+            "expected": 1,
+            "submissions": 1,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "hidden-type",
+            "first": "shared",
+            "expected": 1,
+            "submissions": 1,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "external-disabled",
+            "first": "native",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          },
+          {
+            "mode": "external-disabled",
+            "first": "shared",
+            "expected": 0,
+            "submissions": 0,
+            "entries": [
+              [
+                "first",
+                "Kitchen"
+              ]
+            ]
+          }
+        ]
+      },
+      "network": "none",
+      "errors": []
+    },
+    "linuxNative": {
+      "node": "v26.13.0",
+      "network": "none",
+      "coreArchiveSha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3",
+      "scope": "Actual unpacked core archive compiled into an isolated entrypoint without Storybook; native/shared no-button implicit Enter only, not full cross-engine component acceptance",
+      "results": [
+        {
+          "engine": "chromium",
+          "version": "156.0.8078.80",
+          "proof": {
+            "nativeDifferential": true,
+            "realKeyboard": true,
+            "proxyAddsNoFormData": true,
+            "cases": [
+              {
+                "mode": "single",
+                "first": "native",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "single",
+                "first": "shared",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-type",
+                "first": "native",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-type",
+                "first": "shared",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "external-disabled",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "external-disabled",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              }
+            ]
+          },
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "157.0",
+          "proof": {
+            "nativeDifferential": true,
+            "realKeyboard": true,
+            "proxyAddsNoFormData": true,
+            "cases": [
+              {
+                "mode": "single",
+                "first": "native",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "single",
+                "first": "shared",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-type",
+                "first": "native",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-type",
+                "first": "shared",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "external-disabled",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "external-disabled",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              }
+            ]
+          },
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "27.2",
+          "proof": {
+            "nativeDifferential": true,
+            "realKeyboard": true,
+            "proxyAddsNoFormData": true,
+            "cases": [
+              {
+                "mode": "single",
+                "first": "native",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "single",
+                "first": "shared",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "enabled-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "disabled-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "fieldset-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "readonly-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-native",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-native",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-shared",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-shared",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-type",
+                "first": "native",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "hidden-type",
+                "first": "shared",
+                "expected": 1,
+                "submissions": 1,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "external-disabled",
+                "first": "native",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              },
+              {
+                "mode": "external-disabled",
+                "first": "shared",
+                "expected": 0,
+                "submissions": 0,
+                "entries": [
+                  [
+                    "first",
+                    "Kitchen"
+                  ]
+                ]
+              }
+            ]
+          },
+          "errors": []
+        }
+      ]
+    },
+    "palettes": [
+      {
+        "theme": "light",
+        "mode": "resting",
+        "error": false,
+        "colors": {
+          "label": "rgb(94, 94, 94)",
+          "input": "rgb(20, 20, 20)",
+          "placeholder": "rgb(94, 94, 94)",
+          "surface": "rgb(243, 243, 243)",
+          "error": null,
+          "background": "rgb(255, 255, 255)"
+        },
+        "ratios": {
+          "label": 5.843606286983642,
+          "input": 16.60255361379421,
+          "placeholder": 5.843606286983642,
+          "error": null
+        }
+      },
+      {
+        "theme": "light",
+        "mode": "hover",
+        "error": false,
+        "colors": {
+          "label": "rgb(94, 94, 94)",
+          "input": "rgb(20, 20, 20)",
+          "placeholder": "rgb(94, 94, 94)",
+          "surface": "rgb(230, 230, 230)",
+          "error": null,
+          "background": "rgb(255, 255, 255)"
+        },
+        "ratios": {
+          "label": 5.195364211916622,
+          "input": 14.760801572766,
+          "placeholder": 5.195364211916622,
+          "error": null
+        }
+      },
+      {
+        "theme": "light",
+        "mode": "focus",
+        "error": false,
+        "colors": {
+          "label": "rgb(0, 99, 156)",
+          "input": "rgb(20, 20, 20)",
+          "placeholder": "rgb(94, 94, 94)",
+          "surface": "rgb(243, 243, 243)",
+          "error": null,
+          "background": "rgb(255, 255, 255)"
+        },
+        "ratios": {
+          "label": 5.796805223332685,
+          "input": 16.60255361379421,
+          "placeholder": 5.843606286983642,
+          "error": null
+        }
+      },
+      {
+        "theme": "light",
+        "mode": "focus-hover",
+        "error": false,
+        "colors": {
+          "label": "rgb(0, 99, 156)",
+          "input": "rgb(20, 20, 20)",
+          "placeholder": "rgb(94, 94, 94)",
+          "surface": "rgb(230, 230, 230)",
+          "error": null,
+          "background": "rgb(255, 255, 255)"
+        },
+        "ratios": {
+          "label": 5.153754876990446,
+          "input": 14.760801572766,
+          "placeholder": 5.195364211916622,
+          "error": null
+        }
+      },
+      {
+        "theme": "light",
+        "mode": "resting",
+        "error": true,
+        "colors": {
+          "label": "rgb(179, 38, 30)",
+          "input": "rgb(20, 20, 20)",
+          "placeholder": "rgb(94, 94, 94)",
+          "surface": "rgb(243, 243, 243)",
+          "error": "rgb(179, 38, 30)",
+          "background": "rgb(255, 255, 255)"
+        },
+        "ratios": {
+          "label": 5.890742100034427,
+          "input": 16.60255361379421,
+          "placeholder": 5.843606286983642,
+          "error": 6.536488984854359
+        }
+      },
+      {
+        "theme": "light",
+        "mode": "hover",
+        "error": true,
+        "colors": {
+          "label": "rgb(179, 38, 30)",
+          "input": "rgb(20, 20, 20)",
+          "placeholder": "rgb(94, 94, 94)",
+          "surface": "rgb(230, 230, 230)",
+          "error": "rgb(179, 38, 30)",
+          "background": "rgb(255, 255, 255)"
+        },
+        "ratios": {
+          "label": 5.237271161871331,
+          "input": 14.760801572766,
+          "placeholder": 5.195364211916622,
+          "error": 6.536488984854359
+        }
+      },
+      {
+        "theme": "light",
+        "mode": "focus",
+        "error": true,
+        "colors": {
+          "label": "rgb(179, 38, 30)",
+          "input": "rgb(20, 20, 20)",
+          "placeholder": "rgb(94, 94, 94)",
+          "surface": "rgb(243, 243, 243)",
+          "error": "rgb(179, 38, 30)",
+          "background": "rgb(255, 255, 255)"
+        },
+        "ratios": {
+          "label": 5.890742100034427,
+          "input": 16.60255361379421,
+          "placeholder": 5.843606286983642,
+          "error": 6.536488984854359
+        }
+      },
+      {
+        "theme": "light",
+        "mode": "focus-hover",
+        "error": true,
+        "colors": {
+          "label": "rgb(179, 38, 30)",
+          "input": "rgb(20, 20, 20)",
+          "placeholder": "rgb(94, 94, 94)",
+          "surface": "rgb(230, 230, 230)",
+          "error": "rgb(179, 38, 30)",
+          "background": "rgb(255, 255, 255)"
+        },
+        "ratios": {
+          "label": 5.237271161871331,
+          "input": 14.760801572766,
+          "placeholder": 5.195364211916622,
+          "error": 6.536488984854359
+        }
+      },
+      {
+        "theme": "dark",
+        "mode": "resting",
+        "error": false,
+        "colors": {
+          "label": "rgb(204, 204, 204)",
+          "input": "rgb(225, 225, 225)",
+          "placeholder": "rgb(204, 204, 204)",
+          "surface": "rgb(54, 54, 54)",
+          "error": null,
+          "background": "rgb(28, 28, 28)"
+        },
+        "ratios": {
+          "label": 7.524818442712351,
+          "input": 9.240963236267774,
+          "placeholder": 7.524818442712351,
+          "error": null
+        }
+      },
+      {
+        "theme": "dark",
+        "mode": "hover",
+        "error": false,
+        "colors": {
+          "label": "rgb(204, 204, 204)",
+          "input": "rgb(225, 225, 225)",
+          "placeholder": "rgb(204, 204, 204)",
+          "surface": "rgb(74, 74, 74)",
+          "error": null,
+          "background": "rgb(28, 28, 28)"
+        },
+        "ratios": {
+          "label": 5.518546916398377,
+          "input": 6.777132174058719,
+          "placeholder": 5.518546916398377,
+          "error": null
+        }
+      },
+      {
+        "theme": "dark",
+        "mode": "focus",
+        "error": false,
+        "colors": {
+          "label": "rgb(144, 202, 249)",
+          "input": "rgb(225, 225, 225)",
+          "placeholder": "rgb(204, 204, 204)",
+          "surface": "rgb(54, 54, 54)",
+          "error": null,
+          "background": "rgb(28, 28, 28)"
+        },
+        "ratios": {
+          "label": 6.9064661431581476,
+          "input": 9.240963236267774,
+          "placeholder": 7.524818442712351,
+          "error": null
+        }
+      },
+      {
+        "theme": "dark",
+        "mode": "focus-hover",
+        "error": false,
+        "colors": {
+          "label": "rgb(144, 202, 249)",
+          "input": "rgb(225, 225, 225)",
+          "placeholder": "rgb(204, 204, 204)",
+          "surface": "rgb(74, 74, 74)",
+          "error": null,
+          "background": "rgb(28, 28, 28)"
+        },
+        "ratios": {
+          "label": 5.065060071242991,
+          "input": 6.777132174058719,
+          "placeholder": 5.518546916398377,
+          "error": null
+        }
+      },
+      {
+        "theme": "dark",
+        "mode": "resting",
+        "error": true,
+        "colors": {
+          "label": "rgb(255, 180, 171)",
+          "input": "rgb(225, 225, 225)",
+          "placeholder": "rgb(204, 204, 204)",
+          "surface": "rgb(54, 54, 54)",
+          "error": "rgb(255, 180, 171)",
+          "background": "rgb(28, 28, 28)"
+        },
+        "ratios": {
+          "label": 7.11741073540156,
+          "input": 9.240963236267774,
+          "placeholder": 7.524818442712351,
+          "error": 10.037418783778552
+        }
+      },
+      {
+        "theme": "dark",
+        "mode": "hover",
+        "error": true,
+        "colors": {
+          "label": "rgb(255, 180, 171)",
+          "input": "rgb(225, 225, 225)",
+          "placeholder": "rgb(204, 204, 204)",
+          "surface": "rgb(74, 74, 74)",
+          "error": "rgb(255, 180, 171)",
+          "background": "rgb(28, 28, 28)"
+        },
+        "ratios": {
+          "label": 5.219762492028067,
+          "input": 6.777132174058719,
+          "placeholder": 5.518546916398377,
+          "error": 10.037418783778552
+        }
+      },
+      {
+        "theme": "dark",
+        "mode": "focus",
+        "error": true,
+        "colors": {
+          "label": "rgb(255, 180, 171)",
+          "input": "rgb(225, 225, 225)",
+          "placeholder": "rgb(204, 204, 204)",
+          "surface": "rgb(54, 54, 54)",
+          "error": "rgb(255, 180, 171)",
+          "background": "rgb(28, 28, 28)"
+        },
+        "ratios": {
+          "label": 7.11741073540156,
+          "input": 9.240963236267774,
+          "placeholder": 7.524818442712351,
+          "error": 10.037418783778552
+        }
+      },
+      {
+        "theme": "dark",
+        "mode": "focus-hover",
+        "error": true,
+        "colors": {
+          "label": "rgb(255, 180, 171)",
+          "input": "rgb(225, 225, 225)",
+          "placeholder": "rgb(204, 204, 204)",
+          "surface": "rgb(74, 74, 74)",
+          "error": "rgb(255, 180, 171)",
+          "background": "rgb(28, 28, 28)"
+        },
+        "ratios": {
+          "label": 5.219762492028067,
+          "input": 6.777132174058719,
+          "placeholder": 5.518546916398377,
+          "error": 10.037418783778552
+        }
+      }
+    ],
+    "motion": {
+      "ordinary": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reduced": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "explicitZeroPreserved": true
+    },
+    "fourCompiledBindings": [
+      "react",
+      "vue",
+      "angular",
+      "svelte"
+    ],
+    "requiredMarker": "Explicit public --wa-form-control-required-content:none fixture mapping retains the HA wrapper marker and native required constraint; live HA uses its public label slot. Images/component functions remain unmodified.",
+    "nativeRule": "HTML no-button blockers include disabled, readonly and hidden text inputs. One disabled unnamed light-DOM proxy enables native-first interoperability; the shared algorithm skips tracked proxies and counts each owner once. It contributes no current value, form data, validation or tab stop.",
+    "copilotFinding": "https://github.com/vypdev/copilot/issues/890 reports the separate false disabled-exclusion premise. Native reassessment remains required; no manual finding dismissal/resolution.",
+    "chrome": {
+      "url": "http://127.0.0.1:6010/ha-ui/?path=/story/forms-text-field--spanish-dark-narrow",
+      "screenshot": "/private/tmp/ha-ui-field-reference/chrome-fields-final.png",
+      "actualOriginal": {
+        "base": {
+          "background": "rgb(54, 54, 54)",
+          "borderRadius": "4px 4px 0px 0px",
+          "font": "14px / 16.8px Roboto, Noto, sans-serif",
+          "height": 56,
+          "padding": "0px 16px"
+        },
+        "host": "WA-INPUT",
+        "label": null,
+        "native": {
+          "background": "rgba(118, 118, 118, 0)",
+          "borderRadius": "0px",
+          "font": "14px / 16.8px Roboto, Noto, sans-serif",
+          "height": 56,
+          "padding": "12px 0px 0px"
+        },
+        "required": true
+      },
+      "observed": "Actual original and compiled fields have56px painted/native height,14px/16.8px Roboto,12px top input padding and4px top corners. Shared focus raises the label to10px and shows one required marker. Original Create area dialog canceled, dashboard restored, no backend mutation."
+    },
+    "knownCrossEngineLimitation": "The default Storybook field play fails during reset in Firefox with a Lit marker error, independently reproduced in both prior6c3df6a button and current field builds. Isolated actual archive Enter differentials pass all3engines. This does not establish full Storybook/Firefox support; the retained browser-matrix scope must resolve the pre-existing catalog/reset failure.",
+    "scopeComplete": false
   }
 }

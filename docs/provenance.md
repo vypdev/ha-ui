@@ -30,17 +30,28 @@ partial declarations and an exact tslib dependency. React/Vue include their sour
 Svelte includes source, preprocessed components and generated declarations. Third-party compilers,
 frameworks and helpers retain their own package licenses; no third-party runtime source is copied here.
 
-The text-field increment adapts the 56px field minimum height, 16px padding, 6px label/help gaps
+The first text-field increment adapted the 56px field minimum height, 16px padding, 6px label/help gaps
 and 14px/12px text geometry from
 [Gateway ui-catalog.css lines 143–150 at the same revision](https://github.com/vypdev/homeassistant-gateway/blob/e47dde303e475a6d03e1d6697ec87a934e93263b/frontend/src/ui/ui-catalog.css#L143-L150).
 Form ownership, controlled requests, validation, composition handling and accessible native input
-semantics are authored here. No private Home Assistant component or external asset is imported.
+semantics are authored here. The later filled-field calibration below replaces this initial geometry.
 
 The four text-field bindings and Angular value-accessor/validator bridge are authored here. They
 reuse the pure core event/value/validation policies and the existing core renderer, adding no CSS
 or alternative controller. Angular Forms 22.2.4 is an exact framework peer; its runtime source is
 not copied. Source-browser policy aliases are test-only; actual frozen package consumers resolve
 installed exports and verify authored source bytes against the repository.
+
+The filled-field calibration adapts public HA `src/components/input/ha-input.ts` and
+`wa-input-mixin.ts` at reviewed revision `027d9578ec9663b8aa22f50c24274a7cd9d001c1`, plus
+input/form-control styles in the same reviewed `@home-assistant/webawesome` 3.14.0-ha.2
+artifact used for buttons and overflow. The HA Apache 2.0 and Web Awesome MIT texts and
+modifications are retained in `packages/core/NOTICE` and `packages/core/LICENSES`. No upstream
+runtime is imported into the product. The [field reference](evidence/ha-field-reference.json)
+records original public assets, fonts, themes and the explicit single-required-marker fixture
+configuration matching live HA observation. Original captures and measurements remain independent
+of the authored renderer. Native form bookkeeping, controlled state, combined help/error
+association, accessible fallback colors and OS motion handling are authored in ha-ui.
 
 The Storybook catalog and fixtures are authored here and import production package entrypoints.
 Storybook 10.6.5 and its official addons declare MIT licenses; their distributed manager assets

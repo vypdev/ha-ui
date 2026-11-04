@@ -50,7 +50,7 @@ Consuming apps supply their fonts as HA does; the shared component performs no f
 | 1 | Checkbox and catalog font baseline | Candidate calibrated against measured HA states; source, packed and static gates are recorded separately |
 | 2 | Upper dashboard navigation | Text-only controls plus three icon/text presentations calibrated against measured HA states in both semantics; overflow calibrated separately below; custom theme/font breadth and installed-app acceptance remain required |
 | 3 | Buttons | Original HA variants/states, native target and four bindings are calibrated below; accessible application accent overrides remain an explicit palette difference |
-| 4 | Text fields and single/multiple selects | Current border/native-control presentation differs from the HA reference; revise before visual acceptance |
+| 4 | Text fields and single/multiple selects | Filled text fields are being calibrated against original HA references below; native select presentation still requires calibration |
 | 5 | Remaining families | Capture the current HA counterpart and establish the same reference before implementing their visual layer |
 | 6 | Gateway and Domus | Compare their real installed flows using the same accepted component cohort; app UX and human acceptance remain separate |
 
@@ -195,3 +195,29 @@ replay proved that reusing a document after earlier states can retain different 
 compositing, even after consecutive frames agree. Fresh original campaigns must agree independently;
 no production paint workaround, edited image or raster threshold increase is used. All previously
 accepted navigation references remain unchanged.
+
+
+## Filled single-line text fields
+
+The [field reference](evidence/ha-field-reference.json) retains 44 original states per platform
+on macOS and Linux. Two independent original campaigns agree for all 88 images. Each state
+starts in a fresh document, waits for the original lazy input registration, uses recorded HA
+public theme tokens and exact Roboto bytes, and settles computed styles and consecutive images.
+Public `--wa-form-control-required-content:none` suppresses a second Web Awesome marker while
+retaining the HA wrapper marker and native required constraint. Direct Chrome observation of
+live HA confirms one marker; that application uses its public label slot. The fixture's mapping
+is explicit and does not modify component functions or original images.
+
+Source comparisons cover the filled surface, native input, floating/resting label, underline,
+hint, required/error/readonly/disabled states, placeholder and narrow wrapping. The compiled
+catalog gate requires exact platform-specific image digests as well as styles and geometry;
+reference images are never generated from ha-ui. Real painted-padding clicks, hidden-host
+semantics, native/shared Enter interoperability and ordinary/OS-reduced/explicit-zero motion
+are tested separately. Current acceptance receipts belong to the candidate that produced them;
+a passing published button cohort does not validate uncommitted field work.
+
+Original HA colors are calibration inputs, not a contrast guarantee. Standalone fallback and
+catalog field colors are checked independently with actual focused/hovered backgrounds and
+placeholder colors. Catalog overrides remain scoped to its field demonstrations and do not
+change original-token proof fixtures. See the [field contract](field-contract.md) for the
+controlled API, native blocker bookkeeping and the remaining input/application scope.

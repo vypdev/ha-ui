@@ -16,6 +16,9 @@ export const catalogFrame:Decorator=(Story,context)=>{
     /* Explicit accessible demo accents; original HA palettes are measured independently. */
     .catalog-frame vyp-ha-button {--vyp-ha-primary:var(--primary-color);--vyp-ha-on-accent:var(--text-primary-color);--vyp-ha-danger:var(--error-color);--vyp-ha-success:var(--success-color);--vyp-ha-warning:var(--warning-color,#ffcc80);--vyp-ha-on-warning:#241b0c;}
     .catalog-frame[data-theme=light] vyp-ha-button {--vyp-ha-primary:#006fae;}
+    .catalog-frame vyp-ha-field {--vyp-ha-primary:var(--primary-color);--vyp-ha-danger:var(--error-color);--vyp-ha-placeholder:var(--secondary-text-color);}
+    .catalog-frame[data-theme=light] vyp-ha-field {--vyp-ha-primary:#00639c;--ha-color-form-background:#f3f3f3;--ha-color-form-background-disabled:#ccc;}
+    .catalog-frame[data-theme=dark] vyp-ha-field {--vyp-ha-primary:#90caf9;--vyp-ha-danger:#ffb4ab;--ha-color-form-background:#363636;--ha-color-form-background-disabled:#363636;}
     .example-content {padding:16px 0;} .example-content h2 {font-size:20px;margin:0 0 8px;} .example-content p {margin:0;}
     .example-form {display:grid;gap:16px;} .example-actions {display:flex;flex-wrap:wrap;gap:8px;}
     .example-actions > button {min-height:44px;padding:8px 16px;font:inherit;}

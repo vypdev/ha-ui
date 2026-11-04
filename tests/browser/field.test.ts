@@ -165,7 +165,7 @@ test('retains values across disconnect/reparenting and uses live HA theme tokens
   const {field,form}=await mount();field.value='Saved';field.remove();document.body.append(field);expect(field.value).toBe('Saved');form.append(field);expect(entries(form)).toEqual([['task','Saved']]);
   field.style.setProperty('--primary-text-color','rgb(222, 223, 224)');field.style.setProperty('--card-background-color','rgb(30, 31, 32)');field.style.setProperty('--divider-color','rgb(70, 71, 72)');
   field.state=model({label:'Nombre de la tarea',description:'Elige un nombre.',placeholder:'Cocina'});await field.updateComplete;
-  expect(getComputedStyle(input(field)).color).toBe('rgb(222, 223, 224)');expect(getComputedStyle(input(field)).backgroundColor).toBe('rgb(30, 31, 32)');expect(getComputedStyle(input(field)).minHeight).toBe('56px');expect(input(field).labels![0].textContent).toBe('Nombre de la tarea');expect(input(field).value).toBe('Saved');
+  expect(getComputedStyle(input(field)).color).toBe('rgb(222, 223, 224)');expect(getComputedStyle(field.shadowRoot!.querySelector('[part=control]')!).backgroundColor).toBe('rgb(30, 31, 32)');expect(getComputedStyle(field.shadowRoot!.querySelector('[part=control]')!,'::after').backgroundColor).toBe('rgb(70, 71, 72)');expect(getComputedStyle(input(field)).minHeight).toBe('56px');expect(input(field).labels![0].textContent).toBe('Nombre de la tarea');expect(input(field).value).toBe('Saved');
 });
 
 test('delivers pre-render restoration for deferred or synchronous consumer acknowledgment',async()=>{

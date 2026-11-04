@@ -1,5 +1,5 @@
 import {LitElement,css,html,nothing} from 'lit';
-import {implicitSubmit} from './implicit-submit.js';
+import {implicitSubmit,trackImplicitBlocker} from './implicit-submit.js';
 import {FieldInputError,textFieldName,textFieldState,textFieldValue,textFieldValidity,type TextFieldState,type FieldValueReason,type FieldValueDetail} from '../field-contracts.js';
 
 export type {FieldValueReason,FieldValueDetail} from '../field-contracts.js';
@@ -15,24 +15,41 @@ export class HaTextField extends LitElement {
   static properties={state:{attribute:false,noAccessor:true},value:{attribute:false,noAccessor:true},
     defaultValue:{attribute:'value',converter:attributeText,noAccessor:true},name:{converter:attributeText,noAccessor:true},
     disabled:{type:Boolean,noAccessor:true},readOnly:{attribute:'readonly',type:Boolean,noAccessor:true}};
-  // Field geometry adapted from Gateway's MIT ui-catalog.css. All rendering stays in the shared core.
+  static get observedAttributes(){return [...super.observedAttributes,'form'];}
+  // Material input geometry adapts the public HA input styles; see NOTICE.
   static styles=css`
-    :host {display:block;min-width:0;font:400 14px/1.35 var(--vyp-ha-font-family,var(--primary-font-family,Roboto,Noto,sans-serif));color:var(--vyp-ha-text,var(--primary-text-color,#1c1c1c));}
-    .field {display:grid;gap:6px;} label {font-size:14px;line-height:1.35;}
-    input {box-sizing:border-box;width:100%;min-width:0;min-height:56px;border:1px solid var(--vyp-ha-border,var(--divider-color,#e0e0e0));
-      border-radius:var(--vyp-ha-field-radius,4px);padding:16px;color:inherit;background:var(--vyp-ha-surface,var(--card-background-color,#fff));font:inherit;}
-    input:focus-visible {outline:2px solid var(--vyp-ha-primary,var(--primary-color,#0075b5));outline-offset:1px;}
-    input:disabled {opacity:.5;cursor:not-allowed;} input[aria-invalid=true] {border-color:var(--vyp-ha-danger,var(--error-color,#b3261e));}
-    .help,.error {font-size:12px;line-height:1.35;} .help {color:var(--vyp-ha-text-secondary,var(--secondary-text-color,#595959));}
-    .error {color:var(--vyp-ha-danger,var(--error-color,#b3261e));}
+    :host{display:block;min-width:0;padding-top:var(--ha-input-padding-top,0px);padding-bottom:var(--ha-input-padding-bottom,var(--ha-space-2,8px));font:var(--ha-font-weight-normal,400) var(--ha-font-size-m,14px)/var(--ha-line-height-normal,1.6) var(--vyp-ha-font-family,var(--ha-font-family-body,var(--primary-font-family,Roboto,Noto,sans-serif)));color:var(--vyp-ha-text,var(--primary-text-color,#141414));text-align:var(--ha-input-text-align,start);}
+    :host([hidden]){display:none;}
+    .field{position:relative;min-width:0;}
+    .control{position:relative;display:flex;align-items:center;box-sizing:border-box;height:56px;padding:0 var(--ha-space-4,16px);border:0;border-radius:var(--vyp-ha-field-radius,var(--ha-border-radius-sm,4px) var(--ha-border-radius-sm,4px) var(--ha-border-radius-square,0px) var(--ha-border-radius-square,0px));background:var(--vyp-ha-surface,var(--ha-color-form-background,var(--card-background-color,#f3f3f3)));line-height:var(--ha-line-height-condensed,1.2);transition:background-color var(--vyp-ha-motion-duration,var(--ha-animation-duration-normal,250ms)) ease-in-out;}
+    .control::after{content:'';position:absolute;inset-inline:0;bottom:0;height:1px;background:var(--vyp-ha-border,var(--ha-color-border-neutral-loud,var(--divider-color,#5e5e5e)));transition:height var(--vyp-ha-motion-duration,var(--ha-animation-duration-normal,250ms)) ease-in-out,background-color var(--vyp-ha-motion-duration,var(--ha-animation-duration-normal,250ms)) ease-in-out;pointer-events:none;}
+    .label{position:absolute;top:0;inset-inline-start:0;max-width:100%;z-index:1;box-sizing:border-box;padding:var(--ha-space-5,20px) var(--ha-space-4,16px) 0;margin:0 0 .5em;font-weight:var(--ha-font-weight-normal,400);font-size:var(--ha-font-size-m,14px);line-height:var(--ha-line-height-condensed,1.2);color:var(--vyp-ha-text-secondary,var(--secondary-text-color,#5e5e5e));pointer-events:none;transition:padding-top var(--vyp-ha-motion-duration,var(--ha-animation-duration-normal,250ms)) ease-in-out,font-size var(--vyp-ha-motion-duration,var(--ha-animation-duration-normal,250ms)) ease-in-out,color var(--vyp-ha-motion-duration,var(--ha-animation-duration-normal,250ms)) ease-in-out;}
+    .field[data-raised] .label,:host(:focus-within) .label{padding-top:var(--ha-space-3,12px);font-size:var(--ha-font-size-xs,10px);}
+    :host(:focus-within) .label{color:var(--vyp-ha-primary,var(--primary-color,#00639c));}
+    :host(:focus-within) .control::after{height:2px;background:var(--vyp-ha-primary,var(--primary-color,#00639c));}
+    input{box-sizing:border-box;flex:1;width:100%;min-width:0;min-height:56px;height:56px;margin:0;padding:var(--ha-space-3,12px) 0 0;border:0;border-radius:0;outline:none;background:transparent;color:inherit;font:inherit;text-align:inherit;}
+    input::placeholder{color:var(--vyp-ha-placeholder,var(--ha-color-neutral-60,var(--vyp-ha-text-secondary,var(--secondary-text-color,#666))));opacity:1;}
+    .control:hover{background:var(--vyp-ha-surface-hover,var(--vyp-ha-surface,var(--ha-color-form-background-hover,var(--card-background-color,#e6e6e6))));}
+    .field[data-disabled] .control{opacity:.5;cursor:not-allowed;background:var(--vyp-ha-surface-disabled,var(--vyp-ha-surface,var(--ha-color-form-background-disabled,var(--card-background-color,#ccc))));}
+    .field[data-disabled] .label{opacity:.5;}input:disabled{cursor:not-allowed;}
+    .field[data-invalid]:not([data-disabled]) .label{color:var(--vyp-ha-danger,var(--ha-color-fill-danger-loud-resting,var(--error-color,#b3261e)));}
+    .field[data-invalid]:not([data-disabled]) .control::after{background:var(--vyp-ha-danger,var(--ha-color-border-danger-normal,var(--error-color,#b3261e)));}
+    .hint{display:flex;flex-direction:column;justify-content:center;align-items:stretch;min-width:0;height:0;min-height:0;margin:0 0 0 var(--ha-space-3,12px);font-size:var(--ha-font-size-s,12px);line-height:var(--ha-line-height-normal,1.6);color:var(--vyp-ha-text-secondary,var(--ha-color-text-secondary,var(--secondary-text-color,#5e5e5e)));}
+    .hint[data-visible]{height:auto;min-height:var(--ha-space-5,20px);}
+    .help,.error{font:inherit;overflow-wrap:anywhere;}.error{color:var(--vyp-ha-danger,var(--ha-color-on-danger-quiet,var(--error-color,#b3261e)));}
+    @media(prefers-reduced-motion:reduce){.control,.control::after,.label{transition-duration:min(var(--vyp-ha-motion-duration,1ms),1ms);}}
   `;
-  #connection=0;#internals=this.attachInternals();
+  #connection=0;#internals=this.attachInternals();#blocker:HTMLInputElement|null=null;
   #state=textFieldState({label:'Value'});
   #value='';#defaultValue='';#name='';#disabled=false;#formDisabled=false;
   #dirty=false;#showValidation=false;#customError='';#composing=false;#revision=0;#compositionRevision=0;
   #pending:Proposal|null=null;#finalComposition:string|null=null;#fromAttribute=false;#restoringAttribute=false;
   constructor(){super();this.addEventListener('invalid',this.#reveal);}
-  connectedCallback():void{super.connectedCallback();this.#connection++;}
+  connectedCallback():void{
+    super.connectedCallback();this.#connection++;
+    if(this.#blocker===null){const blocker=document.createElement('input');blocker.type='text';blocker.hidden=true;blocker.disabled=true;blocker.tabIndex=-1;blocker.slot='native-blocker';blocker.setAttribute('aria-hidden','true');trackImplicitBlocker(blocker);this.#blocker=blocker;}
+    if(this.#blocker.parentNode!==this)this.append(this.#blocker);this.#sync();
+  }
   disconnectedCallback():void{this.#connection++;super.disconnectedCallback();}
   attributeChangedCallback(name:string,previous:string|null,next:string|null):void{
     if(this.#restoringAttribute)return;
@@ -42,7 +59,7 @@ export class HaTextField extends LitElement {
       if(previous===null)this.removeAttribute(name);else this.setAttribute(name,previous);
       this.#restoringAttribute=false;throw error;
     }
-    this.#fromAttribute=true;super.attributeChangedCallback(name,previous,next);this.#fromAttribute=false;
+    this.#fromAttribute=true;super.attributeChangedCallback(name,previous,next);this.#fromAttribute=false;if(name==='form')this.#sync();
   }
   get #input():HTMLInputElement|null{return this.shadowRoot?.querySelector('input')??null;}
   get state():TextFieldState{return this.#state;}
@@ -80,6 +97,7 @@ export class HaTextField extends LitElement {
   focus(options?:FocusOptions):void{this.#input?.focus(options);}
   blur():void{this.#input?.blur();}
   formDisabledCallback(disabled:boolean):void{this.#formDisabled=disabled;this.#sync();this.requestUpdate();}
+  formAssociatedCallback():void{this.#sync();}
   formResetCallback():void{this.#showValidation=false;this.#request(this.defaultValue,'reset');this.requestUpdate();}
   formStateRestoreCallback(value:string|File|FormData,mode:'restore'|'autocomplete'):void{
     if(mode!=='restore'&&mode!=='autocomplete')throw new FieldInputError();this.#request(value,mode);
@@ -90,6 +108,7 @@ export class HaTextField extends LitElement {
     this.#internals.setFormValue(disabled?null:this.value,this.value);
     this.#internals.setValidity(validity.flags,validity.message,control??undefined);
     if(control!==null){control.disabled=disabled;control.readOnly=this.readOnly;if(!this.#composing&&control.value!==this.value)control.value=this.value;}
+    if(this.#blocker!==null){this.#blocker.disabled=true;const owner=this.getAttribute('form');if(owner===null)this.#blocker.removeAttribute('form');else this.#blocker.setAttribute('form',owner);}
   }
   protected updated():void{this.#sync();}
   #reveal():void{this.#showValidation=true;this.#sync();this.requestUpdate();}
@@ -126,12 +145,14 @@ export class HaTextField extends LitElement {
   protected render(){
     const state=this.state,validity=textFieldValidity(this.value,state,this.#customError),message=(this.#showValidation||state.error||this.#customError)?validity.message:'';
     const described=[state.description?'help':'',message?'error':''].filter(Boolean).join(' ');
-    return html`<div class="field" part="field"><label part="label" for="control">${state.label}</label>
-      <input id="control" part="input" type="text" .value=${this.value} placeholder=${state.placeholder} ?required=${state.required}
-        minlength=${state.minLength} maxlength=${state.maxLength} aria-invalid=${String(!!message)} aria-describedby=${described||nothing}
-        @input=${this.#edit} @blur=${this.#reveal} @keydown=${this.#enter} @compositionstart=${this.#startComposition} @compositionend=${this.#endComposition}>
-      ${state.description?html`<div class="help" part="help" id="help">${state.description}</div>`:nothing}
-      ${message?html`<div class="error" part="error" id="error" aria-live="polite">${message}</div>`:nothing}</div>`;
+    return html`<div class="field" part="field" ?data-raised=${this.value.length>0||state.placeholder.length>0} ?data-disabled=${this.disabled||this.#formDisabled} ?data-invalid=${!!message}>
+      <label class="label" part="label" for="control">${state.label+(state.required?'*':'')}</label>
+      <div class="control" part="control" @click=${()=>this.focus()}><input id="control" part="input" type="text" .value=${this.value} placeholder=${state.placeholder} ?required=${state.required}
+        minlength=${state.minLength} maxlength=${state.maxLength} aria-label=${state.label} aria-invalid=${String(!!message)} aria-describedby=${described||nothing}
+        @input=${this.#edit} @blur=${this.#reveal} @keydown=${this.#enter} @compositionstart=${this.#startComposition} @compositionend=${this.#endComposition}></div>
+      <div class="hint" ?data-visible=${!!(state.required||state.description||message)}>
+        ${state.description?html`<div class="help" part="help" id="help">${state.description}</div>`:nothing}
+        ${message?html`<div class="error" part="error" id="error" aria-live="polite">${message}</div>`:nothing}</div></div>`;
   }
 }
 /** Register once at an explicit browser boundary; never import this entrypoint during SSR rendering. */

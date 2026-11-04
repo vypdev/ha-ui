@@ -24,7 +24,7 @@ test('replacement, cancellation and callback removal preserve the controlled mod
 test('updates constraints, disabled/external owner and reset through the application model',async()=>{
   registerField();const consumer=attach(),field=fieldHost();await field.updateComplete;flushSync(()=>{consumer.setExternal(true);consumer.setDisabled(true);});await field.updateComplete;
   expect(field.form?.id).toBe('svelte-form');expect(fieldInput(field).disabled).toBe(true);expect(formEntries()).toEqual([]);
-  flushSync(()=>{consumer.setExternal(false);consumer.setDisabled(false);consumer.configure(fieldModel({label:'Nombre',maxLength:3}));});await field.updateComplete;expect(field.hasAttribute('form')).toBe(false);expect(field.validity.tooLong).toBe(true);expect(fieldInput(field).labels[0].textContent).toBe('Nombre');
+  flushSync(()=>{consumer.setExternal(false);consumer.setDisabled(false);consumer.configure(fieldModel({label:'Nombre',maxLength:3}));});await field.updateComplete;expect(field.hasAttribute('form')).toBe(false);expect(field.validity.tooLong).toBe(true);expect(fieldInput(field).labels[0].textContent).toBe('Nombre*');expect(fieldInput(field).getAttribute('aria-label')).toBe('Nombre');
   flushSync(()=>document.querySelector('form').reset());await field.updateComplete;expect(consumer.current()).toBe('Initial');expect(field.value).toBe('Initial');
 });
 test('standalone defaults and absent callbacks stay controlled and unmount releases subscriptions',async()=>{

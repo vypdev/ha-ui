@@ -8,6 +8,9 @@ export async function exerciseField(page:Page){
   const form=page.getByRole('form',{name:'Task form'});
   assert.equal(await textbox.inputValue(),'Kitchen');assert.equal(await model.textContent(),'Kitchen');
   assert.equal(await page.locator('vyp-ha-field').getAttribute('state'),null);
+  const geometry=await page.locator('vyp-ha-field').evaluate(host=>{const control=host.shadowRoot!.querySelector('[part=control]')!,input=host.shadowRoot!.querySelector('input')!,label=host.shadowRoot!.querySelector('label')!,box=control.getBoundingClientRect();return{x:box.x,y:box.y,paintedHeight:box.height,nativeHeight:input.getBoundingClientRect().height,labelSize:getComputedStyle(label).fontSize,blockers:host.querySelectorAll('input[slot=native-blocker]').length};});
+  assert.equal(geometry.paintedHeight,56);assert.equal(geometry.nativeHeight,56);assert.equal(geometry.labelSize,'10px');assert.equal(geometry.blockers,1);
+  await page.mouse.click(geometry.x+4,geometry.y+4);assert.equal(await textbox.evaluate(element=>element===(element.getRootNode() as ShadowRoot).activeElement),true);assert.equal(await events.textContent(),'0');
   await textbox.fill('Laundry');await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='Laundry');
   assert.equal(await events.textContent(),'1');await textbox.press('Enter');
   await page.waitForFunction(()=>document.querySelector('output[aria-label="Saved task"]')!.textContent!=='');
@@ -33,7 +36,7 @@ export async function exerciseField(page:Page){
   await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='Remounted');
   assert.equal(await events.textContent(),String(Number(before)+1));
   await page.getByRole('button',{name:'Reset task',exact:true}).click();await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='Kitchen');
-  return {controlledModel:true,exactlyOnce:true,cancellation:true,programmaticWrite:true,nativeSubmitter:true,requiredValidation:true,disabledSubmission:true,frameworkReset:true,teardownAndRemount:true};
+  return {controlledModel:true,exactlyOnce:true,cancellation:true,programmaticWrite:true,nativeSubmitter:true,requiredValidation:true,disabledSubmission:true,frameworkReset:true,teardownAndRemount:true,materialGeometry:geometry,paintedGutterFocusWithoutModelIntent:true};
 }
 
 /** Verify the installed FACE's actual readonly submission contract, independently of framework validators. */
@@ -62,5 +65,5 @@ export async function exerciseReadonlyField(page:Page){
     assert.deepEqual(result.editable,{willValidate:true,formCheck:false});assert.equal(result.afterReadonly,1);assert.equal(result.afterEditable,1);
     assert.deepEqual(result.submissions,[[result.value],[result.value]]);assert.deepEqual(result.entries,[['readonlyValue',result.value]]);
   }
-  return {cases:observations,rendererChanged:false,allNativeSubmissionsPassed:true};
+  return {cases:observations,readonlyValidationPolicyChanged:false,allNativeSubmissionsPassed:true};
 }

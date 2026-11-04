@@ -50,3 +50,14 @@ controlled native form behavior, local decorative projection, accessible names/s
 SVG spinner, reduced motion and long-label wrapping remain authored here. Extra-large uses
 the public 56px HA height override with large typography. Icon-only uses HA's public part
 layout with a 40px size. No HA/Web Awesome runtime or icon loader is imported.
+
+Filled text-field geometry adapts Home Assistant frontend input/ha-input and its Web Awesome
+input mixin (Apache License 2.0), at the same reviewed HA source revision above:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/input/ha-input.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/input/wa-input-mixin.ts
+It also adapts input/form-control styles from @home-assistant/webawesome 3.14.0-ha.2 (MIT),
+at the reviewed artifact gitHead above. Both full original licenses are retained here.
+Modifications: controlled native shadow input, authored ElementInternals form/validation and
+native implicit-submission proxy, one required marker, simultaneous linked help/error text,
+accessible fallback colors, logical geometry, public theme overrides and reduced motion.
+No HA/Web Awesome runtime, application state or network dependency is imported.

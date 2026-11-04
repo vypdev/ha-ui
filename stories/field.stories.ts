@@ -5,7 +5,7 @@ import type {HaButton} from '@vypdev/ha-ui/button';
 import type {HaTextField} from '@vypdev/ha-ui/field';
 const meta={title:'Forms/Text field',component:'vyp-ha-field',tags:['autodocs'],
   args:{value:'Kitchen',defaultValue:'Kitchen',disabled:false,readOnly:false,required:true,error:false,submitted:null},
-  argTypes:{value:{control:'text'},defaultValue:{control:'text'},disabled:{control:'boolean'},readOnly:{control:'boolean'},required:{control:'boolean'},error:{control:'boolean'},submitted:{table:{disable:true}}},
+  argTypes:{value:{control:'text'},defaultValue:{control:'text'},disabled:{control:'boolean'},readOnly:{control:'boolean'},required:{control:'boolean'},error:{control:'boolean'},placeholder:{control:'text'},description:{control:'text'},submitted:{table:{disable:true}}},
   parameters:{docs:{description:{component:'A real form-associated @vypdev/ha-ui/field. Values are controlled, never serialized into HTML. The form actions use the same shared button family. Each framework bridge delegates to this element.'}}},
   render:renderExample,
 } satisfies Meta<Args>;
@@ -24,6 +24,8 @@ export const EmptyRequired:Story={args:{value:''},play:async({canvasElement})=>{
 }};
 export const Disabled:Story={args:{disabled:true}};
 export const ReadOnly:Story={args:{readOnly:true}};
+export const EmptyOptional:Story={args:{value:'',required:false,placeholder:'',description:''}};
+export const FocusedOptional:Story={args:{value:'',required:false,placeholder:'',description:''},play:async({canvasElement})=>{const field=canvasElement.querySelector<HaTextField>('vyp-ha-field')!;await field.updateComplete;field.focus();}};
 export const Error:Story={args:{error:true}};
 export const SpanishDarkNarrow:Story={globals:{locale:'es',theme:'dark',width:'narrow',motion:'reduced'}};
 export const EnglishFallback:Story={globals:{locale:'fr'}};

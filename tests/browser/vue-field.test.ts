@@ -26,7 +26,7 @@ test('synchronous cancellation and listener/model-handler removal retain the acc
 test('updates shared constraints, disabled and external owner properties and acknowledges reset',async()=>{
   registerField();const model=mount(),field=fieldHost();await field.updateComplete;model.external.value=true;model.disabled.value=true;await nextTick();await field.updateComplete;
   expect(field.form?.id).toBe('vue-form');expect(fieldInput(field).disabled).toBe(true);expect(formEntries()).toEqual([]);model.disabled.value=false;model.external.value=false;model.state.value=fieldModel({label:'Nombre',maxLength:3});await nextTick();await field.updateComplete;
-  expect(field.hasAttribute('form')).toBe(false);expect(field.validity.tooLong).toBe(true);expect(fieldInput(field).labels![0].textContent).toBe('Nombre');model.state.value=fieldModel();await nextTick();document.querySelector('form')!.reset();await nextTick();await field.updateComplete;expect(model.value.value).toBe('Initial');expect(field.value).toBe('Initial');
+  expect(field.hasAttribute('form')).toBe(false);expect(field.validity.tooLong).toBe(true);expect(fieldInput(field).labels![0].textContent).toBe('Nombre*');expect(fieldInput(field).getAttribute('aria-label')).toBe('Nombre');model.state.value=fieldModel();await nextTick();document.querySelector('form')!.reset();await nextTick();await field.updateComplete;expect(model.value.value).toBe('Initial');expect(field.value).toBe('Initial');
 });
 test('Vue unmount removes native field subscriptions',async()=>{
   registerField();const observe=vi.fn();mount(observe);const field=fieldHost();await field.updateComplete;app!.unmount();app=undefined;propose(field,'Retained');expect(observe).not.toHaveBeenCalled();

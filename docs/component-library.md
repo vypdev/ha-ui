@@ -176,7 +176,7 @@ lengths and localized required/short/long messages. `textFieldValue` accepts wel
 strings up to 16,384 UTF-16 units; it preserves literal text and does not log values. Form names are
 bounded inert text. Invalid input has the bounded `invalid_field` diagnostic.
 
-`vyp-ha-field` is a form-associated element with one native input, an actual label and
+`vyp-ha-field` is a form-associated element with one visible shadow input, an actual label and
 linked help/error text. Its state object and value are properties. Name, disabled and readonly have standard
 host attribute semantics; the value attribute supplies defaultValue for initial/reset behavior.
 Current value is never reflected into HTML. Explicit client registration and properties assigned
@@ -215,12 +215,16 @@ Native form validation reveals linked errors as well as field-level checkValidit
 An application can cancel Enter in its key handler; a deferred submit checks that the owner is
 unchanged and that the field is still enabled. It preserves the first native default submitter,
 including its name/value and disabled state. With no submitter, multiple blocking fields prevent
-implicit submission. Synthetic key events do not trigger submission.
+implicit submission, including disabled, readonly and hidden text blockers. A disabled unnamed
+native proxy lets the browser count each shared field when Enter starts on another native input;
+the shared algorithm skips that tracked proxy and counts its owner once. It contributes no form
+data or current value. Synthetic key events do not trigger submission. See the
+[field contract](field-contract.md) for the native differential and original HA visual reference.
 
 The native input has a real associated label and delegates focus through an external label too.
 The core owns all field markup, 56px minimum height, 16px padding, focus/error treatment and live
 HA theme inheritance. Field tokens additionally include `--vyp-ha-field-radius` and
-`--vyp-ha-danger`; shadow parts are `field`, `label`, `input`, `help` and `error`. Controlled
+`--vyp-ha-danger` and `--vyp-ha-placeholder`; shadow parts are `field`, `control`, `label`, `input`, `help` and `error`. Controlled
 reset requires the application to acknowledge the request, just like a normal edit. Cancellation
 does not undo a value explicitly assigned by application code. This preview stores no values,
 performs no network calls and grants no application permission.
