@@ -20,6 +20,11 @@ overrides include `--vyp-ha-field-radius`, `--vyp-ha-surface`, `--vyp-ha-surface
 an explicit zero remains zero. Clicking painted padding focuses an enabled or readonly input
 without producing an edit request. Disabled fields remain unfocusable.
 
+The default input begins 16px after the painted control's left edge. A real click at (4,4)
+therefore tests the padding itself. The Chromium source test asserts that measured boundary
+before checking the exact control target. Scoped installed-core checks retain the native
+Firefox disabled-click retargeting difference while verifying focus and absence of edit intent.
+
 ## Native form interoperability
 
 The shadow input provides editing and accessible semantics; ElementInternals owns successful

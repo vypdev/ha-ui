@@ -78,6 +78,12 @@ test('mouse panning uses the measured threshold, cancels native drag and only su
 test.each([{altKey:true},{ctrlKey:true},{metaKey:true},{shiftKey:true},{button:1}])('modified mouse input keeps native behavior: %j',async modifier=>{
  const host=await mount(),bar=viewport(host);await frame();mouse(items(host)[0],'mousedown',{clientX:180,...modifier});mouse(window,'mousemove',{clientX:100,buttons:1});expect(bar.scrollLeft).toBe(0);expect(mouse(items(host)[0],'dragstart').defaultPrevented).toBe(false);
 });
+for(const kind of ['navigation','panels'] as const)for(const rtl of [false,true])test(`a fresh pointer activation survives an outside drag release: ${kind}, rtl=${rtl}`,async()=>{
+ const host=await mount(kind,rtl),received=events(host);await frame();
+ mouse(items(host)[0],'mousedown',{clientX:180});mouse(window,'mousemove',{clientX:rtl?260:100,buttons:1});mouse(window,'mouseup');expect(received).toHaveLength(0);
+ await page.elementLocator(host).getByRole(kind==='navigation'?'link':'tab',{name:'Overview',exact:true}).click();expect(received).toHaveLength(1);
+ await userEvent.keyboard('{Enter}');expect(received).toHaveLength(2);
+});
 test('cancelled input, lost buttons and window blur retire global gesture listeners',async()=>{
  const host=await mount(),bar=viewport(host);await frame();
  items(host)[0].addEventListener('mousedown',event=>event.preventDefault(),{once:true});mouse(items(host)[0],'mousedown',{clientX:180});mouse(window,'mousemove',{clientX:100,buttons:1});expect(bar.scrollLeft).toBe(0);

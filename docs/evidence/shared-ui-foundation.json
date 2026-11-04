@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T22:02:38.369254+00:00",
+  "recordedAtUTC": "2026-11-04T22:12:32.682218+00:00",
   "status": "Partial library: shared navigation/panels, native-form buttons, fields, typed selects and checkbox with four real bindings. Scoped navigation/checkbox/button/filled-field visuals are calibrated against original HA; selects, remaining visual families and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, text field, native-form button, typed single/multiple select and boolean checkbox; immutable DOM-free contracts, explicit registration, typed cancelable intent and one renderer per family.",
     "Real React/Vue/Angular/Svelte bindings for all five current families. Angular includes actual field/select/checkbox Forms bridges. Runtime adapter imports stay within pure contracts and the selected framework; no alternate visuals.",
-    "1145 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 51 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
+    "1149 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 51 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four clean frozen offline compiled installed-package consumers exercise navigation, field, button, typed selects and boolean checkboxes, native validation/entries/reset/disabled behavior, cancellation, EN/ES/themes and teardown/remount. Actual tested five-coordinate archives are retained with their digests.",
@@ -38,7 +38,8 @@
     "Shared overflow adds logical LTR/RTL paging, localized native controls, selection/focus reveal, measured mouse-panning threshold and observer/gesture lifecycle cleanup. Forty original HA states across macOS/Linux back forty source geometry cases and eighty compiled raster comparisons. All 208 current navigation sample PNGs match their corresponding original references byte for byte. Four actual installed-core mouse/keyboard journeys and four compiled framework consumers pass narrow EN/ES paging without selection.",
     "HA button surfaces match 96 independently captured original states per measured platform, including real active pointers. Both original campaigns repeat byte-identically; all 192 current candidate/reference PNG pairs also match byte for byte. Small/medium painted geometry is separated from the native 44px target, verified with actual mouse clicks in its invisible margin and all four compiled framework bindings. Accessible catalog palette overrides are explicit differences from original HA tokens.",
     "Filled fields match 44 original HA states per measured platform; all88 compiled candidate/reference PNG pairs are byte-identical. Floating/resting labels, painted/native56px controls, required marker, help/error/placeholder/narrow states, real padding clicks, hidden hosts, standalone/OS motion and actual compiled four-framework geometry are exercised. Independent accessible catalog colors pass16 resting/hover/focus combinations, separate from original HA palette parity.",
-    "The four compiled catalog forms preserve live status after native reset and subsequent user edits/submissions. Twelve real journeys plus automatic a11y/interactions pass across offline Linux Chromium/Firefox/WebKit. A minimal native output/Lit reproducer fails in the latter two engines; non-resettable polite status regions remove that failure. This is scoped catalog evidence, not full browser support."
+    "The four compiled catalog forms preserve live status after native reset and subsequent user edits/submissions. Twelve real journeys plus automatic a11y/interactions pass across offline Linux Chromium/Firefox/WebKit. A minimal native output/Lit reproducer fails in the latter two engines; non-resettable polite status regions remove that failure. This is scoped catalog evidence, not full browser support.",
+    "Real pointer counterexamples preserve the production renderer/controller: measured gutter clicks lie before the native input; a fresh mousedown clears drag-click suppression before later activation. Nine actual-archive gutter cases and12 navigation journeys pass across Chromium/Firefox/WebKit. Four permanent source cases and the packaged outside-release journey retain the evidence for native reassessment; no finding is manually dismissed."
   ],
   "coverage": {
     "lines": {
@@ -21768,5 +21769,666 @@
       }
     },
     "fullBrowserMatrixComplete": false
+  },
+  "pointerReview": {
+    "recordedAtUTC": "2026-11-04T22:12:32.682218+00:00",
+    "analyzedHead": "55174696e97a4c8b424c7f57d7da7a61e4b157fd",
+    "analyzedCI": "https://github.com/vypdev/ha-ui/actions/runs/41920064920",
+    "nativeRun": "https://github.com/vypdev/ha-ui/actions/runs/41920064818",
+    "nativeOpenFindingsAtThatHead": 2,
+    "sourceCasesAdded": 4,
+    "sourceGutterCasesStrengthened": 3,
+    "localSourceTests": 1149,
+    "runtimeFiles": 51,
+    "coverage": {
+      "lines": {
+        "total": 855,
+        "covered": 855,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 1919,
+        "covered": 1919,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 497,
+        "covered": 497,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 1232,
+        "covered": 1232,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "compiledCounterexamples": {
+      "coreArchiveSha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3",
+      "network": "none",
+      "scope": "Nine painted-gutter clicks and12navigation gesture journeys against the actual core archive; no production fix is applied for the reviewed claims",
+      "results": [
+        {
+          "engine": "chromium",
+          "version": "156.0.8078.80",
+          "fields": [
+            {
+              "mode": "enabled",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "div",
+                  "part": "control",
+                  "id": "",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    },
+                    {
+                      "tag": "vyp-ha-field",
+                      "part": null
+                    },
+                    {
+                      "tag": "body",
+                      "part": null
+                    },
+                    {
+                      "tag": "html",
+                      "part": null
+                    }
+                  ]
+                },
+                "focused": true,
+                "requests": 0
+              }
+            },
+            {
+              "mode": "readonly",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "div",
+                  "part": "control",
+                  "id": "",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    },
+                    {
+                      "tag": "vyp-ha-field",
+                      "part": null
+                    },
+                    {
+                      "tag": "body",
+                      "part": null
+                    },
+                    {
+                      "tag": "html",
+                      "part": null
+                    }
+                  ]
+                },
+                "focused": true,
+                "requests": 0
+              }
+            },
+            {
+              "mode": "disabled",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "div",
+                  "part": "control",
+                  "id": "",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    }
+                  ]
+                },
+                "focused": false,
+                "requests": 0
+              }
+            }
+          ],
+          "navigation": [
+            {
+              "kind": "navigation",
+              "rtl": false,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "navigation",
+              "rtl": true,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "panels",
+              "rtl": false,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "panels",
+              "rtl": true,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "157.0",
+          "fields": [
+            {
+              "mode": "enabled",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "div",
+                  "part": "control",
+                  "id": "",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    },
+                    {
+                      "tag": "vyp-ha-field",
+                      "part": null
+                    },
+                    {
+                      "tag": "body",
+                      "part": null
+                    },
+                    {
+                      "tag": "html",
+                      "part": null
+                    }
+                  ]
+                },
+                "focused": true,
+                "requests": 0
+              }
+            },
+            {
+              "mode": "readonly",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "div",
+                  "part": "control",
+                  "id": "",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    },
+                    {
+                      "tag": "vyp-ha-field",
+                      "part": null
+                    },
+                    {
+                      "tag": "body",
+                      "part": null
+                    },
+                    {
+                      "tag": "html",
+                      "part": null
+                    }
+                  ]
+                },
+                "focused": true,
+                "requests": 0
+              }
+            },
+            {
+              "mode": "disabled",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "vyp-ha-field",
+                  "part": null,
+                  "id": "gutter-proof",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    }
+                  ]
+                },
+                "focused": false,
+                "requests": 0
+              }
+            }
+          ],
+          "navigation": [
+            {
+              "kind": "navigation",
+              "rtl": false,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "navigation",
+              "rtl": true,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "panels",
+              "rtl": false,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "panels",
+              "rtl": true,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "27.2",
+          "fields": [
+            {
+              "mode": "enabled",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "div",
+                  "part": "control",
+                  "id": "",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    },
+                    {
+                      "tag": "vyp-ha-field",
+                      "part": null
+                    },
+                    {
+                      "tag": "body",
+                      "part": null
+                    },
+                    {
+                      "tag": "html",
+                      "part": null
+                    }
+                  ]
+                },
+                "focused": true,
+                "requests": 0
+              }
+            },
+            {
+              "mode": "readonly",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "div",
+                  "part": "control",
+                  "id": "",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    },
+                    {
+                      "tag": "vyp-ha-field",
+                      "part": null
+                    },
+                    {
+                      "tag": "body",
+                      "part": null
+                    },
+                    {
+                      "tag": "html",
+                      "part": null
+                    }
+                  ]
+                },
+                "focused": true,
+                "requests": 0
+              }
+            },
+            {
+              "mode": "disabled",
+              "geometry": {
+                "control": {
+                  "x": 32,
+                  "y": 32,
+                  "width": 320,
+                  "height": 56
+                },
+                "input": {
+                  "x": 48,
+                  "y": 32,
+                  "width": 288,
+                  "height": 56
+                }
+              },
+              "point": {
+                "x": 36,
+                "y": 36
+              },
+              "actual": {
+                "target": {
+                  "tag": "div",
+                  "part": "control",
+                  "id": "",
+                  "path": [
+                    {
+                      "tag": "div",
+                      "part": "control"
+                    },
+                    {
+                      "tag": "div",
+                      "part": "field"
+                    }
+                  ]
+                },
+                "focused": false,
+                "requests": 0
+              }
+            }
+          ],
+          "navigation": [
+            {
+              "kind": "navigation",
+              "rtl": false,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "navigation",
+              "rtl": true,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "panels",
+              "rtl": false,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            },
+            {
+              "kind": "panels",
+              "rtl": true,
+              "realMousePan": true,
+              "nativeDragClickSuppressed": true,
+              "nextPointerAndKeyboardActivate": true,
+              "outsideReleaseThenPointerAndKeyboardActivate": true,
+              "selectionControlled": true
+            }
+          ],
+          "errors": []
+        }
+      ]
+    },
+    "actualPackedNavigation": [
+      {
+        "kind": "navigation",
+        "rtl": false,
+        "realMousePan": true,
+        "nativeDragClickSuppressed": true,
+        "nextPointerAndKeyboardActivate": true,
+        "outsideReleaseThenPointerAndKeyboardActivate": true,
+        "selectionControlled": true
+      },
+      {
+        "kind": "navigation",
+        "rtl": true,
+        "realMousePan": true,
+        "nativeDragClickSuppressed": true,
+        "nextPointerAndKeyboardActivate": true,
+        "outsideReleaseThenPointerAndKeyboardActivate": true,
+        "selectionControlled": true
+      },
+      {
+        "kind": "panels",
+        "rtl": false,
+        "realMousePan": true,
+        "nativeDragClickSuppressed": true,
+        "nextPointerAndKeyboardActivate": true,
+        "outsideReleaseThenPointerAndKeyboardActivate": true,
+        "selectionControlled": true
+      },
+      {
+        "kind": "panels",
+        "rtl": true,
+        "realMousePan": true,
+        "nativeDragClickSuppressed": true,
+        "nextPointerAndKeyboardActivate": true,
+        "outsideReleaseThenPointerAndKeyboardActivate": true,
+        "selectionControlled": true
+      }
+    ],
+    "productionSourceChanged": false,
+    "gutterReport": "https://github.com/vypdev/copilot/issues/891",
+    "dragReport": "https://github.com/vypdev/copilot/issues/892",
+    "nativeReassessmentRequired": true,
+    "manuallyResolvedOrDismissed": false,
+    "scope": "Measured real pointer input only. The Chromium source assertion remains exact; Firefox retargets the disabled padding click to the host, which is recorded rather than treated as universal target identity."
   }
 }

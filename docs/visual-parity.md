@@ -163,6 +163,13 @@ edge-retention accessibility exception is documented in the component API and te
 separately from the matching visual states. Custom font/theme breadth, complete browser
 support and Gateway/Domus adoption remain open.
 
+Native overflow gesture checks include releasing a drag outside the bar, then starting a fresh
+pointer activation and keyboard activation. The existing mousedown handler retires the prior
+gesture and clears suppression before that new click. Link/panel modes and LTR/RTL pass this
+actual installed-core sequence in measured Chromium, Firefox and WebKit; it does not establish
+the full browser matrix. Review counterexamples and native reassessment are recorded separately
+from production fixes.
+
 ## Button surfaces and native targets
 
 The [button reference](evidence/ha-button-reference.json) records 96 original states per

@@ -35,6 +35,8 @@ test('public outer spacing and legacy surface/shape tokens update the actual pai
 });
 test.each(['enabled','readonly','disabled'])('clicking the painted padding preserves native focus behavior: %s',async mode=>{
  const field=await mount({readOnly:mode==='readonly'});field.disabled=mode==='disabled';await field.updateComplete;const control=field.shadowRoot!.querySelector<HTMLElement>('[part=control]')!,input=field.shadowRoot!.querySelector('input')!;let target:EventTarget|null=null,requests=0;
+ // The measured click point is inside the painted horizontal padding, before the input.
+ expect(input.getBoundingClientRect().left).toBeGreaterThan(control.getBoundingClientRect().left+4);
  control.addEventListener('click',event=>{target=event.target;});field.addEventListener('ha-value-request',()=>requests++);await userEvent.click(control,{position:{x:4,y:4}});expect(target).toBe(control);expect(field.shadowRoot!.activeElement===input).toBe(mode!=='disabled');expect(requests).toBe(0);
 });
 test('standalone focused, placeholder and error text retain contrast without a host theme',async()=>{
