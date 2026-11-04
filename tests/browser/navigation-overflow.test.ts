@@ -18,6 +18,7 @@ for(const kind of ['navigation','panels'] as const)for(const rtl of [false,true]
  const host=await mount(kind,rtl),received=events(host),bar=viewport(host);await expect.element(next(host)).toBeVisible();await expect.element(previous(host)).not.toBeInTheDocument();
  await next(host).click();await expect.poll(()=>Math.abs(bar.scrollLeft)).toBeGreaterThan(0);expect(host.state.selected).toBe('item-0');expect(received).toHaveLength(0);
  await expect.element(previous(host)).toBeVisible();bar.scrollLeft=rtl?-(bar.scrollWidth-bar.clientWidth):bar.scrollWidth-bar.clientWidth;
+ await expect.element(next(host)).toHaveAttribute('aria-disabled','true');await expect.element(next(host)).not.toHaveAttribute('disabled');
  await expect.element(next(host)).toBeDisabled();items(host).at(-1)!.focus();await expect.element(next(host)).not.toBeInTheDocument();
  await previous(host).click();await expect.poll(()=>Math.abs(bar.scrollLeft)).toBeLessThan(bar.scrollWidth-bar.clientWidth);expect(received).toHaveLength(0);
 });

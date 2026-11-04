@@ -56,6 +56,15 @@ test files: Vitest excludes collected test modules from coverage. Their render f
 imported from independently measured `*.example.ts` modules; architecture checks prohibit inline
 renderers or duplicate control markup in those test definitions. No runtime example is excluded.
 
+Vitest 5.1.0 adds each project's test include patterns to the shared resolved coverage exclusions;
+the official Storybook addon supplies its CSF test patterns. The strict inventory confirms that
+all 52 authored runtime modules appear, with no CSF test definitions. The reported contrary premise
+is tracked in [Copilot #895](https://github.com/vypdev/copilot/issues/895). Likewise, Vitest Browser's
+`expect.element().toBeDisabled()` combines native and ARIA-disabled state; navigation regressions
+retain this matcher and explicitly verify the ARIA-only edge state
+([Copilot #894](https://github.com/vypdev/copilot/issues/894)). The dependency boundary also checks
+CommonJS loaders and TypeScript import-equals declarations, rejecting nonliteral dependencies.
+
 The static gate builds the manager, autodocs and previews, then serves only the repository base
 `/ha-ui/`. It checks 128 locale/theme/width combinations with axe, real focus/overflow and manual
 panel activation, native form editing/validation/submit/reset, controls-driven value changes and

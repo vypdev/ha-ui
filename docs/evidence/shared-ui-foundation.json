@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T23:05:14.818518+00:00",
+  "recordedAtUTC": "2026-11-04T23:36:21.139568+00:00",
   "status": "Partial library: shared navigation/panels, native-form buttons, fields, typed selects and checkbox with four real bindings. Scoped navigation/checkbox/button/filled-field visuals are calibrated against original HA; selects, remaining visual families and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
@@ -23694,6 +23694,74 @@
       ]
     },
     "hostedValidation": "Prior61baa50 CI passed and native review has4open findings. Local fixes/counterexamples require publication and fresh current-head CI/native review.",
+    "capabilityComplete": false
+  },
+  "architectureReview": {
+    "analyzedHead": "fc143a7fce3e6d50647804f29b0ed0af27fa0e32",
+    "analyzedHeadCI": "https://github.com/vypdev/ha-ui/actions/runs/41931865344",
+    "nativeRun": "https://github.com/vypdev/ha-ui/actions/runs/41931865524",
+    "nativeOutcome": "complete",
+    "nativeCoverage": "complete",
+    "openFindingsAtAnalyzedHead": 3,
+    "sourceTests": 1155,
+    "runtimeFiles": 52,
+    "coverage": {
+      "lines": {
+        "total": 860,
+        "covered": 860,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 1929,
+        "covered": 1929,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 500,
+        "covered": 500,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 1234,
+        "covered": 1234,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "sourceRuntimeIdentitiesUnchanged": true,
+    "strictTypes": "passed",
+    "primarySDDUnchanged": true,
+    "architectureFix": "The AST scanner recognizes literal and nonliteral require(), module.require(), module[\"require\"]() and TypeScript import-equals module references; nonliteral loaders fail closed. Regression fails before scanner fix and passes after it. Comments, string contents and unrelated require properties remain excluded.",
+    "matcherCounterexample": {
+      "report": "https://github.com/vypdev/copilot/issues/894",
+      "rendererChanged": false,
+      "retainedAssertion": "toBeDisabled",
+      "additionalAssertions": [
+        "aria-disabled=true",
+        "native disabled attribute absent"
+      ],
+      "installedSemantics": "Vitest Browser5.1.0 combines native disabled and ARIA-disabled states."
+    },
+    "coverageCounterexample": {
+      "report": "https://github.com/vypdev/copilot/issues/895",
+      "policyChanged": false,
+      "actualReportKeys": 53,
+      "storyDefinitionsInReport": 0,
+      "installedSemantics": "Vitest5.1.0 appends project test include patterns to shared resolved coverage exclusions; Storybook10.6.5 supplies the collected CSF test patterns. All authored runtime examples remain included."
+    },
+    "packageAndStaticEvidence": "Unchanged package/runtime sources retain the previously verified c5ad881f core / a7cd1724 Vue cohort and static artifacts. This test-only increment reruns source coverage, strict types and catalog validation; it does not claim a new package/visual campaign.",
+    "nativeReassessmentRequired": true,
+    "manualFindingResolution": false,
+    "copilotModified": false,
     "capabilityComplete": false
   }
 }

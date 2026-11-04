@@ -7,11 +7,20 @@ import {parse} from 'yaml';
 function imports(code) {
   const source = ts.createSourceFile('source.ts', code, ts.ScriptTarget.Latest, true);
   const results = [];
+  const dependency = expression => results.push(expression && ts.isStringLiteral(expression) ? expression.text : '<dynamic>');
+  const commonJS = expression => ts.isIdentifier(expression) && expression.text === 'require'
+    || ts.isPropertyAccessExpression(expression) && ts.isIdentifier(expression.expression)
+      && expression.expression.text === 'module' && expression.name.text === 'require'
+    || ts.isElementAccessExpression(expression) && ts.isIdentifier(expression.expression)
+      && expression.expression.text === 'module' && ts.isStringLiteral(expression.argumentExpression)
+      && expression.argumentExpression.text === 'require';
   function visit(node) {
     if ((ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) && node.moduleSpecifier)
       results.push(node.moduleSpecifier.text);
-    if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword)
-      results.push(ts.isStringLiteral(node.arguments[0]) ? node.arguments[0].text : '<dynamic>');
+    if (ts.isCallExpression(node) && (node.expression.kind === ts.SyntaxKind.ImportKeyword || commonJS(node.expression)))
+      dependency(node.arguments[0]);
+    if (ts.isImportEqualsDeclaration(node) && ts.isExternalModuleReference(node.moduleReference))
+      dependency(node.moduleReference.expression);
     ts.forEachChild(node, visit);
   }
   visit(source); return results;
@@ -29,9 +38,14 @@ test('the pure contract does not acquire framework or application imports', () =
   expect(imports(readFileSync('packages/core/src/button-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/presentation-text.ts','utf8'))).toEqual([]);
 });
-test('architecture policy rejects direct, re-exported and dynamic framework dependencies', () => {
-  for (const code of ['import x from "react";', 'export * from "@angular/core";', 'await import("vue");', 'await import(target);'])
+test('architecture policy rejects direct, re-exported, dynamic and CommonJS dependencies', () => {
+  for (const code of ['import x from "react";', 'export * from "@angular/core";', 'await import("vue");', 'await import(target);',
+    'require("react");', 'require("node:fs");', 'require(target);', 'require();',
+    'module.require("vue");', 'module["require"]("svelte");', 'module.require(target);',
+    'import framework = require("@angular/core");'])
     expect(imports(code).some(specifier => !allowed(specifier))).toBe(true);
+  expect(imports('require("./local.js"); module.require("lit"); import local = require("./local.js");')).toEqual(['./local.js','lit','./local.js']);
+  expect(imports('// require("react")\nconst text = "require(react)"; unrelated.require("react");')).toEqual([]);
 });
 test('every actual core module respects the dependency boundary', () => {
   for (const file of globSync('packages/core/src/**/*.ts')) for (const dependency of imports(readFileSync(file, 'utf8'))) {
