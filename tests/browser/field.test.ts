@@ -115,6 +115,24 @@ test('reflects readonly state and native readonly attributes without discarding 
   field.readOnly=false;field.readOnly=false;await field.updateComplete;expect(field.state.readOnly).toBe(false);expect(field.willValidate).toBe(true);
   field.setAttribute('readonly','false');await field.updateComplete;expect(field.state.readOnly).toBe(true);expect(input(field).readOnly).toBe(true);field.removeAttribute('readonly');expect(field.readOnly).toBe(false);
 });
+test.each([
+  {case:'required empty',value:'',error:'',custom:'',message:'Enter a value.'},
+  {case:'too short',value:'x',error:'',custom:'',message:'Enter more characters.'},
+  {case:'too long',value:'Long value',error:'',custom:'',message:'Enter fewer characters.'},
+  {case:'state error',value:'Valid',error:'Review the imported value.',custom:'',message:'Review the imported value.'},
+  {case:'custom error',value:'Valid',error:'',custom:'Review the imported value.',message:'Review the imported value.'},
+])('readonly $case remains a successful form value and never blocks native submission',async({value,error,custom,message})=>{
+  const {field,form}=await mount({required:true,minLength:3,maxLength:5,readOnly:true,error});field.value=value;field.setCustomValidity(custom);await field.updateComplete;
+  const button=document.createElement('button');button.type='submit';form.append(button);const submissions:FormDataEntryValue[][]=[];
+  form.addEventListener('submit',event=>{event.preventDefault();submissions.push([...new FormData(form).values()]);});field.addEventListener('invalid',event=>event.preventDefault());
+  // A readonly FACE is natively barred from validation even when its stored constraints are unsatisfied.
+  expect(field.hasAttribute('readonly')).toBe(true);expect(field.willValidate).toBe(false);expect(field.validity.valid).toBe(false);
+  expect(field.validationMessage).toBe(message);expect(field.checkValidity()).toBe(true);expect(field.reportValidity()).toBe(true);expect(form.checkValidity()).toBe(true);expect(form.reportValidity()).toBe(true);
+  button.click();expect(submissions).toEqual([[value]]);
+  field.readOnly=false;expect(field.willValidate).toBe(true);expect(form.checkValidity()).toBe(false);button.click();expect(submissions).toHaveLength(1);
+  field.readOnly=true;button.click();expect(submissions).toEqual([[value],[value]]);expect(entries(form)).toEqual([['task',value]]);
+});
+
 test('commits one composition proposal and lets a newer external value win over the composing draft',async()=>{
   const {field}=await mount();const received:FieldValueEvent[]=[];field.addEventListener('ha-value-request',event=>received.push(event));accept(field);
   input(field).dispatchEvent(new CompositionEvent('compositionstart'));edit(field,'に',{isComposing:true});expect(received).toHaveLength(0);expect(input(field).value).toBe('に');

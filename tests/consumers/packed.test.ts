@@ -11,6 +11,7 @@ import {createServer} from 'vite';
 import {chromium} from 'playwright';
 import {parse, stringify} from 'yaml';
 import type {HaTextField} from '../../packages/core/src/components/field.js';
+import {exerciseReadonlyField} from './fields.ts';
 import {exerciseCoreButton} from './buttons.ts';
 import {exerciseFrameworks} from './frameworks.ts';
 
@@ -185,6 +186,8 @@ document.querySelector('main')!.append(form);`);
     const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,textField:{controlledInput:true,nativeSubmitter:true,requiredValidation:true,reset:true,disabledSubmission:true},runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
     await mkdir(resolve(root, 'test-results'), {recursive:true});
     await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
+    const readonlyField=await exerciseReadonlyField(browserPage);
+    await writeFile(resolve(root,'test-results/packed-readonly-field.json'),JSON.stringify(readonlyField,null,2)+'\n');
     const coreButton=await exerciseCoreButton(browserPage,root);
     await writeFile(resolve(root,'test-results/packed-button.json'),JSON.stringify(coreButton,null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;

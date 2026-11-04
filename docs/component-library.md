@@ -198,6 +198,15 @@ exactly value and reason, accepting input/reset/restore/autocomplete only, snaps
 text value and freezes the result. Framework model bridges validate before invoking app observers
 and use that snapshot after them. FieldValueReason and FieldValueDetail types are also DOM-free.
 
+A readonly field keeps its reflected `readonly` attribute and successful form value, while the
+browser excludes it from constraint validation. Stored validity flags and the ElementInternals
+validation message remain inspectable; they do not imply that the control blocks submission.
+Changing back to editable immediately restores normal required/length/custom validation. Five
+source-browser and independently installed-core cases verify actual form submissions for required
+empty, too-short, too-long, state-error and custom-error values. This follows the HTML Standard's
+[readonly FACE contract](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance)
+and [ElementInternals validationMessage getter](https://html.spec.whatwg.org/multipage/custom-elements.html#dom-elementinternals-validationmessage).
+
 ## Native-form button
 
 The [button contract](button-contract.md) defines the real core API, states, decorative slots,

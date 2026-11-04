@@ -35,3 +35,32 @@ export async function exerciseField(page:Page){
   await page.getByRole('button',{name:'Reset task',exact:true}).click();await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='Kitchen');
   return {controlledModel:true,exactlyOnce:true,cancellation:true,programmaticWrite:true,nativeSubmitter:true,requiredValidation:true,disabledSubmission:true,frameworkReset:true,teardownAndRemount:true};
 }
+
+/** Verify the installed FACE's actual readonly submission contract, independently of framework validators. */
+export async function exerciseReadonlyField(page:Page){
+  const observations=await page.evaluate(async()=>{
+    const results=[];
+    for(const sample of [
+      {name:'required empty',value:'',error:'',custom:''},
+      {name:'too short',value:'x',error:'',custom:''},
+      {name:'too long',value:'Long value',error:'',custom:''},
+      {name:'state error',value:'Valid',error:'Review the imported value.',custom:''},
+      {name:'custom error',value:'Valid',error:'',custom:'Review the imported value.'},
+    ]){
+      const form=document.createElement('form'),field=document.createElement('vyp-ha-field'),button=document.createElement('button');
+      field.state={...field.state,label:'Readonly proof',required:true,readOnly:true,minLength:3,maxLength:5,error:sample.error};field.name='readonlyValue';field.value=sample.value;field.setCustomValidity(sample.custom);button.type='submit';form.append(field,button);document.body.append(form);await field.updateComplete;
+      const submissions:FormDataEntryValue[][]=[];form.addEventListener('submit',event=>{event.preventDefault();submissions.push([...new FormData(form).values()]);});field.addEventListener('invalid',event=>event.preventDefault());
+      const readonly={attribute:field.hasAttribute('readonly'),willValidate:field.willValidate,storedInvalid:!field.validity.valid,check:field.checkValidity(),report:field.reportValidity(),formCheck:form.checkValidity(),formReport:form.reportValidity()};
+      button.click();const afterReadonly=submissions.length;
+      field.readOnly=false;const editable={willValidate:field.willValidate,formCheck:form.checkValidity()};button.click();const afterEditable=submissions.length;
+      field.readOnly=true;button.click();results.push({name:sample.name,value:sample.value,readonly,editable,afterReadonly,afterEditable,submissions,entries:[...new FormData(form)]});form.remove();
+    }
+    return results;
+  });
+  for(const result of observations){
+    assert.deepEqual(result.readonly,{attribute:true,willValidate:false,storedInvalid:true,check:true,report:true,formCheck:true,formReport:true});
+    assert.deepEqual(result.editable,{willValidate:true,formCheck:false});assert.equal(result.afterReadonly,1);assert.equal(result.afterEditable,1);
+    assert.deepEqual(result.submissions,[[result.value],[result.value]]);assert.deepEqual(result.entries,[['readonlyValue',result.value]]);
+  }
+  return {cases:observations,rendererChanged:false,allNativeSubmissionsPassed:true};
+}

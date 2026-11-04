@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T10:54:55.841143+00:00",
+  "recordedAtUTC": "2026-11-04T11:07:07.361142+00:00",
   "status": "Partial source: shared navigation/panels, text field, native-form button and real Storybook; all three families have four framework bindings. Other families and complete delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, single-line field and core button; immutable pure contracts, explicit registration, typed cancelable intent and one visual renderer per family.",
     "Real React/Vue/Angular/Svelte navigation, single-line text-field and native-form button bindings. Renderer imports stay type-only; runtime shared imports are DOM-independent validation policies plus each adapter own framework. No alternate visuals.",
-    "522 passing Node/Chromium contract, architecture, CI, component/binding and Storybook tests. All 32 runtime modules are independently inventoried, including example composition and three zero-executable modules. CSF files remain collected test definitions.",
+    "527 passing Node/Chromium contract, architecture, CI, component/binding and Storybook tests. All 32 runtime modules are independently inventoried, including example composition and three zero-executable modules. CSF files remain collected test definitions.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four real clean frozen offline consumers compile installed package declarations and exercise navigation, controlled text-field models and native-form button requests/cancellation/default Enter/Space/submitter metadata/validation/disable/busy/reset/projection/EN-ES/themes/teardown/remount in Chromium; no foreign framework is installed.",
@@ -173,7 +173,7 @@
     "imagesInspected": true,
     "focusRegression": "focus-return-red.log reproduces the stale tab-stop; full green run has no skipped tests.",
     "initialTestAttempt": "Browser cases were authored before the renderer. The first attempted execution could not start because the pinned Chromium binary was absent; no behavioral red result is claimed for that attempt. After runtime provisioning, the first actual run found two fixture/server-boundary issues, recorded in browser-first-execution.log.",
-    "textFieldCases": 29,
+    "textFieldCases": 34,
     "localRetainedImages": [
       "work/current-preview/packed-angular-dark-es.png",
       "work/current-preview/packed-angular-field-dark-es.png",
@@ -483,7 +483,7 @@
       "svelte"
     ],
     "types": "Strict source, consumer, Storybook and both Svelte checks pass without any of five compiled distributions",
-    "unitAndBrowserTests": 522,
+    "unitAndBrowserTests": 527,
     "coverage": "100% statements/branches/functions/lines per authored file and globally",
     "restoration": "Every previous compiled distribution restored byte-for-byte",
     "reason": "Actual source campaign runs while all five dist trees are absent; compiled bytes are restored and independently verified.",
@@ -903,5 +903,188 @@
     "frameworkSourceCases": 32,
     "frameworkAPIAbsenceRed": "The first source run rejected the missing React Button export before implementation. Vite also reported the not-yet-created Svelte component. This is an API-absence red, not an asserted behavioral failure.",
     "frameworkVisualReview": "Eight original installed framework button images form two byte-identical groups (light English and dark Spanish). Both unique originals were inspected. No real HA or human app acceptance is inferred."
+  },
+  "readonlyReviewRegression": {
+    "finding": 4466647535,
+    "rendererChanged": false,
+    "sourceCases": 5,
+    "sourceResult": "All 34 field source-browser cases pass, including actual readonly submissions for required empty, too short, too long, state-error and custom-error values. Editable mode blocks each invalid value; switching back to readonly submits it without losing form data.",
+    "installedResult": {
+      "cases": [
+        {
+          "name": "required empty",
+          "value": "",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              ""
+            ],
+            [
+              ""
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              ""
+            ]
+          ]
+        },
+        {
+          "name": "too short",
+          "value": "x",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              "x"
+            ],
+            [
+              "x"
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              "x"
+            ]
+          ]
+        },
+        {
+          "name": "too long",
+          "value": "Long value",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              "Long value"
+            ],
+            [
+              "Long value"
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              "Long value"
+            ]
+          ]
+        },
+        {
+          "name": "state error",
+          "value": "Valid",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              "Valid"
+            ],
+            [
+              "Valid"
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              "Valid"
+            ]
+          ]
+        },
+        {
+          "name": "custom error",
+          "value": "Valid",
+          "readonly": {
+            "attribute": true,
+            "willValidate": false,
+            "storedInvalid": true,
+            "check": true,
+            "report": true,
+            "formCheck": true,
+            "formReport": true
+          },
+          "editable": {
+            "willValidate": true,
+            "formCheck": false
+          },
+          "afterReadonly": 1,
+          "afterEditable": 1,
+          "submissions": [
+            [
+              "Valid"
+            ],
+            [
+              "Valid"
+            ]
+          ],
+          "entries": [
+            [
+              "readonlyValue",
+              "Valid"
+            ]
+          ]
+        }
+      ],
+      "rendererChanged": false,
+      "allNativeSubmissionsPassed": true
+    },
+    "standard": [
+      "https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance",
+      "https://html.spec.whatwg.org/multipage/custom-elements.html#dom-elementinternals-validationmessage"
+    ],
+    "initialAttempt": "All five new cases initially stopped before submission on an incorrect expectation that ElementInternals.validationMessage becomes empty for readonly controls. Its normative getter retains the stored message. That test expectation was corrected without any renderer change; the complete native submission assertions then passed. The original test and failure log are retained.",
+    "manualResolution": false
   }
 }
