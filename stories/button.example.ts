@@ -17,7 +17,7 @@ export const renderExample:NonNullable<Meta<Args>['render']>=(controls,context)=
   <vyp-ha-button .state=${buttonState({label:args.label||copy.submit,variant:args.variant,size:args.size,loading:args.loading,loadingLabel:copy.working,iconOnly:args.iconOnly,pressed:args.pressed})}
    .type=${args.type} .name=${'action'} .value=${'save'} .disabled=${args.disabled} .formNoValidate=${args.noValidate}
    @ha-press-request=${(event:ButtonPressEvent)=>{if(args.cancelRequest)event.preventDefault();setArgs({...args,requests:args.requests+1,pressed:args.pressed===null?null:!args.pressed});}}>${args.iconOnly?html`<span slot="leading">+</span>`:nothing}</vyp-ha-button>
-  <output data-requests=${args.requests} data-submissions=${args.submissions} data-resets=${args.resets} aria-live="polite">${copy.requests}: ${args.requests}; ${copy.submitted}: ${args.submissions}; ${copy.resets}: ${args.resets}. ${args.lastSubmission}</output>
+  <div role="status" data-requests=${args.requests} data-submissions=${args.submissions} data-resets=${args.resets} aria-live="polite">${copy.requests}: ${args.requests}; ${copy.submitted}: ${args.submissions}; ${copy.resets}: ${args.resets}. ${args.lastSubmission}</div>
  </form>`);
 };
 export const renderVariants:NonNullable<Meta<Args>['render']>=(_controls,context)=>{

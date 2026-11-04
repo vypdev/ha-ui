@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T21:49:50.516771+00:00",
+  "recordedAtUTC": "2026-11-04T22:02:38.369254+00:00",
   "status": "Partial library: shared navigation/panels, native-form buttons, fields, typed selects and checkbox with four real bindings. Scoped navigation/checkbox/button/filled-field visuals are calibrated against original HA; selects, remaining visual families and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
@@ -37,7 +37,8 @@
     "Local icon-only, icon-and-text and mixed dashboard navigation share the same native renderer. Twenty-four original HA states per measured platform back 52 source-browser cases and 48 static comparisons per platform. All 96 current icon sample PNGs are byte-identical to their corresponding original HA references; all 32 current text-tab samples also remain byte-identical. Six direct installed-core journeys and four actual compiled framework consumers verify local decorative SVG data, accessible names and runtime Spanish updates.",
     "Shared overflow adds logical LTR/RTL paging, localized native controls, selection/focus reveal, measured mouse-panning threshold and observer/gesture lifecycle cleanup. Forty original HA states across macOS/Linux back forty source geometry cases and eighty compiled raster comparisons. All 208 current navigation sample PNGs match their corresponding original references byte for byte. Four actual installed-core mouse/keyboard journeys and four compiled framework consumers pass narrow EN/ES paging without selection.",
     "HA button surfaces match 96 independently captured original states per measured platform, including real active pointers. Both original campaigns repeat byte-identically; all 192 current candidate/reference PNG pairs also match byte for byte. Small/medium painted geometry is separated from the native 44px target, verified with actual mouse clicks in its invisible margin and all four compiled framework bindings. Accessible catalog palette overrides are explicit differences from original HA tokens.",
-    "Filled fields match 44 original HA states per measured platform; all88 compiled candidate/reference PNG pairs are byte-identical. Floating/resting labels, painted/native56px controls, required marker, help/error/placeholder/narrow states, real padding clicks, hidden hosts, standalone/OS motion and actual compiled four-framework geometry are exercised. Independent accessible catalog colors pass16 resting/hover/focus combinations, separate from original HA palette parity."
+    "Filled fields match 44 original HA states per measured platform; all88 compiled candidate/reference PNG pairs are byte-identical. Floating/resting labels, painted/native56px controls, required marker, help/error/placeholder/narrow states, real padding clicks, hidden hosts, standalone/OS motion and actual compiled four-framework geometry are exercised. Independent accessible catalog colors pass16 resting/hover/focus combinations, separate from original HA palette parity.",
+    "The four compiled catalog forms preserve live status after native reset and subsequent user edits/submissions. Twelve real journeys plus automatic a11y/interactions pass across offline Linux Chromium/Firefox/WebKit. A minimal native output/Lit reproducer fails in the latter two engines; non-resettable polite status regions remove that failure. This is scoped catalog evidence, not full browser support."
   ],
   "coverage": {
     "lines": {
@@ -111,17 +112,17 @@
     "packages/vue/src/index.ts": "ac1b97f764068ab3c4b846cbf83fb81a0e422718df07fd0c9eb553ba7f9f0c5f",
     "packages/vue/src/select.ts": "3314b91488c76259e8d5c44d3c6a9a4ef18aba2bdfba6142fab12b03be8a0e2e",
     "packages/vue/src/text-field.ts": "e160d93f62669ffb989e3d8d78fb28b0da287226d8157676d5842b6a7c83f612",
-    "stories/button.example.ts": "06773480e755be6526d292df9026ad0abace6825e17fd4e0b1ef81215d63680e",
+    "stories/button.example.ts": "7753c6b779243e592a658100a823eb0b05c9692d3b64a038787f4e5ba48747f6",
     "stories/catalog-completion.ts": "10c01f134e4e3b64fc0a9f72d55c15b81043e2f040d5c111133b2d8cc9e12ebd",
     "stories/catalog-example.ts": "c5fa904779d81d2f081573051234b2d57f98c74c5c4ca99cbc8717584c2494e8",
     "stories/catalog-frame.ts": "eee19d46cd88ae4169ac7853c0a8ef406c9f18f61dbb59b0f80adc395d82f943",
     "stories/catalog-state.ts": "bdf543ab1dae6bb9e840e248d3167c31c37791f1f58c895a61db50afbbdba304",
-    "stories/checkbox.example.ts": "fab0aa50221dd990506805d56f30a979e87932e5a25aa87e76feb21d6ec78765",
-    "stories/field.example.ts": "e2e81d2544d2658c84a29be6e6b6579866c23993104e6929f3bd097f4f46f075",
+    "stories/checkbox.example.ts": "a091a1c2cf25808a7d01fa75a3deb65e926d1f1b9c13feb30ba0b481f1a5f266",
+    "stories/field.example.ts": "b019be45b16105db056eca7c67db559ccf8cc96bb80e310d6c9ffe75e65790c6",
     "stories/foundation.example.ts": "527c4037f1fcd1306ba021ee3636193efb72e54381d4da2940f0fa9f1bbb665a",
     "stories/navigation-icons.ts": "95f7888a174b67175d9304af53b2f8b06b4164d149bdb896d0fc57252a202196",
     "stories/panels.example.ts": "43360759af3020195576a8fbbee37774351e1f3c45109798642805b25fbb67b2",
-    "stories/select.example.ts": "f463a883a738ef3f95673c3eea43ead2fc8209ee940fe8d0f78c03c418e4fbb0",
+    "stories/select.example.ts": "c6e8180dd0980fc5e8d155e9a5d17cc7468c89ae45282d515b99be39dd8a2270",
     "tooling/coverage.mjs": "ad527a5d04517adb1992ac65a9abfffcabb9a2001f7f652c732dbe35899b56c8"
   },
   "packedContract": {
@@ -2908,6 +2909,68 @@
       "controlledReset": true
     },
     "localRoboto": true,
+    "catalogForms": [
+      {
+        "story": "forms-text-field--default",
+        "automatic": {
+          "storyId": "forms-text-field--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        },
+        "nativeResetThenUpdate": true,
+        "text": "Example submitted: After reset"
+      },
+      {
+        "story": "forms-select--default",
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        },
+        "nativeResetThenUpdate": true,
+        "text": "Saved: [[\"category\",\"1\"]]"
+      },
+      {
+        "story": "forms-checkbox--default",
+        "automatic": {
+          "storyId": "forms-checkbox--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        },
+        "nativeResetThenUpdate": true,
+        "text": "Saved: [[\"notify\",\"on\"]]"
+      },
+      {
+        "story": "buttons-actions--reset",
+        "automatic": {
+          "storyId": "buttons-actions--reset",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        },
+        "nativeResetThenUpdate": true,
+        "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+      }
+    ],
     "checkboxVisual": [
       {
         "theme": "light",
@@ -21293,7 +21356,417 @@
       },
       "observed": "Actual original and compiled fields have56px painted/native height,14px/16.8px Roboto,12px top input padding and4px top corners. Shared focus raises the label to10px and shows one required marker. Original Create area dialog canceled, dashboard restored, no backend mutation."
     },
-    "knownCrossEngineLimitation": "The default Storybook field play fails during reset in Firefox with a Lit marker error, independently reproduced in both prior6c3df6a button and current field builds. Isolated actual archive Enter differentials pass all3engines. This does not establish full Storybook/Firefox support; the retained browser-matrix scope must resolve the pre-existing catalog/reset failure.",
+    "knownCrossEngineLimitation": "The prior default Storybook reset/Lit-marker failure is resolved by catalogFormReset in this candidate. Full component/framework/browser support remains pending.",
     "scopeComplete": false
+  },
+  "catalogFormReset": {
+    "recordedAtUTC": "2026-11-04T22:02:38.369254+00:00",
+    "priorFieldAcceptanceAtUTC": "2026-11-04T21:49:50.516771+00:00",
+    "reproducer": [
+      {
+        "engine": "chromium",
+        "version": "156.0.8078.80",
+        "kind": "output",
+        "result": {
+          "passed": true,
+          "text": "Reset draft"
+        },
+        "errors": []
+      },
+      {
+        "engine": "chromium",
+        "version": "156.0.8078.80",
+        "kind": "status",
+        "result": {
+          "passed": true,
+          "text": "Reset draft"
+        },
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "157.0",
+        "kind": "output",
+        "result": {
+          "passed": false,
+          "message": "can't access property \"data\", this._$AA.nextSibling is null"
+        },
+        "errors": []
+      },
+      {
+        "engine": "firefox",
+        "version": "157.0",
+        "kind": "status",
+        "result": {
+          "passed": true,
+          "text": "Reset draft"
+        },
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "27.2",
+        "kind": "output",
+        "result": {
+          "passed": false,
+          "message": "null is not an object (evaluating 'this._$AA.nextSibling.data=e')"
+        },
+        "errors": []
+      },
+      {
+        "engine": "webkit",
+        "version": "27.2",
+        "kind": "status",
+        "result": {
+          "passed": true,
+          "text": "Reset draft"
+        },
+        "errors": []
+      }
+    ],
+    "fix": "Four catalog examples use non-resettable role=status divs, retaining polite announcements and observable request/submission/reset metadata. Production package files are unchanged from5517469.",
+    "compiledJourneys": {
+      "node": "v26.13.0",
+      "network": "none",
+      "scope": "Four actual compiled Storybook form journeys in three engines; automatic accessibility completion plus real native reset and subsequent model/status updates. Full component/browser matrix remains pending.",
+      "results": [
+        {
+          "engine": "chromium",
+          "version": "156.0.8078.80",
+          "proof": [
+            {
+              "story": "forms-text-field--default",
+              "automatic": {
+                "storyId": "forms-text-field--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Example submitted: After reset"
+            },
+            {
+              "story": "forms-select--default",
+              "automatic": {
+                "storyId": "forms-select--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"category\",\"1\"]]"
+            },
+            {
+              "story": "forms-checkbox--default",
+              "automatic": {
+                "storyId": "forms-checkbox--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"notify\",\"on\"]]"
+            },
+            {
+              "story": "buttons-actions--reset",
+              "automatic": {
+                "storyId": "buttons-actions--reset",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "firefox",
+          "version": "157.0",
+          "proof": [
+            {
+              "story": "forms-text-field--default",
+              "automatic": {
+                "storyId": "forms-text-field--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Example submitted: After reset"
+            },
+            {
+              "story": "forms-select--default",
+              "automatic": {
+                "storyId": "forms-select--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"category\",\"1\"]]"
+            },
+            {
+              "story": "forms-checkbox--default",
+              "automatic": {
+                "storyId": "forms-checkbox--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"notify\",\"on\"]]"
+            },
+            {
+              "story": "buttons-actions--reset",
+              "automatic": {
+                "storyId": "buttons-actions--reset",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+            }
+          ],
+          "errors": []
+        },
+        {
+          "engine": "webkit",
+          "version": "27.2",
+          "proof": [
+            {
+              "story": "forms-text-field--default",
+              "automatic": {
+                "storyId": "forms-text-field--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Example submitted: After reset"
+            },
+            {
+              "story": "forms-select--default",
+              "automatic": {
+                "storyId": "forms-select--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"category\",\"1\"]]"
+            },
+            {
+              "story": "forms-checkbox--default",
+              "automatic": {
+                "storyId": "forms-checkbox--default",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Saved: [[\"notify\",\"on\"]]"
+            },
+            {
+              "story": "buttons-actions--reset",
+              "automatic": {
+                "storyId": "buttons-actions--reset",
+                "status": "success",
+                "reports": [
+                  {
+                    "type": "a11y",
+                    "status": "passed"
+                  }
+                ]
+              },
+              "nativeResetThenUpdate": true,
+              "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+            }
+          ],
+          "errors": []
+        }
+      ]
+    },
+    "staticChromeJourneys": [
+      {
+        "story": "forms-text-field--default",
+        "automatic": {
+          "storyId": "forms-text-field--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        },
+        "nativeResetThenUpdate": true,
+        "text": "Example submitted: After reset"
+      },
+      {
+        "story": "forms-select--default",
+        "automatic": {
+          "storyId": "forms-select--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        },
+        "nativeResetThenUpdate": true,
+        "text": "Saved: [[\"category\",\"1\"]]"
+      },
+      {
+        "story": "forms-checkbox--default",
+        "automatic": {
+          "storyId": "forms-checkbox--default",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        },
+        "nativeResetThenUpdate": true,
+        "text": "Saved: [[\"notify\",\"on\"]]"
+      },
+      {
+        "story": "buttons-actions--reset",
+        "automatic": {
+          "storyId": "buttons-actions--reset",
+          "status": "success",
+          "reports": [
+            {
+              "type": "a11y",
+              "status": "passed"
+            }
+          ]
+        },
+        "nativeResetThenUpdate": true,
+        "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+      }
+    ],
+    "chrome": "Real Chrome edit Before reset -> Reset draft -> controlled Kitchen -> edit After reset -> submit -> Example submitted: After reset. Screenshot /private/tmp/ha-ui-form-status/chrome-reset-final.png.",
+    "unchangedPackedCohort": {
+      "scope": "Unpublished navigation, text-field, button, checkbox and typed-select preview with four framework bindings; no registry publication or full capability acceptance",
+      "cohort": [
+        {
+          "coordinate": "@vypdev/ha-ui",
+          "version": "0.1.0-next.1",
+          "sha256": "8c0a8ee1dfec713a7f2fa1e707861d6bdaca83deaa2d247d150a3d8cc29f6cf3",
+          "bytes": 108649
+        },
+        {
+          "coordinate": "@vypdev/ha-ui-angular",
+          "version": "0.1.0-next.1",
+          "sha256": "cd072396d71f9d3c46596b5e1498b71bc05f70e954371c229ae494da45effa85",
+          "bytes": 10097
+        },
+        {
+          "coordinate": "@vypdev/ha-ui-react",
+          "version": "0.1.0-next.1",
+          "sha256": "f52ee057d281272bc360bff435678ae871ca3ce4b509eb23b2ebe4610c98cea7",
+          "bytes": 7467
+        },
+        {
+          "coordinate": "@vypdev/ha-ui-svelte",
+          "version": "0.1.0-next.1",
+          "sha256": "ab634e99415376b8f8c021808454f6e45519572640c6b5c08349310d41a47aba",
+          "bytes": 4403
+        },
+        {
+          "coordinate": "@vypdev/ha-ui-vue",
+          "version": "0.1.0-next.1",
+          "sha256": "23e36ee7c64f6a5778746ed324fa231b658aabbfa14e4f8d4aabf14a15b184c0",
+          "bytes": 7908
+        }
+      ],
+      "reproducible": true,
+      "sourceLockSha256": "31ba0c22064513fb8b94f469bf10f075bbd20f5ced92901cd13f951f1a207f92"
+    },
+    "sourceTests": 1145,
+    "runtimeFiles": 51,
+    "coverage": {
+      "lines": {
+        "total": 855,
+        "covered": 855,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 1919,
+        "covered": 1919,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 497,
+        "covered": 497,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 1232,
+        "covered": 1232,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "fullBrowserMatrixComplete": false
   }
 }

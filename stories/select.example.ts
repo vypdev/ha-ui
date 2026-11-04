@@ -14,7 +14,7 @@ export const renderExample:NonNullable<Meta<Args>['render']>=(controls,context)=
   return html`<form @submit=${(event:SubmitEvent)=>{event.preventDefault();setArgs({...args,submitted:JSON.stringify([...new FormData(event.currentTarget as HTMLFormElement)])});}}>
    <vyp-ha-select .state=${state} .value=${args.value} .defaultValue=${args.defaultValue} .name=${'category'} .disabled=${args.disabled} @ha-select-request=${(event:SelectValueEvent)=>{const detail=selectValueDetail(event.detail);if(args.cancel)event.preventDefault();else setArgs({...args,value:detail.value,error:false,submitted:null});}}></vyp-ha-select>
    <div class="example-actions"><vyp-ha-button .type=${'submit'} .disabled=${args.disabled} .state=${buttonState({label:copy.save,variant:'primary'})}></vyp-ha-button><vyp-ha-button .type=${'reset'} .state=${buttonState({label:copy.reset})}></vyp-ha-button></div>
-   <output aria-live="polite">${args.submitted===null?copy.draft+': '+JSON.stringify(args.value):copy.saved+': '+args.submitted}</output>
+   <div role="status" aria-live="polite">${args.submitted===null?copy.draft+': '+JSON.stringify(args.value):copy.saved+': '+args.submitted}</div>
   </form>`;
  });
 };

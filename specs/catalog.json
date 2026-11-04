@@ -598,7 +598,8 @@
         "tests/browser/field-visual.test.ts",
         "tests/browser/implicit-submit-native.test.ts",
         "tests/storybook/field-visual.ts",
-        "tests/consumers/implicit-submit.ts"
+        "tests/consumers/implicit-submit.ts",
+        "tests/storybook/form-lifecycle.ts"
       ],
       "documentation": [
         "README.md",

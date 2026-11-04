@@ -1,4 +1,5 @@
 import {exerciseFieldVisual} from './field-visual.ts';
+import {exerciseCatalogForms} from './form-lifecycle.ts';
 import {exerciseButtonVisual} from './button-visual.ts';
 import {exerciseNavigationOverflowVisual} from './navigation-overflow-visual.ts';
 import {exerciseNavigationIconsVisual} from './navigation-icons-visual.ts';
@@ -55,7 +56,7 @@ test('the complete static catalog works at the repository subpath with local ass
       results.push({story,locale,theme,width,a11yViolations:violations.length,automatic});
     }
     await page.goto(origin+'/ha-ui/iframe.html?id=forms-text-field--default&viewMode=story');
-    await page.waitForFunction(()=>document.querySelector('output')?.textContent?.includes('Example submitted: Kitchen'));
+    await page.waitForFunction(()=>document.querySelector('[role=status]')?.textContent?.includes('Example submitted: Kitchen'));
     const input=page.getByRole('textbox',{name:'Task name',exact:true});await input.fill('Laundry');await page.waitForFunction(()=>(document.querySelector('vyp-ha-field') as HaTextField).value==='Laundry');
     await page.getByRole('button',{name:'Submit example'}).click();await page.getByText('Example submitted: Laundry',{exact:true}).waitFor();
     await page.getByRole('button',{name:'Reset draft'}).click();await page.waitForFunction(()=>(document.querySelector('vyp-ha-field') as HaTextField).value==='Kitchen');
@@ -93,6 +94,7 @@ test('the complete static catalog works at the repository subpath with local ass
     await page.getByText('System',{exact:true}).click();await page.getByText('Reduced',{exact:true}).click();
     await page.waitForFunction(()=>{const frame=document.querySelector<HTMLIFrameElement>('#storybook-preview-iframe')!,main=frame.contentDocument!.querySelector<HTMLElement>('main.catalog-frame')!;return main?.lang==='es'&&main.dataset.theme==='dark'&&main.dataset.motion==='reduced'&&main.style.maxWidth==='360px';});
     await page.screenshot({path:resolve(output,'manager-controls-dark-es.png')});
+    const catalogForms=await exerciseCatalogForms(page,origin);
     const checkboxVisual=await exerciseCheckboxVisual(page,origin,output);
     const navigationVisual=await exerciseNavigationVisual(page,origin,output);
     const navigationIconsVisual=await exerciseNavigationIconsVisual(page,origin,output);
@@ -100,6 +102,6 @@ test('the complete static catalog works at the repository subpath with local ass
     const buttonVisual=await exerciseButtonVisual(page,origin,output);
     const fieldVisual=await exerciseFieldVisual(page,origin,output);
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
-    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,checkboxVisual,navigationVisual,navigationIconsVisual,navigationOverflowVisual,buttonVisual,fieldVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
+    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,catalogForms,checkboxVisual,navigationVisual,navigationIconsVisual,navigationOverflowVisual,buttonVisual,fieldVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
 });

@@ -14,7 +14,7 @@ export const renderExample:NonNullable<Meta<Args>['render']>=(controls,context)=
       <vyp-ha-field .state=${state} .value=${args.value} .defaultValue=${args.defaultValue} .name=${'task'} .disabled=${args.disabled}
         @ha-value-request=${(event:FieldValueEvent)=>{const detail=fieldValueDetail(event.detail);setArgs({...args,value:detail.value,error:false,submitted:null});}}></vyp-ha-field>
       <div class="example-actions"><vyp-ha-button .type=${'submit'} .disabled=${args.disabled} .state=${buttonState({label:copy.submit,variant:'primary'})}></vyp-ha-button><vyp-ha-button .type=${'reset'} .state=${buttonState({label:copy.reset})}></vyp-ha-button></div>
-      <output aria-live="polite">${args.submitted===null?copy.draft:copy.submitted+': '+args.submitted}</output>
+      <div role="status" aria-live="polite">${args.submitted===null?copy.draft:copy.submitted+': '+args.submitted}</div>
     </form>`;
     });
   };

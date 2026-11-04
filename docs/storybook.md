@@ -101,6 +101,20 @@ scans the component surface independently. Neither scan is disabled; this preven
 axe instances from racing. The completion witness retains status metadata only and cleans up
 its event listener. Browser test projects prebundle the event protocol before collecting tests.
 
+## Native reset and live status
+
+The four form demonstrations use a non-resettable `role="status"` region for controlled draft,
+submission and request feedback. In measured Firefox157 and WebKit27.2, native form reset removes
+Lit text markers inside an `output` element; a later update then fails. A minimal native form
+reproduces this independently of shared components. The status region retains the same polite
+announcement semantics and survives native reset.
+
+The compiled form-lifecycle gate runs the real field, select, checkbox and reset-button stories,
+waits for automatic interactions/accessibility completion, edits before reset and verifies a
+subsequent edit/submission or repeated reset count. The scoped twelve-journey Linux campaign
+passes Chromium, Firefox and WebKit. This is separate from the full retained browser/framework
+matrix and does not establish universal engine support.
+
 The offline navigation visual gate also checks the built core element in both link and local-panel
 modes against eight original HA text-tab captures. It verifies fonts, label geometry, selected and
 disabled opacity, and actual keyboard focus; candidate images and structured results are retained

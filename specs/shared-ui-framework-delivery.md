@@ -939,6 +939,7 @@ Prospective repository files (current documents are classified against the immut
 | `tests/browser/implicit-submit-native.test.ts` | create |
 | `tests/storybook/field-visual.ts` | create |
 | `tests/consumers/implicit-submit.ts` | create |
+| `tests/storybook/form-lifecycle.ts` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

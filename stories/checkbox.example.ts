@@ -12,6 +12,6 @@ export const renderExample:NonNullable<Meta<Args>['render']>=(controls,context)=
  return catalogExample(controls,(args,setArgs)=>html`<form @submit=${(event:SubmitEvent)=>{event.preventDefault();setArgs({...args,submitted:JSON.stringify([...new FormData(event.currentTarget as HTMLFormElement)])});}}>
    <vyp-ha-checkbox .state=${checkboxState({label:args.longLabel?copy.long:copy.label,description:copy.description,required:args.required,indeterminate:args.indeterminate,error:args.error?copy.error:'',requiredMessage:copy.required})} .checked=${args.checked} .defaultChecked=${args.defaultChecked} .name=${'notify'} .value=${args.value} .disabled=${args.disabled} @ha-check-request=${(event:CheckboxChangeEvent)=>{const detail=checkboxChangeDetail(event.detail);if(args.cancel)event.preventDefault();else setArgs({...args,checked:detail.checked,indeterminate:false,error:false,submitted:null});}}></vyp-ha-checkbox>
    <div class="example-actions"><vyp-ha-button .type=${'submit'} .disabled=${args.disabled} .state=${buttonState({label:copy.save,variant:'primary'})}></vyp-ha-button><vyp-ha-button .type=${'reset'} .state=${buttonState({label:copy.reset})}></vyp-ha-button></div>
-   <output aria-live="polite">${args.submitted===null?copy.draft+': '+String(args.checked):copy.saved+': '+args.submitted}</output>
+   <div role="status" aria-live="polite">${args.submitted===null?copy.draft+': '+String(args.checked):copy.saved+': '+args.submitted}</div>
   </form>`);
 };

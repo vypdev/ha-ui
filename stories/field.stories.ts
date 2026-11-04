@@ -16,7 +16,7 @@ export const Default:Story={play:async({canvasElement})=>{
   control.value='Laundry';control.dispatchEvent(new InputEvent('input',{bubbles:true,composed:true}));
   await waitFor(()=>expect(host.value).toBe('Laundry'));
   const form=canvasElement.querySelector('form')!;form.reset();await waitFor(()=>expect(host.value).toBe('Kitchen'));
-  form.querySelector<HaButton>('vyp-ha-button[type=submit]')!.click();await waitFor(()=>expect(form.querySelector('output')!.textContent).toContain('Kitchen'));
+  form.querySelector<HaButton>('vyp-ha-button[type=submit]')!.click();await waitFor(()=>expect(form.querySelector('[role=status]')!.textContent).toContain('Kitchen'));
 }};
 export const EmptyRequired:Story={args:{value:''},play:async({canvasElement})=>{
   const host=canvasElement.querySelector<HaTextField>('vyp-ha-field')!;await host.updateComplete;host.addEventListener('invalid',event=>event.preventDefault(),{once:true});
