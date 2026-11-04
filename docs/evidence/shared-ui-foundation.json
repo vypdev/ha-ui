@@ -1,0 +1,72 @@
+{
+  "recordedAtUTC": "2026-11-04T04:03:52.911705+00:00",
+  "status": "Partial source increment; no rendered component, adapter, Storybook, framework support, published release or app adoption accepted.",
+  "issue": 7,
+  "nativePublication": {
+    "run": 41767973796,
+    "commit": "2c14ddcd38cdebfc17922614e286c34c2038c392",
+    "base": "d885bccf2c3152c3151471d3efaabd901429d6bd",
+    "branch": "feature/7-build-shared-home-assistant-components-with-react-vue-angular-and-svelte-adapters"
+  },
+  "retainedFoundation": {
+    "sha256": "2c1de5b2fdd330461aa198a42d8099b9af2d00ab4ecbecfe4fdd755290b2f922",
+    "baselineCases": 64,
+    "additionalDeliveryCases": 6,
+    "allStillRequired": true
+  },
+  "implemented": [
+    "DOM-independent closed navigation/panel data contract; immutable snapshots, bounded text/items, explicit selection and safe links.",
+    "Pinned Node24.20.0/pnpm10.34.0/TypeScript6.0.3/Vitest5.1.0 build and test foundation.",
+    "105 passing unit/architecture/CI-contract tests; separate filesystem-inventory coverage audit and actual packed-consumer integration both pass.",
+    "Strict four-metric per-module/global coverage; every authored package/tool inventoried including the zero-executable re-export module.",
+    "Every-PR-commit CI Check uses frozen dependencies, all implemented gates, actual package compilation/consumption and the unchanged pinned original catalog SDK."
+  ],
+  "coverage": {
+    "statements": {
+      "total": 81,
+      "covered": 81,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 77,
+      "covered": 77,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    },
+    "lines": {
+      "total": 58,
+      "covered": 58,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "sourceIdentities": {
+    "packages/core/src/contracts.ts": "6c37990359192c056daf54764870288aa20d4422fa88cfaf9186ccfae8fb101f",
+    "packages/core/src/index.ts": "10bd6958315d1ae23d216c0b752126e3fc7153f442f8c71e206cfa7e9757f86d",
+    "tooling/coverage.mjs": "2272a671a4d039fb40866f3535f6cd371b891623b64bf1b9a23a63677ad2387b"
+  },
+  "packedContract": {
+    "scope": "Core data contract only; no rendered component, adapter or application adoption",
+    "sha256": "6d7a0da478ee9d1f5654323ca6cc9232d9f2bc07c94962313f17b7d7ecb0862c",
+    "bytes": 4399,
+    "reproducible": true,
+    "cleanOfflineInstall": true,
+    "compiledWithoutDomTypes": true,
+    "serverImport": true
+  },
+  "limitations": [
+    "Current navigation tests validate data without rendering DOM; no actual tab accessibility, focus, events or keyboard behavior is claimed.",
+    "The packed fixture covers the core data contract only; all actual Lit/DOM, React, Vue, Angular and Svelte UI consumers and SSR/client boundaries remain required.",
+    "No live npm publication/authority, static Storybook delivery, Gateway extraction/adoption or Domus adoption is claimed.",
+    "Fresh hosted CI and complete native review are required for the final source head."
+  ],
+  "copilotModified": false,
+  "capabilityComplete": false
+}

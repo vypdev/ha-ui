@@ -13,25 +13,40 @@
         "specs/shared-ui-framework-delivery.md"
       ],
       "workflows": [
-        ".github/workflows/copilot_issue.yml"
+        ".github/workflows/copilot_issue.yml",
+        ".github/workflows/ci_check.yml"
       ],
-      "entrypoints": [],
-      "code": [],
-      "tests": [],
+      "entrypoints": [
+        "packages/core/src/index.ts"
+      ],
+      "code": [
+        "packages/core/src/contracts.ts",
+        "tooling/coverage.mjs"
+      ],
+      "tests": [
+        "tests/contracts/core.test.ts",
+        "tests/coverage.test.mjs",
+        "tests/architecture.test.mjs",
+        "tests/coverage-evidence.test.mjs",
+        "tests/consumers/packed.test.ts"
+      ],
       "documentation": [
         "README.md",
-        "docs/component-library.md"
+        "docs/component-library.md",
+        "docs/compatibility.md",
+        "docs/provenance.md",
+        "docs/evidence/shared-ui-foundation.json"
       ],
       "readiness": {
         "status": "draft",
         "blockingGates": [
-          "Native feature publication/readiness",
           "Exact support pins and public API verification",
           "Implementation, coverage and consumer acceptance",
           "npm publication rights and source-to-artifact integrity",
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
-        ]
+        ],
+        "implementationEvidence": "partial: DOM-independent navigation data contract and quality/toolchain setup only; no rendered components, adapters, framework fixtures, Storybook or publication accepted."
       }
     }
   ]

@@ -1,0 +1,23 @@
+{
+  "name": "ha-ui-workspace",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.0",
+  "engines": {
+    "node": ">=24.20.0 <25"
+  },
+  "scripts": {
+    "check": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run --coverage && node --test tests/coverage-evidence.test.mjs",
+    "build": "tsc -p packages/core/tsconfig.json",
+    "test:package": "node --test tests/consumers/packed.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@vitest/coverage-v8": "5.1.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.5",
+    "vitest": "5.1.0",
+    "yaml": "2.9.0"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules/
+coverage/
+.validation/
+work/
+**/dist/
+**/test-results/
+**/.vite/

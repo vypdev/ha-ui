@@ -287,7 +287,7 @@ Prospective repository files (current documents are classified against the immut
 | `specs/shared-ui-foundation.md` | reference |
 | `specs/catalog.json` | update |
 | `specs/CATALOG.md` | update |
-| `specs/README.md` | reference |
+| `specs/README.md` | update |
 | `specs/_template.md` | reference |
 | `README.md` | update |
 | `docs/component-library.md` | update |
@@ -295,6 +295,13 @@ Prospective repository files (current documents are classified against the immut
 | `pnpm-workspace.yaml` | create |
 | `pnpm-lock.yaml` | create |
 | `tsconfig.json` | create |
+| `packages/core/LICENSE` | create |
+| `.gitignore` | create |
+| `.node-version` | create |
+| `.npmrc` | create |
+| `packages/core/tsconfig.json` | create |
+| `tooling/coverage.mjs` | create |
+| `tests/coverage.test.mjs` | create |
 | `LICENSE` | create |
 | `.github/workflows/ci_check.yml` | create |
 | `.github/workflows/storybook_pages.yml` | create |

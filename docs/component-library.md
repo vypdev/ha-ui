@@ -1,7 +1,8 @@
 # Shared component library
 
-The library is being specified. No core package, adapter, Storybook site or consumer migration
-is implemented or published yet. The [primary Draft](../specs/shared-ui-foundation.md),
+The first source increment implements the DOM-independent navigation data contract and its
+tested quality/build foundation. Rendered components, adapters, Storybook and consumer migrations
+are not implemented or published yet. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
 
@@ -48,8 +49,8 @@ Core/adapter publication, Storybook delivery and each app's acceptance are disti
 
 All authored behavior starts with tests and requires 100% supported statements, branches, functions
 and lines globally and per module, with independent source inventory and executable architecture
-constraints. The primary Draft allocates 64 distinct minimum cases. Future CI Check must aggregate
-all required checks on every PR head; this documentation bootstrap does not create that workflow.
+constraints. The primary Draft allocates 64 distinct minimum cases. CI Check must aggregate
+all required implemented checks on every PR head; the initial CI now validates all implemented source; unimplemented browser/adapter/adoption gates remain pending.
 Record exact toolchain, source, lock, package digests and framework/browser results. Verify npm
 publication rights before any publish. Preserve one tested previous app/cohort rollback and all user
 data and original-operation recovery. Never overwrite an existing package version after partial delivery.
@@ -82,13 +83,13 @@ node -e 'const path = require("node:path"); const sdk = require(path.join(proces
 Generation writes only the target generated index. Validation checks actual path/cardinality and
 index agreement; it does not establish semantic completeness, native feature admission, implemented
 behavior or release readiness. Do not run an absolute SDK CLI without the explicit target root:
-its default root belongs to the external tool checkout. Repository-local reproducible validation
-scripts and CI are feature implementation deliverables. Do not invent or weaken a replacement
+its default root belongs to the external tool checkout. CI reads the same original SDK at its exact pinned revision; it validates rather than regenerates the index.
+The local procedure above remains available for catalog maintenance. Do not invent or weaken a replacement
 validator to turn missing evidence into acceptance.
 
 ## Next transition
 
-Merge the reviewed documentation prerequisite, then retry existing issue #7 against the changed
-trusted source. The native Action must clarify and publish the feature SDD and expose its exact
-ready branch before implementation. The standard/template describe the expected format; this
-bootstrap does not set a native readiness marker or bypass that lifecycle.
+Native issue #7 published the delivery companion on its exact managed branch before implementation.
+Complete the component renderers, actual framework adapters/consumers, Storybook and staged delivery
+acceptance on that branch, retaining all 64 baseline and six companion cases. The first source
+contract and green incremental tests do not establish a complete component library or app adoption.
