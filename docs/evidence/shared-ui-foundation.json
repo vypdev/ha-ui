@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-04T09:43:47.698259+00:00",
+  "recordedAtUTC": "2026-11-04T10:08:43.802090+00:00",
   "status": "Partial source: shared navigation/panels, text field, core native-form button and real Storybook; four frameworks currently cover navigation/fields. Button adapters and complete delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, single-line field and core button; immutable pure contracts, explicit registration, typed cancelable intent and one visual renderer per family.",
     "Real React/Vue/Angular/Svelte navigation and single-line text-field bindings. Renderer imports stay type-only; runtime shared imports are DOM-independent validation policies plus each adapter own framework. No alternate visuals.",
-    "488 passing Node/Chromium contract, architecture, CI, component/binding and Storybook tests. All 28 runtime modules are independently inventoried, including example composition and three zero-executable modules. CSF files remain collected test definitions.",
+    "490 passing Node/Chromium contract, architecture, CI, component/binding and Storybook tests. All 28 runtime modules are independently inventoried, including example composition and three zero-executable modules. CSF files remain collected test definitions.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four real clean frozen offline consumers compile installed package declarations and exercise navigation plus controlled text-field editing/cancellation/model writes/native default submitter/validation/disable/reset/EN-ES/themes/teardown/remount in Chromium; no foreign framework is installed.",
@@ -71,7 +71,7 @@
     "packages/core/src/index.ts": "73cf124d7066161ffe40967f338b17ff376c0c928e9a3c51a2ca979539c839bc",
     "packages/core/src/presentation-text.ts": "ad2eb8396a26638ba8d2f2f7cee3656195646aaea077cdc0d3ecd06fc95b3df2",
     "packages/core/src/components/button.ts": "5301c32f9c5cc716b0eb805f8952704c37e07acf4d3996f78e8e07d523020f12",
-    "packages/core/src/components/field.ts": "2d5ec6a64447bb0c42cb28201e59966758c8bfb629be200f858ee40e7afb5349",
+    "packages/core/src/components/field.ts": "620e3211f24135c6f89440087eacdc36f488b8402cd704c1832f282755e7ecdd",
     "packages/core/src/components/tabs.ts": "53e476dde73ab0307a658985f4f2ec91b2086e69df42155d6fdb67925c6a5bb0",
     "packages/react/src/index.ts": "de04557dd8d23b9c331776fdc2574476853456160650f371a0bc427d22464bca",
     "packages/react/src/text-field.ts": "1d9249cb835aa1205bcb634fee2f75af01bc5c7833f9f71391e72de560c67656",
@@ -92,8 +92,8 @@
   },
   "packedContract": {
     "scope": "Core data, navigation, text field and button; four field framework bridges are verified separately; broader controls and application adoption remain required",
-    "sha256": "e9dcad004bf93aec3d5b289d2ae9e379524b0725bce5ff3d4b30f1ad0ea0efed",
-    "bytes": 43023,
+    "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d",
+    "bytes": 43049,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -139,7 +139,7 @@
   },
   "lockSha256": "3daf9264c171fd42c9ac73cecdb1b159a926a931a5da2a2806bb7e6a99f87044",
   "browserEvidence": {
-    "componentCases": 81,
+    "componentCases": 83,
     "engine": "Chromium 156.0.8078.4",
     "actualPackageImages": [
       "test-results/packed-angular-dark-es.png",
@@ -161,7 +161,7 @@
     "imagesInspected": true,
     "focusRegression": "focus-return-red.log reproduces the stale tab-stop; full green run has no skipped tests.",
     "initialTestAttempt": "Browser cases were authored before the renderer. The first attempted execution could not start because the pinned Chromium binary was absent; no behavioral red result is claimed for that attempt. After runtime provisioning, the first actual run found two fixture/server-boundary issues, recorded in browser-first-execution.log.",
-    "textFieldCases": 27,
+    "textFieldCases": 29,
     "localRetainedImages": [
       "work/current-preview/packed-angular-dark-es.png",
       "work/current-preview/packed-angular-field-dark-es.png",
@@ -212,7 +212,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "e9dcad004bf93aec3d5b289d2ae9e379524b0725bce5ff3d4b30f1ad0ea0efed"
+            "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d"
           }
         ],
         "props": true,
@@ -248,7 +248,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "e9dcad004bf93aec3d5b289d2ae9e379524b0725bce5ff3d4b30f1ad0ea0efed"
+            "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d"
           }
         ],
         "props": true,
@@ -284,7 +284,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "e9dcad004bf93aec3d5b289d2ae9e379524b0725bce5ff3d4b30f1ad0ea0efed"
+            "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d"
           }
         ],
         "props": true,
@@ -320,7 +320,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "e9dcad004bf93aec3d5b289d2ae9e379524b0725bce5ff3d4b30f1ad0ea0efed"
+            "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d"
           }
         ],
         "props": true,
@@ -352,8 +352,8 @@
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "e9dcad004bf93aec3d5b289d2ae9e379524b0725bce5ff3d4b30f1ad0ea0efed",
-        "bytes": 43023
+        "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d",
+        "bytes": 43049
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
@@ -422,7 +422,7 @@
       "svelte"
     ],
     "types": "Strict source, consumer, Storybook and both Svelte checks pass without any of five compiled distributions",
-    "unitAndBrowserTests": 488,
+    "unitAndBrowserTests": 490,
     "coverage": "100% statements/branches/functions/lines per authored file and globally",
     "restoration": "Every previous compiled distribution restored byte-for-byte",
     "reason": "Actual source campaign runs while all five dist trees are absent; compiled bytes are restored and independently verified.",
@@ -787,6 +787,7 @@
       "nativeForm": true,
       "managerDocs": true,
       "managerControls": true,
+      "buttonReducedMotionVerified": true,
       "external": [],
       "badAssets": [],
       "errors": []
@@ -835,7 +836,8 @@
       "iconSpacing": "Empty icon wrappers added 16 px; the regression failed before using layout-free wrappers.",
       "busyAndPressed": "Two source cases failed on a leaked busy click and missing pressed shape before the common fixes. Cursor/size assertions were authored before their corrections but were not reached in that red run.",
       "packedResetTiming": "The first installed consumer checked the value before the deferred cancelable reset completed. Its actual fixture and original helper are retained; the corrected driver waits for the real Kitchen state instead of writing it or weakening the expected value.",
-      "staticReadiness": "The first static campaign waited for only old control families in a button-only story. The driver now asserts readiness and motion on every real control, including buttons."
+      "staticReadiness": "The first static campaign waited for only old control families in a button-only story. The driver now asserts readiness and motion on every real control, including buttons.",
+      "formMethodCollisions": "Two legal names, requestSubmit and getRootNode, reproduced zero submissions and two native TypeErrors before the field used native prototypes. The corrected 490-test source campaign, strict checks, actual package consumers and static catalog pass; no legal name is forbidden or rewritten."
     }
   }
 }

@@ -117,11 +117,11 @@ export class HaTextField extends LitElement {
     const form=this.form;
     setTimeout(()=>{
       if(event.defaultPrevented||this.disabled||this.#formDisabled||form===null||this.form!==form)return;
-      const controls=[...(form.getRootNode() as Document|ShadowRoot).querySelectorAll<HTMLInputElement|HTMLButtonElement|HaTextField>('input,button,vyp-ha-field')].filter(control=>control.form===form);
+      const controls=[...(Node.prototype.getRootNode.call(form) as Document|ShadowRoot).querySelectorAll<HTMLInputElement|HTMLButtonElement|HaTextField>('input,button,vyp-ha-field')].filter(control=>control.form===form);
       const submitter=controls.find(control=>(control instanceof HTMLButtonElement||control instanceof HTMLInputElement)&&(control.type==='submit'||control.type==='image')) as HTMLButtonElement|HTMLInputElement|undefined;
       if(submitter!==undefined){if(!submitter.disabled)submitter.click();return;}
       const blockers=controls.filter(control=>control instanceof HaTextField||(control instanceof HTMLInputElement&&['text','search','url','tel','email','password','date','month','week','time','datetime-local','number'].includes(control.type)));
-      if(blockers.length<=1)form.requestSubmit();
+      if(blockers.length<=1)HTMLFormElement.prototype.requestSubmit.call(form);
     });
   }
   protected render(){

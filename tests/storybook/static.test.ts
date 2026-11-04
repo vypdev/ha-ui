@@ -37,6 +37,7 @@ test('the complete static catalog works at the repository subpath with local ass
         const last=page.getByRole('link').last();await last.focus();const box=await last.boundingBox();assert.ok(box&&box.x>=0&&box.x+box.width<=width+1,'Overflow destination scrolls into view: '+JSON.stringify({box,width,locale,theme}));
       }
       if(story.startsWith('forms-text-field'))await page.screenshot({path:resolve(output,(story.endsWith('--error')?'error-':'field-')+locale+'-'+theme+'-'+width+'.png')});
+      if(story==='buttons-actions--loading')assert.equal(await page.locator('vyp-ha-button .spinner').evaluate(element=>getComputedStyle(element).animationName),'none');
       if(story.startsWith('buttons-'))await page.screenshot({path:resolve(output,story+'-'+locale+'-'+theme+'-'+width+'.png')});
       results.push({story,locale,theme,width,a11yViolations:violations.length});
     }
@@ -66,6 +67,6 @@ test('the complete static catalog works at the repository subpath with local ass
     await page.waitForFunction(()=>{const frame=document.querySelector<HTMLIFrameElement>('#storybook-preview-iframe')!,main=frame.contentDocument!.querySelector<HTMLElement>('main.catalog-frame')!;return main?.lang==='es'&&main.dataset.theme==='dark'&&main.dataset.motion==='reduced'&&main.style.maxWidth==='360px';});
     await page.screenshot({path:resolve(output,'manager-controls-dark-es.png')});
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
-    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:28,docsCount:4,matrix:results,keyboard:true,nativeForm:true,managerDocs:true,managerControls:true,external,badAssets,errors},null,2)+'\n');
+    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:28,docsCount:4,matrix:results,keyboard:true,nativeForm:true,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
 });

@@ -212,3 +212,7 @@ test('uses an AA-contrast error fallback on a white surface',async()=>{
 test('implicit Enter clicks the native default submitter so application click cancellation can prevent submission',async()=>{
  const {field,form}=await mount();const button=document.createElement('button');button.type='submit';form.append(button);let clicks=0,submissions=0;button.addEventListener('click',event=>{clicks++;event.preventDefault();});form.addEventListener('submit',event=>{event.preventDefault();submissions++;});field.focus();await userEvent.keyboard('{Enter}');expect(clicks).toBe(1);expect(submissions).toBe(0);
 });
+
+test.each(['requestSubmit','getRootNode'])('implicit Enter supports a legal field name that shadows %s',async name=>{
+ const {field,form}=await mount();field.name=name;let submissions=0;form.addEventListener('submit',event=>{event.preventDefault();submissions++;});field.focus();await userEvent.keyboard('{Enter}');await new Promise<void>(done=>setTimeout(done,0));expect(submissions).toBe(1);
+});
