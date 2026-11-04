@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, text field, native-form button, typed single/multiple select and boolean checkbox; immutable DOM-free contracts, explicit registration, typed cancelable intent and one renderer per family.",
     "Real React/Vue/Angular/Svelte bindings for all five current families. Angular includes actual field/select/checkbox Forms bridges. Runtime adapter imports stay within pure contracts and the selected framework; no alternate visuals.",
-    "792 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 48 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
+    "796 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 48 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four clean frozen offline compiled installed-package consumers exercise navigation, field, button, typed selects and boolean checkboxes, native validation/entries/reset/disabled behavior, cancellation, EN/ES/themes and teardown/remount. Actual tested five-coordinate archives are retained with their digests.",
@@ -32,7 +32,8 @@
     "Direct Chrome comparison used a dedicated window/group in the Efra profile, observed entity-table marked/mixed controls and restored selection mode without entity changes. This is agent observation, not owner acceptance of the full UX.",
     "A reproduced stale Enter could submit after a text field or checkbox was disconnected and reattached to the same form. Both now bind deferred Enter to the original connection; a fresh Enter remains accepted.",
     "Measured text-only dashboard tabs match eight original HA light/dark resting/hover/focus/disabled states in both navigation and panel modes. The source campaign adds17 cases; the static gate adds16 comparisons. Read-only decoded-pixel inspection finds zero changed pixels in all16 local samples; this does not claim cross-platform raster or full navigation/app acceptance.",
-    "Independent Linux replay proves the actual HA control and compiled candidate share91px Overview width versus89.484375px in macOS. Matching measured platform references preserve strict tests; no runtime renderer, package bytes, tolerance or source coverage exclusion changed in this correction."
+    "Independent Linux replay proves the actual HA control and compiled candidate share91px Overview width versus89.484375px in macOS. Matching measured platform references preserve strict tests; no runtime renderer, package bytes, tolerance or source coverage exclusion changed in this correction.",
+    "Four additional browser cases and a12-case compiled production-component probe across Linux Chromium/Firefox/WebKit verify standard form behavior. Trusted submit/reset emits one request and no auxiliary click; direct native requestSubmit/reset emits no press/click. The runtime is unchanged. This counters the recorded Bugbot premise; native reassessment remains required and no finding was manually resolved/dismissed."
   ],
   "coverage": {
     "lines": {
@@ -6370,5 +6371,159 @@
     "packages/svelte/package.json": "e95023ed5d9b7d8567d22114803bdb1862feb4e4b43decfebf5d41fdac189182",
     "packages/vue/package.json": "313b324d4d31bfbc03a082f65f2c92f03e38d346868e40b688b5c482fd51649e",
     "packages/core/NOTICE": "0596e1f409d35474defb296862a4ccd2f20e649473d0fc3cba56ff70a8808d7c"
+  },
+  "nativeFormReviewEvidence": {
+    "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4469512642",
+    "reviewHead": "c81b559a4f435b5a96966b04092bd6050e933dc3",
+    "reviewRun": 41856741827,
+    "reviewJob": 126667315493,
+    "sourceCasesAdded": 4,
+    "buttonCasesPassed": 29,
+    "fullSourceCasesPassed": 796,
+    "productionRuntimeChanged": false,
+    "manualFindingStateChange": false,
+    "nativeReassessmentRequired": true,
+    "compiledBrowserProof": {
+      "runtimeSourceUnchanged": true,
+      "results": [
+        {
+          "engine": "chromium",
+          "browser": "156.0.8078.80",
+          "type": "submit",
+          "mode": "trusted",
+          "presses": 1,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": "true",
+          "value": "Edited"
+        },
+        {
+          "engine": "chromium",
+          "browser": "156.0.8078.80",
+          "type": "submit",
+          "mode": "programmatic",
+          "presses": 0,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": "true",
+          "value": "Edited"
+        },
+        {
+          "engine": "chromium",
+          "browser": "156.0.8078.80",
+          "type": "reset",
+          "mode": "trusted",
+          "presses": 1,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": null,
+          "value": "Initial"
+        },
+        {
+          "engine": "chromium",
+          "browser": "156.0.8078.80",
+          "type": "reset",
+          "mode": "programmatic",
+          "presses": 0,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": null,
+          "value": "Initial"
+        },
+        {
+          "engine": "firefox",
+          "browser": "157.0",
+          "type": "submit",
+          "mode": "trusted",
+          "presses": 1,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": "true",
+          "value": "Edited"
+        },
+        {
+          "engine": "firefox",
+          "browser": "157.0",
+          "type": "submit",
+          "mode": "programmatic",
+          "presses": 0,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": "true",
+          "value": "Edited"
+        },
+        {
+          "engine": "firefox",
+          "browser": "157.0",
+          "type": "reset",
+          "mode": "trusted",
+          "presses": 1,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": null,
+          "value": "Initial"
+        },
+        {
+          "engine": "firefox",
+          "browser": "157.0",
+          "type": "reset",
+          "mode": "programmatic",
+          "presses": 0,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": null,
+          "value": "Initial"
+        },
+        {
+          "engine": "webkit",
+          "browser": "27.2",
+          "type": "submit",
+          "mode": "trusted",
+          "presses": 1,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": "true",
+          "value": "Edited"
+        },
+        {
+          "engine": "webkit",
+          "browser": "27.2",
+          "type": "submit",
+          "mode": "programmatic",
+          "presses": 0,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": "true",
+          "value": "Edited"
+        },
+        {
+          "engine": "webkit",
+          "browser": "27.2",
+          "type": "reset",
+          "mode": "trusted",
+          "presses": 1,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": null,
+          "value": "Initial"
+        },
+        {
+          "engine": "webkit",
+          "browser": "27.2",
+          "type": "reset",
+          "mode": "programmatic",
+          "presses": 0,
+          "proxyClicks": 0,
+          "actions": 1,
+          "actualSubmitter": null,
+          "value": "Initial"
+        }
+      ]
+    },
+    "fixtureRuntimeMeaning": "The official container Node26 controls only these browser fixtures; this does not establish Node26 SDK support.",
+    "standards": [
+      "https://html.spec.whatwg.org/multipage/forms.html#dom-form-requestsubmit",
+      "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#resetting-a-form"
+    ]
   }
 }

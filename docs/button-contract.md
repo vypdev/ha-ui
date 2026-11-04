@@ -53,3 +53,13 @@ the catalog supplies tested light/dark pairs. No Gateway or private HA runtime i
 The four thin [framework bindings](framework-adapters.md#button-binding-contract) preserve this
 contract through their own typed property, event and projection APIs. They add no visual renderer
 or form controller. Source-browser and independently installed compiled consumers verify them.
+
+
+Native `HTMLFormElement.requestSubmit(submitter)` and `reset()` run their standard form
+algorithms without synthesizing a click on the auxiliary button. They therefore do not emit
+`ha-press-request`. A trusted activation of the visible control emits one request before its
+single native effect. An actual click on the auxiliary submitter, including implicit Enter,
+emits its own single cancelable request; its handler must preserve that behavior. The source
+regressions and separate compiled Chromium/Firefox/WebKit probe count requests, auxiliary clicks
+and actual form effects independently. See the [requestSubmit method](https://html.spec.whatwg.org/multipage/forms.html#dom-form-requestsubmit)
+and [form reset algorithm](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#resetting-a-form).

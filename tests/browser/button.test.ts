@@ -96,3 +96,19 @@ test('keeps native implicit activation blocked if the request handler makes the 
 test('preserves visible keyboard focus and wraps long labels inside a narrow target',async()=>{
  const {button}=await mount('button',{label:'Complete the unusually long household maintenance task'});button.style.width='120px';await button.updateComplete;await userEvent.tab();expect(control(button).matches(':focus-visible')).toBe(true);expect(getComputedStyle(control(button)).outlineStyle).toBe('solid');expect(control(button).getBoundingClientRect().width).toBeLessThanOrEqual(120);expect(control(button).getBoundingClientRect().height).toBeGreaterThan(44);expect(control(button).scrollWidth).toBeLessThanOrEqual(control(button).clientWidth);
 });
+
+test.each(['submit','reset'] as const)('one trusted %s activation emits one request and no auxiliary click',async type=>{
+ const {form,button}=await mount(type);const input=document.createElement('input');input.name='task';input.defaultValue='Initial';input.value='Edited';form.prepend(input);button.name='action';button.value='save';
+ const requests:ButtonPressEvent[]=[],nativeClicks:MouseEvent[]=[],actions:Event[]=[];button.addEventListener('ha-press-request',event=>requests.push(event));button.submitter!.addEventListener('click',event=>nativeClicks.push(event));form.addEventListener(type==='submit'?'submit':'reset',event=>{if(type==='submit')event.preventDefault();actions.push(event);});
+ await userEvent.click(control(button));await settle();
+ expect(requests).toHaveLength(1);expect(requests[0].detail).toEqual({type});expect(nativeClicks).toHaveLength(0);expect(actions).toHaveLength(1);
+ if(type==='submit'){expect((actions[0] as SubmitEvent).submitter).toBe(button.submitter);expect([...new FormData(form,button.submitter!)]).toEqual([['task','Edited'],['action','save']]);}else expect(input.value).toBe('Initial');
+ button.submitter!.click();await settle();expect(requests).toHaveLength(2);expect(nativeClicks).toHaveLength(1);expect(actions).toHaveLength(2);
+});
+
+test.each(['submit','reset'] as const)('native programmatic %s does not synthesize a submitter click or press request',async type=>{
+ const {form,button}=await mount(type);const input=document.createElement('input');input.defaultValue='Initial';input.value='Edited';form.prepend(input);
+ const request=vi.fn(),click=vi.fn(),actions:Event[]=[];button.addEventListener('ha-press-request',request);button.submitter!.addEventListener('click',click);form.addEventListener(type==='submit'?'submit':'reset',event=>{if(type==='submit')event.preventDefault();actions.push(event);});
+ if(type==='submit')HTMLFormElement.prototype.requestSubmit.call(form,button.submitter!);else HTMLFormElement.prototype.reset.call(form);
+ await settle();expect(actions).toHaveLength(1);expect(click).not.toHaveBeenCalled();expect(request).not.toHaveBeenCalled();if(type==='submit')expect((actions[0] as SubmitEvent).submitter).toBe(button.submitter);else expect(input.value).toBe('Initial');
+});
