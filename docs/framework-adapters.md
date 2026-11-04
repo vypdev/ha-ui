@@ -1,7 +1,7 @@
 # Framework bindings
 
-This unpublished preview has shared navigation and one controlled text field, with four real
-framework bindings and text-field form bridges. Other controls and their bridges, framework
+This unpublished preview has shared navigation, one controlled text field and native-form buttons,
+with four real framework bindings and text-field form bridges. Other controls and their bridges, framework
 SSR/client fixtures, broader browser support, public Storybook hosting, publication and app adoption remain required.
 
 ## Client registration and ownership
@@ -77,7 +77,7 @@ Every framework consumer compiles against installed declarations and runs real p
 events, content projection, disabled booleans, English/Spanish, live theme, keyboard, removal and remount
 journeys. Installed authored source must match the repository. Published manifests contain neither
 workspace nor file references. The resulting artifacts include the exact cohort digests and original
-browser screenshots. These checks cover navigation and one text-field family, and do not complete the retained 70-case
+browser screenshots. These checks cover navigation, one text-field family and native-form buttons, and do not complete the retained 70-case
 capability acceptance inventory or prove a real npm publication.
 
 The complete source/type/browser check sequence also passes with all five dist trees absent.
@@ -156,3 +156,58 @@ source alias; both paths are required. The implementation follows Angular's
 [ControlValueAccessor](https://angular.dev/api/forms/ControlValueAccessor) and
 [Validator](https://angular.dev/api/forms/Validator) contracts; Svelte uses typed callback props and
 application-owned rune state.
+
+
+## Button binding contract
+
+Each adapter exports `Button` and uses the explicitly client-registered `vyp-ha-button`. Import
+`registerButton` from `@vypdev/ha-ui/button` at the application client boundary. The adapter writes
+`state`, `type`, `name`, `value`, `disabled` and `formNoValidate` as properties; optional `form`
+selects an external owner by ID attribute. Its safe default type is `button`. Pressed and busy state
+remain controlled by the application. The core owns visuals, keyboard, native validation, reset and
+the exposed real native `submitter`; bindings never create another button/form controller.
+
+React and Svelte accept `onPressRequest(originalEvent)` and optional `onPress(validatedDetail)`.
+Vue emits `pressRequest` and `press`; Angular exposes synchronous outputs of those names on its
+standalone `vyp-ha-button` component. The observer runs before the accepted callback and can call
+`preventDefault()` synchronously to prevent both acceptance and the native default. The pure
+`buttonPressDetail` policy rejects malformed requests before either callback and freezes a snapshot
+before an observer can mutate a foreign payload. An accepted request is an intent, not proof that
+browser validation passed or that an application operation succeeded. Handle actual submission on
+the owning form and set loading from there. No framework callback should manually submit again.
+
+React accepts `leading`/`trailing` React nodes; Vue exposes named slots with those names; Svelte
+accepts typed snippets. Angular projects native `slot="leading"`/`slot="trailing"` content. All
+remain decorative/inert in the shared renderer, whose state label supplies the accessible name.
+Changing projected content preserves the core-owned auxiliary native submitter. Host attributes
+follow each adapter's existing id/class/style/dir/lang convention. A command button has no Angular
+value accessor; Angular's form submit/reset directives still receive the native form event.
+
+```tsx
+<Button state={saveState} type="submit" name="action" value="save"
+  onPressRequest={event => { if (cancelSave) event.preventDefault(); }} />
+```
+
+```vue
+<Button :state="saveState" type="submit" name="action" value="save"
+  @press-request="observePress"><template #leading><span>+</span></template></Button>
+```
+
+```svelte
+{#snippet leading()}<span>+</span>{/snippet}
+<Button state={saveState} type="submit" name="action" value="save" {leading}
+  onPressRequest={observePress} />
+```
+
+```html
+<vyp-ha-button [state]="saveState" type="submit" name="action" value="save"
+  (pressRequest)="observePress($event)"><span slot="leading">+</span></vyp-ha-button>
+```
+
+Source-browser cases cover pre-upgrade/default props, callback replacement/removal, invalid/foreign
+payloads, native validation and no-validate submission, reset, external owners, controlled pressed/
+busy state, icon replacement and retained-host teardown/remount. Actual frozen, independently
+installed React/Vue/Angular/Svelte consumers compile the published declarations and exercise default
+Enter, Space activation, cancellation, submitter/FormData, required validation, model reset, busy/
+disabled state, projection changes and remount, plus English/Spanish and theme updates. These are
+preview checks for the recorded pins, not SSR, other-engine or complete component-family acceptance.

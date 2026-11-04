@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T10:08:43.802090+00:00",
-  "status": "Partial source: shared navigation/panels, text field, core native-form button and real Storybook; four frameworks currently cover navigation/fields. Button adapters and complete delivery/application acceptance remain required.",
+  "recordedAtUTC": "2026-11-04T10:54:55.841143+00:00",
+  "status": "Partial source: shared navigation/panels, text field, native-form button and real Storybook; all three families have four framework bindings. Other families and complete delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -16,40 +16,40 @@
   },
   "implemented": [
     "Shared controlled navigation/panels, single-line field and core button; immutable pure contracts, explicit registration, typed cancelable intent and one visual renderer per family.",
-    "Real React/Vue/Angular/Svelte navigation and single-line text-field bindings. Renderer imports stay type-only; runtime shared imports are DOM-independent validation policies plus each adapter own framework. No alternate visuals.",
-    "490 passing Node/Chromium contract, architecture, CI, component/binding and Storybook tests. All 28 runtime modules are independently inventoried, including example composition and three zero-executable modules. CSF files remain collected test definitions.",
+    "Real React/Vue/Angular/Svelte navigation, single-line text-field and native-form button bindings. Renderer imports stay type-only; runtime shared imports are DOM-independent validation policies plus each adapter own framework. No alternate visuals.",
+    "522 passing Node/Chromium contract, architecture, CI, component/binding and Storybook tests. All 32 runtime modules are independently inventoried, including example composition and three zero-executable modules. CSF files remain collected test definitions.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
-    "Four real clean frozen offline consumers compile installed package declarations and exercise navigation plus controlled text-field editing/cancellation/model writes/native default submitter/validation/disable/reset/EN-ES/themes/teardown/remount in Chromium; no foreign framework is installed.",
+    "Four real clean frozen offline consumers compile installed package declarations and exercise navigation, controlled text-field models and native-form button requests/cancellation/default Enter/Space/submitter metadata/validation/disable/busy/reset/projection/EN-ES/themes/teardown/remount in Chromium; no foreign framework is installed.",
     "Angular actual consumer is AOT compiled and uses the official linker for all partial framework libraries, without a JIT fallback.",
     "Core text field passes actual form ownership/submission, default submitter, required/length/custom validation, disabled fieldsets, readonly, reset, explicit restoration callbacks, focus/labels, controlled caret, composition-boundary and invalid-input regression tests. Its actual installed package passes compiled Chromium form journeys.",
     "Angular text field implements ControlValueAccessor and the shared pure Validator: reactive controls, ngModel, nullable/nonnullable reset, dirty/touched and updateOn change/blur/submit pass. Foreign malformed event payloads are rejected before callbacks; validated snapshots survive observer payload mutation.",
     "Twenty-eight real production-backed CSF stories and four autodocs pages; static /ha-ui/ matrix covers 48 locale/theme/width combinations, reduced motion, local-only assets, native forms, manual keyboard panels, actual manager controls and toolbar updates.",
     "Storybook found and regressed two shared renderer issues: insufficient light error contrast and partially clipped focused navigation destinations. Both reproduce before their common fixes.",
-    "Core button preserves native form validation/submitter/name-value/reset/default Enter using a documented real native auxiliary submitter; state, focus, busy prevention, slots and stale lifecycle/owner guards are exercised in source and actual installed-package consumers. Button framework adapters remain pending."
+    "Core button preserves native form validation/submitter/name-value/reset/default Enter using a documented real native auxiliary submitter; state, focus, busy prevention, slots and stale lifecycle/owner guards are exercised in source and actual installed-package consumers. All four button bindings pass source-browser and actual compiled installed-package consumers."
   ],
   "coverage": {
     "lines": {
-      "total": 424,
-      "covered": 424,
+      "total": 463,
+      "covered": 463,
       "skipped": 0,
       "pct": 100
     },
     "statements": {
-      "total": 825,
-      "covered": 825,
+      "total": 927,
+      "covered": 927,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 228,
-      "covered": 228,
+      "total": 253,
+      "covered": 253,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 559,
-      "covered": 559,
+      "total": 588,
+      "covered": 588,
       "skipped": 0,
       "pct": 100
     },
@@ -63,23 +63,27 @@
   "sourceIdentities": {
     ".storybook/main.ts": "922a2ae0b23bb08fab4dc00303af285b1f9eb47e78566cc60d4376149b70a11c",
     ".storybook/preview.ts": "5b9f531cbde4c1e911b985a1e1ee6f655381fa3db2e4a0659b883d6a3c5b67a4",
-    "packages/angular/src/index.ts": "b7f1dbce4ca58dbe6be01b53e9dc079593dc38c7ff4c71d0ffcca10de06a4f48",
+    "packages/angular/src/button.ts": "41ae6d56d8812a99984e71367276b12801f322ea3de7afb550867e79f698dc66",
+    "packages/angular/src/index.ts": "5d9f98655d83b437684b3129554ba0f692aa949740f1fe413aa5e12ed182fb3d",
     "packages/angular/src/text-field.ts": "fe0e40f32969c5e3d43bc721f1f0474ecc2fca45e33e12415c30af64a23f4ea4",
     "packages/core/src/button-contracts.ts": "fcbb48c8776a72d27e8b61e664de1318aec2edc31a4eeb87313780678533ba99",
+    "packages/core/src/components/button.ts": "5301c32f9c5cc716b0eb805f8952704c37e07acf4d3996f78e8e07d523020f12",
+    "packages/core/src/components/field.ts": "620e3211f24135c6f89440087eacdc36f488b8402cd704c1832f282755e7ecdd",
+    "packages/core/src/components/tabs.ts": "53e476dde73ab0307a658985f4f2ec91b2086e69df42155d6fdb67925c6a5bb0",
     "packages/core/src/contracts.ts": "457c418cbfcafe5ebb1f834a1f8c2c19f484bad15ea8df5bc65502eec6e19c91",
     "packages/core/src/field-contracts.ts": "130e143f3f69dfaa6e0397cf68cd2ec824823b44ff3f4488d92b19180d50b738",
     "packages/core/src/index.ts": "73cf124d7066161ffe40967f338b17ff376c0c928e9a3c51a2ca979539c839bc",
     "packages/core/src/presentation-text.ts": "ad2eb8396a26638ba8d2f2f7cee3656195646aaea077cdc0d3ecd06fc95b3df2",
-    "packages/core/src/components/button.ts": "5301c32f9c5cc716b0eb805f8952704c37e07acf4d3996f78e8e07d523020f12",
-    "packages/core/src/components/field.ts": "620e3211f24135c6f89440087eacdc36f488b8402cd704c1832f282755e7ecdd",
-    "packages/core/src/components/tabs.ts": "53e476dde73ab0307a658985f4f2ec91b2086e69df42155d6fdb67925c6a5bb0",
-    "packages/react/src/index.ts": "de04557dd8d23b9c331776fdc2574476853456160650f371a0bc427d22464bca",
+    "packages/react/src/button.ts": "dfe36710fb8db11e674efb43715525bfd246f6819086c3a3628a662920df04eb",
+    "packages/react/src/index.ts": "85eaf31079a164e1690a68877c87fe4ce7456a8561ff49c193596f9e7ff4f2ad",
     "packages/react/src/text-field.ts": "1d9249cb835aa1205bcb634fee2f75af01bc5c7833f9f71391e72de560c67656",
+    "packages/svelte/src/Button.svelte": "61f2927ec5b878bfa6cee124692b5191b960116e6d861418dca5ee6effcefadc",
     "packages/svelte/src/Field.svelte": "174e62b2fd01af8279ab42ce58ab530a0ee14d370bcdb646139f5a143052b8a0",
     "packages/svelte/src/Tabs.svelte": "974845c12ec9d760b6f76a43ae89fd4c1618d7b4d56381d98d16f65abc5b27c4",
-    "packages/svelte/src/index.ts": "6cdd70a671fd4d05232b7646838f43ddce086acc8d4af83409d76f366a0ae4db",
-    "packages/svelte/src/types.ts": "e673d97f2db9564c518bd6d08715093c3db26e9201becb5129cae7a4a99113ab",
-    "packages/vue/src/index.ts": "638fc7f426cb4c02527938d184e16afb4fec8845e86197159316c1968e2d2df8",
+    "packages/svelte/src/index.ts": "7a8c5088266a336df3eda4e773a78fcfb03288b36b226529bfc3586b7a26b9b2",
+    "packages/svelte/src/types.ts": "7e0870b952d6661f4d8d74877047451cb97f64130fbeff8ec747c9b9c776f1ef",
+    "packages/vue/src/button.ts": "886e33cb28661a0e51489a9c9d4505df0187ec95a7d666a25cc5c6d6778575d6",
+    "packages/vue/src/index.ts": "2b9d6904e92b85dcb3f4d2b7b1cdc138cfc9c2511c4609e3c4c34aea05292ad2",
     "packages/vue/src/text-field.ts": "e160d93f62669ffb989e3d8d78fb28b0da287226d8157676d5842b6a7c83f612",
     "stories/button.example.ts": "06773480e755be6526d292df9026ad0abace6825e17fd4e0b1ef81215d63680e",
     "stories/catalog-example.ts": "c5fa904779d81d2f081573051234b2d57f98c74c5c4ca99cbc8717584c2494e8",
@@ -91,7 +95,7 @@
     "tooling/coverage.mjs": "ad527a5d04517adb1992ac65a9abfffcabb9a2001f7f652c732dbe35899b56c8"
   },
   "packedContract": {
-    "scope": "Core data, navigation, text field and button; four field framework bridges are verified separately; broader controls and application adoption remain required",
+    "scope": "Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required",
     "sha256": "87d3f885903f2f7ff95399adad772fe39536d6f988768adfd645d6447247473d",
     "bytes": 43049,
     "reproducible": true,
@@ -120,9 +124,9 @@
     }
   },
   "limitations": [
-    "Navigation/panels and text field have four bindings. The button currently has only its core renderer and installed-core acceptance; its four framework bindings, selects, checkboxes, dialogs and remaining families are required.",
+    "Navigation/panels, text field and native-form button have four bindings. Selects, checkboxes, dialogs and remaining families and form bridges are required.",
     "Text-field composition events and restoration callbacks are explicitly exercised; real device IME and automatic browser history restoration remain unverified.",
-    "Exact recorded framework pins pass navigation and one text-field compiled consumer. Full cohort support and broader public peer ranges cannot be inferred from those two families.",
+    "Exact recorded framework pins pass navigation, one text-field and native-form button compiled consumers. Full cohort support and broader public peer ranges cannot be inferred from those three families.",
     "Next.js, Nuxt and SvelteKit explicit server-shell/client fixtures, hydration behavior and other browser engines remain unverified.",
     "All six delivery refinements, accepted-candidate promotion/publication recovery, public Storybook hosting, publisher authority and live publication remain required.",
     "Gateway and Domus adoption, installed deployment/recovery and human UX acceptance remain unverified.",
@@ -142,18 +146,26 @@
     "componentCases": 83,
     "engine": "Chromium 156.0.8078.4",
     "actualPackageImages": [
+      "test-results/packed-angular-button-dark-es.png",
+      "test-results/packed-angular-button-light.png",
       "test-results/packed-angular-dark-es.png",
       "test-results/packed-angular-field-dark-es.png",
       "test-results/packed-angular-field-error-dark-es.png",
       "test-results/packed-field-dark-es.png",
       "test-results/packed-navigation-light.png",
       "test-results/packed-panels-dark-es.png",
+      "test-results/packed-react-button-dark-es.png",
+      "test-results/packed-react-button-light.png",
       "test-results/packed-react-dark-es.png",
       "test-results/packed-react-field-dark-es.png",
       "test-results/packed-react-field-error-dark-es.png",
+      "test-results/packed-svelte-button-dark-es.png",
+      "test-results/packed-svelte-button-light.png",
       "test-results/packed-svelte-dark-es.png",
       "test-results/packed-svelte-field-dark-es.png",
       "test-results/packed-svelte-field-error-dark-es.png",
+      "test-results/packed-vue-button-dark-es.png",
+      "test-results/packed-vue-button-light.png",
       "test-results/packed-vue-dark-es.png",
       "test-results/packed-vue-field-dark-es.png",
       "test-results/packed-vue-field-error-dark-es.png"
@@ -186,7 +198,8 @@
     "frameworkFieldVisualReview": "All eight framework field images are represented by three unique byte groups; each unique valid/error dark Spanish image was inspected. Core geometry and semantics remain shared. The current dark error fixture supplies its public semantic error token; a representative new original image is inspected and all four consumers assert the computed color.",
     "frameworkFieldRed": "invalid-event-red.log reproduced four failing adapter cases before the pure payload guard. The final source campaign includes those regressions and observer-mutation cases.",
     "packedFieldInitialAttempts": "packed.log stopped before any browser launch because the local browser path variable was absent. packed-with-runtime.log then exposed a premature React UI-counter assertion; the driver now waits for the observed render state. current-packed.log passes all actual compiled forms; no unsupported behavioral red claim is made for the launch failure.",
-    "buttonCases": 25
+    "buttonCases": 25,
+    "frameworkButtonCases": 32
   },
   "consumerIsolationRegression": {
     "failedHostedRun": "https://github.com/vypdev/ha-ui/actions/runs/41773354203/job/126387929863",
@@ -198,7 +211,7 @@
     "freshHostedRequired": true
   },
   "packedFrameworks": {
-    "scope": "Navigation and one controlled text field with four framework form bridges; other controls, framework SSR and application adoption remain required",
+    "scope": "Navigation, one controlled text field and native-form buttons with four framework bindings; other controls, framework SSR and application adoption remain required",
     "frameworks": [
       {
         "framework": "react",
@@ -208,7 +221,7 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz",
-            "sha256": "16fd7155151a13936bcfd7b738142ebd0055cfcb3b3366b7219eb3ae0e66ed6b"
+            "sha256": "f1326caee89a253aca078a618bbfca36c585dd79c9e83756d27d6bda520ddb06"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
@@ -231,6 +244,18 @@
           "requiredValidation": true,
           "disabledSubmission": true,
           "frameworkReset": true,
+          "teardownAndRemount": true
+        },
+        "button": {
+          "sharedRenderer": true,
+          "originalCancelableRequest": true,
+          "validatedAcceptedSnapshot": true,
+          "keyboardActivation": true,
+          "nativeValidation": true,
+          "nativeSubmitter": true,
+          "frameworkReset": true,
+          "disabledAndBusy": true,
+          "projectionPreservesSubmitter": true,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -244,7 +269,7 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz",
-            "sha256": "21d87f361b247c73385f5d87d6ef4e3cbaca586a1e4ea2f1f02bd4fb857fa0a8"
+            "sha256": "66c2462cc39862b3c1428d8111afa5bc7973e5db18a2e8a2ec8538dbb3c75dfc"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
@@ -267,6 +292,18 @@
           "requiredValidation": true,
           "disabledSubmission": true,
           "frameworkReset": true,
+          "teardownAndRemount": true
+        },
+        "button": {
+          "sharedRenderer": true,
+          "originalCancelableRequest": true,
+          "validatedAcceptedSnapshot": true,
+          "keyboardActivation": true,
+          "nativeValidation": true,
+          "nativeSubmitter": true,
+          "frameworkReset": true,
+          "disabledAndBusy": true,
+          "projectionPreservesSubmitter": true,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -280,7 +317,7 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-angular-0.1.0-next.1.tgz",
-            "sha256": "46d4ce0ccaad8d180b9892dc9859c28dbcc644fb68600223bdf6d2191939c963"
+            "sha256": "4464491fb1848a21be7c19fbc402b3513355a37a60da6f836c3c6167d9a85407"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
@@ -303,6 +340,18 @@
           "requiredValidation": true,
           "disabledSubmission": true,
           "frameworkReset": true,
+          "teardownAndRemount": true
+        },
+        "button": {
+          "sharedRenderer": true,
+          "originalCancelableRequest": true,
+          "validatedAcceptedSnapshot": true,
+          "keyboardActivation": true,
+          "nativeValidation": true,
+          "nativeSubmitter": true,
+          "frameworkReset": true,
+          "disabledAndBusy": true,
+          "projectionPreservesSubmitter": true,
           "teardownAndRemount": true
         },
         "browser": "156.0.8078.4",
@@ -316,7 +365,7 @@
         "candidateArchives": [
           {
             "file": "file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz",
-            "sha256": "732558a22ee756c2ef73d20e64faf70355c41d618fec82dab64ba7e7694e359f"
+            "sha256": "515d72338e3f6409d4a314733bd4bbef445f6f6e6612ab89c7933fc48f024f59"
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
@@ -341,13 +390,25 @@
           "frameworkReset": true,
           "teardownAndRemount": true
         },
+        "button": {
+          "sharedRenderer": true,
+          "originalCancelableRequest": true,
+          "validatedAcceptedSnapshot": true,
+          "keyboardActivation": true,
+          "nativeValidation": true,
+          "nativeSubmitter": true,
+          "frameworkReset": true,
+          "disabledAndBusy": true,
+          "projectionPreservesSubmitter": true,
+          "teardownAndRemount": true
+        },
         "browser": "156.0.8078.4",
         "errors": []
       }
     ]
   },
   "packedCohort": {
-    "scope": "Unpublished navigation, core text-field and core button preview; no registry publication or full capability acceptance",
+    "scope": "Unpublished navigation, text-field and button preview with four framework bindings; no registry publication or full capability acceptance",
     "cohort": [
       {
         "coordinate": "@vypdev/ha-ui",
@@ -358,26 +419,26 @@
       {
         "coordinate": "@vypdev/ha-ui-angular",
         "version": "0.1.0-next.1",
-        "sha256": "46d4ce0ccaad8d180b9892dc9859c28dbcc644fb68600223bdf6d2191939c963",
-        "bytes": 5528
+        "sha256": "4464491fb1848a21be7c19fbc402b3513355a37a60da6f836c3c6167d9a85407",
+        "bytes": 6487
       },
       {
         "coordinate": "@vypdev/ha-ui-react",
         "version": "0.1.0-next.1",
-        "sha256": "16fd7155151a13936bcfd7b738142ebd0055cfcb3b3366b7219eb3ae0e66ed6b",
-        "bytes": 4175
+        "sha256": "f1326caee89a253aca078a618bbfca36c585dd79c9e83756d27d6bda520ddb06",
+        "bytes": 5497
       },
       {
         "coordinate": "@vypdev/ha-ui-svelte",
         "version": "0.1.0-next.1",
-        "sha256": "732558a22ee756c2ef73d20e64faf70355c41d618fec82dab64ba7e7694e359f",
-        "bytes": 2917
+        "sha256": "515d72338e3f6409d4a314733bd4bbef445f6f6e6612ab89c7933fc48f024f59",
+        "bytes": 3530
       },
       {
         "coordinate": "@vypdev/ha-ui-vue",
         "version": "0.1.0-next.1",
-        "sha256": "21d87f361b247c73385f5d87d6ef4e3cbaca586a1e4ea2f1f02bd4fb857fa0a8",
-        "bytes": 4571
+        "sha256": "66c2462cc39862b3c1428d8111afa5bc7973e5db18a2e8a2ec8538dbb3c75dfc",
+        "bytes": 5874
       }
     ],
     "reproducible": true,
@@ -398,7 +459,7 @@
     "angularForms": "22.2.4"
   },
   "frameworkBoundaries": {
-    "validated": "Navigation and one controlled single-line text field; other controls remain required",
+    "validated": "Navigation, one controlled single-line text field and native-form buttons; other controls remain required",
     "forms": {
       "singleLineTextField": true,
       "otherControls": false
@@ -409,7 +470,7 @@
     "publication": false,
     "storybook": "Implemented catalog/static subpath verified for current families; public Pages deployment and complete-family/human acceptance pending",
     "coreNativeTextField": true,
-    "buttonFrameworkBindings": false,
+    "buttonFrameworkBindings": true,
     "coreButton": true
   },
   "coldSourceValidation": {
@@ -422,11 +483,11 @@
       "svelte"
     ],
     "types": "Strict source, consumer, Storybook and both Svelte checks pass without any of five compiled distributions",
-    "unitAndBrowserTests": 490,
+    "unitAndBrowserTests": 522,
     "coverage": "100% statements/branches/functions/lines per authored file and globally",
     "restoration": "Every previous compiled distribution restored byte-for-byte",
     "reason": "Actual source campaign runs while all five dist trees are absent; compiled bytes are restored and independently verified.",
-    "restoredFiles": 63,
+    "restoredFiles": 74,
     "identityBasis": "The sourceIdentities SHA-256 map binds this increment; the owning PR supplies its exact Git revision."
   },
   "restoreReviewRegression": {
@@ -827,7 +888,7 @@
       "reset": true,
       "runtimeSpanishAndTheme": true
     },
-    "frameworkAdapters": false,
+    "frameworkAdapters": true,
     "sourceCases": 25,
     "purePolicyCases": 57,
     "visualReview": "Original installed Spanish/dark button and narrow light/dark variant/loading representatives inspected. Public accent/on-accent pairs pass axe in all 48 static combinations. No owner HA/human acceptance is inferred.",
@@ -838,6 +899,9 @@
       "packedResetTiming": "The first installed consumer checked the value before the deferred cancelable reset completed. Its actual fixture and original helper are retained; the corrected driver waits for the real Kitchen state instead of writing it or weakening the expected value.",
       "staticReadiness": "The first static campaign waited for only old control families in a button-only story. The driver now asserts readiness and motion on every real control, including buttons.",
       "formMethodCollisions": "Two legal names, requestSubmit and getRootNode, reproduced zero submissions and two native TypeErrors before the field used native prototypes. The corrected 490-test source campaign, strict checks, actual package consumers and static catalog pass; no legal name is forbidden or rewritten."
-    }
+    },
+    "frameworkSourceCases": 32,
+    "frameworkAPIAbsenceRed": "The first source run rejected the missing React Button export before implementation. Vite also reported the not-yet-created Svelte component. This is an API-absence red, not an asserted behavioral failure.",
+    "frameworkVisualReview": "Eight original installed framework button images form two byte-identical groups (light English and dark Spanish). Both unique originals were inspected. No real HA or human app acceptance is inferred."
   }
 }

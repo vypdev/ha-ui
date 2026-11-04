@@ -14,3 +14,10 @@ export interface TextFieldProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'c
   state:TextFieldState;value:string;name?:string;defaultValue?:string;disabled?:boolean;form?:string;
   onValueRequest?:(event:FieldValueEvent)=>void;onValueChange?:(value:string)=>void;
 }
+
+import type {ButtonState,ButtonType,ButtonPressDetail} from '@vypdev/ha-ui/button-contracts';
+import type {ButtonPressEvent} from '@vypdev/ha-ui/button';
+export interface ButtonProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {
+  state:ButtonState;type?:ButtonType;name?:string;value?:string;disabled?:boolean;formNoValidate?:boolean;form?:string;
+  onPressRequest?:(event:ButtonPressEvent)=>void;onPress?:(detail:ButtonPressDetail)=>void;leading?:Snippet;trailing?:Snippet;
+}

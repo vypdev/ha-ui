@@ -450,6 +450,16 @@ Prospective repository files (current documents are classified against the immut
 | `stories/button.example.ts` | create |
 | `stories/button.stories.ts` | create |
 | `tests/consumers/buttons.ts` | create |
+| `packages/react/src/button.ts` | create |
+| `packages/vue/src/button.ts` | create |
+| `packages/angular/src/button.ts` | create |
+| `tests/browser/button-framework-fixture.ts` | create |
+| `tests/browser/react-button.test.ts` | create |
+| `tests/browser/vue-button.test.ts` | create |
+| `tests/browser/angular-button.test.ts` | create |
+| `tests/browser/svelte-button.test.mjs` | create |
+| `tests/browser/fixtures/SvelteButton.svelte` | create |
+| `tests/consumers/framework-buttons.ts` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

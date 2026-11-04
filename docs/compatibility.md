@@ -1,7 +1,7 @@
 # Compatibility and validation status
 
 The DOM-independent navigation contract, controlled upper navigation/panel component and their
-build/coverage foundation are implemented and tested in Chromium. Navigation and text-field form adapters for four frameworks pass real compiled package consumers. Other component
+build/coverage foundation are implemented and tested in Chromium. Navigation, text-field form adapters and native-form buttons for four frameworks pass real compiled package consumers. Other component
 families and their form bridges, browser support breadth and framework SSR integration remain unaccepted.
 
 | Tool | Exact pin | Current use |
@@ -10,7 +10,7 @@ families and their form bridges, browser support breadth and framework SSR integ
 | pnpm | 10.34.0 | Frozen workspace install |
 | TypeScript | 6.0.3 | Strict contract/type declarations; compatible candidate for Angular compiler-cli 22.2.4 |
 | Vite | 8.3.5 | Test transform toolchain |
-| Lit | 3.3.3 | Internal shared navigation and text-field renderer |
+| Lit | 3.3.3 | Internal shared navigation, text-field and button renderers |
 | Vitest, browser provider and V8 coverage | 5.1.0 | Node and real Chromium; all four metrics globally and per authored runtime file |
 | Storybook / Web Components / docs / a11y / Vitest addon | 10.6.5 | Real catalog with strict declaration-only compatibility patch |
 | axe-core | 4.14.0 | All static locale/theme/width combinations |
@@ -19,7 +19,7 @@ families and their form bridges, browser support breadth and framework SSR integ
 The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
 its source currently contains presentation contracts, one preview navigation/panel component and
 one controlled text field and a native-form button. It is not a supported component release.
-React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation and single-line text-field compiled/browser
+React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation, single-line text-field and button compiled/browser
 fixtures using actual packages. They remain preview pins until the complete component and delivery gates pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
 Do not infer support from custom-element interoperability or compiler metadata alone.
 
@@ -36,7 +36,7 @@ CI Check runs for each PR head with no path filter. Current gates are strict typ
 tests, independent source-inventory coverage, architecture/CI contracts, compiled declarations, real Chromium component behavior, actual reproducible packed consumption with
 a DOM-free contract and a compiled browser client, and the original pinned Copilot catalog validator.
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
-and reduced motion. The additional four framework fixtures establish navigation and text-field model/submission/validation/disabled/reset/lifecycle behavior;
+and reduced motion. The additional four framework fixtures establish navigation, text-field model/submission/validation/disabled/reset/lifecycle and native button behavior;
 other control types, browser engines and framework SSR remain unverified.
 Complete component-family/framework fixtures, public Storybook hosting, publication and actual app adoption remain required.
 The [implemented catalog and static browser gates](storybook.md) cover only the current families.
@@ -58,5 +58,5 @@ The core button's scoped acceptance uses a real hidden native submitter with the
 renderer. Native DOM and installed-package tests cover actual FormData/validation/default Enter,
 cancellation, fieldset/legend rules, busy focus, reset and stale connection/owner prevention. This
 is the documented [button equivalence](button-contract.md), not universal HTMLElement submitter
-support. Button framework bindings and other engines remain pending. The field's Enter path now
+support. Four button framework bindings pass actual compiled consumers; other engines remain pending. The field's Enter path now
 clicks the actual default submitter, preserving native application cancellation.

@@ -184,13 +184,13 @@ document.querySelector('main')!.append(form);`);
     assert.deepEqual(errors,[]);
     const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,textField:{controlledInput:true,nativeSubmitter:true,requiredValidation:true,reset:true,disabledSubmission:true},runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
     await mkdir(resolve(root, 'test-results'), {recursive:true});
-    await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation, text field and button; four field framework bridges are verified separately; broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
+    await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
     const coreButton=await exerciseCoreButton(browserPage,root);
     await writeFile(resolve(root,'test-results/packed-button.json'),JSON.stringify(coreButton,null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;
     const frameworks=await exerciseFrameworks(root,scratch,browser);
-    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation and one controlled text field with four framework form bridges; other controls, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
-    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, core text-field and core button preview; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, one controlled text field and native-form buttons with four framework bindings; other controls, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, text-field and button preview with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
     passed = true;
   } finally {
     await browser?.close(); await server?.close();

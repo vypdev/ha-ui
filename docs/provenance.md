@@ -63,3 +63,7 @@ controlled state, reduced motion, inert icon projection, typed requests and the 
 submitter bridge are authored here. The fixture icon is a text glyph, with no imported asset.
 The source/license notice remains unchanged. The catalog supplies tested accent/on-accent theme
 pairs, instead of assuming every host-supplied pair meets contrast.
+
+The four button bindings are authored here. They use the DOM-independent request validator and
+the one registered core renderer. Their framework lifecycle and decorative projection glue adds
+no copied third-party component, CSS or second native-form controller.

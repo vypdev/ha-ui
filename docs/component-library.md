@@ -2,7 +2,7 @@
 
 The current source implements the DOM-independent navigation contract, one controlled upper
 navigation/panel renderer, a single-line text field, a native-form button and the tested quality/build foundation. The renderer passes direct
-Chromium and clean actual-package browser consumers. Four navigation and text-field form adapters now also pass real compiled package consumers. Other component families,
+Chromium and clean actual-package browser consumers. Four navigation, text-field form and button adapters now also pass real compiled package consumers. Other component families,
 other form bridges, framework SSR, public Storybook hosting, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
@@ -164,7 +164,7 @@ The public form/labels/validity APIs, focus, blur, custom validity, reset, repar
 submission are exercised in actual Chromium forms. Import `HaTextField` and `registerField` from
 `@vypdev/ha-ui/field`, and call registration at the explicit client boundary. Import the pure
 contracts from `@vypdev/ha-ui/field-contracts`; these require no DOM globals or DOM types. The initial field is text-only; other input types,
-selects, checkboxes, buttons and dialogs remain required separate work. React, Vue, Angular and
+selects, checkboxes and dialogs remain required separate work. React, Vue, Angular and
 Svelte text-field bindings and native form-model bridges pass the pinned compiled consumers; other
 control families and their bridges remain required. Browser state-restoration callbacks are exercised
 explicitly; automatic history restoration, real device IME behavior and other engines remain
@@ -203,6 +203,6 @@ and use that snapshot after them. FieldValueReason and FieldValueDetail types ar
 The [button contract](button-contract.md) defines the real core API, states, decorative slots,
 typed cancellation and exposed native submitter. The direct packed consumer checks native browser
 submission/validation, name/value inclusion, default Enter, disabled behavior, busy focus and reset.
-React/Vue/Angular/Svelte button exports and compiled button consumers are still required; the existing
-four-framework acceptance currently covers navigation and text fields. The catalog uses the actual
+React/Vue/Angular/Svelte button exports and actual installed compiled consumers pass alongside
+navigation and text-field bindings. The catalog uses the actual
 shared button in field forms and has twelve button stories, including all eight visual variants.

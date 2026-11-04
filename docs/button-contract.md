@@ -49,3 +49,7 @@ Visual geometry comes from Gateway's MIT ui-catalog.css at e47dde303e475a6d03e1d
 pill shape, 8 px gap, 8/16 px padding and 14/16 px text. Compact/default targets are raised to44 px;
 large is 48 px and extra-large 56 px. Public semantic colors need a corresponding on-accent text color;
 the catalog supplies tested light/dark pairs. No Gateway or private HA runtime is imported.
+
+The four thin [framework bindings](framework-adapters.md#button-binding-contract) preserve this
+contract through their own typed property, event and projection APIs. They add no visual renderer
+or form controller. Source-browser and independently installed compiled consumers verify them.

@@ -20,3 +20,4 @@ export const Tabs=defineComponent({
   },
 });
 export {TextField} from './text-field.js';
+export {Button} from './button.js';

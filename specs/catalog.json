@@ -56,7 +56,11 @@
         ".storybook/preview.ts",
         "packages/core/src/button-contracts.ts",
         "packages/core/src/components/button.ts",
-        "stories/button.example.ts"
+        "stories/button.example.ts",
+        "packages/react/src/button.ts",
+        "packages/vue/src/button.ts",
+        "packages/angular/src/button.ts",
+        "packages/svelte/src/Button.svelte"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -121,7 +125,14 @@
         "tests/contracts/button.test.ts",
         "tests/browser/button.test.ts",
         "tests/consumers/buttons.ts",
-        "stories/button.stories.ts"
+        "stories/button.stories.ts",
+        "tests/browser/button-framework-fixture.ts",
+        "tests/browser/react-button.test.ts",
+        "tests/browser/vue-button.test.ts",
+        "tests/browser/angular-button.test.ts",
+        "tests/browser/svelte-button.test.mjs",
+        "tests/browser/fixtures/SvelteButton.svelte",
+        "tests/consumers/framework-buttons.ts"
       ],
       "documentation": [
         "README.md",
