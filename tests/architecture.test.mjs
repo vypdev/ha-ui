@@ -46,7 +46,7 @@ test('CI Check runs for every PR update with frozen tools and all implemented qu
   expect(job['continue-on-error']).toBeUndefined();
   expect(job.steps.every(step => step['continue-on-error'] === undefined)).toBe(true);
   const commands = job.steps.flatMap(step => step.run ? [step.run] : []);
-  for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm exec playwright install --with-deps chromium --only-shell', 'pnpm test', 'pnpm build', 'pnpm test:package']) expect(commands).toContain(command);
+  for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm exec playwright install --with-deps chromium --only-shell', 'pnpm test', 'pnpm build', 'pnpm test:package','pnpm storybook:build','pnpm test:storybook']) expect(commands).toContain(command);
   const sdk = job.steps.find(step => step.with?.repository === 'vypdev/copilot');
   expect(sdk.with.ref).toBe('3e7ceea08e6131360e026937d1c0cc1b120472e0');
   expect(sdk.with['persist-credentials']).toBe(false);
@@ -56,7 +56,7 @@ test('CI Check runs for every PR update with frozen tools and all implemented qu
 });
 test('test configuration covers every package and authored tool per file without hiding runtime modules', () => {
   const source = readFileSync('vitest.config.ts', 'utf8');
-  expect(source).toContain("completeCoverage(['packages/*/src', 'tooling'], 'coverage')");
+  expect(source).toContain("completeCoverage(['packages/*/src', 'tooling', 'stories', '.storybook'], 'coverage')");
   const manifest = JSON.parse(readFileSync('package.json', 'utf8'));
   expect(manifest.scripts.test).toBe('vitest run --coverage && node --test tests/coverage-evidence.test.mjs');
 });
@@ -113,4 +113,27 @@ test('strict checks cover the source, Node consumer tooling and every Svelte fix
     const fixture=JSON.parse(readFileSync('tests/consumers/fixtures/'+framework+'/tsconfig.json','utf8'));
     expect(fixture.compilerOptions.strict).toBe(true);expect(fixture.compilerOptions.skipLibCheck).toBe(false);
   }
+});
+
+test('CSF test definitions delegate all rendering to independently covered examples',()=>{
+  for(const file of globSync('stories/*.stories.ts')) {
+    const code=readFileSync(file,'utf8');
+    expect(code).toContain('render:renderExample');
+    expect(imports(code).some(path=>path.endsWith('.example.js'))).toBe(true);
+    expect(code).not.toMatch(/html`|catalogExample\(|customElements\.define|attachShadow|<style/u);
+  }
+  for(const file of globSync('stories/*.example.ts')) {
+    const code=readFileSync(file,'utf8');expect(code).toContain('catalogExample(controls,');
+    expect(code).not.toMatch(/customElements\.define|attachShadow|<input[ >]|<nav[ >]|role=["'](?:tab|tablist|tabpanel)/u);
+  }
+});
+test('Pages builds only the trusted default branch and grants write permissions only to deployment',()=>{
+  const workflow=parse(readFileSync('.github/workflows/storybook_pages.yml','utf8'));
+  expect(workflow.on.push.branches).toEqual(['master']);expect(workflow.on.pull_request).toBeUndefined();
+  expect(workflow.permissions).toEqual({contents:'read'});
+  const build=workflow.jobs.build,deploy=workflow.jobs.deploy;
+  expect(build.if).toBe("github.ref == 'refs/heads/master'");expect(build.permissions).toBeUndefined();
+  for(const command of ['pnpm install --frozen-lockfile --ignore-scripts','pnpm check','pnpm test','pnpm test:package','pnpm storybook:build','pnpm test:storybook'])expect(build.steps.flatMap(step=>step.run?[step.run]:[])).toContain(command);
+  expect(deploy.needs).toBe('build');expect(deploy.permissions).toEqual({pages:'write','id-token':'write'});
+  expect(deploy.environment.name).toBe('github-pages');expect(workflow.concurrency['cancel-in-progress']).toBe(false);
 });

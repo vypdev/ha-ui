@@ -21,9 +21,9 @@ export class HaTextField extends LitElement {
     input {box-sizing:border-box;width:100%;min-width:0;min-height:56px;border:1px solid var(--vyp-ha-border,var(--divider-color,#e0e0e0));
       border-radius:var(--vyp-ha-field-radius,4px);padding:16px;color:inherit;background:var(--vyp-ha-surface,var(--card-background-color,#fff));font:inherit;}
     input:focus-visible {outline:2px solid var(--vyp-ha-primary,var(--primary-color,#0075b5));outline-offset:1px;}
-    input:disabled {opacity:.5;cursor:not-allowed;} input[aria-invalid=true] {border-color:var(--vyp-ha-danger,var(--error-color,#db4437));}
+    input:disabled {opacity:.5;cursor:not-allowed;} input[aria-invalid=true] {border-color:var(--vyp-ha-danger,var(--error-color,#b3261e));}
     .help,.error {font-size:12px;line-height:1.35;} .help {color:var(--vyp-ha-text-secondary,var(--secondary-text-color,#595959));}
-    .error {color:var(--vyp-ha-danger,var(--error-color,#db4437));}
+    .error {color:var(--vyp-ha-danger,var(--error-color,#b3261e));}
   `;
   #internals=this.attachInternals();
   #state=textFieldState({label:'Value'});

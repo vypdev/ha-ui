@@ -12,7 +12,7 @@ createApp({setup(){
   const select=(event:NavigationSelectionEvent)=>{event.preventDefault();state.value=model(spanish.value,event.detail.id,disabled.value);count.value++;};
   const language=()=>{spanish.value=!spanish.value;state.value=model(spanish.value,state.value.selected!,disabled.value);};
   const toggleDisabled=()=>{disabled.value=!disabled.value;state.value=model(spanish.value,'overview',disabled.value);};
-  return ()=>h('section',{style:{backgroundColor:dark.value?'rgb(20,20,20)':'rgb(255,255,255)','--divider-color':dark.value?'rgb(66,66,66)':'rgb(224,224,224)','--primary-text-color':dark.value?'rgb(235,235,235)':'rgb(28,28,28)','--secondary-text-color':dark.value?'rgb(189,189,189)':'rgb(89,89,89)','--card-background-color':dark.value?'rgb(20,20,20)':'rgb(255,255,255)'}},[
+  return ()=>h('section',{style:{backgroundColor:dark.value?'rgb(20,20,20)':'rgb(255,255,255)','--error-color':dark.value?'#f28b82':'#b3261e','--divider-color':dark.value?'rgb(66,66,66)':'rgb(224,224,224)','--primary-text-color':dark.value?'rgb(235,235,235)':'rgb(28,28,28)','--secondary-text-color':dark.value?'rgb(189,189,189)':'rgb(89,89,89)','--card-background-color':dark.value?'rgb(20,20,20)':'rgb(255,255,255)'}},[
     h('button',{onClick:language},'Switch language'),h('button',{onClick:()=>dark.value=!dark.value},'Toggle theme'),
     h('button',{onClick:toggleDisabled},'Toggle disabled'),h('button',{onClick:()=>visible.value=!visible.value},'Toggle component'),
     h('output',{'aria-label':'Selection events'},String(count.value)),

@@ -12,6 +12,8 @@ families and their form bridges, browser support breadth and framework SSR integ
 | Vite | 8.3.5 | Test transform toolchain |
 | Lit | 3.3.3 | Internal shared navigation and text-field renderer |
 | Vitest, browser provider and V8 coverage | 5.1.0 | Node and real Chromium; all four metrics globally and per authored runtime file |
+| Storybook / Web Components / docs / a11y / Vitest addon | 10.6.5 | Real catalog with strict declaration-only compatibility patch |
+| axe-core | 4.14.0 | All static locale/theme/width combinations |
 | Playwright | 1.64.1 | Chromium 156.0.8078.4 component and clean packed-consumer tests |
 
 The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
@@ -36,7 +38,8 @@ a DOM-free contract and a compiled browser client, and the original pinned Copil
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
 and reduced motion. The additional four framework fixtures establish navigation and text-field model/submission/validation/disabled/reset/lifecycle behavior;
 other control types, browser engines and framework SSR remain unverified.
-Complete component-family/framework fixtures, Storybook, publication and actual app adoption remain required.
+Complete component-family/framework fixtures, public Storybook hosting, publication and actual app adoption remain required.
+The [implemented catalog and static browser gates](storybook.md) cover only the current families.
 
 The clean package fixture derives its runtime-only graph and integrity records from the reviewed
 workspace lock, binds the actual tarball's integrity, and installs offline with a frozen lock. A fresh

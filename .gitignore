@@ -9,3 +9,6 @@ work/
 .vitest/
 
 **/.svelte-kit/
+
+build/
+.storybook-cache/

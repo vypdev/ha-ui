@@ -12,7 +12,7 @@
   function toggleDisabled(){disabled=!disabled;viewState=model(spanish,'overview',disabled);}
 </script>
 {#snippet tasks()}<button>Add task</button>{/snippet}
-<section style:background-color={dark?'rgb(20,20,20)':'rgb(255,255,255)'} style:--divider-color={dark?'rgb(66,66,66)':'rgb(224,224,224)'} style:--primary-text-color={dark?'rgb(235,235,235)':'rgb(28,28,28)'} style:--secondary-text-color={dark?'rgb(189,189,189)':'rgb(89,89,89)'} style:--card-background-color={dark?'rgb(20,20,20)':'rgb(255,255,255)'}>
+<section style:--error-color={dark?'#f28b82':'#b3261e'} style:background-color={dark?'rgb(20,20,20)':'rgb(255,255,255)'} style:--divider-color={dark?'rgb(66,66,66)':'rgb(224,224,224)'} style:--primary-text-color={dark?'rgb(235,235,235)':'rgb(28,28,28)'} style:--secondary-text-color={dark?'rgb(189,189,189)':'rgb(89,89,89)'} style:--card-background-color={dark?'rgb(20,20,20)':'rgb(255,255,255)'}>
   <button onclick={language}>Switch language</button><button onclick={()=>dark=!dark}>Toggle theme</button>
   <button onclick={toggleDisabled}>Toggle disabled</button><button onclick={()=>visible=!visible}>Toggle component</button>
   <output aria-label="Selection events">{count}</output>

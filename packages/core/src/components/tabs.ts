@@ -56,6 +56,9 @@ export class HaTabs extends LitElement {
     event.preventDefault(); this.#focused=enabled[destination].id; this.requestUpdate();
     this.renderRoot.querySelector<HTMLButtonElement>('#tab-'+this.#focused)!.focus();
   }
+  #reveal(): void {
+    this.renderRoot.querySelector(':focus')?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+  }
   #leave(event: FocusEvent): void {
     const bar=event.currentTarget as HTMLElement;
     if (!(event.relatedTarget instanceof Node) || !bar.contains(event.relatedTarget)) {
@@ -64,14 +67,14 @@ export class HaTabs extends LitElement {
   }
   protected render() {
     const snapshot=this.state;
-    if (snapshot.kind === 'navigation') return html`<nav class="bar" part="bar" aria-label=${snapshot.label}>
+    if (snapshot.kind === 'navigation') return html`<nav class="bar" part="bar" aria-label=${snapshot.label} @focusin=${this.#reveal}>
       ${snapshot.items.map(item => html`<a part="item" href=${item.disabled ? nothing : item.href!}
         aria-current=${snapshot.selected === item.id ? 'page' : nothing} aria-disabled=${item.disabled ? 'true' : nothing}
         tabindex=${item.disabled ? '-1' : nothing} @click=${(event: MouseEvent) => this.#activate(event,item,snapshot)}>${item.label}</a>`)}
     </nav>`;
     const enabled=snapshot.items.filter(item=>!item.disabled);
     const tabStop=enabled.find(item=>item.id === this.#focused)?.id ?? snapshot.selected ?? enabled[0]?.id;
-    return html`<div class="bar" part="bar" role="tablist" aria-label=${snapshot.label} aria-orientation="horizontal" @focusout=${this.#leave}>
+    return html`<div class="bar" part="bar" role="tablist" aria-label=${snapshot.label} aria-orientation="horizontal" @focusout=${this.#leave} @focusin=${this.#reveal}>
       ${snapshot.items.map(item => html`<button part="item" id=${'tab-'+item.id} type="button" role="tab"
         aria-selected=${String(snapshot.selected === item.id)} aria-controls=${'panel-'+item.id}
         ?disabled=${item.disabled} tabindex=${item.id === tabStop ? 0 : -1}

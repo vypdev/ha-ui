@@ -6,6 +6,8 @@ on:
     branches: [develop, master]
   merge_group:
     types: [checks_requested]
+env:
+  STORYBOOK_DISABLE_TELEMETRY: "1"
 permissions:
   contents: read
 jobs:
@@ -31,6 +33,8 @@ jobs:
       - run: pnpm test
       - run: pnpm build
       - run: pnpm test:package
+      - run: pnpm storybook:build
+      - run: pnpm test:storybook
       # Read the original catalog SDK at the reviewed revision; never rewrite it.
       - name: Read the original specification SDK
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -53,6 +57,7 @@ jobs:
         with:
           name: shared-ui-validation-${{ github.sha }}
           path: |
+            build/storybook/
             coverage/
             packages/*/dist/
             test-results/

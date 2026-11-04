@@ -428,6 +428,21 @@ Prospective repository files (current documents are classified against the immut
 | `tests/browser/field-framework-fixture.ts` | create |
 | `tests/browser/fixtures/SvelteField.svelte` | create |
 | `tests/consumers/fields.ts` | create |
+| `stories/catalog-state.ts` | create |
+| `stories/catalog-frame.ts` | create |
+| `stories/catalog-example.ts` | create |
+| `stories/foundation.example.ts` | create |
+| `stories/panels.example.ts` | create |
+| `stories/field.example.ts` | create |
+| `stories/panels.stories.ts` | create |
+| `stories/field.stories.ts` | create |
+| `tests/catalog-config.test.mjs` | create |
+| `tests/contracts/catalog.test.ts` | create |
+| `tests/typing/storybook.ts` | create |
+| `tests/storybook/static.test.ts` | create |
+| `tsconfig.storybook.json` | create |
+| `patches/@storybook__web-components@10.6.5.patch` | create |
+| `docs/storybook.md` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

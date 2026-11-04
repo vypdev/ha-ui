@@ -195,3 +195,13 @@ test('runtime Spanish labels keep the same identities, relationships and single 
   const disabled=new MouseEvent('click',{bubbles:true,cancelable:true}); controls(element)[1].dispatchEvent(disabled);
   expect(disabled.defaultPrevented).toBe(true); expect(received).toHaveLength(1);
 });
+
+test('reveals the complete focused destination even when it was already partially visible',async()=>{
+  registerTabs();const element=document.createElement('vyp-ha-tabs');element.style.width='400px';
+  element.state=navigationState({kind:'navigation',label:'Sections',selected:'one',items:[{id:'one',label:'First long household section',href:'#one'},{id:'two',label:'Second long household section',href:'#two'}]});
+  document.body.append(element);await element.updateComplete;
+  const bar=element.shadowRoot!.querySelector<HTMLElement>('.bar')!,last=element.shadowRoot!.querySelectorAll<HTMLAnchorElement>('a')[1];
+  const before=last.getBoundingClientRect(),boundary=bar.getBoundingClientRect();expect(before.left).toBeLessThan(boundary.right);expect(before.right).toBeGreaterThan(boundary.right);
+  last.focus();expect(last.getBoundingClientRect().right).toBeLessThanOrEqual(boundary.right+1);
+  last.blur();bar.dispatchEvent(new FocusEvent('focusin',{bubbles:true}));
+});

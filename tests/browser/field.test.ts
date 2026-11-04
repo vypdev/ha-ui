@@ -199,3 +199,12 @@ test('restores the accepted DOM value after a malformed synthetic edit without e
   try{edit(field,'\ud800');expect(input(field).value).toBe('Accepted');expect(field.value).toBe('Accepted');expect(entries(form)).toEqual([['task','Accepted']]);expect(received).toHaveLength(0);expect(errors).toHaveLength(1);expect(errors[0]).toBeInstanceOf(FieldInputError);}
   finally{window.removeEventListener('error',capture);}
 });
+
+// WCAG AA for the renderer fallback, without relying on a themed catalog override.
+test('uses an AA-contrast error fallback on a white surface',async()=>{
+  const {field}=await mount({error:'Review this value'});
+  const rgb=getComputedStyle(field.shadowRoot!.getElementById('error')!).color;
+  const values=rgb.match(/\d+/gu)!.map(Number).slice(0,3).map(value=>{const channel=value/255;return channel<=0.04045?channel/12.92:((channel+0.055)/1.055)**2.4;});
+  const luminance=0.2126*values[0]+0.7152*values[1]+0.0722*values[2];
+  expect(1.05/(luminance+0.05)).toBeGreaterThanOrEqual(4.5);
+});

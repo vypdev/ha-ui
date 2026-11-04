@@ -2,8 +2,8 @@
 
 The current source implements the DOM-independent navigation contract, one controlled upper
 navigation/panel renderer and the tested quality/build foundation. The renderer passes direct
-Chromium and clean actual-package browser consumers. Four navigation adapters now also pass real compiled package consumers. Other component families,
-form bridges, framework SSR, Storybook, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
+Chromium and clean actual-package browser consumers. Four navigation and text-field form adapters now also pass real compiled package consumers. Other component families,
+other form bridges, framework SSR, public Storybook hosting, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
 
@@ -29,9 +29,9 @@ sections such as Overview, Tasks, Calendar, Shopping, Inventory, Family and Sett
 ## Components and catalog
 
 The proposed families are tokens, typography, spacing, upper navigation, buttons, fields, selects,
-checkboxes, cards, rows/grids, dialogs and feedback states. The one Storybook will use production
-components with EN/ES, light/dark, narrow/wide, keyboard and reduced-motion examples. It will provide
-reviewable PR artifacts and its own static GitHub Pages site; no site URL is claimed before delivery.
+checkboxes, cards, rows/grids, dialogs and feedback states. The [shared Storybook](storybook.md) uses production
+components with EN/ES, light/dark, narrow/wide, keyboard and reduced-motion examples. CI retains
+reviewable PR artifacts; public GitHub Pages hosting remains pending.
 No private HA bundles, parent-frame DOM, storage, credentials or API access belong in this package.
 
 ## Compatibility and adoption

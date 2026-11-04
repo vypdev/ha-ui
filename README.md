@@ -6,8 +6,9 @@ The current source implements a DOM-independent navigation data contract, one co
 upper navigation/panel component, a controlled form-associated text field and a pinned, tested
 build/coverage foundation. React, Vue, Angular
 and Svelte navigation and text-field form bindings pass real compiled, packed consumers.
-Other component families and their form bridges, framework SSR boundaries, Storybook, publication and actual
+Other component families and their form bridges, framework SSR boundaries, public Storybook hosting, publication and actual
 application adoption remain required.
+The [shared Storybook](docs/storybook.md) now covers the implemented families.
 No package is published or ready for application adoption.
 
 Use Node 24.20.0 and the package manager pinned in package.json:
@@ -19,6 +20,8 @@ pnpm exec playwright install --with-deps chromium --only-shell
 pnpm test
 pnpm build
 pnpm test:package
+pnpm storybook:build
+pnpm test:storybook
 ```
 
 The contract validates controlled navigation or panel inputs without reading browser globals,

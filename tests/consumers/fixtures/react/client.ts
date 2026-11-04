@@ -13,7 +13,7 @@ function Consumer() {
   const select=(event:NavigationSelectionEvent)=>{event.preventDefault();setState(model(spanish,event.detail.id,disabled));setCount(value=>value+1);};
   const language=()=>{setSpanish(!spanish);setState(model(!spanish,state.selected!,disabled));};
   const toggleDisabled=()=>{setDisabled(!disabled);setState(model(spanish,'overview',!disabled));};
-  const style={backgroundColor:dark?'rgb(20,20,20)':'rgb(255,255,255)','--divider-color':dark?'rgb(66,66,66)':'rgb(224,224,224)','--primary-text-color':dark?'rgb(235,235,235)':'rgb(28,28,28)','--secondary-text-color':dark?'rgb(189,189,189)':'rgb(89,89,89)','--card-background-color':dark?'rgb(20,20,20)':'rgb(255,255,255)'} as CSSProperties;
+  const style={backgroundColor:dark?'rgb(20,20,20)':'rgb(255,255,255)','--error-color':dark?'#f28b82':'#b3261e','--divider-color':dark?'rgb(66,66,66)':'rgb(224,224,224)','--primary-text-color':dark?'rgb(235,235,235)':'rgb(28,28,28)','--secondary-text-color':dark?'rgb(189,189,189)':'rgb(89,89,89)','--card-background-color':dark?'rgb(20,20,20)':'rgb(255,255,255)'} as CSSProperties;
   return createElement('section',{style},
     createElement('button',{onClick:language},'Switch language'),createElement('button',{onClick:()=>setDark(!dark)},'Toggle theme'),
     createElement('button',{onClick:toggleDisabled},'Toggle disabled'),createElement('button',{onClick:()=>setVisible(!visible)},'Toggle component'),

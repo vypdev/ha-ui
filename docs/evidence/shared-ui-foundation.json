@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T07:02:08.742289+00:00",
-  "status": "Partial source increment: shared navigation/panels and one controlled text field, with real React/Vue/Angular/Svelte navigation bindings and text-field form bridges. Other families and full delivery/application acceptance remain required.",
+  "recordedAtUTC": "2026-11-04T08:40:19.745238+00:00",
+  "status": "Partial source increment: shared navigation/panels and one controlled text field, four framework form bridges and a real Storybook catalog. Other families and complete delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -17,36 +17,38 @@
   "implemented": [
     "Shared controlled navigation/panels and a single-line text field; immutable pure contracts, explicit client registration, original typed cancelable events and one visual implementation per family.",
     "Real React/Vue/Angular/Svelte navigation and single-line text-field bindings. Renderer imports stay type-only; runtime shared imports are DOM-independent validation policies plus each adapter own framework. No alternate visuals.",
-    "352 passing Node/Chromium contract, architecture, CI and component/binding tests; all 17 authored runtime files are inventoried independently, including Svelte and three zero-executable modules.",
+    "389 passing Node/Chromium contract, architecture, CI, component/binding and Storybook interaction/a11y tests; all 25 authored runtime modules are inventoried independently, including Svelte and three zero-executable modules. CSF test definitions delegate runtime composition to covered example modules.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four real clean frozen offline consumers compile installed package declarations and exercise navigation plus controlled text-field editing/cancellation/model writes/native default submitter/validation/disable/reset/EN-ES/themes/teardown/remount in Chromium; no foreign framework is installed.",
     "Angular actual consumer is AOT compiled and uses the official linker for all partial framework libraries, without a JIT fallback.",
     "Core text field passes actual form ownership/submission, default submitter, required/length/custom validation, disabled fieldsets, readonly, reset, explicit restoration callbacks, focus/labels, controlled caret, composition-boundary and invalid-input regression tests. Its actual installed package passes compiled Chromium form journeys.",
-    "Angular text field implements ControlValueAccessor and the shared pure Validator: reactive controls, ngModel, nullable/nonnullable reset, dirty/touched and updateOn change/blur/submit pass. Foreign malformed event payloads are rejected before callbacks; validated snapshots survive observer payload mutation."
+    "Angular text field implements ControlValueAccessor and the shared pure Validator: reactive controls, ngModel, nullable/nonnullable reset, dirty/touched and updateOn change/blur/submit pass. Foreign malformed event payloads are rejected before callbacks; validated snapshots survive observer payload mutation.",
+    "Sixteen real production-backed CSF stories and three autodocs pages; static /ha-ui/ matrix covers 32 locale/theme/width combinations, reduced motion, local-only assets, native forms, manual keyboard panels, actual manager controls and toolbar updates.",
+    "Storybook found and regressed two shared renderer issues: insufficient light error contrast and partially clipped focused navigation destinations. Both reproduce before their common fixes."
   ],
   "coverage": {
     "lines": {
-      "total": 305,
-      "covered": 305,
+      "total": 340,
+      "covered": 340,
       "skipped": 0,
       "pct": 100
     },
     "statements": {
-      "total": 559,
-      "covered": 559,
+      "total": 607,
+      "covered": 607,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 154,
-      "covered": 154,
+      "total": 173,
+      "covered": 173,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 369,
-      "covered": 369,
+      "total": 404,
+      "covered": 404,
       "skipped": 0,
       "pct": 100
     },
@@ -58,28 +60,36 @@
     }
   },
   "sourceIdentities": {
+    ".storybook/main.ts": "922a2ae0b23bb08fab4dc00303af285b1f9eb47e78566cc60d4376149b70a11c",
+    ".storybook/preview.ts": "5a56e8301ab10922cfb8cf9ddc90641c2cd42237c317435420261f5fc2c8f981",
     "packages/angular/src/index.ts": "b7f1dbce4ca58dbe6be01b53e9dc079593dc38c7ff4c71d0ffcca10de06a4f48",
     "packages/angular/src/text-field.ts": "fe0e40f32969c5e3d43bc721f1f0474ecc2fca45e33e12415c30af64a23f4ea4",
-    "packages/core/src/components/field.ts": "11a2d35a5b4e12b6d034363aef720250e0b157e2187ff3f7bd0f7e5bb63d878a",
-    "packages/core/src/components/tabs.ts": "5e84a250c9758388d10f4b2e9de55be6d18e57754aaf38d1a0deb71262c58e36",
     "packages/core/src/contracts.ts": "457c418cbfcafe5ebb1f834a1f8c2c19f484bad15ea8df5bc65502eec6e19c91",
     "packages/core/src/field-contracts.ts": "130e143f3f69dfaa6e0397cf68cd2ec824823b44ff3f4488d92b19180d50b738",
     "packages/core/src/index.ts": "b4b038b1a44cb1bc09c738153a052ff4e599d6bac8ebd951204cb4c75a304ec1",
     "packages/core/src/presentation-text.ts": "ad2eb8396a26638ba8d2f2f7cee3656195646aaea077cdc0d3ecd06fc95b3df2",
+    "packages/core/src/components/field.ts": "24d6c0705759054ff9e0da2f3bd653ee495d82705afb54084553cf6f01387ac3",
+    "packages/core/src/components/tabs.ts": "53e476dde73ab0307a658985f4f2ec91b2086e69df42155d6fdb67925c6a5bb0",
     "packages/react/src/index.ts": "de04557dd8d23b9c331776fdc2574476853456160650f371a0bc427d22464bca",
     "packages/react/src/text-field.ts": "1d9249cb835aa1205bcb634fee2f75af01bc5c7833f9f71391e72de560c67656",
+    "packages/svelte/src/Field.svelte": "174e62b2fd01af8279ab42ce58ab530a0ee14d370bcdb646139f5a143052b8a0",
+    "packages/svelte/src/Tabs.svelte": "974845c12ec9d760b6f76a43ae89fd4c1618d7b4d56381d98d16f65abc5b27c4",
     "packages/svelte/src/index.ts": "6cdd70a671fd4d05232b7646838f43ddce086acc8d4af83409d76f366a0ae4db",
     "packages/svelte/src/types.ts": "e673d97f2db9564c518bd6d08715093c3db26e9201becb5129cae7a4a99113ab",
     "packages/vue/src/index.ts": "638fc7f426cb4c02527938d184e16afb4fec8845e86197159316c1968e2d2df8",
     "packages/vue/src/text-field.ts": "e160d93f62669ffb989e3d8d78fb28b0da287226d8157676d5842b6a7c83f612",
-    "packages/svelte/src/Field.svelte": "174e62b2fd01af8279ab42ce58ab530a0ee14d370bcdb646139f5a143052b8a0",
-    "packages/svelte/src/Tabs.svelte": "974845c12ec9d760b6f76a43ae89fd4c1618d7b4d56381d98d16f65abc5b27c4",
+    "stories/catalog-example.ts": "c5fa904779d81d2f081573051234b2d57f98c74c5c4ca99cbc8717584c2494e8",
+    "stories/catalog-frame.ts": "49424d90f1d165d29fcf9c404050e01165847066ea07628bf50cb8b4ba9564aa",
+    "stories/catalog-state.ts": "dcec5fea0ffa6da921c222fdda5e1b0c0a6796f10ae43ce69b7fe8b757c3909e",
+    "stories/field.example.ts": "2fded8b87675334f8ae2d026a63dc2c233b6d9cf28f5646b2eb13b9cf44af8f1",
+    "stories/foundation.example.ts": "6fc175e9a44ff0504c46271bd45837f6a4799d9815614a2389b9a238c85ab42b",
+    "stories/panels.example.ts": "dec84608d463dc340acf874d44f2cae3c7cd188390e23221cd728a4bdbf0a04f",
     "tooling/coverage.mjs": "ad527a5d04517adb1992ac65a9abfffcabb9a2001f7f652c732dbe35899b56c8"
   },
   "packedContract": {
-    "scope": "Core data, navigation and one text field; field framework adapters, broader controls and application adoption remain required",
-    "sha256": "9ea5d40493a494332fd2688f8b9c57540d96c5538eb3d1b55023f0333213d4fd",
-    "bytes": 30287,
+    "scope": "Core data, navigation and one text field; four framework form bridges are verified separately; broader controls and application adoption remain required",
+    "sha256": "107cc28faea98986080b3c422eb888c3402ab86c7a43121c2031fa2c606a1a15",
+    "bytes": 30511,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -110,7 +120,7 @@
     "Text-field composition events and restoration callbacks are explicitly exercised; real device IME and automatic browser history restoration remain unverified.",
     "Exact recorded framework pins pass navigation and one text-field compiled consumer. Full cohort support and broader public peer ranges cannot be inferred from those two families.",
     "Next.js, Nuxt and SvelteKit explicit server-shell/client fixtures, hydration behavior and other browser engines remain unverified.",
-    "All six delivery refinements, accepted-candidate promotion/publication recovery, Storybook, publisher authority and live publication remain required.",
+    "All six delivery refinements, accepted-candidate promotion/publication recovery, public Storybook hosting, publisher authority and live publication remain required.",
     "Gateway and Domus adoption, installed deployment/recovery and human UX acceptance remain unverified.",
     "All 64 original baseline cases and six additional delivery cases remain required; no partial increment completes issue #7.",
     "Fresh hosted CI and complete native Bugbot review are required for the source head."
@@ -123,9 +133,9 @@
     "after": "All 138 unit/architecture/CI-contract cases pass; every C1 code point rejected in group labels, item labels and links; visible U+00A0/U+00A1 preserved.",
     "manualResolution": false
   },
-  "lockSha256": "06fb89a58baf3beb3bc713a88055f184379d218aa187f53792cb4130f38f42d6",
+  "lockSha256": "3daf9264c171fd42c9ac73cecdb1b159a926a931a5da2a2806bb7e6a99f87044",
   "browserEvidence": {
-    "componentCases": 53,
+    "componentCases": 55,
     "engine": "Chromium 156.0.8078.4",
     "actualPackageImages": [
       "test-results/packed-angular-dark-es.png",
@@ -147,7 +157,7 @@
     "imagesInspected": true,
     "focusRegression": "focus-return-red.log reproduces the stale tab-stop; full green run has no skipped tests.",
     "initialTestAttempt": "Browser cases were authored before the renderer. The first attempted execution could not start because the pinned Chromium binary was absent; no behavioral red result is claimed for that attempt. After runtime provisioning, the first actual run found two fixture/server-boundary issues, recorded in browser-first-execution.log.",
-    "textFieldCases": 25,
+    "textFieldCases": 26,
     "localRetainedImages": [
       "work/current-preview/packed-angular-dark-es.png",
       "work/current-preview/packed-angular-field-dark-es.png",
@@ -169,7 +179,7 @@
     "fieldRegression": "invalid-edit-red.log reproduced one failure: a malformed synthetic edit left a rejected draft visible. current-coverage.log passes the permanent regression and restores accepted DOM/form state without emitting intent.",
     "fieldInitialRed": "renderer-red.log rejected the missing renderer module before implementation; this is an API-absence red, not a behavioral assertion result.",
     "frameworkTextFieldCases": 35,
-    "frameworkFieldVisualReview": "All eight framework field images are represented by three unique byte groups; each unique valid/error dark Spanish image was inspected. Core geometry and semantics remain shared.",
+    "frameworkFieldVisualReview": "All eight framework field images are represented by three unique byte groups; each unique valid/error dark Spanish image was inspected. Core geometry and semantics remain shared. The current dark error fixture supplies its public semantic error token; a representative new original image is inspected and all four consumers assert the computed color.",
     "frameworkFieldRed": "invalid-event-red.log reproduced four failing adapter cases before the pure payload guard. The final source campaign includes those regressions and observer-mutation cases.",
     "packedFieldInitialAttempts": "packed.log stopped before any browser launch because the local browser path variable was absent. packed-with-runtime.log then exposed a premature React UI-counter assertion; the driver now waits for the observed render state. current-packed.log passes all actual compiled forms; no unsupported behavioral red claim is made for the launch failure."
   },
@@ -197,7 +207,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "9ea5d40493a494332fd2688f8b9c57540d96c5538eb3d1b55023f0333213d4fd"
+            "sha256": "107cc28faea98986080b3c422eb888c3402ab86c7a43121c2031fa2c606a1a15"
           }
         ],
         "props": true,
@@ -233,7 +243,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "9ea5d40493a494332fd2688f8b9c57540d96c5538eb3d1b55023f0333213d4fd"
+            "sha256": "107cc28faea98986080b3c422eb888c3402ab86c7a43121c2031fa2c606a1a15"
           }
         ],
         "props": true,
@@ -269,7 +279,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "9ea5d40493a494332fd2688f8b9c57540d96c5538eb3d1b55023f0333213d4fd"
+            "sha256": "107cc28faea98986080b3c422eb888c3402ab86c7a43121c2031fa2c606a1a15"
           }
         ],
         "props": true,
@@ -305,7 +315,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "9ea5d40493a494332fd2688f8b9c57540d96c5538eb3d1b55023f0333213d4fd"
+            "sha256": "107cc28faea98986080b3c422eb888c3402ab86c7a43121c2031fa2c606a1a15"
           }
         ],
         "props": true,
@@ -337,8 +347,8 @@
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "9ea5d40493a494332fd2688f8b9c57540d96c5538eb3d1b55023f0333213d4fd",
-        "bytes": 30287
+        "sha256": "107cc28faea98986080b3c422eb888c3402ab86c7a43121c2031fa2c606a1a15",
+        "bytes": 30511
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
@@ -366,7 +376,7 @@
       }
     ],
     "reproducible": true,
-    "sourceLockSha256": "06fb89a58baf3beb3bc713a88055f184379d218aa187f53792cb4130f38f42d6"
+    "sourceLockSha256": "3daf9264c171fd42c9ac73cecdb1b159a926a931a5da2a2806bb7e6a99f87044"
   },
   "frameworkPreviewPins": {
     "react": "19.3.1",
@@ -392,7 +402,7 @@
     "otherBrowserEngines": false,
     "applicationAdoption": false,
     "publication": false,
-    "storybook": false,
+    "storybook": "Implemented catalog/static subpath verified for current families; public Pages deployment and complete-family/human acceptance pending",
     "coreNativeTextField": true
   },
   "coldSourceValidation": {
@@ -404,11 +414,11 @@
       "angular",
       "svelte"
     ],
-    "types": "All strict source, Node-tool and both Svelte checks passed",
-    "unitAndBrowserTests": 352,
+    "types": "All strict source, Node-tool, Storybook and both Svelte checks passed",
+    "unitAndBrowserTests": 389,
     "coverage": "100% statements/branches/functions/lines per authored file and globally",
     "restoration": "Every previous compiled distribution restored byte-for-byte",
-    "reason": "All five distributions absent: strict source/consumer/Svelte checks and the full source browser campaign pass. Vitest resolves the current DOM-independent field policy source explicitly; the installed-package fixtures have no source alias.",
+    "reason": "All five distributions absent: strict source/consumer/Storybook/Svelte checks and the full source browser campaign pass. Installed-package fixtures have no source alias.",
     "restoredFiles": 55
   },
   "restoreReviewRegression": {
@@ -417,5 +427,259 @@
     "correction": "Capture the restore request before connection, assert its immutable detail and unchanged baseline, then acknowledge its captured value after render; assert no second request. The synchronous acknowledgment case remains.",
     "validation": "352 source tests pass; coverage remains 100% per authored runtime file and globally. Runtime source/cohort bytes are unchanged.",
     "manualResolution": false
+  },
+  "storybook": {
+    "version": "10.6.5",
+    "a11y": "4.14.0",
+    "runtimeCoverageInventory": 25,
+    "testDefinitionsExcludedByVitest": "Three CSF test files; all runtime render composition lives in inventoried example modules",
+    "staticBrowser": {
+      "subpath": "/ha-ui/",
+      "storyCount": 16,
+      "docsCount": 3,
+      "matrix": [
+        {
+          "story": "navigation-household-sections--long-labels",
+          "locale": "en",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "tabs-local-panels--unselected",
+          "locale": "en",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--read-only",
+          "locale": "en",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--error",
+          "locale": "en",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "navigation-household-sections--long-labels",
+          "locale": "en",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "tabs-local-panels--unselected",
+          "locale": "en",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--read-only",
+          "locale": "en",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--error",
+          "locale": "en",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "navigation-household-sections--long-labels",
+          "locale": "en",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "tabs-local-panels--unselected",
+          "locale": "en",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--read-only",
+          "locale": "en",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--error",
+          "locale": "en",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "navigation-household-sections--long-labels",
+          "locale": "en",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "tabs-local-panels--unselected",
+          "locale": "en",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--read-only",
+          "locale": "en",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--error",
+          "locale": "en",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "navigation-household-sections--long-labels",
+          "locale": "es",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "tabs-local-panels--unselected",
+          "locale": "es",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--read-only",
+          "locale": "es",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--error",
+          "locale": "es",
+          "theme": "light",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "navigation-household-sections--long-labels",
+          "locale": "es",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "tabs-local-panels--unselected",
+          "locale": "es",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--read-only",
+          "locale": "es",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--error",
+          "locale": "es",
+          "theme": "light",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "navigation-household-sections--long-labels",
+          "locale": "es",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "tabs-local-panels--unselected",
+          "locale": "es",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--read-only",
+          "locale": "es",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--error",
+          "locale": "es",
+          "theme": "dark",
+          "width": 360,
+          "a11yViolations": 0
+        },
+        {
+          "story": "navigation-household-sections--long-labels",
+          "locale": "es",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "tabs-local-panels--unselected",
+          "locale": "es",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--read-only",
+          "locale": "es",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        },
+        {
+          "story": "forms-text-field--error",
+          "locale": "es",
+          "theme": "dark",
+          "width": 960,
+          "a11yViolations": 0
+        }
+      ],
+      "keyboard": true,
+      "nativeForm": true,
+      "managerDocs": true,
+      "managerControls": true,
+      "external": [],
+      "badAssets": [],
+      "errors": [],
+      "visualReview": "Original manager/autodocs, changed controls, narrow EN/ES/light/dark field representatives and invalid/error states inspected. Screenshots are fixtures, not owner HA acceptance."
+    },
+    "declarationPatch": {
+      "changedFile": "dist/index.d.ts",
+      "otherOriginalFilesByteIdentical": 36,
+      "javascriptChanged": false,
+      "skipLibCheck": false
+    },
+    "publicPagesDeployed": false,
+    "ownerHAInstallation": false,
+    "humanAcceptance": false
   }
 }

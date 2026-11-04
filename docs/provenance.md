@@ -41,3 +41,17 @@ reuse the pure core event/value/validation policies and the existing core render
 or alternative controller. Angular Forms 22.2.4 is an exact framework peer; its runtime source is
 not copied. Source-browser policy aliases are test-only; actual frozen package consumers resolve
 installed exports and verify authored source bytes against the repository.
+
+The Storybook catalog and fixtures are authored here and import production package entrypoints.
+Storybook 10.6.5 and its official addons declare MIT licenses; their distributed manager assets
+remain dependency assets rather than copied package code. The pinned pnpm patch changes only one
+line of `@storybook/web-components/dist/index.d.ts` to repair its inherited constraint. The upstream
+package is [Storybook Web Components 10.6.5](https://www.npmjs.com/package/@storybook/web-components/v/10.6.5).
+The original tarball and all regular members were compared with the installed package: 36 files,
+including every JavaScript file, stayed byte-identical. Strict positive/negative declaration tests
+remain enabled. See the [catalog guide](storybook.md#pinned-declaration-compatibility-patch).
+
+The catalog contrast check found the prior light error fallback below AA for 12px text. The authored
+renderer and fictional palette now use `#b3261e`; public HA/custom theme overrides still apply.
+The authored focus handler fully reveals a partially visible focused navigation/tab destination
+with nearest, instant scrolling. Both changes are tested once in the common implementation.

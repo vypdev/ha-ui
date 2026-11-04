@@ -2,7 +2,7 @@
 
 This unpublished preview has shared navigation and one controlled text field, with four real
 framework bindings and text-field form bridges. Other controls and their bridges, framework
-SSR/client fixtures, broader browser support, Storybook, publication and app adoption remain required.
+SSR/client fixtures, broader browser support, public Storybook hosting, publication and app adoption remain required.
 
 ## Client registration and ownership
 

@@ -103,6 +103,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       await page.locator('vyp-ha-field').screenshot({path:join(root,'test-results','packed-'+framework+'-field-dark-es.png')});
       await textbox.fill('');await page.getByRole('button',{name:'Save task',exact:true}).click();
       assert.equal(await page.getByText('Introduce un valor.',{exact:true}).isVisible(),true);
+      assert.equal(await page.locator('vyp-ha-field #error').evaluate(element=>getComputedStyle(element).color),'rgb(242, 139, 130)');
       await page.locator('vyp-ha-field').screenshot({path:join(root,'test-results','packed-'+framework+'-field-error-dark-es.png')});
       assert.deepEqual(errors,[]);
       results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,textField,browser:browser.version(),errors});

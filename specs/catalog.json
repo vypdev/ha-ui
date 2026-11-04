@@ -14,7 +14,8 @@
       ],
       "workflows": [
         ".github/workflows/copilot_issue.yml",
-        ".github/workflows/ci_check.yml"
+        ".github/workflows/ci_check.yml",
+        ".github/workflows/storybook_pages.yml"
       ],
       "entrypoints": [
         "packages/core/src/index.ts",
@@ -24,7 +25,8 @@
         "packages/angular/src/index.ts",
         "packages/svelte/src/index.ts",
         "packages/core/src/components/field.ts",
-        "packages/core/src/field-contracts.ts"
+        "packages/core/src/field-contracts.ts",
+        ".storybook/main.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
@@ -42,7 +44,14 @@
         "packages/react/src/text-field.ts",
         "packages/vue/src/text-field.ts",
         "packages/angular/src/text-field.ts",
-        "packages/svelte/src/Field.svelte"
+        "packages/svelte/src/Field.svelte",
+        "stories/catalog-state.ts",
+        "stories/catalog-frame.ts",
+        "stories/catalog-example.ts",
+        "stories/foundation.example.ts",
+        "stories/panels.example.ts",
+        "stories/field.example.ts",
+        ".storybook/preview.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -96,7 +105,14 @@
         "tests/browser/svelte-field.test.mjs",
         "tests/browser/field-framework-fixture.ts",
         "tests/browser/fixtures/SvelteField.svelte",
-        "tests/consumers/fields.ts"
+        "tests/consumers/fields.ts",
+        "tests/catalog-config.test.mjs",
+        "tests/contracts/catalog.test.ts",
+        "tests/typing/storybook.ts",
+        "tests/storybook/static.test.ts",
+        "stories/foundation.stories.ts",
+        "stories/panels.stories.ts",
+        "stories/field.stories.ts"
       ],
       "documentation": [
         "README.md",
@@ -104,7 +120,8 @@
         "docs/compatibility.md",
         "docs/provenance.md",
         "docs/evidence/shared-ui-foundation.json",
-        "docs/framework-adapters.md"
+        "docs/framework-adapters.md",
+        "docs/storybook.md"
       ],
       "readiness": {
         "status": "draft",
@@ -115,7 +132,7 @@
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
         ],
-        "implementationEvidence": "partial: shared navigation/panels and a controlled text field, with React/Vue/Angular/Svelte bindings and text-field form bridges. Frozen compiled consumers pass native form submission, cancellation, validation, disable/reset and lifecycle; Angular includes AOT and CVA. Other controls, full SSR/browser matrix, Storybook, delivery/publication and application adoption remain required."
+        "implementationEvidence": "partial: shared navigation/panels and a controlled text field, with React/Vue/Angular/Svelte bindings and text-field form bridges. Frozen compiled consumers pass native form submission, cancellation, validation, disable/reset and lifecycle; Angular includes AOT and CVA. A real 16-story catalog passes Chromium interaction/a11y and static subpath matrix checks; public hosting remains pending. Other controls, full SSR/browser matrix, delivery/publication and application adoption remain required."
       }
     }
   ]
