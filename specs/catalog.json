@@ -22,7 +22,9 @@
         "packages/react/src/index.ts",
         "packages/vue/src/index.ts",
         "packages/angular/src/index.ts",
-        "packages/svelte/src/index.ts"
+        "packages/svelte/src/index.ts",
+        "packages/core/src/components/field.ts",
+        "packages/core/src/field-contracts.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
@@ -33,7 +35,10 @@
         "packages/angular/src/index.ts",
         "packages/svelte/src/index.ts",
         "packages/svelte/src/Tabs.svelte",
-        "packages/svelte/src/types.ts"
+        "packages/svelte/src/types.ts",
+        "packages/core/src/components/field.ts",
+        "packages/core/src/field-contracts.ts",
+        "packages/core/src/presentation-text.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -78,7 +83,9 @@
         "tests/consumers/fixtures/react/package.json",
         "tests/consumers/fixtures/react/client.ts",
         "tests/consumers/fixtures/react/tsconfig.json",
-        "tests/consumers/fixtures/react/pnpm-workspace.yaml"
+        "tests/consumers/fixtures/react/pnpm-workspace.yaml",
+        "tests/contracts/field.test.ts",
+        "tests/browser/field.test.ts"
       ],
       "documentation": [
         "README.md",
@@ -97,7 +104,7 @@
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
         ],
-        "implementationEvidence": "partial: data contract and one shared navigation/panel family, four real navigation bindings and reproducible five-package cohort. Clean frozen offline consumers compile and run props/events/content/disabled/theme/locale/keyboard/remount in Chromium. Other families, form bridges, framework SSR, full browser matrix, Storybook, publication and app adoption remain required."
+        "implementationEvidence": "partial: pure data contracts, shared navigation/panels and a controlled native form-associated text field. Four real navigation bindings and reproducible clean compiled consumers pass Chromium. Field framework bridges, other families, framework SSR, full browser matrix, Storybook, publication and application adoption remain required."
       }
     }
   ]

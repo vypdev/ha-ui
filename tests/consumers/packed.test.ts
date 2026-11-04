@@ -10,6 +10,7 @@ import {createHash} from 'node:crypto';
 import {createServer} from 'vite';
 import {chromium} from 'playwright';
 import {parse, stringify} from 'yaml';
+import type {HaTextField} from '../../packages/core/src/components/field.js';
 import {exerciseFrameworks} from './frameworks.ts';
 
 const execute = promisify(execFile);
@@ -83,6 +84,9 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
     assert.equal(await readFile(join(consumer,'pnpm-lock.yaml'),'utf8'),frozenLock);
     await assert.rejects(readFile(join(cache,'metadata-v1.3/registry.npmjs.org/lit.json')),{code:'ENOENT'});
     await writeFile(join(consumer, 'contract.ts'), `import {navigationState, type NavigationKind} from '@vypdev/ha-ui/contracts';
+import {textFieldState,textFieldValidity} from '@vypdev/ha-ui/field-contracts';
+const field=textFieldState({label:'Name',required:true});
+if(!textFieldValidity('',field).flags.valueMissing)throw Error('Expected pure field validation');
 const kind: NavigationKind = 'panels';
 const selected: string | null = navigationState({kind, label:'Sections', selected:null, items:[]}).selected;
 void selected;`);
@@ -96,7 +100,7 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
     assert.match(probe.stdout, /Packed contract imported without DOM globals/u);
     const installed = join(consumer, 'node_modules/@vypdev/ha-ui');
     const packageFiles=['LICENSE'];
-    for (const module of ['contracts','index','components/tabs']) {
+    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field']) {
       packageFiles.push('src/'+module+'.ts');
       for (const suffix of ['.js','.js.map','.d.ts','.d.ts.map']) packageFiles.push('dist/'+module+suffix);
     }
@@ -104,12 +108,22 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
       assert.deepEqual(await readFile(join(installed,file)),await readFile(resolve(root,'packages/core',file)));
     await writeFile(join(consumer,'index.html'), '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Packed navigation consumer</title></head><body><main></main><script type="module" src="/client.ts"></script></body></html>');
     await writeFile(join(consumer,'client.ts'), `import {registerTabs} from '@vypdev/ha-ui/tabs';
+import {registerField} from '@vypdev/ha-ui/field';
+import {textFieldState} from '@vypdev/ha-ui/field-contracts';
 import {navigationState} from '@vypdev/ha-ui/contracts';
 registerTabs();
 const element=document.createElement('vyp-ha-tabs');
 element.state=navigationState({kind:'navigation',label:'Household sections',selected:'overview',items:[{id:'overview',label:'Overview',href:'#overview'},{id:'tasks',label:'Tasks',href:'#tasks'}]});
 element.addEventListener('ha-selection-request',event=>{event.preventDefault();element.state=navigationState({...element.state,selected:event.detail.id});});
-document.querySelector('main')!.append(element);`);
+document.querySelector('main')!.append(element);
+registerField();
+const form=document.createElement('form'),field=document.createElement('vyp-ha-field');
+field.state=textFieldState({label:'Task name',description:'A name for this task.',required:true});field.name='task';field.defaultValue='Kitchen';
+field.addEventListener('ha-value-request',event=>{if(!event.defaultPrevented)field.value=event.detail.value;});
+const save=document.createElement('button');save.type='submit';save.name='action';save.value='save';save.textContent='Save task';
+const reset=document.createElement('button');reset.type='reset';reset.textContent='Reset task';form.append(field,save,reset);
+form.addEventListener('submit',event=>{event.preventDefault();form.dataset.submitted=JSON.stringify([...new FormData(form,(event as SubmitEvent).submitter as HTMLButtonElement)]);});
+document.querySelector('main')!.append(form);`);
     await writeFile(join(consumer,'client.tsconfig.json'),JSON.stringify({compilerOptions:{target:'ES2024',module:'NodeNext',moduleResolution:'NodeNext',strict:true,noEmit:true,lib:['ES2024','DOM'],types:[]},include:['client.ts']}));
     await execute(process.execPath,[resolve(root,'node_modules/typescript/bin/tsc'),'-p','client.tsconfig.json'],{cwd:consumer});
     server=await createServer({configFile:false,root:consumer,logLevel:'error',server:{host:'127.0.0.1',port:0}});
@@ -139,14 +153,32 @@ document.querySelector('main')!.append(element);`);
     assert.equal(await browserPage.getByRole('tabpanel',{name:'Tareas',exact:true}).isVisible(),true);
     assert.equal(await browserPage.getByRole('button',{name:'Nueva tarea',exact:true}).isVisible(),true);
     await browserPage.locator('vyp-ha-tabs').screenshot({path:resolve(root,'test-results/packed-panels-dark-es.png')});
+    const textbox=browserPage.getByRole('textbox',{name:'Task name',exact:true});
+    assert.equal(await textbox.inputValue(),'Kitchen');await textbox.fill('');await browserPage.getByRole('button',{name:'Save task',exact:true}).click();
+    assert.equal(await textbox.getAttribute('aria-invalid'),'true');assert.equal(await browserPage.getByText('Enter a value.',{exact:true}).isVisible(),true);
+    assert.equal(await browserPage.locator('form').getAttribute('data-submitted'),null);
+    await textbox.fill('Wash dishes');await textbox.press('Enter');
+    await browserPage.waitForFunction(()=>document.querySelector('form')!.dataset.submitted!==undefined);
+    assert.deepEqual(JSON.parse((await browserPage.locator('form').getAttribute('data-submitted'))!),[['task','Wash dishes'],['action','save']]);
+    await browserPage.getByRole('button',{name:'Reset task',exact:true}).click();assert.equal(await textbox.inputValue(),'Kitchen');
+    await browserPage.evaluate(async()=>{
+      const field=document.querySelector<HaTextField>('vyp-ha-field')!;
+      document.body.style.backgroundColor='rgb(20,20,20)';
+      field.state={...field.state,label:'Nombre de la tarea',description:'Un nombre para esta tarea.',requiredMessage:'Introduce un valor.'};
+      field.style.cssText='--primary-text-color:rgb(235,235,235);--secondary-text-color:rgb(189,189,189);--card-background-color:rgb(20,20,20);--divider-color:rgb(66,66,66);--primary-color:rgb(3,169,244)';
+      await field.updateComplete;field.disabled=true;
+      if([...new FormData(field.form!)].length!==0)throw Error('Disabled field must be absent from submission');field.disabled=false;
+    });
+    assert.equal(await browserPage.getByRole('textbox',{name:'Nombre de la tarea',exact:true}).inputValue(),'Kitchen');
+    await browserPage.locator('vyp-ha-field').screenshot({path:resolve(root,'test-results/packed-field-dark-es.png')});
     assert.deepEqual(errors,[]);
-    const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
+    const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,textField:{controlledInput:true,nativeSubmitter:true,requiredValidation:true,reset:true,disabledSubmission:true},runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
     await mkdir(resolve(root, 'test-results'), {recursive:true});
-    await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data and navigation component only; no framework adapter or application adoption',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
+    await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation and one text field; field framework adapters, broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;
     const frameworks=await exerciseFrameworks(root,scratch,browser);
     await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation adapters only; forms, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
-    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation preview only; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation and core text-field preview; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
     passed = true;
   } finally {
     await browser?.close(); await server?.close();

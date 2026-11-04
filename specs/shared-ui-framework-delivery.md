@@ -414,6 +414,10 @@ Prospective repository files (current documents are classified against the immut
 | `tsconfig.consumers.json` | create |
 | `tsconfig.svelte-tests.json` | create |
 | `tsconfig.svelte-source.json` | create |
+| `packages/core/src/field-contracts.ts` | create |
+| `packages/core/src/presentation-text.ts` | create |
+| `tests/contracts/field.test.ts` | create |
+| `tests/browser/field.test.ts` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

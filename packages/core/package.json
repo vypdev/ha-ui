@@ -27,6 +27,14 @@
     "./tabs": {
       "types": "./dist/components/tabs.d.ts",
       "import": "./dist/components/tabs.js"
+    },
+    "./field-contracts": {
+      "types": "./dist/field-contracts.d.ts",
+      "import": "./dist/field-contracts.js"
+    },
+    "./field": {
+      "types": "./dist/components/field.d.ts",
+      "import": "./dist/components/field.js"
     }
   },
   "publishConfig": {

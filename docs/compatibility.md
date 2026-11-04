@@ -10,12 +10,13 @@ families, form bridges, browser support breadth and framework SSR integration re
 | pnpm | 10.34.0 | Frozen workspace install |
 | TypeScript | 6.0.3 | Strict contract/type declarations; compatible candidate for Angular compiler-cli 22.2.4 |
 | Vite | 8.3.5 | Test transform toolchain |
-| Lit | 3.3.3 | Internal shared navigation renderer |
+| Lit | 3.3.3 | Internal shared navigation and text-field renderer |
 | Vitest, browser provider and V8 coverage | 5.1.0 | Node and real Chromium; all four metrics globally and per authored runtime file |
 | Playwright | 1.64.1 | Chromium 156.0.8078.4 component and clean packed-consumer tests |
 
 The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
-its source currently contains presentation contracts and one preview navigation/panel component. It is not a supported component release.
+its source currently contains presentation contracts, one preview navigation/panel component and
+one controlled text field. It is not a supported component release.
 React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation-only compiled/browser
 fixtures using actual packages. They remain preview pins until the complete component and delivery gates pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
 Do not infer support from custom-element interoperability or compiler metadata alone.
@@ -44,3 +45,8 @@ negative fixture must reproduce the missing-metadata failure. This prevents deve
 from making package acceptance pass when a fresh hosted runner cannot resolve the same dependency.
 
 See [framework bindings](framework-adapters.md) for the exact preview API, compilation and teardown evidence.
+
+The core text field uses native ElementInternals in Chromium. Native form submission,
+required/length/custom validation, disabled fieldsets, readonly, reset and controlled edits are
+covered. Field framework bridges and other engines remain unverified; navigation-only framework
+results do not imply general form support.

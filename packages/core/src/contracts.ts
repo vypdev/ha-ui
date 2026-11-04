@@ -1,3 +1,4 @@
+import {presentationText} from './presentation-text.js';
 /** DOM-independent presentation data. Construction grants no application authority. */
 export type NavigationKind = 'navigation' | 'panels';
 export interface NavigationItem {
@@ -23,11 +24,7 @@ function object(value: unknown, allowed: readonly string[], required: readonly s
   return value as Record<string, unknown>;
 }
 function text(value: unknown, maximum: number): string {
-  if (typeof value !== 'string' || !value.trim() || Array.from(value).length > maximum) invalid();
-  for (const character of value) {
-    const point = character.codePointAt(0)!;
-    if (point < 32 || point >= 0x7f && point <= 0x9f || point >= 0xd800 && point <= 0xdfff) invalid();
-  }
+  if (!presentationText(value, maximum)) invalid();
   return value;
 }
 function identifier(value: unknown): string {

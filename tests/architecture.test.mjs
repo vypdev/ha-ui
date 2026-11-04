@@ -22,7 +22,9 @@ function allowed(specifier) {
 }
 test('the pure contract does not acquire framework or application imports', () => {
   const code = readFileSync('packages/core/src/contracts.ts', 'utf8');
-  expect(imports(code)).toEqual([]);
+  expect(imports(code)).toEqual(['./presentation-text.js']);
+  expect(imports(readFileSync('packages/core/src/field-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
+  expect(imports(readFileSync('packages/core/src/presentation-text.ts','utf8'))).toEqual([]);
 });
 test('architecture policy rejects direct, re-exported and dynamic framework dependencies', () => {
   for (const code of ['import x from "react";', 'export * from "@angular/core";', 'await import("vue");', 'await import(target);'])

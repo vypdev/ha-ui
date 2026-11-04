@@ -29,3 +29,9 @@ second navigation controller. Angular packaging retains its authored source and 
 partial declarations and an exact tslib dependency. React/Vue include their source/declaration maps;
 Svelte includes source, preprocessed components and generated declarations. Third-party compilers,
 frameworks and helpers retain their own package licenses; no third-party runtime source is copied here.
+
+The text-field increment adapts the 56px field minimum height, 16px padding, 6px label/help gaps
+and 14px/12px text geometry from
+[Gateway ui-catalog.css lines 143–150 at the same revision](https://github.com/vypdev/homeassistant-gateway/blob/e47dde303e475a6d03e1d6697ec87a934e93263b/frontend/src/ui/ui-catalog.css#L143-L150).
+Form ownership, controlled requests, validation, composition handling and accessible native input
+semantics are authored here. No private Home Assistant component or external asset is imported.

@@ -135,3 +135,60 @@ forms, other families and the complete framework/client boundary matrix remain s
 The interaction model follows [WAI-ARIA APG tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)
 and uses Lit's documented [reactive properties](https://lit.dev/docs/components/properties/)
 and [events](https://lit.dev/docs/components/events/).
+
+## Controlled text field
+
+The second shared family is a single-line text field. `textFieldState` validates immutable presentation
+configuration: label, optional description/placeholder/error, required/readOnly, UTF-16 min/max
+lengths and localized required/short/long messages. `textFieldValue` accepts well-formed single-line
+strings up to 16,384 UTF-16 units; it preserves literal text and does not log values. Form names are
+bounded inert text. Invalid input has the bounded `invalid_field` diagnostic.
+
+`vyp-ha-field` is a form-associated element with one native input, an actual label and
+linked help/error text. Its state object and value are properties. Name, disabled and readonly have standard
+host attribute semantics; the value attribute supplies defaultValue for initial/reset behavior.
+Current value is never reflected into HTML. Explicit client registration and properties assigned
+before upgrade follow the same cohort rules as navigation.
+
+Values remain controlled by the application. A typed, cancelable, composed `ha-value-request`
+requests input/reset/restore/autocomplete changes; assigning a value does not emit one. A controller
+accepts by assigning value, or rejects by leaving it unchanged/canceling. The field retains accepted
+form state and restores the caret when an asynchronously accepted request matches the proposal.
+Composition must not emit partial text or overwrite a newer application value. Native form reset
+and state-restoration callbacks use that same controlled protocol; framework form bridges must
+acknowledge it using their own model APIs, including Angular's value accessor.
+
+ElementInternals supplies form ownership, name/value submission, disabled fieldsets and constraint
+validation. The readonly host attribute bars validation and makes the native input non-editable.
+The public form/labels/validity APIs, focus, blur, custom validity, reset, reparenting and keyboard
+submission are exercised in actual Chromium forms. Import `HaTextField` and `registerField` from
+`@vypdev/ha-ui/field`, and call registration at the explicit client boundary. Import the pure
+contracts from `@vypdev/ha-ui/field-contracts`; these require no DOM globals or DOM types. The initial field is text-only; other input types,
+selects, checkboxes, buttons and dialogs remain required separate work. React, Vue, Angular and
+Svelte field bindings and native form-model bridges are the next increment; existing navigation
+bindings do not establish form support. Browser state-restoration callbacks are exercised
+explicitly; automatic history restoration, real device IME behavior and other engines remain
+unverified. No complete family matrix or product acceptance is claimed.
+
+The implementation follows the [HTML custom-element form contract](https://html.spec.whatwg.org/dev/custom-elements.html)
+and [form control infrastructure](https://html.spec.whatwg.org/dev/form-control-infrastructure.html).
+
+
+The standard `form` attribute supports an external form owner. `disabled` is a boolean attribute:
+`disabled="false"` still disables the field. `readOnly` projects the immutable state's readOnly
+flag and reflects `readonly`. Invalid name/default attributes are restored before their bounded
+error is reported; current values are never included in diagnostics. Removing a text attribute
+retains its absence. Programmatic values participate in required/min/max/custom validation.
+Native form validation reveals linked errors as well as field-level checkValidity/reportValidity.
+An application can cancel Enter in its key handler; a deferred submit checks that the owner is
+unchanged and that the field is still enabled. It preserves the first native default submitter,
+including its name/value and disabled state. With no submitter, multiple blocking fields prevent
+implicit submission. Synthetic key events do not trigger submission.
+
+The native input has a real associated label and delegates focus through an external label too.
+The core owns all field markup, 56px minimum height, 16px padding, focus/error treatment and live
+HA theme inheritance. Field tokens additionally include `--vyp-ha-field-radius` and
+`--vyp-ha-danger`; shadow parts are `field`, `label`, `input`, `help` and `error`. Controlled
+reset requires the application to acknowledge the request, just like a normal edit. Cancellation
+does not undo a value explicitly assigned by application code. This preview stores no values,
+performs no network calls and grants no application permission.
