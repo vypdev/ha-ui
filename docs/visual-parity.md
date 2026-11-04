@@ -48,7 +48,7 @@ Consuming apps supply their fonts as HA does; the shared component performs no f
 | Order | Surface | Current status |
 |---|---|---|
 | 1 | Checkbox and catalog font baseline | Candidate calibrated against measured HA states; source, packed and static gates are recorded separately |
-| 2 | Upper dashboard navigation | Text-only controls plus three icon/text presentations calibrated against measured HA states in both semantics; overflow affordances and installed-app acceptance remain required |
+| 2 | Upper dashboard navigation | Text-only controls plus three icon/text presentations calibrated against measured HA states in both semantics; overflow calibrated separately below; custom theme/font breadth and installed-app acceptance remain required |
 | 3 | Buttons | Recompare actual HA geometry, variants, colors, focus, hover and disabled states; current accessible fixture accent is not an assertion of HA palette equality |
 | 4 | Text fields and single/multiple selects | Current border/native-control presentation differs from the HA reference; revise before visual acceptance |
 | 5 | Remaining families | Capture the current HA counterpart and establish the same reference before implementing their visual layer |
@@ -142,3 +142,23 @@ by digest and dimensions before each comparison. Scoped raster inspection and cu
 identities are recorded separately in the [implementation evidence](evidence/shared-ui-foundation.json).
 Custom font/theme breadth, overflow affordances, other component families and both application
 adoptions remain required under the unchanged 64 foundation and 6 delivery cases.
+
+
+## Dashboard overflow baseline
+
+The [overflow reference](evidence/ha-navigation-overflow-reference.json) retains twenty
+independent original HA captures per measured platform: 240px, eight labels, light/dark,
+LTR/RTL, logical start/middle/end and end-arrow hover/real keyboard focus. Original public
+component modules, exact Roboto and recorded theme tokens are replayed without network
+or application startup. Linux uses the pinned read-only Playwright image; its diagnostic
+Node runtime does not expand the library support matrix.
+
+The source gate checks both semantics against the measured scroll geometry, item/arrow
+boxes, gradients, radii and focus state. The compiled catalog repeats those measurements
+and preserves settled candidate frames independently of the source run. Reference images
+remain unchanged and are verified by digest/dimensions. The arrow overlay measures 21px
+at 14px font size; its native button is 40px with 12px radius and an 8.75px by 14px glyph.
+Paging uses the viewport width with the measured one-pixel edge tolerance. The focused
+edge-retention accessibility exception is documented in the component API and tested
+separately from the matching visual states. Custom font/theme breadth, complete browser
+support and Gateway/Domus adoption remain open.

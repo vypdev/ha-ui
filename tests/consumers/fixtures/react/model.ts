@@ -1,7 +1,7 @@
 import {navigationState} from '@vypdev/ha-ui/contracts';
 import type {NavigationState} from '@vypdev/ha-ui/contracts';
 export function model(spanish=false,selected='overview',disabled=false):NavigationState {
-  return navigationState({kind:'panels',label:spanish?'Secciones del hogar':'Household sections',selected,items:[{iconPath:'M3 11L12 3L21 11V21H15V14H9V21H3Z',showLabel:false,id:'overview',label:spanish?'Resumen':'Overview'},{iconPath:'M4 3H20V21H4ZM7 6V9H10V6ZM12 6V8H17V6ZM7 12V15H10V12ZM12 12V14H17V12Z',id:'tasks',label:spanish?'Tareas':'Tasks',disabled}]});
+  return navigationState({kind:'panels',scrollStartLabel:spanish?'Desplazar al inicio':'Scroll to start',scrollEndLabel:spanish?'Desplazar al final':'Scroll to end',label:spanish?'Secciones del hogar':'Household sections',selected,items:[{iconPath:'M3 11L12 3L21 11V21H15V14H9V21H3Z',showLabel:false,id:'overview',label:spanish?'Resumen':'Overview'},{iconPath:'M4 3H20V21H4ZM7 6V9H10V6ZM12 6V8H17V6ZM7 12V15H10V12ZM12 12V14H17V12Z',id:'tasks',label:spanish?'Tareas':'Tasks',disabled}]});
 }
 
 import {textFieldState} from '@vypdev/ha-ui/field-contracts';

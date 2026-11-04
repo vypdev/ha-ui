@@ -113,3 +113,12 @@ relationships, lifecycle and instant focus scrolling remain authored here. The p
 imports no HA, Web Awesome or Sortable runtime. The reference fixture exposes the public module
 loader instead of running the app entrypoint; it does not alter the referenced component modules.
 Its original unedited images are test evidence, not SDK runtime assets.
+
+
+Overflow styling additionally adapts the published `@home-assistant/webawesome@3.14.0-ha.2`
+MIT artifact (gitHead `8d81b1edf416b889fbbeaf9093c77300f30a68c2`). The original full notice is
+shipped as `LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt` and checked in the actual core archive.
+The two unmodified Font Awesome Free 7.0.0 chevron paths retain their CC BY 4.0 attribution
+and license. The package NOTICE names both official SVG sources and all modifications.
+This is style adaptation with authored geometry/gesture policy; no new runtime dependency
+or external icon/font loader is introduced.

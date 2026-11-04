@@ -20,7 +20,7 @@ for(const kind of ['navigation','panels'] as const)for(const theme of ['light','
  element.style.cssText=`width:600px;--app-header-text-color:${theme==='light'?'#141414':'#e1e1e1'};--app-header-background-color:${theme==='light'?'#fff':'#1c1c1c'};--wa-focus-ring:solid 2px #989898;-webkit-font-smoothing:antialiased`;
  element.state=navigationState({kind,label:'Household sections',selected:'overview',items:['Overview','Tasks','Inventory'].map((label,n)=>({id:['overview','tasks','inventory'][n],label,...(kind==='navigation'?{href:'#section-'+n}:{}),disabled:n===1&&state==='disabled'}))});
  document.body.append(element);await element.updateComplete;
- const controls=[...element.shadowRoot!.querySelectorAll<HTMLElement>('a,button')];
+ const controls=[...element.shadowRoot!.querySelectorAll<HTMLElement>('[part=item]')];
  if(state==='hover')await userEvent.hover(controls[1]);
  if(state==='focus'){controls[0].focus();await userEvent.keyboard('{Home}');}
  for(const[index,control]of controls.entries()){
@@ -33,16 +33,16 @@ for(const kind of ['navigation','panels'] as const)for(const theme of ['light','
   if(state==='focus'&&index===0){expect(control.matches(':focus-visible')).toBe(true);expect(base.outline).toBe(expected.base.outline);expect(base.outlineOffset).toBe(expected.base.outlineOffset);}
  }
  expect(element.getBoundingClientRect().height).toBe(56);
- expect(getComputedStyle(element.shadowRoot!.querySelector('.bar')!).backgroundColor).toBe(theme==='light'?'rgb(255, 255, 255)':'rgb(28, 28, 28)');
+ expect(getComputedStyle(element.shadowRoot!.querySelector('.frame')!).backgroundColor).toBe(theme==='light'?'rgb(255, 255, 255)':'rgb(28, 28, 28)');
  if(state==='disabled'){expect(controls[1].tabIndex).toBe(-1);expect(controls[1].matches(':disabled,[aria-disabled=true]')).toBe(true);}
 });
 
 test('public HA header tokens and explicit library overrides update the same live controls',async()=>{
  registerTabs();const host=document.createElement('vyp-ha-tabs');host.state=navigationState({kind:'panels',label:'Sections',selected:'one',items:[{id:'one',label:'One'},{id:'two',label:'Two'}]});document.body.append(host);await host.updateComplete;
- const [current,other]=host.shadowRoot!.querySelectorAll<HTMLElement>('button'),bar=host.shadowRoot!.querySelector<HTMLElement>('.bar')!;
+ const [current,other]=host.shadowRoot!.querySelectorAll<HTMLElement>('[part=item]'),bar=host.shadowRoot!.querySelector<HTMLElement>('.bar')!,surface=host.shadowRoot!.querySelector<HTMLElement>('.frame')!;
  host.style.cssText='--app-header-text-color:rgb(40,50,60);--app-header-background-color:rgb(230,240,250);--app-header-selection-bar-color:rgb(100,20,30);--ha-tab-indicator-color:rgb(20,100,30)';
- expect(getComputedStyle(current).color).toBe('rgb(40, 50, 60)');expect(getComputedStyle(other).color).toBe('rgb(40, 50, 60)');expect(getComputedStyle(bar).backgroundColor).toBe('rgb(230, 240, 250)');expect(getComputedStyle(current).borderBottomColor).toBe('rgb(100, 20, 30)');
+ expect(getComputedStyle(bar).backgroundColor).toBe('rgba(0, 0, 0, 0)');expect(getComputedStyle(current).color).toBe('rgb(40, 50, 60)');expect(getComputedStyle(other).color).toBe('rgb(40, 50, 60)');expect(getComputedStyle(surface).backgroundColor).toBe('rgb(230, 240, 250)');expect(getComputedStyle(current).borderBottomColor).toBe('rgb(100, 20, 30)');
  host.style.cssText+=';--vyp-ha-text:rgb(20,30,40);--vyp-ha-text-secondary:rgb(50,60,70);--vyp-ha-surface:rgb(240,245,250);--vyp-ha-tab-indicator-color:rgb(80,90,100);--vyp-ha-focus-ring:solid 3px rgb(40,50,60);--vyp-ha-tab-padding:24px';
- expect(getComputedStyle(current).color).toBe('rgb(20, 30, 40)');expect(getComputedStyle(other).color).toBe('rgb(50, 60, 70)');expect(getComputedStyle(bar).backgroundColor).toBe('rgb(240, 245, 250)');expect(getComputedStyle(current).borderBottomColor).toBe('rgb(80, 90, 100)');
+ expect(getComputedStyle(current).color).toBe('rgb(20, 30, 40)');expect(getComputedStyle(other).color).toBe('rgb(50, 60, 70)');expect(getComputedStyle(surface).backgroundColor).toBe('rgb(240, 245, 250)');expect(getComputedStyle(current).borderBottomColor).toBe('rgb(80, 90, 100)');
  current.focus();await userEvent.keyboard('{Home}');const content=getComputedStyle(current.querySelector('[part=content]')!);expect(content.outline).toBe('rgb(40, 50, 60) solid 3px');expect(content.paddingInlineStart).toBe('24px');expect(content.paddingInlineEnd).toBe('24px');expect(current.getBoundingClientRect().height).toBe(56);
 });

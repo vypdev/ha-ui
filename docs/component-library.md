@@ -277,3 +277,24 @@ are scoped to the actual recorded HA states. Text-only navigation controls now h
 measured baseline; icons and overflow affordances still require review. Buttons, text fields and
 selects still require direct comparison and correction before acceptance. This work precedes further
 visual families and application adoption, so those apps do not adopt an uncalibrated visual layer.
+
+
+### Narrow navigation and local panels
+
+Both modes share the same 56px horizontally scrolling bar. `scrollStartLabel` and
+`scrollEndLabel` accept optional nonempty localized text, with English defaults. They name
+native paging buttons; paging, focus reveal and mouse panning never request a selection.
+Buttons use the measured HA gradients and local Font Awesome chevrons. RTL uses logical
+start/end paging and negative native scroll offsets. Resize, content/font geometry and
+ancestor direction/style changes update the available edges without moving document scroll.
+
+Programmatic selection reveals its destination without moving focus. A newer keyboard focus
+wins over a deferred initial reveal and stays clear of the arrow overlays. Labels wider than
+the viewport align their logical start. Paging respects system reduced motion and the public
+`--vyp-ha-motion-duration:0ms` override. Pointer movement must exceed one CSS pixel before it
+pans; modified input and keyboard activation retain their native behavior. Disconnect and
+navigation-kind replacement retire observers, scheduled work and window gesture listeners.
+
+A focused arrow that reaches its edge remains present with `aria-disabled="true"` until blur.
+This deliberate accessibility exception preserves focus; the original HA component removes
+the focused arrow. Other resting, hover and focus visuals use the original measured geometry.

@@ -1,7 +1,7 @@
 # Shared component catalog
 
 The current catalog displays the implemented upper navigation, local panels and single-line text
-field, button, boolean checkbox and typed single/multiple select using the real package entrypoints. Fifty-six CSF stories have automatic documentation,
+field, button, boolean checkbox and typed single/multiple select using the real package entrypoints. Fifty-eight CSF stories have automatic documentation,
 controls, interaction tests and accessibility checks. This is an incremental preview; other
 families, the full framework/SSR/browser matrix and application adoption are still required.
 
@@ -91,7 +91,7 @@ Storybook release passes those same checks without it. See [provenance](provenan
 The [visual-equivalence gate](visual-parity.md) compares actual HA states against the built shared
 component. The catalog now bundles the same Roboto Regular/Medium font bytes as the measured HA
 frontend, with local license notices. The static browser gate explicitly waits for both font
-faces to load, exercises 96 locale/theme/width combinations and compares fourteen recorded
+faces to load, exercises 112 locale/theme/width combinations and compares fourteen recorded
 checkbox visual states. Other families still need the same HA comparison and any corrections;
 a passing functional or accessibility test alone does not establish visual equivalence.
 
@@ -119,3 +119,10 @@ retaining 48 compiled-catalog comparisons per platform. Six new production-backe
 icon-only, icon-and-text and mixed items in both modes. The locale/theme/width accessibility matrix
 also scans mixed navigation and icon-only panels. All glyph paths in these examples are original
 fixture data; public package consumers choose their own local reviewed path data.
+
+
+Both navigation modes also expose a 240px `Overflow` story with eight destinations and
+English/Spanish paging names. The static gate checks forty original overflow states per
+platform across both modes, themes, directions and start/middle/end/hover/focus states.
+Source-browser measurements and packed framework overflow journeys are separate checks.
+The full library and installed-app UX remain incomplete; see [visual parity](visual-parity.md).

@@ -88,7 +88,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       await assertBoundNavigationIcons(page,true);
       assert.equal(await page.getByRole('tab',{name:'Tareas',exact:true}).getAttribute('aria-selected'),'true');
       await page.getByRole('button',{name:'Toggle theme',exact:true}).click();
-      await page.waitForFunction(()=>getComputedStyle(document.querySelector('vyp-ha-tabs')!.shadowRoot!.querySelector('.bar')!).backgroundColor==='rgb(20, 20, 20)');
+      await page.waitForFunction(()=>getComputedStyle(document.querySelector('vyp-ha-tabs')!.shadowRoot!.querySelector('.frame')!).backgroundColor==='rgb(20, 20, 20)');
       await page.getByRole('button',{name:'Toggle disabled',exact:true}).click();
       await page.waitForFunction(()=>document.querySelector('vyp-ha-tabs')!.shadowRoot!.querySelector<HTMLButtonElement>('#tab-tasks')!.disabled);
       assert.equal(await page.getByRole('tab',{name:'Tareas',exact:true}).isDisabled(),true);

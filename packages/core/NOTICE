@@ -26,3 +26,15 @@ Modifications: native link/button content with optional inert local 24-unit SVG 
 explicit accessible names, optional visible labels, logical spacing and public override tokens.
 No HA icon registry, application API, icon pack or runtime module is used by the shared renderer.
 Storybook fixture glyphs are original paths authored in this repository.
+
+Dashboard overflow controls also adapt @home-assistant/webawesome 3.14.0-ha.2,
+Copyright (c) 2025 Fonticons, Inc., MIT license.
+Source: https://www.npmjs.com/package/@home-assistant/webawesome/v/3.14.0-ha.2
+Reviewed artifact gitHead: 8d81b1edf416b889fbbeaf9093c77300f30a68c2.
+Modifications: local native buttons/SVGs, logical paging, reduced motion, gesture cleanup,
+localized names and retention of a focused edge arrow until blur. No Web Awesome runtime.
+See LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt for the full original license.
+The embedded chevron-left and chevron-right SVG paths are unmodified Font Awesome Free 7.0.0,
+Copyright 2025 Fonticons, Inc., CC BY 4.0, under the same icon license above:
+https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/chevron-left.svg
+https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/chevron-right.svg

@@ -20,7 +20,7 @@ for(const kind of ['navigation','panels'] as const)for(const theme of ['light','
  const row=reference.states.find(row=>row.platform===platform&&row.theme===theme&&row.presentation===presentation&&row.state===state);expect(row).toBeDefined();if(!row)throw new Error('Missing measured HA icon reference');
  registerTabs();const host=document.createElement('vyp-ha-tabs');host.style.cssText=`width:600px;--app-header-text-color:${theme==='light'?'#141414':'#e1e1e1'};--app-header-background-color:${theme==='light'?'#fff':'#1c1c1c'};--wa-focus-ring:solid 2px #989898;-webkit-font-smoothing:antialiased`;
  host.state=navigationState({kind,label:'Sections',selected:'overview',items:['Overview','Tasks','Inventory'].map((label,n)=>({id:['overview','tasks','inventory'][n],label,href:kind==='navigation'?'#'+n:null,disabled:n===1&&state==='disabled',iconPath:row.items[n].icon?.path??null,showLabel:row.items[n].geometry.text!==null}))});
- document.body.append(host);await host.updateComplete;const controls=[...host.shadowRoot!.querySelectorAll<HTMLElement>('a,button')];
+ document.body.append(host);await host.updateComplete;const controls=[...host.shadowRoot!.querySelectorAll<HTMLElement>('[part=item]')];
  if(state==='hover')await userEvent.hover(controls[1]);if(state==='focus'){controls[0].focus();await userEvent.keyboard('{Home}');}
  for(const[n,control]of controls.entries()){
   const expected=row.items[n],content=control.querySelector<HTMLElement>('[part=content]')!,label=control.querySelector<HTMLElement>('[part=label]'),icon=control.querySelector<SVGSVGElement>('[part=icon]'),r=control.getBoundingClientRect();
@@ -45,11 +45,11 @@ for(const kind of ['navigation','panels'] as const)for(const theme of ['light','
 test.each(['navigation','panels'] as const)('icon-only %s retains names, cancellation and focused identity across live presentation updates',async kind=>{
  registerTabs();const host=document.createElement('vyp-ha-tabs');
  const input={kind,label:'Sections',selected:'overview',items:[{id:'overview',label:'Resumen',href:kind==='navigation'?'#overview':null,iconPath:navigationIconPaths.overview,showLabel:false}]};host.state=navigationState(input);document.body.append(host);await host.updateComplete;
- const control=host.shadowRoot!.querySelector<HTMLElement>('a,button')!;control.focus();const events:CustomEvent[]=[];host.addEventListener('ha-selection-request',event=>{event.preventDefault();events.push(event);});
+ const control=host.shadowRoot!.querySelector<HTMLElement>('[part=item]')!;control.focus();const events:CustomEvent[]=[];host.addEventListener('ha-selection-request',event=>{event.preventDefault();events.push(event);});
  await page.getByRole(kind==='navigation'?'link':'tab',{name:'Resumen',exact:true}).click();expect(events).toHaveLength(1);expect(events[0].detail).toEqual({kind,id:'overview'});expect(events[0].defaultPrevented).toBe(true);
  expect(control.title).toBe('Resumen');expect(host.shadowRoot!.querySelectorAll('[tabindex="0"]')).toHaveLength(kind==='panels'?2:0);
  host.state=navigationState({...input,items:[{...input.items[0],showLabel:true,label:'Overview'}]});await host.updateComplete;
- expect(host.shadowRoot!.querySelector('a,button')).toBe(control);expect(host.shadowRoot!.activeElement).toBe(control);expect(control.title).toBe('');expect(control.querySelector<HTMLElement>('[part=label]')!.hidden).toBe(false);expect(control.getAttribute('aria-label')).toBe('Overview');expect(events).toHaveLength(1);
+ expect(host.shadowRoot!.querySelector('[part=item]')).toBe(control);expect(host.shadowRoot!.activeElement).toBe(control);expect(control.title).toBe('');expect(control.querySelector<HTMLElement>('[part=label]')!.hidden).toBe(false);expect(control.getAttribute('aria-label')).toBe('Overview');expect(events).toHaveLength(1);
  host.state=navigationState({...input,items:[{...input.items[0],iconPath:null,showLabel:true}]});await host.updateComplete;expect(control.querySelector('svg')).toBeNull();expect(events).toHaveLength(1);
 });
 test('SVG data stays decorative, follows live theme tokens and uses logical icon/text spacing in RTL',async()=>{

@@ -23,11 +23,11 @@ export async function exerciseNavigationIconsVisual(page:Page,origin:string,outp
   for(const row of rows){
    const original=await readFile(resolve(row.image.path));assert.equal(createHash('sha256').update(original).digest('hex'),row.image.sha256);assert.equal(original.readUInt32BE(16),row.image.width);assert.equal(original.readUInt32BE(20),row.image.height);
    await page.locator('#visual-icons').evaluate(async(element,{kind,row})=>{
-    const host=element as HaTabs;host.state={kind,label:'Icon sections',selected:'overview',items:['Overview','Tasks','Inventory'].map((label,n)=>({id:['overview','tasks','inventory'][n],label,href:kind==='navigation'?'#'+n:null,disabled:n===1&&row.state==='disabled',iconPath:row.items[n].icon?.path??null,showLabel:row.items[n].geometry.text!==null}))};await host.updateComplete;host.shadowRoot!.querySelector<HTMLElement>('a,button')!.blur();
+    const host=element as HaTabs;host.state={kind,label:'Icon sections',selected:'overview',items:['Overview','Tasks','Inventory'].map((label,n)=>({id:['overview','tasks','inventory'][n],label,href:kind==='navigation'?'#'+n:null,disabled:n===1&&row.state==='disabled',iconPath:row.items[n].icon?.path??null,showLabel:row.items[n].geometry.text!==null}))};await host.updateComplete;host.shadowRoot!.querySelector<HTMLElement>('[part=item]')!.blur();
    },{kind,row});
    if(row.state==='hover')await page.locator('#visual-icons a,#visual-icons button').nth(1).hover();else await page.mouse.move(1100,800);
    if(row.state==='focus'){await page.locator('#visual-icons a,#visual-icons button').first().focus();await page.keyboard.press('Home');}
-   const actual=await page.locator('#visual-icons').evaluate(element=>[...element.shadowRoot!.querySelectorAll<HTMLElement>('a,button')].map(control=>{
+   const actual=await page.locator('#visual-icons').evaluate(element=>[...element.shadowRoot!.querySelectorAll<HTMLElement>('[part=item]')].map(control=>{
     const r=control.getBoundingClientRect(),content=control.querySelector<HTMLElement>('[part=content]')!,label=control.querySelector<HTMLElement>('[part=label]')!,icon=control.querySelector<SVGSVGElement>('svg'),css=getComputedStyle(control),b=getComputedStyle(content);
     const box=(element:Element|null):Box|null=>{if(!element||element.hasAttribute('hidden'))return null;const n=element.getBoundingClientRect();return{x:n.x-r.x,y:n.y-r.y,width:n.width,height:n.height};};
     let text:Box|null=null;if(!label.hidden){const range=document.createRange();range.selectNodeContents(label);const n=range.getBoundingClientRect();text={x:n.x-r.x,y:n.y-r.y,width:n.width,height:n.height};}

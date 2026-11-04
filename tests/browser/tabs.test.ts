@@ -11,7 +11,7 @@ async function mount(state = model()) {
   element.state = state; document.body.append(element); await element.updateComplete; return element;
 }
 const root = (element: HaTabs) => element.shadowRoot!;
-const controls = (element: HaTabs) => [...root(element).querySelectorAll<HTMLElement>('a,button')];
+const controls = (element: HaTabs) => [...root(element).querySelectorAll<HTMLElement>('[part=item]')];
 const intents = (element: HaTabs) => {
   const received: NavigationSelectionEvent[] = [];
   element.addEventListener('ha-selection-request', event => received.push(event)); return received;
@@ -140,7 +140,7 @@ test('HA theme tokens update live, the 56px bar scrolls narrowly, and keyboard f
   expect(getComputedStyle(controls(element)[0]).color).toBe('rgb(28, 28, 28)');
   element.style.setProperty('--primary-text-color','rgb(235,235,235)'); element.style.setProperty('--card-background-color','rgb(20,20,20)');
   expect(getComputedStyle(controls(element)[0]).color).toBe('rgb(235, 235, 235)');
-  expect(getComputedStyle(bar).backgroundColor).toBe('rgb(20, 20, 20)');
+  expect(getComputedStyle(element.shadowRoot!.querySelector('.frame')!).backgroundColor).toBe('rgb(20, 20, 20)');
   controls(element)[0].focus(); await userEvent.keyboard('{End}');
   const current=root(element).activeElement!; expect(current).toBe(controls(element)[9]);
   expect(current.matches(':focus-visible')).toBe(true); expect(getComputedStyle(current.querySelector('[part=content]')!).outlineStyle).toBe('solid');

@@ -24,3 +24,5 @@ export const SpanishDarkNarrow:Story={globals:{locale:'es',theme:'dark',width:'n
 export const IconOnly:Story={args:{icons:'icon-only'}};
 export const IconAndTitle:Story={args:{icons:'icon-and-title'}};
 export const Mixed:Story={args:{icons:'mixed'}};
+
+export const Overflow:Story={args:{overflow:true},globals:{width:'narrow',motion:'reduced'}};

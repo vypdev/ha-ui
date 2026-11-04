@@ -15,6 +15,8 @@ export interface NavigationState {
   readonly label: string;
   readonly selected: string | null;
   readonly items: readonly NavigationItem[];
+  readonly scrollStartLabel?: string;
+  readonly scrollEndLabel?: string;
 }
 export class NavigationInputError extends Error {
   readonly code = 'invalid_navigation';
@@ -45,7 +47,7 @@ function link(value: unknown): string {
 }
 /** Validate a whole controlled state; never choose a route or invoke a renderer callback. */
 export function navigationState(raw: unknown): NavigationState {
-  const source = object(raw, ['kind', 'label', 'selected', 'items'], ['kind', 'label', 'selected', 'items']);
+  const source = object(raw, ['kind', 'label', 'selected', 'items', 'scrollStartLabel', 'scrollEndLabel'], ['kind', 'label', 'selected', 'items']);
   const kind = source.kind;
   if (kind !== 'navigation' && kind !== 'panels') invalid();
   const label = text(source.label, 256);
@@ -68,5 +70,7 @@ export function navigationState(raw: unknown): NavigationState {
     const current = items.find(item => item.id === selected);
     if (current === undefined || current.disabled) invalid();
   }
-  return Object.freeze({kind, label, selected, items: Object.freeze(items)});
+  const scrollStartLabel=source.scrollStartLabel===undefined?'Scroll to start':text(source.scrollStartLabel,256);
+  const scrollEndLabel=source.scrollEndLabel===undefined?'Scroll to end':text(source.scrollEndLabel,256);
+  return Object.freeze({kind, label, selected, items: Object.freeze(items), scrollStartLabel, scrollEndLabel});
 }

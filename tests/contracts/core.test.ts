@@ -16,7 +16,7 @@ function rejected(value: unknown) {
 describe('framework-neutral navigation contracts', () => {
   test('imports and validates without browser globals or application identity', () => {
     expect(typeof document).toBe('undefined');
-    expect(navigationState(state())).toEqual({...state(), items: [{...section(), disabled: false, iconPath:null, showLabel:true}]});
+    expect(navigationState(state())).toEqual({...state(),scrollStartLabel:'Scroll to start',scrollEndLabel:'Scroll to end', items: [{...section(), disabled: false, iconPath:null, showLabel:true}]});
   });
   test('takes immutable independent snapshots without altering caller objects', () => {
     const source = state(), value = navigationState(source);
@@ -103,3 +103,11 @@ test.each(['', ' ', 'M', '0 0L1 1', '<svg onload="alert(1)">', 'https://example.
 test.each([null,0,1,'false',{}])('does not coerce visible-label choice %j',showLabel=>rejected(state({items:[section({iconPath:'M0 0H24V24Z',showLabel})]})));
 test.each([undefined,null])('cannot hide a label without a local icon: %s',iconPath=>rejected(state({items:[section({iconPath,showLabel:false})]})));
 test('an icon-only item still requires its full nonempty accessible label',()=>rejected(state({items:[section({label:'',iconPath:'M0 0H24V24Z',showLabel:false})]})));
+
+test('navigation scroll labels have an English fallback and accept localized controlled text',()=>{
+ const fallback=navigationState(state());expect(fallback.scrollStartLabel).toBe('Scroll to start');expect(fallback.scrollEndLabel).toBe('Scroll to end');
+ const value=navigationState(state({scrollStartLabel:'Desplazar al inicio',scrollEndLabel:'Desplazar al final'}));expect(value.scrollStartLabel).toBe('Desplazar al inicio');expect(value.scrollEndLabel).toBe('Desplazar al final');
+});
+test.each(['', ' ', null, false, 3, '\u0080', 'x'.repeat(257)])('rejects invalid scroll control labels %j',label=>{
+ rejected(state({scrollStartLabel:label}));rejected(state({scrollEndLabel:label}));
+});

@@ -1,3 +1,4 @@
+import {exerciseInstalledNavigationOverflow} from './navigation-overflow.ts';
 import {exerciseInstalledNavigationIcons} from './navigation-icons.ts';
 import {fixtureFonts} from './fonts.ts';
 import test from 'node:test';
@@ -120,7 +121,7 @@ if(value.selected!=='tasks'||!Object.isFrozen(value.items))throw Error('Packed c
 console.log('Packed contract imported without DOM globals');`], {cwd: consumer});
     assert.match(probe.stdout, /Packed contract imported without DOM globals/u);
     const installed = join(consumer, 'node_modules/@vypdev/ha-ui');
-    const packageFiles=['LICENSE','NOTICE','LICENSES/Home-Assistant-Apache-2.0.txt','LICENSES/Font-Awesome-Free-7.0.0.txt'];
+    const packageFiles=['LICENSE','NOTICE','LICENSES/Home-Assistant-Apache-2.0.txt','LICENSES/Font-Awesome-Free-7.0.0.txt','LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt'];
     for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','checkbox-contracts','components/checkbox','components/implicit-submit']) {
       packageFiles.push('src/'+module+'.ts');
       for (const suffix of ['.js','.js.map','.d.ts','.d.ts.map']) packageFiles.push('dist/'+module+suffix);
@@ -202,6 +203,8 @@ document.querySelector('main')!.append(form);`);
     await mkdir(resolve(root, 'test-results'), {recursive:true});
     await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
     const navigationIcons=await exerciseInstalledNavigationIcons(browserPage);
+    const navigationOverflow=await exerciseInstalledNavigationOverflow(browserPage);
+    await writeFile(resolve(root,'test-results/packed-navigation-overflow.json'),JSON.stringify(navigationOverflow,null,2)+'\n');
     await writeFile(resolve(root,'test-results/packed-navigation-icons.json'),JSON.stringify(navigationIcons,null,2)+'\n');
     const checkbox=await exerciseInstalledCheckbox(browserPage);
     await writeFile(resolve(root,'test-results/packed-checkbox.json'),JSON.stringify(checkbox,null,2)+'\n');
