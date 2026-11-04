@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T04:15:29.176261+00:00",
-  "status": "Partial source increment; no rendered component, adapter, Storybook, framework support, published release or app adoption accepted.",
+  "recordedAtUTC": "2026-11-04T04:26:46.483795+00:00",
+  "status": "Partial source increment: data contract and one real navigation/panel component. No framework support, Storybook, published release or app adoption accepted.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -15,57 +15,71 @@
     "allStillRequired": true
   },
   "implemented": [
-    "DOM-independent closed navigation/panel data contract; immutable snapshots, bounded text/items, explicit selection and safe links.",
-    "Pinned Node24.20.0/pnpm10.34.0/TypeScript6.0.3/Vitest5.1.0 build and test foundation.",
-    "138 passing unit/architecture/CI-contract tests; separate filesystem-inventory coverage audit and actual packed-consumer integration both pass.",
-    "Strict four-metric per-module/global coverage; every authored package/tool inventoried including the zero-executable re-export module.",
-    "Every-PR-commit CI Check uses frozen dependencies, all implemented gates, actual package compilation/consumption and the unchanged pinned original catalog SDK."
+    "Closed DOM-independent navigation/panel data contract; bounded and immutable inputs, safe links and Unicode C0/DEL/C1 control rejection.",
+    "Explicit client registration, validated property-only controlled state and typed cancelable composed user intent; no app router or business logic.",
+    "Real navigation links/current-location semantics and same-root local tab/panel slots, manual keyboard activation, RTL, disabled and stale-event prevention, active-tab focus return.",
+    "167 passing unit, architecture, CI-contract and real Chromium tests; separate independent coverage audit and clean actual packed-consumer integration pass.",
+    "Strict four-metric per-module/global coverage including every authored package/tool and the zero-executable barrel.",
+    "Pinned Node24.20.0/pnpm10.34.0/TypeScript6.0.3/Lit3.3.3/Vitest5.1.0/Playwright1.64.1; every-PR CI installs Chromium and runs all implemented gates plus the unchanged pinned original catalog SDK."
   ],
   "coverage": {
     "statements": {
-      "total": 81,
-      "covered": 81,
+      "total": 148,
+      "covered": 148,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 78,
-      "covered": 78,
+      "total": 139,
+      "covered": 139,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 16,
-      "covered": 16,
+      "total": 34,
+      "covered": 34,
       "skipped": 0,
       "pct": 100
     },
     "lines": {
-      "total": 58,
-      "covered": 58,
+      "total": 100,
+      "covered": 100,
       "skipped": 0,
       "pct": 100
     }
   },
   "sourceIdentities": {
+    "packages/core/src/components/tabs.ts": "5e84a250c9758388d10f4b2e9de55be6d18e57754aaf38d1a0deb71262c58e36",
     "packages/core/src/contracts.ts": "a786f32769cd69d0653d6292ae8b231b19986a07ad46c998a02d3948c2d5006e",
     "packages/core/src/index.ts": "10bd6958315d1ae23d216c0b752126e3fc7153f442f8c71e206cfa7e9757f86d",
     "tooling/coverage.mjs": "2272a671a4d039fb40866f3535f6cd371b891623b64bf1b9a23a63677ad2387b"
   },
   "packedContract": {
-    "scope": "Core data contract only; no rendered component, adapter or application adoption",
-    "sha256": "fa68300cb8494e7ff9a52435c03f99b3fc8d896c269f184378044e8821b35e65",
-    "bytes": 4396,
+    "scope": "Core data and navigation component only; no framework adapter or application adoption",
+    "sha256": "450e1dc97f1056041174f169287893ebcd616cc98bf8bbb907435ebb13179e96",
+    "bytes": 9585,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "compiledWithoutDomTypes": true,
-    "serverImport": true
+    "serverImport": true,
+    "packedBrowser": {
+      "engine": "chromium",
+      "version": "156.0.8078.4",
+      "compiledClient": true,
+      "navigation": true,
+      "panels": true,
+      "runtimeSpanishAndTheme": true,
+      "reducedMotion": true,
+      "consoleErrors": []
+    }
   },
   "limitations": [
-    "Current navigation tests validate data without rendering DOM; no actual tab accessibility, focus, events or keyboard behavior is claimed.",
-    "The packed fixture covers the core data contract only; all actual Lit/DOM, React, Vue, Angular and Svelte UI consumers and SSR/client boundaries remain required.",
-    "No live npm publication/authority, static Storybook delivery, Gateway extraction/adoption or Domus adoption is claimed.",
-    "Fresh hosted CI and complete native review are required for the final source head."
+    "Only the navigation/panel family is implemented; forms, dialogs and other presentation families remain required.",
+    "Clean packed Chromium consumer covers the shared component only; actual React, Vue, Angular, Svelte and SSR/client fixtures remain required.",
+    "Only the exact recorded Chromium runtime was exercised; Firefox, WebKit and public browser support claims remain pending.",
+    "Storybook, npm authority/publication, Gateway adoption, Domus adoption and installed human UX acceptance remain unverified.",
+    "All 64 retained baseline and six delivery-refinement cases remain required; green partial-source tests do not complete issue #7.",
+    "Fresh hosted CI and complete native review are required for the published source head."
   ],
   "copilotModified": false,
   "capabilityComplete": false,
@@ -74,5 +88,17 @@
     "before": "32 C1 cases failed; 78 contract cases passed.",
     "after": "All 138 unit/architecture/CI-contract cases pass; every C1 code point rejected in group labels, item labels and links; visible U+00A0/U+00A1 preserved.",
     "manualResolution": false
+  },
+  "lockSha256": "3011110ba520f33cca391abf1f7ad5262485159ced72b579b180f9923b0611dc",
+  "browserEvidence": {
+    "componentCases": 28,
+    "engine": "Chromium 156.0.8078.4",
+    "actualPackageImages": [
+      "test-results/packed-navigation-light.png",
+      "test-results/packed-panels-dark-es.png"
+    ],
+    "imagesInspected": true,
+    "focusRegression": "focus-return-red.log reproduces the stale tab-stop; full green run has no skipped tests.",
+    "initialTestAttempt": "Browser cases were authored before the renderer. The first attempted execution could not start because the pinned Chromium binary was absent; no behavioral red result is claimed for that attempt. After runtime provisioning, the first actual run found two fixture/server-boundary issues, recorded in browser-first-execution.log."
   }
 }

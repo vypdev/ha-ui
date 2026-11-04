@@ -22,6 +22,7 @@
     "tooling/**/*.mjs",
     "vitest.config.ts",
     "tests/contracts/**/*.test.ts",
-    "tests/consumers/**/*.test.ts"
+    "tests/consumers/**/*.test.ts",
+    "tests/browser/**/*.test.ts"
   ]
 }

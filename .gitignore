@@ -5,3 +5,5 @@ work/
 **/dist/
 **/test-results/
 **/.vite/
+
+.vitest/

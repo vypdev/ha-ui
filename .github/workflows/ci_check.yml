@@ -27,6 +27,7 @@ jobs:
           cache: false
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm check
+      - run: pnpm exec playwright install --with-deps chromium --only-shell
       - run: pnpm test
       - run: pnpm build
       - run: pnpm test:package
@@ -55,5 +56,6 @@ jobs:
             coverage/
             packages/core/dist/
             test-results/
+            .vitest/attachments/
           if-no-files-found: error
           retention-days: 7

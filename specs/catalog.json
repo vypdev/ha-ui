@@ -5,7 +5,7 @@
       "id": "shared-ui-foundation",
       "title": "Shared Home Assistant presentation components and framework adapters",
       "status": "proposed",
-      "scope": "One DOM component implementation with React, Vue, Angular and Svelte adapters, direct Lit/DOM use, shared Storybook and verified Gateway/Domus adoption. Draft; no runtime implementation or delivery accepted.",
+      "scope": "One DOM component implementation with React, Vue, Angular and Svelte adapters, direct Lit/DOM use, shared Storybook and verified Gateway/Domus adoption. Partial source; no complete capability or release accepted.",
       "owner": "vypdev maintainers; Efrain Espada (accountable product/publication owner)",
       "lastVerified": "2026-11-04",
       "specs": [
@@ -17,18 +17,22 @@
         ".github/workflows/ci_check.yml"
       ],
       "entrypoints": [
-        "packages/core/src/index.ts"
+        "packages/core/src/index.ts",
+        "packages/core/src/components/tabs.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
-        "tooling/coverage.mjs"
+        "tooling/coverage.mjs",
+        "packages/core/src/components/tabs.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
         "tests/coverage.test.mjs",
         "tests/architecture.test.mjs",
         "tests/coverage-evidence.test.mjs",
-        "tests/consumers/packed.test.ts"
+        "tests/consumers/packed.test.ts",
+        "tests/contracts/registration.test.ts",
+        "tests/browser/tabs.test.ts"
       ],
       "documentation": [
         "README.md",
@@ -46,7 +50,7 @@
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
         ],
-        "implementationEvidence": "partial: DOM-independent navigation data contract and quality/toolchain setup only; no rendered components, adapters, framework fixtures, Storybook or publication accepted."
+        "implementationEvidence": "partial: closed data contract and controlled HA-style navigation/panel renderer; strict Node/Chromium coverage and clean actual packed DOM-free/browser consumers pass. Other families, adapters, complete framework/browser matrix, Storybook, publication and app adoption remain required."
       }
     }
   ]

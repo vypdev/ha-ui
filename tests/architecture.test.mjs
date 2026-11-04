@@ -44,7 +44,7 @@ test('CI Check runs for every PR update with frozen tools and all implemented qu
   expect(job['continue-on-error']).toBeUndefined();
   expect(job.steps.every(step => step['continue-on-error'] === undefined)).toBe(true);
   const commands = job.steps.flatMap(step => step.run ? [step.run] : []);
-  for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm test', 'pnpm build', 'pnpm test:package']) expect(commands).toContain(command);
+  for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm exec playwright install --with-deps chromium --only-shell', 'pnpm test', 'pnpm build', 'pnpm test:package']) expect(commands).toContain(command);
   const sdk = job.steps.find(step => step.with?.repository === 'vypdev/copilot');
   expect(sdk.with.ref).toBe('3e7ceea08e6131360e026937d1c0cc1b120472e0');
   expect(sdk.with['persist-credentials']).toBe(false);

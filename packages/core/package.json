@@ -23,9 +23,16 @@
     "./contracts": {
       "types": "./dist/contracts.d.ts",
       "import": "./dist/contracts.js"
+    },
+    "./tabs": {
+      "types": "./dist/components/tabs.d.ts",
+      "import": "./dist/components/tabs.js"
     }
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "lit": "3.3.3"
   }
 }

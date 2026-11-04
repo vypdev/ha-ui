@@ -50,7 +50,7 @@ Core/adapter publication, Storybook delivery and each app's acceptance are disti
 All authored behavior starts with tests and requires 100% supported statements, branches, functions
 and lines globally and per module, with independent source inventory and executable architecture
 constraints. The primary Draft allocates 64 distinct minimum cases. CI Check must aggregate
-all required implemented checks on every PR head; the initial CI now validates all implemented source; unimplemented browser/adapter/adoption gates remain pending.
+all required implemented checks on every PR head; the initial CI now validates all implemented source; broader browser support, adapter and adoption gates remain pending.
 Record exact toolchain, source, lock, package digests and framework/browser results. Verify npm
 publication rights before any publish. Preserve one tested previous app/cohort rollback and all user
 data and original-operation recovery. Never overwrite an existing package version after partial delivery.
@@ -93,3 +93,40 @@ Native issue #7 published the delivery companion on its exact managed branch bef
 Complete the component renderers, actual framework adapters/consumers, Storybook and staged delivery
 acceptance on that branch, retaining all 64 baseline and six companion cases. The first source
 contract and green incremental tests do not establish a complete component library or app adoption.
+
+## First component contract: controlled upper navigation
+
+Import `HaTabs` and `registerTabs` from `@vypdev/ha-ui/tabs`; call registration only at the
+client boundary. It defines `vyp-ha-tabs` explicitly, preserves pre-upgrade property values,
+allows repeated calls with the same constructor and rejects another installed constructor.
+The root and contracts entrypoints stay DOM-independent. The component entrypoint is intended for clients. Lit may install its own DOM shim when imported
+on a server; ha-ui does not define a tag there and rejects registration even with that shim. No server-rendered
+Shadow DOM or framework hydration support is claimed.
+
+Set the `state` property to the validated `NavigationState` contract. It is property-only;
+serialized object attributes and HTML-string rendering are unsupported. Assignment validates
+and snapshots before replacing the previous state. No programmatic assignment emits intent.
+Each user action emits one cancelable, bubbling, composed `ha-selection-request` CustomEvent,
+with frozen `{kind, id}` detail. Apps own selected state and routes. Canceling intent prevents
+the original link navigation; unmodified accepted navigation retains the native anchor default.
+Modified link clicks retain browser behavior and do not emit a selection request. Disabled
+links have no target or tab stop. Stale DOM events during a pending state replacement are rejected.
+
+Navigation renders a labeled `nav` with links and `aria-current=page`. Panels render a labeled
+horizontal `tablist`, native button tabs and actual same-shadow-root labeled `tabpanel` sections.
+Panel item IDs name light-DOM slots. Inactive panel wrappers are hidden, including slotted focus
+targets. Arrow keys skip disabled tabs and wrap; Home/End move focus. RTL reverses horizontal
+arrows. Activation is manual through native Enter/Space/click, while Tab follows normal focus
+order. Null selection keeps a keyboard entry without silently selecting a panel.
+
+The common 56px dashboard bar, 16px horizontal item padding, 2px current indicator and inset
+focus outline adapt Gateway's MIT dashboard geometry. Domus still owns section names and layout.
+Public CSS tokens are `--vyp-ha-font-family`, `--vyp-ha-border`, `--vyp-ha-surface`,
+`--vyp-ha-tab-padding`, `--vyp-ha-text-secondary`, `--vyp-ha-text` and `--vyp-ha-primary`.
+Defaults inherit the corresponding HA theme variables where available. Overrides update live;
+no global styles, network, storage, timers or animation are introduced. Exposed shadow parts are
+`bar`, `item` and `panel`. Framework adapters and packed browser consumers remain separate gates.
+
+The interaction model follows [WAI-ARIA APG tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)
+and uses Lit's documented [reactive properties](https://lit.dev/docs/components/properties/)
+and [events](https://lit.dev/docs/components/events/).

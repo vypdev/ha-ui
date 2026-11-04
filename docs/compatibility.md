@@ -1,7 +1,8 @@
 # Compatibility and validation status
 
-Only the DOM-independent navigation input contract and its build/coverage foundation are implemented.
-No rendered component, framework adapter or framework SSR support is currently accepted.
+The DOM-independent navigation contract, controlled upper navigation/panel component and their
+build/coverage foundation are implemented and tested in Chromium. Framework adapters, additional
+component families, browser support breadth and framework SSR integration remain unaccepted.
 
 | Tool | Exact pin | Current use |
 |---|---|---|
@@ -9,10 +10,12 @@ No rendered component, framework adapter or framework SSR support is currently a
 | pnpm | 10.34.0 | Frozen workspace install |
 | TypeScript | 6.0.3 | Strict contract/type declarations; compatible candidate for Angular compiler-cli 22.2.4 |
 | Vite | 8.3.5 | Test transform toolchain |
-| Vitest and V8 coverage | 5.1.0 | All four metrics globally and per authored runtime file |
+| Lit | 3.3.3 | Internal shared navigation renderer |
+| Vitest, browser provider and V8 coverage | 5.1.0 | Node and real Chromium; all four metrics globally and per authored runtime file |
+| Playwright | 1.64.1 | Chromium 156.0.8078.4 component and clean packed-consumer tests |
 
 The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
-its source currently contains presentation data contracts only. It is not a supported component release.
+its source currently contains presentation contracts and one preview navigation/panel component. It is not a supported component release.
 React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 remain candidate pins until actual packed,
 compiled/browser fixtures pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
 Do not infer support from custom-element interoperability or compiler metadata alone.
@@ -27,6 +30,8 @@ Invalid/extra fields, conflicting selection and unsafe or credential-bearing lin
 NavigationInputError with code invalid_navigation. This validates data, not authorization or rendering.
 
 CI Check runs for each PR head with no path filter. Current gates are strict types, all implemented
-tests, independent source-inventory coverage, architecture/CI contracts, compiled declarations, actual reproducible packed-contract consumption without DOM types,
-and the original pinned Copilot catalog validator. Browser, packed framework fixtures, Storybook, publication
-and actual application acceptance must be added with their implementations before release readiness.
+tests, independent source-inventory coverage, architecture/CI contracts, compiled declarations, real Chromium component behavior, actual reproducible packed consumption with
+a DOM-free contract and a compiled browser client, and the original pinned Copilot catalog validator.
+The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
+and reduced motion. It does not establish other browser engines, framework adapters or framework SSR.
+Packed framework fixtures, Storybook, publication and actual application acceptance remain required.

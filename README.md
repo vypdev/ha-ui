@@ -2,8 +2,9 @@
 
 Shared presentation components for Home Assistant applications, including Gateway and Domus.
 
-The first source increment implements the DOM-independent navigation data contract and a pinned,
-tested build/coverage foundation. Rendered components, the React/Vue/Angular/Svelte adapters,
+The current source implements a DOM-independent navigation data contract, one controlled HA-style
+upper navigation/panel component and a pinned, tested build/coverage foundation. Other component
+families, the React/Vue/Angular/Svelte adapters,
 compiled framework consumers, Storybook and publication remain required and unimplemented.
 No package is published or ready for application adoption.
 
@@ -12,6 +13,7 @@ Use Node 24.20.0 and the package manager pinned in package.json:
 ```bash
 pnpm install --frozen-lockfile --ignore-scripts
 pnpm check
+pnpm exec playwright install --with-deps chromium --only-shell
 pnpm test
 pnpm build
 pnpm test:package

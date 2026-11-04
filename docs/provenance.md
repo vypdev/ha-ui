@@ -2,8 +2,13 @@
 
 The repository and core package carry the MIT notice, copyright 2026 vypdev. The notice is retained
 from [Gateway at e47dde303e475a6d03e1d6697ec87a934e93263b](https://github.com/vypdev/homeassistant-gateway/blob/e47dde303e475a6d03e1d6697ec87a934e93263b/LICENSE).
-No Gateway visual component, font, icon or other asset is extracted in the first contract increment.
-A reviewed per-family/source/asset inventory remains required before extraction and publication.
+The first contract increment extracted no visual components or assets. The upper navigation increment
+adapts the reviewed dashboard geometry from
+[ui-catalog.css lines 105–121 at that revision](https://github.com/vypdev/homeassistant-gateway/blob/e47dde303e475a6d03e1d6697ec87a934e93263b/frontend/src/ui/ui-catalog.css#L105-L121):
+56px bar, 16px horizontal padding, 2px current indicator, horizontal overflow and inset visible focus.
+The standalone DOM semantics, validation, events and controller are authored in ha-ui. No private HA
+component, font, icon or external asset is imported. The MIT notices are retained. Other families
+need their own reviewed source/asset inventory before extraction and publication.
 
 The coverage policy and its negative unit fixtures are adapted from the same organization's MIT
 [Domus coverage policy](https://github.com/vypdev/domus/blob/8c0a36c0b9804bdaf33a301a4dc85ae3dc12ee21/tooling/frontend-coverage.mjs)

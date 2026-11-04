@@ -318,6 +318,8 @@ Prospective repository files (current documents are classified against the immut
 | `packages/svelte/package.json` | create |
 | `packages/svelte/src/index.ts` | create |
 | `tests/contracts/core.test.ts` | create |
+| `tests/contracts/registration.test.ts` | create |
+| `tests/browser/tabs.test.ts` | create |
 | `tests/contracts/adapters.test.ts` | create |
 | `tests/architecture.test.mjs` | create |
 | `tests/coverage-evidence.test.mjs` | create |
