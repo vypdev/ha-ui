@@ -2,14 +2,16 @@
 
 Shared presentation components for Home Assistant applications, including Gateway and Domus.
 
-The current source implements a DOM-independent navigation data contract, one controlled HA-style
-upper navigation/panel component, a controlled form-associated text field, a native-form button, typed single/multiple selects and a pinned, tested
-build/coverage foundation. React, Vue, Angular
-and Svelte navigation, text-field form bindings, native-form buttons and typed selects pass real compiled, packed consumers.
-Other component families and their form bridges, framework SSR boundaries, public Storybook hosting, publication and actual
-application adoption remain required.
-The [shared Storybook](docs/storybook.md) now covers the implemented families.
-No package is published or ready for application adoption.
+The current preview implements upper navigation/local panels, controlled text fields, native-form
+buttons, typed single/multiple selects and boolean checkboxes. React, Vue, Angular and Svelte
+bindings pass source and compiled installed-package consumers. The pinned build/coverage foundation
+and production-backed [Storybook](docs/storybook.md) verify the implemented scope.
+
+[Visual equivalence with HA](docs/visual-parity.md) is an independent required gate. Checkbox
+calibration and font identity are recorded; the other families still need the same direct comparison
+and any corrections. Remaining families, full framework SSR/browser coverage, public catalog hosting,
+publication and actual application adoption remain required. No package is published or ready for
+application adoption.
 
 Use Node 24.20.0 and the package manager pinned in package.json:
 
@@ -31,3 +33,5 @@ choosing application routes or accepting rendering callbacks. See the
 [delivery companion](specs/shared-ui-framework-delivery.md) and [capability catalog](specs/CATALOG.md).
 [Issue #7](https://github.com/vypdev/ha-ui/issues/7) retains all 64 baseline cases and six delivery
 refinements. Clean checks on this increment do not complete that scope.
+
+Appearance is an independent required gate: see [HA visual equivalence](docs/visual-parity.md). Checkbox calibration and local font identity do not accept the other families.

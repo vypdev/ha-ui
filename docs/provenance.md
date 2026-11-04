@@ -74,3 +74,30 @@ lines 143–146: a 56px minimum control, 16px padding and public semantic theme 
 single/multiple select, typed primitive model policies, successful repeated entries, controlled
 requests/reset, state restoration and four framework bindings are authored here. No Gateway or
 private HA runtime, third-party component source, menu asset or icon is copied into this family.
+
+## Measured HA checkbox and catalog fonts
+
+The checkbox's earlier browser-native preview was replaced with the visible geometry and states
+observed in the actual HA public ha-checkbox component. The reviewed upstream reference is
+[ha-checkbox at 027d9578](https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-checkbox.ts),
+under Apache 2.0. The [measurement record](evidence/ha-checkbox-reference.json) fingerprints the
+installed public bundles separately; it does not equate that upstream commit with the installed
+revision. The core package retains NOTICE and LICENSES/Home-Assistant-Apache-2.0.txt. Adaptations
+keep one controlled native input/ElementInternals model, a 44px invisible target and authored
+validation/request handling; no HA or Web Awesome runtime is copied or imported.
+
+The embedded unmodified check path is Font Awesome Free 7.0.0, Copyright 2025 Fonticons, Inc.,
+[check.svg](https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/check.svg). Its icon
+license is CC BY 4.0. Attribution remains in source and the shipped NOTICE, with the original
+Font Awesome license in LICENSES/Font-Awesome-Free-7.0.0.txt. The simple mixed-state line is
+authored here. Other authored component/controller code remains under the repository MIT notice.
+
+Catalog font assets come from roboto-fontface 0.10.0, the exact package declared by the reviewed
+HA frontend. Regular and Medium WOFF2 files were byte-compared with the actual HA responses; their
+identities are recorded with the reference. Vite bundles only the two referenced files locally.
+LICENSES/Roboto-Apache-2.0.txt preserves the package's Apache 2.0 license in the static catalog.
+These are catalog/app font assets; the shared renderer makes no remote request.
+
+The core package SPDX expression is `(MIT AND Apache-2.0 AND CC-BY-4.0)` to represent its
+authored code and bundled attributed visual material. Adapter packages retain their own MIT
+license and depend on that core; they include no alternative copy of these visual assets.

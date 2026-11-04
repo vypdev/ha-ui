@@ -26,3 +26,5 @@ export {Button} from './button.js';
 export type {ButtonProps} from './button.js';
 export {Select} from './select.js';
 export type {SelectProps} from './select.js';
+export {Checkbox} from './checkbox.js';
+export type {CheckboxProps} from './checkbox.js';

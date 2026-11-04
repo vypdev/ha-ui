@@ -30,7 +30,9 @@
         "packages/core/src/button-contracts.ts",
         "packages/core/src/components/button.ts",
         "packages/core/src/select-contracts.ts",
-        "packages/core/src/components/select.ts"
+        "packages/core/src/components/select.ts",
+        "packages/core/src/checkbox-contracts.ts",
+        "packages/core/src/components/checkbox.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
@@ -69,7 +71,16 @@
         "packages/vue/src/select.ts",
         "packages/angular/src/select.ts",
         "packages/svelte/src/Select.svelte",
-        "stories/select.example.ts"
+        "stories/select.example.ts",
+        "packages/core/src/checkbox-contracts.ts",
+        "packages/core/src/components/checkbox.ts",
+        "packages/core/src/components/implicit-submit.ts",
+        "packages/react/src/checkbox.ts",
+        "packages/vue/src/checkbox.ts",
+        "packages/angular/src/checkbox.ts",
+        "packages/svelte/src/Checkbox.svelte",
+        "stories/checkbox.example.ts",
+        "stories/catalog-completion.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -151,7 +162,37 @@
         "tests/browser/svelte-select.test.mjs",
         "tests/browser/fixtures/SvelteSelect.svelte",
         "tests/consumers/selects.ts",
-        "stories/select.stories.ts"
+        "stories/select.stories.ts",
+        "tests/contracts/checkbox.test.ts",
+        "tests/browser/checkbox.test.ts",
+        "tests/browser/checkbox-framework-fixture.ts",
+        "tests/browser/react-checkbox.test.ts",
+        "tests/browser/vue-checkbox.test.ts",
+        "tests/browser/angular-checkbox.test.ts",
+        "tests/browser/svelte-checkbox.test.mjs",
+        "tests/browser/fixtures/SvelteCheckbox.svelte",
+        "tests/consumers/checkboxes.ts",
+        "tests/consumers/fonts.ts",
+        "tests/storybook/checkbox-visual.ts",
+        "tests/typing/catalog-assets.d.ts",
+        "stories/checkbox.stories.ts",
+        "tests/browser/catalog-lifecycle.test.ts",
+        "tests/storybook/lifecycle.ts",
+        "tests/storybook/screenshot.ts",
+        "tests/storybook/reference/ha-checkbox/dark-checked.png",
+        "tests/storybook/reference/ha-checkbox/dark-disabled.png",
+        "tests/storybook/reference/ha-checkbox/dark-focus.png",
+        "tests/storybook/reference/ha-checkbox/dark-hover.png",
+        "tests/storybook/reference/ha-checkbox/dark-mixed.png",
+        "tests/storybook/reference/ha-checkbox/dark-required.png",
+        "tests/storybook/reference/ha-checkbox/dark-unchecked.png",
+        "tests/storybook/reference/ha-checkbox/light-checked.png",
+        "tests/storybook/reference/ha-checkbox/light-disabled.png",
+        "tests/storybook/reference/ha-checkbox/light-focus.png",
+        "tests/storybook/reference/ha-checkbox/light-hover.png",
+        "tests/storybook/reference/ha-checkbox/light-mixed.png",
+        "tests/storybook/reference/ha-checkbox/light-required.png",
+        "tests/storybook/reference/ha-checkbox/light-unchecked.png"
       ],
       "documentation": [
         "README.md",
@@ -162,7 +203,14 @@
         "docs/framework-adapters.md",
         "docs/storybook.md",
         "docs/button-contract.md",
-        "docs/select-contract.md"
+        "docs/select-contract.md",
+        "docs/checkbox-contract.md",
+        "docs/visual-parity.md",
+        "docs/evidence/ha-checkbox-reference.json",
+        "packages/core/NOTICE",
+        "packages/core/LICENSES/Home-Assistant-Apache-2.0.txt",
+        "packages/core/LICENSES/Font-Awesome-Free-7.0.0.txt",
+        "LICENSES/Roboto-Apache-2.0.txt"
       ],
       "readiness": {
         "status": "draft",
@@ -173,7 +221,7 @@
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
         ],
-        "implementationEvidence": "Partial: shared navigation/panels and text field with React/Vue/Angular/Svelte field/navigation bindings; a core button has explicit real-native-submitter equivalence. Actual installed core and four field/navigation consumers pass. The 28-story catalog passes 48 static locale/theme/width combinations. Button framework bindings, other controls, full SSR/browser matrix, live hosting, delivery/publication and application adoption remain required."
+        "implementationEvidence": "Partial: navigation/panels, field, button, typed single/multiple select and boolean checkbox have four real framework bindings and compiled packed consumers. The50-story catalog and checkbox HA visual gate are recorded separately. Other families, visual calibration of earlier controls, full SSR/browser matrix, live hosting, publication and both application adoptions remain required."
       }
     }
   ]

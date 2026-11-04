@@ -6,3 +6,5 @@ export {default as Button} from './Button.svelte';
 export type {ButtonProps} from './types.js';
 export {default as Select} from './Select.svelte';
 export type {SelectProps} from './types.js';
+export {default as Checkbox} from './Checkbox.svelte';
+export type {CheckboxProps} from './types.js';

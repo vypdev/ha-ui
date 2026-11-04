@@ -12,7 +12,8 @@
   "include": [
     "stories/**/*.ts",
     ".storybook/**/*.ts",
-    "tests/typing/storybook.ts"
+    "tests/typing/storybook.ts",
+    "tests/typing/catalog-assets.d.ts"
   ],
   "exclude": []
 }

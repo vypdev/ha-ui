@@ -1,3 +1,5 @@
+import {fixtureFonts} from './fonts.ts';
+import {exerciseFrameworkCheckbox} from './checkboxes.ts';
 import {exerciseFrameworkSelect} from './selects.ts';
 import {exerciseFrameworkButton} from './framework-buttons.ts';
 import {exerciseField} from './fields.ts';
@@ -24,6 +26,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
   for (const framework of ['react','vue','angular','svelte']) {
     const folder=join(scratch,'consumer-'+framework);
     await cp(join(root,'tests/consumers/fixtures',framework),folder,{recursive:true});
+    await fixtureFonts(root,folder);
     const lock=parse(await readFile(join(folder,'pnpm-lock.yaml'),'utf8'));
     const candidateArchives=[];
     for (const [key,description] of Object.entries(lock.packages) as [string,{resolution:{tarball?:string;integrity:string}}][]) {
@@ -69,9 +72,11 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
     try {
       await server.listen();const address=server.httpServer!.address();assert.ok(address&&typeof address==='object');
       await page.goto('http://127.0.0.1:'+address.port);
+      await page.evaluate(()=>document.fonts.ready);
       const textField=await exerciseField(page);
       const button=await exerciseFrameworkButton(page,root,framework);
       const select=await exerciseFrameworkSelect(page,root,framework);
+      const checkbox=await exerciseFrameworkCheckbox(page,root,framework);
       await page.getByRole('tab',{name:'Tasks',exact:true}).click();
       await page.getByRole('button',{name:'Add task',exact:true}).waitFor({state:'visible'});
       assert.equal(await page.getByLabel('Selection events').textContent(),'1');
@@ -111,12 +116,17 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       await page.locator('#bound-category').screenshot({path:join(root,'test-results','packed-'+framework+'-select-dark-es.png')});
       await page.getByRole('button',{name:'Toggle category mode',exact:true}).click();await page.getByRole('listbox',{name:'Categoría',exact:true}).waitFor();
       await page.locator('#bound-category').screenshot({path:join(root,'test-results','packed-'+framework+'-select-multiple-dark-es.png')});
+      await page.getByRole('checkbox',{name:'Avisar al hogar',exact:true}).waitFor();
+      await page.locator('#bound-checkbox').screenshot({path:join(root,'test-results','packed-'+framework+'-checkbox-dark-es.png')});
+      await page.getByRole('button',{name:'Toggle partial',exact:true}).click();
+      await page.waitForFunction(()=>Boolean((document.querySelector('#bound-checkbox') as HTMLElement).shadowRoot!.querySelector<HTMLInputElement>('input')!.indeterminate));
+      await page.locator('#bound-checkbox').screenshot({path:join(root,'test-results','packed-'+framework+'-checkbox-partial-dark-es.png')});
       await textbox.fill('');await page.getByRole('button',{name:'Guardar tarea',exact:true}).click();
       assert.equal(await page.getByText('Introduce un valor.',{exact:true}).isVisible(),true);
       assert.equal(await page.locator('vyp-ha-field #error').evaluate(element=>getComputedStyle(element).color),'rgb(242, 139, 130)');
       await page.locator('vyp-ha-field').screenshot({path:join(root,'test-results','packed-'+framework+'-field-error-dark-es.png')});
       assert.deepEqual(errors,[]);
-      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,textField,button,select,browser:browser.version(),errors});
+      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,textField,button,select,checkbox,browser:browser.version(),errors});
       console.log('Packed '+framework+' compiler, bindings and real Chromium lifecycle passed');
     } finally {await page.close();await server.close();}
   }

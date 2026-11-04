@@ -44,6 +44,12 @@
       ],
       "@vypdev/ha-ui/select": [
         "./packages/core/src/components/select.ts"
+      ],
+      "@vypdev/ha-ui/checkbox-contracts": [
+        "./packages/core/src/checkbox-contracts.ts"
+      ],
+      "@vypdev/ha-ui/checkbox": [
+        "./packages/core/src/components/checkbox.ts"
       ]
     }
   },

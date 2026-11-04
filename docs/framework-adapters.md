@@ -261,3 +261,19 @@ framework reset, disabled submission, EN/ES/themes and teardown/remount. Native 
 and visible-list arrow navigation are exercised. On the local headless Chromium, dropdown arrows
 also leave a standalone native select unchanged; that observed driver/platform limitation is not
 represented as a component behavior fix or broader browser support claim.
+
+## Checkbox binding contract
+
+All four packages export Checkbox. React and Svelte bind checked with onCheckedRequest and
+onCheckedChange; Vue uses boolean modelValue, checkedRequest and update:modelValue. Angular
+supports checked/checkedChange or its actual ControlValueAccessor/Validator. The original
+ha-check-request is validated and passed to observers before an accepted boolean reaches the
+framework model; cancellation suppresses that model change. Framework defaults/reset and
+updateOn behavior remain owned by their native form APIs. Nullable Angular resets retain null
+in the control while showing unchecked. Indeterminate is a state flag derived by the app, not
+a third model value. All bindings share the [same renderer and forms contract](checkbox-contract.md).
+
+Compiled installed consumers exercise label/Space and Enter, required native validation,
+boolean models, default/custom payloads, disabled omission, cancellation, programmatic writes,
+reset and teardown/remount. Their local fonts use the same licensed bytes as HA; component
+code never fetches fonts. SSR and wider browser/application acceptance remain separate gates.

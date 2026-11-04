@@ -1,8 +1,8 @@
 # Shared component library
 
 The current source implements the DOM-independent navigation contract, one controlled upper
-navigation/panel renderer, a single-line text field, a native-form button, typed single/multiple selects and the tested quality/build foundation. The renderer passes direct
-Chromium and clean actual-package browser consumers. Four navigation, text-field form, button and select adapters now also pass real compiled package consumers. Other component families,
+navigation/panel renderer, a single-line text field, a native-form button, typed single/multiple selects, boolean checkboxes and the tested quality/build foundation. The renderer passes direct
+Chromium and clean actual-package browser consumers. Four navigation, text-field form, button, select and checkbox adapters now also pass real compiled package consumers. Other component families,
 other form bridges, framework SSR, public Storybook hosting, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
@@ -231,3 +231,16 @@ renderer. Angular includes its value-accessor/validator bridge and documented na
 opt-in. The catalog has eleven select stories covering single/multiple, required, disabled/error,
 missing/disabled options, empty lists, cancellation and Spanish dark/narrow content. Other families,
 framework SSR, broader browser engines and full application adoption remain required.
+
+## Controlled checkbox and visual acceptance
+
+The [checkbox contract](checkbox-contract.md) defines the boolean model, independent mixed flag,
+closed request snapshots, successful entries, validation and reset/restoration semantics. React,
+Vue, Angular and Svelte bindings use the one core renderer, including Angular Forms integration.
+The catalog adds eleven checkbox stories and the exact locally bundled HA Roboto font files.
+
+The [HA visual-equivalence procedure](visual-parity.md) is a required review gate for every family.
+A matching functional API or 100% coverage does not establish appearance. Checkbox measurements
+are scoped to the actual recorded HA states; navigation, buttons, text fields and selects still
+require the same direct comparison and correction before acceptance. This work precedes further
+visual families and application adoption, so those apps do not adopt an uncalibrated visual layer.

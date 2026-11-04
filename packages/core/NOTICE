@@ -1,0 +1,13 @@
+ha-ui authored source: Copyright 2026 vypdev, MIT license (see LICENSE).
+
+Checkbox visual styles adapt Home Assistant frontend ha-checkbox, Apache License 2.0.
+Source: https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-checkbox.ts
+Modifications: native controlled ElementInternals input, public theme fallback values,
+44px invisible input target, authored local labels/errors, no Web Awesome runtime dependency.
+See LICENSES/Home-Assistant-Apache-2.0.txt. Home Assistant is not an endorser of this package.
+
+The embedded check SVG is Font Awesome Free 7.0.0 by Fonticons, Inc., Copyright 2025.
+Source: https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/check.svg
+Icons: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/
+The path is unmodified; its display size is set by CSS. Attribution is also retained in source.
+See LICENSES/Font-Awesome-Free-7.0.0.txt. The simple mixed-state line is authored here.

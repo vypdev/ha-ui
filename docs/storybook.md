@@ -1,7 +1,7 @@
 # Shared component catalog
 
 The current catalog displays the implemented upper navigation, local panels and single-line text
-field, button and typed single/multiple select using the real package entrypoints. Thirty-nine CSF stories have automatic documentation,
+field, button, boolean checkbox and typed single/multiple select using the real package entrypoints. Fifty CSF stories have automatic documentation,
 controls, interaction tests and accessibility checks. This is an incremental preview; other
 families, the full framework/SSR/browser matrix and application adoption are still required.
 
@@ -26,6 +26,7 @@ are local to the static build; the browser gate rejects external requests and fa
 | Tabs / Local panels | The same renderer, `kind: panels` | Named slots, manual keyboard activation, disabled and unselected |
 | Buttons / Actions | `@vypdev/ha-ui/button` | Eight variants, native submit/reset, busy, pressed, icon-only, disabled and canceled |
 | Forms / Text field | `@vypdev/ha-ui/field` | Controlled draft, native submit/reset, required, readonly, disabled and error |
+| Forms / Checkbox | `@vypdev/ha-ui/checkbox` | Boolean checked, independent mixed state, required, disabled/error, cancellation, custom payload, long labels and reset |
 | Forms / Select | `@vypdev/ha-ui/select` | Typed single/multiple values, required, disabled/error, unavailable/disabled options, empty, cancellation and reset |
 
 The toolbar chooses English/Spanish, light/dark, narrow/wide and reduced/system motion. Unsupported
@@ -84,3 +85,18 @@ removes that unused directive. It changes only `dist/index.d.ts`: all original J
 byte-identical. Library checking and strictness remain enabled; positive and negative CSF type
 fixtures compile. No Copilot resource is modified. Review and remove the patch when a future pinned
 Storybook release passes those same checks without it. See [provenance](provenance.md).
+
+## HA visual reference
+
+The [visual-equivalence gate](visual-parity.md) compares actual HA states against the built shared
+component. The catalog now bundles the same Roboto Regular/Medium font bytes as the measured HA
+frontend, with local license notices. The static browser gate explicitly waits for both font
+faces to load, exercises 80 locale/theme/width combinations and compares fourteen recorded
+checkbox visual states. Other families still need the same HA comparison and any corrections;
+a passing functional or accessibility test alone does not establish visual equivalence.
+
+The independent static accessibility scan waits for Storybook's public STORY_FINISHED event and
+requires its real automatic a11y reports to pass first. It then resets axe to default rules and
+scans the component surface independently. Neither scan is disabled; this prevents concurrent
+axe instances from racing. The completion witness retains status metadata only and cleans up
+its event listener. Browser test projects prebundle the event protocol before collecting tests.

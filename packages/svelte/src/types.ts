@@ -25,3 +25,7 @@ export interface ButtonProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'clas
 import type {SelectState,SelectSelection} from '@vypdev/ha-ui/select-contracts';
 import type {SelectValueEvent} from '@vypdev/ha-ui/select';
 export interface SelectProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {state:SelectState;value:SelectSelection;name?:string;defaultValue?:SelectSelection;disabled?:boolean;form?:string;onValueRequest?:(event:SelectValueEvent)=>void;onValueChange?:(value:SelectSelection)=>void;}
+
+import type {CheckboxState} from '@vypdev/ha-ui/checkbox-contracts';
+import type {CheckboxChangeEvent} from '@vypdev/ha-ui/checkbox';
+export interface CheckboxProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {state:CheckboxState;checked:boolean;defaultChecked?:boolean;value?:string;name?:string;disabled?:boolean;form?:string;onCheckedRequest?:(event:CheckboxChangeEvent)=>void;onCheckedChange?:(checked:boolean)=>void;}

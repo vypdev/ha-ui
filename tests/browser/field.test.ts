@@ -1,4 +1,4 @@
-import {afterEach,expect,test} from 'vitest';
+import {afterEach,expect,test,vi} from 'vitest';
 import {userEvent} from 'vitest/browser';
 import {textFieldState,FieldInputError} from '../../packages/core/src/field-contracts.js';
 import {HaTextField,registerField,type FieldValueEvent} from '../../packages/core/src/components/field.js';
@@ -233,4 +233,8 @@ test('implicit Enter clicks the native default submitter so application click ca
 
 test.each(['requestSubmit','getRootNode'])('implicit Enter supports a legal field name that shadows %s',async name=>{
  const {field,form}=await mount();field.name=name;let submissions=0;form.addEventListener('submit',event=>{event.preventDefault();submissions++;});field.focus();await userEvent.keyboard('{Enter}');await new Promise<void>(done=>setTimeout(done,0));expect(submissions).toBe(1);
+});
+
+test('Enter from a previous connection cannot submit after the same field is reattached to the same form',async()=>{
+ const {field,form}=await mount(),submits=vi.fn((event:Event)=>event.preventDefault());form.addEventListener('submit',submits);field.addEventListener('keydown',()=>{field.remove();form.append(field);},{once:true});field.focus();await userEvent.keyboard('{Enter}');await new Promise(resolve=>setTimeout(resolve,0));expect(submits).not.toHaveBeenCalled();field.focus();await userEvent.keyboard('{Enter}');await vi.waitFor(()=>expect(submits).toHaveBeenCalledTimes(1));
 });

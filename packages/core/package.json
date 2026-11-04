@@ -3,7 +3,7 @@
   "version": "0.1.0-next.1",
   "description": "Shared presentation contracts and components for Home Assistant applications",
   "type": "module",
-  "license": "MIT",
+  "license": "(MIT AND Apache-2.0 AND CC-BY-4.0)",
   "repository": {
     "type": "git",
     "url": "https://github.com/vypdev/ha-ui.git",
@@ -12,7 +12,9 @@
   "files": [
     "dist",
     "src",
-    "LICENSE"
+    "LICENSE",
+    "NOTICE",
+    "LICENSES"
   ],
   "sideEffects": false,
   "exports": {
@@ -51,6 +53,14 @@
     "./select": {
       "types": "./dist/components/select.d.ts",
       "import": "./dist/components/select.js"
+    },
+    "./checkbox-contracts": {
+      "types": "./dist/checkbox-contracts.d.ts",
+      "import": "./dist/checkbox-contracts.js"
+    },
+    "./checkbox": {
+      "types": "./dist/components/checkbox.d.ts",
+      "import": "./dist/components/checkbox.js"
     }
   },
   "publishConfig": {

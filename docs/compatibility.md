@@ -1,7 +1,7 @@
 # Compatibility and validation status
 
 The DOM-independent navigation contract, controlled upper navigation/panel component and their
-build/coverage foundation are implemented and tested in Chromium. Navigation, text-field form adapters, native-form buttons and typed selects for four frameworks pass real compiled package consumers. Other component
+build/coverage foundation are implemented and tested in Chromium. Navigation, text-field form adapters, native-form buttons typed selects and boolean checkboxes for four frameworks pass real compiled package consumers. Other component
 families and their form bridges, browser support breadth and framework SSR integration remain unaccepted.
 
 | Tool | Exact pin | Current use |
@@ -10,7 +10,7 @@ families and their form bridges, browser support breadth and framework SSR integ
 | pnpm | 10.34.0 | Frozen workspace install |
 | TypeScript | 6.0.3 | Strict contract/type declarations; compatible candidate for Angular compiler-cli 22.2.4 |
 | Vite | 8.3.5 | Test transform toolchain |
-| Lit | 3.3.3 | Internal shared navigation, text-field, button and select renderers |
+| Lit | 3.3.3 | Internal shared navigation, text-field, button, select and checkbox renderers |
 | Vitest, browser provider and V8 coverage | 5.1.0 | Node and real Chromium; all four metrics globally and per authored runtime file |
 | Storybook / Web Components / docs / a11y / Vitest addon | 10.6.5 | Real catalog with strict declaration-only compatibility patch |
 | axe-core | 4.14.0 | All static locale/theme/width combinations |
@@ -18,8 +18,8 @@ families and their form bridges, browser support breadth and framework SSR integ
 
 The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
 its source currently contains presentation contracts, one preview navigation/panel component and
-one controlled text field, a native-form button and typed single/multiple selects. It is not a supported component release.
-React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation, single-line text-field, button and select compiled/browser
+one controlled text field, a native-form button, typed single/multiple selects and a controlled checkbox. It is not a supported component release.
+React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation, single-line text-field, button, select and checkbox compiled/browser
 fixtures using actual packages. They remain preview pins until the complete component and delivery gates pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
 Do not infer support from custom-element interoperability or compiler metadata alone.
 
@@ -36,7 +36,7 @@ CI Check runs for each PR head with no path filter. Current gates are strict typ
 tests, independent source-inventory coverage, architecture/CI contracts, compiled declarations, real Chromium component behavior, actual reproducible packed consumption with
 a DOM-free contract and a compiled browser client, and the original pinned Copilot catalog validator.
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
-and reduced motion. The additional four framework fixtures establish navigation, text-field model/submission/validation/disabled/reset/lifecycle native button and typed single/multiple select behavior;
+and reduced motion. The additional four framework fixtures establish navigation, text-field model/submission/validation/disabled/reset/lifecycle native button, boolean checkbox and typed single/multiple select behavior;
 other control types, browser engines and framework SSR remain unverified.
 Complete component-family/framework fixtures, public Storybook hosting, publication and actual app adoption remain required.
 The [implemented catalog and static browser gates](storybook.md) cover only the current families.
@@ -69,3 +69,5 @@ catalog stories and the enlarged 64-combination static matrix cover the current 
 standalone native dropdown also ignores arrow activation; dropdown typeahead and visible-list arrows
 are verified, without claiming other engines or automatic history restoration. Details and exact
 bounds are in the [select contract](select-contract.md).
+
+Appearance is an independent required gate: see [HA visual equivalence](visual-parity.md). Checkbox calibration and local font identity do not accept the other families.

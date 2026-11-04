@@ -1,4 +1,5 @@
 import {LitElement,css,html,nothing} from 'lit';
+import {implicitSubmit} from './implicit-submit.js';
 import {FieldInputError,textFieldName,textFieldState,textFieldValue,textFieldValidity,type TextFieldState,type FieldValueReason,type FieldValueDetail} from '../field-contracts.js';
 
 export type {FieldValueReason,FieldValueDetail} from '../field-contracts.js';
@@ -25,12 +26,14 @@ export class HaTextField extends LitElement {
     .help,.error {font-size:12px;line-height:1.35;} .help {color:var(--vyp-ha-text-secondary,var(--secondary-text-color,#595959));}
     .error {color:var(--vyp-ha-danger,var(--error-color,#b3261e));}
   `;
-  #internals=this.attachInternals();
+  #connection=0;#internals=this.attachInternals();
   #state=textFieldState({label:'Value'});
   #value='';#defaultValue='';#name='';#disabled=false;#formDisabled=false;
   #dirty=false;#showValidation=false;#customError='';#composing=false;#revision=0;#compositionRevision=0;
   #pending:Proposal|null=null;#finalComposition:string|null=null;#fromAttribute=false;#restoringAttribute=false;
   constructor(){super();this.addEventListener('invalid',this.#reveal);}
+  connectedCallback():void{super.connectedCallback();this.#connection++;}
+  disconnectedCallback():void{this.#connection++;super.disconnectedCallback();}
   attributeChangedCallback(name:string,previous:string|null,next:string|null):void{
     if(this.#restoringAttribute)return;
     try{if(name==='value')textFieldValue(next??'');else if(name==='name')textFieldName(next??'');}
@@ -114,14 +117,10 @@ export class HaTextField extends LitElement {
   #enter(event:KeyboardEvent):void{
     if(!event.isTrusted||event.key!=='Enter'||event.isComposing||this.#composing||event.ctrlKey||event.metaKey||event.altKey||event.shiftKey)return;
     // Shadow inputs have no outer form owner. Defer until application key handlers can cancel.
-    const form=this.form;
+    const form=this.form,connection=this.#connection;
     setTimeout(()=>{
-      if(event.defaultPrevented||this.disabled||this.#formDisabled||form===null||this.form!==form)return;
-      const controls=[...(Node.prototype.getRootNode.call(form) as Document|ShadowRoot).querySelectorAll<HTMLInputElement|HTMLButtonElement|HaTextField>('input,button,vyp-ha-field')].filter(control=>control.form===form);
-      const submitter=controls.find(control=>(control instanceof HTMLButtonElement||control instanceof HTMLInputElement)&&(control.type==='submit'||control.type==='image')) as HTMLButtonElement|HTMLInputElement|undefined;
-      if(submitter!==undefined){if(!submitter.disabled)submitter.click();return;}
-      const blockers=controls.filter(control=>control instanceof HaTextField||(control instanceof HTMLInputElement&&['text','search','url','tel','email','password','date','month','week','time','datetime-local','number'].includes(control.type)));
-      if(blockers.length<=1)HTMLFormElement.prototype.requestSubmit.call(form);
+      if(connection!==this.#connection||event.defaultPrevented||this.disabled||this.#formDisabled||form===null||this.form!==form)return;
+      implicitSubmit(form);
     });
   }
   protected render(){

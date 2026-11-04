@@ -1,11 +1,14 @@
+import {addons} from 'storybook/preview-api';
+import {observeCatalogCompletion} from '../stories/catalog-completion.js';
 import type {Preview} from '@storybook/web-components-vite';
 import {registerTabs} from '@vypdev/ha-ui/tabs';
 import {registerButton} from '@vypdev/ha-ui/button';
+import {registerCheckbox} from '@vypdev/ha-ui/checkbox';
 import {registerSelect} from '@vypdev/ha-ui/select';
 import {registerField} from '@vypdev/ha-ui/field';
 import {catalogFrame} from '../stories/catalog-frame.js';
 const preview:Preview={
-  beforeAll:()=>{registerTabs();registerField();registerButton();registerSelect();},decorators:[catalogFrame],
+  beforeAll:()=>{registerTabs();registerField();registerButton();registerSelect();registerCheckbox();return observeCatalogCompletion(addons.getChannel(),document.documentElement);},decorators:[catalogFrame],
   initialGlobals:{theme:'light',locale:'en',width:'wide',motion:'system'},
   globalTypes:{
     theme:{description:'HA-compatible theme',toolbar:{title:'Theme',icon:'circlehollow',items:[{value:'light',title:'Light'},{value:'dark',title:'Dark'}],dynamicTitle:true}},
