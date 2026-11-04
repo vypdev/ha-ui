@@ -30,8 +30,10 @@ The owner needs delivery evidence that makes the same shared implementation repr
 
 ### 2.2 Current behavior
 
+The following observations describe the pre-implementation baseline at the reviewed base below. Later partial implementation and verification are recorded in [the implementation evidence](../docs/evidence/shared-ui-foundation.json); complete release and application adoption remain pending.
+
 1. The validated catalog at base `d885bccf2c3152c3151471d3efaabd901429d6bd` records `shared-ui-foundation` as proposed, with no runtime implementation, entrypoints, code, or tests.
-2. The repository currently contains documentation and the reviewed Copilot installation; no shared package, adapters, or Storybook are implemented or published.
+2. At that reviewed base, the repository contains documentation and the reviewed Copilot installation; no shared package, adapters, or Storybook are implemented or published.
 3. Candidate registry versions are read-only research, not executed support claims. No consumer acceptance or publication-rights evidence is supplied.
 
 ### 2.3 Evidence
@@ -524,8 +526,6 @@ Prospective repository files (current documents are classified against the immut
 | `tests/storybook/reference/ha-checkbox/light-mixed.png` | create |
 | `tests/storybook/reference/ha-checkbox/light-required.png` | create |
 | `tests/storybook/reference/ha-checkbox/light-unchecked.png` | create |
-
-The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 | `tests/browser/navigation-visual.test.ts` | create |
 | `tests/storybook/navigation-visual.ts` | create |
 | `docs/evidence/ha-navigation-reference.json` | create |
@@ -545,6 +545,8 @@ The catalog/index update registers the companion under the existing owner; it do
 | `tests/storybook/reference/ha-navigation/linux/dark-hover.png` | create |
 | `tests/storybook/reference/ha-navigation/linux/dark-focus.png` | create |
 | `tests/storybook/reference/ha-navigation/linux/dark-disabled.png` | create |
+
+The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 
 ## 16. Acceptance scenarios
 
