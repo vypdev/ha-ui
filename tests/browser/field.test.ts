@@ -150,9 +150,12 @@ test('retains values across disconnect/reparenting and uses live HA theme tokens
   expect(getComputedStyle(input(field)).color).toBe('rgb(222, 223, 224)');expect(getComputedStyle(input(field)).backgroundColor).toBe('rgb(30, 31, 32)');expect(getComputedStyle(input(field)).minHeight).toBe('56px');expect(input(field).labels![0].textContent).toBe('Nombre de la tarea');expect(input(field).value).toBe('Saved');
 });
 
-test('supports restoration and default changes before the first render without requiring a selection range',async()=>{
+test('delivers pre-render restoration for deferred or synchronous consumer acknowledgment',async()=>{
   registerField();const field=document.createElement('vyp-ha-field');field.focus();field.blur();field.defaultValue='Baseline';field.defaultValue='Baseline';
-  field.formStateRestoreCallback('Deferred','restore');document.body.append(field);await field.updateComplete;field.value='Deferred';expect(input(field).value).toBe('Deferred');
+  const requests:FieldValueEvent[]=[];field.addEventListener('ha-value-request',event=>requests.push(event));
+  field.formStateRestoreCallback('Deferred','restore');expect(requests).toHaveLength(1);expect(requests[0].detail).toEqual({value:'Deferred',reason:'restore'});expect(field.value).toBe('Baseline');
+  document.body.append(field);await field.updateComplete;expect(input(field).value).toBe('Baseline');
+  field.value=requests[0].detail.value;expect(input(field).value).toBe('Deferred');expect(requests).toHaveLength(1);
   const early=document.createElement('vyp-ha-field');accept(early);early.formStateRestoreCallback('Before render','restore');document.body.append(early);await early.updateComplete;expect(input(early).value).toBe('Before render');
 });
 

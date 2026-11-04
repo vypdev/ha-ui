@@ -410,5 +410,12 @@
     "restoration": "Every previous compiled distribution restored byte-for-byte",
     "reason": "All five distributions absent: strict source/consumer/Svelte checks and the full source browser campaign pass. Vitest resolves the current DOM-independent field policy source explicitly; the installed-package fixtures have no source alias.",
     "restoredFiles": 55
+  },
+  "restoreReviewRegression": {
+    "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4464672339",
+    "problem": "The deferred pre-render test assigned a literal expected value without proving restoration intent was observed.",
+    "correction": "Capture the restore request before connection, assert its immutable detail and unchanged baseline, then acknowledge its captured value after render; assert no second request. The synchronous acknowledgment case remains.",
+    "validation": "352 source tests pass; coverage remains 100% per authored runtime file and globally. Runtime source/cohort bytes are unchanged.",
+    "manualResolution": false
   }
 }
