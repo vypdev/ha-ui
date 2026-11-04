@@ -48,3 +48,13 @@ export function textFieldValidity(rawValue:unknown,rawState:unknown,customError:
   const message=customError||state.error||(flags.valueMissing?state.requiredMessage:flags.tooShort?state.tooShortMessage:flags.tooLong?state.tooLongMessage:'');
   return Object.freeze({flags,message});
 }
+
+export type FieldValueReason='input'|'reset'|'restore'|'autocomplete';
+export interface FieldValueDetail {readonly value:string;readonly reason:FieldValueReason;}
+/** Validate event payloads at each model bridge before any application callback. */
+export function fieldValueDetail(raw:unknown):FieldValueDetail {
+  if(typeof raw!=='object'||raw===null||Array.isArray(raw)||Object.keys(raw).length!==2||!Object.hasOwn(raw,'value')||!Object.hasOwn(raw,'reason'))invalid();
+  const source=raw as Record<string,unknown>,value=textFieldValue(source.value),reason=source.reason as FieldValueReason;
+  if(!['input','reset','restore','autocomplete'].includes(reason))invalid();
+  return Object.freeze({value,reason});
+}

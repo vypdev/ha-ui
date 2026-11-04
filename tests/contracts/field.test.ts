@@ -1,5 +1,5 @@
 import {expect,test} from 'vitest';
-import {FieldInputError,textFieldState,textFieldValue,textFieldName,textFieldValidity} from '../../packages/core/src/field-contracts.js';
+import {FieldInputError,textFieldState,textFieldValue,textFieldName,textFieldValidity,fieldValueDetail} from '../../packages/core/src/field-contracts.js';
 const state=(patch:Record<string,unknown>={})=>({label:'Task title',...patch});
 function reject(action:()=>unknown){expect(action).toThrow(FieldInputError);try{action();}catch(error){expect((error as FieldInputError).code).toBe('invalid_field');expect((error as Error).message).toBe('invalid_field');}}
 test('field contracts import without DOM and return immutable independent configuration',()=>{
@@ -47,3 +47,8 @@ test('validity is immutable and distinguishes optional empty, required, short, l
 test('public validity inputs keep the same bounded validation contract',()=>{
  reject(()=>textFieldValidity(null,state()));reject(()=>textFieldValidity('ok',null));reject(()=>textFieldValidity('ok',state(),'\u0000'));
 });
+
+test.each(['input','reset','restore','autocomplete'])('field request %s is validated and independently frozen',reason=>{
+ const input={value:'Kitchen',reason},detail=fieldValueDetail(input);input.value='Changed';expect(detail).toEqual({value:'Kitchen',reason});expect(Object.isFrozen(detail)).toBe(true);
+});
+test.each([null,undefined,[],false,'event',{}, {value:'Kitchen'}, {reason:'input'}, {value:'Kitchen',reason:'other'}, {value:42,reason:'input'}, {value:'x',reason:'input',extra:true},Object.assign(Object.create({value:'Inherited'}),{reason:'input',other:true}),Object.assign(Object.create({reason:'input'}),{value:'Kitchen',other:true})])('rejects malformed field intent detail before model use',detail=>reject(()=>fieldValueDetail(detail)));

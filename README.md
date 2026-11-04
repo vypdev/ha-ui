@@ -5,8 +5,8 @@ Shared presentation components for Home Assistant applications, including Gatewa
 The current source implements a DOM-independent navigation data contract, one controlled HA-style
 upper navigation/panel component, a controlled form-associated text field and a pinned, tested
 build/coverage foundation. React, Vue, Angular
-and Svelte navigation bindings now pass real compiled, packed consumers.
-Other component families, form bridges, framework SSR boundaries, Storybook, publication and actual
+and Svelte navigation and text-field form bindings pass real compiled, packed consumers.
+Other component families and their form bridges, framework SSR boundaries, Storybook, publication and actual
 application adoption remain required.
 No package is published or ready for application adoption.
 

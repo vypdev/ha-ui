@@ -26,6 +26,12 @@
       ],
       "@vypdev/ha-ui/tabs": [
         "./packages/core/src/components/tabs.ts"
+      ],
+      "@vypdev/ha-ui/field-contracts": [
+        "./packages/core/src/field-contracts.ts"
+      ],
+      "@vypdev/ha-ui/field": [
+        "./packages/core/src/components/field.ts"
       ]
     }
   },

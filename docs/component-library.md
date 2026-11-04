@@ -165,8 +165,8 @@ submission are exercised in actual Chromium forms. Import `HaTextField` and `reg
 `@vypdev/ha-ui/field`, and call registration at the explicit client boundary. Import the pure
 contracts from `@vypdev/ha-ui/field-contracts`; these require no DOM globals or DOM types. The initial field is text-only; other input types,
 selects, checkboxes, buttons and dialogs remain required separate work. React, Vue, Angular and
-Svelte field bindings and native form-model bridges are the next increment; existing navigation
-bindings do not establish form support. Browser state-restoration callbacks are exercised
+Svelte text-field bindings and native form-model bridges pass the pinned compiled consumers; other
+control families and their bridges remain required. Browser state-restoration callbacks are exercised
 explicitly; automatic history restoration, real device IME behavior and other engines remain
 unverified. No complete family matrix or product acceptance is claimed.
 
@@ -192,3 +192,8 @@ HA theme inheritance. Field tokens additionally include `--vyp-ha-field-radius` 
 reset requires the application to acknowledge the request, just like a normal edit. Cancellation
 does not undo a value explicitly assigned by application code. This preview stores no values,
 performs no network calls and grants no application permission.
+
+`fieldValueDetail` is available from the DOM-independent field-contracts entrypoint. It validates
+exactly value and reason, accepting input/reset/restore/autocomplete only, snapshots the bounded
+text value and freezes the result. Framework model bridges validate before invoking app observers
+and use that snapshot after them. FieldValueReason and FieldValueDetail types are also DOM-free.

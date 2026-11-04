@@ -35,3 +35,9 @@ and 14px/12px text geometry from
 [Gateway ui-catalog.css lines 143–150 at the same revision](https://github.com/vypdev/homeassistant-gateway/blob/e47dde303e475a6d03e1d6697ec87a934e93263b/frontend/src/ui/ui-catalog.css#L143-L150).
 Form ownership, controlled requests, validation, composition handling and accessible native input
 semantics are authored here. No private Home Assistant component or external asset is imported.
+
+The four text-field bindings and Angular value-accessor/validator bridge are authored here. They
+reuse the pure core event/value/validation policies and the existing core renderer, adding no CSS
+or alternative controller. Angular Forms 22.2.4 is an exact framework peer; its runtime source is
+not copied. Source-browser policy aliases are test-only; actual frozen package consumers resolve
+installed exports and verify authored source bytes against the repository.

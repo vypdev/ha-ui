@@ -84,13 +84,13 @@ packages:
     resolution: {integrity: sha512-H82XLH0DjmSOdbEwO15x3QTo1f5PWEtv237eLpYKc0mqLu+B8hnq16lFWmuBmNurkeiG3wr+oM1FhOll/YVFRg==}
 
   '@vypdev/ha-ui-vue@file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-aN0lS7oJEntPqjdiUC9W4isVPpZt5w6PrnZ9yVBnrsj7hkkZ5x3gq8HPT1yaIM7gMu/PZuLyvvtWZgVR3H18Rg==, tarball: file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz}
+    resolution: {integrity: sha512-C1ccI0yUN24wsuANpVcSpVTpE+m+puWY0093paTYQUf9Fm+z+D489BL1xQRFBhNaAS6sdzBZF27HL5VLWKo10Q==, tarball: file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz}
     version: 0.1.0-next.1
     peerDependencies:
       vue: 3.5.44
 
   '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-dGtzvFkv/M6fOZGQVI47SpL+jW3yzHRvZ9JFVqKSJ0Tp/JAl2anc9/kqe0PX55Yu+FUVHsjH4o/BoMtIG6kFOw==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
+    resolution: {integrity: sha512-eQ0pPhKQBB9PEJkyeOMiRnWl6o3X6QdxH/mop65f0RSFtuQQX7OQLGMtsupDUziFzcqhigZUKDDV85berl8Cig==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
     version: 0.1.0-next.1
 
   csstype@3.2.3:

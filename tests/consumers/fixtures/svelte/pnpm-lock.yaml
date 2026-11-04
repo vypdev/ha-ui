@@ -61,13 +61,13 @@ packages:
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
   '@vypdev/ha-ui-svelte@file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-N1MkQQXMEqYlnd8qvjOHfDulrlriBe8Zrt8V+DKJAqFQK/bmJZYiFtUk12Q05pFj62ho8+86dH0ztNFljIzBlg==, tarball: file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz}
+    resolution: {integrity: sha512-EKozyab8BCoCl9QsXiaXim5XlCJD9qkiIobcLCyFLKAi/Qr+Tr8Els1FhkYPTtGTHBYp9KPIdyKIWUH7SbWjlg==, tarball: file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz}
     version: 0.1.0-next.1
     peerDependencies:
       svelte: 5.57.3
 
   '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-dGtzvFkv/M6fOZGQVI47SpL+jW3yzHRvZ9JFVqKSJ0Tp/JAl2anc9/kqe0PX55Yu+FUVHsjH4o/BoMtIG6kFOw==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
+    resolution: {integrity: sha512-eQ0pPhKQBB9PEJkyeOMiRnWl6o3X6QdxH/mop65f0RSFtuQQX7OQLGMtsupDUziFzcqhigZUKDDV85berl8Cig==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
     version: 0.1.0-next.1
 
   acorn@8.19.0:

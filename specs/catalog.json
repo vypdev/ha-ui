@@ -38,7 +38,11 @@
         "packages/svelte/src/types.ts",
         "packages/core/src/components/field.ts",
         "packages/core/src/field-contracts.ts",
-        "packages/core/src/presentation-text.ts"
+        "packages/core/src/presentation-text.ts",
+        "packages/react/src/text-field.ts",
+        "packages/vue/src/text-field.ts",
+        "packages/angular/src/text-field.ts",
+        "packages/svelte/src/Field.svelte"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -85,7 +89,14 @@
         "tests/consumers/fixtures/react/tsconfig.json",
         "tests/consumers/fixtures/react/pnpm-workspace.yaml",
         "tests/contracts/field.test.ts",
-        "tests/browser/field.test.ts"
+        "tests/browser/field.test.ts",
+        "tests/browser/react-field.test.ts",
+        "tests/browser/vue-field.test.ts",
+        "tests/browser/angular-field.test.ts",
+        "tests/browser/svelte-field.test.mjs",
+        "tests/browser/field-framework-fixture.ts",
+        "tests/browser/fixtures/SvelteField.svelte",
+        "tests/consumers/fields.ts"
       ],
       "documentation": [
         "README.md",
@@ -104,7 +115,7 @@
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
         ],
-        "implementationEvidence": "partial: pure data contracts, shared navigation/panels and a controlled native form-associated text field. Four real navigation bindings and reproducible clean compiled consumers pass Chromium. Field framework bridges, other families, framework SSR, full browser matrix, Storybook, publication and application adoption remain required."
+        "implementationEvidence": "partial: shared navigation/panels and a controlled text field, with React/Vue/Angular/Svelte bindings and text-field form bridges. Frozen compiled consumers pass native form submission, cancellation, validation, disable/reset and lifecycle; Angular includes AOT and CVA. Other controls, full SSR/browser matrix, Storybook, delivery/publication and application adoption remain required."
       }
     }
   ]

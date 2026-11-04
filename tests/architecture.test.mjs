@@ -65,6 +65,7 @@ const adapterFrameworks={react:'react',vue:'vue',angular:'@angular/core',svelte:
 function adapterImport(framework,specifier) {
   if (specifier==='@vypdev/ha-ui' || specifier.startsWith('@vypdev/ha-ui/')) return true;
   if (specifier.startsWith('.')) return true;
+  if (framework==='angular' && specifier==='@angular/forms') return true;
   const own=adapterFrameworks[framework];
   return specifier===own || specifier.startsWith(own+'/');
 }
@@ -89,14 +90,14 @@ test('framework entrypoints never import the core DOM renderer at runtime or reg
     const code=file.endsWith('.svelte')?original.match(/<script[^>]*>([\s\S]*?)<\/script>/u)[1]:original;
     const parsed=ts.createSourceFile('source.ts',code,ts.ScriptTarget.Latest,true);
     for (const node of parsed.statements) if (ts.isImportDeclaration(node) && node.moduleSpecifier.text.startsWith('@vypdev/ha-ui'))
-      expect(node.importClause.isTypeOnly,file).toBe(true);
+      expect(node.importClause.isTypeOnly||node.moduleSpecifier.text==='@vypdev/ha-ui/field-contracts',file).toBe(true);
     expect(code).not.toMatch(/customElements|registerTabs/u);
   }
 });
 test('adapter manifests keep other frameworks out and retain the exact shared cohort',()=>{
   for (const [framework,peer] of Object.entries(adapterFrameworks)) {
     const manifest=JSON.parse(readFileSync('packages/'+framework+'/package.json','utf8'));
-    expect(Object.keys(manifest.peerDependencies)).toEqual([peer]);
+    expect(Object.keys(manifest.peerDependencies)).toEqual(framework==='angular'?[peer,'@angular/forms']:[peer]);
     expect(manifest.dependencies['@vypdev/ha-ui']).toBe(framework==='angular'?'0.1.0-next.1':'workspace:*');
     expect(Object.keys(manifest.dependencies).sort()).toEqual(framework==='angular'?['@vypdev/ha-ui','tslib']:['@vypdev/ha-ui']);
     expect(manifest.version).toBe(JSON.parse(readFileSync('packages/core/package.json','utf8')).version);

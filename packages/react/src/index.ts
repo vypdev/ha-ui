@@ -20,3 +20,5 @@ export function Tabs({state,onSelectionRequest,children,id,className,style,dir,l
   },[onSelectionRequest]);
   return createElement('vyp-ha-tabs',{ref:element,id,className,style,dir,lang},children);
 }
+export {TextField} from './text-field.js';
+export type {TextFieldProps} from './text-field.js';

@@ -21,7 +21,8 @@
     "tslib": "2.8.1"
   },
   "peerDependencies": {
-    "@angular/core": "22.2.4"
+    "@angular/core": "22.2.4",
+    "@angular/forms": "22.2.4"
   },
   "publishConfig": {
     "access": "public"

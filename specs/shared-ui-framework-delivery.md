@@ -418,6 +418,16 @@ Prospective repository files (current documents are classified against the immut
 | `packages/core/src/presentation-text.ts` | create |
 | `tests/contracts/field.test.ts` | create |
 | `tests/browser/field.test.ts` | create |
+| `packages/react/src/text-field.ts` | create |
+| `packages/vue/src/text-field.ts` | create |
+| `packages/angular/src/text-field.ts` | create |
+| `tests/browser/react-field.test.ts` | create |
+| `tests/browser/vue-field.test.ts` | create |
+| `tests/browser/angular-field.test.ts` | create |
+| `tests/browser/svelte-field.test.mjs` | create |
+| `tests/browser/field-framework-fixture.ts` | create |
+| `tests/browser/fixtures/SvelteField.svelte` | create |
+| `tests/consumers/fields.ts` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

@@ -1,14 +1,15 @@
-# Framework navigation bindings
+# Framework bindings
 
-This unpublished preview has one visual implementation and four real navigation adapters. It is
-not the completed component library: fields, buttons, dialogs, form bridges, framework SSR/client
-fixtures, broader browser support, Storybook, publication and app adoption remain required.
+This unpublished preview has shared navigation and one controlled text field, with four real
+framework bindings and text-field form bridges. Other controls and their bridges, framework
+SSR/client fixtures, broader browser support, Storybook, publication and app adoption remain required.
 
 ## Client registration and ownership
 
 Call `registerTabs` from `@vypdev/ha-ui/tabs` at the application client boundary before mounting the
 chosen framework. Importing a binding does not register tags or load the core DOM renderer. The
-framework adapters use type-only core imports; their runtime imports are their own framework only.
+framework adapters import the renderer only as types; runtime imports are their own framework
+and DOM-independent core validation policies. No binding imports Lit or registers a tag.
 All use the same `vyp-ha-tabs` element, validated `NavigationState`, CSS tokens and typed native
 `ha-selection-request` event. No routing, household state or authorization belongs in a binding.
 
@@ -76,10 +77,82 @@ Every framework consumer compiles against installed declarations and runs real p
 events, content projection, disabled booleans, English/Spanish, live theme, keyboard, removal and remount
 journeys. Installed authored source must match the repository. Published manifests contain neither
 workspace nor file references. The resulting artifacts include the exact cohort digests and original
-browser screenshots. These checks cover navigation only and do not complete the retained 70-case
+browser screenshots. These checks cover navigation and one text-field family, and do not complete the retained 70-case
 capability acceptance inventory or prove a real npm publication.
 
 The complete source/type/browser check sequence also passes with all five dist trees absent.
 Svelte source validation uses `tsconfig.svelte-source.json`; Svelte package emission keeps its own
 compiler project and follows the core build in pnpm's dependency graph. This prevents a local
 declaration cache from hiding a fresh-checkout CI failure.
+
+## Text-field binding contract
+
+`TextField` is exported by each adapter. All use the explicitly registered
+`vyp-ha-field`; applications call `registerField` at the client boundary. State, value,
+name, defaultValue and disabled are passed as properties, with a separate optional external
+form ID attribute. The core still owns validation, rendering, keyboard and accessibility.
+Current values never become HTML attributes. The original cancelable `valueRequest` event
+is validated by the pure fieldValueDetail policy before application observers or a framework model callback; a canceled request updates no model.
+
+React accepts controlled `value` and optional `onValueChange(value)`/`onValueRequest(event)`.
+Vue accepts `modelValue`, emits `update:modelValue` and `valueRequest`, and supports `v-model`.
+Svelte 5 uses controlled `value` and typed `onValueChange`/`onValueRequest` callback props;
+application `$state` remains the model owner. Native form reset requests the supplied
+`defaultValue`; the framework model acknowledges it just like a normal edit.
+
+Angular exposes the actual core tag through a standalone component, synchronous
+`valueRequest` output and `ControlValueAccessor`. It supports reactive controls and ngModel,
+including model writes, dirty/touched, disable/enable and update-on-blur/submit. The shared
+pure validation policy feeds Angular validity. Reset preserves Angular's current reset value
+and pristine state rather than applying a conflicting native default a second time. Without
+an Angular forms directive, its value input/output remain explicitly application-controlled.
+The exact pinned source and actual compiled consumers pass these text-field contracts. Other
+control types and their form bridges remain unverified; no complete library acceptance is implied.
+
+
+```tsx
+<TextField state={fieldState} value={title} onValueChange={setTitle}
+  name="task" defaultValue="Kitchen" />
+```
+
+```vue
+<TextField v-model="title" :state="fieldState" name="task" default-value="Kitchen" />
+```
+
+```svelte
+<script lang="ts">
+  import {TextField} from '@vypdev/ha-ui-svelte';
+  import {textFieldState} from '@vypdev/ha-ui/field-contracts';
+  const fieldState=textFieldState({label:'Task name',required:true});
+  let title=$state('Kitchen');
+</script>
+<TextField state={fieldState} value={title} onValueChange={(next)=>title=next}
+  name="task" defaultValue="Kitchen" />
+```
+
+```html
+<form [formGroup]="group">
+  <vyp-ha-field [state]="fieldState" formControlName="task" name="task" />
+</form>
+```
+
+For Angular, import the standalone `TextField` and the applicable forms module. A forms directive
+owns value and disabled state through its control; value/disabled inputs apply to standalone
+output-driven use. `haField` validation errors contain shared presentation flags only. App-specific
+validators and the mapping of their messages to state.error remain application responsibilities.
+Angular Forms 22.2.4 and its usual Common/Core/Platform Browser/RxJS peers are required, as exercised
+by the frozen fixture. Reactive controls preserve updateOn change/blur/submit, dirty/touched and
+nullable/nonnullable resets. ngModel and explicit application-controlled use are also tested.
+
+Malformed event detail is rejected with invalid_field before observers or model callbacks. The
+validated value snapshot is used after the observer, preventing payload mutation from changing a
+model callback's input. Request cancellation does not undo an independent model assignment already
+made by application code. No adapter performs a household operation, network request or storage write.
+
+The native Angular form directive owns its reset event; without one, a standalone reactive control
+retains its model until the app resets the control. The core native reset request remains controlled.
+Source tests use the current pure contract source. Packed fixtures use installed exports with no
+source alias; both paths are required. The implementation follows Angular's
+[ControlValueAccessor](https://angular.dev/api/forms/ControlValueAccessor) and
+[Validator](https://angular.dev/api/forms/Validator) contracts; Svelte uses typed callback props and
+application-owned rune state.

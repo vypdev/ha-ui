@@ -84,15 +84,18 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
     assert.equal(await readFile(join(consumer,'pnpm-lock.yaml'),'utf8'),frozenLock);
     await assert.rejects(readFile(join(cache,'metadata-v1.3/registry.npmjs.org/lit.json')),{code:'ENOENT'});
     await writeFile(join(consumer, 'contract.ts'), `import {navigationState, type NavigationKind} from '@vypdev/ha-ui/contracts';
-import {textFieldState,textFieldValidity} from '@vypdev/ha-ui/field-contracts';
+import {textFieldState,textFieldValidity,fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
 const field=textFieldState({label:'Name',required:true});
 if(!textFieldValidity('',field).flags.valueMissing)throw Error('Expected pure field validation');
+const request=fieldValueDetail({value:'Kitchen',reason:'input'});if(request.reason!=='input')throw Error('Expected typed request');
 const kind: NavigationKind = 'panels';
 const selected: string | null = navigationState({kind, label:'Sections', selected:null, items:[]}).selected;
 void selected;`);
     await writeFile(join(consumer, 'tsconfig.json'), JSON.stringify({compilerOptions:{target:'ES2024',module:'NodeNext',moduleResolution:'NodeNext',strict:true,noEmit:true,lib:['ES2024'],types:[]},include:['contract.ts']}));
     await execute(process.execPath, [resolve(root, 'node_modules/typescript/bin/tsc'), '-p', 'tsconfig.json'], {cwd: consumer});
     const probe = await execute(process.execPath, ['--input-type=module', '-e', `import {navigationState} from '@vypdev/ha-ui/contracts';
+import {fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
+if(!Object.isFrozen(fieldValueDetail({value:'Kitchen',reason:'input'})))throw Error('Expected immutable DOM-free request contract');
 if(typeof document!=='undefined'||typeof customElements!=='undefined') throw Error('Expected a server-only consumer');
 const value=navigationState({kind:'navigation',label:'Sections',selected:'tasks',items:[{id:'tasks',label:'Tareas 🧹',href:'#tasks'}]});
 if(value.selected!=='tasks'||!Object.isFrozen(value.items))throw Error('Packed contract did not preserve controlled state');
@@ -177,7 +180,7 @@ document.querySelector('main')!.append(form);`);
     await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation and one text field; field framework adapters, broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;
     const frameworks=await exerciseFrameworks(root,scratch,browser);
-    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation adapters only; forms, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation and one controlled text field with four framework form bridges; other controls, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
     await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation and core text-field preview; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
     passed = true;
   } finally {

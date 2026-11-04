@@ -1,8 +1,8 @@
 # Compatibility and validation status
 
 The DOM-independent navigation contract, controlled upper navigation/panel component and their
-build/coverage foundation are implemented and tested in Chromium. Navigation adapters for four frameworks now pass real compiled package consumers. Other component
-families, form bridges, browser support breadth and framework SSR integration remain unaccepted.
+build/coverage foundation are implemented and tested in Chromium. Navigation and text-field form adapters for four frameworks pass real compiled package consumers. Other component
+families and their form bridges, browser support breadth and framework SSR integration remain unaccepted.
 
 | Tool | Exact pin | Current use |
 |---|---|---|
@@ -17,7 +17,7 @@ families, form bridges, browser support breadth and framework SSR integration re
 The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
 its source currently contains presentation contracts, one preview navigation/panel component and
 one controlled text field. It is not a supported component release.
-React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation-only compiled/browser
+React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation and single-line text-field compiled/browser
 fixtures using actual packages. They remain preview pins until the complete component and delivery gates pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
 Do not infer support from custom-element interoperability or compiler metadata alone.
 
@@ -34,8 +34,8 @@ CI Check runs for each PR head with no path filter. Current gates are strict typ
 tests, independent source-inventory coverage, architecture/CI contracts, compiled declarations, real Chromium component behavior, actual reproducible packed consumption with
 a DOM-free contract and a compiled browser client, and the original pinned Copilot catalog validator.
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
-and reduced motion. The additional four framework fixtures establish navigation binding behavior only; other browser
-engines, form bridges and framework SSR remain unverified.
+and reduced motion. The additional four framework fixtures establish navigation and text-field model/submission/validation/disabled/reset/lifecycle behavior;
+other control types, browser engines and framework SSR remain unverified.
 Complete component-family/framework fixtures, Storybook, publication and actual app adoption remain required.
 
 The clean package fixture derives its runtime-only graph and integrity records from the reviewed
@@ -48,5 +48,5 @@ See [framework bindings](framework-adapters.md) for the exact preview API, compi
 
 The core text field uses native ElementInternals in Chromium. Native form submission,
 required/length/custom validation, disabled fieldsets, readonly, reset and controlled edits are
-covered. Field framework bridges and other engines remain unverified; navigation-only framework
-results do not imply general form support.
+covered. Four field framework bridges pass; other controls, other engines and the full library
+acceptance remain unverified. Angular Forms is pinned to 22.2.4 alongside Angular Core.

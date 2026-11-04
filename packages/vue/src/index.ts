@@ -19,3 +19,4 @@ export const Tabs=defineComponent({
     return ()=>h('vyp-ha-tabs',{ref:element,id:attrs.id,class:attrs.class,style:attrs.style,dir:attrs.dir,lang:attrs.lang},slots.default?.());
   },
 });
+export {TextField} from './text-field.js';

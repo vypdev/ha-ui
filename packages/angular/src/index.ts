@@ -13,3 +13,4 @@ export class Tabs implements OnChanges,OnDestroy {
   ngOnChanges():void {this.#renderer.setProperty(this.#host,'state',this.state);}
   ngOnDestroy():void {this.#stop();}
 }
+export {TextField} from './text-field.js';

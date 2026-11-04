@@ -1,8 +1,7 @@
 import {LitElement,css,html,nothing} from 'lit';
-import {FieldInputError,textFieldName,textFieldState,textFieldValue,textFieldValidity,type TextFieldState} from '../field-contracts.js';
+import {FieldInputError,textFieldName,textFieldState,textFieldValue,textFieldValidity,type TextFieldState,type FieldValueReason,type FieldValueDetail} from '../field-contracts.js';
 
-export type FieldValueReason='input'|'reset'|'restore'|'autocomplete';
-export interface FieldValueDetail {readonly value:string;readonly reason:FieldValueReason;}
+export type {FieldValueReason,FieldValueDetail} from '../field-contracts.js';
 export type FieldValueEvent=CustomEvent<FieldValueDetail>;
 type Proposal={value:string;reason:FieldValueReason;start:number|null;end:number|null;direction:'forward'|'backward'|'none'|null};
 const attributeText={fromAttribute:(value:string|null)=>value??''};

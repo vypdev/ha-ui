@@ -54,13 +54,13 @@ packages:
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
   '@vypdev/ha-ui-react@file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-YW8N3lQcayr/pPzmVSiTpthWH3ikCVfEzs6JiHBHB1cce70JWjf2ytr4RJjuBofN+rg6SukUtaqcaUeeRqzFhQ==, tarball: file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz}
+    resolution: {integrity: sha512-9L1HO9Lr5jlc7dowSlmU78DdLL90lIoi5pm/UNiadLeg+O5ci8WED/hTWClEiKL3wxfTbHm5mqGVpFxv6xIi5g==, tarball: file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz}
     version: 0.1.0-next.1
     peerDependencies:
       react: 19.3.1
 
   '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-dGtzvFkv/M6fOZGQVI47SpL+jW3yzHRvZ9JFVqKSJ0Tp/JAl2anc9/kqe0PX55Yu+FUVHsjH4o/BoMtIG6kFOw==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
+    resolution: {integrity: sha512-eQ0pPhKQBB9PEJkyeOMiRnWl6o3X6QdxH/mop65f0RSFtuQQX7OQLGMtsupDUziFzcqhigZUKDDV85berl8Cig==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
     version: 0.1.0-next.1
 
   csstype@3.2.3:
