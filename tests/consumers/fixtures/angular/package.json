@@ -1,0 +1,19 @@
+{
+  "name": "ha-ui-angular-consumer",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.0",
+  "dependencies": {
+    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+    "@vypdev/ha-ui-angular": "file:../pack-1/vypdev-ha-ui-angular-0.1.0-next.1.tgz",
+    "@angular/core": "22.2.4",
+    "@angular/common": "22.2.4",
+    "@angular/compiler": "22.2.4",
+    "@angular/platform-browser": "22.2.4",
+    "rxjs": "7.8.2",
+    "tslib": "2.8.1"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

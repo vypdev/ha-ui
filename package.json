@@ -7,19 +7,38 @@
     "node": ">=24.20.0 <25"
   },
   "scripts": {
-    "check": "tsc --noEmit -p tsconfig.json",
+    "check": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.consumers.json && svelte-check --tsconfig tsconfig.svelte-source.json && svelte-check --tsconfig tsconfig.svelte-tests.json",
     "test": "vitest run --coverage && node --test tests/coverage-evidence.test.mjs",
-    "build": "tsc -p packages/core/tsconfig.json",
+    "build": "pnpm -r --sort run build",
     "test:package": "node --test tests/consumers/packed.test.ts"
   },
   "devDependencies": {
+    "@angular/common": "22.2.4",
+    "@angular/compiler": "22.2.4",
+    "@angular/compiler-cli": "22.2.4",
+    "@angular/core": "22.2.4",
+    "@angular/platform-browser": "22.2.4",
+    "@babel/core": "8.0.1",
+    "@sveltejs/package": "3.0.2",
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
     "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "@vitest/browser-playwright": "5.1.0",
     "@vitest/coverage-v8": "5.1.0",
+    "ng-packagr": "22.2.5",
     "playwright": "1.64.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "rxjs": "7.8.2",
+    "svelte": "5.57.3",
+    "svelte-check": "4.7.8",
+    "tslib": "2.8.1",
     "typescript": "6.0.3",
     "vite": "8.3.5",
     "vitest": "5.1.0",
-    "yaml": "2.9.0"
+    "vue": "3.5.44",
+    "yaml": "2.9.0",
+    "@types/convert-source-map": "2.0.3"
   }
 }

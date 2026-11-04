@@ -15,14 +15,29 @@
       "ES2024",
       "DOM"
     ],
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@vypdev/ha-ui": [
+        "./packages/core/src/index.ts"
+      ],
+      "@vypdev/ha-ui/contracts": [
+        "./packages/core/src/contracts.ts"
+      ],
+      "@vypdev/ha-ui/tabs": [
+        "./packages/core/src/components/tabs.ts"
+      ]
+    }
   },
   "include": [
     "packages/*/src/**/*.ts",
     "tooling/**/*.mjs",
     "vitest.config.ts",
     "tests/contracts/**/*.test.ts",
-    "tests/consumers/**/*.test.ts",
     "tests/browser/**/*.test.ts"
+  ],
+  "exclude": [
+    "packages/svelte/src",
+    "tests/consumers"
   ]
 }

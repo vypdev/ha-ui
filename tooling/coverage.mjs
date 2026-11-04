@@ -1,5 +1,5 @@
 /** Reusable first-party frontend coverage policy, independent of product behavior. */
-export const runtimeExtensions = "{js,mjs,cjs,jsx,ts,mts,cts,tsx}";
+export const runtimeExtensions = "{js,mjs,cjs,jsx,ts,mts,cts,tsx,svelte}";
 export const metrics = /** @type {const} */ (["lines", "statements", "functions", "branches"]);
 
 /**

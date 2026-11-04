@@ -22,3 +22,10 @@ validation directory and calls the public main function with this repository's e
 It does not change Copilot source or installed resources. Source hashes and the local procedure are
 in the [component guide](component-library.md#catalog-validation). Catalog consistency, implemented
 coverage, actual framework execution, publication rights and application adoption are separate facts.
+
+The four navigation adapters are authored in this repository and carry the same MIT notice.
+They add framework lifecycle/property/event/content bindings; none contains visual styles or a
+second navigation controller. Angular packaging retains its authored source and uses standard FESM,
+partial declarations and an exact tslib dependency. React/Vue include their source/declaration maps;
+Svelte includes source, preprocessed components and generated declarations. Third-party compilers,
+frameworks and helpers retain their own package licenses; no third-party runtime source is copied here.

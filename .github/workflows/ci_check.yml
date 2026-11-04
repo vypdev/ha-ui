@@ -54,8 +54,9 @@ jobs:
           name: shared-ui-validation-${{ github.sha }}
           path: |
             coverage/
-            packages/core/dist/
+            packages/*/dist/
             test-results/
             .vitest/attachments/
           if-no-files-found: error
+          include-hidden-files: true
           retention-days: 7

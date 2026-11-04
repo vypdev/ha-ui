@@ -2,8 +2,8 @@
 
 The current source implements the DOM-independent navigation contract, one controlled upper
 navigation/panel renderer and the tested quality/build foundation. The renderer passes direct
-Chromium and clean actual-package browser consumers. Other component families, framework adapters,
-Storybook, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
+Chromium and clean actual-package browser consumers. Four navigation adapters now also pass real compiled package consumers. Other component families,
+form bridges, framework SSR, Storybook, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
 
@@ -11,7 +11,8 @@ hold the proposed contract and pending acceptance gates.
 
 One Lit implementation exposes DOM components. Apps choose direct Lit/HTML use or a real React,
 Vue, Angular or Svelte adapter. Proposed package names are @vypdev/ha-ui and the corresponding
--react, -vue, -angular and -svelte packages; registry rights and actual exports remain unverified.
+-react, -vue, -angular and -svelte packages. Navigation exports and exact preview evidence are in
+the [framework guide](framework-adapters.md); registry publication rights remain unverified.
 A consumer installs only its own framework binding. Framework-native forms, events, complex values,
 content projection and teardown require compiled tests, not just custom-element declarations.
 
@@ -128,7 +129,8 @@ Public CSS tokens are `--vyp-ha-font-family`, `--vyp-ha-border`, `--vyp-ha-surfa
 `--vyp-ha-tab-padding`, `--vyp-ha-text-secondary`, `--vyp-ha-text` and `--vyp-ha-primary`.
 Defaults inherit the corresponding HA theme variables where available. Overrides update live;
 no global styles, network, storage, timers or animation are introduced. Exposed shadow parts are
-`bar`, `item` and `panel`. Framework adapters and packed browser consumers remain separate gates.
+`bar`, `item` and `panel`. Navigation binding and packed browser evidence are in the [framework guide](framework-adapters.md);
+forms, other families and the complete framework/client boundary matrix remain separate gates.
 
 The interaction model follows [WAI-ARIA APG tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)
 and uses Lit's documented [reactive properties](https://lit.dev/docs/components/properties/)

@@ -10,12 +10,13 @@ import {createHash} from 'node:crypto';
 import {createServer} from 'vite';
 import {chromium} from 'playwright';
 import {parse, stringify} from 'yaml';
+import {exerciseFrameworks} from './frameworks.ts';
 
 const execute = promisify(execFile);
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const digest = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
 
-test('the actual packed package is reproducible and passes clean DOM-free and real-browser consumers', {timeout: 60_000}, async () => {
+test('the actual packed package is reproducible and passes clean DOM-free and real-browser consumers', {timeout: 180_000}, async () => {
   const scratch = await mkdtemp(join(tmpdir(), 'ha-ui-packed-contract-'));
   let passed = false;
   let server: Awaited<ReturnType<typeof createServer>> | undefined;
@@ -25,9 +26,21 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
     for (const index of [1, 2]) {
       const destination = join(scratch, 'pack-' + index); await mkdir(destination);
       await execute('pnpm', ['build'], {cwd: root});
-      await execute('pnpm', ['--dir', 'packages/core', 'pack', '--pack-destination', destination], {cwd: root});
+      for (const framework of ['core','react','vue','angular','svelte']) {
+        const directory=framework==='angular'?'packages/angular/dist':'packages/'+framework;
+        await execute('pnpm',['--dir',directory,'pack','--pack-destination',destination],{cwd:root});
+      }
       const names = (await readdir(destination)).filter(name => name.endsWith('.tgz'));
-      assert.equal(names.length, 1); archives.push(join(destination, names[0]));
+      assert.equal(names.length, 5); archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.1.tgz'));
+      if(index===2)for(const file of names)assert.deepEqual(await readFile(join(scratch,'pack-1',file)),await readFile(join(destination,file)),'Every cohort coordinate must reproduce: '+file);
+    }
+    const cohort=[];
+    for (const file of (await readdir(join(scratch,'pack-1'))).filter(name=>name.endsWith('.tgz')).sort()) {
+      const bytes=await readFile(join(scratch,'pack-1',file));
+      const packedMetadata=await execute('tar',['-xOf',join(scratch,'pack-1',file),'package/package.json']);
+      const manifest=JSON.parse(packedMetadata.stdout);
+      assert.equal(manifest.version,'0.1.0-next.1');assert.doesNotMatch(packedMetadata.stdout,/workspace:|file:/u);
+      cohort.push({coordinate:manifest.name,version:manifest.version,sha256:digest(bytes),bytes:bytes.byteLength});
     }
     const first = await readFile(archives[0]), second = await readFile(archives[1]);
     assert.deepEqual(first, second, 'Repeated independent builds must produce the same packed bytes');
@@ -130,6 +143,10 @@ document.querySelector('main')!.append(element);`);
     const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
     await mkdir(resolve(root, 'test-results'), {recursive:true});
     await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data and navigation component only; no framework adapter or application adoption',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
+    await browserPage.close();await server.close();server=undefined;
+    const frameworks=await exerciseFrameworks(root,scratch,browser);
+    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation adapters only; forms, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation preview only; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
     passed = true;
   } finally {
     await browser?.close(); await server?.close();

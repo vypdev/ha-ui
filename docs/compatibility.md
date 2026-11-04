@@ -1,8 +1,8 @@
 # Compatibility and validation status
 
 The DOM-independent navigation contract, controlled upper navigation/panel component and their
-build/coverage foundation are implemented and tested in Chromium. Framework adapters, additional
-component families, browser support breadth and framework SSR integration remain unaccepted.
+build/coverage foundation are implemented and tested in Chromium. Navigation adapters for four frameworks now pass real compiled package consumers. Other component
+families, form bridges, browser support breadth and framework SSR integration remain unaccepted.
 
 | Tool | Exact pin | Current use |
 |---|---|---|
@@ -16,8 +16,8 @@ component families, browser support breadth and framework SSR integration remain
 
 The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
 its source currently contains presentation contracts and one preview navigation/panel component. It is not a supported component release.
-React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 remain candidate pins until actual packed,
-compiled/browser fixtures pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
+React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation-only compiled/browser
+fixtures using actual packages. They remain preview pins until the complete component and delivery gates pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
 Do not infer support from custom-element interoperability or compiler metadata alone.
 
 The controlled navigation model requires kind, label, selected and items. Kind is navigation or panels;
@@ -33,11 +33,14 @@ CI Check runs for each PR head with no path filter. Current gates are strict typ
 tests, independent source-inventory coverage, architecture/CI contracts, compiled declarations, real Chromium component behavior, actual reproducible packed consumption with
 a DOM-free contract and a compiled browser client, and the original pinned Copilot catalog validator.
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
-and reduced motion. It does not establish other browser engines, framework adapters or framework SSR.
-Packed framework fixtures, Storybook, publication and actual application acceptance remain required.
+and reduced motion. The additional four framework fixtures establish navigation binding behavior only; other browser
+engines, form bridges and framework SSR remain unverified.
+Complete component-family/framework fixtures, Storybook, publication and actual app adoption remain required.
 
 The clean package fixture derives its runtime-only graph and integrity records from the reviewed
 workspace lock, binds the actual tarball's integrity, and installs offline with a frozen lock. A fresh
 metadata cache is selected and verified; the lock must remain byte-identical. A separate unlocked
 negative fixture must reproduce the missing-metadata failure. This prevents developer cache contents
 from making package acceptance pass when a fresh hosted runner cannot resolve the same dependency.
+
+See [framework bindings](framework-adapters.md) for the exact preview API, compilation and teardown evidence.

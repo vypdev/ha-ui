@@ -9,7 +9,7 @@ function fullReport() { return {total: fullGroup(), "source.ts": fullGroup()}; }
 describe("complete first-party frontend coverage", () => {
   it("requires all runtime extensions, four metrics and per-file checks without exclusions", () => {
     const config = completeCoverage(["owned"], "reports");
-    expect(config.include).toEqual(["owned/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}"]);
+    expect(config.include).toEqual(["owned/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,svelte}"]);
     expect(config.exclude).toBeUndefined();
     expect(config.thresholds).toEqual({lines: 100, statements: 100, functions: 100, branches: 100, perFile: true});
     expect(config.reporter).toContain("json-summary");

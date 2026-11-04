@@ -1,0 +1,14 @@
+{
+  "name": "ha-ui-svelte-consumer",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.0",
+  "dependencies": {
+    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+    "@vypdev/ha-ui-svelte": "file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz",
+    "svelte": "5.57.3"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

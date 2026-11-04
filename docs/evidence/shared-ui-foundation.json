@@ -1,6 +1,6 @@
 {
-  "recordedAtUTC": "2026-11-04T04:34:29.482308+00:00",
-  "status": "Partial source increment: data contract and one real navigation/panel component. No framework support, Storybook, published release or app adoption accepted.",
+  "recordedAtUTC": "2026-11-04T05:24:06.553322+00:00",
+  "status": "Partial source increment: one navigation/panel family with four real navigation adapters. No complete component/form/framework SSR/Storybook/publication/application adoption acceptance.",
   "issue": 7,
   "nativePublication": {
     "run": 41767973796,
@@ -15,49 +15,56 @@
     "allStillRequired": true
   },
   "implemented": [
-    "Closed DOM-independent navigation/panel data contract; bounded and immutable inputs, safe links and Unicode C0/DEL/C1 control rejection.",
-    "Explicit client registration, validated property-only controlled state and typed cancelable composed user intent; no app router or business logic.",
-    "Real navigation links/current-location semantics and same-root local tab/panel slots, manual keyboard activation, RTL, disabled and stale-event prevention, active-tab focus return.",
-    "167 passing unit, architecture, CI-contract and real Chromium tests; separate independent coverage audit and clean actual packed-consumer integration pass.",
-    "Strict four-metric per-module/global coverage including every authored package/tool and the zero-executable barrel.",
-    "Pinned Node24.20.0/pnpm10.34.0/TypeScript6.0.3/Lit3.3.3/Vitest5.1.0/Playwright1.64.1; every-PR CI installs Chromium and runs all implemented gates plus the unchanged pinned original catalog SDK."
+    "One controlled framework-neutral navigation/panel implementation with explicit registration, immutable validated data and native typed/cancelable intent.",
+    "Real React, Vue, Angular and Svelte navigation bindings; runtime imports are their own framework only, with type-only core imports and no alternate visuals.",
+    "187 passing Node/Chromium contract, architecture, CI and component/binding tests; independent filesystem inventory covers every authored runtime file, including Svelte.",
+    "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
+    "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
+    "Four real clean frozen offline consumers compile against installed package declarations and pass props/events/content/disabled/EN-ES/themes/keyboard/unmount/remount in Chromium; no foreign framework is installed.",
+    "Angular actual consumer is AOT compiled and uses the official linker for all partial framework libraries, without a JIT fallback."
   ],
   "coverage": {
     "statements": {
-      "total": 148,
-      "covered": 148,
+      "total": 203,
+      "covered": 203,
       "skipped": 0,
       "pct": 100
     },
     "branches": {
-      "total": 139,
-      "covered": 139,
+      "total": 141,
+      "covered": 141,
       "skipped": 0,
       "pct": 100
     },
     "functions": {
-      "total": 34,
-      "covered": 34,
+      "total": 62,
+      "covered": 62,
       "skipped": 0,
       "pct": 100
     },
     "lines": {
-      "total": 100,
-      "covered": 100,
+      "total": 135,
+      "covered": 135,
       "skipped": 0,
       "pct": 100
     }
   },
   "sourceIdentities": {
+    "packages/angular/src/index.ts": "e17c1826cff3840e8e68d65757a9f628b73fbeff5242e51406307e9f8bc9ab75",
     "packages/core/src/components/tabs.ts": "5e84a250c9758388d10f4b2e9de55be6d18e57754aaf38d1a0deb71262c58e36",
     "packages/core/src/contracts.ts": "a786f32769cd69d0653d6292ae8b231b19986a07ad46c998a02d3948c2d5006e",
     "packages/core/src/index.ts": "10bd6958315d1ae23d216c0b752126e3fc7153f442f8c71e206cfa7e9757f86d",
-    "tooling/coverage.mjs": "2272a671a4d039fb40866f3535f6cd371b891623b64bf1b9a23a63677ad2387b"
+    "packages/react/src/index.ts": "8ac4696196e591818a2041d9747fd92c3b60a2b2b3e84f8d7b086938bf81d230",
+    "packages/svelte/src/Tabs.svelte": "974845c12ec9d760b6f76a43ae89fd4c1618d7b4d56381d98d16f65abc5b27c4",
+    "packages/svelte/src/index.ts": "9fbc2e899ae344ee2f046b688dd3bbf14a74fdc7c755e3ea0a6cb37d57acc2d6",
+    "packages/svelte/src/types.ts": "742b73b64fcfd139f293ebab02972b3fbe94bf15b0860d5122af4e141a2aa58a",
+    "packages/vue/src/index.ts": "90c5273ef2cf67fb6d8bb87f1514afe7322d675ecef55a91c9e94790c79679ae",
+    "tooling/coverage.mjs": "ad527a5d04517adb1992ac65a9abfffcabb9a2001f7f652c732dbe35899b56c8"
   },
   "packedContract": {
     "scope": "Core data and navigation component only; no framework adapter or application adoption",
-    "sha256": "450e1dc97f1056041174f169287893ebcd616cc98bf8bbb907435ebb13179e96",
-    "bytes": 9585,
+    "sha256": "bb09f0f83797c895fdd8d425edfcbdac3307e36d7d64b30c96856f2f5f9d01ad",
+    "bytes": 9609,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -77,12 +84,13 @@
     }
   },
   "limitations": [
-    "Only the navigation/panel family is implemented; forms, dialogs and other presentation families remain required.",
-    "Clean packed Chromium consumer covers the shared component only; actual React, Vue, Angular, Svelte and SSR/client fixtures remain required.",
-    "Only the exact recorded Chromium runtime was exercised; Firefox, WebKit and public browser support claims remain pending.",
-    "Storybook, npm authority/publication, Gateway adoption, Domus adoption and installed human UX acceptance remain unverified.",
-    "All 64 retained baseline and six delivery-refinement cases remain required; green partial-source tests do not complete issue #7.",
-    "Fresh hosted CI and complete native review are required for the published source head."
+    "Only navigation/panels are implemented. Buttons, fields, selects, dialogs, other families and framework-native form bridges remain required.",
+    "Exact recorded framework pins pass navigation-only compiled consumers. Full cohort support and public peer ranges cannot be inferred from that scope.",
+    "Next.js, Nuxt and SvelteKit explicit server-shell/client fixtures, hydration behavior and other browser engines remain unverified.",
+    "All six delivery refinements, accepted-candidate promotion/publication recovery, Storybook, publisher authority and live publication remain required.",
+    "Gateway and Domus adoption, installed deployment/recovery and human UX acceptance remain unverified.",
+    "All 64 original baseline cases and six additional delivery cases remain required; no partial increment completes issue #7.",
+    "Fresh hosted CI and complete native Bugbot review are required for the source head."
   ],
   "copilotModified": false,
   "capabilityComplete": false,
@@ -92,13 +100,17 @@
     "after": "All 138 unit/architecture/CI-contract cases pass; every C1 code point rejected in group labels, item labels and links; visible U+00A0/U+00A1 preserved.",
     "manualResolution": false
   },
-  "lockSha256": "3011110ba520f33cca391abf1f7ad5262485159ced72b579b180f9923b0611dc",
+  "lockSha256": "78ddfdb8c4822b70cbbf48ba31e1c5968b558d99d1c6c6ea1b98da23e8bdbb44",
   "browserEvidence": {
     "componentCases": 28,
     "engine": "Chromium 156.0.8078.4",
     "actualPackageImages": [
       "test-results/packed-navigation-light.png",
-      "test-results/packed-panels-dark-es.png"
+      "test-results/packed-panels-dark-es.png",
+      "test-results/packed-react-dark-es.png",
+      "test-results/packed-vue-dark-es.png",
+      "test-results/packed-angular-dark-es.png",
+      "test-results/packed-svelte-dark-es.png"
     ],
     "imagesInspected": true,
     "focusRegression": "focus-return-red.log reproduces the stale tab-stop; full green run has no skipped tests.",
@@ -112,5 +124,184 @@
     "permanentNegativeControl": "An independent unlocked fixture must reject with ERR_PNPM_NO_OFFLINE_META against the same empty metadata cache.",
     "localGreen": "frozen-packed-green.log; strict types, frozen isolated install, DOM-free compilation/import and real packed Chromium journeys pass.",
     "freshHostedRequired": true
+  },
+  "packedFrameworks": {
+    "scope": "Navigation adapters only; forms, framework SSR and application adoption remain required",
+    "frameworks": [
+      {
+        "framework": "react",
+        "compiled": true,
+        "frozenOfflineInstall": true,
+        "noForeignFramework": true,
+        "candidateArchives": [
+          {
+            "file": "file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz",
+            "sha256": "5c64d1378091e38eee17ccf3aa74f246bd6489f587c612a28f073149d3406c89"
+          },
+          {
+            "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+            "sha256": "bb09f0f83797c895fdd8d425edfcbdac3307e36d7d64b30c96856f2f5f9d01ad"
+          }
+        ],
+        "props": true,
+        "events": true,
+        "slots": true,
+        "disabled": true,
+        "runtimeSpanishAndTheme": true,
+        "keyboard": true,
+        "teardownAndRemount": true,
+        "browser": "156.0.8078.4",
+        "errors": []
+      },
+      {
+        "framework": "vue",
+        "compiled": true,
+        "frozenOfflineInstall": true,
+        "noForeignFramework": true,
+        "candidateArchives": [
+          {
+            "file": "file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz",
+            "sha256": "e60799e995b06101f12e5c659b85f8f6359cbe1c7c1c6ac3d7834b036d1baa8b"
+          },
+          {
+            "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+            "sha256": "bb09f0f83797c895fdd8d425edfcbdac3307e36d7d64b30c96856f2f5f9d01ad"
+          }
+        ],
+        "props": true,
+        "events": true,
+        "slots": true,
+        "disabled": true,
+        "runtimeSpanishAndTheme": true,
+        "keyboard": true,
+        "teardownAndRemount": true,
+        "browser": "156.0.8078.4",
+        "errors": []
+      },
+      {
+        "framework": "angular",
+        "compiled": true,
+        "frozenOfflineInstall": true,
+        "noForeignFramework": true,
+        "candidateArchives": [
+          {
+            "file": "file:../pack-1/vypdev-ha-ui-angular-0.1.0-next.1.tgz",
+            "sha256": "736fa5858d1c54bb34109f0a2d3b67392c2436bfccbc17ce985c14955ba6ec7a"
+          },
+          {
+            "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+            "sha256": "bb09f0f83797c895fdd8d425edfcbdac3307e36d7d64b30c96856f2f5f9d01ad"
+          }
+        ],
+        "props": true,
+        "events": true,
+        "slots": true,
+        "disabled": true,
+        "runtimeSpanishAndTheme": true,
+        "keyboard": true,
+        "teardownAndRemount": true,
+        "browser": "156.0.8078.4",
+        "errors": []
+      },
+      {
+        "framework": "svelte",
+        "compiled": true,
+        "frozenOfflineInstall": true,
+        "noForeignFramework": true,
+        "candidateArchives": [
+          {
+            "file": "file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz",
+            "sha256": "afdd612a39a017c55a41be38e2d79e2335a749af646d0e62b63b1049feb9ca52"
+          },
+          {
+            "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+            "sha256": "bb09f0f83797c895fdd8d425edfcbdac3307e36d7d64b30c96856f2f5f9d01ad"
+          }
+        ],
+        "props": true,
+        "events": true,
+        "slots": true,
+        "disabled": true,
+        "runtimeSpanishAndTheme": true,
+        "keyboard": true,
+        "teardownAndRemount": true,
+        "browser": "156.0.8078.4",
+        "errors": []
+      }
+    ]
+  },
+  "packedCohort": {
+    "scope": "Unpublished navigation preview only; no registry publication or full capability acceptance",
+    "cohort": [
+      {
+        "coordinate": "@vypdev/ha-ui",
+        "version": "0.1.0-next.1",
+        "sha256": "bb09f0f83797c895fdd8d425edfcbdac3307e36d7d64b30c96856f2f5f9d01ad",
+        "bytes": 9609
+      },
+      {
+        "coordinate": "@vypdev/ha-ui-angular",
+        "version": "0.1.0-next.1",
+        "sha256": "736fa5858d1c54bb34109f0a2d3b67392c2436bfccbc17ce985c14955ba6ec7a",
+        "bytes": 2838
+      },
+      {
+        "coordinate": "@vypdev/ha-ui-react",
+        "version": "0.1.0-next.1",
+        "sha256": "5c64d1378091e38eee17ccf3aa74f246bd6489f587c612a28f073149d3406c89",
+        "bytes": 2706
+      },
+      {
+        "coordinate": "@vypdev/ha-ui-svelte",
+        "version": "0.1.0-next.1",
+        "sha256": "afdd612a39a017c55a41be38e2d79e2335a749af646d0e62b63b1049feb9ca52",
+        "bytes": 2226
+      },
+      {
+        "coordinate": "@vypdev/ha-ui-vue",
+        "version": "0.1.0-next.1",
+        "sha256": "e60799e995b06101f12e5c659b85f8f6359cbe1c7c1c6ac3d7834b036d1baa8b",
+        "bytes": 2931
+      }
+    ],
+    "reproducible": true,
+    "sourceLockSha256": "78ddfdb8c4822b70cbbf48ba31e1c5968b558d99d1c6c6ea1b98da23e8bdbb44"
+  },
+  "frameworkPreviewPins": {
+    "react": "19.3.1",
+    "reactTypes": "19.3.0",
+    "vue": "3.5.44",
+    "angular": "22.2.4",
+    "svelte": "5.57.3",
+    "typescript": "6.0.3",
+    "ngPackagr": "22.2.5",
+    "sveltePackage": "3.0.2",
+    "sveltePlugin": "7.3.1",
+    "svelteCheck": "4.7.8",
+    "babel": "8.0.1"
+  },
+  "frameworkBoundaries": {
+    "validated": "Navigation bindings and local controlled panels only",
+    "forms": false,
+    "frameworkSSRAndHydration": false,
+    "otherBrowserEngines": false,
+    "applicationAdoption": false,
+    "publication": false,
+    "storybook": false
+  },
+  "coldSourceValidation": {
+    "compiledDistributionsPresent": false,
+    "packages": [
+      "core",
+      "react",
+      "vue",
+      "angular",
+      "svelte"
+    ],
+    "types": "All strict source, Node-tool and both Svelte checks passed",
+    "unitAndBrowserTests": 187,
+    "coverage": "100% statements/branches/functions/lines per authored file and globally",
+    "restoration": "Every previous compiled distribution restored byte-for-byte",
+    "reason": "Source checking must not depend on old local declaration output; Svelte source checks use the source project while package emission retains its separate build project."
   }
 }
