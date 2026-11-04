@@ -10,7 +10,7 @@ debt or convert unknown historic intent into a design decision.
 
 | Capability ID | Status | Scope | Primary SDD | Evidence |
 |---|---|---|---|---|
-| `shared-ui-foundation` | Proposed | One DOM component implementation with React, Vue, Angular and Svelte adapters, direct Lit/DOM use, shared Storybook and verified Gateway/Domus adoption. Draft; no runtime implementation or delivery accepted. | [Shared Home Assistant presentation components and framework adapters](./shared-ui-foundation.md) | 3 paths · 2026-11-04 |
+| `shared-ui-foundation` | Proposed | One DOM component implementation with React, Vue, Angular and Svelte adapters, direct Lit/DOM use, shared Storybook and verified Gateway/Domus adoption. Draft; no runtime implementation or delivery accepted. | [Shared Home Assistant presentation components and framework adapters](./shared-ui-foundation.md) + 1 companion | 3 paths · 2026-11-04 |
 
 ## Evidence map
 
@@ -18,7 +18,7 @@ debt or convert unknown historic intent into a design decision.
 
 - Owner: vypdev maintainers; Efrain Espada (accountable product/publication owner)
 - Last verified: 2026-11-04
-- Specifications: [`specs/shared-ui-foundation.md`](./shared-ui-foundation.md)
+- Specifications: [`specs/shared-ui-foundation.md`](./shared-ui-foundation.md) · [`specs/shared-ui-framework-delivery.md`](./shared-ui-framework-delivery.md)
 - Workflows: [`.github/workflows/copilot_issue.yml`](../.github/workflows/copilot_issue.yml)
 - Entrypoints: Not yet implemented (proposed capability).
 - Core code: Not yet implemented (proposed capability).
