@@ -55,3 +55,11 @@ The catalog contrast check found the prior light error fallback below AA for 12p
 renderer and fictional palette now use `#b3261e`; public HA/custom theme overrides still apply.
 The authored focus handler fully reveals a partially visible focused navigation/tab destination
 with nearest, instant scrolling. Both changes are tested once in the common implementation.
+
+The button's pill geometry, gap, padding, typography, visual variants and spinner are adapted from
+[Gateway ui-catalog.css lines 123–142 at the reviewed MIT revision](https://github.com/vypdev/homeassistant-gateway/blob/e47dde303e475a6d03e1d6697ec87a934e93263b/frontend/src/ui/ui-catalog.css#L123-L142).
+Compact/default targets are raised to 44 px; large and extra-large remain 48/56 px. Accessible
+controlled state, reduced motion, inert icon projection, typed requests and the exposed native
+submitter bridge are authored here. The fixture icon is a text glyph, with no imported asset.
+The source/license notice remains unchanged. The catalog supplies tested accent/on-accent theme
+pairs, instead of assuming every host-supplied pair meets contrast.

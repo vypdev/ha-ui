@@ -443,6 +443,13 @@ Prospective repository files (current documents are classified against the immut
 | `tsconfig.storybook.json` | create |
 | `patches/@storybook__web-components@10.6.5.patch` | create |
 | `docs/storybook.md` | create |
+| `packages/core/src/button-contracts.ts` | create |
+| `tests/contracts/button.test.ts` | create |
+| `tests/browser/button.test.ts` | create |
+| `docs/button-contract.md` | create |
+| `stories/button.example.ts` | create |
+| `stories/button.stories.ts` | create |
+| `tests/consumers/buttons.ts` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

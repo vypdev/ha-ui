@@ -18,7 +18,7 @@ families and their form bridges, browser support breadth and framework SSR integ
 
 The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
 its source currently contains presentation contracts, one preview navigation/panel component and
-one controlled text field. It is not a supported component release.
+one controlled text field and a native-form button. It is not a supported component release.
 React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass navigation and single-line text-field compiled/browser
 fixtures using actual packages. They remain preview pins until the complete component and delivery gates pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
 Do not infer support from custom-element interoperability or compiler metadata alone.
@@ -53,3 +53,10 @@ The core text field uses native ElementInternals in Chromium. Native form submis
 required/length/custom validation, disabled fieldsets, readonly, reset and controlled edits are
 covered. Four field framework bridges pass; other controls, other engines and the full library
 acceptance remain unverified. Angular Forms is pinned to 22.2.4 alongside Angular Core.
+
+The core button's scoped acceptance uses a real hidden native submitter with the one visible shadow
+renderer. Native DOM and installed-package tests cover actual FormData/validation/default Enter,
+cancellation, fieldset/legend rules, busy focus, reset and stale connection/owner prevention. This
+is the documented [button equivalence](button-contract.md), not universal HTMLElement submitter
+support. Button framework bindings and other engines remain pending. The field's Enter path now
+clicks the actual default submitter, preserving native application cancellation.

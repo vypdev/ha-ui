@@ -1,7 +1,7 @@
 # Shared component catalog
 
 The current catalog displays the implemented upper navigation, local panels and single-line text
-field using the real package entrypoints. Sixteen CSF stories have automatic documentation,
+field and button using the real package entrypoints. Twenty-eight CSF stories have automatic documentation,
 controls, interaction tests and accessibility checks. This is an incremental preview; other
 families, the full framework/SSR/browser matrix and application adoption are still required.
 
@@ -24,6 +24,7 @@ are local to the static build; the browser gate rejects external requests and fa
 |---|---|---|
 | Navigation / Household sections | `@vypdev/ha-ui/tabs`, `kind: navigation` | Current link, disabled, empty, long labels, narrow overflow |
 | Tabs / Local panels | The same renderer, `kind: panels` | Named slots, manual keyboard activation, disabled and unselected |
+| Buttons / Actions | `@vypdev/ha-ui/button` | Eight variants, native submit/reset, busy, pressed, icon-only, disabled and canceled |
 | Forms / Text field | `@vypdev/ha-ui/field` | Controlled draft, native submit/reset, required, readonly, disabled and error |
 
 The toolbar chooses English/Spanish, light/dark, narrow/wide and reduced/system motion. Unsupported
@@ -35,8 +36,8 @@ chosen inputs. No preference, form value or selected route is persisted.
 `ha-selection-request` is cancelable and carries immutable `{kind, id}` detail. The example
 intercepts section links and supplies the next validated state. Local panels project real named
 slots matching item IDs. `ha-value-request` carries immutable `{value, reason}` detail; the field
-example validates it, updates its own draft and submits actual `FormData`. The fixture's native
-submit/reset buttons are example scaffolding, not the pending shared button family.
+example validates it, updates its own draft and submits actual `FormData`. The form's
+submit/reset actions now use the actual shared button and its exposed native submitter.
 
 The public state properties, validation rules, events, slots and theme tokens are described in the
 [component API](component-library.md#first-component-contract-controlled-upper-navigation).
@@ -54,7 +55,7 @@ imported from independently measured `*.example.ts` modules; architecture checks
 renderers or duplicate control markup in those test definitions. No runtime example is excluded.
 
 The static gate builds the manager, autodocs and previews, then serves only the repository base
-`/ha-ui/`. It checks 32 locale/theme/width combinations with axe, real focus/overflow and manual
+`/ha-ui/`. It checks 48 locale/theme/width combinations with axe, real focus/overflow and manual
 panel activation, native form editing/validation/submit/reset, controls-driven value changes and
 all four manager toolbar settings. It records original screenshots and `test-results/storybook/evidence.json`.
 The contrast and partial-focus regressions fail against the earlier renderer and pass after the

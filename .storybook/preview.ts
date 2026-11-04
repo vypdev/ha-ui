@@ -1,9 +1,10 @@
 import type {Preview} from '@storybook/web-components-vite';
 import {registerTabs} from '@vypdev/ha-ui/tabs';
+import {registerButton} from '@vypdev/ha-ui/button';
 import {registerField} from '@vypdev/ha-ui/field';
 import {catalogFrame} from '../stories/catalog-frame.js';
 const preview:Preview={
-  beforeAll:()=>{registerTabs();registerField();},decorators:[catalogFrame],
+  beforeAll:()=>{registerTabs();registerField();registerButton();},decorators:[catalogFrame],
   initialGlobals:{theme:'light',locale:'en',width:'wide',motion:'system'},
   globalTypes:{
     theme:{description:'HA-compatible theme',toolbar:{title:'Theme',icon:'circlehollow',items:[{value:'light',title:'Light'},{value:'dark',title:'Dark'}],dynamicTitle:true}},

@@ -3,9 +3,10 @@
 Shared presentation components for Home Assistant applications, including Gateway and Domus.
 
 The current source implements a DOM-independent navigation data contract, one controlled HA-style
-upper navigation/panel component, a controlled form-associated text field and a pinned, tested
+upper navigation/panel component, a controlled form-associated text field, a native-form button and a pinned, tested
 build/coverage foundation. React, Vue, Angular
 and Svelte navigation and text-field form bindings pass real compiled, packed consumers.
+The core button passes its real installed consumer; button framework bindings remain pending.
 Other component families and their form bridges, framework SSR boundaries, public Storybook hosting, publication and actual
 application adoption remain required.
 The [shared Storybook](docs/storybook.md) now covers the implemented families.

@@ -35,6 +35,14 @@
     "./field": {
       "types": "./dist/components/field.d.ts",
       "import": "./dist/components/field.js"
+    },
+    "./button-contracts": {
+      "types": "./dist/button-contracts.d.ts",
+      "import": "./dist/button-contracts.js"
+    },
+    "./button": {
+      "types": "./dist/components/button.d.ts",
+      "import": "./dist/components/button.js"
     }
   },
   "publishConfig": {

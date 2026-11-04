@@ -32,6 +32,12 @@
       ],
       "@vypdev/ha-ui/field": [
         "./packages/core/src/components/field.ts"
+      ],
+      "@vypdev/ha-ui/button-contracts": [
+        "./packages/core/src/button-contracts.ts"
+      ],
+      "@vypdev/ha-ui/button": [
+        "./packages/core/src/components/button.ts"
       ]
     }
   },

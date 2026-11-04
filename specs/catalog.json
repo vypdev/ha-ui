@@ -26,7 +26,9 @@
         "packages/svelte/src/index.ts",
         "packages/core/src/components/field.ts",
         "packages/core/src/field-contracts.ts",
-        ".storybook/main.ts"
+        ".storybook/main.ts",
+        "packages/core/src/button-contracts.ts",
+        "packages/core/src/components/button.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
@@ -51,7 +53,10 @@
         "stories/foundation.example.ts",
         "stories/panels.example.ts",
         "stories/field.example.ts",
-        ".storybook/preview.ts"
+        ".storybook/preview.ts",
+        "packages/core/src/button-contracts.ts",
+        "packages/core/src/components/button.ts",
+        "stories/button.example.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -112,7 +117,11 @@
         "tests/storybook/static.test.ts",
         "stories/foundation.stories.ts",
         "stories/panels.stories.ts",
-        "stories/field.stories.ts"
+        "stories/field.stories.ts",
+        "tests/contracts/button.test.ts",
+        "tests/browser/button.test.ts",
+        "tests/consumers/buttons.ts",
+        "stories/button.stories.ts"
       ],
       "documentation": [
         "README.md",
@@ -121,7 +130,8 @@
         "docs/provenance.md",
         "docs/evidence/shared-ui-foundation.json",
         "docs/framework-adapters.md",
-        "docs/storybook.md"
+        "docs/storybook.md",
+        "docs/button-contract.md"
       ],
       "readiness": {
         "status": "draft",
@@ -132,7 +142,7 @@
           "Storybook Pages delivery and human UX review",
           "Actual Gateway and Domus adoption"
         ],
-        "implementationEvidence": "partial: shared navigation/panels and a controlled text field, with React/Vue/Angular/Svelte bindings and text-field form bridges. Frozen compiled consumers pass native form submission, cancellation, validation, disable/reset and lifecycle; Angular includes AOT and CVA. A real 16-story catalog passes Chromium interaction/a11y and static subpath matrix checks; public hosting remains pending. Other controls, full SSR/browser matrix, delivery/publication and application adoption remain required."
+        "implementationEvidence": "Partial: shared navigation/panels and text field with React/Vue/Angular/Svelte field/navigation bindings; a core button has explicit real-native-submitter equivalence. Actual installed core and four field/navigation consumers pass. The 28-story catalog passes 48 static locale/theme/width combinations. Button framework bindings, other controls, full SSR/browser matrix, live hosting, delivery/publication and application adoption remain required."
       }
     }
   ]

@@ -1,6 +1,7 @@
 import {html} from 'lit';
 import type {Meta} from '@storybook/web-components-vite';
 import {catalogExample} from './catalog-example.js';
+import {buttonState} from '@vypdev/ha-ui/button-contracts';
 import {textFieldState,textFieldValue,fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
 import type {FieldValueEvent} from '@vypdev/ha-ui/field';
 import {catalogSettings,catalogCopy} from './catalog-state.js';
@@ -12,7 +13,7 @@ export const renderExample:NonNullable<Meta<Args>['render']>=(controls,context)=
     return html`<form class="example-form" @submit=${(event:SubmitEvent)=>{event.preventDefault();const value=textFieldValue(new FormData(event.currentTarget as HTMLFormElement).get('task'));setArgs({...args,submitted:value});}}>
       <vyp-ha-field .state=${state} .value=${args.value} .defaultValue=${args.defaultValue} .name=${'task'} .disabled=${args.disabled}
         @ha-value-request=${(event:FieldValueEvent)=>{const detail=fieldValueDetail(event.detail);setArgs({...args,value:detail.value,error:false,submitted:null});}}></vyp-ha-field>
-      <div class="example-actions"><button type="submit" ?disabled=${args.disabled}>${copy.submit}</button><button type="reset">${copy.reset}</button></div>
+      <div class="example-actions"><vyp-ha-button .type=${'submit'} .disabled=${args.disabled} .state=${buttonState({label:copy.submit,variant:'primary'})}></vyp-ha-button><vyp-ha-button .type=${'reset'} .state=${buttonState({label:copy.reset})}></vyp-ha-button></div>
       <output aria-live="polite">${args.submitted===null?copy.draft:copy.submitted+': '+args.submitted}</output>
     </form>`;
     });
