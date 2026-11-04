@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "capabilities": [
+    {
+      "id": "shared-ui-foundation",
+      "title": "Shared Home Assistant presentation components and framework adapters",
+      "status": "proposed",
+      "scope": "One DOM component implementation with React, Vue, Angular and Svelte adapters, direct Lit/DOM use, shared Storybook and verified Gateway/Domus adoption. Draft; no runtime implementation or delivery accepted.",
+      "owner": "vypdev maintainers; Efrain Espada (accountable product/publication owner)",
+      "lastVerified": "2026-11-04",
+      "specs": [
+        "specs/shared-ui-foundation.md"
+      ],
+      "workflows": [
+        ".github/workflows/copilot_issue.yml"
+      ],
+      "entrypoints": [],
+      "code": [],
+      "tests": [],
+      "documentation": [
+        "README.md",
+        "docs/component-library.md"
+      ],
+      "readiness": {
+        "status": "draft",
+        "blockingGates": [
+          "Native feature publication/readiness",
+          "Exact support pins and public API verification",
+          "Implementation, coverage and consumer acceptance",
+          "npm publication rights and source-to-artifact integrity",
+          "Storybook Pages delivery and human UX review",
+          "Actual Gateway and Domus adoption"
+        ]
+      }
+    }
+  ]
+}
