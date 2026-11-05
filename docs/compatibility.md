@@ -68,8 +68,9 @@ multiple/explicit list modes retain their native select pending the next visual 
 values, string FormData, controlled reset, validation, disabled owners and teardown retain the same
 public policy across all four bindings. Current source/browser tests cover picker preview/commit,
 clear, empty/unavailable selections and popup lifetime. The current reproducible five-package
-cohort, four compiled framework consumers, 76 original HA visual comparisons and twelve catalog
-form journeys across Chromium, Firefox and WebKit pass. The selector's small raster differences
+cohort, four compiled framework consumers, 114 original HA visual comparisons and twelve catalog
+form journeys across Chromium, Firefox and WebKit pass. Nine compiled scroll cases additionally
+cover ordinary ancestors, enclosing shadow roots and slots in those engines. The selector's small raster differences
 and remaining family/browser scope are explicit in [visual acceptance](visual-parity.md).
 Details are in the [select contract](select-contract.md).
 

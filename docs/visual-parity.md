@@ -231,10 +231,10 @@ controlled API, native blocker bookkeeping and the remaining input/application s
 
 ## Filled single select and menu
 
-The [select reference](evidence/ha-select-reference.json) retains 38 original states per measured
-platform: empty/placeholder/filled, hover and keyboard focus, disabled, required, helper/error,
+The [select reference](evidence/ha-select-reference.json) retains 38 original states for each of
+macOS ARM64, Linux ARM64 and Linux x64: empty/placeholder/filled, hover and keyboard focus, disabled, required, helper/error,
 narrow and long labels, RTL, optional clear and open menus with pointer or keyboard interaction.
-Two independent original campaigns agree for all 76 unmodified PNGs. Public HA module functions,
+Two independent original campaigns agree for all 114 unmodified PNGs. Public HA module functions,
 recorded tokens and exact Roboto bytes run in fresh documents without application startup, HA API
 access or credentials. The reviewed source revision and installed public bundle identities remain
 distinct. Raw multiple/chips/search observations are retained for the following increment.
@@ -246,6 +246,21 @@ with a 44px native clear target. The authored combobox/listbox semantics preserv
 requests, cancelability, reset, validation and successful native form entries across all four bindings.
 Keyboard preview, typeahead, commit/cancel, disabled choices and popup lifetime are tested separately
 from paint. Ordinary hover motion is 15ms; OS reduced motion caps it at 1ms and preserves explicit zero.
+
+The first hosted selector campaign exposed an architecture mismatch. Linux x64 CI was compared
+with the Linux ARM64 originals: translucent dark shadows differed by one RGB level over roughly
+10% of the image, while computed styles matched. Independent original x64 captures with the exact
+CI Chromium 156.0.8078.4 agree; the same 38 original x64 images also match the pinned image's
+156.0.8078.80 output. The immutable failed CI artifact passes against these x64 originals under
+the existing bounds. The gate selects both platform and local Node/browser host architecture,
+requires all 38 states, and records the actual browser version. Previous 76 reference images
+remain unchanged. No renderer workaround or larger tolerance is used.
+
+Popup positioning listens in capture at each shadow root in the anchor's composed ancestry,
+including assigned slots, because native element scroll events do not cross a shadow boundary.
+Real settled pointer-away scroll regressions distinguish ordinary ancestors from enclosing shadow
+roots; a hover render must not mask the latter failure. All listeners share the popup's abortable
+lifetime. Source cases and actual compiled-core journeys verify this behavior independently.
 
 The selector gate requires geometry within 0.1 CSS pixel and exact measured typography, colors,
 borders, radii and shadows. Whole original and candidate PNGs are decoded for read-only RGBA comparison.

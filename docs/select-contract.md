@@ -51,7 +51,8 @@ Typeahead searches labels without coercing their values. Enter, Space and Tab co
 request; Tab continues normal focus order, including the optional clear button. Escape closes the
 popup with the accepted model intact. Outside pointers, blur, disabling, reset, restoration and
 disconnect close it without a stray change request. Removed controls/options cannot act on a later
-configuration. The popup flips/clamps to the viewport and tracks scroll/resize; every listener is
+configuration. The popup flips/clamps to the viewport and tracks scroll/resize, including enclosing
+open shadow roots and slotted owners; every listener is
 removed when it closes. Empty/all-disabled menus never turn an unavailable model into a clear request.
 
 `state`, controlled `value` and `defaultValue` are properties, not serialized attributes. `name`

@@ -273,9 +273,10 @@ popup. Multiple and explicit list modes retain the native renderer until their n
 The [independent original references](evidence/ha-select-reference.json) cover filled/empty,
 placeholder, hover/focus, disabled/required/error/help, narrow/long labels, RTL, optional clear and
 menu pointer/keyboard states. The current five-package cohort and four compiled framework consumers
-pass. All 76 original-state comparisons satisfy exact computed styles, 0.1px geometry and the
+pass. All 114 original-state comparisons across three platform/architecture targets satisfy exact computed styles, 0.1px geometry and the
 documented selector-only nearly-identical raster bounds; existing exact visual gates also pass.
-Twelve catalog form journeys pass across Chromium, Firefox and WebKit. The [acceptance receipt](evidence/shared-ui-foundation.json)
+Twelve catalog form journeys and nine compiled ordinary/shadow/slotted scroll cases pass across
+Chromium, Firefox and WebKit. The [acceptance receipt](evidence/shared-ui-foundation.json)
 records this scope separately from the remaining multiple/list and application work.
 
 ## Controlled checkbox and visual acceptance

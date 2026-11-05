@@ -1,5 +1,5 @@
 {
-  "recordedAtUTC": "2026-11-05T01:21:30.013403+00:00",
+  "recordedAtUTC": "2026-11-05T02:07:21.432586+00:00",
   "status": "Partial library: five shared families with four real bindings. Scoped navigation/checkbox/button/filled-field and single-picker visuals calibrated against original HA; multiple/chips/search, remaining families and full delivery/application acceptance remain required.",
   "issue": 7,
   "nativePublication": {
@@ -17,7 +17,7 @@
   "implemented": [
     "Shared controlled navigation/panels, text field, native-form button, typed single/multiple select and boolean checkbox; immutable DOM-free contracts, explicit registration, typed cancelable intent and one renderer per family.",
     "Real React/Vue/Angular/Svelte bindings for all five current families. Angular includes actual field/select/checkbox Forms bridges. Runtime adapter imports stay within pure contracts and the selected framework; no alternate visuals.",
-    "1195 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 55 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
+    "1198 passing Node/Chromium, architecture, CI, component/binding, lifecycle and Storybook tests. All 55 authored runtime modules are independently inventoried, including three zero-executable modules; all four metrics are 100% globally and per file.",
     "Strict source and consumer-tool types plus Svelte package/test-fixture checks; no library checks skipped. Angular APF and Svelte declarations built by official package tools.",
     "All five unpublished coordinates independently built/packed twice with identical bytes. Actual installed sources and publication metadata verified.",
     "Four clean frozen offline compiled installed-package consumers exercise navigation, field, button, typed selects and boolean checkboxes, native validation/entries/reset/disabled behavior, cancellation, EN/ES/themes and teardown/remount. Actual tested five-coordinate archives are retained with their digests.",
@@ -43,18 +43,20 @@
     "All five Vue bindings forward live native/ARIA/data attributes and listeners while one shared helper blocks content setters. All five core hosts honor hidden without altering controlled form values. Five new source regressions reproduce lost attributes; four subsequent failures reproduce hidden-host CSS. Ten actual compiled Vue hosts verify forwarded attributes, visibility and unchanged FormData.",
     "Storybook clears prior completion at new preparation/loading/rendering and records a page-local revision. Two real same-story Reload actions require fresh successful automatic a11y reports; static and Chrome both observe revisions3,5,7. All12 compiled form journeys and existing exact HA pixel gates remain passing on measured engines/platforms.",
     "The size=1 single selector uses one HA filled picker with authored combobox/listbox semantics, typed preview/commit/typeahead, an optional 44px clear target, viewport popup lifetime and all four visual-free bindings. Empty/all-disabled and retired-node/configuration/lifecycle counterexamples preserve the accepted typed model. Multiple and explicit visible lists still require calibration.",
-    "Two independent original campaigns agree for 76 single-picker PNG references. Current macOS/Linux built candidates pass exact computed paint and 0.1 CSS pixel geometry; four PNGs are byte-identical and 72 satisfy the documented selector-only full RGBA bounds. Eight open-menu default-rule axe scans per platform and ordinary/reduced/zero motion pass. Existing 208 navigation, 192 button and 88 field pairs remain byte-identical. Twelve current catalog form journeys pass across three engines."
+    "Two independent original campaigns agree for 114 single-picker PNG references across three measured platform/architecture targets. Current candidates pass exact computed paint and 0.1 CSS pixel geometry; six PNGs are byte-identical and 108 satisfy the documented selector-only full RGBA bounds. Eight open-menu default-rule axe scans per target and ordinary/reduced/zero motion pass. Existing 208 navigation, 192 button and 88 field pairs remain byte-identical across macOS ARM64 and Linux ARM64; fresh native hosted CI remains required.",
+    "The single-picker reference distinguishes macOS ARM64, Linux ARM64 and Linux x64. All 114 original PNGs repeat independently, with the exact CI browser used for x64. The immutable previously failed CI artifact passes against its independently captured x64 originals under the unchanged selector bounds. Previous 76 reference images are untouched.",
+    "Popup scroll listeners cover each shadow root in the composed anchor ancestry, including assigned slots, and share the abort lifetime. Two settled pointer-away source regressions fail before this correction and pass afterward. Ordinary non-bubbling native scroll already worked; a missing-capture counterfactual now fails. Actual compiled core passes all three container topologies in Chromium, Firefox and WebKit with typed values/FormData intact."
   ],
   "coverage": {
     "lines": {
-      "total": 949,
-      "covered": 949,
+      "total": 953,
+      "covered": 953,
       "skipped": 0,
       "pct": 100
     },
     "statements": {
-      "total": 2167,
-      "covered": 2167,
+      "total": 2173,
+      "covered": 2173,
       "skipped": 0,
       "pct": 100
     },
@@ -65,8 +67,8 @@
       "pct": 100
     },
     "branches": {
-      "total": 1477,
-      "covered": 1477,
+      "total": 1487,
+      "covered": 1487,
       "skipped": 0,
       "pct": 100
     },
@@ -100,7 +102,7 @@
     "packages/core/src/components/implicit-submit.ts": "b4cc1f28d7e31c12984ea6018ddb70df9c0cb48c06a5dfc2402731ca7527f6ca",
     "packages/core/src/components/navigation-overflow.ts": "0e709f2ea4d700b0a712bfb0d853adfe928478228bc1b9dcdf75de3ea4d13a86",
     "packages/core/src/components/select.ts": "6a97afba8e79ac7895d3e2c018a9a90c9d1aa6eca9ec7650039bf19895461688",
-    "packages/core/src/components/selection-popup.ts": "02de33285463c74806cb334e7f2a969eb9acdc5214764860c9da87fb771d723b",
+    "packages/core/src/components/selection-popup.ts": "75f983ed41a27aee11c6c13738bfd05050ed1b41e92b50f9f2db030481649bf3",
     "packages/core/src/components/tabs.ts": "c3be3d4e88d8b781883776209c25f775e8d698a4ee578c7a3247de495cc18981",
     "packages/react/src/button.ts": "dfe36710fb8db11e674efb43715525bfd246f6819086c3a3628a662920df04eb",
     "packages/react/src/checkbox.ts": "7c92ee1e6cd60058434db3e0bad8bd8aba668dfbcb6a59c39a9fb54684583266",
@@ -136,8 +138,8 @@
   },
   "packedContract": {
     "scope": "Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required",
-    "sha256": "96886f517070eea65d35f98a9493fe11ce9b1a9928d21239614f54ca5684ed54",
-    "bytes": 126077,
+    "sha256": "01be4e96167247e8b0f34de435829780d01e5b05a5500f82be8b3fa6858bde38",
+    "bytes": 126634,
     "reproducible": true,
     "cleanOfflineInstall": true,
     "frozenRuntimeLock": true,
@@ -284,7 +286,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "96886f517070eea65d35f98a9493fe11ce9b1a9928d21239614f54ca5684ed54"
+            "sha256": "01be4e96167247e8b0f34de435829780d01e5b05a5500f82be8b3fa6858bde38"
           }
         ],
         "props": true,
@@ -376,7 +378,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "96886f517070eea65d35f98a9493fe11ce9b1a9928d21239614f54ca5684ed54"
+            "sha256": "01be4e96167247e8b0f34de435829780d01e5b05a5500f82be8b3fa6858bde38"
           }
         ],
         "props": true,
@@ -630,7 +632,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "96886f517070eea65d35f98a9493fe11ce9b1a9928d21239614f54ca5684ed54"
+            "sha256": "01be4e96167247e8b0f34de435829780d01e5b05a5500f82be8b3fa6858bde38"
           }
         ],
         "props": true,
@@ -725,7 +727,7 @@
           },
           {
             "file": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-            "sha256": "96886f517070eea65d35f98a9493fe11ce9b1a9928d21239614f54ca5684ed54"
+            "sha256": "01be4e96167247e8b0f34de435829780d01e5b05a5500f82be8b3fa6858bde38"
           }
         ],
         "props": true,
@@ -813,8 +815,8 @@
       {
         "coordinate": "@vypdev/ha-ui",
         "version": "0.1.0-next.1",
-        "sha256": "96886f517070eea65d35f98a9493fe11ce9b1a9928d21239614f54ca5684ed54",
-        "bytes": 126077
+        "sha256": "01be4e96167247e8b0f34de435829780d01e5b05a5500f82be8b3fa6858bde38",
+        "bytes": 126634
       },
       {
         "coordinate": "@vypdev/ha-ui-angular",
@@ -883,7 +885,13 @@
     ],
     "restoredFiles": 136,
     "restoredBytesUnchanged": true,
-    "runtimeFiles": 55
+    "runtimeFiles": 55,
+    "publishableScope": {
+      "path": "tests/browser/select-chips.test.ts",
+      "sha256": "44180dc5d7807209431eda10c81b6725409950547915a81d14a13366fa6e8c50",
+      "restoredIdentically": true,
+      "reason": "Six red TDD cases belong to the following uncommitted multiple-picker increment; they are absent from this published correction."
+    }
   },
   "restoreReviewRegression": {
     "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4464672339",
@@ -16657,6 +16665,8 @@
     "selectVisual": [
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-empty",
         "geometryMatch": true,
@@ -16963,6 +16973,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-placeholder",
         "geometryMatch": true,
@@ -17269,6 +17281,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-filled",
         "geometryMatch": true,
@@ -17608,6 +17622,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-hover",
         "geometryMatch": true,
@@ -17947,6 +17963,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-focus",
         "geometryMatch": true,
@@ -18286,6 +18304,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-empty-focus",
         "geometryMatch": true,
@@ -18592,6 +18612,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-disabled",
         "geometryMatch": true,
@@ -18931,6 +18953,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-required",
         "geometryMatch": true,
@@ -19270,6 +19294,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-helper",
         "geometryMatch": true,
@@ -19642,6 +19668,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-error",
         "geometryMatch": true,
@@ -20014,6 +20042,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-narrow",
         "geometryMatch": true,
@@ -20353,6 +20383,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-rtl",
         "geometryMatch": true,
@@ -20692,6 +20724,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-long",
         "geometryMatch": true,
@@ -21031,6 +21065,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-clearable",
         "geometryMatch": true,
@@ -21370,6 +21406,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-menu",
         "geometryMatch": true,
@@ -21742,6 +21780,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-menu-hover",
         "geometryMatch": true,
@@ -22114,6 +22154,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-menu-keyboard",
         "geometryMatch": true,
@@ -22486,6 +22528,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-menu-narrow",
         "geometryMatch": true,
@@ -22858,6 +22902,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "light",
         "name": "single-menu-rtl",
         "geometryMatch": true,
@@ -23230,6 +23276,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-empty",
         "geometryMatch": true,
@@ -23536,6 +23584,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-placeholder",
         "geometryMatch": true,
@@ -23842,6 +23892,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-filled",
         "geometryMatch": true,
@@ -24181,6 +24233,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-hover",
         "geometryMatch": true,
@@ -24520,6 +24574,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-focus",
         "geometryMatch": true,
@@ -24859,6 +24915,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-empty-focus",
         "geometryMatch": true,
@@ -25165,6 +25223,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-disabled",
         "geometryMatch": true,
@@ -25504,6 +25564,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-required",
         "geometryMatch": true,
@@ -25843,6 +25905,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-helper",
         "geometryMatch": true,
@@ -26215,6 +26279,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-error",
         "geometryMatch": true,
@@ -26587,6 +26653,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-narrow",
         "geometryMatch": true,
@@ -26926,6 +26994,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-rtl",
         "geometryMatch": true,
@@ -27265,6 +27335,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-long",
         "geometryMatch": true,
@@ -27604,6 +27676,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-clearable",
         "geometryMatch": true,
@@ -27943,6 +28017,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-menu",
         "geometryMatch": true,
@@ -28315,6 +28391,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-menu-hover",
         "geometryMatch": true,
@@ -28687,6 +28765,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-menu-keyboard",
         "geometryMatch": true,
@@ -29059,6 +29139,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-menu-narrow",
         "geometryMatch": true,
@@ -29431,6 +29513,8 @@
       },
       {
         "platform": "macos",
+        "architecture": "arm64",
+        "browser": "156.0.8078.4",
         "theme": "dark",
         "name": "single-menu-rtl",
         "geometryMatch": true,
@@ -30071,10 +30155,72 @@
             "1"
           ]
         ]
-      }
+      },
+      "ancestorScroll": [
+        {
+          "mode": "light",
+          "initialScroll": 0,
+          "before": 144,
+          "top": 104,
+          "anchorBottom": 104,
+          "requests": 0,
+          "value": 1,
+          "entries": [
+            [
+              "category",
+              "1"
+            ]
+          ],
+          "event": {
+            "trusted": true,
+            "bubbles": false,
+            "composed": false
+          }
+        },
+        {
+          "mode": "shadow",
+          "initialScroll": 0,
+          "before": 144,
+          "top": 104,
+          "anchorBottom": 104,
+          "requests": 0,
+          "value": 1,
+          "entries": [
+            [
+              "category",
+              "1"
+            ]
+          ],
+          "event": {
+            "trusted": true,
+            "bubbles": false,
+            "composed": false
+          }
+        },
+        {
+          "mode": "slotted",
+          "initialScroll": 0,
+          "before": 144,
+          "top": 104,
+          "anchorBottom": 104,
+          "requests": 0,
+          "value": 1,
+          "entries": [
+            [
+              "category",
+              "1"
+            ]
+          ],
+          "event": {
+            "trusted": true,
+            "bubbles": false,
+            "composed": false
+          }
+        }
+      ]
     },
     "allFourInstalledFrameworks": true,
-    "visualReview": "Single filled size=1 picker/menu calibrated against 76 original HA states with exact styles, 0.1px geometry and explicit nearly-identical RGBA bounds; multiple/chips/search/list modes remain incomplete.",
+    "visualReview": "Single filled size=1 picker/menu: 114 original states across three measured platform/architecture targets, exact computed styles and 0.1px geometry, unchanged explicit nearly-identical RGBA bounds. Multiple/chips/search/list modes remain incomplete.",
     "regressions": {
       "apiAbsence": "Initial policy, renderer and adapter runs rejected missing modules/exports before implementation; no behavioral-red claim is made for those API-absence runs. The first pure test table also failed during naming of a BigInt and spread array rows; rows were explicitly wrapped so the actual arrays reach the policy.",
       "nativeKeyboard": "The initial dropdown-arrow test left both the shared control and a standalone native reference unchanged. A direct Playwright probe observed the same result for native size=1 arrow/Enter/Space combinations, while native typeahead and size=4 arrows worked. Permanent tests verify dropdown typeahead and visible-list arrows. No runtime override was introduced for this platform/driver observation.",
@@ -36204,20 +36350,20 @@
     "freshNativeReassessmentRequired": true
   },
   "latestLocalVerification": {
-    "baseHead": "13f17c0429d0ebe1c852219ae4fd30c1e24826b2",
-    "sourceTests": 1195,
+    "baseHead": "594b7be85bc1e487199be40d51d9fa23c0695cfd",
+    "sourceTests": 1198,
     "testFiles": 57,
     "runtimeFiles": 55,
     "coverage": {
       "lines": {
-        "total": 949,
-        "covered": 949,
+        "total": 953,
+        "covered": 953,
         "skipped": 0,
         "pct": 100
       },
       "statements": {
-        "total": 2167,
-        "covered": 2167,
+        "total": 2173,
+        "covered": 2173,
         "skipped": 0,
         "pct": 100
       },
@@ -36228,8 +36374,8 @@
         "pct": 100
       },
       "branches": {
-        "total": 1477,
-        "covered": 1477,
+        "total": 1487,
+        "covered": 1487,
         "skipped": 0,
         "pct": 100
       },
@@ -36246,8 +36392,8 @@
         {
           "coordinate": "@vypdev/ha-ui",
           "version": "0.1.0-next.1",
-          "sha256": "96886f517070eea65d35f98a9493fe11ce9b1a9928d21239614f54ca5684ed54",
-          "bytes": 126077
+          "sha256": "01be4e96167247e8b0f34de435829780d01e5b05a5500f82be8b3fa6858bde38",
+          "bytes": 126634
         },
         {
           "coordinate": "@vypdev/ha-ui-angular",
@@ -36285,7 +36431,13 @@
       "command": [
         "pnpm",
         "test"
-      ]
+      ],
+      "uncommittedFutureTest": {
+        "path": "tests/browser/select-chips.test.ts",
+        "sha256": "44180dc5d7807209431eda10c81b6725409950547915a81d14a13366fa6e8c50",
+        "restoredIdentically": true,
+        "reason": "Six red TDD cases belong to the following uncommitted multiple-picker increment; they are absent from this published correction."
+      }
     },
     "coldTypes": {
       "trees": 5,
@@ -36295,341 +36447,251 @@
       "command": [
         "pnpm",
         "check"
-      ]
+      ],
+      "uncommittedFutureTest": {
+        "path": "tests/browser/select-chips.test.ts",
+        "sha256": "44180dc5d7807209431eda10c81b6725409950547915a81d14a13366fa6e8c50",
+        "restoredIdentically": true,
+        "reason": "Six red TDD cases belong to the following uncommitted multiple-picker increment; they are absent from this published correction."
+      }
     },
-    "supplementalCatalogTypes": "passed after motion-probe addition",
-    "linuxVisual": {
-      "node": "v26.13.0",
-      "browser": "156.0.8078.80",
-      "text": 16,
-      "icons": 48,
-      "overflow": 40,
-      "buttons": 96,
-      "fields": 44,
-      "selects": 38,
-      "implicitSubmit": {
-        "nativeDifferential": true,
-        "realKeyboard": true,
-        "proxyAddsNoFormData": true,
-        "cases": [
-          {
-            "mode": "single",
-            "first": "native",
-            "expected": 1,
-            "submissions": 1,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "single",
-            "first": "shared",
-            "expected": 1,
-            "submissions": 1,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "enabled-native",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "enabled-native",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "enabled-shared",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "enabled-shared",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "disabled-native",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "disabled-native",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "disabled-shared",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "disabled-shared",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "fieldset-native",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "fieldset-native",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "fieldset-shared",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "fieldset-shared",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "readonly-native",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "readonly-native",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "readonly-shared",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "readonly-shared",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "hidden-native",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "hidden-native",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "hidden-shared",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "hidden-shared",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "hidden-type",
-            "first": "native",
-            "expected": 1,
-            "submissions": 1,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "hidden-type",
-            "first": "shared",
-            "expected": 1,
-            "submissions": 1,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "external-disabled",
-            "first": "native",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          },
-          {
-            "mode": "external-disabled",
-            "first": "shared",
-            "expected": 0,
-            "submissions": 0,
-            "entries": [
-              [
-                "first",
-                "Kitchen"
-              ]
-            ]
-          }
-        ]
+    "supplementalConsumerTypes": "passed after relative-scroll fixture correction",
+    "oldExactVisual": {
+      "macos-arm64": {
+        "ha-navigation-parity.json": 16,
+        "ha-navigation-icons-parity.json": 48,
+        "ha-navigation-overflow-parity.json": 40,
+        "ha-button-parity.json": 96,
+        "ha-field-parity.json": 44
       },
-      "network": "none",
-      "errors": []
+      "linux-arm64": {
+        "ha-navigation-parity.json": 16,
+        "ha-navigation-icons-parity.json": 48,
+        "ha-navigation-overflow-parity.json": 40,
+        "ha-button-parity.json": 96,
+        "ha-field-parity.json": 44
+      }
     },
-    "threeEngineForms": {
+    "singleSelect": {
+      "macos-arm64": {
+        "states": 38,
+        "exact": 2,
+        "near": 36,
+        "maximums": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.006859253396649519,
+          "changedFraction": 0.006776810447170558,
+          "alphaChanges": 0
+        },
+        "motion": {
+          "ordinary": 0.015,
+          "reduced": 0.001,
+          "explicitZeroPreserved": true
+        },
+        "openMenuAxeScans": 8,
+        "violations": 0,
+        "geometryBoundCSSPixels": 0.1,
+        "computedTypographyAndPaint": "exact",
+        "tolerance": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.01,
+          "changedFraction": 0.01
+        },
+        "architecture": "arm64",
+        "browser": "156.0.8078.4"
+      },
+      "linux-arm64": {
+        "states": 38,
+        "exact": 2,
+        "near": 36,
+        "maximums": {
+          "peakChannelDelta": 3,
+          "meanChannelDelta": 0.0058534494130062,
+          "changedFraction": 0.0057710064635272396,
+          "alphaChanges": 0
+        },
+        "motion": {
+          "ordinary": 0.015,
+          "reduced": 0.001,
+          "explicitZeroPreserved": true
+        },
+        "openMenuAxeScans": 8,
+        "violations": 0,
+        "geometryBoundCSSPixels": 0.1,
+        "computedTypographyAndPaint": "exact",
+        "tolerance": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.01,
+          "changedFraction": 0.01
+        },
+        "architecture": "arm64",
+        "browser": "156.0.8078.80"
+      },
+      "linux-x64": {
+        "states": 38,
+        "exact": 2,
+        "near": 36,
+        "maximums": {
+          "peakChannelDelta": 3,
+          "meanChannelDelta": 0.0021435166864529746,
+          "changedFraction": 0.0020940509167655984,
+          "alphaChanges": 0
+        },
+        "motion": {
+          "ordinary": 0.015,
+          "reduced": 0.001,
+          "explicitZeroPreserved": true
+        },
+        "openMenuAxeScans": 8,
+        "violations": 0,
+        "geometryBoundCSSPixels": 0.1,
+        "computedTypographyAndPaint": "exact",
+        "tolerance": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.01,
+          "changedFraction": 0.01
+        },
+        "architecture": "x64",
+        "browser": "156.0.8078.4"
+      }
+    },
+    "compiledNativeScroll": {
+      "linux-arm64": {
+        "architecture": "arm64",
+        "browser": "156.0.8078.80",
+        "nativeScroll": [
+          {
+            "mode": "light",
+            "initialScroll": 80,
+            "before": 64,
+            "top": 24,
+            "anchorBottom": 24,
+            "requests": 0,
+            "value": 1,
+            "entries": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "event": {
+              "trusted": true,
+              "bubbles": false,
+              "composed": false
+            }
+          },
+          {
+            "mode": "shadow",
+            "initialScroll": 0,
+            "before": 144,
+            "top": 104,
+            "anchorBottom": 104,
+            "requests": 0,
+            "value": 1,
+            "entries": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "event": {
+              "trusted": true,
+              "bubbles": false,
+              "composed": false
+            }
+          },
+          {
+            "mode": "slotted",
+            "initialScroll": 0,
+            "before": 144,
+            "top": 104,
+            "anchorBottom": 104,
+            "requests": 0,
+            "value": 1,
+            "entries": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "event": {
+              "trusted": true,
+              "bubbles": false,
+              "composed": false
+            }
+          }
+        ],
+        "errors": []
+      },
+      "linux-x64": {
+        "architecture": "x64",
+        "browser": "156.0.8078.4",
+        "nativeScroll": [
+          {
+            "mode": "light",
+            "initialScroll": 80,
+            "before": 64,
+            "top": 24,
+            "anchorBottom": 24,
+            "requests": 0,
+            "value": 1,
+            "entries": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "event": {
+              "trusted": true,
+              "bubbles": false,
+              "composed": false
+            }
+          },
+          {
+            "mode": "shadow",
+            "initialScroll": 0,
+            "before": 144,
+            "top": 104,
+            "anchorBottom": 104,
+            "requests": 0,
+            "value": 1,
+            "entries": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "event": {
+              "trusted": true,
+              "bubbles": false,
+              "composed": false
+            }
+          },
+          {
+            "mode": "slotted",
+            "initialScroll": 0,
+            "before": 144,
+            "top": 104,
+            "anchorBottom": 104,
+            "requests": 0,
+            "value": 1,
+            "entries": [
+              [
+                "category",
+                "1"
+              ]
+            ],
+            "event": {
+              "trusted": true,
+              "bubbles": false,
+              "composed": false
+            }
+          }
+        ],
+        "errors": []
+      }
+    },
+    "threeEngineFormsAndScroll": {
       "node": "v26.13.0",
       "network": "none",
       "scope": "Four actual compiled Storybook form journeys in three engines; automatic accessibility completion plus real native reset and subsequent model/status updates. Full component/browser matrix remains pending.",
@@ -36703,6 +36765,68 @@
               "text": "Requests: 3; Example submitted: 0; Resets: 3. "
             }
           ],
+          "nativeScroll": [
+            {
+              "mode": "light",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
+            },
+            {
+              "mode": "shadow",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
+            },
+            {
+              "mode": "slotted",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
+            }
+          ],
           "errors": []
         },
         {
@@ -36772,6 +36896,68 @@
               },
               "nativeResetThenUpdate": true,
               "text": "Requests: 3; Example submitted: 0; Resets: 3. "
+            }
+          ],
+          "nativeScroll": [
+            {
+              "mode": "light",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
+            },
+            {
+              "mode": "shadow",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
+            },
+            {
+              "mode": "slotted",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
             }
           ],
           "errors": []
@@ -36845,11 +37031,73 @@
               "text": "Requests: 3; Example submitted: 0; Resets: 3. "
             }
           ],
+          "nativeScroll": [
+            {
+              "mode": "light",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
+            },
+            {
+              "mode": "shadow",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
+            },
+            {
+              "mode": "slotted",
+              "initialScroll": 0,
+              "before": 144,
+              "top": 104,
+              "anchorBottom": 104,
+              "requests": 0,
+              "value": 1,
+              "entries": [
+                [
+                  "category",
+                  "1"
+                ]
+              ],
+              "event": {
+                "trusted": true,
+                "bubbles": false,
+                "composed": false
+              }
+            }
+          ],
           "errors": []
         }
       ]
     },
-    "hostedValidation": "Local single-picker candidate; publication and fresh current-head CI/complete native review required. Published 13f17c0 CI is green with two native findings and does not validate local changes.",
+    "hostedValidation": "Published594b7be source/types/package pass, static fails architecture-mismatched select references; complete native has one finding. Local correction requires publication and fresh current-head CI/complete native reassessment.",
     "capabilityComplete": false
   },
   "architectureReview": {
@@ -36928,14 +37176,14 @@
     "originalComponentFunctionsUnchanged": true,
     "originalImagesUnmodified": true,
     "installedRevisionClaimed": false,
-    "sourceTests": 1195,
+    "sourceTests": 1198,
     "testFiles": 57,
     "runtimeFiles": 55,
     "executableRuntimeFiles": 52,
     "emptyRuntimeFiles": 3,
     "sourceAndFormProtocol": "Single controlled typed button/combobox and top-layer listbox with no hidden native select. Four unchanged adapters consume the shared renderer. Explicit native multiple/list presentation remains pending.",
     "raster": {
-      "macos": {
+      "macos-arm64": {
         "states": 38,
         "exact": 2,
         "near": 36,
@@ -36958,9 +37206,11 @@
           "peakChannelDelta": 6,
           "meanChannelDelta": 0.01,
           "changedFraction": 0.01
-        }
+        },
+        "architecture": "arm64",
+        "browser": "156.0.8078.4"
       },
-      "linux": {
+      "linux-arm64": {
         "states": 38,
         "exact": 2,
         "near": 36,
@@ -36983,7 +37233,36 @@
           "peakChannelDelta": 6,
           "meanChannelDelta": 0.01,
           "changedFraction": 0.01
-        }
+        },
+        "architecture": "arm64",
+        "browser": "156.0.8078.80"
+      },
+      "linux-x64": {
+        "states": 38,
+        "exact": 2,
+        "near": 36,
+        "maximums": {
+          "peakChannelDelta": 3,
+          "meanChannelDelta": 0.0021435166864529746,
+          "changedFraction": 0.0020940509167655984,
+          "alphaChanges": 0
+        },
+        "motion": {
+          "ordinary": 0.015,
+          "reduced": 0.001,
+          "explicitZeroPreserved": true
+        },
+        "openMenuAxeScans": 8,
+        "violations": 0,
+        "geometryBoundCSSPixels": 0.1,
+        "computedTypographyAndPaint": "exact",
+        "tolerance": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.01,
+          "changedFraction": 0.01
+        },
+        "architecture": "x64",
+        "browser": "156.0.8078.4"
       }
     },
     "existingExactRasterPairs": {
@@ -37009,6 +37288,157 @@
       "privateProfile": "Automatic approval review rejected optional profile-page inspection; no profile data read or changed. Continued with recorded public modules in local fictional reference viewer."
     },
     "fullFamilyComplete": false,
-    "capabilityComplete": false
+    "capabilityComplete": false,
+    "originalStates": 114,
+    "chromeCorrection": {
+      "first": {
+        "storyId": "forms-select--default",
+        "status": "success",
+        "revision": 3,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      },
+      "second": {
+        "storyId": "forms-select--default",
+        "status": "success",
+        "revision": 5,
+        "reports": [
+          {
+            "type": "a11y",
+            "status": "passed"
+          }
+        ]
+      },
+      "status": "Saved: [[\"category\",\"1\"]]",
+      "build": "build/storybook-select",
+      "core": "01be4e96167247e8b0f34de435829780d01e5b05a5500f82be8b3fa6858bde38",
+      "scope": "Reloaded final static build and fresh automatic accessibility report; keyboard selection and native submission. Nested-scroll behavior is verified separately in compiled engine probes."
+    }
+  },
+  "selectPopupScrollReview": {
+    "analyzedHead": "594b7be85bc1e487199be40d51d9fa23c0695cfd",
+    "nativeRun": "https://github.com/vypdev/ha-ui/actions/runs/41948582926",
+    "outcome": "complete",
+    "coverage": "complete",
+    "counts": {
+      "open": 1,
+      "reopened": 0,
+      "dismissed": 0,
+      "verification": 0,
+      "unknown": 0
+    },
+    "finding": "https://github.com/vypdev/ha-ui/pull/10#discussion_r4475552520",
+    "wrongPremiseReport": "https://github.com/vypdev/copilot/issues/896",
+    "existingBehavior": "The original shared options already declared capture:true and ordinary nested non-bubbling native scrolling worked. The reviewer incorrectly stated capture was absent.",
+    "genuineBoundary": "Enclosing shadow-root scroll does not cross that boundary. Direct and slotted cases fail at 136px versus 96px before the fix, after pointer parking avoids a hover-render side effect. The correction captures at each root in the composed ancestry.",
+    "sourceCases": 23,
+    "compiledEngineCases": 9,
+    "earlierFindings": "Copilot #894/#895 runner-semantics findings closed naturally at 594b7be; no manual disposition.",
+    "freshNativeReassessmentRequired": true,
+    "copilotModified": false
+  },
+  "singleSelectArchitectureReview": {
+    "failedCI": "https://github.com/vypdev/ha-ui/actions/runs/41948582813",
+    "artifact": "https://github.com/vypdev/ha-ui/actions/runs/41948582813/artifacts/13379632935",
+    "artifactSha256": "892da7918075e8ea14995bb3a3f3d6cf49dd97731b7f744d24acfa8001000697",
+    "matchedOriginal": "New independently repeated x64 originals use the exact CI Chromium 156.0.8078.4. All 38 also match x64 image Chromium 156.0.8078.80 byte for byte. Linux ARM64 originals remain unchanged.",
+    "immutableCIArtifactReplay": "All 38 states pass unchanged bounds: two exact plus 36 nearly identical, eight additional default-rule open-menu axe scans and zero page errors.",
+    "currentCandidateReplay": {
+      "macos-arm64": {
+        "states": 38,
+        "exact": 2,
+        "near": 36,
+        "maximums": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.006859253396649519,
+          "changedFraction": 0.006776810447170558,
+          "alphaChanges": 0
+        },
+        "motion": {
+          "ordinary": 0.015,
+          "reduced": 0.001,
+          "explicitZeroPreserved": true
+        },
+        "openMenuAxeScans": 8,
+        "violations": 0,
+        "geometryBoundCSSPixels": 0.1,
+        "computedTypographyAndPaint": "exact",
+        "tolerance": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.01,
+          "changedFraction": 0.01
+        },
+        "architecture": "arm64",
+        "browser": "156.0.8078.4"
+      },
+      "linux-arm64": {
+        "states": 38,
+        "exact": 2,
+        "near": 36,
+        "maximums": {
+          "peakChannelDelta": 3,
+          "meanChannelDelta": 0.0058534494130062,
+          "changedFraction": 0.0057710064635272396,
+          "alphaChanges": 0
+        },
+        "motion": {
+          "ordinary": 0.015,
+          "reduced": 0.001,
+          "explicitZeroPreserved": true
+        },
+        "openMenuAxeScans": 8,
+        "violations": 0,
+        "geometryBoundCSSPixels": 0.1,
+        "computedTypographyAndPaint": "exact",
+        "tolerance": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.01,
+          "changedFraction": 0.01
+        },
+        "architecture": "arm64",
+        "browser": "156.0.8078.80"
+      },
+      "linux-x64": {
+        "states": 38,
+        "exact": 2,
+        "near": 36,
+        "maximums": {
+          "peakChannelDelta": 3,
+          "meanChannelDelta": 0.0021435166864529746,
+          "changedFraction": 0.0020940509167655984,
+          "alphaChanges": 0
+        },
+        "motion": {
+          "ordinary": 0.015,
+          "reduced": 0.001,
+          "explicitZeroPreserved": true
+        },
+        "openMenuAxeScans": 8,
+        "violations": 0,
+        "geometryBoundCSSPixels": 0.1,
+        "computedTypographyAndPaint": "exact",
+        "tolerance": {
+          "peakChannelDelta": 6,
+          "meanChannelDelta": 0.01,
+          "changedFraction": 0.01
+        },
+        "architecture": "x64",
+        "browser": "156.0.8078.4"
+      }
+    },
+    "emulatedFullFamilyDiagnostic": {
+      "scope": "Supplemental local emulated x64 replay, separate from native hosted CI and unchanged macOS/ARM64 exact gates.",
+      "failure": "The first overflow arrow differs in 11 pixels by at most one channel level. Navigation runtime source is unchanged. Prior native CI retains all exact overflow samples. No existing reference or exact gate is changed; fresh native hosted CI remains required.",
+      "retainedLog": "scroll-static-linux-x64.log",
+      "runtimeBoundary": "Only selection-popup.ts changed product runtime in this correction."
+    },
+    "initialScrollFixtureCorrection": "After the final select calibration state, ordinary native focus can already set scrollTop to 80. The compiled probe measures that initial position and adds 40, rather than incorrectly requiring zero. This changes only the fixture; the earlier visual campaign completed before that assertion. Final scoped replay and all three engines pass.",
+    "originalImagesEdited": false,
+    "boundsIncreased": false,
+    "rendererPaintChanged": false
   }
 }

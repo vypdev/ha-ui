@@ -11,6 +11,10 @@ async function mount(patch:Record<string,unknown>={}){
 }
 const combo=(host:HaSelect)=>page.elementLocator(host).getByRole('combobox',{name:'Category',exact:true});
 const list=(host:HaSelect)=>page.elementLocator(host).getByRole('listbox',{name:'Category',exact:true,includeHidden:true});
+async function settleUnhovered(host:HaSelect){
+ const outside=document.createElement('button');outside.textContent='Pointer parking';outside.style.cssText='position:fixed;right:8px;bottom:8px';document.body.append(outside);await userEvent.hover(outside);await host.updateComplete;
+ await new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve())));
+}
 afterEach(()=>{document.body.replaceChildren();vi.restoreAllMocks();});
 
 test('single picker paints the HA filled field and exposes a separate listbox',async()=>{
@@ -102,6 +106,25 @@ test('popup positioning flips above a low anchor, clamps a wide menu and respond
  const surface=host.shadowRoot!.getElementById('options')!;expect(surface.dataset.placement).toBe('top');let box=surface.getBoundingClientRect();expect(box.left).toBeGreaterThanOrEqual(8);expect(box.right).toBeLessThanOrEqual(innerWidth-8);
  host.style.bottom='auto';host.style.top='8px';window.dispatchEvent(new Event('resize'));expect(surface.dataset.placement).toBe('bottom');box=surface.getBoundingClientRect();expect(box.top).toBe(64);
  host.style.top='20px';window.dispatchEvent(new Event('scroll'));expect(surface.getBoundingClientRect().top).toBe(76);expect(seen).toHaveLength(0);
+});
+test('native nested non-bubbling scroll keeps the open menu attached through window capture',async()=>{
+ const{host,seen}=await mount();const panel=document.createElement('div'),content=document.createElement('div'),spacer=document.createElement('div');
+ panel.style.cssText='height:240px;width:400px;overflow:auto';content.style.height='800px';spacer.style.height='80px';content.append(spacer,host);panel.append(content);document.body.append(panel);
+ await combo(host).click();await settleUnhovered(host);
+ const surface=host.shadowRoot!.getElementById('options')!,before=surface.getBoundingClientRect().top,events:{target:EventTarget|null;bubbles:boolean;trusted:boolean}[]=[];
+ panel.addEventListener('scroll',event=>events.push({target:event.target,bubbles:event.bubbles,trusted:event.isTrusted}));panel.scrollTop=40;
+ await expect.poll(()=>surface.getBoundingClientRect().top).toBe(before-40);expect(events).toHaveLength(1);expect(events[0]).toEqual({target:panel,bubbles:false,trusted:true});
+ expect(surface.getBoundingClientRect().top).toBe(combo(host).element().getBoundingClientRect().bottom);expect(seen).toHaveLength(0);
+});
+test.each([false,true])('native scrolling inside an enclosing shadow root tracks the anchor, slotted=%s',async slotted=>{
+ const{host,form,seen}=await mount();const wrapper=document.createElement('div'),outer=wrapper.attachShadow({mode:'open'}),panel=document.createElement('div'),content=document.createElement('div'),spacer=document.createElement('div');
+ panel.style.cssText='height:240px;width:400px;overflow:auto';content.style.height='800px';spacer.style.height='80px';content.append(spacer);
+ if(slotted){content.append(document.createElement('slot'));wrapper.append(form);}else content.append(form);
+ panel.append(content);outer.append(panel);document.body.append(wrapper);await host.updateComplete;
+ await combo(host).click();await settleUnhovered(host);
+ const surface=host.shadowRoot!.getElementById('options')!,before=surface.getBoundingClientRect().top;panel.scrollTop=40;
+ await expect.poll(()=>surface.getBoundingClientRect().top).toBe(before-40);expect(surface.getBoundingClientRect().top).toBe(combo(host).element().getBoundingClientRect().bottom);expect(seen).toHaveLength(0);
+ const retired=surface.style.top;host.remove();panel.scrollTop=60;await new Promise(requestAnimationFrame);expect(surface.style.top).toBe(retired);
 });
 test('popup lifetime ignores detached anchors/surfaces and repeated close is harmless',async()=>{
  const{host}=await mount();const dismiss=vi.fn(),popup=new SelectionPopup(host,dismiss),anchor=document.createElement('button'),surface=document.createElement('div');surface.popover='manual';surface.textContent='Surface';

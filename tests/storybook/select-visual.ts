@@ -13,11 +13,12 @@ import {rasterAgreement,selectorRasterTolerance} from '../../tooling/raster.mjs'
 type Box={x:number;y:number;width:number;height:number};
 type Piece={box:Box;style:Record<string,string>;after:Record<string,string>;glyph:Box|null};
 type Configuration={name:string;multiple:boolean;label:string;value:string|null;options:{value:string;label:string;disabled?:boolean}[];width:number;dir:string;disabled:boolean;required:boolean;helper:string;error:string;placeholder:string;clearable:boolean;opened:boolean;opener:'keyboard'|'pointer';interaction:string};
-type Row={platform:string;theme:string;name:string;configuration:Configuration;frame:Box;parts:{base:Piece;trigger:Piece;overline:Piece|null;headline:Piece;arrow:Piece;helper:Piece|null;menu:Piece|null;options:Piece[]};image:{path:string;sha256:string}};
+type Row={platform:string;architecture:string;theme:string;name:string;configuration:Configuration;frame:Box;parts:{base:Piece;trigger:Piece;overline:Piece|null;headline:Piece;arrow:Piece;helper:Piece|null;menu:Piece|null;options:Piece[]};image:{path:string;sha256:string}};
 /** Original component paint is independent of the authored combobox/listbox semantic projection. */
 export async function exerciseSelectVisual(page:Page,origin:string,output:string){
  const reference=JSON.parse(await readFile(resolve('docs/evidence/ha-select-reference.json'),'utf8')) as {themes:Record<string,Record<string,string>>;states:Row[];referenceRepeatsComplete:boolean};
- const platform=await page.evaluate(()=>/Linux/u.test(navigator.userAgent)?'linux':/Mac OS X/u.test(navigator.userAgent)?'macos':null);assert.ok(platform);const rows=reference.states.filter(row=>row.platform===platform);assert.equal(rows.length,38);
+ const platform=await page.evaluate(()=>/Linux/u.test(navigator.userAgent)?'linux':/Mac OS X/u.test(navigator.userAgent)?'macos':null);assert.ok(platform);const architecture=process.arch,browser=page.context().browser()!.version();
+ const rows=reference.states.filter(row=>row.platform===platform&&row.architecture===architecture);assert.equal(rows.length,38,'A complete original HA reference is required for '+platform+'/'+architecture);
  assert.equal(reference.referenceRepeatsComplete,true);
  const results=[],problems:string[]=[],palettes=[];await page.setViewportSize({width:1280,height:900});const require=createRequire(import.meta.url);
  await page.goto(origin+'/ha-ui/iframe.html?id=forms-select--default&viewMode=story');await waitForCatalogStory(page,'forms-select--default');
@@ -83,7 +84,7 @@ export async function exerciseSelectVisual(page:Page,origin:string,output:string
    const image=new Image();image.src=source;await image.decode();const canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;const context=canvas.getContext('2d',{willReadFrequently:true})!;context.drawImage(image,0,0);return{width:canvas.width,height:canvas.height,pixels:Array.from(context.getImageData(0,0,canvas.width,canvas.height).data)};
   })),await Promise.all([resolve(row.image.path),path].map(async path=>'data:image/png;base64,'+(await readFile(path)).toString('base64'))));
   const agreement=rasterAgreement({...decoded[0],pixels:Uint8Array.from(decoded[0].pixels)},{...decoded[1],pixels:Uint8Array.from(decoded[1].pixels)});if(!agreement.accepted)local.push('original HA raster exceeds selector quantization bounds');
-  problems.push(...local.map(problem=>prefix+'/'+problem));results.push({platform,theme:row.theme,name:row.name,geometryMatch:local.every(p=>!/^\w+\/(x|y|width|height):/u.test(p)),identicalPixels:raster.sha256===row.image.sha256,rasterAgreement:agreement,problems:local,referenceImage:row.image,raster,actual});
+  problems.push(...local.map(problem=>prefix+'/'+problem));results.push({platform,architecture,browser,theme:row.theme,name:row.name,geometryMatch:local.every(p=>!/^\w+\/(x|y|width|height):/u.test(p)),identicalPixels:raster.sha256===row.image.sha256,rasterAgreement:agreement,problems:local,referenceImage:row.image,raster,actual});
  }
  await writeFile(resolve(output,'ha-select-parity.json'),JSON.stringify({reference:'docs/evidence/ha-select-reference.json',scope:'Single filled select and menu only; multiple/chips, full browser/framework breadth and application acceptance remain pending.',selectorRasterTolerance,motion,palettes,results,problems},null,2)+'\n');assert.deepEqual(problems,[],'Original HA select paint and geometry');return results;
 }
