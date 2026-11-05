@@ -218,11 +218,44 @@ source revision and lock. `verifyCandidate` fails before use if any bytes, revis
 lock change. `assertShippedManifest` requires exact version pins for the shared cohort
 and rejects local fixture references in shared dependencies and overrides.
 
-The release use case requires separate Gateway and Domus evidence for the same candidate
-and a successful publisher-rights check. Registry observations are stored for the exact
+Stable publication requires separate Gateway and Domus evidence for the same candidate.
+The npm prerelease publishes reviewed packed artifacts so that those applications can
+complete installed acceptance. Both channels require an authorized publisher. Registry observations are stored for the exact
 coordinate, version and digest. Recovery reads before attempting a missing publication
 and checks the observed digest before recording it. A conflict remains blocked; a partial
 publication leaves consumer pins unadvanced. An uncertain attempt is inspected once, and
 a later run rechecks the registry before publishing. The delivery tests exercise this
 policy with a deterministic provider; no registry publication or publisher rights are
 claimed by those tests.
+
+### Publish a prerelease to npm
+
+The core and the four adapters share one exact version. Prepare the package manifests
+and packed consumer pins in a reviewed version change, including the Angular core
+dependency and the fixture lockfiles. Merge it to the production
+branch and wait for its `CI Check` to succeed. Create a version tag such as
+`v0.1.0-next.1` at that production commit. [The npm workflow](../.github/workflows/npm_release.yml)
+starts automatically and uses the five tarballs retained by CI for that SHA.
+
+Configure an npm Trusted Publisher for each coordinate in the table below. Use
+organization `vypdev`, repository `ha-ui`, workflow `npm_release.yml`, and environment
+`npm`. Enable direct publishing for that workflow. npm authorizes each write and
+generates provenance from the GitHub runner.
+
+| Package | Intended installation |
+| --- | --- |
+| `@vypdev/ha-ui` | Lit or browser custom elements |
+| `@vypdev/ha-ui-react` | React |
+| `@vypdev/ha-ui-vue` | Vue |
+| `@vypdev/ha-ui-angular` | Angular |
+| `@vypdev/ha-ui-svelte` | Svelte |
+
+The workflow publishes the core first and sets the npm `next` tag. It downloads the
+exact version of each package and checks its SHA-256 against the CI artifact before
+reporting success. If a run stops after publishing some packages, rerun the same
+workflow. Existing versions are verified by hash and reused. An unexpected hash
+requires a new reviewed package version. Keep consumer pins on the previous cohort
+until the workflow confirms all five archives.
+
+See [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) for configuring
+the publisher and [consumer adoption](migration.md) for testing the installed version.

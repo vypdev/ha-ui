@@ -69,3 +69,13 @@ jobs:
           if-no-files-found: error
           include-hidden-files: true
           retention-days: 7
+      - name: Retain the verified npm candidate for the production SHA
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: npm-candidate-${{ github.sha }}
+          path: |
+            test-results/packed-cohort.json
+            test-results/packages/*.tgz
+          if-no-files-found: error
+          retention-days: 30

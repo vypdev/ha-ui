@@ -1,0 +1,90 @@
+name: Publish ha-ui npm prerelease
+
+on:
+  push:
+    tags: ['v*-next.*']
+
+concurrency:
+  group: ha-ui-npm-release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      contents: read
+    outputs:
+      run-id: ${{ steps.ci.outputs.run-id }}
+    steps:
+      - name: Find the successful CI run for this production commit
+        id: ci
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [[ "$GITHUB_REF_NAME" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)-next\.(0|[1-9][0-9]*)$ ]]
+          run_id=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/ci_check.yml/runs?event=push&branch=master&head_sha=$GITHUB_SHA&status=success&per_page=10" \
+            --jq '.workflow_runs[0].id // empty')
+          [[ "$run_id" =~ ^[1-9][0-9]*$ ]]
+          echo "run-id=$run_id" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: candidate
+    runs-on: ubuntu-latest
+    environment: npm
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ github.sha }}
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.0.1
+        with:
+          node-version-file: .node-version
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: npm-candidate-${{ github.sha }}
+          path: ${{ runner.temp }}/ha-ui-npm-candidate
+          github-token: ${{ github.token }}
+          run-id: ${{ needs.candidate.outputs.run-id }}
+      - name: Publish the verified archives through npm Trusted Publishing
+        env:
+          NPM_CANDIDATE_DIR: ${{ runner.temp }}/ha-ui-npm-candidate
+        run: |
+          node --input-type=module <<'NODE'
+          import {execFileSync} from 'node:child_process';
+          import {appendFileSync,readFileSync} from 'node:fs';
+          import {join} from 'node:path';
+          import {packageCoordinates,sha256} from './tooling/packaging.mjs';
+          import {observeNpmVersion,publishNpmPrerelease} from './tooling/npm-prerelease.mjs';
+
+          const directory=process.env.NPM_CANDIDATE_DIR;
+          const {candidate}=JSON.parse(readFileSync(join(directory,'packed-cohort.json'),'utf8'));
+          const tag=process.env.GITHUB_REF_NAME;
+          const version=tag.slice(1);
+          const paths=new Map(packageCoordinates.map(name=>[
+            name,join(directory,'packages',name.slice(1).replace('/','-')+'-'+version+'.tgz'),
+          ]));
+          const archives=new Map([...paths].map(([name,path])=>[name,readFileSync(path)]));
+          const result=await publishNpmPrerelease({
+            record:candidate,sourceRevision:process.env.GITHUB_SHA,lockSha256:sha256(readFileSync('pnpm-lock.yaml')),tag,
+            oidc:Boolean(process.env.ACTIONS_ID_TOKEN_REQUEST_URL&&process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN),
+            archives,observe:observeNpmVersion,
+            publish:async entry=>execFileSync('npm',[
+              'publish',paths.get(entry.coordinate),'--access','public','--tag','next','--ignore-scripts',
+            ],{stdio:'inherit',timeout:120_000}),
+            append:async entry=>appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+              '- '+entry.coordinate+'@'+entry.version+' `'+entry.sha256+'`\n'),
+          });
+          if(result.state!=='published')throw new Error(result.state+': '+result.reason);
+          NODE

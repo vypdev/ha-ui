@@ -14,10 +14,10 @@ This companion supplements [the retained foundation specification](shared-ui-fou
 
 ## 1. Executive summary
 
-Deliver the retained shared component capability through a reproducible, tested package cohort. First establish a pinned toolchain and real compiled consumer fixtures; then accept one immutable packed candidate, exercise it in fixtures and both applications, verify publication authority and artifact integrity, and publish and adopt that same cohort. The implementation stays within the existing owner's contract. The three requirements below refine delivery controls only.
+Deliver the retained shared component capability through a reproducible, tested package cohort. First establish a pinned toolchain and real compiled consumer fixtures. Verify publication authority and artifact integrity for the prerelease cohort, then adopt those exact packages in the applications. Stable publication retains both installed application acceptance gates. The implementation stays within the existing owner's contract. The three requirements below refine delivery controls only.
 
 ```text
-Pinned toolchain -> compiled fixtures and reviewed packed candidate -> Gateway and Domus checks -> verified publication -> installed consumer acceptance
+Pinned toolchain -> compiled fixtures and reviewed packed candidate -> verified prerelease publication -> installed consumer acceptance -> stable release review
 ```
 
 No framework support, publication authority, or completed adoption is inferred from candidate versions or package names. Planned acceptance cases in this draft have not been executed.
@@ -88,17 +88,18 @@ Not applicable: this is prospective delivery work and reconstructs no implemente
 | Toolchain | No implementation evidence | Frozen, compatible lock and support evidence gate artifacts | Reproducible candidate and explicit failure reason |
 | Candidate | No accepted archive | Build and record source revision, archive digest, dependencies, licenses, and compatibility | Reviewers can identify exact bytes |
 | Consumer check | No real fixtures or app acceptance | Test packed bytes in framework fixtures and both admitted application workstreams | Adoption refers to one candidate |
-| Publication | No publication evidence | Verify rights; publish exact accepted cohort; record per-coordinate result | Partial release is visible and recoverable |
+| Publication | No publication evidence | Verify rights, publish the exact reviewed prerelease cohort and record each coordinate | Partial release is visible and recoverable |
 
 ```mermaid
 flowchart LR
     A[Freeze compatible toolchain] --> B[Build and digest candidate]
-    B --> C[Fixtures and both app checks]
-    C --> D[Verify rights and publish exact cohort]
+    B --> C[Compiled consumer fixtures]
+    C --> D[Verify rights and publish the prerelease]
     D --> E[Installed consumer and deployment acceptance]
+    E --> F[Stable release review]
 ```
 
-Text equivalent: freeze toolchain -> build candidate -> check fixtures and applications -> verify rights and publish -> accept installed consumer behavior.
+Text equivalent: freeze the toolchain, build and test the candidate, verify rights and publish the prerelease, then complete installed consumer acceptance before stable release review.
 
 ## 6. Functional behavior and state model
 
@@ -106,8 +107,8 @@ Text equivalent: freeze toolchain -> build candidate -> check fixtures and appli
 
 1. CI validates exact direct and transitive locks, runtime/compiler compatibility, and the declared supported matrix.
 2. The build produces reproducible packed artifacts and records source revision, package versions, integrity digests, dependencies, licenses, and compatibility.
-3. Packed artifacts are installed in actual compiled direct-DOM and framework fixtures and exercised in both applications through their admitted work.
-4. Review accepts the candidate only after the retained foundation gates and companion refinements pass. Publication rights and artifact digests are verified before publishing those exact bytes.
+3. Packed artifacts are installed in actual compiled direct-DOM and framework fixtures. The prerelease publishes those reviewed bytes so owning application work can adopt them.
+4. Verify publisher authority and artifact digests before publishing. A production tag identifies the prerelease commit and its successful CI artifact. Stable publication also requires both application receipts.
 5. Consumer pins and deployed acceptance refer to the published version/digest cohort. Publication alone does not mark the capability implemented.
 
 ### 6.2 Alternative paths
@@ -249,7 +250,7 @@ Errors state impact -> cause -> action -> retained state. A successfully publish
 
 ## 13. Compatibility, migration, rollout, and rollback
 
-No in-flight runtime migration is introduced by this companion. Keep exact locks and the last reviewed support evidence until a new candidate passes. Establish compatibility from actual frozen builds and browser checks, then publish a reviewed compatible version cohort. Release may be staged; partial publication remains incomplete and is resumed by exact version/digest without overwrite. First test the same candidate bytes locally in fixtures and both consumer workstreams; after rights and integrity verification, publish those bytes, pin delivered versions in the actual repositories, then complete installed/deployment acceptance. Do not make an application depend on a private temporary path. Rollback consumer pins only through each application's owning admitted work and recovery contract; package publication itself is not treated as reversible.
+No in-flight runtime migration is introduced by this companion. Keep exact locks and the last reviewed support evidence until a new candidate passes. Establish compatibility from actual frozen builds and browser checks, then publish a reviewed compatible version cohort. Release may be staged; partial publication remains incomplete and is resumed by exact version/digest without overwrite. Test the candidate in compiled fixtures and verify publisher rights and integrity. Publish the prerelease, pin the exact version in the consumer repositories, and complete installed and deployment acceptance before stable promotion. Do not make an application depend on a private temporary path. Rollback consumer pins only through each application's owning admitted work and recovery contract; package publication itself is not treated as reversible.
 
 ## 14. Testing strategy and numeric budget
 
@@ -306,6 +307,7 @@ Prospective repository files (current documents are classified against the immut
 | `tests/coverage.test.mjs` | create |
 | `LICENSE` | create |
 | `.github/workflows/ci_check.yml` | create |
+| `.github/workflows/npm_release.yml` | create |
 | `.github/workflows/storybook_pages.yml` | create |
 | `packages/core/package.json` | create |
 | `packages/core/src/index.ts` | create |
@@ -363,6 +365,7 @@ Prospective repository files (current documents are classified against the immut
 | `examples/sveltekit/package.json` | create |
 | `examples/sveltekit/README.md` | create |
 | `tooling/packaging.mjs` | create |
+| `tooling/npm-prerelease.mjs` | create |
 | `tooling/compatibility.mjs` | create |
 | `tests/delivery.test.mjs` | create |
 | `docs/framework-adapters.md` | create |
@@ -733,7 +736,7 @@ The retained foundation's requirements and cases remain traced in `specs/shared-
 3. Establish package contracts and dependency constraints, then compiled direct-DOM and four framework fixtures using actual packed artifacts.
 4. Implement accepted-candidate digest and no-private-path promotion checks; retain the full foundation's tests-first, coverage, component, Storybook, and browser scope.
 5. Exercise the immutable candidate in both admitted application workstreams and complete their separate UX, deployment, and Bugbot gates.
-6. Verify publication rights and provenance, then publish the exact accepted compatible cohort. Record and recover partial outcomes by exact version/digest.
+6. Verify publication rights and provenance, then publish the reviewed prerelease cohort for installed adoption. Stable publication retains both consumer evidence gates. Record and recover partial outcomes by exact version/digest.
 7. Pin the delivered cohort in actual consumers and complete installed/deployment acceptance; update catalog evidence only for verified implementation.
 8. Complete human UX review, documentation, original SDK catalog validation, and all Definition of Done gates.
 
