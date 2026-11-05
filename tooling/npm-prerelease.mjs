@@ -34,7 +34,7 @@ export async function observeNpmVersion(coordinate,version,request=fetch){
  *  publish:import('./packaging.mjs').ReleasePorts['publish'],append:import('./packaging.mjs').ReleasePorts['append']}} input
  */
 export async function publishNpmPrerelease({record,sourceRevision,lockSha256,tag,oidc,archives,observe,publish,append}){
- if(!/^v\d+\.\d+\.\d+-next\.\d+$/u.test(tag)||record.artifacts[0]?.version!==tag.slice(1))
+ if(!/^v(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)-next\.(?:0|[1-9]\d*)$/u.test(tag)||record.artifacts[0]?.version!==tag.slice(1))
   throw new Error('npm_release_tag_mismatch');
  return resumePublication(record,{sourceRevision,lockSha256,channel:'next',gateway:null,domus:null},{
   readArchive:coordinate=>archives.get(coordinate),

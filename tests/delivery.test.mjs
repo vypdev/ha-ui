@@ -246,6 +246,12 @@ test('npm prerelease rejects stale tags and an absent workflow identity before w
  await expect(publishNpmPrerelease({...input,tag:'v0.1.0'})).rejects.toThrow('npm_release_tag_mismatch');
  await expect(publishNpmPrerelease({...input,tag:'v0.1.0-next.2'})).rejects.toThrow('npm_release_tag_mismatch');
  await expect(publishNpmPrerelease({...input,record:{...preview,artifacts:[]}})).rejects.toThrow('npm_release_tag_mismatch');
+ for(const invalid of ['00.1.0-next.1','0.01.0-next.1','0.1.00-next.1','0.1.0-next.01']){
+  const invalidPreview=captureCandidate({sourceRevision,lockSha256,artifacts:packageCoordinates.map(coordinate=>({
+   coordinate,version:invalid,bytes:archives.get(coordinate),
+  }))});
+  await expect(publishNpmPrerelease({...input,record:invalidPreview,tag:'v'+invalid})).rejects.toThrow('npm_release_tag_mismatch');
+ }
  await expect(publishNpmPrerelease({...input,oidc:false})).resolves.toMatchObject({
   state:'blocked',reason:'publisher_rights_unverified',
  });
