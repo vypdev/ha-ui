@@ -59,7 +59,7 @@ test('the complete static catalog works at the repository subpath with local ass
   let cardVisual:Awaited<ReturnType<typeof exerciseCardVisual>>|undefined;
   let feedbackVisual:Awaited<ReturnType<typeof exerciseFeedbackVisual>>|undefined;
   let layoutVisual:Awaited<ReturnType<typeof exerciseLayoutVisual>>|undefined;
-    await t.test('catalog controls, native forms and all locale/theme/width accessibility combinations',{timeout:120_000},async()=>{
+    await t.test('all locale/theme/width accessibility combinations',{timeout:180_000},async()=>{
     for(const locale of ['en','es'])for(const theme of ['light','dark'])for(const width of [360,960])for(const story of ['navigation-household-sections--long-labels','tabs-local-panels--unselected','forms-text-field--read-only','forms-text-field--error','forms-text-field--empty-optional','forms-text-field--focused-optional','buttons-actions--variants','buttons-actions--loading','forms-select--default','forms-select--multiple','forms-select--single-list','forms-select--multiple-list','forms-checkbox--partial','forms-checkbox--long-label','navigation-household-sections--mixed','tabs-local-panels--icon-only','navigation-household-sections--overflow','tabs-local-panels--overflow','overlays-dialog--alert','overlays-dialog--busy','surfaces-card--default','surfaces-card--with-actions','layout-row--with-action','layout-grid--default','feedback-status--error-notice','feedback-status--empty','feedback-status--loading']) {
       await page.setViewportSize({width,height:900});
       await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story&globals=locale:'+locale+';theme:'+theme+';width:'+(width===360?'narrow':'wide')+';motion:reduced');
@@ -92,6 +92,9 @@ test('the complete static catalog works at the repository subpath with local ass
       if(story==='feedback-status--loading')assert.equal(await page.locator('vyp-ha-feedback .spinner svg').evaluate(element=>getComputedStyle(element).animationName),'none');
       results.push({story,locale,theme,width,a11yViolations:violations.length,automatic});
     }
+    });
+    assert.equal(results.length,216,'The complete accessibility matrix is required');
+    await t.test('catalog controls, native forms and projected interactions',{timeout:120_000},async()=>{
     await page.goto(origin+'/ha-ui/iframe.html?id=forms-text-field--default&viewMode=story');
     await page.waitForFunction(()=>document.querySelector('[role=status]')?.textContent?.includes('Example submitted: Kitchen'));
     const input=page.getByRole('textbox',{name:'Task name',exact:true});await input.fill('Laundry');await page.waitForFunction(()=>(document.querySelector('vyp-ha-field') as HaTextField).value==='Laundry');
@@ -148,6 +151,7 @@ test('the complete static catalog works at the repository subpath with local ass
     const feedback=await exerciseInstalledFeedback(page);
     interactionEvidence={sameStoryRerender,catalogForms,dialog,card,layout,feedback};
     });
+    assert.ok(interactionEvidence,'Complete catalog interactions are required');
     await t.test('established original HA visual families and single open-menu accessibility',{timeout:240_000},async()=>{
     const checkboxVisual=await exerciseCheckboxVisual(page,origin,output);
     const navigationVisual=await exerciseNavigationVisual(page,origin,output);
@@ -179,7 +183,7 @@ test('the complete static catalog works at the repository subpath with local ass
     assert.ok(feedbackVisual,'Original feedback visuals are required');
     assert.ok(layoutVisual,'Original layout visuals are required');
     assert.ok(cardVisual,'Original card visuals are required');
-    assert.ok(interactionEvidence,'Complete catalog interactions are required');assert.ok(visualEvidence,'Every established original HA visual family is required');assert.ok(selectMultipleVisual,'Original multiple chip/search visuals are required');assert.ok(selectListVisual,'Original visible-list visuals are required');assert.ok(dialogVisual,'Original dialog visuals are required');
+    assert.ok(visualEvidence,'Every established original HA visual family is required');assert.ok(selectMultipleVisual,'Original multiple chip/search visuals are required');assert.ok(selectListVisual,'Original visible-list visuals are required');assert.ok(dialogVisual,'Original dialog visuals are required');
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
     await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,...interactionEvidence,...visualEvidence,selectMultipleVisual,selectListVisual,dialogVisual,cardVisual,layoutVisual,feedbackVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {

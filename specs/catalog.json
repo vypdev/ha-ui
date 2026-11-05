@@ -123,7 +123,9 @@
         "packages/react/src/feedback.ts",
         "packages/svelte/src/Feedback.svelte",
         "packages/vue/src/feedback.ts",
-        "stories/feedback.example.ts"
+        "stories/feedback.example.ts",
+        "tooling/compatibility.mjs",
+        "tooling/packaging.mjs"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -315,7 +317,9 @@
         "tests/consumers/ssr/fixtures/sveltekit/src/routes/+page.svelte",
         "tests/consumers/ssr/fixtures/sveltekit/src/routes/ClientTabs.svelte",
         "tests/consumers/ssr/fixtures/sveltekit/fixture.vite.config.js",
-        "tests/consumers/ssr/journey.mjs"
+        "tests/consumers/ssr/journey.mjs",
+        "tests/delivery.test.mjs",
+        "tests/storybook/engines.test.ts"
       ],
       "documentation": [
         "README.md",
@@ -349,7 +353,9 @@
         "docs/evidence/ha-layout-reference.json",
         "LICENSES/Noto-Sans-Arabic-OFL-1.1.txt",
         "docs/evidence/ha-feedback-reference.json",
-        "docs/feedback-contract.md"
+        "docs/feedback-contract.md",
+        "docs/migration.md",
+        "examples/consumers/README.md"
       ],
       "readiness": {
         "status": "draft",

@@ -15,7 +15,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     # The published catalog runs the same browser gates as CI.
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -31,11 +31,13 @@ jobs:
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm check
       - run: pnpm exec playwright install --with-deps chromium --only-shell
+      - run: pnpm exec playwright install --with-deps firefox webkit
       - run: pnpm test
       - run: pnpm test:package
       - run: pnpm test:ssr
       - run: pnpm storybook:build
       - run: pnpm test:storybook
+      - run: pnpm test:engines
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
           path: build/storybook

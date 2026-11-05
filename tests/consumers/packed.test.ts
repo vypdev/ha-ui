@@ -1,3 +1,5 @@
+import {inspectToolchain} from '../../tooling/compatibility.mjs';
+import {captureCandidate,verifyCandidate} from '../../tooling/packaging.mjs';
 import {exerciseInstalledFeedback} from './feedback.ts';
 import {exerciseInstalledLayout} from './layouts.ts';
 import {exerciseInstalledCard} from './cards.ts';
@@ -29,7 +31,22 @@ const execute = promisify(execFile);
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const digest = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
 
+async function pristineRevision(){
+  try {
+    const status=await execute('git',['status','--porcelain=v1','--untracked-files=all'],{cwd:root});
+    if(status.stdout!=='')return null;
+    const {stdout}=await execute('git',['rev-parse','--verify','HEAD'],{cwd:root});
+    return stdout.trim();
+  }catch{return null;}
+}
+
 test('the actual packed package is reproducible and passes clean DOM-free and real-browser consumers', {timeout: 180_000}, async () => {
+  const sourceRevision=await pristineRevision();
+  const sourceLockBytes=await readFile(resolve(root,'pnpm-lock.yaml'));
+  const sourceLock=parse(sourceLockBytes.toString('utf8'));
+  const workspace=JSON.parse(await readFile(resolve(root,'package.json'),'utf8'));
+  const {stdout:pnpmVersion}=await execute('pnpm',['--version'],{cwd:root});
+  const toolchain=inspectToolchain({node:process.versions.node,pnpm:pnpmVersion.trim(),manifest:workspace,lock:sourceLock});
   const scratch = await mkdtemp(join(tmpdir(), 'ha-ui-packed-contract-'));
   let passed = false;
   let server: Awaited<ReturnType<typeof createServer>> | undefined;
@@ -48,12 +65,14 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
       if(index===2)for(const file of names)assert.deepEqual(await readFile(join(scratch,'pack-1',file)),await readFile(join(destination,file)),'Every cohort coordinate must reproduce: '+file);
     }
     const cohort=[];
+    const artifacts:{coordinate:string;version:string;bytes:Buffer}[]=[];
     for (const file of (await readdir(join(scratch,'pack-1'))).filter(name=>name.endsWith('.tgz')).sort()) {
       const bytes=await readFile(join(scratch,'pack-1',file));
       const packedMetadata=await execute('tar',['-xOf',join(scratch,'pack-1',file),'package/package.json']);
       const manifest=JSON.parse(packedMetadata.stdout);
       assert.equal(manifest.version,'0.1.0-next.1');assert.doesNotMatch(packedMetadata.stdout,/workspace:|file:/u);
       cohort.push({coordinate:manifest.name,version:manifest.version,sha256:digest(bytes),bytes:bytes.byteLength});
+      artifacts.push({coordinate:manifest.name,version:manifest.version,bytes});
     }
     const first = await readFile(archives[0]), second = await readFile(archives[1]);
     assert.deepEqual(first, second, 'Repeated independent builds must produce the same packed bytes');
@@ -70,7 +89,6 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
       assert.ok(error instanceof Error && 'stdout' in error);
       assert.match(String(error.stdout),/ERR_PNPM_NO_OFFLINE_META/u); return true;
     });
-    const sourceLock=parse(await readFile(resolve(root,'pnpm-lock.yaml'),'utf8'));
     const manifest=JSON.parse(await readFile(resolve(root,'packages/core/package.json'),'utf8'));
     const direct=sourceLock.importers['packages/core'].dependencies as Record<string,{specifier:string;version:string}>;
     const runtime: Record<string,string>={};
@@ -252,7 +270,10 @@ document.querySelector('main')!.append(form);`);
     await browserPage.close();await server.close();server=undefined;
     const frameworks=await exerciseFrameworks(root,scratch,browser);
     await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, text fields, buttons, checkboxes, typed selects, native dialogs, cards, layout and feedback with four framework bindings; framework SSR and application adoption remain required',frameworks},null,2)+'\n');
-    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, fields, buttons, checkboxes, typed selects, dialogs, cards, layout and feedback with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
+    const sourceLockSha256=digest(sourceLockBytes);
+    const candidate=sourceRevision!==null&&sourceRevision===await pristineRevision()?captureCandidate({sourceRevision,lockSha256:sourceLockSha256,artifacts}):null;
+    if(candidate)verifyCandidate(candidate,{sourceRevision:candidate.sourceRevision,lockSha256:sourceLockSha256},coordinate=>artifacts.find(artifact=>artifact.coordinate===coordinate)?.bytes);
+    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, fields, buttons, checkboxes, typed selects, dialogs, cards, layout and feedback with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,toolchain,sourceLockSha256,candidate},null,2)+'\n');
     await mkdir(resolve(root,'test-results/packages'),{recursive:true});
     for(const file of (await readdir(join(scratch,'pack-1'))).filter(name=>name.endsWith('.tgz')))await writeFile(resolve(root,'test-results/packages',file),await readFile(join(scratch,'pack-1',file)));
     passed = true;

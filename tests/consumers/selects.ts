@@ -84,7 +84,7 @@ export async function exerciseInstalledSelectLists(page:Page){
  const radios=host.getByRole('radiogroup',{name:'Packed visible categories',exact:true}),shopping=radios.getByRole('radio',{name:'Shopping',exact:true});
  await host.evaluate(element=>(element as HTMLElement).dataset.reject='true');await shopping.click();assert.equal(await shopping.isChecked(),false);assert.deepEqual(await model(),{value:1,requests:1,entries:[['category','1']]});
  await host.evaluate(element=>delete(element as HTMLElement).dataset.reject);await shopping.click();assert.deepEqual(await model(),{value:'1',requests:2,entries:[['category','1']]});
- await page.keyboard.press('ArrowDown');assert.deepEqual(await model(),{value:false,requests:3,entries:[['category','false']]});
+ await shopping.focus();await page.keyboard.press('ArrowDown');assert.deepEqual(await model(),{value:false,requests:3,entries:[['category','false']]});
  await host.evaluate(async element=>{const host=element as HaSelect;host.state={...host.state,multiple:true};host.defaultValue=[1,false];host.value=[1,false];await host.updateComplete;});
  const checks=host.getByRole('group',{name:'Packed visible categories',exact:true}),check=checks.getByRole('checkbox',{name:'Shopping',exact:true});
  assert.equal(await checks.getByRole('checkbox',{name:'Archived',exact:true}).isDisabled(),true);await check.focus();await page.keyboard.press('Space');

@@ -68,7 +68,7 @@ test('CI Check runs for every PR update with frozen tools and all implemented qu
   expect(job['continue-on-error']).toBeUndefined();
   expect(job.steps.every(step => step['continue-on-error'] === undefined)).toBe(true);
   const commands = job.steps.flatMap(step => step.run ? [step.run] : []);
-  for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm exec playwright install --with-deps chromium --only-shell', 'pnpm test', 'pnpm build', 'pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook']) expect(commands).toContain(command);
+  for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm exec playwright install --with-deps chromium --only-shell','pnpm exec playwright install --with-deps firefox webkit', 'pnpm test', 'pnpm build', 'pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook','pnpm test:engines']) expect(commands).toContain(command);
   const sdk = job.steps.find(step => step.with?.repository === 'vypdev/copilot');
   expect(sdk.with.ref).toBe('3e7ceea08e6131360e026937d1c0cc1b120472e0');
   expect(sdk.with['persist-credentials']).toBe(false);
@@ -156,7 +156,7 @@ test('Pages builds only the trusted default branch and grants write permissions 
   expect(workflow.permissions).toEqual({contents:'read'});
   const build=workflow.jobs.build,deploy=workflow.jobs.deploy;
   expect(build.if).toBe("github.ref == 'refs/heads/master'");expect(build.permissions).toBeUndefined();
-  for(const command of ['pnpm install --frozen-lockfile --ignore-scripts','pnpm check','pnpm test','pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook'])expect(build.steps.flatMap(step=>step.run?[step.run]:[])).toContain(command);
+  for(const command of ['pnpm install --frozen-lockfile --ignore-scripts','pnpm check','pnpm test','pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook','pnpm test:engines'])expect(build.steps.flatMap(step=>step.run?[step.run]:[])).toContain(command);
   expect(deploy.needs).toBe('build');expect(deploy.permissions).toEqual({pages:'write','id-token':'write'});
   expect(deploy.environment.name).toBe('github-pages');expect(workflow.concurrency['cancel-in-progress']).toBe(false);
 });

@@ -2,7 +2,7 @@
 
 The current preview covers navigation and local panels, text fields, buttons, checkboxes, typed
 selects, native dialogs, cards, rows, grids and feedback. The same renderers pass source tests and compiled package consumers
-in React, Vue, Angular and Svelte. The complete browser matrix remains open.
+in React, Vue, Angular and Svelte. The compiled browser journeys pass the three engines listed below.
 
 | Tool | Exact pin | Current use |
 |---|---|---|
@@ -77,3 +77,18 @@ The [native dialog](dialog-contract.md) keeps application-owned open state and s
 renderer. Installed consumers verify projected content, cancellation, keyboard and focus return,
 confirmation and teardown. The [visual record](visual-parity.md) identifies original HA states
 and separates their measured paint from native hit target and accessibility checks.
+
+## Browser behavior matrix
+
+`pnpm test:engines` serves the compiled catalog at the Pages subpath and requires each
+pinned Playwright browser: Chromium, Firefox and WebKit. Every run records exact versions,
+platform and architecture in `test-results/browser-matrix.json`. It exercises narrow dark
+Spanish navigation, real drag and keyboard activation in both directions, native form
+reset and submission, typed selects, projected dialog/card/row actions, responsive grids
+and feedback focus. It also compares the shared input's implicit Enter behavior directly
+with native inputs in the same engine. The card action follows the engine's native Tab
+policy; Enter must work once the command has focus.
+
+The full accessibility and pixel comparison matrix uses the Chromium pins listed in the
+[reference records](visual-parity.md). The three-engine matrix verifies interactive behavior.
+Adapter compiler and installed-app checks are reported separately.

@@ -701,6 +701,7 @@ Prospective repository files (current documents are classified against the immut
 | `tests/consumers/ssr/fixtures/sveltekit/src/routes/ClientTabs.svelte` | create |
 | `tests/consumers/ssr/fixtures/sveltekit/fixture.vite.config.js` | create |
 | `tests/consumers/ssr/journey.mjs` | create |
+| `tests/storybook/engines.test.ts` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

@@ -21,6 +21,7 @@ export async function exerciseInstalledNavigationOverflow(page:Page){
    await page.mouse.move(rtl?170:70,28);await page.mouse.down();await page.mouse.move(rtl?220:20,28,{steps:5});await page.mouse.move(rtl?220:20,120,{steps:3});await page.mouse.up();
    assert.equal(await host.getAttribute('data-requests'),'0','Outside drag release must not activate a destination');
    await host.getByRole(role,{name:'Overview',exact:true}).click();assert.equal(await host.getAttribute('data-requests'),'1','A new native mousedown starts a fresh activation after an outside release');
+   await host.getByRole(role,{name:'Overview',exact:true}).focus();
    await page.keyboard.press('Enter');assert.equal(await host.getAttribute('data-requests'),'2');
    assert.equal(await host.evaluate(el=>(el as HaTabs).state.selected),'item-0');
    results.push({kind,rtl,realMousePan:true,nativeDragClickSuppressed:true,nextPointerAndKeyboardActivate:true,outsideReleaseThenPointerAndKeyboardActivate:true,selectionControlled:true});

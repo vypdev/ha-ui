@@ -15,6 +15,7 @@
     "storybook": "storybook dev --port 6006 --no-open",
     "storybook:build": "pnpm build && storybook build --output-dir build/storybook",
     "test:storybook": "node --test tests/storybook/static.test.ts",
+    "test:engines": "node --test tests/storybook/engines.test.ts",
     "storybook:preview": "vite preview --outDir build/storybook --base /ha-ui/ --port 6006 --strictPort"
   },
   "devDependencies": {

@@ -20,6 +20,16 @@ export async function exerciseFrameworkCard(page:Page,root:string,framework:stri
 }
 
 export async function exerciseInstalledCard(page:Page){
+ // Some platforms require full keyboard access before Tab includes native buttons.
+ await page.evaluate(()=>{
+  const probe=document.createElement('div');probe.id='native-card-tab-probe';
+  const field=document.createElement('input'),button=document.createElement('button');
+  button.textContent='Native card tab probe';probe.append(field,button);document.body.append(probe);field.focus();
+ });
+ await page.keyboard.press('Tab');
+ const nativeTab=await page.locator('#native-card-tab-probe').evaluate(probe=>{
+  const focused=probe.querySelector('button')===document.activeElement;probe.remove();return focused;
+ });
  const id='packed-card-fixture';
  await page.evaluate(async id=>{
   const form=document.createElement('form'),card=document.createElement('vyp-ha-card') as HaCard,input=document.createElement('input'),command=document.createElement('button');
@@ -36,11 +46,12 @@ export async function exerciseInstalledCard(page:Page){
   await host.getByRole('textbox',{name:'Installed task',exact:true}).focus();
   await page.keyboard.press('Tab');
   const command=host.getByRole('button',{name:'Review installed card',exact:true});
-  assert.equal(await command.evaluate(element=>element===document.activeElement),true);
+  assert.equal(await command.evaluate(element=>element===document.activeElement),nativeTab,'Projected actions follow the browser’s native Tab policy');
+  if(!nativeTab)await command.focus();
   await page.keyboard.press('Enter');
   assert.equal(await form.getAttribute('data-submitted'),'[["task","Supplies"],["review","yes"]]');
   await command.evaluate(element=>element.remove());
   await article.locator('[part=actions]').waitFor({state:'hidden'});
-  return{nativeHeading:true,projection:true,nativeTabAndSubmit:true,nativeSubmitter:true,emptyActionsCollapse:true};
+  return{nativeHeading:true,projection:true,nativeTabAndSubmit:nativeTab,nativeTabPolicyMatch:true,keyboardSubmit:true,nativeSubmitter:true,emptyActionsCollapse:true};
  }finally{await form.evaluate(element=>element.remove());}
 }

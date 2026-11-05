@@ -204,3 +204,21 @@ fictional content. The harness uses the public module loader and makes no applic
 The spinner capture freezes animation to compare its visible resting state. For Arabic notice
 headings, the fixture applies the same right-to-left alignment token as the original app.
 The core NOTICE records the Apache 2.0, MIT and Material Design Icons attributions.
+
+## Candidate integrity and recovery
+
+The packing gate checks the exact running Node and pnpm versions, the supported Angular
+compiler and TypeScript pair, and the frozen dependency snapshot before creating archives.
+The `captureCandidate` policy binds the five archive digests and sizes to the reviewed
+source revision and lock. `verifyCandidate` fails before use if any bytes, revision or
+lock change. `assertShippedManifest` requires exact version pins for the shared cohort
+and rejects local fixture references in shared dependencies and overrides.
+
+The release use case requires separate Gateway and Domus evidence for the same candidate
+and a successful publisher-rights check. Registry observations are stored for the exact
+coordinate, version and digest. Recovery reads before attempting a missing publication
+and checks the observed digest before recording it. A conflict remains blocked; a partial
+publication leaves consumer pins unadvanced. An uncertain attempt is inspected once, and
+a later run rechecks the registry before publishing. The delivery tests exercise this
+policy with a deterministic provider; no registry publication or publisher rights are
+claimed by those tests.
