@@ -68,6 +68,12 @@
       ],
       "@vypdev/ha-ui/layout": [
         "./packages/core/src/components/layout.ts"
+      ],
+      "@vypdev/ha-ui/feedback-contracts": [
+        "./packages/core/src/feedback-contracts.ts"
+      ],
+      "@vypdev/ha-ui/feedback": [
+        "./packages/core/src/components/feedback.ts"
       ]
     }
   },

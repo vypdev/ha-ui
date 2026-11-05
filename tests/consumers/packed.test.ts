@@ -1,3 +1,4 @@
+import {exerciseInstalledFeedback} from './feedback.ts';
 import {exerciseInstalledLayout} from './layouts.ts';
 import {exerciseInstalledCard} from './cards.ts';
 import {exerciseInstalledNavigationOverflow} from './navigation-overflow.ts';
@@ -100,6 +101,8 @@ import {buttonState,buttonPressDetail,type ButtonType} from '@vypdev/ha-ui/butto
 import {dialogState,dialogRequestDetail,type DialogAction} from '@vypdev/ha-ui/dialog-contracts';
 import {cardState,type CardHeadingLevel} from '@vypdev/ha-ui/card-contracts';
 import {gridState,rowState,type GridState} from '@vypdev/ha-ui/layout-contracts';
+import {feedbackState,type FeedbackState} from '@vypdev/ha-ui/feedback-contracts';
+const feedback:FeedbackState=feedbackState({kind:'empty',title:'No tasks'});if(feedback.kind!=='empty')throw Error('Expected pure feedback contract');
 const layout:GridState=gridState({columns:3,minColumnWidth:150});if(layout.columns!==3||rowState({label:'Inspect'}).description!=='')throw Error('Expected pure layout contract');
 const heading:CardHeadingLevel=3;if(cardState({title:'Household tasks',headingLevel:heading}).headingLevel!==heading)throw Error('Expected pure card contract');
 const dialogAction:DialogAction='cancel';if(dialogState({title:'Review'}).kind!=='standard'||dialogRequestDetail({action:dialogAction}).action!=='cancel')throw Error('Expected pure dialog contract');
@@ -127,6 +130,8 @@ if(!Object.isFrozen(buttonState({label:'Save'}))||buttonPressDetail({type:'butto
 import {dialogState,dialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
 import {cardState} from '@vypdev/ha-ui/card-contracts';
 import {gridState,rowState} from '@vypdev/ha-ui/layout-contracts';
+import {feedbackState} from '@vypdev/ha-ui/feedback-contracts';
+if(!Object.isFrozen(feedbackState({kind:'loading',message:'Loading'})))throw Error('Expected DOM-free feedback contract');
 if(!Object.isFrozen(gridState({}))||!Object.isFrozen(rowState({label:'Inspect'})))throw Error('Expected DOM-free layout contract');
 if(!Object.isFrozen(cardState({title:'Household tasks'}))||cardState({}).headingLevel!==2)throw Error('Expected DOM-free card contract');
 if(!Object.isFrozen(dialogState({title:'Review'}))||dialogRequestDetail({action:'close'}).action!=='close')throw Error('Expected pure dialog policy');
@@ -138,7 +143,7 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
     assert.match(probe.stdout, /Packed contract imported without DOM globals/u);
     const installed = join(consumer, 'node_modules/@vypdev/ha-ui');
     const packageFiles=['LICENSE','NOTICE','LICENSES/Home-Assistant-Apache-2.0.txt','LICENSES/Font-Awesome-Free-7.0.0.txt','LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt'];
-    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','components/select-list','checkbox-contracts','checkbox-mark','components/checkbox','components/implicit-submit','dialog-contracts','components/dialog','card-contracts','components/card','layout-contracts','components/layout']) {
+    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','components/select-list','checkbox-contracts','checkbox-mark','components/checkbox','components/implicit-submit','dialog-contracts','components/dialog','card-contracts','components/card','layout-contracts','components/layout','feedback-contracts','components/feedback']) {
       packageFiles.push('src/'+module+'.ts');
       for (const suffix of ['.js','.js.map','.d.ts','.d.ts.map']) packageFiles.push('dist/'+module+suffix);
     }
@@ -154,6 +159,7 @@ import {registerCheckbox} from '@vypdev/ha-ui/checkbox';
 import {registerDialog} from '@vypdev/ha-ui/dialog';
 import {registerCard} from '@vypdev/ha-ui/card';
 import {registerGrid,registerRow} from '@vypdev/ha-ui/layout';
+import {registerFeedback} from '@vypdev/ha-ui/feedback';
 import {buttonState} from '@vypdev/ha-ui/button-contracts';
 import {textFieldState} from '@vypdev/ha-ui/field-contracts';
 import {navigationState} from '@vypdev/ha-ui/contracts';
@@ -162,7 +168,7 @@ const element=document.createElement('vyp-ha-tabs');
 element.state=navigationState({kind:'navigation',label:'Household sections',selected:'overview',items:[{id:'overview',label:'Overview',href:'#overview'},{id:'tasks',label:'Tasks',href:'#tasks'}]});
 element.addEventListener('ha-selection-request',event=>{event.preventDefault();element.state=navigationState({...element.state,selected:event.detail.id});});
 document.querySelector('main')!.append(element);
-registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();
+registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();
 const form=document.createElement('form'),field=document.createElement('vyp-ha-field');
 field.state=textFieldState({label:'Task name',description:'A name for this task.',required:true});field.name='task';field.defaultValue='Kitchen';
 field.addEventListener('ha-value-request',event=>{if(!event.defaultPrevented)field.value=event.detail.value;});
@@ -235,6 +241,8 @@ document.querySelector('main')!.append(form);`);
     await writeFile(resolve(root,'test-results/packed-card.json'),JSON.stringify(card,null,2)+'\n');
     const layout=await exerciseInstalledLayout(browserPage);
     await writeFile(resolve(root,'test-results/packed-layout.json'),JSON.stringify(layout,null,2)+'\n');
+    const feedback=await exerciseInstalledFeedback(browserPage);
+    await writeFile(resolve(root,'test-results/packed-feedback.json'),JSON.stringify(feedback,null,2)+'\n');
     const readonlyField=await exerciseReadonlyField(browserPage);
     await writeFile(resolve(root,'test-results/packed-readonly-field.json'),JSON.stringify(readonlyField,null,2)+'\n');
     const implicitSubmit=await exerciseInstalledImplicitSubmit(browserPage);
@@ -243,8 +251,8 @@ document.querySelector('main')!.append(form);`);
     await writeFile(resolve(root,'test-results/packed-button.json'),JSON.stringify(coreButton,null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;
     const frameworks=await exerciseFrameworks(root,scratch,browser);
-    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, text fields, buttons, checkboxes, typed selects, native dialogs, cards and layout with four framework bindings; other controls, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
-    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, fields, buttons, checkboxes, typed selects, dialogs, cards and layout with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, text fields, buttons, checkboxes, typed selects, native dialogs, cards, layout and feedback with four framework bindings; framework SSR and application adoption remain required',frameworks},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, fields, buttons, checkboxes, typed selects, dialogs, cards, layout and feedback with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
     await mkdir(resolve(root,'test-results/packages'),{recursive:true});
     for(const file of (await readdir(join(scratch,'pack-1'))).filter(name=>name.endsWith('.tgz')))await writeFile(resolve(root,'test-results/packages',file),await readFile(join(scratch,'pack-1',file)));
     passed = true;

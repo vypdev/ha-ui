@@ -3,13 +3,12 @@
 Shared presentation components for Home Assistant applications, including Gateway and Domus.
 
 The current preview implements upper navigation/local panels, controlled text fields, native-form
-buttons, typed single/multiple selects, boolean checkboxes, native dialogs, card surfaces, passive rows and responsive grids. React, Vue, Angular and Svelte
+buttons, typed single/multiple selects, boolean checkboxes, native dialogs, card surfaces, passive rows, responsive grids and feedback states. React, Vue, Angular and Svelte
 bindings pass source and compiled installed-package consumers. The pinned build/coverage foundation
 and production-backed [Storybook](docs/storybook.md) verify the implemented scope.
 
 [Visual equivalence with HA](docs/visual-parity.md) is verified against recorded originals for
-the implemented states. Feedback and broader layout remain open alongside
-framework SSR, the complete browser matrix, public catalog hosting, package publication and
+the implemented states. Framework SSR, the complete browser matrix, public catalog hosting, package publication and
 Gateway/Domus adoption. The package cohort is unpublished.
 
 Use Node 24.20.0 and the package manager pinned in package.json:

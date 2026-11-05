@@ -128,3 +128,15 @@ https://github.com/home-assistant/frontend/blob/99d2742f4abab0d1e74c2f68393c9768
 https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/panels/lovelace/cards/hui-grid-card.ts
 The shared implementation uses passive list semantics, native projected controls and a CSS grid
 with optional container-based track reduction. No HA or Material Web runtime is included.
+
+Feedback surfaces adapt Home Assistant frontend (Apache 2.0) at the reviewed source revision:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-alert.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-spinner.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-empty-state.ts
+The spinner track and arc adapt the MIT @home-assistant/webawesome 3.14.0-ha.2 artifact
+named above. Default feedback icons use the attributed Material Design Icons 7.4.47 paths
+for information-outline, checkbox-marked-circle-outline, alert-outline,
+alert-circle-outline, and playlist-plus.
+Modifications: one app-owned state, separate status and alert announcements, a native empty
+heading, a native projected command, logical placement, and an explicit static reduced-motion
+spinner. No Home Assistant or Web Awesome runtime is included.

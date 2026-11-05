@@ -38,6 +38,7 @@ test('the pure contract does not acquire framework or application imports', () =
   expect(imports(readFileSync('packages/core/src/button-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/dialog-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/card-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
+  expect(imports(readFileSync('packages/core/src/feedback-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/presentation-text.ts','utf8'))).toEqual([]);
   expect(imports(readFileSync('packages/core/src/select-navigation.ts','utf8'))).toEqual(['./select-contracts.js']);
   expect(imports(readFileSync('packages/core/src/select-multiple.ts','utf8'))).toEqual(['./select-contracts.js']);

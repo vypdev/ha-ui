@@ -15,3 +15,5 @@ export {CardInputError,cardState} from './card-contracts.js';
 export type {CardHeadingLevel,CardState} from './card-contracts.js';
 export {LayoutInputError,gridState,rowState} from './layout-contracts.js';
 export type {GridState,RowState} from './layout-contracts.js';
+export {FeedbackInputError,feedbackState} from './feedback-contracts.js';
+export type {FeedbackKind,FeedbackState,FeedbackTone} from './feedback-contracts.js';

@@ -20,3 +20,4 @@ export {Checkbox} from './checkbox.js';
 export {Dialog} from './dialog.js';
 export {Card} from './card.js';
 export {Grid,Row} from './layout.js';
+export {Feedback} from './feedback.js';

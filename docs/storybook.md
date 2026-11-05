@@ -1,10 +1,9 @@
 # Shared component catalog
 
 The current catalog displays the implemented upper navigation, local panels and single-line text
-field, button, boolean checkbox, typed single/multiple select, native dialog, card and layout using the real
-package entrypoints. Eighty-three CSF stories have automatic documentation,
-controls, interaction tests and accessibility checks. This is an incremental preview; other
-families, the full framework/SSR/browser matrix and application adoption are still required.
+field, button, boolean checkbox, typed single/multiple select, native dialog, card, layout and feedback using the real
+package entrypoints. Ninety-two CSF stories have automatic documentation,
+controls, interaction tests and accessibility checks. This is an incremental preview; the full framework/SSR/browser matrix and application adoption are still required.
 
 ```bash
 pnpm install --frozen-lockfile --ignore-scripts
@@ -33,6 +32,7 @@ are local to the static build; the browser gate rejects external requests and fa
 | Surfaces / Card | `@vypdev/ha-ui/card` | Titled/untitled, raised, heading only, long title, right-to-left and projected actions |
 | Layout / Row | `@vypdev/ha-ui/layout` | Passive list item, optional description, right-to-left wrapping and projected action |
 | Layout / Grid | `@vypdev/ha-ui/layout` | Fixed and responsive columns, square cells and right-to-left flow |
+| Feedback / Status | `@vypdev/ha-ui/feedback` | Notice tones, optional actions, empty states, reduced-motion loading and right-to-left text |
 
 The toolbar chooses English/Spanish, light/dark, narrow/wide and reduced/system motion. Unsupported
 locale values fall back to English. System reduced-motion preferences are always respected. The
@@ -110,8 +110,8 @@ Storybook release passes those same checks without it. See [provenance](provenan
 The [visual-equivalence gate](visual-parity.md) compares actual HA states against the built shared
 component. The catalog now bundles the same Roboto Regular/Medium font bytes as the measured HA
 frontend, with local license notices. The static browser gate explicitly waits for both font
-faces to load and exercises 192 locale/theme/width combinations. Its visual phases compare
-original navigation, checkbox, button, text-field, select, dialog, card and layout states. A passing functional
+faces to load and exercises 216 locale/theme/width combinations. Its visual phases compare
+original navigation, checkbox, button, text-field, select, dialog, card, layout and feedback states. A passing functional
 or accessibility test alone does not establish visual equivalence.
 
 The independent static accessibility scan waits for Storybook's public STORY_FINISHED event and

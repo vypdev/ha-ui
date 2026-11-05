@@ -34,3 +34,5 @@ export {Card} from './card.js';
 export type {CardProps} from './card.js';
 export {Grid,Row} from './layout.js';
 export type {GridProps,RowProps} from './layout.js';
+export {Feedback} from './feedback.js';
+export type {FeedbackProps} from './feedback.js';

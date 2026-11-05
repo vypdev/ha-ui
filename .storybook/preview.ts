@@ -9,9 +9,10 @@ import {registerField} from '@vypdev/ha-ui/field';
 import {registerDialog} from '@vypdev/ha-ui/dialog';
 import {registerCard} from '@vypdev/ha-ui/card';
 import {registerGrid,registerRow} from '@vypdev/ha-ui/layout';
+import {registerFeedback} from '@vypdev/ha-ui/feedback';
 import {catalogFrame} from '../stories/catalog-frame.js';
 const preview:Preview={
-  beforeAll:()=>{registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();return observeCatalogCompletion(addons.getChannel(),document.documentElement);},decorators:[catalogFrame],
+  beforeAll:()=>{registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();return observeCatalogCompletion(addons.getChannel(),document.documentElement);},decorators:[catalogFrame],
   initialGlobals:{theme:'light',locale:'en',width:'wide',motion:'system'},
   globalTypes:{
     theme:{description:'HA-compatible theme',toolbar:{title:'Theme',icon:'circlehollow',items:[{value:'light',title:'Light'},{value:'dark',title:'Dark'}],dynamicTitle:true}},

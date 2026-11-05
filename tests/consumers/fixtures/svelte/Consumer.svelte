@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card,Grid,Row} from '@vypdev/ha-ui-svelte';
+  import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card,Grid,Row,Feedback} from '@vypdev/ha-ui-svelte';
   import type {NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
   import type {FieldValueEvent} from '@vypdev/ha-ui/field';
   import type {ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -14,6 +14,9 @@
   let cardReviewed=$state(false),cardVisible=$state(true);
   import {gridState,rowState} from '@vypdev/ha-ui/layout-contracts';
   let layoutReviewed=$state(false);
+  import {feedbackState} from '@vypdev/ha-ui/feedback-contracts';
+  let feedbackReady=$state(false);
+  const taskFeedback=$derived(feedbackState(feedbackReady?{kind:'empty',title:'No tasks yet'}:{kind:'notice',tone:'error',title:'Unable to load tasks',message:'Try loading the list again.'}));
   const taskGrid=$derived(gridState({columns:layoutReviewed?2:3,minColumnWidth:150,label:layoutReviewed?'Reviewed layout':'Household layout'}));
   const taskRow=$derived(rowState({label:layoutReviewed?'Reviewed supplies':'Inspect supplies',description:'Shopping list'}));
   const taskCard=$derived(cardState({title:cardReviewed?'Reviewed tasks':'Household tasks',headingLevel:cardReviewed?3:2,raised:cardReviewed}));
@@ -55,6 +58,8 @@
     {#if buttonVisible}<Button id="bound-submit" state={actionModel(spanish,busy)} type="submit" name="action" value="save" disabled={buttonDisabled} onPressRequest={press} onPress={()=>accepted++} leading={icons?leading:undefined} />{/if}<Button state={resetModel()} type="reset" />
   </form>
   {#snippet rowAction()}<button onclick={()=>layoutReviewed=true}>Review list row</button>{/snippet}
+  {#snippet feedbackAction()}<button onclick={()=>feedbackReady=true}>Continue after feedback</button>{/snippet}
+  <Feedback id="bound-feedback" state={taskFeedback} action={feedbackAction} />
   <Grid id="bound-layout" state={taskGrid} style="width:480px"><div role="list"><Row state={taskRow} trailing={rowAction} /></div></Grid>
   <button onclick={()=>cardVisible=!cardVisible}>Toggle task card</button>
   {#snippet reviewCard()}{#if !cardReviewed}<button onclick={()=>cardReviewed=true}>Review card task</button>{/if}{/snippet}

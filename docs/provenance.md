@@ -192,3 +192,15 @@ The [original SIL Open Font License 1.1](../LICENSES/Noto-Sans-Arabic-OFL-1.1.tx
 is shipped with the catalog. The reference harness maps these bytes to the existing Noto
 fallback for Arabic code points in both original and candidate captures. This holds browser
 font input constant across runners. The SDK packages do not ship or fetch this font.
+
+## Measured HA feedback
+
+The notice and spinner comparisons use the actual installed public `ha-alert` and
+`ha-spinner` modules. Empty-state comparisons use the compiled `ha-empty-state`
+from the [official Home Assistant frontend 20261028.4 wheel](https://pypi.org/project/home-assistant-frontend/20261028.4/).
+The [reference manifest](evidence/ha-feedback-reference.json) records the two independent
+sources, asset digests, engines, themes, geometry and original screenshots. All captures use
+fictional content. The harness uses the public module loader and makes no application API calls.
+The spinner capture freezes animation to compare its visible resting state. For Arabic notice
+headings, the fixture applies the same right-to-left alignment token as the original app.
+The core NOTICE records the Apache 2.0, MIT and Material Design Icons attributions.

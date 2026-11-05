@@ -1,6 +1,6 @@
 import {createElement,useState,StrictMode,type CSSProperties,type SyntheticEvent} from 'react';
 import {createRoot} from 'react-dom/client';
-import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card,Grid,Row} from '@vypdev/ha-ui-react';
+import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card,Grid,Row,Feedback} from '@vypdev/ha-ui-react';
 import {registerTabs,type NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
 import {registerField,type FieldValueEvent} from '@vypdev/ha-ui/field';
 import {registerButton,type ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -14,13 +14,16 @@ import {registerCard} from '@vypdev/ha-ui/card';
 import {cardState} from '@vypdev/ha-ui/card-contracts';
 import {registerGrid,registerRow} from '@vypdev/ha-ui/layout';
 import {gridState,rowState} from '@vypdev/ha-ui/layout-contracts';
-registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();
+import {registerFeedback} from '@vypdev/ha-ui/feedback';
+import {feedbackState} from '@vypdev/ha-ui/feedback-contracts';
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();
 const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
 function Consumer() {
   const [state,setState]=useState(model()),[spanish,setSpanish]=useState(false),[dark,setDark]=useState(false),[disabled,setDisabled]=useState(false),[visible,setVisible]=useState(true),[count,setCount]=useState(0);
   const [dialogOpen,setDialogOpen]=useState(false),[dialogMounted,setDialogMounted]=useState(true),[dialogReject,setDialogReject]=useState(false),[dialogAction,setDialogAction]=useState(''),[dialogRequests,setDialogRequests]=useState(0);
   const [cardReviewed,setCardReviewed]=useState(false),[cardVisible,setCardVisible]=useState(true);
   const [layoutReviewed,setLayoutReviewed]=useState(false);
+  const [feedbackReady,setFeedbackReady]=useState(false);
   const showDialog=()=>{setDialogMounted(true);setDialogAction('');setDialogOpen(true);};
   const dialogRequest=(event:DialogRequestEvent)=>{setDialogRequests(count=>count+1);if(dialogReject&&event.detail.action==='confirm')event.preventDefault();};
   const acceptDialog=({action}:DialogRequestDetail)=>{setDialogAction(action);setDialogOpen(false);};
@@ -52,6 +55,8 @@ function Consumer() {
     createElement('output',{'aria-label':'Press events'},String(presses)),createElement('output',{'aria-label':'Accepted presses'},String(accepted)),createElement('output',{'aria-label':'Submit events'},String(submits)),createElement('output',{'aria-label':'Button metadata'},String(metadata)),
     createElement('form',{'aria-label':'Task form',onSubmit:save},fieldVisible?createElement(TextField,{state:fieldModel(spanish),value,name:'task',defaultValue:'Kitchen',disabled:fieldDisabled,onValueRequest:observe,onValueChange:setValue}):null,
       buttonVisible?createElement(Button,{id:'bound-submit',state:actionModel(spanish,busy),type:'submit',name:'action',value:'save',disabled:buttonDisabled,onPressRequest:press,onPress:()=>setAccepted(count=>count+1),leading:icons?createElement('span',null,'+'):undefined}):null,createElement(Button,{state:resetModel(),type:'reset'})),
+    createElement(Feedback,{id:'bound-feedback',state:feedbackState(feedbackReady?{kind:'empty',title:'No tasks yet'}:{kind:'notice',tone:'error',title:'Unable to load tasks',message:'Try loading the list again.'}),
+      action:createElement('button',{onClick:()=>setFeedbackReady(true)},'Continue after feedback')}),
     createElement(Grid,{id:'bound-layout',style:{width:'480px'},state:gridState({columns:layoutReviewed?2:3,minColumnWidth:150,label:layoutReviewed?'Reviewed layout':'Household layout'})},
       createElement('div',{role:'list'},createElement(Row,{state:rowState({label:layoutReviewed?'Reviewed supplies':'Inspect supplies',description:'Shopping list'}),
        trailing:createElement('button',{onClick:()=>setLayoutReviewed(true)},'Review list row')}))),

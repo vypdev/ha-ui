@@ -38,7 +38,9 @@
         "packages/core/src/components/card.ts",
         "packages/core/src/card-contracts.ts",
         "packages/core/src/layout-contracts.ts",
-        "packages/core/src/components/layout.ts"
+        "packages/core/src/components/layout.ts",
+        "packages/core/src/components/feedback.ts",
+        "packages/core/src/feedback-contracts.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
@@ -114,7 +116,14 @@
         "packages/svelte/src/Row.svelte",
         "packages/svelte/src/Grid.svelte",
         "stories/row.example.ts",
-        "stories/grid.example.ts"
+        "stories/grid.example.ts",
+        "packages/angular/src/feedback.ts",
+        "packages/core/src/components/feedback.ts",
+        "packages/core/src/feedback-contracts.ts",
+        "packages/react/src/feedback.ts",
+        "packages/svelte/src/Feedback.svelte",
+        "packages/vue/src/feedback.ts",
+        "stories/feedback.example.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -271,7 +280,20 @@
         "tests/storybook/layout-visual.ts",
         "tests/consumers/layouts.ts",
         "tests/storybook/reference/ha-layout/index.json",
-        "tests/storybook/reference/ha-layout/originals.tar"
+        "tests/storybook/reference/ha-layout/originals.tar",
+        "stories/feedback.stories.ts",
+        "tests/browser/angular-feedback.test.ts",
+        "tests/browser/feedback-framework-fixture.ts",
+        "tests/browser/feedback.test.ts",
+        "tests/browser/fixtures/SvelteFeedback.svelte",
+        "tests/browser/react-feedback.test.ts",
+        "tests/browser/svelte-feedback.test.mjs",
+        "tests/browser/vue-feedback.test.ts",
+        "tests/consumers/feedback.ts",
+        "tests/contracts/feedback.test.ts",
+        "tests/storybook/feedback-visual.ts",
+        "tests/storybook/reference/ha-feedback/index.json",
+        "tests/storybook/reference/ha-feedback/originals.tar"
       ],
       "documentation": [
         "README.md",
@@ -303,7 +325,9 @@
         "docs/evidence/ha-card-reference.json",
         "docs/layout-contract.md",
         "docs/evidence/ha-layout-reference.json",
-        "LICENSES/Noto-Sans-Arabic-OFL-1.1.txt"
+        "LICENSES/Noto-Sans-Arabic-OFL-1.1.txt",
+        "docs/evidence/ha-feedback-reference.json",
+        "docs/feedback-contract.md"
       ],
       "readiness": {
         "status": "draft",

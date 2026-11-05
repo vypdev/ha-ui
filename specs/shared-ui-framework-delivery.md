@@ -657,6 +657,28 @@ Prospective repository files (current documents are classified against the immut
 | `tests/storybook/layout-visual.ts` | create |
 | `tests/storybook/reference/ha-layout/index.json` | create |
 | `tests/storybook/reference/ha-layout/originals.tar` | create |
+| `docs/evidence/ha-feedback-reference.json` | create |
+| `docs/feedback-contract.md` | create |
+| `packages/angular/src/feedback.ts` | create |
+| `packages/core/src/components/feedback.ts` | create |
+| `packages/core/src/feedback-contracts.ts` | create |
+| `packages/react/src/feedback.ts` | create |
+| `packages/svelte/src/Feedback.svelte` | create |
+| `packages/vue/src/feedback.ts` | create |
+| `stories/feedback.example.ts` | create |
+| `stories/feedback.stories.ts` | create |
+| `tests/browser/angular-feedback.test.ts` | create |
+| `tests/browser/feedback-framework-fixture.ts` | create |
+| `tests/browser/feedback.test.ts` | create |
+| `tests/browser/fixtures/SvelteFeedback.svelte` | create |
+| `tests/browser/react-feedback.test.ts` | create |
+| `tests/browser/svelte-feedback.test.mjs` | create |
+| `tests/browser/vue-feedback.test.ts` | create |
+| `tests/consumers/feedback.ts` | create |
+| `tests/contracts/feedback.test.ts` | create |
+| `tests/storybook/feedback-visual.ts` | create |
+| `tests/storybook/reference/ha-feedback/index.json` | create |
+| `tests/storybook/reference/ha-feedback/originals.tar` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

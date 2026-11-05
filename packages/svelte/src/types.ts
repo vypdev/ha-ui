@@ -49,3 +49,8 @@ export interface RowProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|
 export interface GridProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {
  state:GridState;children?:Snippet;
 }
+
+import type {FeedbackState} from '@vypdev/ha-ui/feedback-contracts';
+export interface FeedbackProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'>{
+ state:FeedbackState;action?:Snippet;icon?:Snippet;
+}

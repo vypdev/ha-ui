@@ -4,6 +4,7 @@ import {registerSelect} from '../../packages/core/src/components/select.js';
 import {registerButton} from '../../packages/core/src/components/button.js';
 import {registerDialog} from '../../packages/core/src/components/dialog.js';
 import {registerCard} from '../../packages/core/src/components/card.js';
+import {registerFeedback} from '../../packages/core/src/components/feedback.js';
 import {registerGrid,registerRow} from '../../packages/core/src/components/layout.js';
 import {registerTabs} from '../../packages/core/src/components/tabs.js';
 test('does not define a tag or render on the server; registration rejects even a dependency DOM shim', () => {
@@ -29,6 +30,7 @@ test.each([
   ['vyp-ha-card',registerCard,'registerCard requires a browser CustomElementRegistry'],
   ['vyp-ha-row',registerRow,'Layout registration requires a browser CustomElementRegistry'],
   ['vyp-ha-grid',registerGrid,'Layout registration requires a browser CustomElementRegistry'],
+  ['vyp-ha-feedback',registerFeedback,'registerFeedback requires a browser CustomElementRegistry'],
 ] as const)('rejects %s registration with no registry at all',(tag,register,message)=>{
   vi.stubGlobal('customElements',undefined);
   expect(typeof document).toBe('undefined');
@@ -55,3 +57,5 @@ test('layout imports leave both tags unregistered in a DOM-free process with a r
  expect(globalThis.customElements?.get('vyp-ha-row')).toBeUndefined();
  expect(globalThis.customElements?.get('vyp-ha-grid')).toBeUndefined();
 });
+
+test('feedback import does not register or render on the server',()=>{expect(typeof document).toBe('undefined');expect(globalThis.customElements?.get('vyp-ha-feedback')).toBeUndefined();expect(()=>registerFeedback()).toThrow('registerFeedback requires a browser CustomElementRegistry');});

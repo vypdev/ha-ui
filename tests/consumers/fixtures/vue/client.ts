@@ -1,5 +1,5 @@
 import {createApp,h,shallowRef} from 'vue';
-import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card,Grid,Row} from '@vypdev/ha-ui-vue';
+import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card,Grid,Row,Feedback} from '@vypdev/ha-ui-vue';
 import {registerTabs,type NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
 import {registerField,type FieldValueEvent} from '@vypdev/ha-ui/field';
 import {registerButton,type ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -13,7 +13,9 @@ import {registerCard} from '@vypdev/ha-ui/card';
 import {cardState} from '@vypdev/ha-ui/card-contracts';
 import {registerGrid,registerRow} from '@vypdev/ha-ui/layout';
 import {gridState,rowState} from '@vypdev/ha-ui/layout-contracts';
-registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();
+import {registerFeedback} from '@vypdev/ha-ui/feedback';
+import {feedbackState} from '@vypdev/ha-ui/feedback-contracts';
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();
 const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
 const nativeHostAttributes={title:'Vue host attributes','aria-description':'Installed Vue host attributes','data-host-attributes':'forwarded'};
 createApp({setup(){
@@ -21,6 +23,7 @@ createApp({setup(){
   const dialogOpen=shallowRef(false),dialogMounted=shallowRef(true),dialogReject=shallowRef(false),dialogAction=shallowRef(''),dialogRequests=shallowRef(0);
   const cardReviewed=shallowRef(false),cardVisible=shallowRef(true);
   const layoutReviewed=shallowRef(false);
+  const feedbackReady=shallowRef(false);
   const showDialog=()=>{dialogMounted.value=true;dialogAction.value='';dialogOpen.value=true;};
   const dialogRequest=(event:DialogRequestEvent)=>{dialogRequests.value++;if(dialogReject.value&&event.detail.action==='confirm')event.preventDefault();};
   const acceptDialog=({action}:DialogRequestDetail)=>{dialogAction.value=action;dialogOpen.value=false;};
@@ -51,6 +54,8 @@ createApp({setup(){
     h('output',{'aria-label':'Press events'},String(presses.value)),h('output',{'aria-label':'Accepted presses'},String(accepted.value)),h('output',{'aria-label':'Submit events'},String(submits.value)),h('output',{'aria-label':'Button metadata'},String(metadata.value)),
     h('form',{'aria-label':'Task form',onSubmit:save},[fieldVisible.value?h(TextField,{...nativeHostAttributes,state:fieldModel(spanish.value),modelValue:value.value,'onUpdate:modelValue':(next:string)=>value.value=next,name:'task',defaultValue:'Kitchen',disabled:fieldDisabled.value,onValueRequest:observe}):null,
       buttonVisible.value?h(Button,{...nativeHostAttributes,id:'bound-submit',state:actionModel(spanish.value,busy.value),type:'submit',name:'action',value:'save',disabled:buttonDisabled.value,onPressRequest:press,onPress:()=>accepted.value++},icons.value?{leading:()=>h('span','+')}:{}):null,h(Button,{...nativeHostAttributes,state:resetModel(),type:'reset'})]),
+    h(Feedback,{id:'bound-feedback',state:feedbackState(feedbackReady.value?{kind:'empty',title:'No tasks yet'}:{kind:'notice',tone:'error',title:'Unable to load tasks',message:'Try loading the list again.'})},
+      {action:()=>h('button',{onClick:()=>feedbackReady.value=true},'Continue after feedback')}),
     h(Grid,{id:'bound-layout',style:{width:'480px'},state:gridState({columns:layoutReviewed.value?2:3,minColumnWidth:150,label:layoutReviewed.value?'Reviewed layout':'Household layout'})},
       {default:()=>h('div',{role:'list'},[h(Row,{state:rowState({label:layoutReviewed.value?'Reviewed supplies':'Inspect supplies',description:'Shopping list'})},
        {trailing:()=>h('button',{onClick:()=>layoutReviewed.value=true},'Review list row')})])}),

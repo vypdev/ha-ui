@@ -427,3 +427,18 @@ Card and layout reference captures load the same local Arabic fallback in the ac
 module and the compiled candidate. The exact [font identity and license](provenance.md#measured-ha-row-and-grid-layout)
 are recorded independently of the renderer. This keeps RTL assertions reproducible even
 when a host or CI runner supplies a different fallback font.
+
+## Notices, empty states and loading
+
+The [feedback reference](evidence/ha-feedback-reference.json) compares 22 states per platform,
+including all four notice tones, a narrow action, Arabic direction, reduced-motion loading,
+and three empty-state configurations in light and dark. All 66 Chromium captures are
+pixel exact across macOS ARM64, Linux ARM64 and Linux x64. Notice and spinner references
+come from the installed Home Assistant frontend; empty-state references come from the
+separately identified official frontend 20261028.4 release.
+
+The error action retains the original 40px visible button and at least a 44px native target.
+The static catalog and the installed core exercise the error-to-empty transition, native form
+submission and retained keyboard focus. The same journey passes Chromium 156.0.8078.80,
+Firefox 157 and WebKit 27.2. The independent accessibility matrix exercises the error,
+empty and loading stories in both languages, themes and viewport sizes.

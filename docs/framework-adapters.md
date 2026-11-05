@@ -85,7 +85,7 @@ Every framework consumer compiles against installed declarations and runs real p
 events, content projection, disabled booleans, English/Spanish, live theme, keyboard, removal and remount
 journeys. Installed authored source must match the repository. Published manifests contain neither
 workspace nor file references. The resulting artifacts include the exact cohort digests and original
-browser screenshots. These checks cover navigation, text fields, buttons, checkboxes, selects, dialogs, cards and layout. They do not complete the retained 70-case
+browser screenshots. These checks cover navigation, text fields, buttons, checkboxes, selects, dialogs, cards, layout and feedback. They do not complete the retained 70-case
 capability acceptance inventory or prove a real npm publication.
 
 The complete source/type/browser check sequence also passes with all five dist trees absent.
@@ -316,3 +316,12 @@ with `slot="leading"` or `slot="trailing"`. Give `Grid` a `gridState` model and 
 ordinary children (React/Svelte), default slot (Vue) or projected children (Angular).
 Resize changes the grid tracks without changing the order or ownership of those children.
 See the [layout contract](layout-contract.md) for the native semantics and layout tokens.
+
+## Feedback bindings
+
+All four adapters export `Feedback` and accept the same `FeedbackState` property. The
+React and Vue bindings accept named `action` and `icon` content through their framework's
+props and slots, respectively. Angular projects elements with `slot="action"` or
+`slot="icon"`, and Svelte accepts `action` and `icon` snippets. The optional icon is
+decorative. Use a real button or link for the action. Its event belongs to the application.
+The [feedback contract](feedback-contract.md) describes the shared roles and state transitions.

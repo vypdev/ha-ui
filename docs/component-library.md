@@ -2,8 +2,7 @@
 
 The current source implements the DOM-independent navigation contract, one controlled upper
 navigation/panel renderer, a single-line text field, a native-form button, typed single/multiple selects, boolean checkboxes and the tested quality/build foundation. The renderer passes direct
-Chromium and clean actual-package browser consumers. Four navigation, text-field form, button, select, checkbox, dialog, card and layout adapters also pass real compiled package consumers. Other component families,
-other form bridges, framework SSR, public Storybook hosting, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
+Chromium and clean actual-package browser consumers. Four navigation, text-field form, button, select, checkbox, dialog, card, layout and feedback adapters also pass real compiled package consumers. Framework SSR, public Storybook hosting, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
 
@@ -339,3 +338,10 @@ actions and CSS grid tracks with fixed, responsive or square cells. These compon
 with cards and keep their children in source order as the container changes width.
 The [catalog](storybook.md) shows ordinary text rows, narrow and right-to-left examples,
 and card grids that respond to their own container.
+
+## Feedback surfaces
+
+The [feedback contract](feedback-contract.md) covers inline notices, error announcements,
+empty states and loading. The application owns each update and any projected action. The
+renderer keeps the action outside the live announcement so that a native control retains its
+form, keyboard and focus behavior. No application service or timer runs inside the component.

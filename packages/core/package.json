@@ -85,6 +85,14 @@
     "./layout": {
       "types": "./dist/components/layout.d.ts",
       "import": "./dist/components/layout.js"
+    },
+    "./feedback-contracts": {
+      "types": "./dist/feedback-contracts.d.ts",
+      "import": "./dist/feedback-contracts.js"
+    },
+    "./feedback": {
+      "types": "./dist/components/feedback.d.ts",
+      "import": "./dist/components/feedback.js"
     }
   },
   "publishConfig": {
