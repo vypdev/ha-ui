@@ -1,6 +1,7 @@
 import {captureSettledElement} from './screenshot.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
 import {readOriginalRaster} from './reference-images.ts';
+import {compareVisualPng} from './raster-comparison.ts';
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -43,8 +44,11 @@ export async function exerciseNavigationIconsVisual(page:Page,origin:string,outp
     }
     if(row.state==='focus'&&n===0){assert.equal(item.focusVisible,true);assert.equal(item.base.outline,expected.base.outline);assert.equal(item.base.outlineOffset,expected.base.outlineOffset);}
    }
-   const raster=await captureSettledElement(page,'#icon-proof',resolve(output,'ha-icons-'+kind+'-'+theme+'-'+row.presentation+'-'+row.state+'.png'));
-   results.push({platform,kind,theme,presentation:row.presentation,state:row.state,geometryAndStateMatch:true,layoutToleranceCssPx:1,verticalToleranceCssPx:0.1,actual,referenceImage:row.image,raster});
+   const path=resolve(output,`ha-icons-${kind}-${theme}-${row.presentation}-${row.state}.png`);
+   const raster=await captureSettledElement(page,'#icon-proof',path);
+   const {agreement}=await compareVisualPng(page,original,await readFile(path));
+   assert.equal(agreement.changedPixels,0,`Original HA navigation icon pixels differ for ${platform} ${kind} ${theme} ${row.presentation} ${row.state}`);
+   results.push({platform,kind,theme,presentation:row.presentation,state:row.state,geometryAndStateMatch:true,layoutToleranceCssPx:1,verticalToleranceCssPx:0.1,actual,referenceImage:row.image,raster,rasterAgreement:agreement});
   }
  }
  await writeFile(resolve(output,'ha-navigation-icons-parity.json'),JSON.stringify({reference:'docs/evidence/ha-navigation-icons-reference.json',scope:'Three icon/text presentations; overflow, other visual families and installed app/human acceptance remain pending.',results},null,2)+'\n');return results;

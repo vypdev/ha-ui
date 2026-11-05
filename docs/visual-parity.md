@@ -91,10 +91,10 @@ This baseline accepts neither icon presentation nor the overflow affordances and
 composition. Those remain part of the full navigation family and both application-adoption
 reviews. A matching text-tab measurement or passing functional/coverage check does not complete
 that family or the library. The first candidate exposed a different bottom track row and the native button label
-0.796875px below the reference. Both were corrected in the shared renderer. Read-only decoding
-of all16 final local samples finds zero changed pixels against their original references.
-This is scoped to the pinned local Chromium/macOS captures; the hosted cross-platform gate
-checks exact styles and geometry, rather than requiring platform-specific raster identity.
+0.796875px below the reference. Both were corrected in the shared renderer. The compiled
+catalog now checks exact agreement of every decoded pixel against the matching Chromium
+reference on macOS and Linux. All 16 text-only candidate captures per platform, covering
+link and panel navigation, must also match the measured styles and geometry.
 No full navigation or human UX acceptance is claimed.
 
 
@@ -138,8 +138,9 @@ vertical bound. Original failure diagnostics remain evidence; no tolerance was i
 
 The compiled catalog asserts exact measured state/style values and less-than-one-pixel geometry,
 with a 0.1px vertical bound, against all three icon/text presentations. Original images are verified
-by digest and dimensions before each comparison. Scoped raster inspection and current package
-identities are recorded separately in the [implementation evidence](evidence/shared-ui-foundation.json).
+by digest and dimensions before each comparison. The catalog also requires zero changed
+pixels in the 48 icon/text captures per platform and records the pixel agreement for each
+candidate screenshot.
 Custom font/theme breadth, overflow affordances, other component families and both application
 adoptions remain required under the unchanged 64 foundation and 6 delivery cases.
 
