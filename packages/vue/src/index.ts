@@ -24,3 +24,4 @@ export {TextField} from './text-field.js';
 export {Button} from './button.js';
 export {Select} from './select.js';
 export {Checkbox} from './checkbox.js';
+export {Dialog} from './dialog.js';

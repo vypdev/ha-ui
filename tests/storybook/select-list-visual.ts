@@ -6,33 +6,13 @@ import type {Page} from 'playwright';
 import {selectState} from '@vypdev/ha-ui/select-contracts';
 import {captureSettledElement} from './screenshot.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
-import {rasterAgreement,selectorRasterTolerance} from '../../tooling/raster.mjs';
+import {selectorRasterTolerance} from '../../tooling/raster.mjs';
+import {compareVisualPng} from './raster-comparison.ts';
 type Box={x:number;y:number;width:number;height:number};
 type Piece={box:Box;glyph:Box|null;style:Record<string,string>};
 type Choice={row:Piece;label:Piece;indicator:Piece;glyph:Piece|null;labelGlyph:Box|null;checked:boolean;disabled:boolean;paintOpacity:string};
 type Configuration={label:string;multiple:boolean;value:string|string[]|null;options:{value:string;label:string;disabled?:boolean}[];width:number;dir:string;disabled:boolean;required:boolean;helper:string;interaction:string};
 type Row={platform:string;architecture:string;theme:string;name:string;configuration:Configuration;frame:Box;parts:{host:Piece;caption:Piece;choices:Choice[];helper:Piece|null};image:{path:string;sha256:string}};
-
-async function comparePng(page:Page,original:Buffer,candidate:Buffer){
- const sameBytes=original.equals(candidate);
- // Identical encoded PNGs already prove equality of every decoded channel.
- if(sameBytes){
-  assert.equal(original.toString('ascii',12,16),'IHDR');
-  const width=original.readUInt32BE(16),height=original.readUInt32BE(20);
-  assert.ok(width>0&&height>0&&Number.isSafeInteger(width*height));
-  return {sameBytes,agreement:{pixels:width*height,changedPixels:0,peakChannelDelta:0,meanChannelDelta:0,changedFraction:0,alphaChanges:0,exact:true,accepted:true}};
- }
- const decoded=await page.evaluate(async sources=>Promise.all(sources.map(async source=>{
-  const image=new Image();image.src=source;await image.decode();
-  const canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;
-  const context=canvas.getContext('2d',{willReadFrequently:true})!;context.drawImage(image,0,0);
-  const pixels=context.getImageData(0,0,canvas.width,canvas.height).data;
-  let binary='';for(let start=0;start<pixels.length;start+=8192)binary+=String.fromCharCode(...pixels.subarray(start,start+8192));
-  return{width:canvas.width,height:canvas.height,base64:btoa(binary)};
- })),[original,candidate].map(bytes=>'data:image/png;base64,'+bytes.toString('base64')));
- const [first,second]=decoded.map(({width,height,base64})=>({width,height,pixels:Buffer.from(base64,'base64')}));
- return {sameBytes,agreement:rasterAgreement(first,second)};
-}
 
 export async function exerciseSelectListVisual(page:Page,origin:string,output:string){
  const reference=JSON.parse(await readFile(resolve('docs/evidence/ha-select-list-reference.json'),'utf8')) as {themes:Record<string,Record<string,string>>;states:Row[]};
@@ -83,7 +63,7 @@ export async function exerciseSelectListVisual(page:Page,origin:string,output:st
    if(index>0){const previous=actual.choices[index-1].native;assert.ok(previous.y+previous.height<=a.native.y,'Adjacent native targets cannot overlap');}
   }
   const path=resolve(output,'ha-select-'+row.theme+'-'+row.name+'.png'),raster=await captureSettledElement(page,'#list-capture',path);
-  const {sameBytes,agreement}=await comparePng(page,original,await readFile(path));if(!agreement.accepted)local.push('Original HA raster exceeds selector quantization bounds');
+  const {sameBytes,agreement}=await compareVisualPng(page,original,await readFile(path));if(!agreement.accepted)local.push('Original HA raster exceeds selector quantization bounds');
   problems.push(...local.map(problem=>row.theme+'/'+row.name+'/'+problem));results.push({platform,architecture,browser,theme:row.theme,name:row.name,identicalPixels:sameBytes,rasterAgreement:agreement,problems:local,referenceImage:row.image,raster,actual});
  }
  await writeFile(resolve(output,'ha-select-list-parity.json'),JSON.stringify({reference:'docs/evidence/ha-select-list-reference.json',scope:'Explicit visible single and multiple lists; native row targets do not overlap.',selectorRasterTolerance,results,problems},null,2)+'\n');assert.deepEqual(problems,[],'Original HA visible-list geometry and paint');return results;

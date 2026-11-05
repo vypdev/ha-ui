@@ -81,8 +81,8 @@ no copied third-party component, CSS or second native-form controller.
 
 
 The initial native selector adapts the same reviewed Gateway MIT field/select geometry at
-ui-catalog.css lines143–146. Native multiple/explicit list modes retain that initial geometry while
-the filled single picker is calibrated separately against recorded public HA modules. Its typed
+ui-catalog.css lines143–146. Automatic multiple and larger single sizes retain that geometry.
+Explicit dropdowns and lists use separately measured Home Assistant surfaces. Their typed
 primitive policies, successful repeated entries, controlled requests/reset, restoration and four
 framework bindings are authored here.
 
@@ -100,6 +100,18 @@ The decorative menu-down and close paths are unmodified Material Design Icons7.4
 assigns Apache2.0 to icons; the original Pictogrammers license and existing full Apache text are
 retained in the core package. Both paths were compared with the versioned `mdi.js` source. No icon
 pack, upstream component runtime, HA API, remote font loader or private application state is imported.
+
+The chip/search and visible-list references record their own module and asset identities in
+[multiple dropdown evidence](evidence/ha-select-multiple-reference.json) and
+[visible-list evidence](evidence/ha-select-list-reference.json). The explicit radio and checkbox
+lists reuse the attributed checkbox mark and public helper/text geometry, with one shared
+native-form bridge. The exact source paths and license notices are in `packages/core/NOTICE`.
+
+The native dialog adapts HA's dialog, header, footer, scroll fades and close action. The
+[original dialog evidence](evidence/ha-dialog-reference.json) records the public app digest,
+module entries, fonts and every loaded asset. The reviewed Apache 2.0 source and the MDI
+close glyph are listed in the core notice. The authored renderer names the native modal,
+keeps dialog commands controlled and delegates to the existing shared button.
 
 ## Measured HA checkbox and catalog fonts
 

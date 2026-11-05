@@ -36,6 +36,7 @@ test('the pure contract does not acquire framework or application imports', () =
   expect(imports(readFileSync('packages/core/src/select-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/field-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/button-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
+  expect(imports(readFileSync('packages/core/src/dialog-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/presentation-text.ts','utf8'))).toEqual([]);
   expect(imports(readFileSync('packages/core/src/select-navigation.ts','utf8'))).toEqual(['./select-contracts.js']);
   expect(imports(readFileSync('packages/core/src/select-multiple.ts','utf8'))).toEqual(['./select-contracts.js']);
@@ -110,7 +111,7 @@ test('framework entrypoints never import the core DOM renderer at runtime or reg
     const code=file.endsWith('.svelte')?original.match(/<script[^>]*>([\s\S]*?)<\/script>/u)[1]:original;
     const parsed=ts.createSourceFile('source.ts',code,ts.ScriptTarget.Latest,true);
     for (const node of parsed.statements) if (ts.isImportDeclaration(node) && node.moduleSpecifier.text.startsWith('@vypdev/ha-ui'))
-      expect(node.importClause.isTypeOnly||['@vypdev/ha-ui/field-contracts','@vypdev/ha-ui/button-contracts','@vypdev/ha-ui/select-contracts','@vypdev/ha-ui/checkbox-contracts'].includes(node.moduleSpecifier.text),file).toBe(true);
+      expect(node.importClause.isTypeOnly||['@vypdev/ha-ui/field-contracts','@vypdev/ha-ui/button-contracts','@vypdev/ha-ui/select-contracts','@vypdev/ha-ui/checkbox-contracts','@vypdev/ha-ui/dialog-contracts'].includes(node.moduleSpecifier.text),file).toBe(true);
     expect(code).not.toMatch(/customElements|registerTabs/u);
   }
 });

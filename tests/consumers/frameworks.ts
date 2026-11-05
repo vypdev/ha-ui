@@ -2,6 +2,7 @@ import {assertBoundNavigationIcons} from './navigation-icons.ts';
 import {fixtureFonts} from './fonts.ts';
 import {exerciseFrameworkCheckbox} from './checkboxes.ts';
 import {exerciseFrameworkSelect} from './selects.ts';
+import {exerciseFrameworkDialog} from './dialogs.ts';
 import {exerciseFrameworkButton} from './framework-buttons.ts';
 import {exerciseField} from './fields.ts';
 import assert from 'node:assert/strict';
@@ -76,7 +77,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       await page.evaluate(()=>document.fonts.ready);
       let nativeHostAttributes;
       if(framework==='vue'){
-        nativeHostAttributes=await page.locator('vyp-ha-tabs,vyp-ha-field,vyp-ha-button,vyp-ha-select,vyp-ha-checkbox').evaluateAll(elements=>elements.map(element=>{
+        nativeHostAttributes=await page.evaluate(()=>[...document.querySelectorAll('vyp-ha-tabs,vyp-ha-field,vyp-ha-button,vyp-ha-select,vyp-ha-checkbox')].map(element=>{
           const host=element as HTMLElement&{form?:HTMLFormElement|null},owner=host.form;
           const entries=()=>owner?[...new FormData(owner)]:null,before=entries();host.hidden=true;
           const hidden=getComputedStyle(host).display,whileHidden=entries();host.hidden=false;
@@ -89,6 +90,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       const button=await exerciseFrameworkButton(page,root,framework);
       const select=await exerciseFrameworkSelect(page,root,framework);
       const checkbox=await exerciseFrameworkCheckbox(page,root,framework);
+      const dialog=await exerciseFrameworkDialog(page,root,framework);
       const navigationIcons=await assertBoundNavigationIcons(page);
       await page.getByRole('tab',{name:'Tasks',exact:true}).click();
       await page.getByRole('button',{name:'Add task',exact:true}).waitFor({state:'visible'});
@@ -141,7 +143,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       assert.equal(await page.locator('vyp-ha-field #error').evaluate(element=>getComputedStyle(element).color),'rgb(242, 139, 130)');
       await page.locator('vyp-ha-field').screenshot({path:join(root,'test-results','packed-'+framework+'-field-error-dark-es.png')});
       assert.deepEqual(errors,[]);
-      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,nativeHostAttributes,navigationIcons,textField,button,select,checkbox,browser:browser.version(),errors});
+      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,nativeHostAttributes,navigationIcons,textField,button,select,checkbox,dialog,browser:browser.version(),errors});
       console.log('Packed '+framework+' compiler, bindings and real Chromium lifecycle passed');
     } finally {await page.close();await server.close();}
   }

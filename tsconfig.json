@@ -50,6 +50,12 @@
       ],
       "@vypdev/ha-ui/checkbox": [
         "./packages/core/src/components/checkbox.ts"
+      ],
+      "@vypdev/ha-ui/dialog-contracts": [
+        "./packages/core/src/dialog-contracts.ts"
+      ],
+      "@vypdev/ha-ui/dialog": [
+        "./packages/core/src/components/dialog.ts"
       ]
     }
   },

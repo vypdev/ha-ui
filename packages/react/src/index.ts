@@ -28,3 +28,5 @@ export {Select} from './select.js';
 export type {SelectProps} from './select.js';
 export {Checkbox} from './checkbox.js';
 export type {CheckboxProps} from './checkbox.js';
+export {Dialog} from './dialog.js';
+export type {DialogProps} from './dialog.js';

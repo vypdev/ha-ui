@@ -9,3 +9,5 @@ export {SelectInputError,selectState,selectSelection,selectName,selectValidity,s
 export type {SelectValue,SelectSelection,SelectOption,SelectState,SelectMode,SelectValidity,SelectValueReason,SelectValueDetail} from './select-contracts.js';
 export {CheckboxInputError,checkboxState,checkboxChecked,checkboxName,checkboxValue,checkboxValidity,checkboxChangeDetail,checkboxRestoreState,checkboxRestoreValue} from './checkbox-contracts.js';
 export type {CheckboxState,CheckboxValidity,CheckboxChangeReason,CheckboxChangeDetail} from './checkbox-contracts.js';
+export {DialogInputError,dialogState,dialogOpen,dialogRequestDetail} from './dialog-contracts.js';
+export type {DialogKind,DialogWidth,DialogConfirmTone,DialogAction,DialogState,DialogRequestDetail} from './dialog-contracts.js';

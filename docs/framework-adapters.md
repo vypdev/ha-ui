@@ -1,6 +1,6 @@
 # Framework bindings
 
-This unpublished preview has shared navigation with local icons/labels, one controlled text field, native-form buttons, boolean checkboxes and typed single/multiple selects,
+This unpublished preview has shared navigation with local icons/labels, one controlled text field, native-form buttons, boolean checkboxes, typed single/multiple selects and native dialogs,
 with four real framework bindings and text-field form bridges. Other controls and their bridges, framework
 SSR/client fixtures, broader browser support, public Storybook hosting, publication and app adoption remain required.
 
@@ -85,7 +85,7 @@ Every framework consumer compiles against installed declarations and runs real p
 events, content projection, disabled booleans, English/Spanish, live theme, keyboard, removal and remount
 journeys. Installed authored source must match the repository. Published manifests contain neither
 workspace nor file references. The resulting artifacts include the exact cohort digests and original
-browser screenshots. These checks cover navigation, one text-field family, native-form buttons and typed selects, and do not complete the retained 70-case
+browser screenshots. These checks cover navigation, text fields, buttons, checkboxes, selects and dialogs. They do not complete the retained 70-case
 capability acceptance inventory or prove a real npm publication.
 
 The complete source/type/browser check sequence also passes with all five dist trees absent.
@@ -268,11 +268,10 @@ The source and actual compiled consumers exercise single/multiple selection, ori
 cancellation, programmatic writes, missing option updates, native entries/required validation,
 framework reset, disabled submission, EN/ES/themes and teardown/remount. The shared single picker
 now previews enabled options with arrows/Home/End and typeahead, then commits on Enter/Space/Tab;
-Escape preserves the model. Its source/browser cases pass through all four bindings. The native
-multiple and explicit visible-list modes retain the native renderer. The current single picker
-also passes the twice-reproducible five-package cohort and actual compiled React, Vue, Angular
-AOT with the official linker, and Svelte browser consumers. These journeys exercise the real
-combobox/options; they do not simulate a hidden native select.
+Escape preserves the model. Automatic mode retains its size-based projection. Explicit multiple
+dropdowns use searchable chips, and explicit lists use native radio or checkbox rows.
+Actual compiled React, Vue, Angular AOT with the official linker, and Svelte consumers exercise
+all these modes with the same typed and cancelable form contract.
 
 ## Checkbox binding contract
 
@@ -289,3 +288,12 @@ Compiled installed consumers exercise label/Space and Enter, required native val
 boolean models, default/custom payloads, disabled omission, cancellation, programmatic writes,
 reset and teardown/remount. Their local fonts use the same licensed bytes as HA; component
 code never fetches fonts. SSR and wider browser/application acceptance remain separate gates.
+
+## Dialog binding contract
+
+All four adapters export `Dialog` and project application content into the registered native
+modal. A synchronous request observer may cancel the validated action before the acceptance
+callback runs. The application controls `open`; the binding never dismisses a modal on its
+own. The [dialog contract](dialog-contract.md) gives the exact prop, event and slot names.
+Installed consumers check projected content, canceled confirmation, Escape and focus return,
+accepted confirmation and cancellation, and teardown/remount.

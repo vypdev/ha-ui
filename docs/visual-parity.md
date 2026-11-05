@@ -350,3 +350,30 @@ layouts with default axe rules. Installed consumers exercise cancellation, keybo
 disabled choices, fieldsets, reset and repeated form entries in the four framework bindings.
 Original screenshots use fictional category names and recorded public modules; the suite makes
 no Home Assistant API requests.
+
+## Native modal dialog
+
+The [dialog reference](evidence/ha-dialog-reference.json) measures the actual Home Assistant
+dialog, header, footer and buttons. Each of macOS ARM64, Linux ARM64 and Linux x64 contributes
+32 independently repeated originals: both themes; all width presets; standard and alert at
+small widths; short viewports; RTL and subtitle; hover and focus; pending and disabled
+confirmation; optional footer; and long content at the top, middle and bottom. The Linux x64
+capture uses the exact CI Chromium. The original public component modules are unchanged.
+
+The shared surface follows the 580px medium width, 24px radius, backdrop and scroll edges.
+At narrow or short viewports, the standard dialog occupies the available screen while the alert
+retains a centered panel. The close button uses the original 10% current-color hover overlay
+and inset focus ring. Footer commands keep their 40px paint; the separate native controls use
+44px targets, which are measured independently. Scrolling displays the original top divider
+and edge fades while leaving commands visible.
+
+All 96 candidate images satisfy the same whole-image bounds used for near selector parity:
+no dimension or alpha difference, peak RGB channel difference at most 6/255, mean difference
+at most 0.01/255 and at most 1% changed pixels. 83 images are exact; the other 13 differ by
+at most 1/255 in a channel. No mask, resampling or new tolerance was used. The comparison
+also checks geometry, text placement, colors, shadows, focus paint and scroll position.
+
+Chrome separately confirms the matching desktop surface and tests dismissal, confirmation and
+return to the opener. The product adds a reliable accessible modal name and honors projected
+autofocus across Chromium, Firefox and WebKit. This lifecycle and default axe coverage are
+separate from the raster comparison.

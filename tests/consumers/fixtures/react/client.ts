@@ -1,6 +1,6 @@
 import {createElement,useState,StrictMode,type CSSProperties,type SyntheticEvent} from 'react';
 import {createRoot} from 'react-dom/client';
-import {Tabs,TextField,Button,Select,Checkbox} from '@vypdev/ha-ui-react';
+import {Tabs,TextField,Button,Select,Checkbox,Dialog} from '@vypdev/ha-ui-react';
 import {registerTabs,type NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
 import {registerField,type FieldValueEvent} from '@vypdev/ha-ui/field';
 import {registerButton,type ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -8,9 +8,16 @@ import {registerCheckbox,type CheckboxChangeEvent} from '@vypdev/ha-ui/checkbox'
 import {registerSelect,type SelectValueEvent} from '@vypdev/ha-ui/select';
 import type {SelectMode,SelectSelection} from '@vypdev/ha-ui/select-contracts';
 import {model,fieldModel,actionModel,resetModel,categoryModel,categoryAction,checkModel,checkAction} from './model.js';
-registerTabs();registerField();registerButton();registerSelect();registerCheckbox();
+import {registerDialog,type DialogRequestEvent} from '@vypdev/ha-ui/dialog';
+import {dialogState,type DialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();
+const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
 function Consumer() {
   const [state,setState]=useState(model()),[spanish,setSpanish]=useState(false),[dark,setDark]=useState(false),[disabled,setDisabled]=useState(false),[visible,setVisible]=useState(true),[count,setCount]=useState(0);
+  const [dialogOpen,setDialogOpen]=useState(false),[dialogMounted,setDialogMounted]=useState(true),[dialogReject,setDialogReject]=useState(false),[dialogAction,setDialogAction]=useState(''),[dialogRequests,setDialogRequests]=useState(0);
+  const showDialog=()=>{setDialogMounted(true);setDialogAction('');setDialogOpen(true);};
+  const dialogRequest=(event:DialogRequestEvent)=>{setDialogRequests(count=>count+1);if(dialogReject&&event.detail.action==='confirm')event.preventDefault();};
+  const acceptDialog=({action}:DialogRequestDetail)=>{setDialogAction(action);setDialogOpen(false);};
   const [value,setValue]=useState('Kitchen'),[fieldDisabled,setFieldDisabled]=useState(false),[fieldVisible,setFieldVisible]=useState(true),[reject,setReject]=useState(false),[fieldEvents,setFieldEvents]=useState(0),[saved,setSaved]=useState('');
   const [busy,setBusy]=useState(false),[buttonDisabled,setButtonDisabled]=useState(false),[buttonVisible,setButtonVisible]=useState(true),[cancelPress,setCancelPress]=useState(false),[icons,setIcons]=useState(true),[presses,setPresses]=useState(0),[accepted,setAccepted]=useState(0),[submits,setSubmits]=useState(0),[metadata,setMetadata]=useState(false);
   const press=(event:ButtonPressEvent)=>{setPresses(count=>count+1);if(cancelPress)event.preventDefault();};
@@ -39,6 +46,10 @@ function Consumer() {
     createElement('output',{'aria-label':'Press events'},String(presses)),createElement('output',{'aria-label':'Accepted presses'},String(accepted)),createElement('output',{'aria-label':'Submit events'},String(submits)),createElement('output',{'aria-label':'Button metadata'},String(metadata)),
     createElement('form',{'aria-label':'Task form',onSubmit:save},fieldVisible?createElement(TextField,{state:fieldModel(spanish),value,name:'task',defaultValue:'Kitchen',disabled:fieldDisabled,onValueRequest:observe,onValueChange:setValue}):null,
       buttonVisible?createElement(Button,{id:'bound-submit',state:actionModel(spanish,busy),type:'submit',name:'action',value:'save',disabled:buttonDisabled,onPressRequest:press,onPress:()=>setAccepted(count=>count+1),leading:icons?createElement('span',null,'+'):undefined}):null,createElement(Button,{state:resetModel(),type:'reset'})),
+    createElement('button',{onClick:showDialog},'Open task dialog'),createElement('button',{onClick:()=>setDialogReject(!dialogReject)},'Toggle confirmation rejection'),
+    createElement('output',{'aria-label':'Dialog action'},dialogAction),createElement('output',{'aria-label':'Dialog requests'},String(dialogRequests)),
+    dialogMounted?createElement(Dialog,{id:'bound-dialog',state:taskDialog,open:dialogOpen,onRequest:dialogRequest,onAction:acceptDialog},
+      createElement('p',null,'Task details'),createElement('button',{onClick:()=>{setDialogOpen(false);setDialogMounted(false);}},'Remove task dialog')):null,
     createElement('button',{onClick:()=>{setCategoryMultiple(!categoryMultiple);setCategory(!categoryMultiple?[1,false]:1);}},'Toggle category mode'),createElement('button',{onClick:()=>setCategory(categoryMultiple?['1',false]:false)},'Set category value'),createElement('button',{onClick:()=>setCategory(categoryMultiple?[]:null)},'Clear category'),createElement('button',{onClick:()=>setCategoryReject(!categoryReject)},'Reject category changes'),createElement('button',{onClick:()=>setCategoryDisabled(!categoryDisabled)},'Toggle category disabled'),createElement('button',{onClick:()=>setCategoryAvailable(!categoryAvailable)},'Toggle category options'),createElement('button',{onClick:()=>setCategoryVisible(!categoryVisible)},'Toggle category'),createElement('button',{onClick:()=>setCategoryPresentation('dropdown')},'Use category dropdown'),createElement('button',{onClick:()=>setCategoryPresentation('list')},'Use category list'),
     createElement('output',{'aria-label':'Category model'},JSON.stringify(category)),createElement('output',{'aria-label':'Category events'},String(categoryEvents)),createElement('output',{'aria-label':'Saved categories'},categorySaved),createElement('output',{'aria-label':'Category submits'},String(categorySubmits)),
     createElement('form',{'aria-label':'Category form',onSubmit:categorySave},categoryVisible?createElement(Select,{id:'bound-category',state:categoryModel(spanish,categoryMultiple,categoryAvailable,categoryPresentation),value:category,name:'category',defaultValue:categoryMultiple?[1,false]:1,disabled:categoryDisabled,onValueRequest:categoryRequest,onValueChange:setCategory}):null,createElement(Button,{state:categoryAction(spanish),type:'submit'}),createElement(Button,{state:categoryAction(spanish,true),type:'reset'})),

@@ -61,6 +61,14 @@
     "./checkbox": {
       "types": "./dist/components/checkbox.d.ts",
       "import": "./dist/components/checkbox.js"
+    },
+    "./dialog-contracts": {
+      "types": "./dist/dialog-contracts.d.ts",
+      "import": "./dist/dialog-contracts.js"
+    },
+    "./dialog": {
+      "types": "./dist/components/dialog.d.ts",
+      "import": "./dist/components/dialog.js"
     }
   },
   "publishConfig": {

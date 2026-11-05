@@ -104,3 +104,15 @@ The checkbox icon's inline translation follows @home-assistant/webawesome 3.14.0
 path under CC BY 4.0. Modifications: native radio/checkbox choices fill their own nonoverlapping
 rows, typed controlled requests, shared ElementInternals validation and form submission, and
 accessible group guidance. No Home Assistant or Web Awesome runtime is imported.
+
+Dialog surfaces, header, footer and overflow cues adapt Home Assistant frontend (Apache 2.0)
+at the reviewed source revision:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-dialog.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-dialog-header.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-dialog-footer.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/mixins/scrollable-fade-mixin.ts
+The close action uses the attributed Material Design Icons 7.4.47 close path and Home
+Assistant's ha-icon-button inset focus and hover paint. The native top-layer renderer uses
+controlled typed requests, a named dialog, projected focus and shared native commands.
+Its 44px footer targets enclose the original 40px paint. No upstream component runtime,
+application state, icon loader or API is imported.

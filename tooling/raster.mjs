@@ -1,5 +1,5 @@
 /** @typedef {{width:number,height:number,pixels:Uint8Array}} Raster */
-/** Selector-only quantization bounds; existing exact visual gates remain exact. */
+/** Quantization bounds for the selector and dialog gates; existing exact visual gates remain exact. */
 export const selectorRasterTolerance=Object.freeze({peakChannelDelta:6,meanChannelDelta:.01,changedFraction:.01});
 /** @param {unknown} raw @returns {raw is Raster} */
 function raster(raw){

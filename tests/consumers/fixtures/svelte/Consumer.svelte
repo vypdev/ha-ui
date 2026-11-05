@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {Tabs,TextField,Button,Select,Checkbox} from '@vypdev/ha-ui-svelte';
+  import {Tabs,TextField,Button,Select,Checkbox,Dialog} from '@vypdev/ha-ui-svelte';
   import type {NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
   import type {FieldValueEvent} from '@vypdev/ha-ui/field';
   import type {ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -8,6 +8,13 @@
   import type {SelectMode,SelectSelection} from '@vypdev/ha-ui/select-contracts';
   import {model,fieldModel,actionModel,resetModel,categoryModel,categoryAction,checkModel,checkAction} from './model.js';
   let viewState=$state.raw(model()),spanish=$state(false),dark=$state(false),disabled=$state(false),visible=$state(true),count=$state(0);
+  import type {DialogRequestEvent} from '@vypdev/ha-ui/dialog';
+  import {dialogState,type DialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
+  const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
+  let dialogOpen=$state(false),dialogMounted=$state(true),dialogReject=$state(false),dialogAction=$state(''),dialogRequests=$state(0);
+  function showDialog(){dialogMounted=true;dialogAction='';dialogOpen=true;}
+  function requestDialog(event:DialogRequestEvent){dialogRequests++;if(dialogReject&&event.detail.action==='confirm')event.preventDefault();}
+  function acceptDialog({action}:DialogRequestDetail){dialogAction=action;dialogOpen=false;}
   let value=$state('Kitchen'),fieldDisabled=$state(false),fieldVisible=$state(true),reject=$state(false),fieldEvents=$state(0),saved=$state('');
   let busy=$state(false),buttonDisabled=$state(false),buttonVisible=$state(true),cancelPress=$state(false),icons=$state(true),presses=$state(0),accepted=$state(0),submits=$state(0),metadata=$state(false);
   function press(event:ButtonPressEvent){presses++;if(cancelPress)event.preventDefault();}
@@ -40,6 +47,11 @@
     {#if fieldVisible}<TextField state={fieldModel(spanish)} {value} name="task" defaultValue="Kitchen" disabled={fieldDisabled} onValueRequest={observe} onValueChange={(next)=>value=next} />{/if}
     {#if buttonVisible}<Button id="bound-submit" state={actionModel(spanish,busy)} type="submit" name="action" value="save" disabled={buttonDisabled} onPressRequest={press} onPress={()=>accepted++} leading={icons?leading:undefined} />{/if}<Button state={resetModel()} type="reset" />
   </form>
+  <button onclick={showDialog}>Open task dialog</button><button onclick={()=>dialogReject=!dialogReject}>Toggle confirmation rejection</button>
+  <output aria-label="Dialog action">{dialogAction}</output><output aria-label="Dialog requests">{dialogRequests}</output>
+  {#if dialogMounted}<Dialog id="bound-dialog" state={taskDialog} open={dialogOpen} onRequest={requestDialog} onAction={acceptDialog}>
+    <p>Task details</p><button onclick={()=>{dialogOpen=false;dialogMounted=false;}}>Remove task dialog</button>
+  </Dialog>{/if}
   <button onclick={()=>{categoryMultiple=!categoryMultiple;category=categoryMultiple?[1,false]:1;}}>Toggle category mode</button><button onclick={()=>category=categoryMultiple?['1',false]:false}>Set category value</button><button onclick={()=>category=categoryMultiple?[]:null}>Clear category</button><button onclick={()=>categoryReject=!categoryReject}>Reject category changes</button><button onclick={()=>categoryDisabled=!categoryDisabled}>Toggle category disabled</button><button onclick={()=>categoryAvailable=!categoryAvailable}>Toggle category options</button><button onclick={()=>categoryVisible=!categoryVisible}>Toggle category</button><button onclick={()=>categoryPresentation='dropdown'}>Use category dropdown</button><button onclick={()=>categoryPresentation='list'}>Use category list</button>
   <output aria-label="Category model">{JSON.stringify(category)}</output><output aria-label="Category events">{categoryEvents}</output><output aria-label="Saved categories">{categorySaved}</output><output aria-label="Category submits">{categorySubmits}</output>
   <form aria-label="Category form" onsubmit={categorySave}>

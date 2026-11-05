@@ -29,3 +29,10 @@ export interface SelectProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'clas
 import type {CheckboxState} from '@vypdev/ha-ui/checkbox-contracts';
 import type {CheckboxChangeEvent} from '@vypdev/ha-ui/checkbox';
 export interface CheckboxProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {state:CheckboxState;checked:boolean;defaultChecked?:boolean;value?:string;name?:string;disabled?:boolean;form?:string;onCheckedRequest?:(event:CheckboxChangeEvent)=>void;onCheckedChange?:(checked:boolean)=>void;}
+
+import type {DialogRequestDetail,DialogState} from '@vypdev/ha-ui/dialog-contracts';
+import type {DialogRequestEvent} from '@vypdev/ha-ui/dialog';
+export interface DialogProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'>{
+ state:DialogState;open:boolean;children?:Snippet;footer?:Snippet;
+ onRequest?:(event:DialogRequestEvent)=>void;onAction?:(detail:DialogRequestDetail)=>void;
+}

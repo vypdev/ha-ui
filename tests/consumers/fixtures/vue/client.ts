@@ -1,5 +1,5 @@
 import {createApp,h,shallowRef} from 'vue';
-import {Tabs,TextField,Button,Select,Checkbox} from '@vypdev/ha-ui-vue';
+import {Tabs,TextField,Button,Select,Checkbox,Dialog} from '@vypdev/ha-ui-vue';
 import {registerTabs,type NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
 import {registerField,type FieldValueEvent} from '@vypdev/ha-ui/field';
 import {registerButton,type ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -7,10 +7,17 @@ import {registerCheckbox,type CheckboxChangeEvent} from '@vypdev/ha-ui/checkbox'
 import {registerSelect,type SelectValueEvent} from '@vypdev/ha-ui/select';
 import type {SelectMode,SelectSelection} from '@vypdev/ha-ui/select-contracts';
 import {model,fieldModel,actionModel,resetModel,categoryModel,categoryAction,checkModel,checkAction} from './model.js';
-registerTabs();registerField();registerButton();registerSelect();registerCheckbox();
+import {registerDialog,type DialogRequestEvent} from '@vypdev/ha-ui/dialog';
+import {dialogState,type DialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();
+const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
 const nativeHostAttributes={title:'Vue host attributes','aria-description':'Installed Vue host attributes','data-host-attributes':'forwarded'};
 createApp({setup(){
   const state=shallowRef(model()),spanish=shallowRef(false),dark=shallowRef(false),disabled=shallowRef(false),visible=shallowRef(true),count=shallowRef(0);
+  const dialogOpen=shallowRef(false),dialogMounted=shallowRef(true),dialogReject=shallowRef(false),dialogAction=shallowRef(''),dialogRequests=shallowRef(0);
+  const showDialog=()=>{dialogMounted.value=true;dialogAction.value='';dialogOpen.value=true;};
+  const dialogRequest=(event:DialogRequestEvent)=>{dialogRequests.value++;if(dialogReject.value&&event.detail.action==='confirm')event.preventDefault();};
+  const acceptDialog=({action}:DialogRequestDetail)=>{dialogAction.value=action;dialogOpen.value=false;};
   const value=shallowRef('Kitchen'),fieldDisabled=shallowRef(false),fieldVisible=shallowRef(true),reject=shallowRef(false),fieldEvents=shallowRef(0),saved=shallowRef('');
   const busy=shallowRef(false),buttonDisabled=shallowRef(false),buttonVisible=shallowRef(true),cancelPress=shallowRef(false),icons=shallowRef(true),presses=shallowRef(0),accepted=shallowRef(0),submits=shallowRef(0),metadata=shallowRef(false);
   const press=(event:ButtonPressEvent)=>{presses.value++;if(cancelPress.value)event.preventDefault();};
@@ -38,6 +45,10 @@ createApp({setup(){
     h('output',{'aria-label':'Press events'},String(presses.value)),h('output',{'aria-label':'Accepted presses'},String(accepted.value)),h('output',{'aria-label':'Submit events'},String(submits.value)),h('output',{'aria-label':'Button metadata'},String(metadata.value)),
     h('form',{'aria-label':'Task form',onSubmit:save},[fieldVisible.value?h(TextField,{...nativeHostAttributes,state:fieldModel(spanish.value),modelValue:value.value,'onUpdate:modelValue':(next:string)=>value.value=next,name:'task',defaultValue:'Kitchen',disabled:fieldDisabled.value,onValueRequest:observe}):null,
       buttonVisible.value?h(Button,{...nativeHostAttributes,id:'bound-submit',state:actionModel(spanish.value,busy.value),type:'submit',name:'action',value:'save',disabled:buttonDisabled.value,onPressRequest:press,onPress:()=>accepted.value++},icons.value?{leading:()=>h('span','+')}:{}):null,h(Button,{...nativeHostAttributes,state:resetModel(),type:'reset'})]),
+    h('button',{onClick:showDialog},'Open task dialog'),h('button',{onClick:()=>dialogReject.value=!dialogReject.value},'Toggle confirmation rejection'),
+    h('output',{'aria-label':'Dialog action'},dialogAction.value),h('output',{'aria-label':'Dialog requests'},String(dialogRequests.value)),
+    dialogMounted.value?h(Dialog,{id:'bound-dialog',state:taskDialog,open:dialogOpen.value,onRequest:dialogRequest,onAction:acceptDialog},{default:()=>[
+      h('p','Task details'),h('button',{onClick:()=>{dialogOpen.value=false;dialogMounted.value=false;}},'Remove task dialog')]}):null,
     h('button',{onClick:()=>{categoryMultiple.value=!categoryMultiple.value;category.value=categoryMultiple.value?[1,false]:1;}},'Toggle category mode'),h('button',{onClick:()=>category.value=categoryMultiple.value?['1',false]:false},'Set category value'),h('button',{onClick:()=>category.value=categoryMultiple.value?[]:null},'Clear category'),h('button',{onClick:()=>categoryReject.value=!categoryReject.value},'Reject category changes'),h('button',{onClick:()=>categoryDisabled.value=!categoryDisabled.value},'Toggle category disabled'),h('button',{onClick:()=>categoryAvailable.value=!categoryAvailable.value},'Toggle category options'),h('button',{onClick:()=>categoryVisible.value=!categoryVisible.value},'Toggle category'),h('button',{onClick:()=>categoryPresentation.value='dropdown'},'Use category dropdown'),h('button',{onClick:()=>categoryPresentation.value='list'},'Use category list'),
     h('output',{'aria-label':'Category model'},JSON.stringify(category.value)),h('output',{'aria-label':'Category events'},String(categoryEvents.value)),h('output',{'aria-label':'Saved categories'},categorySaved.value),h('output',{'aria-label':'Category submits'},String(categorySubmits.value)),
     h('form',{'aria-label':'Category form',onSubmit:categorySave},[categoryVisible.value?h(Select,{...nativeHostAttributes,id:'bound-category',state:categoryModel(spanish.value,categoryMultiple.value,categoryAvailable.value,categoryPresentation.value),modelValue:category.value,'onUpdate:modelValue':(next:SelectSelection)=>category.value=next,name:'category',defaultValue:categoryMultiple.value?[1,false]:1,disabled:categoryDisabled.value,onValueRequest:categoryRequest}):null,h(Button,{...nativeHostAttributes,state:categoryAction(spanish.value),type:'submit'}),h(Button,{...nativeHostAttributes,state:categoryAction(spanish.value,true),type:'reset'})]),

@@ -3,15 +3,14 @@
 Shared presentation components for Home Assistant applications, including Gateway and Domus.
 
 The current preview implements upper navigation/local panels, controlled text fields, native-form
-buttons, typed single/multiple selects and boolean checkboxes. React, Vue, Angular and Svelte
+buttons, typed single/multiple selects, boolean checkboxes and native dialogs. React, Vue, Angular and Svelte
 bindings pass source and compiled installed-package consumers. The pinned build/coverage foundation
 and production-backed [Storybook](docs/storybook.md) verify the implemented scope.
 
-[Visual equivalence with HA](docs/visual-parity.md) is an independent required gate. Checkbox
-calibration and font identity are recorded; the other families still need the same direct comparison
-and any corrections. Remaining families, full framework SSR/browser coverage, public catalog hosting,
-publication and actual application adoption remain required. No package is published or ready for
-application adoption.
+[Visual equivalence with HA](docs/visual-parity.md) is verified against recorded originals for
+the implemented states. Cards, rows/grids, feedback and layout breadth remain open alongside
+framework SSR, the complete browser matrix, public catalog hosting, package publication and
+Gateway/Domus adoption. The package cohort is unpublished.
 
 Use Node 24.20.0 and the package manager pinned in package.json:
 
@@ -33,5 +32,3 @@ choosing application routes or accepting rendering callbacks. See the
 [delivery companion](specs/shared-ui-framework-delivery.md) and [capability catalog](specs/CATALOG.md).
 [Issue #7](https://github.com/vypdev/ha-ui/issues/7) retains all 64 baseline cases and six delivery
 refinements. Clean checks on this increment do not complete that scope.
-
-Appearance is an independent required gate: see [HA visual equivalence](docs/visual-parity.md). Checkbox calibration and local font identity do not accept the other families.

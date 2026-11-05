@@ -195,8 +195,8 @@ validation. The readonly host attribute bars validation and makes the native inp
 The public form/labels/validity APIs, focus, blur, custom validity, reset, reparenting and keyboard
 submission are exercised in actual Chromium forms. Import `HaTextField` and `registerField` from
 `@vypdev/ha-ui/field`, and call registration at the explicit client boundary. Import the pure
-contracts from `@vypdev/ha-ui/field-contracts`; these require no DOM globals or DOM types. The initial field is text-only; other input types,
-checkboxes and dialogs remain required separate work. React, Vue, Angular and
+contracts from `@vypdev/ha-ui/field-contracts`; these require no DOM globals or DOM types. The
+field is text-only. React, Vue, Angular and
 Svelte text-field bindings and native form-model bridges pass the pinned compiled consumers; other
 control families and their bridges remain required. Browser state-restoration callbacks are exercised
 explicitly; automatic history restoration, real device IME behavior and other engines remain
@@ -264,12 +264,13 @@ owners, disabled fieldsets, reset and explicit typed restoration are exercised.
 
 All four [framework bindings](framework-adapters.md#select-binding-contract) delegate to that same
 renderer. Angular includes its value-accessor/validator bridge and documented native-validation form
-opt-in. The catalog has eleven select stories covering single/multiple, required, disabled/error,
-missing/disabled options, empty lists, cancellation and Spanish dark/narrow content. Other families,
+opt-in. The catalog has thirteen select stories covering dropdowns, visible lists, required,
+disabled/error, missing/disabled options, empty lists, cancellation and Spanish dark/narrow content. Other families,
 framework SSR, broader browser engines and full application adoption remain required.
 
 The single `size=1` control now uses the shared HA filled picker and a separate combobox/listbox
-popup. Multiple and explicit list modes retain the native renderer until their next increment.
+popup. The multiple dropdown uses chips and a searchable modal. Explicit lists use native radio
+or checkbox rows; automatic mode retains the size-based projection.
 The [independent original references](evidence/ha-select-reference.json) cover filled/empty,
 placeholder, hover/focus, disabled/required/error/help, narrow/long labels, RTL, optional clear and
 menu pointer/keyboard states. The current five-package cohort and four compiled framework consumers
@@ -277,7 +278,16 @@ pass. All 114 original-state comparisons across three platform/architecture targ
 documented selector-only nearly-identical raster bounds; existing exact visual gates also pass.
 Twelve catalog form journeys and nine compiled ordinary/shadow/slotted scroll cases pass across
 Chromium, Firefox and WebKit. The [acceptance receipt](evidence/shared-ui-foundation.json)
-records this scope separately from the remaining multiple/list and application work.
+records this scope separately from the remaining component and application work.
+
+## Native modal dialog
+
+The [dialog contract](dialog-contract.md) defines the application-owned open property, named
+content and footer projection, and typed confirm, cancel and dismissal requests. The dialog uses
+the browser's modal top layer and the same shared button renderer. The catalog includes standard
+and alert surfaces, controlled cancellation, pending confirmation and long content. Installed
+framework consumers exercise focus return and teardown, while the [visual gate](visual-parity.md)
+compares the compiled dialog with the original Home Assistant modules.
 
 ## Controlled checkbox and visual acceptance
 
