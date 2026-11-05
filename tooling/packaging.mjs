@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 /** @typedef {{sourceRevision:string,lockSha256:string}} SourceIdentity */
 /** @typedef {SourceIdentity & {artifacts:readonly CandidateArtifact[]}} CandidateData */
 /** @typedef {CandidateData & {id:string}} CandidateRecord */
-/** @typedef {SourceIdentity & {gateway:string|null,domus:string|null}} ReleaseReview */
+/** @typedef {SourceIdentity & {gateway:string|null,domus:string|null,channel?:'next'}} ReleaseReview */
 /** @typedef {(coordinate:string)=>Uint8Array|undefined} ReadArchive */
 /** @typedef {{version:string,sha256:string}} RegistryArtifact */
 /** @typedef {{readArchive:ReadArchive,authorize:(id:string)=>Promise<boolean>,observe:(coordinate:string,version:string)=>Promise<RegistryArtifact|null>,publish:(entry:CandidateArtifact,bytes:Uint8Array)=>Promise<void>,append:(entry:CandidateArtifact,id:string)=>Promise<void>}} ReleasePorts */
@@ -123,7 +123,10 @@ export async function resumePublication(record,review,ports){
  const bytes=verifyCandidate(record,review,ports.readArchive);
  /** @type {CandidateArtifact[]} */
  const published=[];
- if(review.gateway!==record.id || review.domus!==record.id)return outcome('blocked','consumer_evidence_missing',published);
+ const preview=review.channel==='next';
+ if(preview!==record.artifacts[0].version.includes('-'))return outcome('blocked','release_channel_mismatch',published);
+ if(!preview&&(review.gateway!==record.id || review.domus!==record.id))
+  return outcome('blocked','consumer_evidence_missing',published);
  let authorized;
  try{authorized=await ports.authorize(record.id);}
  catch{return outcome('blocked','publisher_rights_unverified',published);}

@@ -15,6 +15,7 @@
       "workflows": [
         ".github/workflows/copilot_issue.yml",
         ".github/workflows/ci_check.yml",
+        ".github/workflows/npm_release.yml",
         ".github/workflows/storybook_pages.yml"
       ],
       "entrypoints": [
@@ -125,7 +126,8 @@
         "packages/vue/src/feedback.ts",
         "stories/feedback.example.ts",
         "tooling/compatibility.mjs",
-        "tooling/packaging.mjs"
+        "tooling/packaging.mjs",
+        "tooling/npm-prerelease.mjs"
       ],
       "tests": [
         "tests/contracts/core.test.ts",

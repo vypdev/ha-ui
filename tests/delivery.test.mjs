@@ -3,6 +3,7 @@ import {gzipSync,gunzipSync} from 'node:zlib';
 import {beforeEach,expect,test,vi} from 'vitest';
 import {parse} from 'yaml';
 import {inspectToolchain} from '../tooling/compatibility.mjs';
+import {observeNpmVersion,publishNpmPrerelease} from '../tooling/npm-prerelease.mjs';
 import {captureCandidate,verifyCandidate,assertShippedManifest,resumePublication,packageCoordinates,sha256,canonicalPackageArchive} from '../tooling/packaging.mjs';
 
 test('the gzip OS marker cannot change a candidate’s bytes across pack hosts',()=>{
@@ -69,7 +70,7 @@ test.each([
  expect(()=>inspectToolchain(input)).toThrow(reason);
 });
 
-const version='0.1.0-next.1';
+const version='0.1.0';
 let archives,record,registry,ports;
 beforeEach(()=>{
  archives=new Map(packageCoordinates.map(name=>[name,Buffer.from(name+' reviewed archive')]));
@@ -126,6 +127,18 @@ test('UIFD-C04 ships exact versions, rejecting local candidate paths in any depe
  expect(()=>assertShippedManifest({dependencies:null},record)).toThrow('unshippable_manifest');
  expect(()=>assertShippedManifest(null,record)).toThrow('unshippable_manifest');
 });
+test('publishes the reviewed prerelease without requiring installed app acceptance',async()=>{
+ const preview=captureCandidate({sourceRevision,lockSha256,artifacts:packageCoordinates.map(coordinate=>({
+  coordinate,version:'0.1.0-next.1',bytes:archives.get(coordinate),
+ }))});
+ await expect(resumePublication(preview,review(),ports)).resolves.toMatchObject({state:'blocked',reason:'release_channel_mismatch'});
+ await expect(resumePublication(record,{...review(),channel:'next'},ports)).resolves.toMatchObject({state:'blocked',reason:'release_channel_mismatch'});
+ expect(ports.authorize).not.toHaveBeenCalled();
+ await expect(resumePublication(preview,{...review(),channel:'next',gateway:null,domus:null},ports)).resolves.toMatchObject({
+  state:'published',published:preview.artifacts,
+ });
+ expect(ports.publish.mock.calls.map(([artifact])=>artifact.coordinate)).toEqual(packageCoordinates);
+});
 test('release retains verified archives when either application has not accepted them or rights are absent',async()=>{
  await expect(resumePublication(record,{...review(),gateway:null},ports)).resolves.toMatchObject({state:'blocked',reason:'consumer_evidence_missing',published:[]});
  await expect(resumePublication(record,{...review(),domus:null},ports)).resolves.toMatchObject({state:'blocked',reason:'consumer_evidence_missing'});
@@ -179,4 +192,63 @@ test('an unavailable read after a publish cannot cause an overwrite on the next 
  const published=ports.publish.mock.calls.length;
  await expect(resumePublication(record,review(),ports)).resolves.toMatchObject({state:'published',published:record.artifacts});
  expect(ports.publish.mock.calls.slice(published).map(([entry])=>entry.coordinate)).toEqual(packageCoordinates.slice(1));
+});
+
+const npmName=packageCoordinates[0];
+const npmVersion='0.1.0-next.1';
+const npmTarball='https://registry.npmjs.org/@vypdev/ha-ui/-/ha-ui-0.1.0-next.1.tgz';
+const npmMetadata=()=>Response.json({name:npmName,version:npmVersion,dist:{tarball:npmTarball}});
+
+test('npm observation downloads only the exact version from the public registry and hashes the bytes',async()=>{
+ const bytes=Buffer.from('immutable package');
+ const request=vi.fn().mockResolvedValueOnce(npmMetadata()).mockResolvedValueOnce(new Response(bytes));
+ vi.stubGlobal('fetch',request);
+ try{
+  await expect(observeNpmVersion(npmName,npmVersion)).resolves.toEqual({version:npmVersion,sha256:sha256(bytes)});
+  expect(request.mock.calls.map(([url])=>String(url))).toEqual([
+   'https://registry.npmjs.org/%40vypdev%2Fha-ui/0.1.0-next.1',npmTarball,
+  ]);
+  expect(request.mock.calls.every(([,options])=>options.redirect==='error')).toBe(true);
+ }finally{vi.unstubAllGlobals();}
+});
+
+test('only an npm metadata 404 permits an initial publish',async()=>{
+ const request=vi.fn().mockResolvedValueOnce(new Response(null,{status:404}))
+  .mockResolvedValueOnce(new Response(null,{status:503}));
+ await expect(observeNpmVersion(npmName,npmVersion,request)).resolves.toBeNull();
+ await expect(observeNpmVersion(npmName,npmVersion,request)).rejects.toThrow('npm_metadata_unavailable');
+});
+
+test.each([
+ ['different package','npm_version_identity_mismatch',metadata=>{metadata.name='@other/ha-ui';}],
+ ['different version','npm_version_identity_mismatch',metadata=>{metadata.version='0.1.0-next.2';}],
+ ['foreign host','npm_tarball_origin_mismatch',metadata=>{metadata.dist.tarball='https://example.com/package.tgz';}],
+ ['username','npm_tarball_origin_mismatch',metadata=>{metadata.dist.tarball=npmTarball.replace('https://','https://name@');}],
+ ['password','npm_tarball_origin_mismatch',metadata=>{metadata.dist.tarball=npmTarball.replace('https://','https://:secret@');}],
+])('refuses to follow metadata with a %s',async(_scenario,message,change)=>{
+ const metadata=await npmMetadata().json();
+ change(metadata);
+ const request=vi.fn().mockResolvedValue(Response.json(metadata));
+ await expect(observeNpmVersion(npmName,npmVersion,request)).rejects.toThrow(message);
+ expect(request).toHaveBeenCalledTimes(1);
+});
+
+test('a missing tarball for a published version is a registry error',async()=>{
+ const request=vi.fn().mockResolvedValueOnce(npmMetadata()).mockResolvedValueOnce(new Response(null,{status:404}));
+ await expect(observeNpmVersion(npmName,npmVersion,request)).rejects.toThrow('npm_tarball_unavailable');
+});
+
+test('npm prerelease rejects stale tags and an absent workflow identity before writing',async()=>{
+ const preview=captureCandidate({sourceRevision,lockSha256,artifacts:packageCoordinates.map(coordinate=>({
+  coordinate,version:npmVersion,bytes:archives.get(coordinate),
+ }))});
+ const input={record:preview,sourceRevision,lockSha256,tag:'v'+npmVersion,oidc:true,archives,...ports};
+ await expect(publishNpmPrerelease({...input,tag:'v0.1.0'})).rejects.toThrow('npm_release_tag_mismatch');
+ await expect(publishNpmPrerelease({...input,tag:'v0.1.0-next.2'})).rejects.toThrow('npm_release_tag_mismatch');
+ await expect(publishNpmPrerelease({...input,record:{...preview,artifacts:[]}})).rejects.toThrow('npm_release_tag_mismatch');
+ await expect(publishNpmPrerelease({...input,oidc:false})).resolves.toMatchObject({
+  state:'blocked',reason:'publisher_rights_unverified',
+ });
+ expect(ports.publish).not.toHaveBeenCalled();
+ await expect(publishNpmPrerelease(input)).resolves.toMatchObject({state:'published',published:preview.artifacts});
 });
