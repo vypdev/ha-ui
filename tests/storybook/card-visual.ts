@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import type {Page} from 'playwright';
@@ -26,7 +26,7 @@ export async function exerciseCardVisual(page:Page,origin:string,output:string){
  for(const row of rows){
   const config=row.config,story='surfaces-card--default';
   await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story');await waitForCatalogStory(page,story);
-  const original=await readFile(resolve(row.image.path));assert.equal(createHash('sha256').update(original).digest('hex'),row.image.sha256);
+  const original=await readOriginalRaster(row.image);
   await page.evaluate(async({tokens,config,state,command})=>{
    document.querySelector<HTMLElement>('main.catalog-frame')!.hidden=true;
    document.body.style.cssText='margin:0;font:400 14px/1.6 Roboto,Noto,sans-serif;-webkit-font-smoothing:antialiased;';

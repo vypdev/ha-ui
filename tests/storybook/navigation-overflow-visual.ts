@@ -1,6 +1,6 @@
 import {captureSettledElement} from './screenshot.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -14,7 +14,7 @@ export async function exerciseNavigationOverflowVisual(page:Page,origin:string,o
  const platform=await page.evaluate(()=>/Linux/u.test(navigator.userAgent)?'linux':/Mac OS X/u.test(navigator.userAgent)?'macos':null);assert.ok(platform,'A measured platform is required');const rows=reference.states.filter(row=>row.platform===platform);assert.equal(rows.length,20);
  const results=[];await page.setViewportSize({width:1280,height:900});
  for(const kind of ['navigation','panels'] as const)for(const row of rows){
-  const original=await readFile(resolve(row.image.path));assert.equal(createHash('sha256').update(original).digest('hex'),row.image.sha256);assert.equal(original.readUInt32BE(16),240);assert.equal(original.readUInt32BE(20),56);
+  const original=await readOriginalRaster(row.image);assert.equal(original.readUInt32BE(16),240);assert.equal(original.readUInt32BE(20),56);
   const story=kind==='navigation'?'navigation-household-sections--overflow':'tabs-local-panels--overflow';
   await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story&globals=theme:'+row.theme+';width:wide;motion:reduced');await waitForCatalogStory(page,story);
   await page.evaluate(()=>Promise.all([document.fonts.load('400 14px Roboto'),document.fonts.load('500 14px Roboto')]));

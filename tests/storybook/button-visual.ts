@@ -3,7 +3,7 @@ import {waitForCatalogStory} from './lifecycle.ts';
 import {buttonState} from '@vypdev/ha-ui/button-contracts';
 import type {HaButton} from '@vypdev/ha-ui/button';
 import assert from 'node:assert/strict';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import type {Page} from 'playwright';
@@ -24,7 +24,7 @@ export async function exerciseButtonVisual(page:Page,origin:string,output:string
   for(const row of rows.filter(row=>row.theme===theme)){
   const story='buttons-actions--variants';await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story&globals=theme:'+theme+';motion:reduced');await waitForCatalogStory(page,story);
   await page.evaluate(()=>Promise.all([document.fonts.load('400 14px Roboto'),document.fonts.load('500 14px Roboto')]));
-   const original=await readFile(resolve(row.image.path));assert.equal(createHash('sha256').update(original).digest('hex'),row.image.sha256);
+   const original=await readOriginalRaster(row.image);
    const state=buttonState({label:'Save task',variant:row.variant,size:row.size,loading:row.state==='loading',iconOnly:row.icon==='only'});
    await page.evaluate(async({row,state,tokens,glyph})=>{
     document.querySelector('#button-proof')?.remove();document.querySelector('#after-button')?.remove();

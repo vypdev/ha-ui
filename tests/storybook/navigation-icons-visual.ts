@@ -1,6 +1,6 @@
 import {captureSettledElement} from './screenshot.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -21,7 +21,7 @@ export async function exerciseNavigationIconsVisual(page:Page,origin:string,outp
   await page.evaluate(()=>{const holder=document.createElement('div');holder.id='icon-proof';holder.style.cssText='position:fixed;left:32px;top:32px;width:600px;height:56px;overflow:hidden;z-index:9999';const host=document.createElement('vyp-ha-tabs');host.id='visual-icons';holder.append(host);document.querySelector('main.catalog-frame')!.append(holder);});
   const rows:Row[]=reference.states.filter(row=>row.platform===platform&&row.theme===theme);assert.equal(rows.length,12,'All three presentations and four states are required');
   for(const row of rows){
-   const original=await readFile(resolve(row.image.path));assert.equal(createHash('sha256').update(original).digest('hex'),row.image.sha256);assert.equal(original.readUInt32BE(16),row.image.width);assert.equal(original.readUInt32BE(20),row.image.height);
+   const original=await readOriginalRaster(row.image);assert.equal(original.readUInt32BE(16),row.image.width);assert.equal(original.readUInt32BE(20),row.image.height);
    await page.locator('#visual-icons').evaluate(async(element,{kind,row})=>{
     const host=element as HaTabs;host.state={kind,label:'Icon sections',selected:'overview',items:['Overview','Tasks','Inventory'].map((label,n)=>({id:['overview','tasks','inventory'][n],label,href:kind==='navigation'?'#'+n:null,disabled:n===1&&row.state==='disabled',iconPath:row.items[n].icon?.path??null,showLabel:row.items[n].geometry.text!==null}))};await host.updateComplete;host.shadowRoot!.querySelector<HTMLElement>('[part=item]')!.blur();
    },{kind,row});

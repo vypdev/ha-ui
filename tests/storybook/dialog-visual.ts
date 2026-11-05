@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import type {Page} from 'playwright';
@@ -24,7 +24,7 @@ export async function exerciseDialogVisual(page:Page,origin:string,output:string
  for(const row of rows){
   const config=row.config,story='overlays-dialog--default';await page.setViewportSize(config.viewport);
   await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story');await waitForCatalogStory(page,story);
-  const original=await readFile(resolve(row.image.path));assert.equal(createHash('sha256').update(original).digest('hex'),row.image.sha256);
+  const original=await readOriginalRaster(row.image);
   const state=dialogState({title:'Delete task?',subtitle:config.subtitle,description:'Remove the reminder to check the kitchen supplies?',kind:config.type,width:config.width,cancelLabel:config.noFooter?'':'Cancel',confirmLabel:config.noFooter?'':'Delete',confirmTone:'danger',pending:config.pending,confirmDisabled:config.disabled});
   await page.evaluate(async({tokens,config,state})=>{
    document.querySelector<HTMLElement>('main.catalog-frame')!.hidden=true;

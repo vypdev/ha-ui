@@ -1,6 +1,6 @@
 import {captureSettledElement} from './screenshot.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -22,7 +22,7 @@ export async function exerciseNavigationVisual(page:Page,origin:string,output:st
   await page.evaluate(()=>{const holder=document.createElement('div');holder.id='navigation-proof';holder.style.cssText='position:fixed;left:32px;top:32px;width:600px;height:56px;overflow:hidden;z-index:9999';const host=document.createElement('vyp-ha-tabs');host.id='visual-navigation';holder.append(host);document.querySelector('main.catalog-frame')!.append(holder);});
   const states:ReferenceState[]=reference.states.filter(row=>row.platform===platform&&row.theme===theme);assert.equal(states.length,4,'All measured platform states are required');
   for(const row of states){
-   const bytes=await readFile(resolve(row.image.path));assert.equal(createHash('sha256').update(bytes).digest('hex'),row.image.sha256);assert.equal(bytes.readUInt32BE(16),row.image.width);assert.equal(bytes.readUInt32BE(20),row.image.height);
+   const bytes=await readOriginalRaster(row.image);assert.equal(bytes.readUInt32BE(16),row.image.width);assert.equal(bytes.readUInt32BE(20),row.image.height);
    await page.locator('#visual-navigation').evaluate(async(el,{kind,state})=>{const host=el as HaTabs;host.state={kind,label:'Household sections',selected:'overview',items:['Overview','Tasks','Inventory'].map((label,n)=>({id:['overview','tasks','inventory'][n],label,href:kind==='navigation'?'#section-'+n:null,disabled:n===1&&state==='disabled'}))};await host.updateComplete;host.shadowRoot!.querySelector<HTMLElement>('[part=item]')!.blur();},{kind,state:row.state});
    if(row.state==='hover')await page.locator('#visual-navigation a,#visual-navigation button').nth(1).hover();else await page.mouse.move(1100,800);
    if(row.state==='focus'){await page.locator('#visual-navigation a,#visual-navigation button').first().focus();await page.keyboard.press('Home');}

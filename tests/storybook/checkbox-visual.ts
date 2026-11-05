@@ -1,5 +1,5 @@
 import {captureSettledElement} from './screenshot.ts';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
@@ -17,7 +17,7 @@ export async function exerciseCheckboxVisual(page:Page,origin:string,output:stri
   await page.waitForFunction(()=>!!document.querySelector('vyp-ha-checkbox')?.shadowRoot?.querySelector('input'));await page.evaluate(()=>Promise.all([document.fonts.load('400 14px Roboto'),document.fonts.load('500 14px Roboto')]));
   await page.evaluate(()=>{const holder=document.createElement('div');holder.id='visual-proof';holder.style.cssText='width:296px;height:44px;display:flex;align-items:center;position:fixed;left:32px;top:32px;background:var(--card-background-color);z-index:9999';const host=document.createElement('vyp-ha-checkbox');host.id='visual-checkbox';host.state={...host.state,label:'Notify household'};holder.append(host);document.querySelector('main.catalog-frame')!.append(holder);});
   for(const row of reference.states.filter(row=>row.theme===theme)){
-   const original=await readFile(resolve(row.referenceImage.path));assert.equal(createHash('sha256').update(original).digest('hex'),row.referenceImage.sha256);assert.equal(original.readUInt32BE(16),row.referenceImage.width);assert.equal(original.readUInt32BE(20),row.referenceImage.height);
+   const original=await readOriginalRaster(row.referenceImage);assert.equal(original.readUInt32BE(16),row.referenceImage.width);assert.equal(original.readUInt32BE(20),row.referenceImage.height);
    await page.locator('#visual-checkbox').evaluate(async(element,state)=>{const host=element as HaCheckbox;host.state={...host.state,indeterminate:state==='mixed',required:state==='required'};host.checked=state==='checked'||state==='disabled';host.disabled=state==='disabled';await host.updateComplete;},row.state);
    if(row.state==='hover')await page.locator('#visual-checkbox label').hover();else await page.mouse.move(1100,800);
    if(row.state==='focus'){await page.locator('#visual-checkbox input').focus();await page.keyboard.press('Tab');await page.keyboard.press('Shift+Tab');}

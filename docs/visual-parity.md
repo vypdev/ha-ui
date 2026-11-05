@@ -393,3 +393,21 @@ radius, shadow, action divider and the full raster. It measures the projected co
 40px paint separately from the shared 44px native target. The named native article and heading
 level, ordinary keyboard order, slotted form submitter and collapsed optional parts are exercised
 separately in the actual installed core and the real framework fixtures.
+
+## Inspecting original captures
+
+Each reference family stores a standard `originals.tar` and its `index.json` under
+`tests/storybook/reference/<family>/`. Capture manifests keep their original logical
+path and SHA-256. The path after the family name is the archive member. For example:
+
+```bash
+tar -xOf tests/storybook/reference/ha-card/originals.tar macos-arm64/light-header.png > original-card.png
+```
+
+The archives preserve the captured PNG bytes. The index identifies the archive digest and
+each member's byte range; the gate validates both the archive and the individual capture
+against their recorded SHA-256 before comparison. The independent reference inventory
+requires every recorded image to be present and every indexed member to have a receipt.
+`packRasterSet` in `tooling/raster-archive.mjs` produces deterministic ustar bytes from
+a map of relative PNG names to original buffers. Archived images remain independent of the
+compiled renderer and are never included in the shared runtime packages.

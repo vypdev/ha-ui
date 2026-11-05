@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import {resolve} from 'node:path';
 import type {Page} from 'playwright';
 import {selectState} from '@vypdev/ha-ui/select-contracts';
@@ -21,8 +21,7 @@ export async function exerciseSelectListVisual(page:Page,origin:string,output:st
  await page.setViewportSize({width:1280,height:900});const results=[],problems:string[]=[];
  for(const row of rows){
   const config=row.configuration,story='forms-select--disabled';await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story');await waitForCatalogStory(page,story);
-  const original=await readFile(resolve(row.image.path));
-  assert.equal(createHash('sha256').update(original).digest('hex'),row.image.sha256);
+  const original=await readOriginalRaster(row.image);
   const state=selectState({mode:'list',label:config.label,options:config.options,multiple:config.multiple,description:config.helper,required:config.required});
   await page.evaluate(async({state,config,tokens,frame})=>{
    document.querySelector<HTMLElement>('main.catalog-frame')!.hidden=true;

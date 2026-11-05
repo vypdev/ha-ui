@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import {resolve} from 'node:path';
 import {createRequire} from 'node:module';
 import type {Page} from 'playwright';
@@ -34,7 +34,7 @@ export async function exerciseSelectMultipleVisual(page:Page,origin:string,outpu
  const results=[],problems:string[]=[];await page.setViewportSize({width:1280,height:900});const accessibility=await exerciseSelectMultipleAccessibility(page,origin,output);
  for(const row of rows){
   const config=row.configuration,story='forms-select--disabled';await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story');await waitForCatalogStory(page,story);
-  assert.equal(createHash('sha256').update(await readFile(resolve(row.image.path))).digest('hex'),row.image.sha256);
+  const original=await readOriginalRaster(row.image);
   const state=selectState({multiple:true,mode:'dropdown',label:config.label,options:config.options,description:config.helper,required:config.required});
   await page.evaluate(async({state,config,tokens,frame})=>{
    document.querySelector<HTMLElement>('main.catalog-frame')!.hidden=true;
@@ -68,7 +68,7 @@ export async function exerciseSelectMultipleVisual(page:Page,origin:string,outpu
   for(const name of ['rows','rowLabels'] as const){if(actual[name].length!==row.parts[name].length)local.push(name+' count');else for(let i=0;i<actual[name].length;i++)near(actual[name][i].box,row.parts[name][i].box,name+i);}
   assert.equal(actual.nativeHost.box.height-actual.host.box.height,12,'Explicit native hit reservation');for(const piece of [actual.nativeTrigger,...actual.nativeRemovals])assert.ok(piece.box.width>=44&&piece.box.height>=44,'Native touch targets must remain 44px');
   const path=resolve(output,'ha-select-'+row.theme+'-'+row.name+'.png'),raster=await captureSettledElement(page,'#select-capture',path);
-  const decoded=await page.evaluate(async sources=>Promise.all(sources.map(async source=>{const image=new Image();image.src=source;await image.decode();const canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;const context=canvas.getContext('2d',{willReadFrequently:true})!;context.drawImage(image,0,0);return{width:canvas.width,height:canvas.height,pixels:Array.from(context.getImageData(0,0,canvas.width,canvas.height).data)};})),await Promise.all([resolve(row.image.path),path].map(async path=>'data:image/png;base64,'+(await readFile(path)).toString('base64'))));
+  const decoded=await page.evaluate(async sources=>Promise.all(sources.map(async source=>{const image=new Image();image.src=source;await image.decode();const canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;const context=canvas.getContext('2d',{willReadFrequently:true})!;context.drawImage(image,0,0);return{width:canvas.width,height:canvas.height,pixels:Array.from(context.getImageData(0,0,canvas.width,canvas.height).data)};})),[original,await readFile(path)].map(bytes=>'data:image/png;base64,'+bytes.toString('base64')));
   const agreement=rasterAgreement({...decoded[0],pixels:Uint8Array.from(decoded[0].pixels)},{...decoded[1],pixels:Uint8Array.from(decoded[1].pixels)});if(!agreement.accepted)local.push('Original HA raster exceeds selector quantization bounds');
   problems.push(...local.map(problem=>row.theme+'/'+row.name+'/'+problem));results.push({platform,architecture,browser,theme:row.theme,name:row.name,identicalPixels:raster.sha256===row.image.sha256,rasterAgreement:agreement,problems:local,referenceImage:row.image,raster,actual});
  }

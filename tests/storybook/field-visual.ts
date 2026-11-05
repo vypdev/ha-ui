@@ -3,7 +3,7 @@ import {waitForCatalogStory} from './lifecycle.ts';
 import {textFieldState} from '@vypdev/ha-ui/field-contracts';
 import type {HaTextField} from '@vypdev/ha-ui/field';
 import assert from 'node:assert/strict';
-import {createHash} from 'node:crypto';
+import {readOriginalRaster} from './reference-images.ts';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import type {Page} from 'playwright';
@@ -41,7 +41,7 @@ export async function exerciseFieldVisual(page:Page,origin:string,output:string)
  }
  for(const row of rows){
   const story='forms-text-field--default';await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story&globals=theme:'+row.theme+';motion:reduced');await waitForCatalogStory(page,story);await page.evaluate(()=>document.fonts.load('400 14px Roboto'));
-  const original=await readFile(resolve(row.image.path));assert.equal(createHash('sha256').update(original).digest('hex'),row.image.sha256);const config=row.configuration,state=textFieldState({label:config.label,description:config.hint,placeholder:config.placeholder,required:config.required,readOnly:config.readOnly,error:config.invalid?config.validationMessage:''});
+  const original=await readOriginalRaster(row.image);const config=row.configuration,state=textFieldState({label:config.label,description:config.hint,placeholder:config.placeholder,required:config.required,readOnly:config.readOnly,error:config.invalid?config.validationMessage:''});
   await page.evaluate(async({config,state,tokens})=>{
    const proof=document.createElement('div');proof.id='field-proof';proof.style.cssText='position:fixed;left:32px;top:32px;padding:8px;display:inline-flex;z-index:9999;-webkit-font-smoothing:antialiased';for(const[key,value]of Object.entries(tokens))proof.style.setProperty(key,value);proof.style.background='var(--card-background-color)';proof.style.color='var(--primary-text-color)';
    const field=document.createElement('vyp-ha-field');field.id='visual-field';field.state=state;field.value=config.value;field.disabled=config.disabled;field.style.width=config.width+'px';proof.append(field);document.body.append(proof);await field.updateComplete;const after=document.createElement('button');after.id='after-field';after.textContent='After';after.style.cssText='position:fixed;left:1000px;top:800px';document.body.append(after);
