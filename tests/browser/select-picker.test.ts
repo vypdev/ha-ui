@@ -149,3 +149,26 @@ test('the hover layer follows primary mouse/pen pointers and clears on disable o
  host.disabled=false;host.formDisabledCallback(true);pointer('pointerenter');await host.updateComplete;expect(surface.hasAttribute('data-hovered')).toBe(false);host.formDisabledCallback(false);await host.updateComplete;pointer('pointerenter');host.remove();pointer('pointerenter');document.body.append(host);await host.updateComplete;expect(surface.hasAttribute('data-hovered')).toBe(false);expect(seen).toHaveLength(0);
  host.state=selectState({...host.state,size:4});await host.updateComplete;host.state=selectState({...host.state,size:1});await host.updateComplete;pointer('pointerenter');expect(host.shadowRoot!.querySelector('.picker')!.hasAttribute('data-hovered')).toBe(false);
 });
+
+test.each(['pointer','Enter','Space'] as const)('opening by %s then tabbing does not adopt the initial option',async opening=>{
+ const{host,form,seen}=await mount({clearable:false});
+ host.value=null;host.addEventListener('ha-select-request',event=>{host.value=event.detail.value;});await host.updateComplete;
+ const after=document.createElement('button');after.type='button';after.textContent='After';form.append(after);
+ if(opening==='pointer')await combo(host).click();
+ else{host.focus();await userEvent.keyboard(opening==='Space'?' ':'{Enter}');}
+ await expect.element(list(host)).toBeVisible();await expect.element(combo(host)).toHaveAttribute('aria-activedescendant','option-0');
+ await userEvent.keyboard('{Tab}');
+ await expect.element(list(host)).not.toBeVisible();expect(host.value).toBeNull();expect(seen).toHaveLength(0);
+ expect([...new FormData(form)]).toEqual([]);expect(document.activeElement).toBe(after);
+});
+
+test('a failed search does not commit the opening option, and an explicit arrow preview can still commit',async()=>{
+ const{host,form,seen}=await mount({clearable:false});
+ host.value=null;host.addEventListener('ha-select-request',event=>{host.value=event.detail.value;});await host.updateComplete;
+ const after=document.createElement('button');after.type='button';after.textContent='After';form.append(after);
+ host.focus();await userEvent.keyboard('z{Tab}');expect(host.value).toBeNull();expect(seen).toHaveLength(0);expect(document.activeElement).toBe(after);
+ host.focus();await userEvent.keyboard('{Enter}{ArrowDown}{Tab}');
+ expect(seen.map(event=>event.detail.value)).toEqual(['1']);expect(host.value).toBe('1');expect(document.activeElement).toBe(after);
+ host.value=null;await host.updateComplete;host.focus();await userEvent.keyboard('{Enter}{Tab}');
+ expect(host.value).toBeNull();expect(seen).toHaveLength(1);
+});

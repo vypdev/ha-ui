@@ -53,7 +53,7 @@ export class HaSelect extends LitElement {
  #internals=this.attachInternals();#state=selectState({label:'Value',options:[]});#renderedState:SelectState|null=null;
  #value:SelectSelection=null;#defaultValue:SelectSelection=null;#name='';#disabled=false;#formDisabled=false;#dirty=false;#showValidation=false;#customError='';
  #pending:{reason:SelectValueReason;serialized:string}|null=null;#fromAttribute=false;#restoringAttribute=false;
- #opened=false;#active=-1;#keyboard=false;#search='';#searchUntil=0;#hovered=false;#popup=new SelectionPopup(this,()=>this.#hide());
+ #opened=false;#active=-1;#keyboard=false;#tabPreview=false;#search='';#searchUntil=0;#hovered=false;#popup=new SelectionPopup(this,()=>this.#hide());
  #chips=new SelectChips(this,value=>{this.#dirty=true;this.#request(value,'change');},()=>!this.disabled&&!this.#formDisabled);
  constructor(){super();this.addEventListener('invalid',this.#reveal);this.addEventListener('focusout',()=>{if(this.#chipsMode||this.#listMode)this.#reveal();});}
  attributeChangedCallback(name:string,previous:string|null,next:string|null):void{
@@ -120,7 +120,7 @@ export class HaSelect extends LitElement {
   if(!this.isConnected||event.currentTarget!==this.shadowRoot!.querySelector('.picker')||!event.isPrimary||event.pointerType==='touch')return;
   this.#setHover(event.type==='pointerenter'&&!this.disabled&&!this.#formDisabled);
  }
- #hide():void{this.#popup.close();this.#chips.close();if(this.#opened){this.#opened=false;this.#active=-1;this.#search='';this.requestUpdate();}}
+ #hide():void{this.#popup.close();this.#chips.close();if(this.#opened){this.#opened=false;this.#active=-1;this.#tabPreview=false;this.#search='';this.requestUpdate();}}
  #show(keyboard=false):void{
   if(!this.isConnected||this.disabled||this.#formDisabled||!this.#pickerMode||this.#renderedState!==this.state)return;
   this.#opened=true;this.#keyboard=keyboard;this.#active=moveSelectOption(this.state.options,this.#selectedIndex,'next');
@@ -140,13 +140,13 @@ export class HaSelect extends LitElement {
   if(event.currentTarget!==this.#control||this.disabled||this.#formDisabled||!this.#pickerMode||event.altKey||event.ctrlKey||event.metaKey)return;
   const key=event.key,state=this.state;
   if(key==='Escape')return;
-  if(key==='Tab'){if(this.#opened){if(this.#active>=0)this.#choose(this.#active,state);else this.#hide();}return;}
+  if(key==='Tab'){if(this.#opened){if(this.#tabPreview)this.#choose(this.#active,state);else this.#hide();}return;}
   if(key==='Enter'||key===' '){event.preventDefault();if(this.#opened){if(this.#active>=0)this.#choose(this.#active,state);else this.#hide();}else this.#show(true);return;}
   const movement=key==='ArrowDown'?'next':key==='ArrowUp'?'previous':key==='Home'?'first':key==='End'?'last':null;
-  if(movement!==null){event.preventDefault();if(!this.#opened){this.#show(true);if(key==='ArrowUp'||key==='Home'||key==='End')this.#active=moveSelectOption(state.options,-1,movement);}else this.#active=moveSelectOption(state.options,this.#active,movement);this.#keyboard=true;this.requestUpdate();return;}
+  if(movement!==null){event.preventDefault();if(!this.#opened){this.#show(true);if(key==='ArrowUp'||key==='Home'||key==='End')this.#active=moveSelectOption(state.options,-1,movement);}else this.#active=moveSelectOption(state.options,this.#active,movement);this.#tabPreview=this.#active>=0;this.#keyboard=true;this.requestUpdate();return;}
   if([...key].length===1){event.preventDefault();const now=performance.now();this.#search=now>this.#searchUntil?'':this.#search;this.#searchUntil=now+700;this.#search+=key;
    if(!this.#opened)this.#show(true);let query=this.#search;if([...query].every(letter=>letter===key))query=key;
-   const index=matchSelectOption(state.options,this.#active,query);if(index>=0)this.#active=index;this.#keyboard=true;this.requestUpdate();}
+   const index=matchSelectOption(state.options,this.#active,query);if(index>=0){this.#active=index;this.#tabPreview=true;}this.#keyboard=true;this.requestUpdate();}
  }
  #reveal():void{this.#showValidation=true;this.#sync();this.requestUpdate();}
  #request(raw:unknown,reason:SelectValueReason):void{

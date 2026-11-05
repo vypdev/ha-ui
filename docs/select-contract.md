@@ -58,8 +58,10 @@ multiple list uses a named group of native checkboxes. There is no routing, HA A
 duplicate framework renderer. The form bridge and typed request protocol are shared across modes.
 
 Arrow keys and Home/End preview enabled options while DOM focus stays on the single combobox.
-Typeahead searches labels without coercing their values. Enter, Space and Tab commit one controlled
-request; Tab continues normal focus order, including the optional clear button. Escape closes the
+Typeahead searches labels without coercing their values. Enter and Space commit the active option.
+Tab commits an explicit arrow, Home/End or matching typeahead preview and continues normal focus
+order, including the optional clear button. Tab closes an untouched popup without changing the
+accepted value. Escape closes the
 popup with the accepted model intact. Outside pointers, blur, disabling, reset, restoration and
 disconnect close it without a stray change request. Removed controls/options cannot act on a later
 configuration. The popup flips/clamps to the viewport and tracks scroll/resize, including enclosing

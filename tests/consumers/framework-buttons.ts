@@ -31,7 +31,14 @@ export async function exerciseFrameworkButton(page:Page,root:string,framework:st
   await page.getByRole('button',{name:'Reset task',exact:true}).click();await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='Kitchen');assert.equal(await textbox.inputValue(),'Kitchen');
   const retained=await action.elementHandle();assert.ok(retained);await page.getByRole('button',{name:'Toggle action button',exact:true}).click();await action.waitFor({state:'detached'});
   await retained.evaluate(host=>host.dispatchEvent(new CustomEvent('ha-press-request',{detail:{type:'submit'},cancelable:true})));assert.equal(await count('Press events'),start+3);
-  await page.getByRole('button',{name:'Toggle action button',exact:true}).click();await button.click();await waitCount('Submit events',submitted+2);assert.equal(await count('Press events'),start+4);assert.equal(await count('Accepted presses'),accepted+3);
+  const form=page.getByRole('form',{name:'Task form',exact:true});
+  await form.evaluate(element=>element.addEventListener('submit',event=>{(element as HTMLElement).dataset.nativeSubmitter=String((event as SubmitEvent).submitter);},{once:true}));
+  await textbox.press('Enter');await waitCount('Submit events',submitted+2);
+  assert.deepEqual(JSON.parse((await page.getByLabel('Saved task').textContent())!),[['task','Kitchen']]);
+  assert.equal(await form.getAttribute('data-native-submitter'),'null');
+  assert.equal(await page.getByLabel('Button metadata').textContent(),'false');
+
+  await page.getByRole('button',{name:'Toggle action button',exact:true}).click();await button.click();await waitCount('Submit events',submitted+3);assert.equal(await count('Press events'),start+4);assert.equal(await count('Accepted presses'),accepted+3);
   await action.screenshot({path:join(root,'test-results','packed-'+framework+'-button-light.png')});
-  return {sharedRenderer:true,originalCancelableRequest:true,validatedAcceptedSnapshot:true,keyboardActivation:true,nativeValidation:true,nativeSubmitter:true,frameworkReset:true,disabledAndBusy:true,projectionPreservesSubmitter:true,teardownAndRemount:true};
+  return {sharedRenderer:true,originalCancelableRequest:true,validatedAcceptedSnapshot:true,keyboardActivation:true,nativeValidation:true,nativeSubmitter:true,frameworkReset:true,disabledAndBusy:true,projectionPreservesSubmitter:true,submitWithoutButton:true,teardownAndRemount:true};
 }
