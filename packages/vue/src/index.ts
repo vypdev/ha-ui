@@ -10,7 +10,7 @@ export const Tabs=defineComponent({
   emits:{selectionRequest:(_event:NavigationSelectionEvent)=>true},
   setup(props,{attrs,slots,emit}) {
     const element=shallowRef<HaTabs|null>(null);
-    const handle=(event:NavigationSelectionEvent)=>emit('selectionRequest',event);
+    const handle=(event:NavigationSelectionEvent)=>{if(event.composedPath()[0]===element.value)emit('selectionRequest',event);};
     onMounted(()=>{
       element.value!.state=props.state;
       element.value!.addEventListener('ha-selection-request',handle);

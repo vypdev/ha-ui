@@ -11,6 +11,7 @@ export class Button implements OnChanges,OnDestroy {
   readonly #host=inject<ElementRef<HaButton>>(ElementRef).nativeElement;
   readonly #renderer=inject(Renderer2);
   readonly #stop=this.#renderer.listen(this.#host,'ha-press-request',(event:ButtonPressEvent)=>{
+    if(event.composedPath()[0]!==this.#host)return;
     const detail=buttonPressDetail(event.detail);this.pressRequest.emit(event);if(!event.defaultPrevented)this.press.emit(detail);
   });
   ngOnChanges():void{

@@ -12,6 +12,14 @@ export async function exerciseFrameworkButton(page:Page,root:string,framework:st
   assert.equal(geometry.paint,40);assert.ok(geometry.hit>=44);assert.equal(geometry.line,'14px');
   const start=await count('Press events'),accepted=await count('Accepted presses'),submitted=await count('Submit events');
   assert.equal(start,2,'The field Enter and invalid save must reach the real button binding');assert.equal(accepted,2);assert.equal(submitted,1);
+  const nestedRequest=await action.evaluate(async host=>{
+    const nested=document.createElement('vyp-ha-button');let bubbled=0;
+    const observe=(event:Event)=>{if(event.composedPath()[0]===nested)bubbled++;};
+    host.addEventListener('ha-press-request',observe);
+    try{host.append(nested);await nested.updateComplete;nested.click();return bubbled;}
+    finally{host.removeEventListener('ha-press-request',observe);nested.remove();}
+  });
+  assert.equal(nestedRequest,1);assert.equal(await count('Press events'),start);assert.equal(await count('Accepted presses'),accepted);
   const proxy=await action.evaluateHandle(host=>(host as HaButton).submitter);
   assert.equal(await action.getAttribute('state'),null);assert.equal(await action.locator('[slot="leading"]').count(),1);
   await page.getByRole('button',{name:'Cancel button request',exact:true}).click();await button.click();await waitCount('Press events',start+1);
@@ -40,5 +48,5 @@ export async function exerciseFrameworkButton(page:Page,root:string,framework:st
 
   await page.getByRole('button',{name:'Toggle action button',exact:true}).click();await button.click();await waitCount('Submit events',submitted+3);assert.equal(await count('Press events'),start+4);assert.equal(await count('Accepted presses'),accepted+3);
   await action.screenshot({path:join(root,'test-results','packed-'+framework+'-button-light.png')});
-  return {sharedRenderer:true,originalCancelableRequest:true,validatedAcceptedSnapshot:true,keyboardActivation:true,nativeValidation:true,nativeSubmitter:true,frameworkReset:true,disabledAndBusy:true,projectionPreservesSubmitter:true,submitWithoutButton:true,teardownAndRemount:true};
+  return {sharedRenderer:true,nestedRequestIsolated:true,originalCancelableRequest:true,validatedAcceptedSnapshot:true,keyboardActivation:true,nativeValidation:true,nativeSubmitter:true,frameworkReset:true,disabledAndBusy:true,projectionPreservesSubmitter:true,submitWithoutButton:true,teardownAndRemount:true};
 }

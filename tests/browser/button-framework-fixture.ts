@@ -33,6 +33,18 @@ export function buttonAdapterCases(mount:(target:HTMLElement,options:ButtonOptio
     const {host}=await attach({onPressRequest:observer,onPress:accepted});await settle();host.focus();expect(host.shadowRoot!.activeElement).toBe(host.shadowRoot!.querySelector('button'));host.click();
     expect(observer).toHaveBeenCalledTimes(1);expect(accepted).toHaveBeenCalledExactlyOnceWith({type:'button'});expect(order).toEqual(['observed','accepted']);expect(host.state.pressed).toBe(null);
   });
+  test('a nested request bubbles for delegation without invoking this instance’s binding',async()=>{
+    registerButton();const request=vi.fn(),accepted=vi.fn(),{host}=await attach({onPressRequest:request,onPress:accepted});await settle();
+    const nested=document.createElement('vyp-ha-button');nested.state=buttonModel({label:'Nested command'});
+    const bubbled=vi.fn((event:Event)=>expect(event.composedPath()[0]).toBe(nested));
+    host.append(nested);await nested.updateComplete;
+    host.addEventListener('ha-press-request',bubbled,{once:true});
+    nested.click();
+    expect(bubbled).toHaveBeenCalledTimes(1);
+    expect(request).not.toHaveBeenCalled();expect(accepted).not.toHaveBeenCalled();
+    host.click();
+    expect(request).toHaveBeenCalledTimes(1);expect(accepted).toHaveBeenCalledExactlyOnceWith({type:'button'});
+  });
   test('replaced and removed listeners cancel native submission synchronously without duplicates',async()=>{
     registerButton();const old=vi.fn(),accepted=vi.fn(),rejected=vi.fn((event:ButtonPressEvent)=>event.preventDefault());const {host,update}=await attach({type:'submit',onPressRequest:old,onPress:accepted});await settle();
     const submit=vi.fn((event:Event)=>event.preventDefault());host.form!.addEventListener('submit',submit);

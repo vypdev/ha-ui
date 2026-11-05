@@ -4,7 +4,7 @@ import {act, createElement, StrictMode} from 'react';
 import {createRoot, type Root} from 'react-dom/client';
 import {Tabs} from '../../packages/react/src/index.js';
 import {registerTabs, type NavigationSelectionEvent} from '../../packages/core/src/components/tabs.js';
-import {panelState, view, tab, expectNavigationIcons} from './framework-fixture.js';
+import {panelState, view, tab, expectNavigationIcons, exerciseNestedTabRequest} from './framework-fixture.js';
 let root: Root | undefined;
 vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT',true);
 afterEach(async()=>{await act(()=>root?.unmount());root=undefined;document.body.replaceChildren();});
@@ -22,7 +22,8 @@ test('Strict Mode, rerenders and native cancellation yield one current callback'
   registerTabs();const old=vi.fn(),current=vi.fn((event:NavigationSelectionEvent)=>event.preventDefault());
   await render(panelState(),old);const element=view();await element.updateComplete;
   await render(panelState(true),current);await element.updateComplete;expect(view()).toBe(element);
-  expectNavigationIcons(element,true);await page.getByRole('tab',{name:'Tareas',exact:true}).click();
+  expectNavigationIcons(element,true);await exerciseNestedTabRequest(element);expect(current).not.toHaveBeenCalled();
+  await page.getByRole('tab',{name:'Tareas',exact:true}).click();
   expect(old).not.toHaveBeenCalled();expect(current).toHaveBeenCalledTimes(1);
   const event=current.mock.calls[0][0];expect(event.detail).toEqual({kind:'panels',id:'tasks'});expect(event.defaultPrevented).toBe(true);
   expect(element.state.selected).toBe('overview');expect(element.lang).toBe('es');

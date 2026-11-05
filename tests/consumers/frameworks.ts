@@ -98,6 +98,16 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       const layout=await exerciseFrameworkLayout(page,root,framework);
       const feedback=await exerciseFrameworkFeedback(page,root,framework);
       const navigationIcons=await assertBoundNavigationIcons(page);
+      const nestedSelection=await page.locator('vyp-ha-tabs').evaluate(async host=>{
+        const nested=document.createElement('vyp-ha-tabs');let bubbled=0;
+        nested.slot=(host as HaTabs).state.selected!;
+        nested.state={kind:'panels',label:'Nested package sections',selected:'start',items:[{id:'start',label:'Nested start',disabled:false,href:null},{id:'end',label:'Nested end',disabled:false,href:null}]};
+        const observe=(event:Event)=>{if(event.composedPath()[0]===nested)bubbled++;};
+        host.addEventListener('ha-selection-request',observe);
+        try{host.append(nested);await nested.updateComplete;nested.shadowRoot!.querySelector<HTMLButtonElement>('#tab-end')!.click();return bubbled;}
+        finally{host.removeEventListener('ha-selection-request',observe);nested.remove();}
+      });
+      assert.equal(nestedSelection,1);assert.equal(await page.getByLabel('Selection events').textContent(),'0');
       await page.getByRole('tab',{name:'Tasks',exact:true}).click();
       await page.getByRole('button',{name:'Add task',exact:true}).waitFor({state:'visible'});
       assert.equal(await page.getByLabel('Selection events').textContent(),'1');
@@ -149,7 +159,7 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       assert.equal(await page.locator('vyp-ha-field #error').evaluate(element=>getComputedStyle(element).color),'rgb(242, 139, 130)');
       await page.locator('vyp-ha-field').screenshot({path:join(root,'test-results','packed-'+framework+'-field-error-dark-es.png')});
       assert.deepEqual(errors,[]);
-      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,nativeHostAttributes,navigationIcons,textField,button,select,checkbox,dialog,card,layout,feedback,browser:browser.version(),errors});
+      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,nativeHostAttributes,navigationIcons,nestedSelectionIsolated:true,textField,button,select,checkbox,dialog,card,layout,feedback,browser:browser.version(),errors});
       console.log('Packed '+framework+' compiler, bindings and real Chromium lifecycle passed');
     } finally {await page.close();await server.close();}
   }

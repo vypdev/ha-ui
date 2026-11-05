@@ -4,7 +4,7 @@ import {mount,unmount,flushSync} from 'svelte';
 import Consumer from './fixtures/SvelteTabs.svelte';
 import Tabs from '../../packages/svelte/src/Tabs.svelte';
 import {registerTabs} from '../../packages/core/src/components/tabs.js';
-import {panelState,view,tab,expectNavigationIcons} from './framework-fixture.js';
+import {panelState,view,tab,expectNavigationIcons,exerciseNestedTabRequest} from './framework-fixture.js';
 let instance;
 afterEach(async()=>{if(instance)await unmount(instance);instance=undefined;document.body.replaceChildren();});
 function attach(component,props){const target=document.createElement('main');document.body.append(target);instance=mount(component,{target,props});flushSync();return instance;}
@@ -15,7 +15,8 @@ test('compiled Svelte preserves pre-upgrade properties without serialized object
 test('rune props, callbacks and snippet content remain controlled in the real component',async()=>{
   registerTabs();const observe=vi.fn(event=>event.preventDefault());const consumer=attach(Consumer,{initial:panelState(),observe});const element=view();await element.updateComplete;
   flushSync(()=>consumer.update(panelState(true)));await element.updateComplete;expect(view()).toBe(element);
-  expectNavigationIcons(element,true);await page.getByRole('tab',{name:'Tareas',exact:true}).click();expect(observe).toHaveBeenCalledTimes(1);expect(observe.mock.calls[0][0].defaultPrevented).toBe(true);expect(observe.mock.calls[0][0].detail).toEqual({kind:'panels',id:'tasks'});expect(element.state.selected).toBe('overview');
+  expectNavigationIcons(element,true);await exerciseNestedTabRequest(element);expect(observe).not.toHaveBeenCalled();
+  await page.getByRole('tab',{name:'Tareas',exact:true}).click();expect(observe).toHaveBeenCalledTimes(1);expect(observe.mock.calls[0][0].defaultPrevented).toBe(true);expect(observe.mock.calls[0][0].detail).toEqual({kind:'panels',id:'tasks'});expect(element.state.selected).toBe('overview');
   flushSync(()=>consumer.update({...element.state,selected:'tasks'}));await element.updateComplete;await expect.element(page.getByRole('button',{name:'Add task',exact:true})).toBeVisible();
   flushSync(()=>consumer.clearPanels());expect(element.children).toHaveLength(0);
   flushSync(()=>consumer.clearHandler());await page.getByRole('tab',{name:'Resumen',exact:true}).click();expect(observe).toHaveBeenCalledTimes(1);

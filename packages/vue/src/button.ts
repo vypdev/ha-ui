@@ -14,7 +14,7 @@ export const Button=defineComponent({
       const host=element.value!;host.state=props.state;host.type=props.type;host.name=props.name;host.value=props.value;host.disabled=props.disabled;host.formNoValidate=props.formNoValidate;
       if(props.form===undefined)host.removeAttribute('form');else host.setAttribute('form',props.form);
     };
-    const handle=(event:ButtonPressEvent)=>{const detail=buttonPressDetail(event.detail);emit('pressRequest',event);if(!event.defaultPrevented)emit('press',detail);};
+    const handle=(event:ButtonPressEvent)=>{if(event.composedPath()[0]!==element.value)return;const detail=buttonPressDetail(event.detail);emit('pressRequest',event);if(!event.defaultPrevented)emit('press',detail);};
     onMounted(()=>{apply();element.value!.addEventListener('ha-press-request',handle);});
     watch(()=>[props.state,props.type,props.name,props.value,props.disabled,props.formNoValidate,props.form],apply,{flush:'post'});
     onBeforeUnmount(()=>element.value!.removeEventListener('ha-press-request',handle));

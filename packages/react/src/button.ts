@@ -15,7 +15,7 @@ export function Button({state,type='button',name='',value='',disabled=false,form
   },[state,type,name,value,disabled,formNoValidate,form]);
   useLayoutEffect(()=>{
     const host=element.current!;
-    const handle=(event:ButtonPressEvent)=>{const detail=buttonPressDetail(event.detail);onPressRequest?.(event);if(!event.defaultPrevented)onPress?.(detail);};
+    const handle=(event:ButtonPressEvent)=>{if(event.composedPath()[0]!==host)return;const detail=buttonPressDetail(event.detail);onPressRequest?.(event);if(!event.defaultPrevented)onPress?.(detail);};
     host.addEventListener('ha-press-request',handle);return ()=>host.removeEventListener('ha-press-request',handle);
   },[onPressRequest,onPress]);
   return createElement('vyp-ha-button',{ref:element,id,className,style,dir,lang},leading===undefined?null:createElement('span',{slot:'leading'},leading),trailing===undefined?null:createElement('span',{slot:'trailing'},trailing));

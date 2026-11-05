@@ -3,7 +3,7 @@ import {page} from 'vitest/browser';
 import {createApp, h, nextTick, shallowRef, type App} from 'vue';
 import {Tabs} from '../../packages/vue/src/index.js';
 import {registerTabs, type NavigationSelectionEvent} from '../../packages/core/src/components/tabs.js';
-import {panelState, view, tab, expectNavigationIcons} from './framework-fixture.js';
+import {panelState, view, tab, expectNavigationIcons, exerciseNestedTabRequest} from './framework-fixture.js';
 let app: App | undefined;
 afterEach(()=>{app?.unmount();app=undefined;document.body.replaceChildren();});
 function mount(handler?: (event:NavigationSelectionEvent)=>void, content=true) {
@@ -21,7 +21,8 @@ test('prop and callback replacements keep one current event and native cancellat
   registerTabs();const old=vi.fn(),current=vi.fn((event:NavigationSelectionEvent)=>event.preventDefault());
   const input=mount(old);const element=view();await element.updateComplete;
   input.state.value=panelState(true);input.listener.value=current;await nextTick();await element.updateComplete;
-  expect(view()).toBe(element);expectNavigationIcons(element,true);await page.getByRole('tab',{name:'Tareas',exact:true}).click();
+  expect(view()).toBe(element);expectNavigationIcons(element,true);await exerciseNestedTabRequest(element);expect(current).not.toHaveBeenCalled();
+  await page.getByRole('tab',{name:'Tareas',exact:true}).click();
   expect(old).not.toHaveBeenCalled();expect(current).toHaveBeenCalledTimes(1);expect(current.mock.calls[0][0].defaultPrevented).toBe(true);
   expect(current.mock.calls[0][0].detail).toEqual({kind:'panels',id:'tasks'});expect(element.state.selected).toBe('overview');
   input.state.value={...input.state.value,selected:'tasks'};await nextTick();await element.updateComplete;

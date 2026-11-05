@@ -326,6 +326,13 @@ props and slots, respectively. Angular projects elements with `slot="action"` or
 decorative. Use a real button or link for the action. Its event belongs to the application.
 The [feedback contract](feedback-contract.md) describes the shared roles and state transitions.
 
+## Nested navigation and commands
+
+Tabs and Button callbacks belong to the host that emitted the request. A child request
+still bubbles to DOM delegation, but does not invoke an enclosing instance's callback.
+Nest local navigation in a named panel. Button icon projections are decorative; put
+independent commands in separate controls.
+
 ## Server and client boundaries
 
 Run `pnpm test:package` followed by `pnpm test:ssr`. Each fixture installs the exact two

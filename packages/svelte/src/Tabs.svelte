@@ -5,7 +5,7 @@
   let {state,onSelectionRequest,panels,id,class:className,style,dir,lang}:TabsProps=$props();
   let element:HaTabs;
   onMount(()=>{
-    const handle=(event:NavigationSelectionEvent)=>onSelectionRequest?.(event);
+    const handle=(event:NavigationSelectionEvent)=>{if(event.composedPath()[0]===element)onSelectionRequest?.(event);};
     element.addEventListener('ha-selection-request',handle);
     return ()=>element.removeEventListener('ha-selection-request',handle);
   });

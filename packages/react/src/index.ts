@@ -14,7 +14,7 @@ export function Tabs({state,onSelectionRequest,children,id,className,style,dir,l
   useLayoutEffect(()=>{element.current!.state=state;},[state]);
   useLayoutEffect(()=>{
     const host=element.current!;
-    const handle=(event:NavigationSelectionEvent)=>onSelectionRequest?.(event);
+    const handle=(event:NavigationSelectionEvent)=>{if(event.composedPath()[0]===host)onSelectionRequest?.(event);};
     host.addEventListener('ha-selection-request',handle);
     return ()=>host.removeEventListener('ha-selection-request',handle);
   },[onSelectionRequest]);

@@ -6,7 +6,7 @@
   let {state,type='button',name='',value='',disabled=false,formNoValidate=false,form,onPressRequest,onPress,leading,trailing,id,class:className,style,dir,lang}:ButtonProps=$props();
   let element:HaButton;
   onMount(()=>{
-    const handle=(event:ButtonPressEvent)=>{const detail=buttonPressDetail(event.detail);onPressRequest?.(event);if(!event.defaultPrevented)onPress?.(detail);};
+    const handle=(event:ButtonPressEvent)=>{if(event.composedPath()[0]!==element)return;const detail=buttonPressDetail(event.detail);onPressRequest?.(event);if(!event.defaultPrevented)onPress?.(detail);};
     element.addEventListener('ha-press-request',handle);return ()=>element.removeEventListener('ha-press-request',handle);
   });
   $effect(()=>{

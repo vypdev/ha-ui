@@ -9,7 +9,7 @@ export class Tabs implements OnChanges,OnDestroy {
   @Output() readonly selectionRequest=new EventEmitter<NavigationSelectionEvent>(false);
   readonly #host=inject<ElementRef<HaTabs>>(ElementRef).nativeElement;
   readonly #renderer=inject(Renderer2);
-  readonly #stop=this.#renderer.listen(this.#host,'ha-selection-request',(event:NavigationSelectionEvent)=>this.selectionRequest.emit(event));
+  readonly #stop=this.#renderer.listen(this.#host,'ha-selection-request',(event:NavigationSelectionEvent)=>{if(event.composedPath()[0]===this.#host)this.selectionRequest.emit(event);});
   ngOnChanges():void {this.#renderer.setProperty(this.#host,'state',this.state);}
   ngOnDestroy():void {this.#stop();}
 }
