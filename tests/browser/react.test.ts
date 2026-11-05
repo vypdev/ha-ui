@@ -1,6 +1,6 @@
 import {afterEach, expect, test, vi} from 'vitest';
 import {page} from 'vitest/browser';
-import {act, createElement, StrictMode} from 'react';
+import {act, createElement, StrictMode, type CSSProperties} from 'react';
 import {createRoot, type Root} from 'react-dom/client';
 import {Tabs} from '../../packages/react/src/index.js';
 import {registerTabs, type NavigationSelectionEvent} from '../../packages/core/src/components/tabs.js';
@@ -10,7 +10,7 @@ vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT',true);
 afterEach(async()=>{await act(()=>root?.unmount());root=undefined;document.body.replaceChildren();});
 function render(state=panelState(), handler?: (event:NavigationSelectionEvent)=>void, content=true) {
   if (!root) { const target=document.createElement('main');document.body.append(target);root=createRoot(target); }
-  return act(()=>root!.render(createElement(StrictMode,null,createElement(Tabs,{state,onSelectionRequest:handler,id:'react-tabs',className:'household',lang:state.label==='Household sections'?'en':'es',dir:'ltr',style:{'--primary-color':'rgb(0,110,180)'} as React.CSSProperties},content?createElement('button',{slot:'tasks'},'Add task'):undefined))));
+  return act(()=>root!.render(createElement(StrictMode,null,createElement(Tabs,{state,onSelectionRequest:handler,id:'react-tabs',className:'household',lang:state.label==='Household sections'?'en':'es',dir:'ltr',style:{'--primary-color':'rgb(0,110,180)'} as CSSProperties},content?createElement('button',{slot:'tasks'},'Add task'):undefined))));
 }
 test('mounts before explicit registration, preserving complex properties through upgrade',async()=>{
   const state=panelState(); await render(state);const element=view();
