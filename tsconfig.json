@@ -1,0 +1,91 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "allowJs": true,
+    "checkJs": true,
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ES2024",
+      "DOM"
+    ],
+    "verbatimModuleSyntax": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@vypdev/ha-ui": [
+        "./packages/core/src/index.ts"
+      ],
+      "@vypdev/ha-ui/contracts": [
+        "./packages/core/src/contracts.ts"
+      ],
+      "@vypdev/ha-ui/tabs": [
+        "./packages/core/src/components/tabs.ts"
+      ],
+      "@vypdev/ha-ui/field-contracts": [
+        "./packages/core/src/field-contracts.ts"
+      ],
+      "@vypdev/ha-ui/field": [
+        "./packages/core/src/components/field.ts"
+      ],
+      "@vypdev/ha-ui/button-contracts": [
+        "./packages/core/src/button-contracts.ts"
+      ],
+      "@vypdev/ha-ui/button": [
+        "./packages/core/src/components/button.ts"
+      ],
+      "@vypdev/ha-ui/select-contracts": [
+        "./packages/core/src/select-contracts.ts"
+      ],
+      "@vypdev/ha-ui/select": [
+        "./packages/core/src/components/select.ts"
+      ],
+      "@vypdev/ha-ui/checkbox-contracts": [
+        "./packages/core/src/checkbox-contracts.ts"
+      ],
+      "@vypdev/ha-ui/checkbox": [
+        "./packages/core/src/components/checkbox.ts"
+      ],
+      "@vypdev/ha-ui/dialog-contracts": [
+        "./packages/core/src/dialog-contracts.ts"
+      ],
+      "@vypdev/ha-ui/dialog": [
+        "./packages/core/src/components/dialog.ts"
+      ],
+      "@vypdev/ha-ui/card-contracts": [
+        "./packages/core/src/card-contracts.ts"
+      ],
+      "@vypdev/ha-ui/card": [
+        "./packages/core/src/components/card.ts"
+      ],
+      "@vypdev/ha-ui/layout-contracts": [
+        "./packages/core/src/layout-contracts.ts"
+      ],
+      "@vypdev/ha-ui/layout": [
+        "./packages/core/src/components/layout.ts"
+      ],
+      "@vypdev/ha-ui/feedback-contracts": [
+        "./packages/core/src/feedback-contracts.ts"
+      ],
+      "@vypdev/ha-ui/feedback": [
+        "./packages/core/src/components/feedback.ts"
+      ]
+    }
+  },
+  "include": [
+    "packages/*/src/**/*.ts",
+    "tooling/**/*.mjs",
+    "vitest.config.ts",
+    "tests/contracts/**/*.test.ts",
+    "tests/browser/**/*.test.ts"
+  ],
+  "exclude": [
+    "packages/svelte/src",
+    "tests/consumers"
+  ]
+}

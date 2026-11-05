@@ -1,0 +1,358 @@
+{
+  "format": "ustar",
+  "sha256": "cc23c0f01e4f12729ed36496da0c4ee832bce151bb7bc7ff2057b5307dac3f45",
+  "entries": {
+    "linux/dark-description-empty.png": [
+      512,
+      2817
+    ],
+    "linux/dark-description-filled.png": [
+      4096,
+      3234
+    ],
+    "linux/dark-disabled-empty.png": [
+      8192,
+      1360
+    ],
+    "linux/dark-disabled-filled.png": [
+      10240,
+      1744
+    ],
+    "linux/dark-empty.png": [
+      12800,
+      1398
+    ],
+    "linux/dark-error-empty.png": [
+      14848,
+      2722
+    ],
+    "linux/dark-error-filled.png": [
+      18432,
+      3228
+    ],
+    "linux/dark-error-focus.png": [
+      22528,
+      3279
+    ],
+    "linux/dark-filled.png": [
+      26624,
+      1827
+    ],
+    "linux/dark-focus-empty.png": [
+      29184,
+      1105
+    ],
+    "linux/dark-focus-filled.png": [
+      31232,
+      1922
+    ],
+    "linux/dark-hover-empty.png": [
+      33792,
+      1413
+    ],
+    "linux/dark-hover-filled.png": [
+      35840,
+      1815
+    ],
+    "linux/dark-narrow-empty.png": [
+      38400,
+      2435
+    ],
+    "linux/dark-narrow-filled.png": [
+      41472,
+      2427
+    ],
+    "linux/dark-placeholder-empty.png": [
+      44544,
+      2440
+    ],
+    "linux/dark-placeholder-filled.png": [
+      47616,
+      1827
+    ],
+    "linux/dark-readonly-empty.png": [
+      50176,
+      1398
+    ],
+    "linux/dark-readonly-filled.png": [
+      52224,
+      1827
+    ],
+    "linux/dark-required-empty.png": [
+      54784,
+      1651
+    ],
+    "linux/dark-required-filled.png": [
+      57344,
+      1938
+    ],
+    "linux/dark-required-focus.png": [
+      59904,
+      1250
+    ],
+    "linux/light-description-empty.png": [
+      61952,
+      2807
+    ],
+    "linux/light-description-filled.png": [
+      65536,
+      3155
+    ],
+    "linux/light-disabled-empty.png": [
+      69632,
+      1368
+    ],
+    "linux/light-disabled-filled.png": [
+      71680,
+      1720
+    ],
+    "linux/light-empty.png": [
+      74240,
+      1394
+    ],
+    "linux/light-error-empty.png": [
+      76288,
+      2801
+    ],
+    "linux/light-error-filled.png": [
+      79872,
+      3166
+    ],
+    "linux/light-error-focus.png": [
+      83968,
+      3228
+    ],
+    "linux/light-filled.png": [
+      88064,
+      1737
+    ],
+    "linux/light-focus-empty.png": [
+      90624,
+      1066
+    ],
+    "linux/light-focus-filled.png": [
+      92672,
+      1848
+    ],
+    "linux/light-hover-empty.png": [
+      95232,
+      1394
+    ],
+    "linux/light-hover-filled.png": [
+      97280,
+      1745
+    ],
+    "linux/light-narrow-empty.png": [
+      99840,
+      2396
+    ],
+    "linux/light-narrow-filled.png": [
+      102912,
+      2373
+    ],
+    "linux/light-placeholder-empty.png": [
+      105984,
+      2433
+    ],
+    "linux/light-placeholder-filled.png": [
+      109056,
+      1737
+    ],
+    "linux/light-readonly-empty.png": [
+      111616,
+      1394
+    ],
+    "linux/light-readonly-filled.png": [
+      113664,
+      1737
+    ],
+    "linux/light-required-empty.png": [
+      116224,
+      1563
+    ],
+    "linux/light-required-filled.png": [
+      118784,
+      1882
+    ],
+    "linux/light-required-focus.png": [
+      121344,
+      1209
+    ],
+    "macos/dark-description-empty.png": [
+      123392,
+      3292
+    ],
+    "macos/dark-description-filled.png": [
+      127488,
+      3742
+    ],
+    "macos/dark-disabled-empty.png": [
+      132096,
+      1360
+    ],
+    "macos/dark-disabled-filled.png": [
+      134144,
+      1769
+    ],
+    "macos/dark-empty.png": [
+      136704,
+      1500
+    ],
+    "macos/dark-error-empty.png": [
+      138752,
+      3445
+    ],
+    "macos/dark-error-filled.png": [
+      142848,
+      3995
+    ],
+    "macos/dark-error-focus.png": [
+      147456,
+      4021
+    ],
+    "macos/dark-filled.png": [
+      152064,
+      1954
+    ],
+    "macos/dark-focus-empty.png": [
+      154624,
+      1301
+    ],
+    "macos/dark-focus-filled.png": [
+      156672,
+      2145
+    ],
+    "macos/dark-hover-empty.png": [
+      159744,
+      1454
+    ],
+    "macos/dark-hover-filled.png": [
+      161792,
+      1933
+    ],
+    "macos/dark-narrow-empty.png": [
+      164352,
+      2580
+    ],
+    "macos/dark-narrow-filled.png": [
+      167936,
+      2588
+    ],
+    "macos/dark-placeholder-empty.png": [
+      171520,
+      2530
+    ],
+    "macos/dark-placeholder-filled.png": [
+      174592,
+      1954
+    ],
+    "macos/dark-readonly-empty.png": [
+      177152,
+      1500
+    ],
+    "macos/dark-readonly-filled.png": [
+      179200,
+      1954
+    ],
+    "macos/dark-required-empty.png": [
+      181760,
+      1658
+    ],
+    "macos/dark-required-filled.png": [
+      184320,
+      2078
+    ],
+    "macos/dark-required-focus.png": [
+      187392,
+      1439
+    ],
+    "macos/light-description-empty.png": [
+      189440,
+      3337
+    ],
+    "macos/light-description-filled.png": [
+      193536,
+      3809
+    ],
+    "macos/light-disabled-empty.png": [
+      198144,
+      1394
+    ],
+    "macos/light-disabled-filled.png": [
+      200192,
+      1805
+    ],
+    "macos/light-empty.png": [
+      202752,
+      1556
+    ],
+    "macos/light-error-empty.png": [
+      205312,
+      3409
+    ],
+    "macos/light-error-filled.png": [
+      209408,
+      4044
+    ],
+    "macos/light-error-focus.png": [
+      214016,
+      4133
+    ],
+    "macos/light-filled.png": [
+      219136,
+      2026
+    ],
+    "macos/light-focus-empty.png": [
+      221696,
+      1263
+    ],
+    "macos/light-focus-filled.png": [
+      223744,
+      2203
+    ],
+    "macos/light-hover-empty.png": [
+      226816,
+      1565
+    ],
+    "macos/light-hover-filled.png": [
+      229376,
+      2026
+    ],
+    "macos/light-narrow-empty.png": [
+      231936,
+      2747
+    ],
+    "macos/light-narrow-filled.png": [
+      235520,
+      2678
+    ],
+    "macos/light-placeholder-empty.png": [
+      239104,
+      2567
+    ],
+    "macos/light-placeholder-filled.png": [
+      242688,
+      2026
+    ],
+    "macos/light-readonly-empty.png": [
+      245248,
+      1556
+    ],
+    "macos/light-readonly-filled.png": [
+      247808,
+      2026
+    ],
+    "macos/light-required-empty.png": [
+      250368,
+      1723
+    ],
+    "macos/light-required-filled.png": [
+      252928,
+      2167
+    ],
+    "macos/light-required-focus.png": [
+      256000,
+      1388
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "format": "ustar",
+  "sha256": "cc81331f560142455d330845d2da45731851075e29c1adb66cbfb8a01009a0eb",
+  "entries": {
+    "linux/dark-ltr-end.png": [
+      512,
+      2921
+    ],
+    "linux/dark-ltr-focus-next.png": [
+      4096,
+      3657
+    ],
+    "linux/dark-ltr-hover-next.png": [
+      8704,
+      3014
+    ],
+    "linux/dark-ltr-middle.png": [
+      12288,
+      3034
+    ],
+    "linux/dark-ltr-start.png": [
+      15872,
+      3016
+    ],
+    "linux/dark-rtl-end.png": [
+      19456,
+      3161
+    ],
+    "linux/dark-rtl-focus-next.png": [
+      23552,
+      3697
+    ],
+    "linux/dark-rtl-hover-next.png": [
+      28160,
+      3098
+    ],
+    "linux/dark-rtl-middle.png": [
+      32256,
+      2989
+    ],
+    "linux/dark-rtl-start.png": [
+      35840,
+      3094
+    ],
+    "linux/light-ltr-end.png": [
+      39936,
+      2952
+    ],
+    "linux/light-ltr-focus-next.png": [
+      43520,
+      3431
+    ],
+    "linux/light-ltr-hover-next.png": [
+      47616,
+      2922
+    ],
+    "linux/light-ltr-middle.png": [
+      51200,
+      2989
+    ],
+    "linux/light-ltr-start.png": [
+      54784,
+      2916
+    ],
+    "linux/light-rtl-end.png": [
+      58368,
+      3175
+    ],
+    "linux/light-rtl-focus-next.png": [
+      62464,
+      3579
+    ],
+    "linux/light-rtl-hover-next.png": [
+      66560,
+      3050
+    ],
+    "linux/light-rtl-middle.png": [
+      70144,
+      2959
+    ],
+    "linux/light-rtl-start.png": [
+      73728,
+      3052
+    ],
+    "macos/dark-ltr-end.png": [
+      77312,
+      2883
+    ],
+    "macos/dark-ltr-focus-next.png": [
+      80896,
+      3386
+    ],
+    "macos/dark-ltr-hover-next.png": [
+      84992,
+      2824
+    ],
+    "macos/dark-ltr-middle.png": [
+      88576,
+      3109
+    ],
+    "macos/dark-ltr-start.png": [
+      92672,
+      2805
+    ],
+    "macos/dark-rtl-end.png": [
+      96256,
+      2941
+    ],
+    "macos/dark-rtl-focus-next.png": [
+      99840,
+      3405
+    ],
+    "macos/dark-rtl-hover-next.png": [
+      103936,
+      2816
+    ],
+    "macos/dark-rtl-middle.png": [
+      107520,
+      3049
+    ],
+    "macos/dark-rtl-start.png": [
+      111104,
+      2815
+    ],
+    "macos/light-ltr-end.png": [
+      114688,
+      2868
+    ],
+    "macos/light-ltr-focus-next.png": [
+      118272,
+      3285
+    ],
+    "macos/light-ltr-hover-next.png": [
+      122368,
+      2753
+    ],
+    "macos/light-ltr-middle.png": [
+      125952,
+      2937
+    ],
+    "macos/light-ltr-start.png": [
+      129536,
+      2751
+    ],
+    "macos/light-rtl-end.png": [
+      133120,
+      2896
+    ],
+    "macos/light-rtl-focus-next.png": [
+      136704,
+      3328
+    ],
+    "macos/light-rtl-hover-next.png": [
+      140800,
+      2790
+    ],
+    "macos/light-rtl-middle.png": [
+      144384,
+      2937
+    ],
+    "macos/light-rtl-start.png": [
+      147968,
+      2786
+    ]
+  }
+}

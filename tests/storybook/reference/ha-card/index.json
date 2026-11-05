@@ -1,0 +1,134 @@
+{
+  "format": "ustar",
+  "sha256": "84fd69c92881e3a2fdb0e1c9e63e72cf94eeebe5f076a50a7f7015a1579aed14",
+  "entries": {
+    "linux-arm64/dark-actions.png": [
+      512,
+      8026
+    ],
+    "linux-arm64/dark-content.png": [
+      9216,
+      3630
+    ],
+    "linux-arm64/dark-empty.png": [
+      13824,
+      3622
+    ],
+    "linux-arm64/dark-header.png": [
+      18432,
+      6228
+    ],
+    "linux-arm64/dark-narrow.png": [
+      25600,
+      9009
+    ],
+    "linux-arm64/dark-raised.png": [
+      35328,
+      6180
+    ],
+    "linux-arm64/dark-rtl.png": [
+      42496,
+      5359
+    ],
+    "linux-arm64/dark-theme.png": [
+      48640,
+      5940
+    ],
+    "linux-arm64/light-actions.png": [
+      55296,
+      7787
+    ],
+    "linux-arm64/light-content.png": [
+      64000,
+      3463
+    ],
+    "linux-arm64/light-empty.png": [
+      68096,
+      3501
+    ],
+    "linux-arm64/light-header.png": [
+      72192,
+      5939
+    ],
+    "linux-arm64/light-narrow.png": [
+      78848,
+      8501
+    ],
+    "linux-arm64/light-raised.png": [
+      88064,
+      6089
+    ],
+    "linux-arm64/light-rtl.png": [
+      94720,
+      5228
+    ],
+    "linux-arm64/light-theme.png": [
+      100864,
+      5696
+    ],
+    "macos-arm64/dark-actions.png": [
+      107520,
+      9011
+    ],
+    "macos-arm64/dark-content.png": [
+      117248,
+      4226
+    ],
+    "macos-arm64/dark-empty.png": [
+      122368,
+      3975
+    ],
+    "macos-arm64/dark-header.png": [
+      126976,
+      7201
+    ],
+    "macos-arm64/dark-narrow.png": [
+      135168,
+      12156
+    ],
+    "macos-arm64/dark-raised.png": [
+      147968,
+      7161
+    ],
+    "macos-arm64/dark-rtl.png": [
+      155648,
+      5207
+    ],
+    "macos-arm64/dark-theme.png": [
+      161792,
+      7006
+    ],
+    "macos-arm64/light-actions.png": [
+      169472,
+      8995
+    ],
+    "macos-arm64/light-content.png": [
+      179200,
+      4266
+    ],
+    "macos-arm64/light-empty.png": [
+      184320,
+      3968
+    ],
+    "macos-arm64/light-header.png": [
+      188928,
+      7231
+    ],
+    "macos-arm64/light-narrow.png": [
+      197120,
+      12309
+    ],
+    "macos-arm64/light-raised.png": [
+      210432,
+      7351
+    ],
+    "macos-arm64/light-rtl.png": [
+      218624,
+      5255
+    ],
+    "macos-arm64/light-theme.png": [
+      224768,
+      6911
+    ]
+  }
+}

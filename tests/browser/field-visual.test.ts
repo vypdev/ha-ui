@@ -1,0 +1,31 @@
+import {afterAll,afterEach,beforeAll,expect,test} from 'vitest';
+import {userEvent} from 'vitest/browser';
+import {textFieldState} from '../../packages/core/src/field-contracts.js';
+import {registerField} from '../../packages/core/src/components/field.js';
+type Box={x:number;y:number;width:number;height:number};
+type Piece={box:Box;style:Record<string,string>};
+type Row={platform:string;theme:string;name:string;configuration:{label:string;value:string;width:number;disabled:boolean;readOnly:boolean;required:boolean;hint:string;invalid:boolean;validationMessage:string;placeholder:string;state:string};host:Piece;base:Piece;input:Piece&{focusVisible:boolean};label:Piece&{text:Box};hint:Piece&{content:string;contentStyle:Record<string,string>};underline:Record<string,string>};
+let reference:{themes:Record<string,Record<string,string>>;states:Row[]};let font:FontFace;
+beforeAll(async()=>{reference=await(await fetch(new URL('../../docs/evidence/ha-field-reference.json',import.meta.url))).json();const url=new URL('../../node_modules/roboto-fontface/fonts/roboto/Roboto-Regular.woff2',import.meta.url);font=await new FontFace('Roboto',`url("${url.href}")`,{weight:'400'}).load();document.fonts.add(font);});
+afterAll(()=>{document.fonts.delete(font);});afterEach(()=>document.body.replaceChildren());
+const names=['empty','hover-empty','focus-empty','disabled-empty','readonly-empty','required-empty','description-empty','error-empty','placeholder-empty','narrow-empty','filled','hover-filled','focus-filled','disabled-filled','readonly-filled','required-filled','description-filled','error-filled','placeholder-filled','narrow-filled','required-focus','error-focus'];
+for(const theme of ['light','dark'])test.each(names)(`source matches original HA field ${theme}/%s`,async name=>{
+ const platform=/Linux/u.test(navigator.userAgent)?'linux':/Mac OS X/u.test(navigator.userAgent)?'macos':null;expect(platform).not.toBeNull();const row=reference.states.find(row=>row.platform===platform&&row.theme===theme&&row.name===name)!;expect(row).toBeDefined();const config=row.configuration;registerField();
+ const proof=document.createElement('div');proof.style.cssText='position:fixed;left:32px;top:32px;padding:8px;display:inline-flex;-webkit-font-smoothing:antialiased';for(const[key,value]of Object.entries(reference.themes[theme]))proof.style.setProperty(key,value);proof.style.background='var(--card-background-color)';proof.style.color='var(--primary-text-color)';
+ const field=document.createElement('vyp-ha-field');field.state=textFieldState({label:config.label,description:config.hint,placeholder:config.placeholder,required:config.required,readOnly:config.readOnly,error:config.invalid?config.validationMessage:''});field.value=config.value;field.disabled=config.disabled;field.style.width=config.width+'px';proof.append(field);document.body.append(proof);await field.updateComplete;
+ const input=field.shadowRoot!.querySelector('input')!,label=field.shadowRoot!.querySelector('label')!,control=field.shadowRoot!.querySelector<HTMLElement>('[part=control]');expect(control).not.toBeNull();const hint=field.shadowRoot!.querySelector<HTMLElement>('.hint')!;expect(hint).not.toBeNull();
+ const after=document.createElement('button');after.textContent='After';after.style.cssText='position:fixed;left:400px;top:200px';document.body.append(after);
+ if(config.state==='hover')await userEvent.hover(input);else await userEvent.hover(after);
+ if(config.state==='focus'){after.focus();await userEvent.keyboard('{Shift>}{Tab}{/Shift}');}
+ await expect.poll(()=>getComputedStyle(control!).backgroundColor).toBe(row.base.style.backgroundColor);await expect.poll(()=>getComputedStyle(label).fontSize).toBe(row.label.style.fontSize);await expect.poll(()=>getComputedStyle(label).color).toBe(row.label.style.color);await expect.poll(()=>getComputedStyle(control!,'::after').height).toBe(row.underline.height);await expect.poll(()=>getComputedStyle(control!,'::after').backgroundColor).toBe(row.underline.backgroundColor);
+ const style=(element:Element,expected:Record<string,string>,keys:string[])=>{const css=getComputedStyle(element);for(const key of keys)expect(css[key as keyof CSSStyleDeclaration],key).toBe(expected[key]);};
+ style(control!,row.base.style,['fontFamily','fontSize','fontWeight','lineHeight','padding','backgroundColor','borderTopWidth','borderRadius','opacity']);
+ style(input,row.input.style,['fontFamily','fontSize','fontWeight','lineHeight','padding','color','borderTopWidth','borderRadius']);
+ style(label,row.label.style,['fontFamily','fontSize','fontWeight','lineHeight','padding','color','opacity','margin']);
+ style(hint,row.hint.style,['fontFamily','fontSize','fontWeight','lineHeight','minHeight','height','margin','color']);
+ for(const key of ['height','backgroundColor'])expect(getComputedStyle(control!,'::after')[key as keyof CSSStyleDeclaration],key).toBe(row.underline[key]);
+ const origin=proof.getBoundingClientRect(),near=(actual:DOMRect,expected:Box)=>{for(const key of ['width','height'] as const)expect(Math.abs(actual[key]-expected[key]),key).toBeLessThan(1);expect(Math.abs(actual.x-origin.x-expected.x),'x').toBeLessThan(1);expect(Math.abs(actual.y-origin.y-expected.y),'y').toBeLessThan(.1);};
+ near(field.getBoundingClientRect(),row.host.box);near(control!.getBoundingClientRect(),row.base.box);near(input.getBoundingClientRect(),row.input.box);near(label.getBoundingClientRect(),row.label.box);near(hint.getBoundingClientRect(),row.hint.box);const range=document.createRange();range.selectNodeContents([...label.childNodes].find(node=>node.nodeType===Node.TEXT_NODE&&node.textContent!.trim().length>0)!);near(range.getBoundingClientRect(),row.label.text);
+ expect(input.value).toBe(config.value);expect(input.disabled).toBe(config.disabled);expect(input.readOnly).toBe(config.readOnly);expect(input.required).toBe(config.required);expect(input.matches(':focus-visible')).toBe(row.input.focusVisible);
+ const text=field.shadowRoot!.querySelector(config.invalid?'#error':'#help');if(config.hint||config.invalid){expect(text).not.toBeNull();expect(text!.textContent).toBe(row.hint.content);expect(getComputedStyle(text!).color).toBe(row.hint.contentStyle.color);}
+});

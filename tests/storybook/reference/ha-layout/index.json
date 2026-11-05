@@ -1,0 +1,134 @@
+{
+  "format": "ustar",
+  "sha256": "98beb82510e64afbd959afdd63cd5d40d9cb08a6554439261bcf5a214f560213",
+  "entries": {
+    "linux-arm64/dark-grid-narrow.png": [
+      512,
+      11917
+    ],
+    "linux-arm64/dark-grid-rtl.png": [
+      13312,
+      10574
+    ],
+    "linux-arm64/dark-grid-square.png": [
+      24576,
+      8480
+    ],
+    "linux-arm64/dark-grid-three.png": [
+      33792,
+      8192
+    ],
+    "linux-arm64/dark-row-actions.png": [
+      42496,
+      4810
+    ],
+    "linux-arm64/dark-row-rtl.png": [
+      48128,
+      6006
+    ],
+    "linux-arm64/dark-row-standard.png": [
+      54784,
+      8851
+    ],
+    "linux-arm64/dark-row-wrapped.png": [
+      64512,
+      5467
+    ],
+    "linux-arm64/light-grid-narrow.png": [
+      70656,
+      11404
+    ],
+    "linux-arm64/light-grid-rtl.png": [
+      82944,
+      10122
+    ],
+    "linux-arm64/light-grid-square.png": [
+      93696,
+      8129
+    ],
+    "linux-arm64/light-grid-three.png": [
+      102400,
+      7852
+    ],
+    "linux-arm64/light-row-actions.png": [
+      111104,
+      4669
+    ],
+    "linux-arm64/light-row-rtl.png": [
+      116736,
+      5867
+    ],
+    "linux-arm64/light-row-standard.png": [
+      123392,
+      8475
+    ],
+    "linux-arm64/light-row-wrapped.png": [
+      132608,
+      5413
+    ],
+    "macos-arm64/dark-grid-narrow.png": [
+      138752,
+      13298
+    ],
+    "macos-arm64/dark-grid-rtl.png": [
+      152576,
+      11708
+    ],
+    "macos-arm64/dark-grid-square.png": [
+      164864,
+      10046
+    ],
+    "macos-arm64/dark-grid-three.png": [
+      175616,
+      9732
+    ],
+    "macos-arm64/dark-row-actions.png": [
+      186368,
+      5202
+    ],
+    "macos-arm64/dark-row-rtl.png": [
+      192512,
+      5818
+    ],
+    "macos-arm64/dark-row-standard.png": [
+      199168,
+      9521
+    ],
+    "macos-arm64/dark-row-wrapped.png": [
+      209408,
+      6612
+    ],
+    "macos-arm64/light-grid-narrow.png": [
+      216576,
+      13290
+    ],
+    "macos-arm64/light-grid-rtl.png": [
+      230400,
+      11800
+    ],
+    "macos-arm64/light-grid-square.png": [
+      243200,
+      10089
+    ],
+    "macos-arm64/light-grid-three.png": [
+      253952,
+      9777
+    ],
+    "macos-arm64/light-row-actions.png": [
+      264704,
+      5185
+    ],
+    "macos-arm64/light-row-rtl.png": [
+      270848,
+      5869
+    ],
+    "macos-arm64/light-row-standard.png": [
+      277504,
+      9508
+    ],
+    "macos-arm64/light-row-wrapped.png": [
+      287744,
+      6623
+    ]
+  }
+}
