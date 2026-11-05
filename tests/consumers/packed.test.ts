@@ -1,5 +1,5 @@
 import {inspectToolchain} from '../../tooling/compatibility.mjs';
-import {captureCandidate,verifyCandidate} from '../../tooling/packaging.mjs';
+import {canonicalPackageArchive,captureCandidate,verifyCandidate} from '../../tooling/packaging.mjs';
 import {exerciseInstalledFeedback} from './feedback.ts';
 import {exerciseInstalledLayout} from './layouts.ts';
 import {exerciseInstalledCard} from './cards.ts';
@@ -61,7 +61,12 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
         await execute('pnpm',['--dir',directory,'pack','--pack-destination',destination],{cwd:root});
       }
       const names = (await readdir(destination)).filter(name => name.endsWith('.tgz'));
-      assert.equal(names.length, 5); archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.1.tgz'));
+      assert.equal(names.length, 5);
+      for(const name of names){
+        const path=join(destination,name);
+        await writeFile(path,canonicalPackageArchive(await readFile(path)));
+      }
+      archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.1.tgz'));
       if(index===2)for(const file of names)assert.deepEqual(await readFile(join(scratch,'pack-1',file)),await readFile(join(destination,file)),'Every cohort coordinate must reproduce: '+file);
     }
     const cohort=[];

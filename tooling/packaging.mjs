@@ -21,6 +21,21 @@ const isRecord=value=>Boolean(value && typeof value==='object' && !Array.isArray
 /** @param {unknown} condition @param {string} reason @returns {asserts condition} */
 function invariant(condition,reason){if(!condition)throw new Error(reason);}
 
+const packageGzipPrefix=Buffer.from('1f8b080000000000','hex');
+
+/**
+ * pnpm packs the same tar/deflate bytes on macOS and Linux but sets gzip's OS marker
+ * differently. Use RFC 1952's default OS marker before hashing or installing the archive.
+ * Accept only the unstamped header without optional fields that the reviewed packer emits.
+ * @param {Uint8Array} bytes
+ */
+export function canonicalPackageArchive(bytes){
+ const canonical=Buffer.from(bytes);
+ invariant(canonical.length>=18 && canonical.subarray(0,8).equals(packageGzipPrefix),'invalid_package_gzip_header');
+ canonical[9]=255;
+ return canonical;
+}
+
 /** @param {string} sourceRevision @param {string} lockSha256 @param {readonly CandidateArtifact[]} artifacts */
 function candidateData(sourceRevision,lockSha256,artifacts){
  invariant(revision.test(sourceRevision) && digest.test(lockSha256),'invalid_candidate');

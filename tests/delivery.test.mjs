@@ -1,8 +1,29 @@
 import {readFileSync} from 'node:fs';
+import {gzipSync,gunzipSync} from 'node:zlib';
 import {beforeEach,expect,test,vi} from 'vitest';
 import {parse} from 'yaml';
 import {inspectToolchain} from '../tooling/compatibility.mjs';
-import {captureCandidate,verifyCandidate,assertShippedManifest,resumePublication,packageCoordinates,sha256} from '../tooling/packaging.mjs';
+import {captureCandidate,verifyCandidate,assertShippedManifest,resumePublication,packageCoordinates,sha256,canonicalPackageArchive} from '../tooling/packaging.mjs';
+
+test('the gzip OS marker cannot change a candidate’s bytes across pack hosts',()=>{
+ const payload=Buffer.from('same deterministic tar payload'),mac=gzipSync(payload),linux=Buffer.from(mac);
+ mac[9]=19;linux[9]=3;
+ const canonical=canonicalPackageArchive(mac);
+ expect(canonical).toEqual(canonicalPackageArchive(linux));
+ expect(canonical[9]).toBe(255);
+ expect(canonical.subarray(10)).toEqual(mac.subarray(10));
+ expect(gunzipSync(canonical)).toEqual(payload);
+ expect(canonicalPackageArchive(canonical)).toEqual(canonical);
+ expect([mac[9],linux[9]]).toEqual([19,3]);
+});
+test('fails closed for truncated, stamped or decorated package headers',()=>{
+ const bytes=gzipSync('package payload');
+ expect(()=>canonicalPackageArchive(bytes.subarray(0,10))).toThrow('invalid_package_gzip_header');
+ for(const [offset,value] of [[0,0],[1,0],[2,7],[3,2],[4,1],[7,1]]){
+  const modified=Buffer.from(bytes);modified[offset]=value;
+  expect(()=>canonicalPackageArchive(modified)).toThrow('invalid_package_gzip_header');
+ }
+});
 
 const rootLock=readFileSync('pnpm-lock.yaml');
 const sourceRevision='a'.repeat(40),lockSha256=sha256(rootLock);

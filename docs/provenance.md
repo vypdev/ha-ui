@@ -209,6 +209,10 @@ The core NOTICE records the Apache 2.0, MIT and Material Design Icons attributio
 
 The packing gate checks the exact running Node and pnpm versions, the supported Angular
 compiler and TypeScript pair, and the frozen dependency snapshot before creating archives.
+Before testing or hashing, the packer sets the operating-system byte in the unstamped
+gzip header to the [RFC 1952 default](https://www.rfc-editor.org/rfc/rfc1952.html#section-2.3.1).
+This makes the same tar and compressed payload produce the same package bytes on macOS
+and Linux. Accepted archives are verified and promoted byte for byte.
 The `captureCandidate` policy binds the five archive digests and sizes to the reviewed
 source revision and lock. `verifyCandidate` fails before use if any bytes, revision or
 lock change. `assertShippedManifest` requires exact version pins for the shared cohort
