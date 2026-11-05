@@ -1,8 +1,8 @@
 # Shared component catalog
 
 The current catalog displays the implemented upper navigation, local panels and single-line text
-field, button, boolean checkbox, typed single/multiple select and native dialog using the real
-package entrypoints. Sixty-eight CSF stories have automatic documentation,
+field, button, boolean checkbox, typed single/multiple select, native dialog and card using the real
+package entrypoints. Seventy-five CSF stories have automatic documentation,
 controls, interaction tests and accessibility checks. This is an incremental preview; other
 families, the full framework/SSR/browser matrix and application adoption are still required.
 
@@ -30,6 +30,7 @@ are local to the static build; the browser gate rejects external requests and fa
 | Forms / Checkbox | `@vypdev/ha-ui/checkbox` | Boolean checked, independent mixed state, required, disabled/error, cancellation, custom payload, long labels and reset |
 | Forms / Select | `@vypdev/ha-ui/select` | Typed single/multiple dropdowns, chips/search, visible lists, disabled and unavailable options, cancellation and reset |
 | Overlays / Dialog | `@vypdev/ha-ui/dialog` | Standard and alert surfaces, pending or disabled confirmation, canceled requests and scrollable content |
+| Surfaces / Card | `@vypdev/ha-ui/card` | Titled/untitled, raised, heading only, long title, right-to-left and projected actions |
 
 The toolbar chooses English/Spanish, light/dark, narrow/wide and reduced/system motion. Unsupported
 locale values fall back to English. System reduced-motion preferences are always respected. The
@@ -73,8 +74,8 @@ and the renderer's declared Lit dependency, including CommonJS and TypeScript im
 nonliteral loaders, bare Node builtins and undeclared server dependencies are rejected.
 
 The static gate builds the manager, autodocs and previews, then serves only the repository base
-`/ha-ui/`. It checks 160 locale/theme/width combinations with axe, real focus/overflow and manual
-panel activation, native form editing/validation/submit/reset, dialog confirmation and focus, controls-driven value changes and
+`/ha-ui/`. It checks 176 locale/theme/width combinations with axe, real focus/overflow and manual
+panel activation, native form editing/validation/submit/reset, dialog confirmation and focus, card projection and native command submission, controls-driven value changes and
 all four manager toolbar settings. It records original screenshots and `test-results/storybook/evidence.json`.
 The contrast and partial-focus regressions fail against the earlier renderer and pass after the
 shared fixes. No additional browser engine, owner HA installation or human acceptance is inferred.
@@ -107,8 +108,8 @@ Storybook release passes those same checks without it. See [provenance](provenan
 The [visual-equivalence gate](visual-parity.md) compares actual HA states against the built shared
 component. The catalog now bundles the same Roboto Regular/Medium font bytes as the measured HA
 frontend, with local license notices. The static browser gate explicitly waits for both font
-faces to load and exercises 160 locale/theme/width combinations. Its visual phases compare
-original navigation, checkbox, button, text-field, select and dialog states. A passing functional
+faces to load and exercises 176 locale/theme/width combinations. Its visual phases compare
+original navigation, checkbox, button, text-field, select, dialog and card states. A passing functional
 or accessibility test alone does not establish visual equivalence.
 
 The independent static accessibility scan waits for Storybook's public STORY_FINISHED event and

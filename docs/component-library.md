@@ -2,7 +2,7 @@
 
 The current source implements the DOM-independent navigation contract, one controlled upper
 navigation/panel renderer, a single-line text field, a native-form button, typed single/multiple selects, boolean checkboxes and the tested quality/build foundation. The renderer passes direct
-Chromium and clean actual-package browser consumers. Four navigation, text-field form, button, select and checkbox adapters now also pass real compiled package consumers. Other component families,
+Chromium and clean actual-package browser consumers. Four navigation, text-field form, button, select, checkbox, dialog and card adapters also pass real compiled package consumers. Other component families,
 other form bridges, framework SSR, public Storybook hosting, publication and consumer migrations remain required. The [primary Draft](../specs/shared-ui-foundation.md),
 [capability catalog](../specs/CATALOG.md) and [feature issue #7](https://github.com/vypdev/ha-ui/issues/7)
 hold the proposed contract and pending acceptance gates.
@@ -323,3 +323,11 @@ navigation-kind replacement retire observers, scheduled work and window gesture 
 A focused arrow that reaches its edge remains present with `aria-disabled="true"` until blur.
 This deliberate accessibility exception preserves focus; the original HA component removes
 the focused arrow. Other resting, hover and focus visuals use the original measured geometry.
+
+## Card surface
+
+The [card contract](card-contract.md) defines a DOM-free title, a native heading level and the
+standard or raised surface. Body and optional actions are ordinary projected content, so the
+application owns layout inside the card, form participation, command callbacks and navigation.
+The [catalog](storybook.md) covers narrow and right-to-left content and compares the compiled
+renderer with the original HA card. Grid and responsive collection layout have a separate scope.

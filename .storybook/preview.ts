@@ -7,9 +7,10 @@ import {registerCheckbox} from '@vypdev/ha-ui/checkbox';
 import {registerSelect} from '@vypdev/ha-ui/select';
 import {registerField} from '@vypdev/ha-ui/field';
 import {registerDialog} from '@vypdev/ha-ui/dialog';
+import {registerCard} from '@vypdev/ha-ui/card';
 import {catalogFrame} from '../stories/catalog-frame.js';
 const preview:Preview={
-  beforeAll:()=>{registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();return observeCatalogCompletion(addons.getChannel(),document.documentElement);},decorators:[catalogFrame],
+  beforeAll:()=>{registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();return observeCatalogCompletion(addons.getChannel(),document.documentElement);},decorators:[catalogFrame],
   initialGlobals:{theme:'light',locale:'en',width:'wide',motion:'system'},
   globalTypes:{
     theme:{description:'HA-compatible theme',toolbar:{title:'Theme',icon:'circlehollow',items:[{value:'light',title:'Light'},{value:'dark',title:'Dark'}],dynamicTitle:true}},

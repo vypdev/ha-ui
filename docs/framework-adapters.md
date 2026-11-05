@@ -1,6 +1,6 @@
 # Framework bindings
 
-This unpublished preview has shared navigation with local icons/labels, one controlled text field, native-form buttons, boolean checkboxes, typed single/multiple selects and native dialogs,
+This unpublished preview has shared navigation with local icons/labels, one controlled text field, native-form buttons, boolean checkboxes, typed single/multiple selects, native dialogs and card surfaces,
 with four real framework bindings and text-field form bridges. Other controls and their bridges, framework
 SSR/client fixtures, broader browser support, public Storybook hosting, publication and app adoption remain required.
 
@@ -85,7 +85,7 @@ Every framework consumer compiles against installed declarations and runs real p
 events, content projection, disabled booleans, English/Spanish, live theme, keyboard, removal and remount
 journeys. Installed authored source must match the repository. Published manifests contain neither
 workspace nor file references. The resulting artifacts include the exact cohort digests and original
-browser screenshots. These checks cover navigation, text fields, buttons, checkboxes, selects and dialogs. They do not complete the retained 70-case
+browser screenshots. These checks cover navigation, text fields, buttons, checkboxes, selects, dialogs and cards. They do not complete the retained 70-case
 capability acceptance inventory or prove a real npm publication.
 
 The complete source/type/browser check sequence also passes with all five dist trees absent.
@@ -297,3 +297,12 @@ callback runs. The application controls `open`; the binding never dismisses a mo
 own. The [dialog contract](dialog-contract.md) gives the exact prop, event and slot names.
 Installed consumers check projected content, canceled confirmation, Escape and focus return,
 accepted confirmation and cancellation, and teardown/remount.
+
+## Card binding contract
+
+All four adapters export `Card`. Register the core client renderer with `registerCard`.
+Supply `cardState({ title, headingLevel, raised })` as the typed `state` prop/input.
+Pass the body as children (React/Svelte), the default slot (Vue) or projected children (Angular).
+Use the `actions` React prop, Vue slot or Svelte snippet; in Angular project an element with
+`slot="actions"`. These are application-owned commands with normal native semantics. The
+[card contract](card-contract.md) defines the parts, theme tokens and empty-slot behavior.

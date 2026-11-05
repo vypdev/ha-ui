@@ -377,3 +377,19 @@ Chrome separately confirms the matching desktop surface and tests dismissal, con
 return to the opener. The product adds a reliable accessible modal name and honors projected
 autofocus across Chromium, Firefox and WebKit. This lifecycle and default axe coverage are
 separate from the raster comparison.
+
+## Card surface and projected actions
+
+The [original HA card record](evidence/ha-card-reference.json) uses public installed module
+95788 in `47578.fba66e0739297711.js` and fictional content. Two independent runs on each of
+macOS ARM64, Linux ARM64 and Linux x64 reproduce 16 images per platform. The eight states
+in both themes include body only, titled, raised, projected action, 180px wrapped title,
+Arabic right-to-left, overridden surface tokens and heading only. Identical original PNG
+bytes share a reference path; the manifest still records each platform measurement separately.
+
+All 48 candidate images match the original raster exactly on the three measured platforms.
+The static gate checks surface and part geometry, title/body text geometry, typography, border,
+radius, shadow, action divider and the full raster. It measures the projected command's original
+40px paint separately from the shared 44px native target. The named native article and heading
+level, ordinary keyboard order, slotted form submitter and collapsed optional parts are exercised
+separately in the actual installed core and the real framework fixtures.

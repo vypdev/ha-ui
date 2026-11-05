@@ -166,3 +166,12 @@ published Web Awesome artifact as navigation. Source links, copyright headers, p
 composition and modifications are retained in the core NOTICE. The native 44px target and its
 separate painted surface, controlled form behavior and local projection are authored here.
 No additional runtime package, external icon loader or font request is introduced.
+
+## Measured HA card
+
+The card adapts the Apache 2.0 [Home Assistant card styles](https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-card.ts)
+for its surface, title, content and optional footer. The [reference record](evidence/ha-card-reference.json)
+identifies the separately captured public app, component module, themes and original images.
+The shared renderer adds a native article and configurable native heading, slot lifecycle and
+a footer that accommodates the shared button's native hit target. It does not import the
+Home Assistant runtime. The core NOTICE records the upstream attribution and modifications.

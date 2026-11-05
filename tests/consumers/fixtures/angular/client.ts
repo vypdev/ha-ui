@@ -1,6 +1,6 @@
-import {Component,signal,computed} from '@angular/core';
+import {Component,computed,signal} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {Tabs,TextField,Button,Select,Checkbox,Dialog} from '@vypdev/ha-ui-angular';
+import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card} from '@vypdev/ha-ui-angular';
 import {registerTabs,type NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
 import {FormControl,FormGroup,ReactiveFormsModule} from '@angular/forms';
 import {registerField,type FieldValueEvent} from '@vypdev/ha-ui/field';
@@ -11,8 +11,10 @@ import type {SelectMode,SelectSelection} from '@vypdev/ha-ui/select-contracts';
 import {model,fieldModel,actionModel,resetModel,categoryModel,categoryAction,checkModel,checkAction} from './model.js';
 import {registerDialog,type DialogRequestEvent} from '@vypdev/ha-ui/dialog';
 import {dialogState,type DialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
-registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();
-@Component({selector:'fixture-app',standalone:true,imports:[Tabs,TextField,Button,Select,Checkbox,Dialog,ReactiveFormsModule],template:`
+import {registerCard} from '@vypdev/ha-ui/card';
+import {cardState} from '@vypdev/ha-ui/card-contracts';
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();
+@Component({selector:'fixture-app',standalone:true,imports:[Tabs,TextField,Button,Select,Checkbox,Dialog,Card,ReactiveFormsModule],template:`
   <section [style.--error-color]="dark()?'#f28b82':'#b3261e'" [style.background-color]="dark()?'rgb(20,20,20)':'rgb(255,255,255)'" [style.--divider-color]="dark()?'rgb(66,66,66)':'rgb(224,224,224)'" [style.--primary-text-color]="dark()?'rgb(235,235,235)':'rgb(28,28,28)'" [style.--secondary-text-color]="dark()?'rgb(189,189,189)':'rgb(89,89,89)'" [style.--card-background-color]="dark()?'rgb(20,20,20)':'rgb(255,255,255)'">
     <button (click)="language()">Switch language</button><button (click)="dark.set(!dark())">Toggle theme</button>
     <button (click)="toggleDisabled()">Toggle disabled</button><button (click)="visible.set(!visible())">Toggle component</button>
@@ -27,6 +29,9 @@ registerTabs();registerField();registerButton();registerSelect();registerCheckbo
       @if(fieldVisible()){<vyp-ha-field [state]="fieldState()" name="task" defaultValue="Native baseline" formControlName="task" (valueRequest)="observe($event)" />}
       @if(buttonVisible()){<vyp-ha-button id="bound-submit" [state]="actionState()" type="submit" name="action" value="save" [disabled]="buttonDisabled()" (pressRequest)="press($event)" (press)="accepted.set(accepted()+1)">@if(icons()){<span slot="leading">+</span>}</vyp-ha-button>}<vyp-ha-button [state]="resetState" type="reset" />
     </form>
+    <button (click)="cardVisible.set(!cardVisible())">Toggle task card</button>
+    @if(cardVisible()){<vyp-ha-card id="bound-card" [state]="taskCard()"><p>Check the shared shopping list.</p>
+      @if(!cardReviewed()){<button slot="actions" (click)="cardReviewed.set(true)">Review card task</button>}</vyp-ha-card>}
     <button (click)="showDialog()">Open task dialog</button><button (click)="dialogReject.set(!dialogReject())">Toggle confirmation rejection</button>
     <output aria-label="Dialog action">{{dialogAction()}}</output><output aria-label="Dialog requests">{{dialogRequests()}}</output>
     @if(dialogMounted()){<vyp-ha-dialog id="bound-dialog" [state]="taskDialog" [open]="dialogOpen()" (dialogRequest)="requestDialog($event)" (dialogAction)="acceptDialog($event)">
@@ -49,6 +54,8 @@ class Consumer {
   group=new FormGroup({task:new FormControl('Kitchen',{nonNullable:true})});fieldVisible=signal(true);reject=signal(false);fieldEvents=signal(0);saved=signal('');fieldState=computed(()=>fieldModel(this.spanish()));
   busy=signal(false);buttonDisabled=signal(false);buttonVisible=signal(true);cancelPress=signal(false);icons=signal(true);presses=signal(0);accepted=signal(0);submits=signal(0);metadata=signal(false);actionState=computed(()=>actionModel(this.spanish(),this.busy()));resetState=resetModel();
   press(event:ButtonPressEvent){this.presses.update(count=>count+1);if(this.cancelPress())event.preventDefault();}
+  cardReviewed=signal(false);cardVisible=signal(true);
+  taskCard=computed(()=>cardState({title:this.cardReviewed()?'Reviewed tasks':'Household tasks',headingLevel:this.cardReviewed()?3:2,raised:this.cardReviewed()}));
   taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
   dialogOpen=signal(false);dialogMounted=signal(true);dialogReject=signal(false);dialogAction=signal('');dialogRequests=signal(0);
   showDialog(){this.dialogMounted.set(true);this.dialogAction.set('');this.dialogOpen.set(true);}

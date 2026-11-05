@@ -36,3 +36,8 @@ export interface DialogProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'clas
  state:DialogState;open:boolean;children?:Snippet;footer?:Snippet;
  onRequest?:(event:DialogRequestEvent)=>void;onAction?:(detail:DialogRequestDetail)=>void;
 }
+
+import type {CardState} from '@vypdev/ha-ui/card-contracts';
+export interface CardProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'>{
+ state:CardState;children?:Snippet;actions?:Snippet;
+}

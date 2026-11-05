@@ -30,3 +30,5 @@ export {Checkbox} from './checkbox.js';
 export type {CheckboxProps} from './checkbox.js';
 export {Dialog} from './dialog.js';
 export type {DialogProps} from './dialog.js';
+export {Card} from './card.js';
+export type {CardProps} from './card.js';

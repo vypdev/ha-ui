@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {Tabs,TextField,Button,Select,Checkbox,Dialog} from '@vypdev/ha-ui-svelte';
+  import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card} from '@vypdev/ha-ui-svelte';
   import type {NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
   import type {FieldValueEvent} from '@vypdev/ha-ui/field';
   import type {ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -10,6 +10,9 @@
   let viewState=$state.raw(model()),spanish=$state(false),dark=$state(false),disabled=$state(false),visible=$state(true),count=$state(0);
   import type {DialogRequestEvent} from '@vypdev/ha-ui/dialog';
   import {dialogState,type DialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
+  import {cardState} from '@vypdev/ha-ui/card-contracts';
+  let cardReviewed=$state(false),cardVisible=$state(true);
+  const taskCard=$derived(cardState({title:cardReviewed?'Reviewed tasks':'Household tasks',headingLevel:cardReviewed?3:2,raised:cardReviewed}));
   const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
   let dialogOpen=$state(false),dialogMounted=$state(true),dialogReject=$state(false),dialogAction=$state(''),dialogRequests=$state(0);
   function showDialog(){dialogMounted=true;dialogAction='';dialogOpen=true;}
@@ -47,6 +50,9 @@
     {#if fieldVisible}<TextField state={fieldModel(spanish)} {value} name="task" defaultValue="Kitchen" disabled={fieldDisabled} onValueRequest={observe} onValueChange={(next)=>value=next} />{/if}
     {#if buttonVisible}<Button id="bound-submit" state={actionModel(spanish,busy)} type="submit" name="action" value="save" disabled={buttonDisabled} onPressRequest={press} onPress={()=>accepted++} leading={icons?leading:undefined} />{/if}<Button state={resetModel()} type="reset" />
   </form>
+  <button onclick={()=>cardVisible=!cardVisible}>Toggle task card</button>
+  {#snippet reviewCard()}{#if !cardReviewed}<button onclick={()=>cardReviewed=true}>Review card task</button>{/if}{/snippet}
+  {#if cardVisible}<Card id="bound-card" state={taskCard} actions={reviewCard}><p>Check the shared shopping list.</p></Card>{/if}
   <button onclick={showDialog}>Open task dialog</button><button onclick={()=>dialogReject=!dialogReject}>Toggle confirmation rejection</button>
   <output aria-label="Dialog action">{dialogAction}</output><output aria-label="Dialog requests">{dialogRequests}</output>
   {#if dialogMounted}<Dialog id="bound-dialog" state={taskDialog} open={dialogOpen} onRequest={requestDialog} onAction={acceptDialog}>

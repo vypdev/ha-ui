@@ -69,6 +69,14 @@
     "./dialog": {
       "types": "./dist/components/dialog.d.ts",
       "import": "./dist/components/dialog.js"
+    },
+    "./card-contracts": {
+      "types": "./dist/card-contracts.d.ts",
+      "import": "./dist/card-contracts.js"
+    },
+    "./card": {
+      "types": "./dist/components/card.d.ts",
+      "import": "./dist/components/card.js"
     }
   },
   "publishConfig": {

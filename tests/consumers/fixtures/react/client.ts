@@ -1,6 +1,6 @@
 import {createElement,useState,StrictMode,type CSSProperties,type SyntheticEvent} from 'react';
 import {createRoot} from 'react-dom/client';
-import {Tabs,TextField,Button,Select,Checkbox,Dialog} from '@vypdev/ha-ui-react';
+import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card} from '@vypdev/ha-ui-react';
 import {registerTabs,type NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
 import {registerField,type FieldValueEvent} from '@vypdev/ha-ui/field';
 import {registerButton,type ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -10,11 +10,14 @@ import type {SelectMode,SelectSelection} from '@vypdev/ha-ui/select-contracts';
 import {model,fieldModel,actionModel,resetModel,categoryModel,categoryAction,checkModel,checkAction} from './model.js';
 import {registerDialog,type DialogRequestEvent} from '@vypdev/ha-ui/dialog';
 import {dialogState,type DialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
-registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();
+import {registerCard} from '@vypdev/ha-ui/card';
+import {cardState} from '@vypdev/ha-ui/card-contracts';
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();
 const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
 function Consumer() {
   const [state,setState]=useState(model()),[spanish,setSpanish]=useState(false),[dark,setDark]=useState(false),[disabled,setDisabled]=useState(false),[visible,setVisible]=useState(true),[count,setCount]=useState(0);
   const [dialogOpen,setDialogOpen]=useState(false),[dialogMounted,setDialogMounted]=useState(true),[dialogReject,setDialogReject]=useState(false),[dialogAction,setDialogAction]=useState(''),[dialogRequests,setDialogRequests]=useState(0);
+  const [cardReviewed,setCardReviewed]=useState(false),[cardVisible,setCardVisible]=useState(true);
   const showDialog=()=>{setDialogMounted(true);setDialogAction('');setDialogOpen(true);};
   const dialogRequest=(event:DialogRequestEvent)=>{setDialogRequests(count=>count+1);if(dialogReject&&event.detail.action==='confirm')event.preventDefault();};
   const acceptDialog=({action}:DialogRequestDetail)=>{setDialogAction(action);setDialogOpen(false);};
@@ -46,6 +49,9 @@ function Consumer() {
     createElement('output',{'aria-label':'Press events'},String(presses)),createElement('output',{'aria-label':'Accepted presses'},String(accepted)),createElement('output',{'aria-label':'Submit events'},String(submits)),createElement('output',{'aria-label':'Button metadata'},String(metadata)),
     createElement('form',{'aria-label':'Task form',onSubmit:save},fieldVisible?createElement(TextField,{state:fieldModel(spanish),value,name:'task',defaultValue:'Kitchen',disabled:fieldDisabled,onValueRequest:observe,onValueChange:setValue}):null,
       buttonVisible?createElement(Button,{id:'bound-submit',state:actionModel(spanish,busy),type:'submit',name:'action',value:'save',disabled:buttonDisabled,onPressRequest:press,onPress:()=>setAccepted(count=>count+1),leading:icons?createElement('span',null,'+'):undefined}):null,createElement(Button,{state:resetModel(),type:'reset'})),
+    createElement('button',{onClick:()=>setCardVisible(!cardVisible)},'Toggle task card'),
+    cardVisible?createElement(Card,{id:'bound-card',state:cardState({title:cardReviewed?'Reviewed tasks':'Household tasks',headingLevel:cardReviewed?3:2,raised:cardReviewed}),
+      actions:cardReviewed?null:createElement('button',{onClick:()=>setCardReviewed(true)},'Review card task')},createElement('p',null,'Check the shared shopping list.')):null,
     createElement('button',{onClick:showDialog},'Open task dialog'),createElement('button',{onClick:()=>setDialogReject(!dialogReject)},'Toggle confirmation rejection'),
     createElement('output',{'aria-label':'Dialog action'},dialogAction),createElement('output',{'aria-label':'Dialog requests'},String(dialogRequests)),
     dialogMounted?createElement(Dialog,{id:'bound-dialog',state:taskDialog,open:dialogOpen,onRequest:dialogRequest,onAction:acceptDialog},

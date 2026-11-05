@@ -1,3 +1,4 @@
+import {exerciseInstalledCard} from './cards.ts';
 import {exerciseInstalledNavigationOverflow} from './navigation-overflow.ts';
 import {exerciseInstalledNavigationIcons} from './navigation-icons.ts';
 import {fixtureFonts} from './fonts.ts';
@@ -96,6 +97,8 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
 import {textFieldState,textFieldValidity,fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
 import {buttonState,buttonPressDetail,type ButtonType} from '@vypdev/ha-ui/button-contracts';
 import {dialogState,dialogRequestDetail,type DialogAction} from '@vypdev/ha-ui/dialog-contracts';
+import {cardState,type CardHeadingLevel} from '@vypdev/ha-ui/card-contracts';
+const heading:CardHeadingLevel=3;if(cardState({title:'Household tasks',headingLevel:heading}).headingLevel!==heading)throw Error('Expected pure card contract');
 const dialogAction:DialogAction='cancel';if(dialogState({title:'Review'}).kind!=='standard'||dialogRequestDetail({action:dialogAction}).action!=='cancel')throw Error('Expected pure dialog contract');
 import {checkboxState,checkboxChecked,checkboxValidity,checkboxRestoreState,checkboxRestoreValue} from '@vypdev/ha-ui/checkbox-contracts';
 if(checkboxChecked(false)||!checkboxValidity(false,checkboxState({label:'Notify',required:true})).flags.valueMissing||checkboxRestoreValue(checkboxRestoreState(true))!==true)throw Error('Expected pure boolean checkbox policy');
@@ -119,6 +122,8 @@ if(!Object.isFrozen(selectSelection([1,'1',false]))||selectRestoreValue(selectRe
 import {buttonState,buttonPressDetail} from '@vypdev/ha-ui/button-contracts';
 if(!Object.isFrozen(buttonState({label:'Save'}))||buttonPressDetail({type:'button'}).type!=='button')throw Error('Expected DOM-free button policy');
 import {dialogState,dialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
+import {cardState} from '@vypdev/ha-ui/card-contracts';
+if(!Object.isFrozen(cardState({title:'Household tasks'}))||cardState({}).headingLevel!==2)throw Error('Expected DOM-free card contract');
 if(!Object.isFrozen(dialogState({title:'Review'}))||dialogRequestDetail({action:'close'}).action!=='close')throw Error('Expected pure dialog policy');
 if(!Object.isFrozen(fieldValueDetail({value:'Kitchen',reason:'input'})))throw Error('Expected immutable DOM-free request contract');
 if(typeof document!=='undefined'||typeof customElements!=='undefined') throw Error('Expected a server-only consumer');
@@ -128,7 +133,7 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
     assert.match(probe.stdout, /Packed contract imported without DOM globals/u);
     const installed = join(consumer, 'node_modules/@vypdev/ha-ui');
     const packageFiles=['LICENSE','NOTICE','LICENSES/Home-Assistant-Apache-2.0.txt','LICENSES/Font-Awesome-Free-7.0.0.txt','LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt'];
-    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','components/select-list','checkbox-contracts','checkbox-mark','components/checkbox','components/implicit-submit','dialog-contracts','components/dialog']) {
+    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','components/select-list','checkbox-contracts','checkbox-mark','components/checkbox','components/implicit-submit','dialog-contracts','components/dialog','card-contracts','components/card']) {
       packageFiles.push('src/'+module+'.ts');
       for (const suffix of ['.js','.js.map','.d.ts','.d.ts.map']) packageFiles.push('dist/'+module+suffix);
     }
@@ -142,6 +147,7 @@ import {registerButton} from '@vypdev/ha-ui/button';
 import {registerSelect} from '@vypdev/ha-ui/select';
 import {registerCheckbox} from '@vypdev/ha-ui/checkbox';
 import {registerDialog} from '@vypdev/ha-ui/dialog';
+import {registerCard} from '@vypdev/ha-ui/card';
 import {buttonState} from '@vypdev/ha-ui/button-contracts';
 import {textFieldState} from '@vypdev/ha-ui/field-contracts';
 import {navigationState} from '@vypdev/ha-ui/contracts';
@@ -150,7 +156,7 @@ const element=document.createElement('vyp-ha-tabs');
 element.state=navigationState({kind:'navigation',label:'Household sections',selected:'overview',items:[{id:'overview',label:'Overview',href:'#overview'},{id:'tasks',label:'Tasks',href:'#tasks'}]});
 element.addEventListener('ha-selection-request',event=>{event.preventDefault();element.state=navigationState({...element.state,selected:event.detail.id});});
 document.querySelector('main')!.append(element);
-registerField();registerButton();registerSelect();registerCheckbox();registerDialog();
+registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();
 const form=document.createElement('form'),field=document.createElement('vyp-ha-field');
 field.state=textFieldState({label:'Task name',description:'A name for this task.',required:true});field.name='task';field.defaultValue='Kitchen';
 field.addEventListener('ha-value-request',event=>{if(!event.defaultPrevented)field.value=event.detail.value;});
@@ -219,6 +225,8 @@ document.querySelector('main')!.append(form);`);
     await writeFile(resolve(root,'test-results/packed-select.json'),JSON.stringify(select,null,2)+'\n');
     const dialog=await exerciseInstalledDialog(browserPage);
     await writeFile(resolve(root,'test-results/packed-dialog.json'),JSON.stringify(dialog,null,2)+'\n');
+    const card=await exerciseInstalledCard(browserPage);
+    await writeFile(resolve(root,'test-results/packed-card.json'),JSON.stringify(card,null,2)+'\n');
     const readonlyField=await exerciseReadonlyField(browserPage);
     await writeFile(resolve(root,'test-results/packed-readonly-field.json'),JSON.stringify(readonlyField,null,2)+'\n');
     const implicitSubmit=await exerciseInstalledImplicitSubmit(browserPage);
@@ -227,8 +235,8 @@ document.querySelector('main')!.append(form);`);
     await writeFile(resolve(root,'test-results/packed-button.json'),JSON.stringify(coreButton,null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;
     const frameworks=await exerciseFrameworks(root,scratch,browser);
-    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, text fields, buttons, checkboxes, typed selects and native dialogs with four framework bindings; other controls, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
-    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, fields, buttons, checkboxes, typed selects and dialogs with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, text fields, buttons, checkboxes, typed selects, native dialogs and cards with four framework bindings; other controls, framework SSR and application adoption remain required',frameworks},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, fields, buttons, checkboxes, typed selects, dialogs and cards with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,sourceLockSha256:digest(await readFile(resolve(root,'pnpm-lock.yaml')))},null,2)+'\n');
     await mkdir(resolve(root,'test-results/packages'),{recursive:true});
     for(const file of (await readdir(join(scratch,'pack-1'))).filter(name=>name.endsWith('.tgz')))await writeFile(resolve(root,'test-results/packages',file),await readFile(join(scratch,'pack-1',file)));
     passed = true;

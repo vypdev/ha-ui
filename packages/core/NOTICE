@@ -116,3 +116,9 @@ Assistant's ha-icon-button inset focus and hover paint. The native top-layer ren
 controlled typed requests, a named dialog, projected focus and shared native commands.
 Its 44px footer targets enclose the original 40px paint. No upstream component runtime,
 application state, icon loader or API is imported.
+
+Card surface, heading, content and action divider styles adapt Home Assistant frontend (Apache 2.0):
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-card.ts
+Modifications: native article and configurable semantic heading, optional slot lifecycle,
+logical spacing and support for the shared button's 44px native target within the original
+action surface. The package contains no upstream card runtime.

@@ -1,5 +1,5 @@
 import {createApp,h,shallowRef} from 'vue';
-import {Tabs,TextField,Button,Select,Checkbox,Dialog} from '@vypdev/ha-ui-vue';
+import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card} from '@vypdev/ha-ui-vue';
 import {registerTabs,type NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
 import {registerField,type FieldValueEvent} from '@vypdev/ha-ui/field';
 import {registerButton,type ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -9,12 +9,15 @@ import type {SelectMode,SelectSelection} from '@vypdev/ha-ui/select-contracts';
 import {model,fieldModel,actionModel,resetModel,categoryModel,categoryAction,checkModel,checkAction} from './model.js';
 import {registerDialog,type DialogRequestEvent} from '@vypdev/ha-ui/dialog';
 import {dialogState,type DialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
-registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();
+import {registerCard} from '@vypdev/ha-ui/card';
+import {cardState} from '@vypdev/ha-ui/card-contracts';
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();
 const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
 const nativeHostAttributes={title:'Vue host attributes','aria-description':'Installed Vue host attributes','data-host-attributes':'forwarded'};
 createApp({setup(){
   const state=shallowRef(model()),spanish=shallowRef(false),dark=shallowRef(false),disabled=shallowRef(false),visible=shallowRef(true),count=shallowRef(0);
   const dialogOpen=shallowRef(false),dialogMounted=shallowRef(true),dialogReject=shallowRef(false),dialogAction=shallowRef(''),dialogRequests=shallowRef(0);
+  const cardReviewed=shallowRef(false),cardVisible=shallowRef(true);
   const showDialog=()=>{dialogMounted.value=true;dialogAction.value='';dialogOpen.value=true;};
   const dialogRequest=(event:DialogRequestEvent)=>{dialogRequests.value++;if(dialogReject.value&&event.detail.action==='confirm')event.preventDefault();};
   const acceptDialog=({action}:DialogRequestDetail)=>{dialogAction.value=action;dialogOpen.value=false;};
@@ -45,6 +48,9 @@ createApp({setup(){
     h('output',{'aria-label':'Press events'},String(presses.value)),h('output',{'aria-label':'Accepted presses'},String(accepted.value)),h('output',{'aria-label':'Submit events'},String(submits.value)),h('output',{'aria-label':'Button metadata'},String(metadata.value)),
     h('form',{'aria-label':'Task form',onSubmit:save},[fieldVisible.value?h(TextField,{...nativeHostAttributes,state:fieldModel(spanish.value),modelValue:value.value,'onUpdate:modelValue':(next:string)=>value.value=next,name:'task',defaultValue:'Kitchen',disabled:fieldDisabled.value,onValueRequest:observe}):null,
       buttonVisible.value?h(Button,{...nativeHostAttributes,id:'bound-submit',state:actionModel(spanish.value,busy.value),type:'submit',name:'action',value:'save',disabled:buttonDisabled.value,onPressRequest:press,onPress:()=>accepted.value++},icons.value?{leading:()=>h('span','+')}:{}):null,h(Button,{...nativeHostAttributes,state:resetModel(),type:'reset'})]),
+    h('button',{onClick:()=>cardVisible.value=!cardVisible.value},'Toggle task card'),
+    cardVisible.value?h(Card,{id:'bound-card',state:cardState({title:cardReviewed.value?'Reviewed tasks':'Household tasks',headingLevel:cardReviewed.value?3:2,raised:cardReviewed.value})},
+      {default:()=>h('p','Check the shared shopping list.'),actions:()=>cardReviewed.value?null:h('button',{onClick:()=>cardReviewed.value=true},'Review card task')}):null,
     h('button',{onClick:showDialog},'Open task dialog'),h('button',{onClick:()=>dialogReject.value=!dialogReject.value},'Toggle confirmation rejection'),
     h('output',{'aria-label':'Dialog action'},dialogAction.value),h('output',{'aria-label':'Dialog requests'},String(dialogRequests.value)),
     dialogMounted.value?h(Dialog,{id:'bound-dialog',state:taskDialog,open:dialogOpen.value,onRequest:dialogRequest,onAction:acceptDialog},{default:()=>[
