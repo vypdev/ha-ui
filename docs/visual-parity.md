@@ -411,3 +411,18 @@ requires every recorded image to be present and every indexed member to have a r
 `packRasterSet` in `tooling/raster-archive.mjs` produces deterministic ustar bytes from
 a map of relative PNG names to original buffers. Archived images remain independent of the
 compiled renderer and are never included in the shared runtime packages.
+
+## Rows and grids
+
+The [original layout record](evidence/ha-layout-reference.json) covers single and double line
+rows, projected leading content and actions, narrow wrapping and right-to-left text. It also
+covers the original Lovelace three-column grid, a one-column narrow result, square cells and
+two columns with right-to-left flow and a custom gap. The candidate reaches the narrow
+result using its own container width. The gate compares native row text and action geometry,
+grid tracks, nested card geometry and the full raster. All 48 layout captures match the original raster
+exactly on macOS ARM64, Linux ARM64 and Linux x64.
+
+Card and layout reference captures load the same local Arabic fallback in the actual HA
+module and the compiled candidate. The exact [font identity and license](provenance.md#measured-ha-row-and-grid-layout)
+are recorded independently of the renderer. This keeps RTL assertions reproducible even
+when a host or CI runner supplies a different fallback font.

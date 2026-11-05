@@ -77,6 +77,14 @@
     "./card": {
       "types": "./dist/components/card.d.ts",
       "import": "./dist/components/card.js"
+    },
+    "./layout-contracts": {
+      "types": "./dist/layout-contracts.d.ts",
+      "import": "./dist/layout-contracts.js"
+    },
+    "./layout": {
+      "types": "./dist/components/layout.d.ts",
+      "import": "./dist/components/layout.js"
     }
   },
   "publishConfig": {

@@ -6,5 +6,6 @@ import {registerCheckbox} from '@vypdev/ha-ui/checkbox';
 import {registerSelect} from '@vypdev/ha-ui/select';
 import {registerDialog} from '@vypdev/ha-ui/dialog';
 import {registerCard} from '@vypdev/ha-ui/card';
+import {registerGrid,registerRow} from '@vypdev/ha-ui/layout';
 import Consumer from './Consumer.svelte';
-registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();mount(Consumer,{target:document.querySelector('main')!});
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();mount(Consumer,{target:document.querySelector('main')!});

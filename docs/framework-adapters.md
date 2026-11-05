@@ -1,6 +1,6 @@
 # Framework bindings
 
-This unpublished preview has shared navigation with local icons/labels, one controlled text field, native-form buttons, boolean checkboxes, typed single/multiple selects, native dialogs and card surfaces,
+This unpublished preview has shared navigation with local icons/labels, one controlled text field, native-form buttons, boolean checkboxes, typed single/multiple selects, native dialogs, card surfaces, rows and grids,
 with four real framework bindings and text-field form bridges. Other controls and their bridges, framework
 SSR/client fixtures, broader browser support, public Storybook hosting, publication and app adoption remain required.
 
@@ -85,7 +85,7 @@ Every framework consumer compiles against installed declarations and runs real p
 events, content projection, disabled booleans, English/Spanish, live theme, keyboard, removal and remount
 journeys. Installed authored source must match the repository. Published manifests contain neither
 workspace nor file references. The resulting artifacts include the exact cohort digests and original
-browser screenshots. These checks cover navigation, text fields, buttons, checkboxes, selects, dialogs and cards. They do not complete the retained 70-case
+browser screenshots. These checks cover navigation, text fields, buttons, checkboxes, selects, dialogs, cards and layout. They do not complete the retained 70-case
 capability acceptance inventory or prove a real npm publication.
 
 The complete source/type/browser check sequence also passes with all five dist trees absent.
@@ -306,3 +306,13 @@ Pass the body as children (React/Svelte), the default slot (Vue) or projected ch
 Use the `actions` React prop, Vue slot or Svelte snippet; in Angular project an element with
 `slot="actions"`. These are application-owned commands with normal native semantics. The
 [card contract](card-contract.md) defines the parts, theme tokens and empty-slot behavior.
+
+## Layout bindings
+
+All four adapters export `Row` and `Grid`. Register `registerRow` and `registerGrid` on
+the client. Give `Row` a `rowState` model and project optional leading and trailing
+content with React props, Vue slots or Svelte snippets. Angular projects native elements
+with `slot="leading"` or `slot="trailing"`. Give `Grid` a `gridState` model and pass
+ordinary children (React/Svelte), default slot (Vue) or projected children (Angular).
+Resize changes the grid tracks without changing the order or ownership of those children.
+See the [layout contract](layout-contract.md) for the native semantics and layout tokens.

@@ -122,3 +122,9 @@ https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7c
 Modifications: native article and configurable semantic heading, optional slot lifecycle,
 logical spacing and support for the shared button's 44px native target within the original
 action surface. The package contains no upstream card runtime.
+
+Passive row spacing and grid tracks adapt measured Home Assistant frontend (Apache 2.0):
+https://github.com/home-assistant/frontend/blob/99d2742f4abab0d1e74c2f68393c9768bf0a8dfd/src/components/ha-md-list-item.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/panels/lovelace/cards/hui-grid-card.ts
+The shared implementation uses passive list semantics, native projected controls and a CSS grid
+with optional container-based track reduction. No HA or Material Web runtime is included.

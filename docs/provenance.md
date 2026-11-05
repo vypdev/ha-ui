@@ -132,7 +132,7 @@ authored here. Other authored component/controller code remains under the reposi
 
 Catalog font assets come from roboto-fontface 0.10.0, the exact package declared by the reviewed
 HA frontend. Regular and Medium WOFF2 files were byte-compared with the actual HA responses; their
-identities are recorded with the reference. Vite bundles only the two referenced files locally.
+identities are recorded with the reference. Vite bundles these two Roboto files locally.
 LICENSES/Roboto-Apache-2.0.txt preserves the package's Apache 2.0 license in the static catalog.
 These are catalog/app font assets; the shared renderer makes no remote request.
 
@@ -175,3 +175,20 @@ identifies the separately captured public app, component module, themes and orig
 The shared renderer adds a native article and configurable native heading, slot lifecycle and
 a footer that accommodates the shared button's native hit target. It does not import the
 Home Assistant runtime. The core NOTICE records the upstream attribution and modifications.
+
+## Measured HA row and grid layout
+
+The passive row follows the [HA Material list-item wrapper](https://github.com/home-assistant/frontend/blob/99d2742f4abab0d1e74c2f68393c9768bf0a8dfd/src/components/ha-md-list-item.ts).
+Grid tracks and gaps follow the [HA Lovelace grid](https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/panels/lovelace/cards/hui-grid-card.ts).
+The [layout reference](evidence/ha-layout-reference.json) fingerprints the actual installed
+public modules independently of those source links. Shared projection, semantics, and
+container-based track reduction are authored here. No HA or Material Web runtime is copied.
+
+For Arabic glyphs, the catalog ships the unmodified hinted Regular TTF from
+[Noto Sans Arabic 2.013](https://github.com/notofonts/arabic/releases/tag/NotoSansArabic-v2.013),
+commit `1b2b7e5c6ce3ab4d50681c854892325530084c35`. The file SHA-256 is
+`bdff3e5659d67e67def05b33f749683b9376ae819d65d3dd62ac4640b3aaef48`.
+The [original SIL Open Font License 1.1](../LICENSES/Noto-Sans-Arabic-OFL-1.1.txt)
+is shipped with the catalog. The reference harness maps these bytes to the existing Noto
+fallback for Arabic code points in both original and candidate captures. This holds browser
+font input constant across runners. The SDK packages do not ship or fetch this font.

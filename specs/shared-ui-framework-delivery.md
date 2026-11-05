@@ -630,6 +630,33 @@ Prospective repository files (current documents are classified against the immut
 | `tests/storybook/reference/ha-select/index.json` | create |
 | `tests/storybook/reference/ha-select/originals.tar` | create |
 | `tooling/raster-archive.mjs` | create |
+| `LICENSES/Noto-Sans-Arabic-OFL-1.1.txt` | create |
+| `docs/evidence/ha-layout-reference.json` | create |
+| `docs/layout-contract.md` | create |
+| `packages/angular/src/layout.ts` | create |
+| `packages/core/src/components/layout.ts` | create |
+| `packages/core/src/layout-contracts.ts` | create |
+| `packages/react/src/layout.ts` | create |
+| `packages/svelte/src/Grid.svelte` | create |
+| `packages/svelte/src/Row.svelte` | create |
+| `packages/vue/src/layout.ts` | create |
+| `stories/assets/NotoSansArabic-Regular.ttf` | create |
+| `stories/grid.example.ts` | create |
+| `stories/grid.stories.ts` | create |
+| `stories/row.example.ts` | create |
+| `stories/row.stories.ts` | create |
+| `tests/browser/angular-layout.test.ts` | create |
+| `tests/browser/fixtures/SvelteLayout.svelte` | create |
+| `tests/browser/layout-framework-fixture.ts` | create |
+| `tests/browser/layout.test.ts` | create |
+| `tests/browser/react-layout.test.ts` | create |
+| `tests/browser/svelte-layout.test.mjs` | create |
+| `tests/browser/vue-layout.test.ts` | create |
+| `tests/consumers/layouts.ts` | create |
+| `tests/contracts/layout.test.ts` | create |
+| `tests/storybook/layout-visual.ts` | create |
+| `tests/storybook/reference/ha-layout/index.json` | create |
+| `tests/storybook/reference/ha-layout/originals.tar` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

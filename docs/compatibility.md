@@ -1,8 +1,8 @@
 # Compatibility and validation status
 
 The current preview covers navigation and local panels, text fields, buttons, checkboxes, typed
-selects, native dialogs and cards. The same renderers pass source tests and compiled package consumers
-in React, Vue, Angular and Svelte. Rows/grids, feedback, responsive layout, framework SSR and the complete
+selects, native dialogs, cards, rows and grids. The same renderers pass source tests and compiled package consumers
+in React, Vue, Angular and Svelte. Feedback, broader layout, framework SSR and the complete
 browser matrix remain open.
 
 | Tool | Exact pin | Current use |
@@ -11,7 +11,7 @@ browser matrix remain open.
 | pnpm | 10.34.0 | Frozen workspace install |
 | TypeScript | 6.0.3 | Strict contract/type declarations; compatible candidate for Angular compiler-cli 22.2.4 |
 | Vite | 8.3.5 | Test transform toolchain |
-| Lit | 3.3.3 | Internal shared navigation, text-field, button, select, checkbox, dialog and card renderers |
+| Lit | 3.3.3 | Internal shared navigation, text-field, button, select, checkbox, dialog, card and layout renderers |
 | Vitest, browser provider and V8 coverage | 5.1.0 | Node and real Chromium; all four metrics globally and per authored runtime file |
 | Storybook / Web Components / docs / a11y / Vitest addon | 10.6.5 | Real catalog with strict declaration-only compatibility patch |
 | axe-core | 4.14.0 | All static locale/theme/width combinations |
@@ -38,7 +38,7 @@ tests, independent source-inventory coverage, architecture/CI contracts, compile
 a DOM-free contract and a compiled browser client, and the original pinned Copilot catalog validator.
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
 and reduced motion. The four framework fixtures also exercise text field, button, checkbox,
-select, dialog and card behavior. The browser-engine checks described below cover specific journeys;
+select, dialog, card and layout behavior. The browser-engine checks described below cover specific journeys;
 full cross-browser and framework SSR acceptance remains separate.
 Complete component-family/framework fixtures, public Storybook hosting, publication and actual app adoption remain required.
 The [implemented catalog and static browser gates](storybook.md) cover only the current families.

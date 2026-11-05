@@ -32,6 +32,10 @@ export async function exerciseCardVisual(page:Page,origin:string,output:string){
    document.body.style.cssText='margin:0;font:400 14px/1.6 Roboto,Noto,sans-serif;-webkit-font-smoothing:antialiased;';
    for(const[k,v]of Object.entries(tokens))document.body.style.setProperty(k,v);
    const proof=document.createElement('div');proof.id='card-proof';proof.style.cssText='position:fixed;left:32px;top:32px;padding:24px;display:inline-flex;align-items:flex-start;box-sizing:border-box;background:var(--primary-background-color);color:var(--primary-text-color)';
+   if(config.dir==='rtl'){
+    const font=await document.fonts.load('400 16px Noto','مهام المنزل');
+    if(!font.length||font.some(face=>face.status!=='loaded'))throw Error('Pinned Arabic reference font did not load');
+   }
    const card=document.createElement('vyp-ha-card');card.id='candidate-card';card.state=state;card.style.width=(config.width??320)+'px';card.dir=config.dir??'ltr';
    if(config.custom){card.style.setProperty('--ha-card-border-radius','4px');card.style.setProperty('--ha-card-border-width','2px');card.style.setProperty('--ha-card-background','var(--secondary-background-color)');}
    if(!config.empty){const body=document.createElement('div');body.textContent=config.copy??'Review the kitchen supplies before shopping.';card.append(body);}

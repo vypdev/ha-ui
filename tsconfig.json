@@ -62,6 +62,12 @@
       ],
       "@vypdev/ha-ui/card": [
         "./packages/core/src/components/card.ts"
+      ],
+      "@vypdev/ha-ui/layout-contracts": [
+        "./packages/core/src/layout-contracts.ts"
+      ],
+      "@vypdev/ha-ui/layout": [
+        "./packages/core/src/components/layout.ts"
       ]
     }
   },

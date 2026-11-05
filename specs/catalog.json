@@ -36,7 +36,9 @@
         "packages/core/src/components/dialog.ts",
         "packages/core/src/dialog-contracts.ts",
         "packages/core/src/components/card.ts",
-        "packages/core/src/card-contracts.ts"
+        "packages/core/src/card-contracts.ts",
+        "packages/core/src/layout-contracts.ts",
+        "packages/core/src/components/layout.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
@@ -103,7 +105,16 @@
         "packages/svelte/src/Card.svelte",
         "stories/dialog.example.ts",
         "stories/card.example.ts",
-        "tooling/raster-archive.mjs"
+        "tooling/raster-archive.mjs",
+        "packages/core/src/layout-contracts.ts",
+        "packages/core/src/components/layout.ts",
+        "packages/react/src/layout.ts",
+        "packages/vue/src/layout.ts",
+        "packages/angular/src/layout.ts",
+        "packages/svelte/src/Row.svelte",
+        "packages/svelte/src/Grid.svelte",
+        "stories/row.example.ts",
+        "stories/grid.example.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -254,7 +265,13 @@
         "tests/storybook/reference/ha-select-multiple/index.json",
         "tests/storybook/reference/ha-select-multiple/originals.tar",
         "tests/storybook/reference/ha-select/index.json",
-        "tests/storybook/reference/ha-select/originals.tar"
+        "tests/storybook/reference/ha-select/originals.tar",
+        "tests/contracts/layout.test.ts",
+        "tests/browser/layout.test.ts",
+        "tests/storybook/layout-visual.ts",
+        "tests/consumers/layouts.ts",
+        "tests/storybook/reference/ha-layout/index.json",
+        "tests/storybook/reference/ha-layout/originals.tar"
       ],
       "documentation": [
         "README.md",
@@ -283,7 +300,10 @@
         "docs/dialog-contract.md",
         "docs/card-contract.md",
         "docs/evidence/ha-dialog-reference.json",
-        "docs/evidence/ha-card-reference.json"
+        "docs/evidence/ha-card-reference.json",
+        "docs/layout-contract.md",
+        "docs/evidence/ha-layout-reference.json",
+        "LICENSES/Noto-Sans-Arabic-OFL-1.1.txt"
       ],
       "readiness": {
         "status": "draft",

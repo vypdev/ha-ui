@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card} from '@vypdev/ha-ui-svelte';
+  import {Tabs,TextField,Button,Select,Checkbox,Dialog,Card,Grid,Row} from '@vypdev/ha-ui-svelte';
   import type {NavigationSelectionEvent} from '@vypdev/ha-ui/tabs';
   import type {FieldValueEvent} from '@vypdev/ha-ui/field';
   import type {ButtonPressEvent} from '@vypdev/ha-ui/button';
@@ -12,6 +12,10 @@
   import {dialogState,type DialogRequestDetail} from '@vypdev/ha-ui/dialog-contracts';
   import {cardState} from '@vypdev/ha-ui/card-contracts';
   let cardReviewed=$state(false),cardVisible=$state(true);
+  import {gridState,rowState} from '@vypdev/ha-ui/layout-contracts';
+  let layoutReviewed=$state(false);
+  const taskGrid=$derived(gridState({columns:layoutReviewed?2:3,minColumnWidth:150,label:layoutReviewed?'Reviewed layout':'Household layout'}));
+  const taskRow=$derived(rowState({label:layoutReviewed?'Reviewed supplies':'Inspect supplies',description:'Shopping list'}));
   const taskCard=$derived(cardState({title:cardReviewed?'Reviewed tasks':'Household tasks',headingLevel:cardReviewed?3:2,raised:cardReviewed}));
   const taskDialog=dialogState({title:'Review household task',description:'Review the task before making changes.',confirmLabel:'Confirm task'});
   let dialogOpen=$state(false),dialogMounted=$state(true),dialogReject=$state(false),dialogAction=$state(''),dialogRequests=$state(0);
@@ -50,6 +54,8 @@
     {#if fieldVisible}<TextField state={fieldModel(spanish)} {value} name="task" defaultValue="Kitchen" disabled={fieldDisabled} onValueRequest={observe} onValueChange={(next)=>value=next} />{/if}
     {#if buttonVisible}<Button id="bound-submit" state={actionModel(spanish,busy)} type="submit" name="action" value="save" disabled={buttonDisabled} onPressRequest={press} onPress={()=>accepted++} leading={icons?leading:undefined} />{/if}<Button state={resetModel()} type="reset" />
   </form>
+  {#snippet rowAction()}<button onclick={()=>layoutReviewed=true}>Review list row</button>{/snippet}
+  <Grid id="bound-layout" state={taskGrid} style="width:480px"><div role="list"><Row state={taskRow} trailing={rowAction} /></div></Grid>
   <button onclick={()=>cardVisible=!cardVisible}>Toggle task card</button>
   {#snippet reviewCard()}{#if !cardReviewed}<button onclick={()=>cardReviewed=true}>Review card task</button>{/if}{/snippet}
   {#if cardVisible}<Card id="bound-card" state={taskCard} actions={reviewCard}><p>Check the shared shopping list.</p></Card>{/if}

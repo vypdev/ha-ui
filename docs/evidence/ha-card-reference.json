@@ -3,14 +3,15 @@
   "referenceSource": "https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-card.ts",
   "referenceSourceNote": "This reviewed source revision documents the styling contract. The installed release is identified separately by the public app and module bytes.",
   "publicChunk": "47578.fba66e0739297711.js",
-  "harness": "Load only recorded public frontend modules and theme tokens, substitute the application bootstrap with an exposed loader, render fictional card content, then require matching consecutive compositor frames and a second independent run. Byte-identical baseline images share a path; each platform measurement and capture is retained in the manifest.",
+  "harness": "Load only recorded public frontend modules and theme tokens, substitute the application bootstrap with an exposed loader, render fictional card content, then require matching consecutive compositor frames and a second independent run. Byte-identical baseline images share a path; each platform measurement and capture is retained in the manifest. The original and candidate use the same pinned Arabic fallback for RTL captures.",
   "appSha256": "7b0d03a0c75c971cd3084c988430c512414209ca2c8bba8d506724d3be2827ec",
   "modules": [
     95788
   ],
   "fonts": {
     "regular": "47107401d0adb375ab9aa167f9d62489a849d510e740a307b5a4db60e5db3562",
-    "medium": "96025fe9db6578d8bc7f4b8be739750b1490e07221c2b1f16acde2ea7669cedf"
+    "medium": "96025fe9db6578d8bc7f4b8be739750b1490e07221c2b1f16acde2ea7669cedf",
+    "arabic": "bdff3e5659d67e67def05b33f749683b9376ae819d65d3dd62ac4640b3aaef48"
   },
   "themes": {
     "light": {
@@ -2297,9 +2298,9 @@
             "height": 72.796875
           },
           "glyph": {
-            "x": 239.5625,
+            "x": 217.734375,
             "y": 45,
-            "width": 87.4375,
+            "width": 109.265625,
             "height": 28
           },
           "style": {
@@ -2328,9 +2329,9 @@
             "height": 38.390625
           },
           "glyph": {
-            "x": 238.9375,
+            "x": 231.109375,
             "y": 92.796875,
-            "width": 88.0625,
+            "width": 95.890625,
             "height": 16
           },
           "style": {
@@ -2356,7 +2357,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-card/macos-arm64/light-rtl.png",
-        "sha256": "75cd2014c72c5cf09e429d92cae3107f9828b2c1be961fbea3194e3d66084187"
+        "sha256": "1d0237e67474c19acab755eab6409cb20d3a4dac0e9104eaa382885d3ca7a912"
       }
     },
     {
@@ -3133,9 +3134,9 @@
             "height": 72.796875
           },
           "glyph": {
-            "x": 239.5625,
+            "x": 217.734375,
             "y": 45,
-            "width": 87.4375,
+            "width": 109.265625,
             "height": 28
           },
           "style": {
@@ -3164,9 +3165,9 @@
             "height": 38.390625
           },
           "glyph": {
-            "x": 238.9375,
+            "x": 231.109375,
             "y": 92.796875,
-            "width": 88.0625,
+            "width": 95.890625,
             "height": 16
           },
           "style": {
@@ -3192,7 +3193,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-card/macos-arm64/dark-rtl.png",
-        "sha256": "82b873a2771ce8aa6776b330dde302d7e01c6684217671faea2fd253d71a3934"
+        "sha256": "eff945984913970884d0d4a6f011d38d818d27f3b20b96fe9ace720ef7bfae15"
       }
     },
     {
@@ -3969,9 +3970,9 @@
             "height": 72.796875
           },
           "glyph": {
-            "x": 234.28125,
+            "x": 216.28125,
             "y": 45,
-            "width": 92.71875,
+            "width": 110.71875,
             "height": 28
           },
           "style": {
@@ -4000,9 +4001,9 @@
             "height": 38.390625
           },
           "glyph": {
-            "x": 245,
+            "x": 233,
             "y": 92.796875,
-            "width": 82,
+            "width": 94,
             "height": 16
           },
           "style": {
@@ -4028,7 +4029,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-card/linux-arm64/light-rtl.png",
-        "sha256": "27bde1b513252087b2ae8ba5ec772fbc79d8b2e216ab9f5576260169e9432638"
+        "sha256": "aff4927c99493fd77bc0257e3005af9e464e5cc118ddbe0540adf52e52938c64"
       }
     },
     {
@@ -4805,9 +4806,9 @@
             "height": 72.796875
           },
           "glyph": {
-            "x": 234.28125,
+            "x": 216.28125,
             "y": 45,
-            "width": 92.71875,
+            "width": 110.71875,
             "height": 28
           },
           "style": {
@@ -4836,9 +4837,9 @@
             "height": 38.390625
           },
           "glyph": {
-            "x": 245,
+            "x": 233,
             "y": 92.796875,
-            "width": 82,
+            "width": 94,
             "height": 16
           },
           "style": {
@@ -4864,7 +4865,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-card/linux-arm64/dark-rtl.png",
-        "sha256": "a56935b6eee474445f77682b18f7706a2c65cfc943597a511c679f77a4891dab"
+        "sha256": "1d3c98432c8ae625850c6dd73bd27a54b61de6e6514be7b5d40399ad92ff8fd3"
       }
     },
     {
@@ -5641,9 +5642,9 @@
             "height": 72.796875
           },
           "glyph": {
-            "x": 234.28125,
+            "x": 216.28125,
             "y": 45,
-            "width": 92.71875,
+            "width": 110.71875,
             "height": 28
           },
           "style": {
@@ -5672,9 +5673,9 @@
             "height": 38.390625
           },
           "glyph": {
-            "x": 245,
+            "x": 233,
             "y": 92.796875,
-            "width": 82,
+            "width": 94,
             "height": 16
           },
           "style": {
@@ -5700,7 +5701,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-card/linux-arm64/light-rtl.png",
-        "sha256": "27bde1b513252087b2ae8ba5ec772fbc79d8b2e216ab9f5576260169e9432638"
+        "sha256": "aff4927c99493fd77bc0257e3005af9e464e5cc118ddbe0540adf52e52938c64"
       }
     },
     {
@@ -6477,9 +6478,9 @@
             "height": 72.796875
           },
           "glyph": {
-            "x": 234.28125,
+            "x": 216.28125,
             "y": 45,
-            "width": 92.71875,
+            "width": 110.71875,
             "height": 28
           },
           "style": {
@@ -6508,9 +6509,9 @@
             "height": 38.390625
           },
           "glyph": {
-            "x": 245,
+            "x": 233,
             "y": 92.796875,
-            "width": 82,
+            "width": 94,
             "height": 16
           },
           "style": {
@@ -6536,7 +6537,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-card/linux-arm64/dark-rtl.png",
-        "sha256": "a56935b6eee474445f77682b18f7706a2c65cfc943597a511c679f77a4891dab"
+        "sha256": "1d3c98432c8ae625850c6dd73bd27a54b61de6e6514be7b5d40399ad92ff8fd3"
       }
     },
     {
@@ -6721,5 +6722,15 @@
         "sha256": "237af17c0dccda88c2456201c01ac35b70fb92dd65b82cd446d2883f7ff95bf0"
       }
     }
-  ]
+  ],
+  "arabicFont": {
+    "family": "Noto Sans Arabic",
+    "version": "2.013",
+    "source": "https://github.com/notofonts/arabic/releases/tag/NotoSansArabic-v2.013",
+    "sourceCommit": "1b2b7e5c6ce3ab4d50681c854892325530084c35",
+    "path": "stories/assets/NotoSansArabic-Regular.ttf",
+    "sha256": "bdff3e5659d67e67def05b33f749683b9376ae819d65d3dd62ac4640b3aaef48",
+    "license": "LICENSES/Noto-Sans-Arabic-OFL-1.1.txt",
+    "scope": "Identical catalog-only Arabic fallback mapped to the existing Noto family and limited to Arabic code points. Runtime applications supply their own fonts."
+  }
 }

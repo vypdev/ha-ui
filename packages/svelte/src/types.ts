@@ -41,3 +41,11 @@ import type {CardState} from '@vypdev/ha-ui/card-contracts';
 export interface CardProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'>{
  state:CardState;children?:Snippet;actions?:Snippet;
 }
+
+import type {GridState,RowState} from '@vypdev/ha-ui/layout-contracts';
+export interface RowProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {
+ state:RowState;leading?:Snippet;trailing?:Snippet;
+}
+export interface GridProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {
+ state:GridState;children?:Snippet;
+}

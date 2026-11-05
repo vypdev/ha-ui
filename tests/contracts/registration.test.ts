@@ -4,6 +4,7 @@ import {registerSelect} from '../../packages/core/src/components/select.js';
 import {registerButton} from '../../packages/core/src/components/button.js';
 import {registerDialog} from '../../packages/core/src/components/dialog.js';
 import {registerCard} from '../../packages/core/src/components/card.js';
+import {registerGrid,registerRow} from '../../packages/core/src/components/layout.js';
 import {registerTabs} from '../../packages/core/src/components/tabs.js';
 test('does not define a tag or render on the server; registration rejects even a dependency DOM shim', () => {
   expect(typeof document).toBe('undefined');
@@ -26,6 +27,8 @@ test.each([
   ['vyp-ha-field',registerField,'registerField requires a browser CustomElementRegistry'],
   ['vyp-ha-dialog',registerDialog,'registerDialog requires a browser CustomElementRegistry'],
   ['vyp-ha-card',registerCard,'registerCard requires a browser CustomElementRegistry'],
+  ['vyp-ha-row',registerRow,'Layout registration requires a browser CustomElementRegistry'],
+  ['vyp-ha-grid',registerGrid,'Layout registration requires a browser CustomElementRegistry'],
 ] as const)('rejects %s registration with no registry at all',(tag,register,message)=>{
   vi.stubGlobal('customElements',undefined);
   expect(typeof document).toBe('undefined');
@@ -43,3 +46,12 @@ test('checkbox registration rejects a server even with a dependency registry shi
 test('dialog registration rejects a server without registering its button dependency',()=>{expect(typeof document).toBe('undefined');expect(()=>registerDialog()).toThrow('registerDialog requires a browser CustomElementRegistry');expect(globalThis.customElements?.get('vyp-ha-dialog')).toBeUndefined();expect(globalThis.customElements?.get('vyp-ha-button')).toBeUndefined();});
 
 test('card registration rejects server rendering without defining its tag',()=>{expect(typeof document).toBe('undefined');expect(()=>registerCard()).toThrow('registerCard requires a browser CustomElementRegistry');expect(globalThis.customElements?.get('vyp-ha-card')).toBeUndefined();});
+
+
+test('layout imports leave both tags unregistered in a DOM-free process with a registry shim',()=>{
+ expect(typeof document).toBe('undefined');
+ expect(()=>registerRow()).toThrow('Layout registration requires a browser CustomElementRegistry');
+ expect(()=>registerGrid()).toThrow('Layout registration requires a browser CustomElementRegistry');
+ expect(globalThis.customElements?.get('vyp-ha-row')).toBeUndefined();
+ expect(globalThis.customElements?.get('vyp-ha-grid')).toBeUndefined();
+});
