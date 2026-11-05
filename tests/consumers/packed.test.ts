@@ -123,7 +123,7 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
     assert.match(probe.stdout, /Packed contract imported without DOM globals/u);
     const installed = join(consumer, 'node_modules/@vypdev/ha-ui');
     const packageFiles=['LICENSE','NOTICE','LICENSES/Home-Assistant-Apache-2.0.txt','LICENSES/Font-Awesome-Free-7.0.0.txt','LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt'];
-    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','checkbox-contracts','components/checkbox','components/implicit-submit']) {
+    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','components/select-list','checkbox-contracts','checkbox-mark','components/checkbox','components/implicit-submit']) {
       packageFiles.push('src/'+module+'.ts');
       for (const suffix of ['.js','.js.map','.d.ts','.d.ts.map']) packageFiles.push('dist/'+module+suffix);
     }

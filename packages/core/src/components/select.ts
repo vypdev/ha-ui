@@ -1,8 +1,10 @@
 import {LitElement,css,html,nothing} from 'lit';
 import {SelectInputError,selectState,selectSelection,selectName,selectValidity,selectEntries,selectRestoreState,selectRestoreValue,type SelectState,type SelectSelection,type SelectValueReason,type SelectValueDetail} from '../select-contracts.js';
 import {moveSelectOption,matchSelectOption} from '../select-navigation.js';
+import {changeMultipleSelection} from '../select-multiple.js';
 import {SelectionPopup} from './selection-popup.js';
 import {SelectChips,selectChipsStyles} from './select-chips.js';
+import {renderSelectList,selectListStyles,syncSelectList} from './select-list.js';
 export type {SelectValueDetail,SelectValueReason} from '../select-contracts.js';
 export type SelectValueEvent=CustomEvent<SelectValueDetail>;
 const attributeName={fromAttribute:(value:string|null)=>value??''};
@@ -12,7 +14,7 @@ export class HaSelect extends LitElement {
  static shadowRootOptions={...LitElement.shadowRootOptions,delegatesFocus:true};
  static properties={state:{attribute:false,noAccessor:true},value:{attribute:false,noAccessor:true},defaultValue:{attribute:false,noAccessor:true},name:{converter:attributeName,noAccessor:true},disabled:{type:Boolean,noAccessor:true}};
  // Geometry adapted from Gateway's MIT field/select catalog; semantic behavior is authored here.
- static styles=[selectChipsStyles,css`
+ static styles=[selectChipsStyles,selectListStyles,css`
   :host{display:block;min-width:0;font:400 14px/1.35 var(--vyp-ha-font-family,var(--primary-font-family,Roboto,Noto,sans-serif));color:var(--vyp-ha-text,var(--primary-text-color,#1c1c1c));}
     :host([hidden]){display:none;}
   .field{display:grid;gap:6px;}label{font-size:14px;line-height:1.35;}
@@ -53,15 +55,20 @@ export class HaSelect extends LitElement {
  #pending:{reason:SelectValueReason;serialized:string}|null=null;#fromAttribute=false;#restoringAttribute=false;
  #opened=false;#active=-1;#keyboard=false;#search='';#searchUntil=0;#hovered=false;#popup=new SelectionPopup(this,()=>this.#hide());
  #chips=new SelectChips(this,value=>{this.#dirty=true;this.#request(value,'change');},()=>!this.disabled&&!this.#formDisabled);
- constructor(){super();this.addEventListener('invalid',this.#reveal);this.addEventListener('focusout',()=>{if(this.#chipsMode)this.#reveal();});}
+ constructor(){super();this.addEventListener('invalid',this.#reveal);this.addEventListener('focusout',()=>{if(this.#chipsMode||this.#listMode)this.#reveal();});}
  attributeChangedCallback(name:string,previous:string|null,next:string|null):void{
   if(this.#restoringAttribute)return;
   try{if(name==='name')selectName(next??'');}catch(error){this.#restoringAttribute=true;if(previous===null)this.removeAttribute(name);else this.setAttribute(name,previous);this.#restoringAttribute=false;throw error;}
   this.#fromAttribute=true;super.attributeChangedCallback(name,previous,next);this.#fromAttribute=false;
  }
- get #control():HTMLSelectElement|HTMLButtonElement|null{return this.shadowRoot?.querySelector('#control')??null;}
+ get #control():HTMLSelectElement|HTMLButtonElement|HTMLInputElement|null{
+  const root=this.shadowRoot;
+  if(this.#listMode)return root?.querySelector<HTMLInputElement>('.choice-input:checked:not(:disabled)')??root?.querySelector<HTMLInputElement>('.choice-input:not(:disabled)')??null;
+  return root?.querySelector('#control')??null;
+ }
  get #pickerMode():boolean{return !this.state.multiple&&(this.state.mode==='dropdown'||this.state.mode==='auto'&&this.state.size===1);}
  get #chipsMode():boolean{return this.state.multiple&&this.state.mode==='dropdown';}
+ get #listMode():boolean{return this.state.mode==='list';}
  get #selectedIndex():number{return this.value===null||typeof this.value==='object'?-1:this.state.options.findIndex(option=>option.value===this.value);}
  get state():SelectState{return this.#state;}
  set state(raw:SelectState){const next=selectState(raw),previous=this.#state;this.#hide();this.#state=next;this.#sync();this.requestUpdate('state',previous);}
@@ -82,7 +89,7 @@ export class HaSelect extends LitElement {
  reportValidity():boolean{this.#reveal();return this.#internals.reportValidity();}
  setCustomValidity(message:string):void{selectValidity(this.value,this.state,message);this.#customError=message;this.#sync();this.requestUpdate();}
  focus(options?:FocusOptions):void{if(!this.#chips.focus(options))this.#control?.focus(options);}
- blur():void{this.#hide();this.#control?.blur();}
+ blur():void{this.#hide();if(this.#listMode)this.shadowRoot?.querySelector<HTMLInputElement>('.choice-input:focus')?.blur();else this.#control?.blur();}
  formDisabledCallback(disabled:boolean):void{this.#formDisabled=disabled;this.#sync();this.requestUpdate();}
  formResetCallback():void{this.#showValidation=false;this.#hide();this.#request(this.defaultValue,'reset');this.requestUpdate();}
  formStateRestoreCallback(raw:string|File|FormData,mode:'restore'|'autocomplete'):void{if(mode!=='restore'&&mode!=='autocomplete')throw new SelectInputError();const next=selectRestoreValue(raw);this.#hide();this.#request(next,mode);}
@@ -93,6 +100,7 @@ export class HaSelect extends LitElement {
   else this.#internals.setFormValue(entries[0],restoration);
   const validity=selectValidity(this.value,state,this.#customError);this.#internals.setValidity(validity.flags,validity.message,control??undefined);
   if(disabled){this.#hide();this.#setHover(false);}
+  if(this.#listMode){syncSelectList(this.shadowRoot,state,this.value,disabled);return;}
   if(control!==null)control.disabled=disabled;
   if(control instanceof HTMLSelectElement){
    control.multiple=state.multiple;control.size=state.size;
@@ -106,7 +114,7 @@ export class HaSelect extends LitElement {
   this.#sync();this.#renderedState=this.state;
   if(this.#opened){const surface=this.shadowRoot!.querySelector<HTMLElement>('#options')!,anchor=this.#control!;if(!this.#popup.opened)this.#popup.show(anchor,surface);else this.#popup.position();this.shadowRoot!.getElementById('option-'+this.#active)?.scrollIntoView({block:'nearest'});}
  }
- disconnectedCallback():void{this.#hide();this.#setHover(false);super.disconnectedCallback();}
+ disconnectedCallback():void{this.#renderedState=null;this.#hide();this.#setHover(false);super.disconnectedCallback();}
  #setHover(value:boolean):void{if(value===this.#hovered)return;this.#hovered=value;this.requestUpdate();}
  #hover(event:PointerEvent):void{
   if(!this.isConnected||event.currentTarget!==this.shadowRoot!.querySelector('.picker')||!event.isPrimary||event.pointerType==='touch')return;
@@ -156,9 +164,17 @@ export class HaSelect extends LitElement {
    this.#dirty=true;this.#request(this.state.multiple?values:values[0]??null,'change');
   }finally{this.#sync();}
  }
+ #listChange(state:SelectState,value:SelectSelection,index:number,event:Event):void{
+  const input=event.currentTarget as HTMLInputElement,option=state.options[index];
+  if(!this.isConnected||!this.#listMode||this.disabled||this.#formDisabled||state!==this.state||state!==this.#renderedState||value!==this.value||input!==this.shadowRoot!.getElementById('list-option-'+index)||option.disabled){this.#sync();return;}
+  const next=state.multiple?changeMultipleSelection(value,option.value,input.checked?'add':'remove'):input.checked?option.value:null;
+  if(next===null||next===value){this.#sync();return;}
+  this.#dirty=true;this.#request(next,'change');
+ }
  protected render(){
   const state=this.state,validity=selectValidity(this.value,state,this.#customError),message=(this.#showValidation||state.error||this.#customError)?validity.message:'';
   const described=[state.description?'help':'',message?'error':''].filter(Boolean).join(' ');
+  if(this.#listMode){const value=this.value;return html`<div class="picker-field list-field" part="field">${renderSelectList(state,value,this.disabled||this.#formDisabled,described,!!message,(index,event)=>this.#listChange(state,value,index,event))}${state.description?html`<div class="picker-help" id="help" part="help">${state.description}</div>`:nothing}${message?html`<div class="picker-error" id="error" part="error" aria-live="polite">${message}</div>`:nothing}</div>`;}
   if(this.#chipsMode)return html`<div class="multiple-field"><div class="multiple-paint" part="field">${this.#chips.render(state,this.value,this.disabled||this.#formDisabled,described,!!message)}${state.description?html`<div class="picker-help" id="help" part="help">${state.description}</div>`:nothing}${message?html`<div class="picker-error" id="error" part="error" aria-live="polite">${message}</div>`:nothing}</div></div>`;
   if(this.#pickerMode){
    const selected=this.#selectedIndex<0?null:state.options[this.#selectedIndex],clearable=state.clearable&&!state.required&&!this.disabled&&!this.#formDisabled&&selected!==null;

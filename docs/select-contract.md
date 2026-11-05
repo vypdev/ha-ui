@@ -30,9 +30,10 @@ clear action; required, disabled and already empty controls omit that action. Ap
 the clear name alongside their label, description and validation messages.
 
 `mode` is `auto` (default), `dropdown` or `list`. Auto retains the existing size projection:
-single size 1 is a filled picker; larger sizes and multiple auto mode are visible native lists.
+single size 1 is a filled picker; larger sizes and multiple auto mode use the native `select`.
 Explicit dropdown mode uses the single filled picker or the multiple chip/search renderer,
-independently of size. Explicit list mode retains a native select pending its own HA calibration.
+independently of size. Explicit list mode renders all choices as radios or checkboxes and
+ignores size.
 The multiple dropdown accepts localized inert searchLabel (default Search options),
 searchPlaceholder (default Search), notFoundMessage (default No matching options.) and removeLabel
 (default Remove). Their bounds are respectively 1..256, 0..256, 1..512 and 1..256 Unicode points.
@@ -52,8 +53,8 @@ The DOM-independent `/select-contracts` entrypoint has no browser/framework impo
 owns one renderer in Shadow DOM, an associated label, optional description and localized validation
 message. A single dropdown uses a native button with the combobox role and a separate
 listbox in a browser popover. The multiple dropdown renders selected chips and a named button
-opening a native modal search dialog. Visible-list modes retain a native select pending their
-visual increment. There is no routing, HA API, application authorization or
+opening a native modal search dialog. A single list uses a named native radio group, and a
+multiple list uses a named group of native checkboxes. There is no routing, HA API, application authorization or
 duplicate framework renderer. The form bridge and typed request protocol are shared across modes.
 
 Arrow keys and Home/End preview enabled options while DOM focus stays on the single combobox.
@@ -84,6 +85,15 @@ the host reserves 12px after its painted field for the larger action target. Thi
 exception is measured separately from painted HA geometry. The search-clear action similarly has
 a 44px native target around its 24px icon slot. Visual parity does not claim that HA's original
 smaller native hit boxes are reproduced.
+
+Visible radio choices use the browser's native arrow-key selection. Checklist choices retain
+ordinary Tab and Space behavior. Disabled choices and disabled fieldsets suppress changes;
+unavailable model values remain controlled by the consumer. Each native input covers its
+own row (at least 44px for radios and 40px for checkboxes), without overlapping adjacent
+targets. Selection attempts produce one typed request; if the consumer rejects or ignores it,
+the native checked state is restored immediately. Checkbox edits preserve accepted model order;
+successful form entries use option order. Required guidance belongs to the group, and a list
+without options exposes an accessible status. Reset and restoration keep the shared form contract.
 
 `state`, controlled `value` and `defaultValue` are properties, not serialized attributes. `name`
 is reflected; disabled is a real boolean property/native presence attribute. `form` is a readonly

@@ -323,5 +323,30 @@ disabled choices; original quirks do not authorize a product regression. The cat
 accessible search-placeholder and dark action colors separately from original-token fixtures.
 Eight independent default-rule axe scans cover light/dark open choices, filtering, no matches
 and empty dialogs. Source tests and actual installed consumers remain separate acceptance gates.
-Explicit visible lists, custom font/theme breadth, complete browser/framework coverage, deployed
-applications and human UX remain outside this increment's acceptance.
+Custom font/theme breadth, complete browser/framework coverage, deployed applications and human
+UX remain outside this increment's acceptance.
+
+## Visible radio and checkbox lists
+
+The [list reference](evidence/ha-select-list-reference.json) records the actual Home Assistant
+`ha-selector-select` in explicit list mode. On each of macOS ARM64, Linux ARM64 and Linux x64,
+it contains 40 states: single and multiple, light and dark, with empty, filled, hover, keyboard
+focus, disabled, required, helper, narrow, right-to-left and no-option variants. Every original PNG
+agrees byte for byte with a separate capture. All 120 compiled candidate PNGs match exactly,
+including alpha. The comparison also checks measured geometry, glyph positions and paint styles.
+It uses the same selector bounds, fonts and original asset provenance as the dropdown tests.
+
+The radio rows match HA's label spacing and 20px mark, including its physical margins in RTL.
+Checklist rows match the 20px checkbox and wrap long copy. The checkbox reuses the attributed
+Font Awesome check path with Web Awesome's inline translation. A counterexample without that
+translation reproduced the remaining edge-pixel difference with otherwise matching geometry.
+Helper text keeps HA's horizontal inset and follows the list without a top margin.
+
+The candidate uses a native radio or checkbox over each full row. The test checks that adjacent
+targets do not overlap and that rows are at least 44px tall for radios and 40px for checkboxes.
+Required guidance and empty-list status remain accessible; the application keeps control of the
+typed model. The compiled catalog exercises both stories across EN/ES, light/dark and wide/narrow
+layouts with default axe rules. Installed consumers exercise cancellation, keyboard selection,
+disabled choices, fieldsets, reset and repeated form entries in the four framework bindings.
+Original screenshots use fictional category names and recorded public modules; the suite makes
+no Home Assistant API requests.

@@ -92,3 +92,15 @@ the field explicitly reserves 12px for the larger target. Search clearing retain
 golden PNGs remain unchanged reference inputs, and are not dependencies of the package.
 The embedded close, playlist-plus and magnify paths are unmodified Material Design Icons 7.4.47
 under the Pictogrammers Apache License 2.0 above. No HA/Web Awesome runtime is imported.
+
+Visible selector lists adapt the Home Assistant frontend selector, radio group, radio option,
+checkbox and helper text (Apache License 2.0) at the same reviewed source revision:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-selector/ha-selector-select.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/radio/ha-radio-group.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/radio/ha-radio-option.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-input-helper-text.ts
+The checkbox icon's inline translation follows @home-assistant/webawesome 3.14.0-ha.2
+(MIT) at the reviewed artifact gitHead above; it reuses the same unmodified Font Awesome check
+path under CC BY 4.0. Modifications: native radio/checkbox choices fill their own nonoverlapping
+rows, typed controlled requests, shared ElementInternals validation and form submission, and
+accessible group guidance. No Home Assistant or Web Awesome runtime is imported.

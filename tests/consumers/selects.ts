@@ -36,7 +36,21 @@ export async function exerciseFrameworkSelect(page:Page,root:string,framework:st
  await page.getByRole('button',{name:'Toggle category disabled',exact:true}).click();assert.equal(await add.isDisabled(),true);assert.equal(await host.getByRole('button',{name:'Remove Maintenance',exact:true}).isDisabled(),true);assert.deepEqual(await form.evaluate(element=>[...new FormData(element as HTMLFormElement)]),[]);await page.getByRole('button',{name:'Toggle category disabled',exact:true}).click();
  await page.getByRole('button',{name:'Toggle category',exact:true}).click();await host.waitFor({state:'detached'});await page.getByRole('button',{name:'Toggle category',exact:true}).click();await add.click();await host.getByRole('option',{name:'Shopping',exact:true}).click();await waitEvents(14);await waitModel([1,false,'1']);await host.screenshot({path:join(root,'test-results','packed-'+framework+'-select-chips-light.png')});
  await page.getByRole('button',{name:'Toggle category mode',exact:true}).click();await waitModel(1);
- return {typedNumberStringBoolean:true,pickerTypeahead:true,originalRequestExactlyOnce:true,cancellation:true,programmaticWritesEmitNoIntent:true,asyncOptionsPreserveModel:true,requiredValidation:true,disabledSubmission:true,nativeFormData:true,multipleTypedValues:true,frameworkReset:true,teardownAndRemount:true,chipsDropdown:{typedSearchAndAddition:true,cancelableRemoval:true,controlledReset:true,disabledSubmission:true,teardownAndRemount:true}};
+ await page.getByRole('button',{name:'Use category list',exact:true}).click();
+ await host.getByRole('radiogroup',{name:'Category',exact:true}).waitFor();assert.equal(await count('Category events'),14);
+ const radio=host.getByRole('radio',{name:'Shopping',exact:true});
+ await page.getByRole('button',{name:'Reject category changes',exact:true}).click();await radio.click();await waitEvents(15);await waitModel(1);assert.equal(await radio.isChecked(),false);
+ await page.getByRole('button',{name:'Reject category changes',exact:true}).click();await radio.click();await waitEvents(16);await waitModel('1');await page.keyboard.press('ArrowDown');await waitEvents(17);await waitModel(false);
+ await page.getByRole('button',{name:'Reset category',exact:true}).click();await waitEvents(18);await waitModel(1);await host.screenshot({path:join(root,'test-results','packed-'+framework+'-select-single-list.png')});
+ await page.getByRole('button',{name:'Toggle category mode',exact:true}).click();await waitModel([1,false]);await host.getByRole('group',{name:'Category',exact:true}).waitFor();
+ const shopping=host.getByRole('checkbox',{name:'Shopping',exact:true}),archived=host.getByRole('checkbox',{name:'Archived',exact:true});
+ assert.equal(await archived.isDisabled(),true);await shopping.focus();await page.keyboard.press('Space');await waitEvents(19);await waitModel([1,false,'1']);assert.equal(await shopping.isChecked(),true);
+ await page.getByRole('button',{name:'Save category',exact:true}).click();await page.waitForFunction(()=>document.querySelector('output[aria-label="Category submits"]')!.textContent==='3');assert.deepEqual(await saved(),[['category','1'],['category','1'],['category','false']]);
+ await host.screenshot({path:join(root,'test-results','packed-'+framework+'-select-multiple-list.png')});
+ await page.getByRole('button',{name:'Toggle category disabled',exact:true}).click();assert.equal(await shopping.isDisabled(),true);assert.deepEqual(await form.evaluate(element=>[...new FormData(element as HTMLFormElement)]),[]);
+ await page.getByRole('button',{name:'Toggle category disabled',exact:true}).click();await page.getByRole('button',{name:'Reset category',exact:true}).click();await waitEvents(20);await waitModel([1,false]);assert.equal(await shopping.isChecked(),false);
+ await page.getByRole('button',{name:'Toggle category mode',exact:true}).click();await waitModel(1);await page.getByRole('button',{name:'Use category dropdown',exact:true}).click();
+ return {typedNumberStringBoolean:true,pickerTypeahead:true,originalRequestExactlyOnce:true,cancellation:true,programmaticWritesEmitNoIntent:true,asyncOptionsPreserveModel:true,requiredValidation:true,disabledSubmission:true,nativeFormData:true,multipleTypedValues:true,frameworkReset:true,teardownAndRemount:true,chipsDropdown:{typedSearchAndAddition:true,cancelableRemoval:true,controlledReset:true,disabledSubmission:true,teardownAndRemount:true},visibleLists:{typedRadioKeyboardAndCancellation:true,typedCheckboxKeyboard:true,repeatedNativeEntries:true,disabledOptionAndField:true,controlledReset:true}};
 }
 
 export async function exerciseInstalledSelect(page:Page){
@@ -51,7 +65,36 @@ export async function exerciseInstalledSelect(page:Page){
  const result=await page.locator('#packed-core-select').evaluate(async element=>{const host=element as HaSelect;host.state={...host.state,multiple:false,size:1};host.formStateRestoreCallback('false','restore');await host.updateComplete;const restored=host.value;host.form!.reset();await host.updateComplete;return {restored,reset:host.value,entries:[...new FormData(host.form!)]};});assert.deepEqual(result,{restored:false,reset:1,entries:[['category','1']]});await page.locator('#packed-select-proof').evaluate(element=>element.remove());
  const ancestorScroll=await exerciseInstalledSelectScroll(page);
  const chipsDropdown=await exerciseInstalledSelectChips(page);
- return {typedSingleSelection:true,typedMultipleSelection:true,pickerTypeahead:true,nativeFormData:true,explicitTypedRestorationAndReset:result,ancestorScroll,chipsDropdown};
+ const visibleLists=await exerciseInstalledSelectLists(page);
+ return {typedSingleSelection:true,typedMultipleSelection:true,pickerTypeahead:true,nativeFormData:true,explicitTypedRestorationAndReset:result,ancestorScroll,chipsDropdown,visibleLists};
+}
+
+/** Native radio and checkbox input from the installed renderer, with real pointer and keyboard actions. */
+export async function exerciseInstalledSelectLists(page:Page){
+ await page.evaluate(async()=>{
+  const form=document.createElement('form'),fieldset=document.createElement('fieldset'),host=document.createElement('vyp-ha-select');
+  form.id='packed-list-proof';host.style.width='240px';host.name='category';host.defaultValue=1;host.dataset.requests='0';
+  host.state={...host.state,label:'Packed visible categories',mode:'list',required:true,options:[{value:1,label:'Maintenance',disabled:false},{value:'1',label:'Shopping',disabled:false},{value:false,label:'Other',disabled:false},{value:'archived',label:'Archived',disabled:true}]};
+  host.addEventListener('ha-select-request',event=>{host.dataset.requests=String(Number(host.dataset.requests)+1);if(host.dataset.reject==='true')event.preventDefault();else host.value=event.detail.value;});
+  const save=document.createElement('button');save.textContent='Save visible categories';form.addEventListener('submit',event=>{event.preventDefault();form.dataset.saved=JSON.stringify([...new FormData(form)]);});
+  fieldset.append(host);form.append(fieldset,save);document.body.append(form);await host.updateComplete;
+ });
+ const form=page.locator('#packed-list-proof'),host=form.locator('vyp-ha-select');
+ const model=()=>host.evaluate(element=>({value:(element as HaSelect).value,requests:Number((element as HTMLElement).dataset.requests),entries:[...new FormData((element as HaSelect).form!)]}));
+ const radios=host.getByRole('radiogroup',{name:'Packed visible categories',exact:true}),shopping=radios.getByRole('radio',{name:'Shopping',exact:true});
+ await host.evaluate(element=>(element as HTMLElement).dataset.reject='true');await shopping.click();assert.equal(await shopping.isChecked(),false);assert.deepEqual(await model(),{value:1,requests:1,entries:[['category','1']]});
+ await host.evaluate(element=>delete(element as HTMLElement).dataset.reject);await shopping.click();assert.deepEqual(await model(),{value:'1',requests:2,entries:[['category','1']]});
+ await page.keyboard.press('ArrowDown');assert.deepEqual(await model(),{value:false,requests:3,entries:[['category','false']]});
+ await host.evaluate(async element=>{const host=element as HaSelect;host.state={...host.state,multiple:true};host.defaultValue=[1,false];host.value=[1,false];await host.updateComplete;});
+ const checks=host.getByRole('group',{name:'Packed visible categories',exact:true}),check=checks.getByRole('checkbox',{name:'Shopping',exact:true});
+ assert.equal(await checks.getByRole('checkbox',{name:'Archived',exact:true}).isDisabled(),true);await check.focus();await page.keyboard.press('Space');
+ assert.deepEqual(await model(),{value:[1,false,'1'],requests:4,entries:[['category','1'],['category','1'],['category','false']]});
+ await form.getByRole('button',{name:'Save visible categories'}).click();assert.deepEqual(JSON.parse((await form.getAttribute('data-saved'))!),[['category','1'],['category','1'],['category','false']]);
+ await form.locator('fieldset').evaluate(element=>(element as HTMLFieldSetElement).disabled=true);assert.equal(await check.isDisabled(),true);assert.deepEqual((await model()).entries,[]);
+ await form.evaluate(async element=>{const form=element as HTMLFormElement;form.querySelector('fieldset')!.disabled=false;form.reset();await form.querySelector('vyp-ha-select')!.updateComplete;});
+ assert.deepEqual(await model(),{value:[1,false],requests:5,entries:[['category','1'],['category','false']]});assert.equal(await check.isChecked(),false);
+ await form.evaluate(element=>element.remove());
+ return{typedRadioCancellationAndKeyboard:true,typedCheckboxKeyboard:true,repeatedNativeSubmission:true,disabledOptionAndFieldset:true,controlledReset:true};
 }
 
 /** Real installed core modal, typed controlled acknowledgements and native form lifecycle. */

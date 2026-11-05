@@ -1,6 +1,7 @@
 import {exerciseFieldVisual} from './field-visual.ts';
 import {exerciseSelectVisual} from './select-visual.ts';
 import {exerciseSelectMultipleVisual} from './select-multiple-visual.ts';
+import {exerciseSelectListVisual} from './select-list-visual.ts';
 import {exerciseCatalogForms} from './form-lifecycle.ts';
 import {exerciseButtonVisual} from './button-visual.ts';
 import {exerciseNavigationOverflowVisual} from './navigation-overflow-visual.ts';
@@ -22,11 +23,11 @@ import type {HaSelect} from '@vypdev/ha-ui/select';
 import type {HaTextField} from '@vypdev/ha-ui/field';
 
 const require=createRequire(import.meta.url);
-test('the complete static catalog works at the repository subpath with local assets and real production controls',{timeout:480_000},async t=>{
+test('the complete static catalog works at the repository subpath with local assets and real production controls',{timeout:630_000},async t=>{
   const root=resolve(process.env.STORYBOOK_OUTPUT_DIR??'build/storybook'),output=resolve('test-results/storybook');await mkdir(output,{recursive:true});
   const index=JSON.parse(await readFile(resolve(root,'index.json'),'utf8'));
   const entries=Object.values(index.entries) as {id:string;type:string}[];
-  assert.equal(entries.filter(entry=>entry.type==='story').length,60);assert.equal(entries.filter(entry=>entry.type==='docs').length,6);
+  assert.equal(entries.filter(entry=>entry.type==='story').length,62);assert.equal(entries.filter(entry=>entry.type==='docs').length,6);
   const server=await preview({configFile:false,base:'/ha-ui/',appType:'mpa',build:{outDir:root},preview:{host:'127.0.0.1',port:0},logLevel:'error'});
   const browser=await chromium.launch();const errors:string[]=[],external:string[]=[],badAssets:string[]=[];
   const address=server.httpServer.address();assert.ok(address&&typeof address==='object');const origin='http://127.0.0.1:'+address.port;
@@ -38,9 +39,10 @@ test('the complete static catalog works at the repository subpath with local ass
   let interactionEvidence:{sameStoryRerender:{firstRun:Completion;secondRun:Completion;thirdRun:Completion};catalogForms:Awaited<ReturnType<typeof exerciseCatalogForms>>}|undefined;
   let visualEvidence:{checkboxVisual:Awaited<ReturnType<typeof exerciseCheckboxVisual>>;navigationVisual:Awaited<ReturnType<typeof exerciseNavigationVisual>>;navigationIconsVisual:Awaited<ReturnType<typeof exerciseNavigationIconsVisual>>;navigationOverflowVisual:Awaited<ReturnType<typeof exerciseNavigationOverflowVisual>>;buttonVisual:Awaited<ReturnType<typeof exerciseButtonVisual>>;fieldVisual:Awaited<ReturnType<typeof exerciseFieldVisual>>;selectVisual:Awaited<ReturnType<typeof exerciseSelectVisual>>}|undefined;
   let selectMultipleVisual:Awaited<ReturnType<typeof exerciseSelectMultipleVisual>>|undefined;
+  let selectListVisual:Awaited<ReturnType<typeof exerciseSelectListVisual>>|undefined;
   try {
     await t.test('catalog controls, native forms and all locale/theme/width accessibility combinations',{timeout:120_000},async()=>{
-    for(const locale of ['en','es'])for(const theme of ['light','dark'])for(const width of [360,960])for(const story of ['navigation-household-sections--long-labels','tabs-local-panels--unselected','forms-text-field--read-only','forms-text-field--error','forms-text-field--empty-optional','forms-text-field--focused-optional','buttons-actions--variants','buttons-actions--loading','forms-select--default','forms-select--multiple','forms-checkbox--partial','forms-checkbox--long-label','navigation-household-sections--mixed','tabs-local-panels--icon-only','navigation-household-sections--overflow','tabs-local-panels--overflow']) {
+    for(const locale of ['en','es'])for(const theme of ['light','dark'])for(const width of [360,960])for(const story of ['navigation-household-sections--long-labels','tabs-local-panels--unselected','forms-text-field--read-only','forms-text-field--error','forms-text-field--empty-optional','forms-text-field--focused-optional','buttons-actions--variants','buttons-actions--loading','forms-select--default','forms-select--multiple','forms-select--single-list','forms-select--multiple-list','forms-checkbox--partial','forms-checkbox--long-label','navigation-household-sections--mixed','tabs-local-panels--icon-only','navigation-household-sections--overflow','tabs-local-panels--overflow']) {
       await page.setViewportSize({width,height:900});
       await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story&globals=locale:'+locale+';theme:'+theme+';width:'+(width===360?'narrow':'wide')+';motion:reduced');
       const automatic=await waitForCatalogStory(page,story);
@@ -123,8 +125,11 @@ test('the complete static catalog works at the repository subpath with local ass
     await t.test('original HA multiple chips, search and open-dialog accessibility',{timeout:120_000},async()=>{
     selectMultipleVisual=await exerciseSelectMultipleVisual(page,origin,output);
     });
-    assert.ok(interactionEvidence,'Complete catalog interactions are required');assert.ok(visualEvidence,'Every established original HA visual family is required');assert.ok(selectMultipleVisual,'Original multiple chip/search visuals are required');
+    await t.test('original HA visible radio and checkbox lists',{timeout:120_000},async()=>{
+    selectListVisual=await exerciseSelectListVisual(page,origin,output);
+    });
+    assert.ok(interactionEvidence,'Complete catalog interactions are required');assert.ok(visualEvidence,'Every established original HA visual family is required');assert.ok(selectMultipleVisual,'Original multiple chip/search visuals are required');assert.ok(selectListVisual,'Original visible-list visuals are required');
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
-    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,...interactionEvidence,...visualEvidence,selectMultipleVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
+    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,...interactionEvidence,...visualEvidence,selectMultipleVisual,selectListVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
 });

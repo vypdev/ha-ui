@@ -1,5 +1,6 @@
 import {LitElement,css,html,nothing} from 'lit';
 import {implicitSubmit} from './implicit-submit.js';
+import {checkboxCheckPath} from '../checkbox-mark.js';
 import {CheckboxInputError,checkboxState,checkboxChecked,checkboxName,checkboxValue,checkboxValidity,checkboxRestoreState,checkboxRestoreValue,type CheckboxState,type CheckboxChangeReason,type CheckboxChangeDetail} from '../checkbox-contracts.js';
 export type {CheckboxChangeReason,CheckboxChangeDetail} from '../checkbox-contracts.js';
 export type CheckboxChangeEvent=CustomEvent<CheckboxChangeDetail>;
@@ -79,7 +80,7 @@ export class HaCheckbox extends LitElement {
  protected render(){
   const state=this.state,validity=checkboxValidity(this.checked,state,this.#customError),message=(this.#showValidation||state.error||this.#customError)?validity.message:'',described=[state.description?'help':'',message?'error':''].filter(Boolean).join(' '),disabled=this.disabled||this.#formDisabled;
   return html`<div class="field" part="field"><label class=${disabled?'row disabled':'row'} part="row" for="control"><span class="control" part="control"><input id="control" type="checkbox" part="input" ?required=${state.required} aria-invalid=${String(!!message)} aria-describedby=${described||nothing} @change=${this.#change} @click=${this.#click} @keydown=${this.#enter} @blur=${this.#reveal}>
-    ${state.indeterminate?html`<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.428571 8h9.142857" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"></path></svg>`:html`<svg class="icon" viewBox="0 0 448 512" aria-hidden="true"><!-- Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. --><path fill="currentColor" d="M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"></path></svg>`}
+    ${state.indeterminate?html`<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.428571 8h9.142857" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"></path></svg>`:html`<svg class="icon" viewBox="0 0 448 512" aria-hidden="true"><!-- Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc. --><path fill="currentColor" d=${checkboxCheckPath}></path></svg>`}
    </span><span class="copy" part="label">${state.label}${state.required?html`<span class="required" aria-hidden="true"></span>`:nothing}</span></label>
    ${state.description?html`<div class="help" id="help" part="help">${state.description}</div>`:nothing}${message?html`<div class="error" id="error" part="error" aria-live="polite">${message}</div>`:nothing}</div>`;
  }

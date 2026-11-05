@@ -5,13 +5,13 @@
   import type {ButtonPressEvent} from '@vypdev/ha-ui/button';
   import type {CheckboxChangeEvent} from '@vypdev/ha-ui/checkbox';
   import type {SelectValueEvent} from '@vypdev/ha-ui/select';
-  import type {SelectSelection} from '@vypdev/ha-ui/select-contracts';
+  import type {SelectMode,SelectSelection} from '@vypdev/ha-ui/select-contracts';
   import {model,fieldModel,actionModel,resetModel,categoryModel,categoryAction,checkModel,checkAction} from './model.js';
   let viewState=$state.raw(model()),spanish=$state(false),dark=$state(false),disabled=$state(false),visible=$state(true),count=$state(0);
   let value=$state('Kitchen'),fieldDisabled=$state(false),fieldVisible=$state(true),reject=$state(false),fieldEvents=$state(0),saved=$state('');
   let busy=$state(false),buttonDisabled=$state(false),buttonVisible=$state(true),cancelPress=$state(false),icons=$state(true),presses=$state(0),accepted=$state(0),submits=$state(0),metadata=$state(false);
   function press(event:ButtonPressEvent){presses++;if(cancelPress)event.preventDefault();}
-  let category=$state.raw<SelectSelection>(1),categoryMultiple=$state(false),categoryDropdown=$state(false),categoryDisabled=$state(false),categoryVisible=$state(true),categoryReject=$state(false),categoryAvailable=$state(true),categoryEvents=$state(0),categorySaved=$state(''),categorySubmits=$state(0);
+  let category=$state.raw<SelectSelection>(1),categoryMultiple=$state(false),categoryPresentation=$state<SelectMode>('auto'),categoryDisabled=$state(false),categoryVisible=$state(true),categoryReject=$state(false),categoryAvailable=$state(true),categoryEvents=$state(0),categorySaved=$state(''),categorySubmits=$state(0);
   let checked=$state(false),mixed=$state(true),checkDisabled=$state(false),checkVisible=$state(true),checkReject=$state(false),checkPayload=$state(false),checkEvents=$state(0),checkSaved=$state(''),checkSubmits=$state(0);
   function checkRequest(event:CheckboxChangeEvent){checkEvents++;if(checkReject)event.preventDefault();}
   function checkAccept(next:boolean){checked=next;mixed=false;}
@@ -40,10 +40,10 @@
     {#if fieldVisible}<TextField state={fieldModel(spanish)} {value} name="task" defaultValue="Kitchen" disabled={fieldDisabled} onValueRequest={observe} onValueChange={(next)=>value=next} />{/if}
     {#if buttonVisible}<Button id="bound-submit" state={actionModel(spanish,busy)} type="submit" name="action" value="save" disabled={buttonDisabled} onPressRequest={press} onPress={()=>accepted++} leading={icons?leading:undefined} />{/if}<Button state={resetModel()} type="reset" />
   </form>
-  <button onclick={()=>{categoryMultiple=!categoryMultiple;category=categoryMultiple?[1,false]:1;}}>Toggle category mode</button><button onclick={()=>category=categoryMultiple?['1',false]:false}>Set category value</button><button onclick={()=>category=categoryMultiple?[]:null}>Clear category</button><button onclick={()=>categoryReject=!categoryReject}>Reject category changes</button><button onclick={()=>categoryDisabled=!categoryDisabled}>Toggle category disabled</button><button onclick={()=>categoryAvailable=!categoryAvailable}>Toggle category options</button><button onclick={()=>categoryVisible=!categoryVisible}>Toggle category</button><button onclick={()=>categoryDropdown=true}>Use category dropdown</button>
+  <button onclick={()=>{categoryMultiple=!categoryMultiple;category=categoryMultiple?[1,false]:1;}}>Toggle category mode</button><button onclick={()=>category=categoryMultiple?['1',false]:false}>Set category value</button><button onclick={()=>category=categoryMultiple?[]:null}>Clear category</button><button onclick={()=>categoryReject=!categoryReject}>Reject category changes</button><button onclick={()=>categoryDisabled=!categoryDisabled}>Toggle category disabled</button><button onclick={()=>categoryAvailable=!categoryAvailable}>Toggle category options</button><button onclick={()=>categoryVisible=!categoryVisible}>Toggle category</button><button onclick={()=>categoryPresentation='dropdown'}>Use category dropdown</button><button onclick={()=>categoryPresentation='list'}>Use category list</button>
   <output aria-label="Category model">{JSON.stringify(category)}</output><output aria-label="Category events">{categoryEvents}</output><output aria-label="Saved categories">{categorySaved}</output><output aria-label="Category submits">{categorySubmits}</output>
   <form aria-label="Category form" onsubmit={categorySave}>
-   {#if categoryVisible}<Select id="bound-category" state={categoryModel(spanish,categoryMultiple,categoryAvailable,categoryDropdown)} value={category} defaultValue={categoryMultiple?[1,false]:1} name="category" disabled={categoryDisabled} onValueRequest={categoryRequest} onValueChange={(next)=>category=next} />{/if}
+   {#if categoryVisible}<Select id="bound-category" state={categoryModel(spanish,categoryMultiple,categoryAvailable,categoryPresentation)} value={category} defaultValue={categoryMultiple?[1,false]:1} name="category" disabled={categoryDisabled} onValueRequest={categoryRequest} onValueChange={(next)=>category=next} />{/if}
    <Button state={categoryAction(spanish)} type="submit" /><Button state={categoryAction(spanish,true)} type="reset" />
   </form>
   <button onclick={()=>checked=true}>Set checked</button><button onclick={()=>mixed=!mixed}>Toggle partial</button><button onclick={()=>checkReject=!checkReject}>Reject check changes</button><button onclick={()=>checkDisabled=!checkDisabled}>Toggle check disabled</button><button onclick={()=>checkPayload=!checkPayload}>Toggle check payload</button><button onclick={()=>checkVisible=!checkVisible}>Toggle checkbox</button>
