@@ -57,6 +57,15 @@ describe('framework-neutral navigation contracts', () => {
   test.each([null, undefined, true, 'navigation', [], {}, {...state(), userId: 'private'}, {...state(), kind: 'unknown'}, {...state(), selected: undefined}])('rejects invalid or extended state %j', rejected);
   test.each([null, [], true, {}, {...section(), html: '<button>unsafe</button>'}])('rejects invalid or extended items %j', item => rejected(state({items: [item]})));
   test.each([null, {}, 'items', Array.from({length: 65}, (_, n) => section({id: 'i-' + n}))])('rejects malformed or excessive item lists', items => rejected(state({items})));
+  test('rejects sparse item lists with and without a selected destination', () => {
+    const empty=Array<unknown>(1),mixed=Array<unknown>(2);mixed[1]=section();
+    rejected(state({items:empty,selected:null}));rejected(state({items:mixed}));rejected(state({items:mixed,selected:null}));
+  });
+  test('rejects a missing item even when its position is inherited', () => {
+    const items=Array<unknown>(1);
+    Object.setPrototypeOf(items,Object.assign(Object.create(Array.prototype),{0:section()}));
+    rejected(state({items}));
+  });
   test('rejects duplicate identifiers without choosing one arbitrarily', () => rejected(state({items: [section(), section()]})));
   test.each(['', ' ', 'a b', 'a/b', 'a'.repeat(129), 'á', 'a:b'])('rejects unsupported identifier %j', id => rejected(state({items: [section({id})], selected: id})));
   test.each(['missing', 3, false, {}])('rejects a missing or malformed current destination %j', selected => rejected(state({selected})));

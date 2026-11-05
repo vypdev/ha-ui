@@ -51,9 +51,12 @@ export function navigationState(raw: unknown): NavigationState {
   const kind = source.kind;
   if (kind !== 'navigation' && kind !== 'panels') invalid();
   const label = text(source.label, 256);
-  if (!Array.isArray(source.items) || source.items.length > 64) invalid();
-  const items = source.items.map((value: unknown): NavigationItem => {
-    const row = object(value, ['id', 'label', 'disabled', 'href', 'iconPath', 'showLabel'], ['id', 'label']);
+  const input=source.items;
+  if (!Array.isArray(input) || input.length > 64) invalid();
+  const items:NavigationItem[]=[];
+  for (let index=0,length=input.length;index<length;index++){
+    if (!Object.hasOwn(input,index)) invalid();
+    const row = object(input[index], ['id', 'label', 'disabled', 'href', 'iconPath', 'showLabel'], ['id', 'label']);
     const id = identifier(row.id), itemLabel = text(row.label, 256);
     const disabled = row.disabled === undefined ? false : row.disabled;
     if (typeof disabled !== 'boolean') invalid();
@@ -62,8 +65,8 @@ export function navigationState(raw: unknown): NavigationState {
     if (iconPath !== null && !/^[Mm][0-9MmLlHhVvCcSsQqTtAaZzEe.,+ -]+$/u.test(iconPath)) invalid();
     const showLabel = row.showLabel === undefined ? true : row.showLabel;
     if (typeof showLabel !== 'boolean' || (!showLabel && iconPath === null)) invalid();
-    return Object.freeze({id, label: itemLabel, disabled, href, iconPath, showLabel});
-  });
+    items.push(Object.freeze({id, label: itemLabel, disabled, href, iconPath, showLabel}));
+  }
   if (new Set(items.map(item => item.id)).size !== items.length) invalid();
   const selected = source.selected === null ? null : identifier(source.selected);
   if (selected !== null) {
