@@ -11,6 +11,7 @@
     "test": "vitest run --coverage && node --test tests/coverage-evidence.test.mjs",
     "build": "pnpm -r --sort run build",
     "test:package": "node --test tests/consumers/packed.test.ts",
+    "test:ssr": "node --test tests/consumers/ssr.test.mjs",
     "storybook": "storybook dev --port 6006 --no-open",
     "storybook:build": "pnpm build && storybook build --output-dir build/storybook",
     "test:storybook": "node --test tests/storybook/static.test.ts",

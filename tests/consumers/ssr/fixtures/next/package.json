@@ -1,0 +1,20 @@
+{
+  "name": "ha-ui-next-ssr-fixture",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.0",
+  "engines": {
+    "node": ">=24.20.0 <25"
+  },
+  "scripts": {
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+    "@vypdev/ha-ui-react": "file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz",
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}

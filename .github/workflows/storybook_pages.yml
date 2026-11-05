@@ -33,6 +33,7 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium --only-shell
       - run: pnpm test
       - run: pnpm test:package
+      - run: pnpm test:ssr
       - run: pnpm storybook:build
       - run: pnpm test:storybook
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4

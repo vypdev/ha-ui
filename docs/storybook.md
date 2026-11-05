@@ -3,7 +3,7 @@
 The current catalog displays the implemented upper navigation, local panels and single-line text
 field, button, boolean checkbox, typed single/multiple select, native dialog, card, layout and feedback using the real
 package entrypoints. Ninety-two CSF stories have automatic documentation,
-controls, interaction tests and accessibility checks. This is an incremental preview; the full framework/SSR/browser matrix and application adoption are still required.
+controls, interaction tests and accessibility checks. This is an incremental preview; the full browser matrix and application adoption are still required.
 
 ```bash
 pnpm install --frozen-lockfile --ignore-scripts

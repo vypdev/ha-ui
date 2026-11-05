@@ -2,7 +2,7 @@
 
 This unpublished preview has shared navigation with local icons/labels, one controlled text field, native-form buttons, boolean checkboxes, typed single/multiple selects, native dialogs, card surfaces, rows and grids,
 with four real framework bindings and text-field form bridges. Other controls and their bridges, framework
-SSR/client fixtures, broader browser support, public Storybook hosting, publication and app adoption remain required.
+The named Next.js, Nuxt and SvelteKit server/client fixtures pass with installed packages. Broader browser support, public Storybook hosting, publication and app adoption remain required.
 
 ## Client registration and ownership
 
@@ -325,3 +325,23 @@ props and slots, respectively. Angular projects elements with `slot="action"` or
 `slot="icon"`, and Svelte accepts `action` and `icon` snippets. The optional icon is
 decorative. Use a real button or link for the action. Its event belongs to the application.
 The [feedback contract](feedback-contract.md) describes the shared roles and state transitions.
+
+## Server and client boundaries
+
+Run `pnpm test:package` followed by `pnpm test:ssr`. Each fixture installs the exact two
+core and framework archives identified by the packed cohort and checks their SHA-256
+before installation. The test binds the archives to the fixture lock, then uses a frozen
+install. It runs a production build and exercises the deployed shell on a local HTTP
+server with no external browser requests. Inspect `test-results/packed-ssr.json` for versions,
+lock identities and the results.
+
+| Fixture | Verified boundary |
+|---|---|
+| Next.js 16.4.5 | App Router imports the pure state contract on the server. The React client boundary calls [`next/dynamic`](https://nextjs.org/docs/app/guides/lazy-loading#skipping-ssr) with `ssr: false` before registration. |
+| Nuxt 4.6.4 | The page imports the pure contract and renders the fallback with [`ClientOnly`](https://nuxt.com/docs/4.x/api/components/client-only). The Vue client component registers and mounts the control. |
+| SvelteKit 3.1.1 | The server page renders the shell and fallback. [`onMount`](https://svelte.dev/docs/svelte/lifecycle-hooks#onMount) imports the Svelte component and registers the control in the browser. |
+
+The browser exercises projected panels, controlled keyboard selection, rerender, unmount,
+and remount. A detached adapter cannot call the application, and one interaction emits one
+selection request. Browser errors, warnings and unexpected requests fail each fixture.
+The core DOM renderer still requires a browser; do not render it directly on the server.

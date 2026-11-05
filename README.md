@@ -8,7 +8,7 @@ bindings pass source and compiled installed-package consumers. The pinned build/
 and production-backed [Storybook](docs/storybook.md) verify the implemented scope.
 
 [Visual equivalence with HA](docs/visual-parity.md) is verified against recorded originals for
-the implemented states. Framework SSR, the complete browser matrix, public catalog hosting, package publication and
+the implemented states. Production Next.js, Nuxt and SvelteKit fixtures verify the server and client boundary. The complete browser matrix, public catalog hosting, package publication and
 Gateway/Domus adoption. The package cohort is unpublished.
 
 Use Node 24.20.0 and the package manager pinned in package.json:
@@ -20,6 +20,7 @@ pnpm exec playwright install --with-deps chromium --only-shell
 pnpm test
 pnpm build
 pnpm test:package
+pnpm test:ssr
 pnpm storybook:build
 pnpm test:storybook
 ```

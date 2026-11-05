@@ -34,6 +34,7 @@ jobs:
       - run: pnpm test
       - run: pnpm build
       - run: pnpm test:package
+      - run: pnpm test:ssr
       - run: pnpm storybook:build
       - run: pnpm test:storybook
       # Read the original catalog SDK at the reviewed revision; never rewrite it.

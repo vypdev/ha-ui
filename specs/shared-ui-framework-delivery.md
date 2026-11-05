@@ -679,6 +679,28 @@ Prospective repository files (current documents are classified against the immut
 | `tests/storybook/feedback-visual.ts` | create |
 | `tests/storybook/reference/ha-feedback/index.json` | create |
 | `tests/storybook/reference/ha-feedback/originals.tar` | create |
+| `tests/consumers/ssr.test.mjs` | create |
+| `tests/consumers/ssr/fixtures/next/app/boundary.jsx` | create |
+| `tests/consumers/ssr/fixtures/next/app/client-tabs.jsx` | create |
+| `tests/consumers/ssr/fixtures/next/app/layout.jsx` | create |
+| `tests/consumers/ssr/fixtures/next/app/page.jsx` | create |
+| `tests/consumers/ssr/fixtures/next/package.json` | create |
+| `tests/consumers/ssr/fixtures/next/pnpm-lock.yaml` | create |
+| `tests/consumers/ssr/fixtures/next/pnpm-workspace.yaml` | create |
+| `tests/consumers/ssr/fixtures/nuxt/app/app.vue` | create |
+| `tests/consumers/ssr/fixtures/nuxt/app/components/ClientTabs.client.vue` | create |
+| `tests/consumers/ssr/fixtures/nuxt/nuxt.config.mjs` | create |
+| `tests/consumers/ssr/fixtures/nuxt/package.json` | create |
+| `tests/consumers/ssr/fixtures/nuxt/pnpm-lock.yaml` | create |
+| `tests/consumers/ssr/fixtures/nuxt/pnpm-workspace.yaml` | create |
+| `tests/consumers/ssr/fixtures/sveltekit/package.json` | create |
+| `tests/consumers/ssr/fixtures/sveltekit/pnpm-lock.yaml` | create |
+| `tests/consumers/ssr/fixtures/sveltekit/pnpm-workspace.yaml` | create |
+| `tests/consumers/ssr/fixtures/sveltekit/src/app.html` | create |
+| `tests/consumers/ssr/fixtures/sveltekit/src/routes/+page.svelte` | create |
+| `tests/consumers/ssr/fixtures/sveltekit/src/routes/ClientTabs.svelte` | create |
+| `tests/consumers/ssr/fixtures/sveltekit/fixture.vite.config.js` | create |
+| `tests/consumers/ssr/journey.mjs` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

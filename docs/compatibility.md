@@ -2,8 +2,7 @@
 
 The current preview covers navigation and local panels, text fields, buttons, checkboxes, typed
 selects, native dialogs, cards, rows, grids and feedback. The same renderers pass source tests and compiled package consumers
-in React, Vue, Angular and Svelte. Framework SSR and the complete
-browser matrix remain open.
+in React, Vue, Angular and Svelte. The complete browser matrix remains open.
 
 | Tool | Exact pin | Current use |
 |---|---|---|
@@ -21,8 +20,9 @@ The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. I
 its source contains the shared contracts and preview renderers above.
 React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass compiled Chromium fixtures
 using actual packages. They remain preview pins until the complete component and delivery gates
-pass. Next.js, Nuxt and SvelteKit client/SSR boundaries remain unverified.
-Do not infer support from custom-element interoperability or compiler metadata alone.
+pass. Production Next.js 16.4.5, Nuxt 4.6.4 and SvelteKit 3.1.1 verify the server shell and
+explicit client mount in Chromium using the actual archives. Do not infer server component
+rendering or support for other pins from these results.
 
 The controlled navigation model requires kind, label, selected and items. Kind is navigation or panels;
 selected is an existing enabled item ID or null. IDs use 1..128 ASCII letters, digits, underscore or
@@ -39,7 +39,7 @@ a DOM-free contract and a compiled browser client, and the original pinned Copil
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,
 and reduced motion. The four framework fixtures also exercise text field, button, checkbox,
 select, dialog, card, layout and feedback behavior. The browser-engine checks described below cover specific journeys;
-full cross-browser and framework SSR acceptance remains separate.
+full cross-browser acceptance remains separate. The [server/client fixtures](framework-adapters.md#server-and-client-boundaries) cover the three named server frameworks.
 Complete component-family/framework fixtures, public Storybook hosting, publication and actual app adoption remain required.
 The [implemented catalog and static browser gates](storybook.md) cover only the current families.
 
