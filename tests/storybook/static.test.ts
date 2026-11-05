@@ -42,7 +42,9 @@ test('the complete static catalog works at the repository subpath with local ass
   const font=JSON.parse(await readFile(resolve('docs/evidence/ha-card-reference.json'),'utf8')).arabicFont;
   assert.equal(createHash('sha256').update(await readFile(resolve(root,'assets',fontFiles[0]))).digest('hex'),font.sha256);
   const server=await preview({configFile:false,base:'/ha-ui/',appType:'mpa',build:{outDir:root},preview:{host:'127.0.0.1',port:0},logLevel:'error'});
-  const browser=await chromium.launch();const errors:string[]=[],external:string[]=[],badAssets:string[]=[];
+  let browser:Awaited<ReturnType<typeof chromium.launch>>|undefined;
+  try {
+  browser=await chromium.launch();const errors:string[]=[],external:string[]=[],badAssets:string[]=[];
   const address=server.httpServer.address();assert.ok(address&&typeof address==='object');const origin='http://127.0.0.1:'+address.port;
   const context=await browser.newContext({viewport:{width:1280,height:900},reducedMotion:'reduce'});
   await context.route('**/*',async route=>{const url=new URL(route.request().url());if(url.origin!==origin){external.push(url.origin+url.pathname);await route.abort();}else await route.continue();});
@@ -57,7 +59,6 @@ test('the complete static catalog works at the repository subpath with local ass
   let cardVisual:Awaited<ReturnType<typeof exerciseCardVisual>>|undefined;
   let feedbackVisual:Awaited<ReturnType<typeof exerciseFeedbackVisual>>|undefined;
   let layoutVisual:Awaited<ReturnType<typeof exerciseLayoutVisual>>|undefined;
-  try {
     await t.test('catalog controls, native forms and all locale/theme/width accessibility combinations',{timeout:120_000},async()=>{
     for(const locale of ['en','es'])for(const theme of ['light','dark'])for(const width of [360,960])for(const story of ['navigation-household-sections--long-labels','tabs-local-panels--unselected','forms-text-field--read-only','forms-text-field--error','forms-text-field--empty-optional','forms-text-field--focused-optional','buttons-actions--variants','buttons-actions--loading','forms-select--default','forms-select--multiple','forms-select--single-list','forms-select--multiple-list','forms-checkbox--partial','forms-checkbox--long-label','navigation-household-sections--mixed','tabs-local-panels--icon-only','navigation-household-sections--overflow','tabs-local-panels--overflow','overlays-dialog--alert','overlays-dialog--busy','surfaces-card--default','surfaces-card--with-actions','layout-row--with-action','layout-grid--default','feedback-status--error-notice','feedback-status--empty','feedback-status--loading']) {
       await page.setViewportSize({width,height:900});
@@ -181,5 +182,8 @@ test('the complete static catalog works at the repository subpath with local ass
     assert.ok(interactionEvidence,'Complete catalog interactions are required');assert.ok(visualEvidence,'Every established original HA visual family is required');assert.ok(selectMultipleVisual,'Original multiple chip/search visuals are required');assert.ok(selectListVisual,'Original visible-list visuals are required');assert.ok(dialogVisual,'Original dialog visuals are required');
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
     await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,...interactionEvidence,...visualEvidence,selectMultipleVisual,selectListVisual,dialogVisual,cardVisual,layoutVisual,feedbackVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
-  }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
+  }finally {
+    try{await browser?.close();}
+    finally{await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
+  }
 });
