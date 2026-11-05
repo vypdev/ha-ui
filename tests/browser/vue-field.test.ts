@@ -2,7 +2,7 @@ import {afterEach,expect,test,vi} from 'vitest';
 import {createApp,h,nextTick,shallowRef,type App} from 'vue';
 import {TextField} from '../../packages/vue/src/index.js';
 import {registerField,type FieldValueEvent} from '../../packages/core/src/components/field.js';
-import {fieldModel,fieldHost,fieldInput,propose,formEntries,malformedRequest,mutableRequest} from './field-framework-fixture.js';
+import {fieldModel,fieldHost,fieldInput,propose,formEntries,malformedRequest,mutableRequest,nestedFieldRequest} from './field-framework-fixture.js';
 let app:App|undefined;
 function mount(observer?:(event:FieldValueEvent)=>void){
   const value=shallowRef('Kitchen'),state=shallowRef(fieldModel()),disabled=shallowRef(false),external=shallowRef(false),listener=shallowRef(observer),ack=shallowRef(true);
@@ -37,6 +37,13 @@ test('optional Vue field props and model subscribers need no extra attributes',a
   propose(field,'Unhandled');await nextTick();expect(field.value).toBe('Kitchen');expect(field.name).toBe('');expect(field.defaultValue).toBe('');expect(field.disabled).toBe(false);
 });
 
+test('ignores requests from a nested field without canceling the DOM event',async()=>{
+  registerField();const observe=vi.fn(),model=mount(observe),field=fieldHost();await field.updateComplete;
+  const bubbled=vi.fn();document.body.addEventListener('ha-value-request',bubbled,{once:true});
+  nestedFieldRequest(field);await nextTick();
+  expect(bubbled).toHaveBeenCalledTimes(1);expect(bubbled.mock.calls[0][0].defaultPrevented).toBe(false);
+  expect(observe).not.toHaveBeenCalled();expect(model.value.value).toBe('Kitchen');
+});
 test('rejects malformed native request detail before the app or model subscriber',async()=>{registerField();const observe=vi.fn((event:FieldValueEvent)=>event.preventDefault()),model=mount(observe),field=fieldHost();await field.updateComplete;expect(malformedRequest(field)).toHaveLength(1);expect(observe).not.toHaveBeenCalled();expect(model.value.value).toBe('Kitchen');});
 
 test('model updates use the validated snapshot after a foreign payload is mutated',async()=>{registerField();const model=mount(event=>{Reflect.set(event.detail,'value',42);}),field=fieldHost();await field.updateComplete;mutableRequest(field);await nextTick();await field.updateComplete;expect(model.value.value).toBe('Snapshot');expect(field.value).toBe('Snapshot');});

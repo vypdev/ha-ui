@@ -12,6 +12,7 @@ export class Select implements ControlValueAccessor,Validator,OnChanges,OnDestro
  readonly #host=inject<ElementRef<HaSelect>>(ElementRef).nativeElement;readonly #renderer=inject(Renderer2);
  #modelValue:SelectSelection=null;#change:((value:SelectSelection)=>void)|undefined;#touched:(()=>void)|undefined;#validatorChanged:(()=>void)|undefined;
  readonly #stopValue=this.#renderer.listen(this.#host,'ha-select-request',(event:SelectValueEvent)=>{
+  if(event.composedPath()[0]!==this.#host)return;
   const detail=selectValueDetail(event.detail);this.valueRequest.emit(event);if(event.defaultPrevented)return;
   if(this.#change===undefined){this.valueChange.emit(detail.value);return;}
   // The Angular form directive has already reset its nullable/nonnullable model before this native callback.

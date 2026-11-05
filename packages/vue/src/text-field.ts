@@ -16,7 +16,12 @@ export const TextField=defineComponent({
       if(props.form===undefined)host.removeAttribute('form');else host.setAttribute('form',props.form);
       host.value=props.modelValue;
     };
-    const handle=(event:FieldValueEvent)=>{const detail=fieldValueDetail(event.detail);emit('valueRequest',event);if(!event.defaultPrevented)emit('update:modelValue',detail.value);};
+    const handle=(event:FieldValueEvent)=>{
+      if(event.composedPath()[0]!==element.value)return;
+      const detail=fieldValueDetail(event.detail);
+      emit('valueRequest',event);
+      if(!event.defaultPrevented)emit('update:modelValue',detail.value);
+    };
     onMounted(()=>{apply();element.value!.addEventListener('ha-value-request',handle);});
     watch(()=>[props.state,props.modelValue,props.name,props.defaultValue,props.disabled,props.form],apply,{flush:'post'});
     onBeforeUnmount(()=>element.value!.removeEventListener('ha-value-request',handle));

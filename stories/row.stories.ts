@@ -10,7 +10,11 @@ const meta={title:'Layout/Row',component:'vyp-ha-row',tags:['autodocs'],
 export default meta;type Story=StoryObj<RowArgs>;
 export const Default:Story={};
 export const SingleLine:Story={args:{description:false}};
-export const NarrowRightToLeft:Story={args:{long:true,rtl:true},globals:{width:'narrow'}};
+export const NarrowRightToLeft:Story={args:{long:true,rtl:true},globals:{width:'narrow'},play:async({canvasElement})=>{
+ await expect(canvasElement.querySelector('[role=list]')!).toHaveAttribute('dir','rtl');
+ await expect(canvasElement.querySelector('[role=list]')!).toHaveAttribute('lang','ar');
+ await expect(canvasElement.querySelector('[role=status]')!).toHaveAttribute('lang','ar');
+}};
 export const WithAction:Story={args:{actions:true},play:async({canvasElement})=>{
  const button=canvasElement.querySelector('vyp-ha-row vyp-ha-button')!.shadowRoot!.querySelector('button')!;
  await userEvent.click(button);

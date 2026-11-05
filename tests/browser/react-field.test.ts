@@ -3,7 +3,7 @@ import {act,createElement,StrictMode,useState} from 'react';
 import {createRoot,type Root} from 'react-dom/client';
 import {TextField} from '../../packages/react/src/index.js';
 import {registerField,type FieldValueEvent} from '../../packages/core/src/components/field.js';
-import {fieldModel,fieldHost,fieldInput,propose,formEntries,malformedRequest,mutableRequest} from './field-framework-fixture.js';
+import {fieldModel,fieldHost,fieldInput,propose,formEntries,malformedRequest,mutableRequest,nestedFieldRequest} from './field-framework-fixture.js';
 import type {TextFieldState} from '../../packages/core/src/field-contracts.js';
 vi.stubGlobal('IS_REACT_ACT_ENVIRONMENT',true);
 let root:Root|undefined;let setValue:(value:string)=>void;let current='';
@@ -47,6 +47,13 @@ test('optional React field props and callbacks need no wrapper model or attribut
   await act(()=>propose(field,'Unhandled'));expect(field.value).toBe('Kitchen');expect(field.name).toBe('');expect(field.defaultValue).toBe('');expect(field.disabled).toBe(false);
 });
 
+test('ignores requests from a nested field without canceling the DOM event',async()=>{
+  registerField();const observe=vi.fn(),change=vi.fn(),field=await render({observe,change});await field.updateComplete;
+  const bubbled=vi.fn();document.body.addEventListener('ha-value-request',bubbled,{once:true});
+  await act(()=>{nestedFieldRequest(field);});
+  expect(bubbled).toHaveBeenCalledTimes(1);expect(bubbled.mock.calls[0][0].defaultPrevented).toBe(false);
+  expect(observe).not.toHaveBeenCalled();expect(change).not.toHaveBeenCalled();expect(current).toBe('Kitchen');
+});
 test('rejects malformed native request detail before either application callback',async()=>{registerField();const observe=vi.fn((event:FieldValueEvent)=>event.preventDefault());const field=await render({observe});await field.updateComplete;expect(malformedRequest(field)).toHaveLength(1);expect(observe).not.toHaveBeenCalled();expect(current).toBe('Kitchen');});
 
 test('uses the validated snapshot if an observer mutates a foreign event payload',async()=>{registerField();const field=await render({observe:event=>{Reflect.set(event.detail,'value',42);}});await field.updateComplete;await act(()=>mutableRequest(field));await field.updateComplete;expect(current).toBe('Snapshot');expect(field.value).toBe('Snapshot');});

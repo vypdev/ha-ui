@@ -12,11 +12,12 @@ const labels={
  ar:{title:'مهام المنزل',long:'الصيانة واللوازم المنزلية المشتركة',copy:'راجع قائمة اللوازم.',review:'راجع المهمة',done:'تمت مراجعة المهمة.'},
 };
 export const renderExample:NonNullable<Meta<Args>['render']>=(controls,context)=>catalogExample(controls,(args,setArgs)=>{
- const copy=labels[args.rtl?'ar':catalogSettings(context.globals).locale];
+ const locale=args.rtl?'ar':catalogSettings(context.globals).locale;
+ const copy=labels[locale];
  const state=cardState({title:args.untitled?'':args.long?copy.long:copy.title,raised:args.raised});
- return html`<vyp-ha-card .state=${state} dir=${args.rtl?'rtl':'ltr'} style="max-width:420px">
+ return html`<vyp-ha-card .state=${state} dir=${args.rtl?'rtl':'ltr'} lang=${locale} style="max-width:420px">
   ${args.empty?nothing:html`<div>${copy.copy}</div>`}
   ${args.actions?html`<vyp-ha-button slot="actions" id="card-review" .state=${buttonState({label:copy.review,variant:'plain'})}
    @ha-press-request=${()=>setArgs({...args,reviewed:true})}></vyp-ha-button>`:nothing}
- </vyp-ha-card><div role="status">${args.reviewed?copy.done:''}</div>`;
+ </vyp-ha-card><div role="status" lang=${locale} dir=${args.rtl?'rtl':'ltr'}>${args.reviewed?copy.done:''}</div>`;
 });

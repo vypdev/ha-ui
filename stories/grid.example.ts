@@ -12,9 +12,10 @@ const copy={
  ar:{label:'مهام المنزل',cards:[['التسوق','راجع اللوازم.'],['التنظيف','راجع الردهة.'],['النباتات','اسق النباتات.']]},
 };
 export const renderExample:NonNullable<Meta<GridArgs>['render']>=(controls,context)=>catalogExample(controls,args=>{
- const text=copy[args.rtl?'ar':catalogSettings(context.globals).locale];
+ const locale=args.rtl?'ar':catalogSettings(context.globals).locale;
+ const text=copy[locale];
  const state=gridState({columns:args.columns,minColumnWidth:args.responsive?170:0,square:args.square,label:text.label});
- return html`<style>.layout-card::part(card){height:100%;}</style><vyp-ha-grid .state=${state} dir=${args.rtl?'rtl':'ltr'}>
+ return html`<style>.layout-card::part(card){height:100%;}</style><vyp-ha-grid .state=${state} dir=${args.rtl?'rtl':'ltr'} lang=${locale}>
   ${text.cards.map(([title,description])=>html`<vyp-ha-card class="layout-card" .state=${cardState({title})}><div>${description}</div></vyp-ha-card>`)}
  </vyp-ha-grid>`;
 });

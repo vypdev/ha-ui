@@ -7,7 +7,7 @@ import {FormControl,FormGroup,ReactiveFormsModule,FormsModule,NgModel} from '@an
 import {By} from '@angular/platform-browser';
 import {TextField} from '../../packages/angular/src/index.js';
 import {registerField,type FieldValueEvent} from '../../packages/core/src/components/field.js';
-import {fieldModel,fieldHost,fieldInput,propose,formEntries,malformedRequest,mutableRequest} from './field-framework-fixture.js';
+import {fieldModel,fieldHost,fieldInput,propose,formEntries,malformedRequest,mutableRequest,nestedFieldRequest} from './field-framework-fixture.js';
 TestBed.initTestEnvironment(BrowserTestingModule,platformBrowserTesting());
 @Component({standalone:true,imports:[TextField,ReactiveFormsModule],template:`<form [formGroup]="group"><vyp-ha-field name="task" defaultValue="Native baseline" [state]="state()" formControlName="task" (valueRequest)="observe($event)" /><button type="reset">Reset</button></form>`})
 class ReactiveConsumer {
@@ -69,6 +69,14 @@ test('destroy removes both field and touch subscriptions from a retained host',a
   expect(observer).not.toHaveBeenCalled();expect(control.value).toBe('Kitchen');expect(control.untouched).toBe(true);
 });
 
+test('ignores requests from a nested field without canceling the DOM event',async()=>{
+  registerField();const fixture=reactive(),field=fieldHost();await settle(fixture);
+  const {observe,group}=fixture.componentInstance;
+  const bubbled=vi.fn();document.body.addEventListener('ha-value-request',bubbled,{once:true});
+  nestedFieldRequest(field);
+  expect(bubbled).toHaveBeenCalledTimes(1);expect(bubbled.mock.calls[0][0].defaultPrevented).toBe(false);
+  expect(observe).not.toHaveBeenCalled();expect(group.controls.task.value).toBe('Kitchen');expect(group.pristine).toBe(true);
+});
 test('rejects malformed native request detail before Angular output or model changes',async()=>{registerField();const fixture=reactive(),field=fieldHost();await settle(fixture);fixture.componentInstance.observe.mockImplementation(event=>event.preventDefault());expect(malformedRequest(field)).toHaveLength(1);expect(fixture.componentInstance.observe).not.toHaveBeenCalled();expect(fixture.componentInstance.group.controls.task.value).toBe('Kitchen');});
 
 test('CVA uses its validated snapshot after a foreign payload is mutated',async()=>{registerField();const fixture=reactive(),field=fieldHost();await settle(fixture);fixture.componentInstance.observe.mockImplementation(event=>{Reflect.set(event.detail,'value',42);});mutableRequest(field);await settle(fixture);expect(fixture.componentInstance.group.controls.task.value).toBe('Snapshot');expect(field.value).toBe('Snapshot');});

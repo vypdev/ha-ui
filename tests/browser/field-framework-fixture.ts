@@ -11,3 +11,11 @@ export function malformedRequest(host:HaTextField){
   finally{window.removeEventListener('error',capture);}return errors;
 }
 export function mutableRequest(host:HaTextField){host.dispatchEvent(new CustomEvent('ha-value-request',{detail:{value:'Snapshot',reason:'input'},bubbles:true,composed:true,cancelable:true}));}
+
+export function nestedFieldRequest(host:HaTextField){
+  const child=document.createElement('vyp-ha-field');
+  host.append(child);
+  const request=new CustomEvent('ha-value-request',{detail:{value:'Nested',reason:'input'},bubbles:true,composed:true,cancelable:true});
+  child.dispatchEvent(request);
+  return request;
+}

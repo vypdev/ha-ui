@@ -17,6 +17,15 @@ export function checkboxAdapterCases(mount:(target:HTMLElement,options:CheckboxO
  test('one original request precedes an accepted boolean and asynchronous app acknowledgement',async()=>{
   registerCheckbox();const order:string[]=[],observer=vi.fn((event:CheckboxChangeEvent)=>{expect(event.target).toBe(view!.host);expect(event.cancelable).toBe(true);expect(Object.isFrozen(event.detail)).toBe(true);order.push('request');}),change=vi.fn((_checked:boolean)=>order.push('model'));const {host,update}=await attach({name:'done',onCheckedRequest:observer,onCheckedChange:change});await settle();host.click();expect(host.checked).toBe(false);expect(change).toHaveBeenCalledExactlyOnceWith(true);expect(order).toEqual(['request','model']);await update({checked:true});await settle();expect(checkboxInput(host).checked).toBe(true);expect([...new FormData(host.form!)]).toEqual([['done','on']]);expect(observer).toHaveBeenCalledTimes(1);host.focus();expect(host.shadowRoot!.activeElement).toBe(checkboxInput(host));host.blur();
  });
+ test('a nested control request bubbles without updating the adapter model',async()=>{
+  registerCheckbox();const observe=vi.fn(),change=vi.fn(),{host}=await attach({onCheckedRequest:observe,onCheckedChange:change});await settle();
+  const child=document.createElement(host.localName);host.append(child);
+  const request=new CustomEvent('ha-check-request',{detail:{checked:true,reason:'change'},bubbles:true,composed:true,cancelable:true});
+  const bubbled=vi.fn();document.body.addEventListener(request.type,bubbled,{once:true});
+  expect(child.dispatchEvent(request)).toBe(true);
+  expect(bubbled).toHaveBeenCalledExactlyOnceWith(request);
+  expect(observe).not.toHaveBeenCalled();expect(change).not.toHaveBeenCalled();expect(host.checked).toBe(false);
+ });
  test('callback replacement/removal and synchronous cancellation preserve accepted checked state',async()=>{
   registerCheckbox();const old=vi.fn(),cancel=vi.fn((event:CheckboxChangeEvent)=>event.preventDefault()),change=vi.fn();const {host,update}=await attach({onCheckedRequest:old,onCheckedChange:change});await settle();await update({onCheckedRequest:cancel});host.click();expect(old).not.toHaveBeenCalled();expect(cancel).toHaveBeenCalledTimes(1);expect(change).not.toHaveBeenCalled();expect(checkboxInput(host).checked).toBe(false);await update({onCheckedRequest:undefined,onCheckedChange:undefined});host.click();expect(host.checked).toBe(false);expect(cancel).toHaveBeenCalledTimes(1);
  });

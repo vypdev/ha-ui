@@ -17,7 +17,12 @@ export function TextField({state,value,name='',defaultValue='',disabled=false,fo
   },[state,value,name,defaultValue,disabled,form]);
   useLayoutEffect(()=>{
     const host=element.current!;
-    const handle=(event:FieldValueEvent)=>{const detail=fieldValueDetail(event.detail);onValueRequest?.(event);if(!event.defaultPrevented)onValueChange?.(detail.value);};
+    const handle=(event:FieldValueEvent)=>{
+      if(event.composedPath()[0]!==host)return;
+      const detail=fieldValueDetail(event.detail);
+      onValueRequest?.(event);
+      if(!event.defaultPrevented)onValueChange?.(detail.value);
+    };
     host.addEventListener('ha-value-request',handle);return ()=>host.removeEventListener('ha-value-request',handle);
   },[onValueRequest,onValueChange]);
   return createElement('vyp-ha-field',{ref:element,id,className,style,dir,lang});

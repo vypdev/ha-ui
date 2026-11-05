@@ -6,8 +6,14 @@
   let {state,value,name='',defaultValue='',disabled=false,form,onValueRequest,onValueChange,id,class:className,style,dir,lang}:TextFieldProps=$props();
   let element:HaTextField;
   onMount(()=>{
-    const handle=(event:FieldValueEvent)=>{const detail=fieldValueDetail(event.detail);onValueRequest?.(event);if(!event.defaultPrevented)onValueChange?.(detail.value);};
-    element.addEventListener('ha-value-request',handle);return ()=>element.removeEventListener('ha-value-request',handle);
+    const handle=(event:FieldValueEvent)=>{
+      if(event.composedPath()[0]!==element)return;
+      const detail=fieldValueDetail(event.detail);
+      onValueRequest?.(event);
+      if(!event.defaultPrevented)onValueChange?.(detail.value);
+    };
+    element.addEventListener('ha-value-request',handle);
+    return ()=>element.removeEventListener('ha-value-request',handle);
   });
   $effect(()=>{
     element.state=state;element.name=name;element.defaultValue=defaultValue;element.disabled=disabled;

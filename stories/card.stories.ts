@@ -13,7 +13,11 @@ export const Raised:Story={args:{raised:true}};
 export const Untitled:Story={args:{untitled:true}};
 export const HeadingOnly:Story={args:{empty:true}};
 export const Narrow:Story={args:{long:true},globals:{width:'narrow'}};
-export const RightToLeft:Story={args:{rtl:true,actions:true}};
+export const RightToLeft:Story={args:{rtl:true,actions:true},play:async({canvasElement})=>{
+ await expect(canvasElement.querySelector('vyp-ha-card')!).toHaveAttribute('dir','rtl');
+ await expect(canvasElement.querySelector('vyp-ha-card')!).toHaveAttribute('lang','ar');
+ await expect(canvasElement.querySelector('[role=status]')!).toHaveAttribute('lang','ar');
+}};
 export const WithActions:Story={args:{actions:true},play:async({canvasElement})=>{
  const command=canvasElement.querySelector('#card-review')!;
  await userEvent.click(command.shadowRoot!.querySelector('button')!);

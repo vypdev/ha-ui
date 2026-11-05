@@ -9,7 +9,12 @@ export const Checkbox=defineComponent({name:'HaUiCheckbox',inheritAttrs:false,
  setup(props,{attrs,emit}){
   const element=shallowRef<HaCheckbox|null>(null);
   const apply=()=>{const host=element.value!;host.state=props.state;host.name=props.name;host.value=props.value;host.defaultChecked=props.defaultChecked;host.disabled=props.disabled;if(props.form===undefined)host.removeAttribute('form');else host.setAttribute('form',props.form);host.checked=props.modelValue;};
-  const handle=(event:CheckboxChangeEvent)=>{const detail=checkboxChangeDetail(event.detail);emit('checkedRequest',event);if(!event.defaultPrevented)emit('update:modelValue',detail.checked);};
+  const handle=(event:CheckboxChangeEvent)=>{
+    if(event.composedPath()[0]!==element.value)return;
+    const detail=checkboxChangeDetail(event.detail);
+    emit('checkedRequest',event);
+    if(!event.defaultPrevented)emit('update:modelValue',detail.checked);
+  };
   onMounted(()=>{apply();element.value!.addEventListener('ha-check-request',handle);});watch(()=>[props.state,props.modelValue,props.defaultChecked,props.value,props.name,props.disabled,props.form],apply,{flush:'post'});onBeforeUnmount(()=>element.value!.removeEventListener('ha-check-request',handle));
   return ()=>h('vyp-ha-checkbox',{...nativeHostAttributes(attrs),ref:element});
  },

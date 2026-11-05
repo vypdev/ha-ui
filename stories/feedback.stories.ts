@@ -20,4 +20,8 @@ export const Untitled:Story={args:{titled:false}};
 export const Empty:Story={args:{kind:'empty',action:true}};
 export const HeadingOnly:Story={args:{kind:'empty',titled:false,icon:false}};
 export const Loading:Story={args:{kind:'loading'}};
-export const RightToLeft:Story={args:{rtl:true,tone:'warning'}};
+export const RightToLeft:Story={args:{rtl:true,tone:'warning'},play:async({canvasElement})=>{
+ await expect(canvasElement.querySelector('vyp-ha-feedback')!).toHaveAttribute('dir','rtl');
+ await expect(canvasElement.querySelector('vyp-ha-feedback')!).toHaveAttribute('lang','ar');
+ await expect(canvasElement.querySelector('#feedback-action-result')!).toHaveAttribute('lang','ar');
+}};

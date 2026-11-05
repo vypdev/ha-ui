@@ -16,6 +16,7 @@ export class TextField implements ControlValueAccessor,Validator,OnChanges,OnDes
   readonly #renderer=inject(Renderer2);
   #modelValue='';#change:((value:string)=>void)|undefined;#touched:(()=>void)|undefined;#validatorChanged:(()=>void)|undefined;
   readonly #stopValue=this.#renderer.listen(this.#host,'ha-value-request',(event:FieldValueEvent)=>{
+    if(event.composedPath()[0]!==this.#host)return;
     const detail=fieldValueDetail(event.detail);this.valueRequest.emit(event);if(event.defaultPrevented||this.#change===undefined)return;
     // Angular's form reset already wrote the correct nullable/nonnullable default before the native callback.
     if(detail.reason==='reset'){this.writeValue(this.#modelValue);return;}

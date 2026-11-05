@@ -20,6 +20,15 @@ export function selectAdapterCases(mount:(target:HTMLElement,options:SelectOptio
   registerSelect();const order:string[]=[],observer=vi.fn((event:SelectValueEvent)=>{expect(event.target).toBe(view!.host);expect(event.cancelable).toBe(true);expect(Object.isFrozen(event.detail)).toBe(true);order.push('request');}),change=vi.fn((_value:SelectSelection)=>order.push('model'));
   const {host,update}=await attach({value:1,name:'category',onValueRequest:observer,onValueChange:change});await settle();await selectPropose(host,['2']);expect(host.value).toBe(1);expect(change).toHaveBeenCalledExactlyOnceWith(false);expect(observer).toHaveBeenCalledTimes(1);expect(order).toEqual(['request','model']);await update({value:false});await settle();expect(selectControl(host).value).toBe('2');expect([...new FormData(host.form!)]).toEqual([['category','false']]);expect(change).toHaveBeenCalledTimes(1);
  });
+ test('a nested control request bubbles without updating the adapter model',async()=>{
+  registerSelect();const observe=vi.fn(),change=vi.fn(),{host}=await attach({onValueRequest:observe,onValueChange:change});await settle();
+  const child=document.createElement(host.localName);host.append(child);
+  const request=new CustomEvent('ha-select-request',{detail:{value:1,reason:'change'},bubbles:true,composed:true,cancelable:true});
+  const bubbled=vi.fn();document.body.addEventListener(request.type,bubbled,{once:true});
+  expect(child.dispatchEvent(request)).toBe(true);
+  expect(bubbled).toHaveBeenCalledExactlyOnceWith(request);
+  expect(observe).not.toHaveBeenCalled();expect(change).not.toHaveBeenCalled();expect(host.value).toBe(null);
+ });
  test('callback replacement/removal and synchronous cancellation preserve the model',async()=>{
   registerSelect();const old=vi.fn(),cancel=vi.fn((event:SelectValueEvent)=>event.preventDefault()),change=vi.fn();const {host,update}=await attach({value:1,onValueRequest:old,onValueChange:change});await settle();await update({onValueRequest:cancel});await selectPropose(host,['2']);expect(old).not.toHaveBeenCalled();expect(cancel).toHaveBeenCalledTimes(1);expect(change).not.toHaveBeenCalled();expect(host.value).toBe(1);await update({onValueRequest:undefined,onValueChange:undefined});await selectPropose(host,['2']);expect(host.value).toBe(1);expect(cancel).toHaveBeenCalledTimes(1);
  });

@@ -11,6 +11,7 @@ export class Checkbox implements ControlValueAccessor,Validator,OnChanges,OnDest
  readonly #host=inject<ElementRef<HaCheckbox>>(ElementRef).nativeElement;readonly #renderer=inject(Renderer2);
  #modelChecked=false;#change:((checked:boolean)=>void)|undefined;#touched:(()=>void)|undefined;#validatorChanged:(()=>void)|undefined;
  readonly #stopChecked=this.#renderer.listen(this.#host,'ha-check-request',(event:CheckboxChangeEvent)=>{
+  if(event.composedPath()[0]!==this.#host)return;
   const detail=checkboxChangeDetail(event.detail);this.checkedRequest.emit(event);if(event.defaultPrevented)return;
   if(this.#change===undefined){this.checkedChange.emit(detail.checked);return;}
   if(detail.reason==='reset'){this.writeValue(this.#modelChecked);return;}this.writeValue(detail.checked);this.#change(detail.checked);

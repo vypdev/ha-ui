@@ -12,12 +12,13 @@ const copy={
  ar:{list:'مهام المنزل',label:'راجع لوازم المطبخ',description:'راجع قائمة التسوق المشتركة.',long:'راجع لوازم المطبخ والغسيل والصيانة للمنزل المشترك',action:'راجع المهمة',done:'تمت مراجعة المهمة.'},
 };
 export const renderExample:NonNullable<Meta<RowArgs>['render']>=(controls,context)=>catalogExample(controls,(args,setArgs)=>{
- const text=copy[args.rtl?'ar':catalogSettings(context.globals).locale];
+ const locale=args.rtl?'ar':catalogSettings(context.globals).locale;
+ const text=copy[locale];
  const state=rowState({label:args.long?text.long:text.label,description:args.description?text.description:''});
- return html`<div role="list" aria-label=${text.list} dir=${args.rtl?'rtl':'ltr'} style="max-width:560px">
+ return html`<div role="list" aria-label=${text.list} dir=${args.rtl?'rtl':'ltr'} lang=${locale} style="max-width:560px">
   <vyp-ha-row .state=${state}>
    ${args.actions?html`<svg aria-hidden="true" slot="leading" width="16" height="16" viewBox="0 0 16 16" style="display:block" fill="currentColor"><path d="M8 2 14 8 8 14 2 8Z"></path></svg><vyp-ha-button slot="trailing" .state=${buttonState({label:text.action,variant:'plain'})}
     @ha-press-request=${()=>setArgs({...args,reviewed:true})}></vyp-ha-button>`:nothing}
   </vyp-ha-row>
- </div><div role="status">${args.reviewed?text.done:''}</div>`;
+ </div><div role="status" lang=${locale} dir=${args.rtl?'rtl':'ltr'}>${args.reviewed?text.done:''}</div>`;
 });

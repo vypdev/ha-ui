@@ -1,4 +1,5 @@
 import type {Meta,StoryObj} from '@storybook/web-components-vite';
+import {expect} from 'storybook/test';
 import {renderExample,type GridArgs} from './grid.example.js';
 
 const meta={title:'Layout/Grid',component:'vyp-ha-grid',tags:['autodocs'],
@@ -10,4 +11,7 @@ export default meta;type Story=StoryObj<GridArgs>;
 export const Default:Story={};
 export const Narrow:Story={globals:{width:'narrow'}};
 export const Square:Story={args:{square:true}};
-export const RightToLeft:Story={args:{rtl:true,columns:2,responsive:false}};
+export const RightToLeft:Story={args:{rtl:true,columns:2,responsive:false},play:async({canvasElement})=>{
+ await expect(canvasElement.querySelector('vyp-ha-grid')!).toHaveAttribute('dir','rtl');
+ await expect(canvasElement.querySelector('vyp-ha-grid')!).toHaveAttribute('lang','ar');
+}};
