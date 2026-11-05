@@ -10,7 +10,7 @@
     "32425.69983054c1ddb489.js",
     "47578.fba66e0739297711.js"
   ],
-  "harness": "Only the recorded public frontend and theme tokens are loaded. The original grid receives a minimal fictional language context and local card content. The narrow reference uses one native HA grid column; the candidate reaches the same column count from container width. The original and candidate use the same pinned Arabic fallback for RTL captures.",
+  "harness": "Only the recorded public frontend and theme tokens are loaded. The original grid receives a minimal fictional language context and local card content. The narrow reference uses one native HA grid column; the candidate reaches the same column count from container width. The original and candidate use the same pinned Arabic fallback for RTL captures. The row action fixture uses the same decorative 16px SVG in both renderers; its width does not depend on system fonts.",
   "appSha256": "7b0d03a0c75c971cd3084c988430c512414209ca2c8bba8d506724d3be2827ec",
   "modules": [
     28402,
@@ -2061,13 +2061,13 @@
             },
             "label": {
               "box": {
-                "x": 67.5625,
+                "x": 72,
                 "y": 38,
-                "width": 325.859375,
+                "width": 321.421875,
                 "height": 24
               },
               "glyph": {
-                "x": 67.5625,
+                "x": 72,
                 "y": 40,
                 "width": 169.515625,
                 "height": 19
@@ -2091,13 +2091,13 @@
             },
             "description": {
               "box": {
-                "x": 67.5625,
+                "x": 72,
                 "y": 62,
-                "width": 325.859375,
+                "width": 321.421875,
                 "height": 20
               },
               "glyph": {
-                "x": 67.5625,
+                "x": 72,
                 "y": 64,
                 "width": 58.6875,
                 "height": 16
@@ -2122,16 +2122,11 @@
             "leading": {
               "box": {
                 "x": 40,
-                "y": 48,
-                "width": 11.5625,
-                "height": 24
+                "y": 52,
+                "width": 16,
+                "height": 16
               },
-              "glyph": {
-                "x": 40,
-                "y": 50,
-                "width": 11.5625,
-                "height": 19
-              },
+              "glyph": null,
               "style": {
                 "display": "block",
                 "gridTemplateColumns": "none",
@@ -2179,7 +2174,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-layout/macos-arm64/light-row-actions.png",
-        "sha256": "17cba0d598205c895d22702d56ed864ea9b6cb07323ee9797f796f65c7d71abf"
+        "sha256": "11365a8efeb8dad5f4e7307d5633b9f630a3f93c67c1307691640321a986b149"
       }
     },
     {
@@ -3658,13 +3653,13 @@
             },
             "label": {
               "box": {
-                "x": 67.5625,
+                "x": 72,
                 "y": 38,
-                "width": 325.859375,
+                "width": 321.421875,
                 "height": 24
               },
               "glyph": {
-                "x": 67.5625,
+                "x": 72,
                 "y": 40,
                 "width": 169.515625,
                 "height": 19
@@ -3688,13 +3683,13 @@
             },
             "description": {
               "box": {
-                "x": 67.5625,
+                "x": 72,
                 "y": 62,
-                "width": 325.859375,
+                "width": 321.421875,
                 "height": 20
               },
               "glyph": {
-                "x": 67.5625,
+                "x": 72,
                 "y": 64,
                 "width": 58.6875,
                 "height": 16
@@ -3719,16 +3714,11 @@
             "leading": {
               "box": {
                 "x": 40,
-                "y": 48,
-                "width": 11.5625,
-                "height": 24
+                "y": 52,
+                "width": 16,
+                "height": 16
               },
-              "glyph": {
-                "x": 40,
-                "y": 50,
-                "width": 11.5625,
-                "height": 19
-              },
+              "glyph": null,
               "style": {
                 "display": "block",
                 "gridTemplateColumns": "none",
@@ -3776,7 +3766,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-layout/macos-arm64/dark-row-actions.png",
-        "sha256": "c91c2693e0ee981c9ec75118121a7203e5294aad1577c3c874f566c47fe7836a"
+        "sha256": "af823af72834db88233f8aa95ba4b71450d2b6dc398e1948d46a976848fe2934"
       }
     },
     {
@@ -5316,16 +5306,11 @@
             "leading": {
               "box": {
                 "x": 40,
-                "y": 48,
+                "y": 52,
                 "width": 16,
-                "height": 24
+                "height": 16
               },
-              "glyph": {
-                "x": 40,
-                "y": 50,
-                "width": 16,
-                "height": 19
-              },
+              "glyph": null,
               "style": {
                 "display": "block",
                 "gridTemplateColumns": "none",
@@ -5373,7 +5358,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-layout/linux-arm64/light-row-actions.png",
-        "sha256": "3daba18da26d4990c5c06de2a27c83d30421ccc218ca7e0b23af13ec1d754349"
+        "sha256": "6174767d457bc1e39466afe5816deed9fd38f5bb607b565cd3a1d8c26bd293b4"
       }
     },
     {
@@ -6913,16 +6898,11 @@
             "leading": {
               "box": {
                 "x": 40,
-                "y": 48,
+                "y": 52,
                 "width": 16,
-                "height": 24
+                "height": 16
               },
-              "glyph": {
-                "x": 40,
-                "y": 50,
-                "width": 16,
-                "height": 19
-              },
+              "glyph": null,
               "style": {
                 "display": "block",
                 "gridTemplateColumns": "none",
@@ -6970,7 +6950,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-layout/linux-arm64/dark-row-actions.png",
-        "sha256": "f0b7c1dfb5cf054c17eed84e5c72abc7ee3792123e1ccc19cd21d895cd963ac5"
+        "sha256": "5f6481e84f18c7865d2fe0f234e71fc75a9964c7d421fd3d38ce2f1377f11ba4"
       }
     },
     {
@@ -8510,16 +8490,11 @@
             "leading": {
               "box": {
                 "x": 40,
-                "y": 48,
+                "y": 52,
                 "width": 16,
-                "height": 24
+                "height": 16
               },
-              "glyph": {
-                "x": 40,
-                "y": 50,
-                "width": 16,
-                "height": 19
-              },
+              "glyph": null,
               "style": {
                 "display": "block",
                 "gridTemplateColumns": "none",
@@ -8567,7 +8542,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-layout/linux-arm64/light-row-actions.png",
-        "sha256": "3daba18da26d4990c5c06de2a27c83d30421ccc218ca7e0b23af13ec1d754349"
+        "sha256": "6174767d457bc1e39466afe5816deed9fd38f5bb607b565cd3a1d8c26bd293b4"
       }
     },
     {
@@ -10107,16 +10082,11 @@
             "leading": {
               "box": {
                 "x": 40,
-                "y": 48,
+                "y": 52,
                 "width": 16,
-                "height": 24
+                "height": 16
               },
-              "glyph": {
-                "x": 40,
-                "y": 50,
-                "width": 16,
-                "height": 19
-              },
+              "glyph": null,
               "style": {
                 "display": "block",
                 "gridTemplateColumns": "none",
@@ -10164,7 +10134,7 @@
       },
       "image": {
         "path": "tests/storybook/reference/ha-layout/linux-arm64/dark-row-actions.png",
-        "sha256": "f0b7c1dfb5cf054c17eed84e5c72abc7ee3792123e1ccc19cd21d895cd963ac5"
+        "sha256": "5f6481e84f18c7865d2fe0f234e71fc75a9964c7d421fd3d38ce2f1377f11ba4"
       }
     },
     {

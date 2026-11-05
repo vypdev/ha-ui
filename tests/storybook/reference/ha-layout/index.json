@@ -1,6 +1,6 @@
 {
   "format": "ustar",
-  "sha256": "61092013e2a806cfd0a647def10d4e3bb9d57fad6f9afd11ed68fd5c2f86f9fb",
+  "sha256": "98beb82510e64afbd959afdd63cd5d40d9cb08a6554439261bcf5a214f560213",
   "entries": {
     "linux-arm64/dark-grid-narrow.png": [
       512,
@@ -20,7 +20,7 @@
     ],
     "linux-arm64/dark-row-actions.png": [
       42496,
-      4943
+      4810
     ],
     "linux-arm64/dark-row-rtl.png": [
       48128,
@@ -52,7 +52,7 @@
     ],
     "linux-arm64/light-row-actions.png": [
       111104,
-      4801
+      4669
     ],
     "linux-arm64/light-row-rtl.png": [
       116736,
@@ -84,7 +84,7 @@
     ],
     "macos-arm64/dark-row-actions.png": [
       186368,
-      5325
+      5202
     ],
     "macos-arm64/dark-row-rtl.png": [
       192512,
@@ -116,7 +116,7 @@
     ],
     "macos-arm64/light-row-actions.png": [
       264704,
-      5316
+      5185
     ],
     "macos-arm64/light-row-rtl.png": [
       270848,

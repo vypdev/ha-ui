@@ -419,7 +419,8 @@ rows, projected leading content and actions, narrow wrapping and right-to-left t
 covers the original Lovelace three-column grid, a one-column narrow result, square cells and
 two columns with right-to-left flow and a custom gap. The candidate reaches the narrow
 result using its own container width. The gate compares native row text and action geometry,
-grid tracks, nested card geometry and the full raster. All 48 layout captures match the original raster
+grid tracks, nested card geometry and the full raster. The decorative row icon is a 16px SVG in both fixtures, so
+its geometry is independent of the operating system font set. All 48 layout captures match the original raster
 exactly on macOS ARM64, Linux ARM64 and Linux x64.
 
 Card and layout reference captures load the same local Arabic fallback in the actual HA

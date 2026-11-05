@@ -16,7 +16,7 @@ export const renderExample:NonNullable<Meta<RowArgs>['render']>=(controls,contex
  const state=rowState({label:args.long?text.long:text.label,description:args.description?text.description:''});
  return html`<div role="list" aria-label=${text.list} dir=${args.rtl?'rtl':'ltr'} style="max-width:560px">
   <vyp-ha-row .state=${state}>
-   ${args.actions?html`<span aria-hidden="true" slot="leading">◆</span><vyp-ha-button slot="trailing" .state=${buttonState({label:text.action,variant:'plain'})}
+   ${args.actions?html`<svg aria-hidden="true" slot="leading" width="16" height="16" viewBox="0 0 16 16" style="display:block" fill="currentColor"><path d="M8 2 14 8 8 14 2 8Z"></path></svg><vyp-ha-button slot="trailing" .state=${buttonState({label:text.action,variant:'plain'})}
     @ha-press-request=${()=>setArgs({...args,reviewed:true})}></vyp-ha-button>`:nothing}
   </vyp-ha-row>
  </div><div role="status">${args.reviewed?text.done:''}</div>`;

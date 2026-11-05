@@ -49,7 +49,10 @@ export async function exerciseLayoutVisual(page:Page,origin:string,output:string
     for(const state of rows){
      const row=document.createElement('vyp-ha-row');row.state=state;
      if(config.actions){
-      const leading=document.createElement('span');leading.slot='leading';leading.textContent='◆';leading.setAttribute('aria-hidden','true');row.append(leading);
+      const svgNamespace='http://www.w3.org/2000/svg',leading=document.createElementNS(svgNamespace,'svg');
+      leading.setAttribute('slot','leading');leading.setAttribute('aria-hidden','true');leading.setAttribute('width','16');leading.setAttribute('height','16');
+      leading.setAttribute('viewBox','0 0 16 16');leading.setAttribute('style','display:block');leading.setAttribute('fill','currentColor');
+      const diamond=document.createElementNS(svgNamespace,'path');diamond.setAttribute('d','M8 2 14 8 8 14 2 8Z');leading.append(diamond);row.append(leading);
       const button=document.createElement('vyp-ha-button');button.slot='trailing';button.state=buttonState;row.append(button);
      }
      list.append(row);
