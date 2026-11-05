@@ -1,6 +1,7 @@
 import {captureSettledElement} from './screenshot.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
 import {readOriginalRaster} from './reference-images.ts';
+import {compareVisualPng} from './raster-comparison.ts';
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
@@ -22,7 +23,7 @@ export async function exerciseNavigationVisual(page:Page,origin:string,output:st
   await page.evaluate(()=>{const holder=document.createElement('div');holder.id='navigation-proof';holder.style.cssText='position:fixed;left:32px;top:32px;width:600px;height:56px;overflow:hidden;z-index:9999';const host=document.createElement('vyp-ha-tabs');host.id='visual-navigation';holder.append(host);document.querySelector('main.catalog-frame')!.append(holder);});
   const states:ReferenceState[]=reference.states.filter(row=>row.platform===platform&&row.theme===theme);assert.equal(states.length,4,'All measured platform states are required');
   for(const row of states){
-   const bytes=await readOriginalRaster(row.image);assert.equal(bytes.readUInt32BE(16),row.image.width);assert.equal(bytes.readUInt32BE(20),row.image.height);
+   const original=await readOriginalRaster(row.image);assert.equal(original.readUInt32BE(16),row.image.width);assert.equal(original.readUInt32BE(20),row.image.height);
    await page.locator('#visual-navigation').evaluate(async(el,{kind,state})=>{const host=el as HaTabs;host.state={kind,label:'Household sections',selected:'overview',items:['Overview','Tasks','Inventory'].map((label,n)=>({id:['overview','tasks','inventory'][n],label,href:kind==='navigation'?'#section-'+n:null,disabled:n===1&&state==='disabled'}))};await host.updateComplete;host.shadowRoot!.querySelector<HTMLElement>('[part=item]')!.blur();},{kind,state:row.state});
    if(row.state==='hover')await page.locator('#visual-navigation a,#visual-navigation button').nth(1).hover();else await page.mouse.move(1100,800);
    if(row.state==='focus'){await page.locator('#visual-navigation a,#visual-navigation button').first().focus();await page.keyboard.press('Home');}
@@ -33,8 +34,11 @@ export async function exerciseNavigationVisual(page:Page,origin:string,output:st
     for(const[key,value]of Object.entries(item.geometry))assert.ok(Math.abs(value-expected.geometry[key as keyof typeof expected.geometry])<(key==='textY'?0.1:1),kind+' '+theme+' '+row.state+' '+key);
     if(row.state==='focus'&&index===0){assert.equal(item.focusVisible,true);assert.equal(item.base.outline,expected.base.outline);assert.equal(item.base.outlineOffset,expected.base.outlineOffset);}
    }
-   const raster=await captureSettledElement(page,'#navigation-proof',resolve(output,'ha-navigation-'+kind+'-'+theme+'-'+row.state+'.png'));
-   results.push({platform,kind,theme,state:row.state,typographyStateAndGeometryMatch:true,layoutToleranceCssPx:1,textVerticalToleranceCssPx:0.1,actual,referenceImage:row.image,raster});
+   const path=resolve(output,`ha-navigation-${kind}-${theme}-${row.state}.png`);
+   const raster=await captureSettledElement(page,'#navigation-proof',path);
+   const {agreement}=await compareVisualPng(page,original,await readFile(path));
+   assert.equal(agreement.changedPixels,0,`Original HA navigation pixels differ for ${platform} ${kind} ${theme} ${row.state}`);
+   results.push({platform,kind,theme,state:row.state,typographyStateAndGeometryMatch:true,layoutToleranceCssPx:1,textVerticalToleranceCssPx:0.1,actual,referenceImage:row.image,raster,rasterAgreement:agreement});
   }
  }
  await writeFile(resolve(output,'ha-navigation-parity.json'),JSON.stringify({reference:'docs/evidence/ha-navigation-reference.json',scope:'Measured text-only controls; icons, overflow affordances and installed-application/human acceptance remain required',results},null,2)+'\n');return results;
