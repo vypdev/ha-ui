@@ -1,0 +1,14 @@
+node_modules/
+coverage/
+.validation/
+work/
+**/dist/
+**/test-results/
+**/.vite/
+
+.vitest/
+
+**/.svelte-kit/
+
+build/
+.storybook-cache/

@@ -1,0 +1,22 @@
+{
+  "name": "ha-ui-sveltekit-ssr-fixture",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.0",
+  "engines": {
+    "node": ">=24.20.0 <25"
+  },
+  "scripts": {
+    "build": "vite build --config fixture.vite.config.js",
+    "start": "node build/index.js"
+  },
+  "dependencies": {
+    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+    "@vypdev/ha-ui-svelte": "file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz",
+    "@sveltejs/kit": "3.1.1",
+    "@sveltejs/adapter-node": "6.0.1",
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "svelte": "5.57.3",
+    "vite": "8.3.5"
+  }
+}

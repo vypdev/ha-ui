@@ -1,0 +1,12 @@
+import {mount} from 'svelte';
+import {registerTabs} from '@vypdev/ha-ui/tabs';
+import {registerField} from '@vypdev/ha-ui/field';
+import {registerButton} from '@vypdev/ha-ui/button';
+import {registerCheckbox} from '@vypdev/ha-ui/checkbox';
+import {registerSelect} from '@vypdev/ha-ui/select';
+import {registerDialog} from '@vypdev/ha-ui/dialog';
+import {registerCard} from '@vypdev/ha-ui/card';
+import {registerGrid,registerRow} from '@vypdev/ha-ui/layout';
+import {registerFeedback} from '@vypdev/ha-ui/feedback';
+import Consumer from './Consumer.svelte';
+registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();mount(Consumer,{target:document.querySelector('main')!});

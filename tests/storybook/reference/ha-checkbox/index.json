@@ -1,0 +1,62 @@
+{
+  "format": "ustar",
+  "sha256": "5709581414d630b627656064735c2dc1d60ec1eea796bb55175efe7dbe337265",
+  "entries": {
+    "dark-checked.png": [
+      512,
+      2275
+    ],
+    "dark-disabled.png": [
+      3584,
+      2081
+    ],
+    "dark-focus.png": [
+      6656,
+      2317
+    ],
+    "dark-hover.png": [
+      9728,
+      2040
+    ],
+    "dark-mixed.png": [
+      12288,
+      2091
+    ],
+    "dark-required.png": [
+      15360,
+      2140
+    ],
+    "dark-unchecked.png": [
+      18432,
+      2032
+    ],
+    "light-checked.png": [
+      20992,
+      2239
+    ],
+    "light-disabled.png": [
+      24064,
+      2126
+    ],
+    "light-focus.png": [
+      27136,
+      2290
+    ],
+    "light-hover.png": [
+      30208,
+      2049
+    ],
+    "light-mixed.png": [
+      33280,
+      2073
+    ],
+    "light-required.png": [
+      36352,
+      2134
+    ],
+    "light-unchecked.png": [
+      39424,
+      2023
+    ]
+  }
+}

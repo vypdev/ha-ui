@@ -1,0 +1,6 @@
+packages:
+  - packages/*
+  - examples/*
+linkWorkspacePackages: true
+patchedDependencies:
+  '@storybook/web-components@10.6.5': patches/@storybook__web-components@10.6.5.patch

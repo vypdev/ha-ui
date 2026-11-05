@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "types": [
+      "node",
+      "chai"
+    ]
+  },
+  "include": [
+    "stories/**/*.ts",
+    ".storybook/**/*.ts",
+    "tests/typing/storybook.ts",
+    "tests/typing/catalog-assets.d.ts"
+  ],
+  "exclude": []
+}

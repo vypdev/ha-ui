@@ -1,0 +1,5097 @@
+{
+  "states": [
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": false,
+      "state": "start",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 89.484375,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 158.171875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 248.328125,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 321.515625,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 405.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 493.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 584.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-ltr-start.png",
+        "sha256": "77faac8434e945fe27b314eccdfccd77ab66f7b332735c9ecd83517a91105cb6",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "77faac8434e945fe27b314eccdfccd77ab66f7b332735c9ecd83517a91105cb6"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": false,
+      "state": "middle",
+      "scroll": {
+        "position": 240,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -240,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": -150.515625,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -81.828125,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 8.328125,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 81.515625,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 165.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 253.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 344.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        },
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-ltr-middle.png",
+        "sha256": "de0f42a0947551aef0b2be3ee03fcac98cc19ac79f36f49e8d226a75d682f3ed",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "de0f42a0947551aef0b2be3ee03fcac98cc19ac79f36f49e8d226a75d682f3ed"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": false,
+      "state": "end",
+      "scroll": {
+        "position": 431,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -431,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": -341.515625,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -272.828125,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -182.671875,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -109.484375,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -25.6875,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 62.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 153.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-ltr-end.png",
+        "sha256": "2041529ef861d4b3d1655befa1fa765dbfab813541025a09ff1977dea0fd62a1",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "2041529ef861d4b3d1655befa1fa765dbfab813541025a09ff1977dea0fd62a1"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": false,
+      "state": "hover-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -10,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 79.484375,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 148.171875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 238.328125,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 311.515625,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 395.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 483.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 574.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 209,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 199.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 215.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-ltr-hover-next.png",
+        "sha256": "07554add33de5ed97291ff092e60953f33503997fc3193d2e5ffd411cbe253e5",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "07554add33de5ed97291ff092e60953f33503997fc3193d2e5ffd411cbe253e5"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": false,
+      "state": "focus-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 89.484375,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 158.171875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 248.328125,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 321.515625,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 405.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 493.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 584.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": true,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-ltr-focus-next.png",
+        "sha256": "40fbe916f1a153e913f1266d6d687b2630804196275cf79d79b7a8701aed2f38",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "40fbe916f1a153e913f1266d6d687b2630804196275cf79d79b7a8701aed2f38"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": true,
+      "state": "start",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 150.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 81.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -8.328125,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -81.515625,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -165.3125,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -253.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -344.578125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -430.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-rtl-start.png",
+        "sha256": "88f4672bc67069c9cabe76418c4dcde9e0f20c775669626d0d7da8409ac7a515",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "88f4672bc67069c9cabe76418c4dcde9e0f20c775669626d0d7da8409ac7a515"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": true,
+      "state": "middle",
+      "scroll": {
+        "position": -240,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 390.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 321.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 231.671875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 158.484375,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 74.6875,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -13.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -104.578125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -190.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        },
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-rtl-middle.png",
+        "sha256": "7d6166d54d0c090af5b004498c21b6cc7d30b72a5a521c63b978879ce9d8904e",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "7d6166d54d0c090af5b004498c21b6cc7d30b72a5a521c63b978879ce9d8904e"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": true,
+      "state": "end",
+      "scroll": {
+        "position": -430,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 580.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 511.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 421.671875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 348.484375,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 264.6875,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 176.6875,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 85.421875,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -0.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-rtl-end.png",
+        "sha256": "362f019ec93171ae6fa708e28927f2bcdc7c028adb7f6cb2bb7874b75f9f7d2a",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "362f019ec93171ae6fa708e28927f2bcdc7c028adb7f6cb2bb7874b75f9f7d2a"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": true,
+      "state": "hover-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 159.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 90.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 0.671875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -72.515625,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -156.3125,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -244.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -335.578125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -421.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 9,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -0.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 15.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-rtl-hover-next.png",
+        "sha256": "258b85b166564d6a2ad2309c2c126ba091d25c38192c8d32db36524132110896",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "258b85b166564d6a2ad2309c2c126ba091d25c38192c8d32db36524132110896"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "light",
+      "rtl": true,
+      "state": "focus-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 150.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 81.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -8.328125,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -81.515625,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -165.3125,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -253.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -344.578125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -430.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": true,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/light-rtl-focus-next.png",
+        "sha256": "2fcfc48492f09406a188b95a6a12ddb8ea8f10221bd8a0131b92e370bb9c1ea5",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "2fcfc48492f09406a188b95a6a12ddb8ea8f10221bd8a0131b92e370bb9c1ea5"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": false,
+      "state": "start",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 89.484375,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 158.171875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 248.328125,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 321.515625,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 405.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 493.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 584.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-ltr-start.png",
+        "sha256": "2c70dd70107796b75f32c2cd1ddb8458f15ea39c690a3fe04fadf00f5aff6b36",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "2c70dd70107796b75f32c2cd1ddb8458f15ea39c690a3fe04fadf00f5aff6b36"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": false,
+      "state": "middle",
+      "scroll": {
+        "position": 240,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -240,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": -150.515625,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -81.828125,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 8.328125,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 81.515625,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 165.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 253.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 344.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        },
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-ltr-middle.png",
+        "sha256": "2e5fa29c40483ce870c3935c3c918e3ec80d65d7d6243fd3d6d862a366748d7f",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "2e5fa29c40483ce870c3935c3c918e3ec80d65d7d6243fd3d6d862a366748d7f"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": false,
+      "state": "end",
+      "scroll": {
+        "position": 431,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -431,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": -341.515625,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -272.828125,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -182.671875,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -109.484375,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -25.6875,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 62.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 153.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-ltr-end.png",
+        "sha256": "9d8892fe72333ab643c622b1c7f38482c7cf010f339bf3b9033e033506244f01",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "9d8892fe72333ab643c622b1c7f38482c7cf010f339bf3b9033e033506244f01"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": false,
+      "state": "hover-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -10,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 79.484375,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 148.171875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 238.328125,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 311.515625,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 395.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 483.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 574.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 209,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 199.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 215.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-ltr-hover-next.png",
+        "sha256": "0d15f4335e096f35f9dc8720ba6c989c60b62416767e58dd480575f511142e5a",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "0d15f4335e096f35f9dc8720ba6c989c60b62416767e58dd480575f511142e5a"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": false,
+      "state": "focus-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 89.484375,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 158.171875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 248.328125,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 321.515625,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 405.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 493.3125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 584.578125,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": true,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-ltr-focus-next.png",
+        "sha256": "1e8755af3a1680a8c957a882dc2c7d33392ffe4e35ff921a481b89c537d1e516",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "1e8755af3a1680a8c957a882dc2c7d33392ffe4e35ff921a481b89c537d1e516"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": true,
+      "state": "start",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 150.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 81.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -8.328125,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -81.515625,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -165.3125,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -253.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -344.578125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -430.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-rtl-start.png",
+        "sha256": "796d8a187daf9a3bfc653b7a62c40bd0f2cfe47de4d50596fdf246191a91d361",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "796d8a187daf9a3bfc653b7a62c40bd0f2cfe47de4d50596fdf246191a91d361"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": true,
+      "state": "middle",
+      "scroll": {
+        "position": -240,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 390.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 321.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 231.671875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 158.484375,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 74.6875,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -13.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -104.578125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -190.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        },
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-rtl-middle.png",
+        "sha256": "56bcb940eee8d2b929e1b7ffac20a3aba610d642cbbc9b157146b8e548fc302f",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "56bcb940eee8d2b929e1b7ffac20a3aba610d642cbbc9b157146b8e548fc302f"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": true,
+      "state": "end",
+      "scroll": {
+        "position": -430,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 580.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 511.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 421.671875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 348.484375,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 264.6875,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 176.6875,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 85.421875,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -0.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-rtl-end.png",
+        "sha256": "eeb06cff27a9b0ce1fc417237de094ad691b5997e480c34efd27e0608b7fae46",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "eeb06cff27a9b0ce1fc417237de094ad691b5997e480c34efd27e0608b7fae46"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": true,
+      "state": "hover-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 159.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 90.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 0.671875,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -72.515625,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -156.3125,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -244.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -335.578125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -421.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 9,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -0.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 15.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-rtl-hover-next.png",
+        "sha256": "631f951e54988431fa3098aa0ed0ec85e6833144e5bc33bd941de53d1f7c3284",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "631f951e54988431fa3098aa0ed0ec85e6833144e5bc33bd941de53d1f7c3284"
+      }
+    },
+    {
+      "platform": "macos",
+      "theme": "dark",
+      "rtl": true,
+      "state": "focus-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 671
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 150.515625,
+            "y": 0,
+            "width": 89.484375,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 81.828125,
+            "y": 0,
+            "width": 68.6875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -8.328125,
+            "y": 0,
+            "width": 90.15625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -81.515625,
+            "y": 0,
+            "width": 73.1875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -165.3125,
+            "y": 0,
+            "width": 83.796875,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -253.3125,
+            "y": 0,
+            "width": 88,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -344.578125,
+            "y": 0,
+            "width": 91.265625,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -430.734375,
+            "y": 0,
+            "width": 86.15625,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": true,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/macos/dark-rtl-focus-next.png",
+        "sha256": "97295a42b10b411e9bda190886033f41a91cddfc0c337030d0942826800034d4",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "97295a42b10b411e9bda190886033f41a91cddfc0c337030d0942826800034d4"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": false,
+      "state": "start",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 91,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 160,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 252,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 327,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 412,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 502,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 594,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-ltr-start.png",
+        "sha256": "8f3bcb09462c7519cbf6999c4f2df0778ea4577ee0d0810340ee1b9a85a5cb14",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "8f3bcb09462c7519cbf6999c4f2df0778ea4577ee0d0810340ee1b9a85a5cb14"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": false,
+      "state": "middle",
+      "scroll": {
+        "position": 240,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -240,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": -149,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -80,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 12,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 87,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 172,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 262,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 354,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        },
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-ltr-middle.png",
+        "sha256": "f9db443315fcc76686dd22769136e60ded8fb3caf28bf30d734a7da9754d3c61",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "f9db443315fcc76686dd22769136e60ded8fb3caf28bf30d734a7da9754d3c61"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": false,
+      "state": "end",
+      "scroll": {
+        "position": 441,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -441,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": -350,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -281,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -189,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -114,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -29,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 61,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 153,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-ltr-end.png",
+        "sha256": "0e463e197ab66697bdbc9dab1602bba01b9c6d9b35e88d78437ee5341652b353",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "0e463e197ab66697bdbc9dab1602bba01b9c6d9b35e88d78437ee5341652b353"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": false,
+      "state": "hover-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -10,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 81,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 150,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 242,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 317,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 402,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 492,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 584,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 209,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 199.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 215.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-ltr-hover-next.png",
+        "sha256": "5420001e6979abbec8e7808d6f4a77b16e761985ac2d9c02ef985f3cb7ebc516",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "5420001e6979abbec8e7808d6f4a77b16e761985ac2d9c02ef985f3cb7ebc516"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": false,
+      "state": "focus-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 91,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 160,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 252,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 327,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 412,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 502,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 594,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": true,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-ltr-focus-next.png",
+        "sha256": "56d2fbac2e774d11cddc104c41b12c9ddc6433b9783a9038db1bee7a7caab37c",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "56d2fbac2e774d11cddc104c41b12c9ddc6433b9783a9038db1bee7a7caab37c"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": true,
+      "state": "start",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 149,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 80,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -12,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -87,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -172,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -262,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -354,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -441,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-rtl-start.png",
+        "sha256": "60e8d0177d19b7e021370c35248e9e8919149a6c51444a1b9e6ae405e3f8367f",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "60e8d0177d19b7e021370c35248e9e8919149a6c51444a1b9e6ae405e3f8367f"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": true,
+      "state": "middle",
+      "scroll": {
+        "position": -240,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 389,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 320,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 228,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 153,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 68,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -22,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -114,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -201,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        },
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-rtl-middle.png",
+        "sha256": "cb723005a8a58ff4d14fe7b93e0cd94826ed65d195380b6e7b35b0174779cbf0",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "cb723005a8a58ff4d14fe7b93e0cd94826ed65d195380b6e7b35b0174779cbf0"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": true,
+      "state": "end",
+      "scroll": {
+        "position": -441,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 590,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 521,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 429,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 354,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 269,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 179,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 87,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-rtl-end.png",
+        "sha256": "cf0ac3ede55fa9dd0fb9acc07e799d2b15896662b8578a81a06d864fe95681a2",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "cf0ac3ede55fa9dd0fb9acc07e799d2b15896662b8578a81a06d864fe95681a2"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": true,
+      "state": "hover-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 158,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 89,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -3,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -78,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -163,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -253,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -345,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -432,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 9,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -0.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 15.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-rtl-hover-next.png",
+        "sha256": "9b7f76a416fd2de8e086a7efbe79d01f742006beba675bf991452831bf04ace4",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "9b7f76a416fd2de8e086a7efbe79d01f742006beba675bf991452831bf04ace4"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "light",
+      "rtl": true,
+      "state": "focus-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 149,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 80,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -12,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -87,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -172,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -262,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -354,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -441,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": true,
+          "background": "linear-gradient(270deg, rgb(255, 255, 255), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/light-rtl-focus-next.png",
+        "sha256": "a94b5af5249b1b9f62dc849b86449027b8d63365bd2562e09597cb1ac86d6bd9",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "a94b5af5249b1b9f62dc849b86449027b8d63365bd2562e09597cb1ac86d6bd9"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": false,
+      "state": "start",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 91,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 160,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 252,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 327,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 412,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 502,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 594,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-ltr-start.png",
+        "sha256": "70eb51ef1ae47e8ad214a0667052efef781c61fb646d81f32d90adfb4e4b823e",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "70eb51ef1ae47e8ad214a0667052efef781c61fb646d81f32d90adfb4e4b823e"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": false,
+      "state": "middle",
+      "scroll": {
+        "position": 240,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -240,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": -149,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -80,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 12,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 87,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 172,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 262,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 354,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        },
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-ltr-middle.png",
+        "sha256": "63a68dc5362bc580437cb6ac32a1436c96eab4993506c1a708d037f55d26bf23",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "63a68dc5362bc580437cb6ac32a1436c96eab4993506c1a708d037f55d26bf23"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": false,
+      "state": "end",
+      "scroll": {
+        "position": 441,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -441,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": -350,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -281,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -189,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -114,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -29,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 61,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 153,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-ltr-end.png",
+        "sha256": "87d9afa772b6c0201238899260633037a49f1aae1209da92593905e047d6844d",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "87d9afa772b6c0201238899260633037a49f1aae1209da92593905e047d6844d"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": false,
+      "state": "hover-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": -10,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 81,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 150,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 242,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 317,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 402,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 492,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 584,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 209,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 199.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 215.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-ltr-hover-next.png",
+        "sha256": "d1cf4411d408d804b730a3c95135cef0feee35a249d9efe56936b319e36e4afa",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "d1cf4411d408d804b730a3c95135cef0feee35a249d9efe56936b319e36e4afa"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": false,
+      "state": "focus-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 91,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 160,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 252,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 327,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 412,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 502,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 594,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": true,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-ltr-focus-next.png",
+        "sha256": "717b020a643a05406de9d8cd80db279c28f34c32a3ae8a8d185eeb17405c7105",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "717b020a643a05406de9d8cd80db279c28f34c32a3ae8a8d185eeb17405c7105"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": true,
+      "state": "start",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 149,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 80,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -12,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -87,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -172,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -262,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -354,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -441,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-rtl-start.png",
+        "sha256": "8c210d9a28bc8138209ef6b712e002d8039139197b23874b4fe084b5e16748b9",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "8c210d9a28bc8138209ef6b712e002d8039139197b23874b4fe084b5e16748b9"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": true,
+      "state": "middle",
+      "scroll": {
+        "position": -240,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 389,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 320,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 228,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 153,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 68,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -22,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -114,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -201,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        },
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-rtl-middle.png",
+        "sha256": "b530cae2301d1f01764d14c09a1f533872b7842be006eacb152c1ebee447cf7a",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "b530cae2301d1f01764d14c09a1f533872b7842be006eacb152c1ebee447cf7a"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": true,
+      "state": "end",
+      "scroll": {
+        "position": -441,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 590,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 521,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": 429,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": 354,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": 269,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": 179,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": 87,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "start",
+          "outer": {
+            "x": 219,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": 209.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 225.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(90deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-rtl-end.png",
+        "sha256": "1235e3c557ab210a2f7761e54afc14adb4ad16a674d12e45d0597c29e53e0447",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "1235e3c557ab210a2f7761e54afc14adb4ad16a674d12e45d0597c29e53e0447"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": true,
+      "state": "hover-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 158,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 89,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -3,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -78,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -163,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -253,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -345,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -432,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 9,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -0.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 15.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": false,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-rtl-hover-next.png",
+        "sha256": "b925d5f980dae89ff2f58947574691b4de432ab4d77d5787679c829a79840760",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "b925d5f980dae89ff2f58947574691b4de432ab4d77d5787679c829a79840760"
+      }
+    },
+    {
+      "platform": "linux",
+      "theme": "dark",
+      "rtl": true,
+      "state": "focus-next",
+      "scroll": {
+        "position": 0,
+        "viewport": 240,
+        "width": 681
+      },
+      "items": [
+        {
+          "label": "Overview",
+          "box": {
+            "x": 149,
+            "y": 0,
+            "width": 91,
+            "height": 56
+          }
+        },
+        {
+          "label": "Tasks",
+          "box": {
+            "x": 80,
+            "y": 0,
+            "width": 69,
+            "height": 56
+          }
+        },
+        {
+          "label": "Inventory",
+          "box": {
+            "x": -12,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Family",
+          "box": {
+            "x": -87,
+            "y": 0,
+            "width": 75,
+            "height": 56
+          }
+        },
+        {
+          "label": "Settings",
+          "box": {
+            "x": -172,
+            "y": 0,
+            "width": 85,
+            "height": 56
+          }
+        },
+        {
+          "label": "Calendar",
+          "box": {
+            "x": -262,
+            "y": 0,
+            "width": 90,
+            "height": 56
+          }
+        },
+        {
+          "label": "Shopping",
+          "box": {
+            "x": -354,
+            "y": 0,
+            "width": 92,
+            "height": 56
+          }
+        },
+        {
+          "label": "Rewards",
+          "box": {
+            "x": -441,
+            "y": 0,
+            "width": 87,
+            "height": 56
+          }
+        }
+      ],
+      "controls": [
+        {
+          "side": "end",
+          "outer": {
+            "x": 0,
+            "y": 0,
+            "width": 21,
+            "height": 56
+          },
+          "button": {
+            "x": -9.5,
+            "y": 8,
+            "width": 40,
+            "height": 40
+          },
+          "icon": {
+            "x": 6.125,
+            "y": 21,
+            "width": 8.75,
+            "height": 14
+          },
+          "focusVisible": true,
+          "background": "linear-gradient(270deg, rgb(28, 28, 28), rgba(0, 0, 0, 0))",
+          "borderRadius": "12px"
+        }
+      ],
+      "image": {
+        "path": "tests/storybook/reference/ha-navigation-overflow/linux/dark-rtl-focus-next.png",
+        "sha256": "77a1b8fb554e82b07194a1d40108aef9f4b8e6f114c7fa8ba950dc4e5986e98e",
+        "width": 240,
+        "height": 56
+      },
+      "raster": {
+        "frames": 3,
+        "twoConsecutiveEqual": true,
+        "sha256": "77a1b8fb554e82b07194a1d40108aef9f4b8e6f114c7fa8ba950dc4e5986e98e"
+      }
+    }
+  ],
+  "errors": [],
+  "sourceRevision": "027d9578ec9663b8aa22f50c24274a7cd9d001c1",
+  "artifact": "@home-assistant/webawesome@3.14.0-ha.2",
+  "scope": "Original public HA tab-group at 240px, two themes/directions, five scroll/pointer/keyboard states. Captured independently of ha-ui; no household API or state.",
+  "browsers": {
+    "macos": "156.0.8078.4",
+    "linux": "156.0.8078.80"
+  },
+  "fixtureDirection": "Both the wrapper and the original HA group explicitly declare dir. CSS inheritance alone left the original initial chevron pointing LTR; earlier captures are retained as diagnostics, not accepted references.",
+  "recordedAtUTC": "2026-11-04T18:44:45.705475+00:00",
+  "publicInputsReference": "docs/evidence/ha-navigation-reference.json",
+  "webAwesomeArtifact": {
+    "url": "https://registry.npmjs.org/@home-assistant/webawesome/-/webawesome-3.14.0-ha.2.tgz",
+    "integrity": "sha512-EX1qiX5h3LAoTjuE3rgfuRlNq3Rds5tGrgDGlHoFbxhXaCSTTtuYU6tdR8vgOXKGUDi5gBDrcoNdLYKFXSrknA==",
+    "sha256": "421bc6de6db3a4ee3878b38a7e6aa09e432638aa092796328b06d71191d99f9e",
+    "bytes": 2717111,
+    "metadataGitHead": "8d81b1edf416b889fbbeaf9093c77300f30a68c2",
+    "sourceRepositoryAtThatHead": "GitHub contents API returned404; published package is the checked source input."
+  },
+  "captureScriptSha256": "ce444c7b15c70b303304b372c1ec409315ef09e3e026783a5e8e75db72955962",
+  "collectionIsIndependentOfCandidate": true
+}

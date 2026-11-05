@@ -1,0 +1,142 @@
+ha-ui authored source: Copyright 2026 vypdev, MIT license (see LICENSE).
+
+Checkbox visual styles adapt Home Assistant frontend ha-checkbox, Apache License 2.0.
+Source: https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-checkbox.ts
+Modifications: native controlled ElementInternals input, public theme fallback values,
+44px invisible input target, authored local labels/errors, no Web Awesome runtime dependency.
+See LICENSES/Home-Assistant-Apache-2.0.txt. Home Assistant is not an endorser of this package.
+
+The embedded check SVG is Font Awesome Free 7.0.0 by Fonticons, Inc., Copyright 2025.
+Source: https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/check.svg
+Icons: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/
+The path is unmodified; its display size is set by CSS. Attribution is also retained in source.
+See LICENSES/Font-Awesome-Free-7.0.0.txt. The simple mixed-state line is authored here.
+
+Dashboard text-tab styles adapt Home Assistant frontend ha-tab-group, ha-tab-group-tab and hui-root,
+Apache License 2.0, at reviewed source 027d9578ec9663b8aa22f50c24274a7cd9d001c1:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-tab-group.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-tab-group-tab.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/panels/lovelace/hui-root.ts
+Modifications: native controlled anchors/buttons, fixed 56px bar, authored inert labels,
+scroll-to-focus, no Web Awesome/Sortable runtime, no HA application state or theme mutation.
+
+Dashboard icon-tab spacing and decorative SVG presentation also adapt hui-root and ha-svg-icon:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-svg-icon.ts
+Modifications: native link/button content with optional inert local 24-unit SVG path data,
+explicit accessible names, optional visible labels, logical spacing and public override tokens.
+No HA icon registry, application API, icon pack or runtime module is used by the shared renderer.
+Storybook fixture glyphs are original paths authored in this repository.
+
+Dashboard overflow controls also adapt @home-assistant/webawesome 3.14.0-ha.2,
+Copyright (c) 2025 Fonticons, Inc., MIT license.
+Source: https://www.npmjs.com/package/@home-assistant/webawesome/v/3.14.0-ha.2
+Reviewed artifact gitHead: 8d81b1edf416b889fbbeaf9093c77300f30a68c2.
+Modifications: local native buttons/SVGs, logical paging, reduced motion, gesture cleanup,
+localized names and retention of a focused edge arrow until blur. No Web Awesome runtime.
+See LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt for the full original license.
+The embedded chevron-left and chevron-right SVG paths are unmodified Font Awesome Free 7.0.0,
+Copyright 2025 Fonticons, Inc., CC BY 4.0, under the same icon license above:
+https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/chevron-left.svg
+https://github.com/FortAwesome/Font-Awesome/blob/7.0.0/svgs/solid/chevron-right.svg
+
+Button visual surfaces adapt Home Assistant frontend ha-button (Apache License 2.0) and
+@home-assistant/webawesome 3.14.0-ha.2 button/spinner styles (MIT). Additional component
+headers carry Copyright 2026 Fonticons, Inc.; the published package license is reproduced
+in LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt. HA source at the same reviewed revision above:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-button.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-icon-button.ts
+Modifications: a native minimum-44px hit target surrounds the separately painted HA surface;
+controlled native form behavior, local decorative projection, accessible names/status, local
+SVG spinner, reduced motion and long-label wrapping remain authored here. Extra-large uses
+the public 56px HA height override with large typography. Icon-only uses HA's public part
+layout with a 40px size. No HA/Web Awesome runtime or icon loader is imported.
+
+Filled text-field geometry adapts Home Assistant frontend input/ha-input and its Web Awesome
+input mixin (Apache License 2.0), at the same reviewed HA source revision above:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/input/ha-input.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/input/wa-input-mixin.ts
+It also adapts input/form-control styles from @home-assistant/webawesome 3.14.0-ha.2 (MIT),
+at the reviewed artifact gitHead above. Both full original licenses are retained here.
+Modifications: controlled native shadow input, authored ElementInternals form/validation and
+native implicit-submission proxy, one required marker, simultaneous linked help/error text,
+accessible fallback colors, logical geometry, public theme overrides and reduced motion.
+No HA/Web Awesome runtime, application state or network dependency is imported.
+
+Filled single-select and menu visuals adapt Home Assistant frontend ha-select, ha-picker-field,
+ha-combo-box-item and ha-dropdown/ha-dropdown-item (Apache License2.0), at the reviewed HA
+source revision above, plus the Web Awesome dropdown styles (MIT) at the reviewed artifact above:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-select.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-picker-field.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-combo-box-item.ts
+Modifications: native combobox/listbox projection, data-only keyboard preview, controlled typed
+requests, ElementInternals validation/form ownership, authored popup positioning/lifetime,
+44px clear-button target, inert local labels, theme overrides and reduced motion. Recorded
+original public HA modules establish visual references independently of this renderer; the
+reviewed source revision is not claimed as the installed application revision.
+The embedded menu-down and close SVG paths are unmodified Material Design Icons7.4.47,
+by the Pictogrammers icon group, Apache License2.0:
+https://github.com/Templarian/MaterialDesign-JS/tree/v7.4.47
+See LICENSES/Material-Design-Icons-7.4.47.txt and the full Apache text retained above.
+No upstream component, icon pack, HA state, API or remote asset loader is imported at runtime.
+
+Multiple-select chip/search visuals additionally adapt Home Assistant frontend ha-input-chip,
+ha-chip-set, ha-generic-picker, ha-picker-combo-box and ha-input-search (Apache License 2.0),
+at the same reviewed source revision, with independently recorded public module identities:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-input-chip.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-chip-set.ts
+Modifications: native modal focus/inertness, named search combobox and noninteractive options,
+pure typed selection/filtering, controlled form ownership, stale-action guards and logical
+viewport positioning. Painted 32px chips/actions have separate minimum-44px native targets;
+the field explicitly reserves 12px for the larger target. Search clearing retains a separate
+44px native target around the original 24px icon slot. Original runtime module functions and
+golden PNGs remain unchanged reference inputs, and are not dependencies of the package.
+The embedded close, playlist-plus and magnify paths are unmodified Material Design Icons 7.4.47
+under the Pictogrammers Apache License 2.0 above. No HA/Web Awesome runtime is imported.
+
+Visible selector lists adapt the Home Assistant frontend selector, radio group, radio option,
+checkbox and helper text (Apache License 2.0) at the same reviewed source revision:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-selector/ha-selector-select.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/radio/ha-radio-group.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/radio/ha-radio-option.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-input-helper-text.ts
+The checkbox icon's inline translation follows @home-assistant/webawesome 3.14.0-ha.2
+(MIT) at the reviewed artifact gitHead above; it reuses the same unmodified Font Awesome check
+path under CC BY 4.0. Modifications: native radio/checkbox choices fill their own nonoverlapping
+rows, typed controlled requests, shared ElementInternals validation and form submission, and
+accessible group guidance. No Home Assistant or Web Awesome runtime is imported.
+
+Dialog surfaces, header, footer and overflow cues adapt Home Assistant frontend (Apache 2.0)
+at the reviewed source revision:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-dialog.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-dialog-header.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-dialog-footer.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/mixins/scrollable-fade-mixin.ts
+The close action uses the attributed Material Design Icons 7.4.47 close path and Home
+Assistant's ha-icon-button inset focus and hover paint. The native top-layer renderer uses
+controlled typed requests, a named dialog, projected focus and shared native commands.
+Its 44px footer targets enclose the original 40px paint. No upstream component runtime,
+application state, icon loader or API is imported.
+
+Card surface, heading, content and action divider styles adapt Home Assistant frontend (Apache 2.0):
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-card.ts
+Modifications: native article and configurable semantic heading, optional slot lifecycle,
+logical spacing and support for the shared button's 44px native target within the original
+action surface. The package contains no upstream card runtime.
+
+Passive row spacing and grid tracks adapt measured Home Assistant frontend (Apache 2.0):
+https://github.com/home-assistant/frontend/blob/99d2742f4abab0d1e74c2f68393c9768bf0a8dfd/src/components/ha-md-list-item.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/panels/lovelace/cards/hui-grid-card.ts
+The shared implementation uses passive list semantics, native projected controls and a CSS grid
+with optional container-based track reduction. No HA or Material Web runtime is included.
+
+Feedback surfaces adapt Home Assistant frontend (Apache 2.0) at the reviewed source revision:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-alert.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-spinner.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-empty-state.ts
+The spinner track and arc adapt the MIT @home-assistant/webawesome 3.14.0-ha.2 artifact
+named above. Default feedback icons use the attributed Material Design Icons 7.4.47 paths
+for information-outline, checkbox-marked-circle-outline, alert-outline,
+alert-circle-outline, and playlist-plus.
+Modifications: one app-owned state, separate status and alert announcements, a native empty
+heading, a native projected command, logical placement, and an explicit static reduced-motion
+spinner. No Home Assistant or Web Awesome runtime is included.

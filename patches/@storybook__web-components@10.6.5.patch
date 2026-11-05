@@ -1,0 +1,12 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -1040,7 +1040,7 @@
+  * provided in meta become optional in stories, while missing required args must be provided at the
+  * story level.
+  */
+-interface WebComponentsMeta<T extends WebComponentsTypes, MetaInput extends ComponentAnnotations<T>> /** @ts-expect-error WebComponentsMeta requires two type parameters, but Meta's constraints differ */ extends Meta$1<T, MetaInput> {
++interface WebComponentsMeta<T extends WebComponentsTypes, MetaInput extends ComponentAnnotations<T>> extends Meta$1<T, MetaInput & ComponentAnnotations<T, T['args']>> {
+   /**
+    * Creates a story with a custom render function that takes no args.
+    *

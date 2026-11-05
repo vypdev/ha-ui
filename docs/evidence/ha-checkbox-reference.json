@@ -1,0 +1,690 @@
+{
+  "schemaVersion": 1,
+  "observedAtUTC": "2026-11-04T13:16:45.699548+00:00",
+  "surface": "Actual public ha-checkbox loaded by the local Home Assistant frontend in an isolated authentication-page browser context. No credentials, tokens, household records or application mutations were used.",
+  "upstreamSource": "https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-checkbox.ts",
+  "upstreamSourceMeaning": "Reviewed source/provenance reference; this does not identify the installed HA git revision. Installed public bundles are fingerprinted separately.",
+  "fixtures": "Notify household; no description; 296x44 wrapper; viewport1280x900; Chromium156; Roboto; transitions disabled for settled state measurement. Native state and :checked are verified; two rendered frames settle CSS after each transition.",
+  "pixelAcceptance": "Computed-style assertions and original image inspection supplement human review; no screenshot score establishes full component or application acceptance.",
+  "fonts": [
+    {
+      "weight": "Regular",
+      "bytes": 64632,
+      "sha256": "47107401d0adb375ab9aa167f9d62489a849d510e740a307b5a4db60e5db3562",
+      "sameAsLiveHA": true,
+      "package": "roboto-fontface@0.10.0",
+      "license": "Apache-2.0"
+    },
+    {
+      "weight": "Medium",
+      "bytes": 65484,
+      "sha256": "96025fe9db6578d8bc7f4b8be739750b1490e07221c2b1f16acde2ea7669cedf",
+      "sameAsLiveHA": true,
+      "package": "roboto-fontface@0.10.0",
+      "license": "Apache-2.0"
+    }
+  ],
+  "publicAssets": [
+    {
+      "path": "/frontend_latest/core.d18c2184997b3d3d.js",
+      "bytes": 53538,
+      "sha256": "da8ce324a89c76f12e124e9e0dcb74f319dcdc5bde13464feb9c1dc0630efb27"
+    },
+    {
+      "path": "/frontend_latest/app.d6c28fc2e48aeea4.js",
+      "bytes": 577102,
+      "sha256": "7b0d03a0c75c971cd3084c988430c512414209ca2c8bba8d506724d3be2827ec"
+    }
+  ],
+  "states": [
+    {
+      "theme": "light",
+      "state": "unchecked",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(20, 20, 20)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(152, 152, 152)",
+          "background-color": "rgba(0, 0, 0, 0)",
+          "color": "rgb(20, 20, 20)",
+          "outline": "rgb(20, 20, 20) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(20, 20, 20)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/light-unchecked.png",
+        "sha256": "7cb0fe688748e0d4f219188eb08e3bb6e604cdf63f0a0ee033041da4763218a8",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "light",
+      "state": "checked",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(20, 20, 20)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(0, 154, 199)",
+          "background-color": "rgb(0, 154, 199)",
+          "color": "rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(20, 20, 20)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/light-checked.png",
+        "sha256": "e22ea96d768e10852da0925e1e3b5f9f93a15406f181c85ce279f2b728049747",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "light",
+      "state": "mixed",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(20, 20, 20)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(0, 154, 199)",
+          "background-color": "rgb(0, 154, 199)",
+          "color": "rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(20, 20, 20)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/light-mixed.png",
+        "sha256": "8bf15711a75b80d9549de7e8c037fb1c3d670c85d717812a77328d9e2886b338",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "light",
+      "state": "disabled",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(20, 20, 20)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "0.5"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(0, 154, 199)",
+          "background-color": "rgb(0, 154, 199)",
+          "color": "rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(20, 20, 20)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/light-disabled.png",
+        "sha256": "081d1d769eb7ccf987615e29fff820ef34c282a5c8d8457ae3462a711a960b76",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "light",
+      "state": "required",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(20, 20, 20)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(152, 152, 152)",
+          "background-color": "rgba(0, 0, 0, 0)",
+          "color": "rgb(20, 20, 20)",
+          "outline": "rgb(20, 20, 20) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(20, 20, 20)",
+          "width": "113.359px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/light-required.png",
+        "sha256": "3c238a342b38e83ac371b53697bd356c9210d4a46dc25aadf9a4364c087edcb4",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "light",
+      "state": "hover",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(20, 20, 20)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(94, 94, 94)",
+          "background-color": "rgb(230, 230, 230)",
+          "color": "rgb(20, 20, 20)",
+          "outline": "rgb(20, 20, 20) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(20, 20, 20)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/light-hover.png",
+        "sha256": "6cf4a5318a5c6c0898dc7c856a30cbc20287609b11558d8d35c337cd2053e5ef",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "light",
+      "state": "focus",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(20, 20, 20)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(152, 152, 152)",
+          "background-color": "rgba(0, 0, 0, 0)",
+          "color": "rgb(20, 20, 20)",
+          "outline": "rgb(152, 152, 152) solid 2px",
+          "outline-offset": "2px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(20, 20, 20)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/light-focus.png",
+        "sha256": "38d8577650e61c2b459cf553b250bdd385dc4e4fdcdcb02d7b950c9001c9f3de",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "dark",
+      "state": "unchecked",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(225, 225, 225)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(122, 122, 122)",
+          "background-color": "rgba(0, 0, 0, 0)",
+          "color": "rgb(225, 225, 225)",
+          "outline": "rgb(225, 225, 225) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(225, 225, 225)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/dark-unchecked.png",
+        "sha256": "7488c107807464a5ec937f8823f68ad208c9c895679935d472d175d7fa38ca1e",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "dark",
+      "state": "checked",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(225, 225, 225)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(0, 154, 199)",
+          "background-color": "rgb(0, 154, 199)",
+          "color": "rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(225, 225, 225)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/dark-checked.png",
+        "sha256": "ab5851926a2867ac396f8227331612f43dbb013802ba4eb78afa6ceb851ba5b5",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "dark",
+      "state": "mixed",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(225, 225, 225)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(0, 154, 199)",
+          "background-color": "rgb(0, 154, 199)",
+          "color": "rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(225, 225, 225)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/dark-mixed.png",
+        "sha256": "e4a3debcd62ca954efe68e7c55206678878fe92ad40ea009b55b235099034664",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "dark",
+      "state": "disabled",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(225, 225, 225)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "0.5"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(0, 154, 199)",
+          "background-color": "rgb(0, 154, 199)",
+          "color": "rgb(255, 255, 255)",
+          "outline": "rgb(255, 255, 255) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(225, 225, 225)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/dark-disabled.png",
+        "sha256": "937281c31c83274765b3dc026ab6d482cbc3d12f66d172f8158376456dfdf421",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "dark",
+      "state": "required",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(225, 225, 225)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(122, 122, 122)",
+          "background-color": "rgba(0, 0, 0, 0)",
+          "color": "rgb(225, 225, 225)",
+          "outline": "rgb(225, 225, 225) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(225, 225, 225)",
+          "width": "113.359px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/dark-required.png",
+        "sha256": "9d87f0397175874e7274ca1894377beacd371c952f36954683a99b9c34de3413",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "dark",
+      "state": "hover",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(225, 225, 225)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(177, 177, 177)",
+          "background-color": "rgb(74, 74, 74)",
+          "color": "rgb(225, 225, 225)",
+          "outline": "rgb(225, 225, 225) none 3px",
+          "outline-offset": "0px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(225, 225, 225)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/dark-hover.png",
+        "sha256": "7ebf2711f5994c208a06b9b6d3dfc0be91da1c4bb1dc815dc0e44f790cfbfdd5",
+        "width": 296,
+        "height": 44
+      }
+    },
+    {
+      "theme": "dark",
+      "state": "focus",
+      "expected": {
+        "host": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "16.8px",
+          "color": "rgb(225, 225, 225)",
+          "-webkit-font-smoothing": "antialiased"
+        },
+        "base": {
+          "gap": "8px",
+          "opacity": "1"
+        },
+        "control": {
+          "width": "20px",
+          "height": "20px",
+          "border-width": "2px",
+          "border-radius": "4px",
+          "border-color": "rgb(122, 122, 122)",
+          "background-color": "rgba(0, 0, 0, 0)",
+          "color": "rgb(225, 225, 225)",
+          "outline": "rgb(152, 152, 152) solid 2px",
+          "outline-offset": "2px"
+        },
+        "label": {
+          "font-family": "Roboto, Noto, sans-serif",
+          "font-size": "14px",
+          "font-weight": "400",
+          "line-height": "14px",
+          "color": "rgb(225, 225, 225)",
+          "width": "105.938px",
+          "height": "14px",
+          "-webkit-font-smoothing": "antialiased"
+        }
+      },
+      "referenceImage": {
+        "path": "tests/storybook/reference/ha-checkbox/dark-focus.png",
+        "sha256": "3d91ac873f034fffd1f1feea122e5b39a983a2d7688edd6a22a42bef10c79e48",
+        "width": 296,
+        "height": 44
+      }
+    }
+  ],
+  "rasterCapture": {
+    "minimumCaptures": 3,
+    "maximumCaptures": 6,
+    "twoConsecutiveEqualRequired": true,
+    "noImageEditing": true,
+    "reason": "Initial reference captures could show the previous compositor frame despite current native/style state. Original contradictory frames were retained. Settled reference images were independently recaptured and inspected.",
+    "wrapperCorrection": "The dark reference wrapper exposed invalid fixture CSS after concatenating cssText containing inherited HA custom-property tokens. Standard wrapper declarations are now installed independently before token copies; every state asserts the actual x32/y32,296x44 rectangle. Only the fixture changed; original frames and diagnostics are retained."
+  },
+  "chromeObservation": {
+    "profile": "Efra",
+    "dedicatedWindow": true,
+    "group": "HA UI comparison",
+    "surface": "Actual entity table selection UI and the candidate Storybook checkbox",
+    "checkedAndMixedObserved": true,
+    "selectionModeRestored": true,
+    "householdMutation": false,
+    "reviewMeaning": "Agent visual observation; not owner or complete application acceptance"
+  },
+  "fontRasterization": "HA antialiased font smoothing is measured and required in the scoped catalog surface. Small icon subpixel raster differences are not represented as all-pixel equality."
+}

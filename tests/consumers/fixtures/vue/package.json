@@ -1,0 +1,14 @@
+{
+  "name": "ha-ui-vue-consumer",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.0",
+  "dependencies": {
+    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
+    "@vypdev/ha-ui-vue": "file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz",
+    "vue": "3.5.44"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

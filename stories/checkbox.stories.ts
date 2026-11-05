@@ -1,0 +1,18 @@
+import type {Meta,StoryObj} from '@storybook/web-components-vite';
+import {expect,waitFor} from 'storybook/test';
+import {renderExample,type Args} from './checkbox.example.js';
+import type {HaCheckbox} from '@vypdev/ha-ui/checkbox';
+import type {HaButton} from '@vypdev/ha-ui/button';
+const meta={title:'Forms/Checkbox',component:'vyp-ha-checkbox',tags:['autodocs'],args:{checked:false,defaultChecked:false,indeterminate:false,required:false,disabled:false,error:false,cancel:false,longLabel:false,value:'on',submitted:null},argTypes:{checked:{control:'boolean'},defaultChecked:{control:'boolean'},indeterminate:{control:'boolean'},required:{control:'boolean'},disabled:{control:'boolean'},error:{control:'boolean'},cancel:{control:'boolean'},longLabel:{control:'boolean'},value:{control:'text'},submitted:{table:{disable:true}}},parameters:{docs:{description:{component:'One controlled boolean checkbox with independent mixed presentation, native form validation and reset. All four framework adapters reuse this renderer. The application derives mixed state from child selections.'}}},render:renderExample} satisfies Meta<Args>;
+export default meta;type Story=StoryObj<Args>;
+export const Default:Story={play:async({canvasElement})=>{const host=canvasElement.querySelector<HaCheckbox>('vyp-ha-checkbox')!;await host.updateComplete;host.click();await waitFor(()=>expect(host.checked).toBe(true));canvasElement.querySelector<HaButton>('vyp-ha-button[type=submit]')!.click();await waitFor(()=>expect(canvasElement.querySelector('[role=status]')!.textContent).toContain('[["notify","on"]]'));canvasElement.querySelector('form')!.reset();await waitFor(()=>expect(host.checked).toBe(false));}};
+export const Checked:Story={args:{checked:true}};
+export const Partial:Story={args:{indeterminate:true}};
+export const CheckedPartial:Story={args:{checked:true,indeterminate:true}};
+export const Required:Story={args:{required:true},play:async({canvasElement})=>{const host=canvasElement.querySelector<HaCheckbox>('vyp-ha-checkbox')!;await host.updateComplete;host.addEventListener('invalid',event=>event.preventDefault());expect(host.reportValidity()).toBe(false);await host.updateComplete;expect(host.shadowRoot!.querySelector('input')!.getAttribute('aria-invalid')).toBe('true');}};
+export const Disabled:Story={args:{disabled:true,checked:true}};
+export const Error:Story={args:{error:true}};
+export const Canceled:Story={args:{cancel:true},play:async({canvasElement})=>{const host=canvasElement.querySelector<HaCheckbox>('vyp-ha-checkbox')!;await host.updateComplete;host.click();await waitFor(()=>expect(host.shadowRoot!.querySelector('input')!.checked).toBe(false));expect(host.checked).toBe(false);}};
+export const CustomPayload:Story={args:{checked:true,value:'confirmed'}};
+export const LongLabel:Story={args:{longLabel:true}};
+export const SpanishDarkNarrow:Story={globals:{locale:'es',theme:'dark',width:'narrow',motion:'reduced'}};

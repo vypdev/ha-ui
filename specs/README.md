@@ -13,9 +13,10 @@ The capability inventory and its implementation evidence live in
 human-readable view. Use the original Copilot SDK catalog generator and validator after changing a
 specification or catalogued path. The current bootstrap procedure and exact SDK
 identity are documented in [the component-library guide](../docs/component-library.md#catalog-validation).
-This repository does not yet have package scripts or an application CI workflow.
-Adding reproducible repository-local validation is an implementation deliverable,
-not a claim established by this documentation bootstrap.
+The repository now has pinned package scripts and CI for its first source increment.
+Run the documented type, test/coverage, build and packed-consumer checks; CI also reads
+the original SDK at its reviewed source revision. These checks establish current-source
+evidence, not completion of the component/adapter/adoption acceptance inventory.
 
 ### Retrospective (as-built) specifications
 
