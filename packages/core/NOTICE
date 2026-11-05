@@ -78,3 +78,17 @@ by the Pictogrammers icon group, Apache License2.0:
 https://github.com/Templarian/MaterialDesign-JS/tree/v7.4.47
 See LICENSES/Material-Design-Icons-7.4.47.txt and the full Apache text retained above.
 No upstream component, icon pack, HA state, API or remote asset loader is imported at runtime.
+
+Multiple-select chip/search visuals additionally adapt Home Assistant frontend ha-input-chip,
+ha-chip-set, ha-generic-picker, ha-picker-combo-box and ha-input-search (Apache License 2.0),
+at the same reviewed source revision, with independently recorded public module identities:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-input-chip.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-chip-set.ts
+Modifications: native modal focus/inertness, named search combobox and noninteractive options,
+pure typed selection/filtering, controlled form ownership, stale-action guards and logical
+viewport positioning. Painted 32px chips/actions have separate minimum-44px native targets;
+the field explicitly reserves 12px for the larger target. Search clearing retains a separate
+44px native target around the original 24px icon slot. Original runtime module functions and
+golden PNGs remain unchanged reference inputs, and are not dependencies of the package.
+The embedded close, playlist-plus and magnify paths are unmodified Material Design Icons 7.4.47
+under the Pictogrammers Apache License 2.0 above. No HA/Web Awesome runtime is imported.

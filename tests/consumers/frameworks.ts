@@ -128,8 +128,9 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       await page.locator('#bound-submit').screenshot({path:join(root,'test-results','packed-'+framework+'-button-dark-es.png')});
       await page.getByRole('combobox',{name:'Categoría',exact:true}).waitFor();
       await page.locator('#bound-category').screenshot({path:join(root,'test-results','packed-'+framework+'-select-dark-es.png')});
-      await page.getByRole('button',{name:'Toggle category mode',exact:true}).click();await page.getByRole('listbox',{name:'Categoría',exact:true}).waitFor();
+      await page.getByRole('button',{name:'Toggle category mode',exact:true}).click();await page.getByRole('button',{name:'Eliminar Mantenimiento',exact:true}).waitFor();
       await page.locator('#bound-category').screenshot({path:join(root,'test-results','packed-'+framework+'-select-multiple-dark-es.png')});
+      await page.getByRole('button',{name:'Categoría',exact:true}).click();await page.getByRole('combobox',{name:'Buscar categorías',exact:true}).fill('comp');await page.getByRole('option',{name:'Compra',exact:true}).waitFor();await page.screenshot({path:join(root,'test-results','packed-'+framework+'-select-search-dark-es.png')});await page.keyboard.press('Escape');
       await page.getByRole('checkbox',{name:'Avisar al hogar',exact:true}).waitFor();
       await page.locator('#bound-checkbox').screenshot({path:join(root,'test-results','packed-'+framework+'-checkbox-dark-es.png')});
       await page.getByRole('button',{name:'Toggle partial',exact:true}).click();

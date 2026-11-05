@@ -2,6 +2,7 @@ import {LitElement,css,html,nothing} from 'lit';
 import {SelectInputError,selectState,selectSelection,selectName,selectValidity,selectEntries,selectRestoreState,selectRestoreValue,type SelectState,type SelectSelection,type SelectValueReason,type SelectValueDetail} from '../select-contracts.js';
 import {moveSelectOption,matchSelectOption} from '../select-navigation.js';
 import {SelectionPopup} from './selection-popup.js';
+import {SelectChips,selectChipsStyles} from './select-chips.js';
 export type {SelectValueDetail,SelectValueReason} from '../select-contracts.js';
 export type SelectValueEvent=CustomEvent<SelectValueDetail>;
 const attributeName={fromAttribute:(value:string|null)=>value??''};
@@ -11,7 +12,7 @@ export class HaSelect extends LitElement {
  static shadowRootOptions={...LitElement.shadowRootOptions,delegatesFocus:true};
  static properties={state:{attribute:false,noAccessor:true},value:{attribute:false,noAccessor:true},defaultValue:{attribute:false,noAccessor:true},name:{converter:attributeName,noAccessor:true},disabled:{type:Boolean,noAccessor:true}};
  // Geometry adapted from Gateway's MIT field/select catalog; semantic behavior is authored here.
- static styles=css`
+ static styles=[selectChipsStyles,css`
   :host{display:block;min-width:0;font:400 14px/1.35 var(--vyp-ha-font-family,var(--primary-font-family,Roboto,Noto,sans-serif));color:var(--vyp-ha-text,var(--primary-text-color,#1c1c1c));}
     :host([hidden]){display:none;}
   .field{display:grid;gap:6px;}label{font-size:14px;line-height:1.35;}
@@ -46,19 +47,21 @@ export class HaSelect extends LitElement {
   .option[data-keyboard]{position:relative;z-index:1;outline:var(--vyp-ha-focus-ring,var(--wa-focus-ring,solid 2px #989898));outline-offset:0;background:var(--ha-color-fill-neutral-normal-resting,#e6e6e6);}
   .option[aria-selected=true][data-keyboard]{background:var(--ha-color-fill-primary-quiet-resting,#eff9fe);}.option[aria-disabled=true]{opacity:.5;cursor:not-allowed;}
   @media(prefers-reduced-motion:reduce){.picker::before{transition-duration:min(var(--vyp-ha-motion-duration,1ms),1ms);}}
- `;
+ `];
  #internals=this.attachInternals();#state=selectState({label:'Value',options:[]});#renderedState:SelectState|null=null;
  #value:SelectSelection=null;#defaultValue:SelectSelection=null;#name='';#disabled=false;#formDisabled=false;#dirty=false;#showValidation=false;#customError='';
  #pending:{reason:SelectValueReason;serialized:string}|null=null;#fromAttribute=false;#restoringAttribute=false;
  #opened=false;#active=-1;#keyboard=false;#search='';#searchUntil=0;#hovered=false;#popup=new SelectionPopup(this,()=>this.#hide());
- constructor(){super();this.addEventListener('invalid',this.#reveal);}
+ #chips=new SelectChips(this,value=>{this.#dirty=true;this.#request(value,'change');},()=>!this.disabled&&!this.#formDisabled);
+ constructor(){super();this.addEventListener('invalid',this.#reveal);this.addEventListener('focusout',()=>{if(this.#chipsMode)this.#reveal();});}
  attributeChangedCallback(name:string,previous:string|null,next:string|null):void{
   if(this.#restoringAttribute)return;
   try{if(name==='name')selectName(next??'');}catch(error){this.#restoringAttribute=true;if(previous===null)this.removeAttribute(name);else this.setAttribute(name,previous);this.#restoringAttribute=false;throw error;}
   this.#fromAttribute=true;super.attributeChangedCallback(name,previous,next);this.#fromAttribute=false;
  }
  get #control():HTMLSelectElement|HTMLButtonElement|null{return this.shadowRoot?.querySelector('#control')??null;}
- get #pickerMode():boolean{return !this.state.multiple&&this.state.size===1;}
+ get #pickerMode():boolean{return !this.state.multiple&&(this.state.mode==='dropdown'||this.state.mode==='auto'&&this.state.size===1);}
+ get #chipsMode():boolean{return this.state.multiple&&this.state.mode==='dropdown';}
  get #selectedIndex():number{return this.value===null||typeof this.value==='object'?-1:this.state.options.findIndex(option=>option.value===this.value);}
  get state():SelectState{return this.#state;}
  set state(raw:SelectState){const next=selectState(raw),previous=this.#state;this.#hide();this.#state=next;this.#sync();this.requestUpdate('state',previous);}
@@ -78,7 +81,7 @@ export class HaSelect extends LitElement {
  checkValidity():boolean{this.#reveal();return this.#internals.checkValidity();}
  reportValidity():boolean{this.#reveal();return this.#internals.reportValidity();}
  setCustomValidity(message:string):void{selectValidity(this.value,this.state,message);this.#customError=message;this.#sync();this.requestUpdate();}
- focus(options?:FocusOptions):void{this.#control?.focus(options);}
+ focus(options?:FocusOptions):void{if(!this.#chips.focus(options))this.#control?.focus(options);}
  blur():void{this.#hide();this.#control?.blur();}
  formDisabledCallback(disabled:boolean):void{this.#formDisabled=disabled;this.#sync();this.requestUpdate();}
  formResetCallback():void{this.#showValidation=false;this.#hide();this.#request(this.defaultValue,'reset');this.requestUpdate();}
@@ -109,7 +112,7 @@ export class HaSelect extends LitElement {
   if(!this.isConnected||event.currentTarget!==this.shadowRoot!.querySelector('.picker')||!event.isPrimary||event.pointerType==='touch')return;
   this.#setHover(event.type==='pointerenter'&&!this.disabled&&!this.#formDisabled);
  }
- #hide():void{this.#popup.close();if(this.#opened){this.#opened=false;this.#active=-1;this.#search='';this.requestUpdate();}}
+ #hide():void{this.#popup.close();this.#chips.close();if(this.#opened){this.#opened=false;this.#active=-1;this.#search='';this.requestUpdate();}}
  #show(keyboard=false):void{
   if(!this.isConnected||this.disabled||this.#formDisabled||!this.#pickerMode||this.#renderedState!==this.state)return;
   this.#opened=true;this.#keyboard=keyboard;this.#active=moveSelectOption(this.state.options,this.#selectedIndex,'next');
@@ -156,6 +159,7 @@ export class HaSelect extends LitElement {
  protected render(){
   const state=this.state,validity=selectValidity(this.value,state,this.#customError),message=(this.#showValidation||state.error||this.#customError)?validity.message:'';
   const described=[state.description?'help':'',message?'error':''].filter(Boolean).join(' ');
+  if(this.#chipsMode)return html`<div class="multiple-field"><div class="multiple-paint" part="field">${this.#chips.render(state,this.value,this.disabled||this.#formDisabled,described,!!message)}${state.description?html`<div class="picker-help" id="help" part="help">${state.description}</div>`:nothing}${message?html`<div class="picker-error" id="error" part="error" aria-live="polite">${message}</div>`:nothing}</div></div>`;
   if(this.#pickerMode){
    const selected=this.#selectedIndex<0?null:state.options[this.#selectedIndex],clearable=state.clearable&&!state.required&&!this.disabled&&!this.#formDisabled&&selected!==null;
    return html`<div class="picker-field" part="field"><label class="accessible-label" for="control">${state.label}</label>

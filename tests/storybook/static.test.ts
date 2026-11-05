@@ -1,5 +1,6 @@
 import {exerciseFieldVisual} from './field-visual.ts';
 import {exerciseSelectVisual} from './select-visual.ts';
+import {exerciseSelectMultipleVisual} from './select-multiple-visual.ts';
 import {exerciseCatalogForms} from './form-lifecycle.ts';
 import {exerciseButtonVisual} from './button-visual.ts';
 import {exerciseNavigationOverflowVisual} from './navigation-overflow-visual.ts';
@@ -21,7 +22,7 @@ import type {HaSelect} from '@vypdev/ha-ui/select';
 import type {HaTextField} from '@vypdev/ha-ui/field';
 
 const require=createRequire(import.meta.url);
-test('the complete static catalog works at the repository subpath with local assets and real production controls',{timeout:240_000},async()=>{
+test('the complete static catalog works at the repository subpath with local assets and real production controls',{timeout:480_000},async t=>{
   const root=resolve(process.env.STORYBOOK_OUTPUT_DIR??'build/storybook'),output=resolve('test-results/storybook');await mkdir(output,{recursive:true});
   const index=JSON.parse(await readFile(resolve(root,'index.json'),'utf8'));
   const entries=Object.values(index.entries) as {id:string;type:string}[];
@@ -32,8 +33,13 @@ test('the complete static catalog works at the repository subpath with local ass
   const context=await browser.newContext({viewport:{width:1280,height:900},reducedMotion:'reduce'});
   await context.route('**/*',async route=>{const url=new URL(route.request().url());if(url.origin!==origin){external.push(url.origin+url.pathname);await route.abort();}else await route.continue();});
   context.on('page',page=>{page.on('pageerror',error=>errors.push(error.message));page.on('response',response=>{if(response.status()>=400)badAssets.push(response.status()+' '+new URL(response.url()).pathname);});});
-  const page=await context.newPage();const results=[];
+  type Completion=Awaited<ReturnType<typeof waitForCatalogStory>>;
+  const page=await context.newPage();const results:{story:string;locale:string;theme:string;width:number;a11yViolations:number;automatic:Completion}[]=[];
+  let interactionEvidence:{sameStoryRerender:{firstRun:Completion;secondRun:Completion;thirdRun:Completion};catalogForms:Awaited<ReturnType<typeof exerciseCatalogForms>>}|undefined;
+  let visualEvidence:{checkboxVisual:Awaited<ReturnType<typeof exerciseCheckboxVisual>>;navigationVisual:Awaited<ReturnType<typeof exerciseNavigationVisual>>;navigationIconsVisual:Awaited<ReturnType<typeof exerciseNavigationIconsVisual>>;navigationOverflowVisual:Awaited<ReturnType<typeof exerciseNavigationOverflowVisual>>;buttonVisual:Awaited<ReturnType<typeof exerciseButtonVisual>>;fieldVisual:Awaited<ReturnType<typeof exerciseFieldVisual>>;selectVisual:Awaited<ReturnType<typeof exerciseSelectVisual>>}|undefined;
+  let selectMultipleVisual:Awaited<ReturnType<typeof exerciseSelectMultipleVisual>>|undefined;
   try {
+    await t.test('catalog controls, native forms and all locale/theme/width accessibility combinations',{timeout:120_000},async()=>{
     for(const locale of ['en','es'])for(const theme of ['light','dark'])for(const width of [360,960])for(const story of ['navigation-household-sections--long-labels','tabs-local-panels--unselected','forms-text-field--read-only','forms-text-field--error','forms-text-field--empty-optional','forms-text-field--focused-optional','buttons-actions--variants','buttons-actions--loading','forms-select--default','forms-select--multiple','forms-checkbox--partial','forms-checkbox--long-label','navigation-household-sections--mixed','tabs-local-panels--icon-only','navigation-household-sections--overflow','tabs-local-panels--overflow']) {
       await page.setViewportSize({width,height:900});
       await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story&globals=locale:'+locale+';theme:'+theme+';width:'+(width===360?'narrow':'wide')+';motion:reduced');
@@ -69,7 +75,7 @@ test('the complete static catalog works at the repository subpath with local ass
     await selection.focus();await page.keyboard.press('o');await page.keyboard.press('Tab');await page.waitForFunction(()=>(document.querySelector('vyp-ha-select') as HaSelect).value===false);
     await page.getByRole('button',{name:'Save category',exact:true}).click();await page.getByText('Saved: [["category","false"]]',{exact:true}).waitFor();
     await page.goto(origin+'/ha-ui/iframe.html?id=forms-select--multiple&viewMode=story');
-    const multiple=page.getByRole('listbox',{name:'Category',exact:true});await multiple.selectOption(['0','2']);await page.waitForFunction(()=>JSON.stringify((document.querySelector('vyp-ha-select') as HaSelect).value)==='[1,false]');
+    await waitForCatalogStory(page,'forms-select--multiple');await page.getByRole('button',{name:'Remove Shopping',exact:true}).click();await page.getByRole('button',{name:'Category',exact:true}).click();await page.getByRole('option',{name:'Other',exact:true}).click();await page.waitForFunction(()=>JSON.stringify((document.querySelector('vyp-ha-select') as HaSelect).value)==='[1,false]');
     await page.getByRole('button',{name:'Save category',exact:true}).click();await page.getByText('Saved: [["category","1"],["category","false"]]',{exact:true}).waitFor();
     await page.goto(origin+'/ha-ui/iframe.html?id=forms-checkbox--default&viewMode=story');
     await page.waitForFunction(()=>(document.querySelector('vyp-ha-checkbox') as HaCheckbox)?.checked===false);
@@ -102,6 +108,9 @@ test('the complete static catalog works at the repository subpath with local ass
     await page.waitForFunction(()=>{const frame=document.querySelector<HTMLIFrameElement>('#storybook-preview-iframe')!,main=frame.contentDocument!.querySelector<HTMLElement>('main.catalog-frame')!;return main?.lang==='es'&&main.dataset.theme==='dark'&&main.dataset.motion==='reduced'&&main.style.maxWidth==='360px';});
     await page.screenshot({path:resolve(output,'manager-controls-dark-es.png')});
     const catalogForms=await exerciseCatalogForms(page,origin);
+    interactionEvidence={sameStoryRerender,catalogForms};
+    });
+    await t.test('established original HA visual families and single open-menu accessibility',{timeout:240_000},async()=>{
     const checkboxVisual=await exerciseCheckboxVisual(page,origin,output);
     const navigationVisual=await exerciseNavigationVisual(page,origin,output);
     const navigationIconsVisual=await exerciseNavigationIconsVisual(page,origin,output);
@@ -109,7 +118,13 @@ test('the complete static catalog works at the repository subpath with local ass
     const buttonVisual=await exerciseButtonVisual(page,origin,output);
     const fieldVisual=await exerciseFieldVisual(page,origin,output);
     const selectVisual=await exerciseSelectVisual(page,origin,output);
+    visualEvidence={checkboxVisual,navigationVisual,navigationIconsVisual,navigationOverflowVisual,buttonVisual,fieldVisual,selectVisual};
+    });
+    await t.test('original HA multiple chips, search and open-dialog accessibility',{timeout:120_000},async()=>{
+    selectMultipleVisual=await exerciseSelectMultipleVisual(page,origin,output);
+    });
+    assert.ok(interactionEvidence,'Complete catalog interactions are required');assert.ok(visualEvidence,'Every established original HA visual family is required');assert.ok(selectMultipleVisual,'Original multiple chip/search visuals are required');
     assert.deepEqual(external,[],'The static catalog must not load external assets or telemetry');assert.deepEqual(badAssets,[]);assert.deepEqual(errors,[]);
-    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,sameStoryRerender,catalogForms,checkboxVisual,navigationVisual,navigationIconsVisual,navigationOverflowVisual,buttonVisual,fieldVisual,selectVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
+    await writeFile(resolve(output,'evidence.json'),JSON.stringify({subpath:'/ha-ui/',storyCount:entries.filter(entry=>entry.type==='story').length,docsCount:entries.filter(entry=>entry.type==='docs').length,matrix:results,keyboard:true,nativeForm:true,selectForms:{typedDropdownTypeahead:true,multipleRepeatedEntries:true},checkboxForms:{nativeSpace:true,labelClick:true,requiredValidation:true,controlledReset:true},localRoboto:true,...interactionEvidence,...visualEvidence,selectMultipleVisual,managerDocs:true,managerControls:true,buttonReducedMotionVerified:true,external,badAssets,errors},null,2)+'\n');
   }finally {await context.close();await browser.close();await new Promise<void>((done,reject)=>server.httpServer.close(error=>error?reject(error):done()));}
 });

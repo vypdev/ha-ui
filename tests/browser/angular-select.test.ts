@@ -20,8 +20,8 @@ class ReactiveConsumer {group=new FormGroup({category:new FormControl<SelectSele
 @Component({standalone:true,imports:[Select,FormsModule],template:`<form><vyp-ha-select [state]="state" [(ngModel)]="value" name="category" [defaultValue]="1" /></form>`})
 class ModelConsumer {state=selectModel();value:SelectSelection=false;}
 const host=()=>document.querySelector('vyp-ha-select')!;
-async function reactive(strategy:'change'|'blur'|'submit'='change',initial:SelectSelection=1,multiple=false){
- const fixture=TestBed.createComponent(ReactiveConsumer);fixture.componentInstance.group=new FormGroup({category:new FormControl<SelectSelection>(initial,{nonNullable:true,updateOn:strategy})});fixture.componentInstance.state.set(selectModel({required:true,multiple}));fixture.detectChanges();await fixture.whenStable();await host().updateComplete;return fixture;
+async function reactive(strategy:'change'|'blur'|'submit'='change',initial:SelectSelection=1,multiple=false,dropdown=false){
+ const fixture=TestBed.createComponent(ReactiveConsumer);fixture.componentInstance.group=new FormGroup({category:new FormControl<SelectSelection>(initial,{nonNullable:true,updateOn:strategy})});fixture.componentInstance.state.set(selectModel({required:true,multiple,mode:dropdown?'dropdown':'auto'}));fixture.detectChanges();await fixture.whenStable();await host().updateComplete;return fixture;
 }
 test('Angular CVA preserves primitive types, one dirty change, touched state and programmatic writes',async()=>{
  registerSelect();const fixture=await reactive(),field=host(),control=fixture.componentInstance.group.controls.category,changes=vi.fn();control.valueChanges.subscribe(changes);await selectPropose(field,['2']);fixture.detectChanges();await field.updateComplete;expect(control.value).toBe(false);expect(control.dirty).toBe(true);expect(changes).toHaveBeenCalledExactlyOnceWith(false);field.focus();field.blur();expect(control.touched).toBe(true);control.setValue('1');await field.updateComplete;expect(field.value).toBe('1');expect(selectControl(field).value).toBe('1');
@@ -50,4 +50,11 @@ test('Angular CVA snapshots foreign requests before mutation and destroy removes
 
 test('reactive native validation blocks an empty required selection before ngSubmit',async()=>{
  registerSelect();const fixture=await reactive(),field=host(),control=fixture.componentInstance.group.controls.category,form=document.querySelector('form')!,submits=vi.fn((event:Event)=>event.preventDefault());form.addEventListener('submit',submits);field.addEventListener('invalid',event=>event.preventDefault());control.setValue(null);form.requestSubmit();expect(submits).not.toHaveBeenCalled();control.setValue(false);form.requestSubmit();expect(submits).toHaveBeenCalledTimes(1);expect([...new FormData(form)]).toEqual([['category','false']]);
+});
+
+
+test.each(['blur','submit'] as const)('Angular chip dropdown preserves the pending array until updateOn %s',async strategy=>{
+ registerSelect();const fixture=await reactive(strategy,[1],true,true),field=host(),control=fixture.componentInstance.group.controls.category;field.focus();selectControl(field).click();await field.updateComplete;field.shadowRoot!.getElementById('multi-option-1')!.click();await field.updateComplete;expect(field.value).toEqual([1,'1']);expect(control.value).toEqual([1]);expect(fixture.componentInstance.observe).toHaveBeenCalledTimes(1);
+ if(strategy==='blur')field.blur();else{const form=document.querySelector('form')!;form.addEventListener('submit',event=>event.preventDefault());form.requestSubmit();}
+ fixture.detectChanges();await field.updateComplete;expect(control.value).toEqual([1,'1']);expect(control.dirty).toBe(true);expect([...new FormData(field.form!)]).toEqual([['category','1'],['category','1']]);
 });

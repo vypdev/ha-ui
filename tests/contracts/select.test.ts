@@ -4,7 +4,7 @@ const options=[{value:1,label:'One'},{value:'1',label:'String one'},{value:false
 const state=(patch:Record<string,unknown>={})=>selectState({label:'Category',options,...patch});
 const invalid=(fn:()=>unknown)=>{try{fn();throw Error('Expected rejection');}catch(error){expect(error).toBeInstanceOf(SelectInputError);expect((error as SelectInputError).code).toBe('invalid_select');expect((error as Error).message).toBe('invalid_select');}};
 test('closed defaults keep one typed frozen configuration and multiple defaults use a native listbox',()=>{
- const value=state();expect(value).toEqual({label:'Category',options:options.map(option=>({...option,disabled:false})),description:'',placeholder:'Select an option',emptyMessage:'No options available.',error:'',required:false,multiple:false,size:1,requiredMessage:'Select an option.',unavailableMessage:'Select an available option.',clearable:true,clearLabel:'Clear selection'});
+ const value=state();expect(value).toEqual({label:'Category',options:options.map(option=>({...option,disabled:false})),description:'',placeholder:'Select an option',emptyMessage:'No options available.',error:'',required:false,multiple:false,size:1,requiredMessage:'Select an option.',unavailableMessage:'Select an available option.',clearable:true,clearLabel:'Clear selection',mode:'auto',searchLabel:'Search options',searchPlaceholder:'Search',notFoundMessage:'No matching options.',removeLabel:'Remove'});
  expect(Object.isFrozen(value)).toBe(true);expect(Object.isFrozen(value.options)).toBe(true);expect(value.options.every(Object.isFrozen)).toBe(true);expect(state({multiple:true}).size).toBe(4);expect(state({multiple:true,size:8}).size).toBe(8);expect(state({options:[]}).options).toEqual([]);
 });
 test('explicit localized state and literal markup stay inert and preserve primitive types',()=>{
@@ -15,7 +15,7 @@ test.each([null,[],1,true,{}, {options}, {label:'Missing'}, {label:'Secret',opti
 test.each([null,{},'options',Array(1),[{value:1,label:'One'},{value:1,label:'Duplicate'}],[{value:0,label:'Zero'},{value:-0,label:'Duplicate zero'}],[{value:1}],[{value:1,label:'One',extra:1}],Array.from({length:257},(_,value)=>({value,label:'Option'}))].map(raw=>({raw})))('rejects malformed options: case %#',({raw})=>invalid(()=>state({options:raw})));
 test.each(['required','multiple','clearable'])('rejects nonboolean %s without coercion',key=>invalid(()=>state({[key]:'false'})));
 test.each([0,21,1.5,NaN,Infinity,'1',null])('rejects invalid size %j',size=>invalid(()=>state({size})));
-test.each(['label','description','placeholder','emptyMessage','error','requiredMessage','unavailableMessage','clearLabel'])('rejects unsafe %s presentation',key=>invalid(()=>state({[key]:'Secret\ntext'})));
+test.each(['label','description','placeholder','emptyMessage','error','requiredMessage','unavailableMessage','clearLabel','searchLabel','searchPlaceholder','notFoundMessage','removeLabel'])('rejects unsafe %s presentation',key=>invalid(()=>state({[key]:'Secret\ntext'})));
 test('rejects symbol/nonenumerable own keys and extra array properties',()=>{
  for(const raw of [Object.assign({label:'Category',options},{[Symbol('extra')]:1}),Object.defineProperty({label:'Category',options},'extra',{value:true})])invalid(()=>selectState(raw));
  invalid(()=>state({options:Object.assign([...options],{extra:true})}));invalid(()=>state({options:[{value:1,label:'One',disabled:'false'}]}));
@@ -58,4 +58,10 @@ test('native entries keep option order, typed distinctions and disabled/unknown 
 
 test('rejects all unsupported array own keys, missing option values and malformed restore strings',()=>{
  invalid(()=>selectSelection(Object.assign([1],{[Symbol('x')]:1})));invalid(()=>selectSelection(Object.assign([1],{'4294967295':1})));invalid(()=>state({options:[{label:'Missing value'}]}));invalid(()=>selectName(undefined));invalid(()=>selectRestoreValue('\ud800'));
+});
+
+test('presentation mode is explicit while auto retains the size-based legacy projection',()=>{
+ for(const mode of ['auto','dropdown','list'])expect(state({mode}).mode).toBe(mode);
+ for(const mode of [null,1,true,'chips',''])invalid(()=>state({mode}));
+ const localized=state({multiple:true,mode:'dropdown',searchLabel:'Buscar categorías',searchPlaceholder:'',notFoundMessage:'Sin coincidencias.',removeLabel:'Eliminar'});expect(localized.searchLabel).toBe('Buscar categorías');expect(localized.searchPlaceholder).toBe('');expect(localized.removeLabel).toBe('Eliminar');expect(state({multiple:true}).mode).toBe('auto');
 });

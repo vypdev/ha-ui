@@ -1,4 +1,5 @@
 import type {ReactiveController,ReactiveControllerHost} from 'lit';
+import {selectionScrollRoots} from './selection-events.js';
 /** A browser-only positioning/lifetime adapter; selection and validation remain with the owner. */
 export class SelectionPopup implements ReactiveController {
  #target:{anchor:HTMLElement;surface:HTMLElement}|null=null;#listeners:AbortController|null=null;
@@ -9,12 +10,7 @@ export class SelectionPopup implements ReactiveController {
   this.#target={anchor,surface};surface.showPopover();this.position();
   const listeners=new AbortController();this.#listeners=listeners;const options={signal:listeners.signal,capture:true};
   window.addEventListener('resize',this.position,options);
-  // Scroll is not composed: capture at each root in the anchor's composed ancestry.
-  const roots=new Set<Window|ShadowRoot>([window]);
-  for(let node:Node|null=anchor;node;node=node instanceof Element&&node.assignedSlot?node.assignedSlot:node.parentNode??(node instanceof ShadowRoot?node.host:null)){
-   if(node instanceof ShadowRoot)roots.add(node);
-  }
-  for(const root of roots)root.addEventListener('scroll',this.position,options);
+  for(const root of selectionScrollRoots(anchor))root.addEventListener('scroll',this.position,options);
   document.addEventListener('pointerdown',event=>{const path=event.composedPath();if(!path.includes(anchor)&&!path.includes(surface))this.dismiss();},options);
   document.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();this.dismiss();}},options);
   surface.addEventListener('toggle',()=>{if(!surface.matches(':popover-open'))this.dismiss();},options);

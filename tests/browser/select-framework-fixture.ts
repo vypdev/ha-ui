@@ -1,4 +1,5 @@
 import {afterEach,expect,test,vi} from 'vitest';
+import {page,userEvent} from 'vitest/browser';
 import {selectState,type SelectState,type SelectSelection} from '../../packages/core/src/select-contracts.js';
 import {registerSelect,type HaSelect,type SelectValueEvent} from '../../packages/core/src/components/select.js';
 export interface SelectOptions {state:SelectState;value:SelectSelection;defaultValue?:SelectSelection;name?:string;disabled?:boolean;form?:string;onValueRequest?:(event:SelectValueEvent)=>void;onValueChange?:(value:SelectSelection)=>void;}
@@ -36,5 +37,15 @@ export function selectAdapterCases(mount:(target:HTMLElement,options:SelectOptio
  });
  test('unmount removes subscriptions from retained hosts and remount has one active listener',async()=>{
   registerSelect();const observer=vi.fn(),change=vi.fn();const first=await attach({onValueRequest:observer,onValueChange:change});await settle();await first.unmount();view=undefined;first.host.dispatchEvent(new CustomEvent('ha-select-request',{detail:{value:1,reason:'change'},cancelable:true}));expect(observer).not.toHaveBeenCalled();expect(change).not.toHaveBeenCalled();const second=await attach({onValueRequest:observer,onValueChange:change});await settle();await selectPropose(second.host,['0']);expect(observer).toHaveBeenCalledTimes(1);expect(change).toHaveBeenCalledExactlyOnceWith(1);
+ });
+ test('multiple dropdown binds chip/search requests, asynchronous acknowledgement and repeated entries',async()=>{
+  registerSelect();const change=vi.fn(),observer=vi.fn(),{host,update}=await attach({state:selectModel({multiple:true,mode:'dropdown'}),value:[1,false],defaultValue:[1],name:'category',onValueRequest:observer,onValueChange:change});await settle();
+  const owner=page.elementLocator(host);await owner.getByRole('button',{name:'Category',exact:true}).click();await owner.getByRole('combobox',{name:'Search options',exact:true}).fill('String');await userEvent.keyboard('{ArrowDown}{Enter}');
+  expect(observer).toHaveBeenCalledTimes(1);expect(change).toHaveBeenCalledExactlyOnceWith([1,false,'1']);expect(Object.isFrozen(change.mock.calls[0][0])).toBe(true);expect(host.value).toEqual([1,false]);await update({value:[1,false,'1']});await settle();expect([...new FormData(host.form!)]).toEqual([['category','1'],['category','1'],['category','false']]);
+  await owner.getByRole('button',{name:'Remove One',exact:true}).click();expect(change).toHaveBeenLastCalledWith([false,'1']);await update({value:[false,'1']});await settle();expect([...new FormData(host.form!)]).toEqual([['category','1'],['category','false']]);
+  await update({disabled:true});await settle();expect((owner.getByRole('button',{name:'Category',exact:true}).element() as HTMLButtonElement).disabled).toBe(true);expect([...new FormData(host.form!)]).toEqual([]);await update({disabled:false});await settle();host.form!.reset();expect(change).toHaveBeenLastCalledWith([1]);expect(observer).toHaveBeenCalledTimes(3);
+ });
+ test('a canceled chip dropdown request never updates its framework model',async()=>{
+  registerSelect();const change=vi.fn(),cancel=vi.fn((event:SelectValueEvent)=>event.preventDefault()),{host}=await attach({state:selectModel({multiple:true,mode:'dropdown'}),value:[1],onValueRequest:cancel,onValueChange:change});await settle();const owner=page.elementLocator(host);await owner.getByRole('button',{name:'Category',exact:true}).click();await owner.getByRole('option',{name:'Other',exact:true}).click();expect(cancel).toHaveBeenCalledTimes(1);expect(change).not.toHaveBeenCalled();expect(host.value).toEqual([1]);await expect.element(owner.getByRole('button',{name:'Remove One',exact:true})).toBeVisible();
  });
 }

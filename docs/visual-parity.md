@@ -50,7 +50,7 @@ Consuming apps supply their fonts as HA does; the shared component performs no f
 | 1 | Checkbox and catalog font baseline | Candidate calibrated against measured HA states; source, packed and static gates are recorded separately |
 | 2 | Upper dashboard navigation | Text-only controls plus three icon/text presentations calibrated against measured HA states in both semantics; overflow calibrated separately below; custom theme/font breadth and installed-app acceptance remain required |
 | 3 | Buttons | Original HA variants/states, native target and four bindings are calibrated below; accessible application accent overrides remain an explicit palette difference |
-| 4 | Text fields and single/multiple selects | Filled fields and the single picker have original HA reference gates below; multiple/chips/search and explicit list modes remain required |
+| 4 | Text fields and single/multiple selects | Filled fields, the single picker and multiple dropdown chips/search have original HA reference gates below; explicit list modes remain required |
 | 5 | Remaining families | Capture the current HA counterpart and establish the same reference before implementing their visual layer |
 | 6 | Gateway and Domus | Compare their real installed flows using the same accepted component cohort; app UX and human acceptance remain separate |
 
@@ -237,7 +237,7 @@ narrow and long labels, RTL, optional clear and open menus with pointer or keybo
 Two independent original campaigns agree for all 114 unmodified PNGs. Public HA module functions,
 recorded tokens and exact Roboto bytes run in fresh documents without application startup, HA API
 access or credentials. The reviewed source revision and installed public bundle identities remain
-distinct. Raw multiple/chips/search observations are retained for the following increment.
+distinct. Multiple/chips/search references have their own gate below.
 
 The filled surface is at least 56px, with 4px top corners, a 1px underline, 12px/18.4px floating
 caption and 14px/22.4px value. Empty captions use 14px. Wrapping captions can grow the field. The
@@ -283,3 +283,45 @@ default-rule axe scans cover light/dark open pointer, keyboard, error and empty 
 catalog component. The catalog declares its accessible select token overrides. No accessibility
 rule is disabled. Single-picker calibration does not accept native multiple/list presentation,
 custom font/theme breadth, the full browser/framework matrix, installed applications or human UX.
+
+## Multiple dropdown chips and search
+
+The [multiple-select reference](evidence/ha-select-multiple-reference.json) retains 30 original
+states for each of macOS ARM64, Linux ARM64 and Linux x64. These cover empty/required/filled chips,
+remove hover/focus, disabled, narrow, RTL, helper text and open search with filtering, no matches
+and keyboard preview. All 90 raw PNGs agree with independent original repeats. The Linux x64
+campaign uses the exact CI Chromium 156.0.8078.4 in an offline official AMD64 image. The existing
+60 ARM64 images and their inputs remain unchanged. The gate selects platform and architecture
+and checks every original hash before comparison. All 90 candidate states pass: 59 exact images
+and 31 within the unchanged selector bounds. The maximum channel difference is 2/255.
+
+Chips and the filled add action paint at 32px. Selected chip labels are 14px/20px; the action uses
+14px/14px medium text and the original 24px playlist-plus SVG. The dialog body has an 8px radius,
+the recorded HA shadow, a 40px search field and 48px choice rows. Query clearing retains its
+original close glyph, and a no-match status retains the original search glyph and text layout.
+The body reserves its initial results height during filtering and follows the whole field anchor
+in both writing directions. Original painted geometry and whole RGBA images use the existing
+selector bounds above; the comparison performs no masking or image transformation.
+
+The original search icon path and its screen transform matched before the raster gate passed.
+The light glyph still differed by 7 RGB levels at three edge pixels, and the Linux dark dialog
+had smaller differences across its shadow. An isolated counterexample changed only whether the
+open paint surface requests its own compositor layer. The same geometry and SVG then pass in
+all three reference environments with no platform-specific offset or new tolerance.
+
+The authored native modal and named search combobox preserve focus, typed controlled requests,
+cancellation, reset, restoration and disabled-fieldset behavior independently from paint. Chip
+removal and add buttons use minimum-44px native targets around the original painted surfaces.
+The host explicitly reserves 12px after its painted field. This accessibility layout exception
+is asserted separately; the host's outer height is not claimed to match the original 32px action
+layout. Search clearing also has a 44px native target around the original 24px icon slot.
+
+Original wrapper quirks are explicit fixture mappings: its disabled input is forwarded through
+the nested chip's public disabled property, and multiple-option fixtures are all enabled because
+the observed wrapper drops each option's disabled flag. The authored policy continues to reject
+disabled choices; original quirks do not authorize a product regression. The catalog declares
+accessible search-placeholder and dark action colors separately from original-token fixtures.
+Eight independent default-rule axe scans cover light/dark open choices, filtering, no matches
+and empty dialogs. Source tests and actual installed consumers remain separate acceptance gates.
+Explicit visible lists, custom font/theme breadth, complete browser/framework coverage, deployed
+applications and human UX remain outside this increment's acceptance.

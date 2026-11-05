@@ -226,7 +226,8 @@ preview checks for the recorded pins, not SSR, other-engine or complete componen
 `Select` is exported by every adapter; register `vyp-ha-select` with `registerSelect` from the
 client-only `/select` entrypoint. The [select contract](select-contract.md) defines its closed
 state, primitive/array types, unsuccessful unavailable values, native form entries and restoration.
-The core owns the one native select, including keyboard, labels and disabled-option behavior.
+The core owns the shared renderer and native form bridge, including labels and disabled-option
+behavior. The [select contract](select-contract.md) defines each mode's keyboard and accessibility semantics.
 
 React accepts controlled value and onValueRequest/onValueChange. Vue's modelValue and
 update:modelValue preserve number/string/boolean distinctions and readonly arrays through v-model.

@@ -1025,6 +1025,7 @@ Prospective repository files (current documents are classified against the immut
 | `tests/storybook/reference/ha-select/linux/dark-single-menu-rtl.png` | create |
 | `packages/core/LICENSES/Material-Design-Icons-7.4.47.txt` | create |
 | `tests/storybook/select-visual.ts` | create |
+| `tests/storybook/select-multiple-visual.ts` | create |
 | `tooling/raster.mjs` | create |
 | `tests/raster.test.mjs` | create |
 | `docs/evidence/ha-select-multiple-reference.json` | create |
@@ -1131,6 +1132,37 @@ Prospective repository files (current documents are classified against the immut
 | `tests/storybook/reference/ha-select/linux-x64/dark-single-menu-keyboard.png` | create |
 | `tests/storybook/reference/ha-select/linux-x64/dark-single-menu-narrow.png` | create |
 | `tests/storybook/reference/ha-select/linux-x64/dark-single-menu-rtl.png` | create |
+| `packages/core/src/components/selection-events.ts` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-empty.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-filled.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-remove-hover.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-remove-focus.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-disabled.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-required.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-narrow.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-rtl.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-helper.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-search.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-filtered.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-no-matches.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-search-keyboard.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-search-rtl.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/light-multiple-search-narrow.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-empty.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-filled.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-remove-hover.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-remove-focus.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-disabled.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-required.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-narrow.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-rtl.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-helper.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-search.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-filtered.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-no-matches.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-search-keyboard.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-search-rtl.png` | create |
+| `tests/storybook/reference/ha-select-multiple/linux-x64/dark-multiple-search-narrow.png` | create |
 
 The catalog/index update registers the companion under the existing owner; it does not claim implementation. `LICENSE` preserves the upstream MIT source notice and every reused asset requires provenance verification. The Copilot installation and its source remain unchanged. Package coordinates are identifiers, not repository paths.
 

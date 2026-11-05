@@ -1,11 +1,13 @@
 import {presentationText} from './presentation-text.js';
 export type SelectValue=string|number|boolean;
 export type SelectSelection=SelectValue|null|readonly SelectValue[];
+export type SelectMode='auto'|'dropdown'|'list';
 export interface SelectOption {readonly value:SelectValue;readonly label:string;readonly disabled:boolean;}
 export interface SelectState {
  readonly label:string;readonly options:readonly SelectOption[];readonly description:string;readonly placeholder:string;
  readonly emptyMessage:string;readonly error:string;readonly required:boolean;readonly multiple:boolean;readonly size:number;
  readonly requiredMessage:string;readonly unavailableMessage:string;readonly clearable:boolean;readonly clearLabel:string;
+ readonly mode:SelectMode;readonly searchLabel:string;readonly searchPlaceholder:string;readonly notFoundMessage:string;readonly removeLabel:string;
 }
 export class SelectInputError extends Error {readonly code='invalid_select';constructor(){super('invalid_select');this.name='SelectInputError';}}
 function invalid():never{throw new SelectInputError();}
@@ -26,7 +28,7 @@ function boolean(raw:unknown):boolean{if(raw===undefined)return false;if(typeof 
 function text(raw:unknown,maximum:number,empty:boolean,fallback:string):string{const value=raw===undefined?fallback:raw;if(!presentationText(value,maximum,empty))invalid();return value;}
 /** Closed immutable options/configuration; selection has its own independently ordered model port. */
 export function selectState(raw:unknown):SelectState{
- const source=object(raw,['label','options','description','placeholder','emptyMessage','error','required','multiple','size','requiredMessage','unavailableMessage','clearable','clearLabel'],['label','options']);
+ const source=object(raw,['label','options','description','placeholder','emptyMessage','error','required','multiple','size','requiredMessage','unavailableMessage','clearable','clearLabel','mode','searchLabel','searchPlaceholder','notFoundMessage','removeLabel'],['label','options']);
  const seen=new Set<SelectValue>(),options:SelectOption[]=[];
  for(const item of array(source.options)){
   const option=object(item,['value','label','disabled'],['value','label']),value=primitive(option.value);
@@ -34,7 +36,8 @@ export function selectState(raw:unknown):SelectState{
  }
  const multiple=boolean(source.multiple),size=source.size===undefined?(multiple?4:1):source.size;
  if(typeof size!=='number'||!Number.isSafeInteger(size)||size<1||size>20)invalid();
- return Object.freeze({label:text(source.label,256,false,''),options:Object.freeze(options),description:text(source.description,512,true,''),placeholder:text(source.placeholder,256,true,'Select an option'),emptyMessage:text(source.emptyMessage,512,false,'No options available.'),error:text(source.error,512,true,''),required:boolean(source.required),multiple,size,requiredMessage:text(source.requiredMessage,512,false,'Select an option.'),unavailableMessage:text(source.unavailableMessage,512,false,'Select an available option.'),clearable:source.clearable===undefined?true:boolean(source.clearable),clearLabel:text(source.clearLabel,256,false,'Clear selection')});
+ const mode=source.mode===undefined?'auto':source.mode;if(typeof mode!=='string'||!['auto','dropdown','list'].includes(mode))invalid();
+ return Object.freeze({label:text(source.label,256,false,''),options:Object.freeze(options),description:text(source.description,512,true,''),placeholder:text(source.placeholder,256,true,'Select an option'),emptyMessage:text(source.emptyMessage,512,false,'No options available.'),error:text(source.error,512,true,''),required:boolean(source.required),multiple,size,requiredMessage:text(source.requiredMessage,512,false,'Select an option.'),unavailableMessage:text(source.unavailableMessage,512,false,'Select an available option.'),clearable:source.clearable===undefined?true:boolean(source.clearable),clearLabel:text(source.clearLabel,256,false,'Clear selection'),mode:mode as SelectMode,searchLabel:text(source.searchLabel,256,false,'Search options'),searchPlaceholder:text(source.searchPlaceholder,256,true,'Search'),notFoundMessage:text(source.notFoundMessage,512,false,'No matching options.'),removeLabel:text(source.removeLabel,256,false,'Remove')});
 }
 export function selectSelection(raw:unknown):SelectSelection{
  if(raw===null)return null;

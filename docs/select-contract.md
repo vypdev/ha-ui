@@ -29,6 +29,15 @@ The single picker also accepts `clearable` (boolean, default true) and inert `cl
 clear action; required, disabled and already empty controls omit that action. Applications localize
 the clear name alongside their label, description and validation messages.
 
+`mode` is `auto` (default), `dropdown` or `list`. Auto retains the existing size projection:
+single size 1 is a filled picker; larger sizes and multiple auto mode are visible native lists.
+Explicit dropdown mode uses the single filled picker or the multiple chip/search renderer,
+independently of size. Explicit list mode retains a native select pending its own HA calibration.
+The multiple dropdown accepts localized inert searchLabel (default Search options),
+searchPlaceholder (default Search), notFoundMessage (default No matching options.) and removeLabel
+(default Remove). Their bounds are respectively 1..256, 0..256, 1..512 and 1..256 Unicode points.
+The shared clearLabel names the temporary search-clear action as well as the single clear action.
+
 Configuration and model updates may arrive in either order. A well-typed current/default model
 value missing from the current options, selecting a disabled option, or using the wrong mode is
 preserved, displayed without an invented replacement and explicitly invalid. `selectValidity`
@@ -41,9 +50,10 @@ form entries. This permits asynchronous option updates without silently changing
 The client-only `/select` entrypoint explicitly registers `vyp-ha-select` through registerSelect.
 The DOM-independent `/select-contracts` entrypoint has no browser/framework imports. The host
 owns one renderer in Shadow DOM, an associated label, optional description and localized validation
-message. A single selection with `size=1` uses a native button with the combobox role and a separate
-listbox in a browser popover. Multiple selection and explicit `size>1` lists retain their native
-select during the next visual increment. There is no routing, HA API, application authorization or
+message. A single dropdown uses a native button with the combobox role and a separate
+listbox in a browser popover. The multiple dropdown renders selected chips and a named button
+opening a native modal search dialog. Visible-list modes retain a native select pending their
+visual increment. There is no routing, HA API, application authorization or
 duplicate framework renderer. The form bridge and typed request protocol are shared across modes.
 
 Arrow keys and Home/End preview enabled options while DOM focus stays on the single combobox.
@@ -54,6 +64,26 @@ disconnect close it without a stray change request. Removed controls/options can
 configuration. The popup flips/clamps to the viewport and tracks scroll/resize, including enclosing
 open shadow roots and slotted owners; every listener is
 removed when it closes. Empty/all-disabled menus never turn an unavailable model into a clear request.
+
+The multiple dropdown preserves model order in its chips and option order in successful entries.
+Selected values are excluded from search choices; search uses a trimmed case-insensitive label
+substring. Disabled choices remain visible and cannot be added. A 256-value model cannot grow.
+The search combobox owns focus and previews enabled options through Arrow/Home/End keys;
+Enter proposes one typed addition. Chip removal proposes one typed removal. Both requests remain
+controlled and cancelable. Search clearing, Escape, light dismissal and closing a modal leave the
+accepted model and native entries intact. Tab cycles through the modal's visible enabled controls;
+closing returns focus to its trigger. Blur validation follows focus leaving the whole component.
+Required instructions describe the group and trigger; an empty required search combobox exposes
+aria-required. Fieldsets, configuration replacement, reset, restoration, disconnect and reconnect
+retire old modal actions and their listeners. Synchronous focus observers cannot authorize a stale
+addition, removal or query clear. The dialog follows enclosing ordinary, shadow and slotted scroll
+containers and clamps/flips at viewport edges.
+
+Chips and the add action retain HA's 32px painted height. Their native buttons are at least 44px;
+the host reserves 12px after its painted field for the larger action target. This explicit layout
+exception is measured separately from painted HA geometry. The search-clear action similarly has
+a 44px native target around its 24px icon slot. Visual parity does not claim that HA's original
+smaller native hit boxes are reproduced.
 
 `state`, controlled `value` and `defaultValue` are properties, not serialized attributes. `name`
 is reflected; disabled is a real boolean property/native presence attribute. `form` is a readonly

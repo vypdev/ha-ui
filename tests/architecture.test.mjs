@@ -38,6 +38,7 @@ test('the pure contract does not acquire framework or application imports', () =
   expect(imports(readFileSync('packages/core/src/button-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/presentation-text.ts','utf8'))).toEqual([]);
   expect(imports(readFileSync('packages/core/src/select-navigation.ts','utf8'))).toEqual(['./select-contracts.js']);
+  expect(imports(readFileSync('packages/core/src/select-multiple.ts','utf8'))).toEqual(['./select-contracts.js']);
 });
 test('architecture policy rejects direct, re-exported, dynamic and CommonJS dependencies', () => {
   for (const code of ['import x from "react";', 'export * from "@angular/core";', 'await import("vue");', 'await import(target);',
