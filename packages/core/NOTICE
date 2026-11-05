@@ -61,3 +61,20 @@ Modifications: controlled native shadow input, authored ElementInternals form/va
 native implicit-submission proxy, one required marker, simultaneous linked help/error text,
 accessible fallback colors, logical geometry, public theme overrides and reduced motion.
 No HA/Web Awesome runtime, application state or network dependency is imported.
+
+Filled single-select and menu visuals adapt Home Assistant frontend ha-select, ha-picker-field,
+ha-combo-box-item and ha-dropdown/ha-dropdown-item (Apache License2.0), at the reviewed HA
+source revision above, plus the Web Awesome dropdown styles (MIT) at the reviewed artifact above:
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-select.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-picker-field.ts
+https://github.com/home-assistant/frontend/blob/027d9578ec9663b8aa22f50c24274a7cd9d001c1/src/components/ha-combo-box-item.ts
+Modifications: native combobox/listbox projection, data-only keyboard preview, controlled typed
+requests, ElementInternals validation/form ownership, authored popup positioning/lifetime,
+44px clear-button target, inert local labels, theme overrides and reduced motion. Recorded
+original public HA modules establish visual references independently of this renderer; the
+reviewed source revision is not claimed as the installed application revision.
+The embedded menu-down and close SVG paths are unmodified Material Design Icons7.4.47,
+by the Pictogrammers icon group, Apache License2.0:
+https://github.com/Templarian/MaterialDesign-JS/tree/v7.4.47
+See LICENSES/Material-Design-Icons-7.4.47.txt and the full Apache text retained above.
+No upstream component, icon pack, HA state, API or remote asset loader is imported at runtime.

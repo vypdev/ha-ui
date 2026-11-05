@@ -11,5 +11,5 @@ export default defineConfig({test: {
     {resolve:{alias:contractSources},optimizeDeps:{include:['storybook/internal/core-events','storybook/internal/channels','axe-core']},plugins:[svelte({configFile:'packages/svelte/svelte.config.js'})],test: {name:'browser', include:['tests/browser/**/*.test.{ts,mjs}'], browser:{enabled:true,provider:playwright(),headless:true,instances:[{browser:'chromium'}]}}},
     {extends:true,resolve:{alias:contractSources},optimizeDeps:{include:['lit','lit/directives/style-map.js','storybook/internal/core-events']},plugins:[storybookTest({configDir:fileURLToPath(new URL('./.storybook',import.meta.url))})],test:{name:'storybook',browser:{enabled:true,provider:playwright(),headless:true,instances:[{browser:'chromium'}]}}},
   ],
-  coverage: completeCoverage(['packages/*/src', 'tooling', 'stories', '.storybook'], 'coverage'),
+  coverage: {...completeCoverage(['packages/*/src', 'tooling', 'stories', '.storybook'], 'coverage'),exclude:['stories/**/*.stories.ts']},
 }});

@@ -19,6 +19,8 @@ export const catalogFrame:Decorator=(Story,context)=>{
     .catalog-frame vyp-ha-field {--vyp-ha-primary:var(--primary-color);--vyp-ha-danger:var(--error-color);--vyp-ha-placeholder:var(--secondary-text-color);}
     .catalog-frame[data-theme=light] vyp-ha-field {--vyp-ha-primary:#00639c;--ha-color-form-background:#f3f3f3;--ha-color-form-background-disabled:#ccc;}
     .catalog-frame[data-theme=dark] vyp-ha-field {--vyp-ha-primary:#90caf9;--vyp-ha-danger:#ffb4ab;--ha-color-form-background:#363636;--ha-color-form-background-disabled:#363636;}
+    .catalog-frame vyp-ha-select {--vyp-ha-primary:#00639c;--vyp-ha-text-secondary:var(--secondary-text-color);--ha-color-form-background:#f3f3f3;--ha-color-form-background-disabled:#ccc;}
+    .catalog-frame[data-theme=dark] vyp-ha-select {--vyp-ha-primary:#90caf9;--vyp-ha-danger:#ffb4ab;--ha-color-form-background:#363636;--ha-color-form-background-disabled:#363636;--ha-color-fill-primary-quiet-resting:#001721;--ha-color-fill-primary-quiet-hover:#002f44;--ha-color-fill-neutral-normal-resting:#303030;--wa-color-surface-border:#5e5e5e;}
     .example-content {padding:16px 0;} .example-content h2 {font-size:20px;margin:0 0 8px;} .example-content p {margin:0;}
     .example-form {display:grid;gap:16px;} .example-actions {display:flex;flex-wrap:wrap;gap:8px;}
     .example-actions > button {min-height:44px;padding:8px 16px;font:inherit;}

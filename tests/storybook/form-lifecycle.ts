@@ -17,7 +17,7 @@ export async function exerciseCatalogForms(page:Page,origin:string){
     }else{
       const resetName=story==='forms-text-field--default'?'Reset draft':story==='forms-select--default'?'Reset category':'Reset notification';
       if(story==='forms-text-field--default')await page.getByRole('textbox',{name:'Task name',exact:true}).fill('Before reset');
-      else if(story==='forms-select--default')await page.getByRole('combobox',{name:'Category',exact:true}).selectOption('0');
+      else if(story==='forms-select--default'){await page.getByRole('combobox',{name:'Category',exact:true}).click();await page.getByRole('option',{name:'Maintenance',exact:true}).click();}
       else await page.getByRole('checkbox',{name:'Notify household',exact:true}).check();
       await page.getByRole('button',{name:resetName,exact:true}).click();
       if(story==='forms-text-field--default'){
@@ -28,7 +28,7 @@ export async function exerciseCatalogForms(page:Page,origin:string){
         await page.waitForFunction(()=>document.querySelector('[role=status]')!.textContent==='Example submitted: After reset');assert.equal(await status.textContent(),'Example submitted: After reset');
       }else if(story==='forms-select--default'){
         await page.waitForFunction(()=>document.querySelector('vyp-ha-select')!.value===false);
-        await page.getByRole('combobox',{name:'Category',exact:true}).selectOption('0');
+        await page.getByRole('combobox',{name:'Category',exact:true}).click();await page.getByRole('option',{name:'Maintenance',exact:true}).click();
         await page.getByRole('button',{name:'Save category',exact:true}).click();
         await page.waitForFunction(()=>document.querySelector('[role=status]')!.textContent==='Saved: [["category","1"]]');assert.equal(await status.textContent(),'Saved: [["category","1"]]');
       }else{

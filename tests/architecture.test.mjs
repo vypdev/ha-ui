@@ -26,8 +26,8 @@ function imports(code) {
   visit(source); return results;
 }
 function allowed(specifier) {
-  return !specifier.startsWith('node:') && !/^(react|react-dom|vue|svelte|@angular)(\/|$)/u.test(specifier)
-    && !specifier.includes('domus') && !specifier.includes('gateway') && specifier !== '<dynamic>';
+  return (specifier.startsWith('.')||specifier==='lit'||specifier.startsWith('lit/'))
+    && !specifier.includes('domus') && !specifier.includes('gateway');
 }
 test('the pure contract does not acquire framework or application imports', () => {
   const code = readFileSync('packages/core/src/contracts.ts', 'utf8');
@@ -37,10 +37,11 @@ test('the pure contract does not acquire framework or application imports', () =
   expect(imports(readFileSync('packages/core/src/field-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/button-contracts.ts','utf8'))).toEqual(['./presentation-text.js']);
   expect(imports(readFileSync('packages/core/src/presentation-text.ts','utf8'))).toEqual([]);
+  expect(imports(readFileSync('packages/core/src/select-navigation.ts','utf8'))).toEqual(['./select-contracts.js']);
 });
 test('architecture policy rejects direct, re-exported, dynamic and CommonJS dependencies', () => {
   for (const code of ['import x from "react";', 'export * from "@angular/core";', 'await import("vue");', 'await import(target);',
-    'require("react");', 'require("node:fs");', 'require(target);', 'require();',
+    'require("react");', 'require("node:fs");', 'require("fs");', 'require("fs/promises");', 'require("http");', 'require("express");', 'require(target);', 'require();',
     'module.require("vue");', 'module["require"]("svelte");', 'module.require(target);',
     'import framework = require("@angular/core");'])
     expect(imports(code).some(specifier => !allowed(specifier))).toBe(true);
@@ -74,6 +75,7 @@ test('CI Check runs for every PR update with frozen tools and all implemented qu
 test('test configuration covers every package and authored tool per file without hiding runtime modules', () => {
   const source = readFileSync('vitest.config.ts', 'utf8');
   expect(source).toContain("completeCoverage(['packages/*/src', 'tooling', 'stories', '.storybook'], 'coverage')");
+  expect(source).toContain("exclude:['stories/**/*.stories.ts']");
   const manifest = JSON.parse(readFileSync('package.json', 'utf8'));
   expect(manifest.scripts.test).toBe('vitest run --coverage && node --test tests/coverage-evidence.test.mjs');
 });
@@ -133,7 +135,7 @@ test('strict checks cover the source, Node consumer tooling and every Svelte fix
 });
 
 test('CSF test definitions delegate all rendering to independently covered examples',()=>{
-  for(const file of globSync('stories/*.stories.ts')) {
+  for(const file of globSync('stories/**/*.stories.ts')) {
     const code=readFileSync(file,'utf8');
     expect(code).toContain('render:renderExample');
     expect(imports(code).some(path=>path.endsWith('.example.js'))).toBe(true);

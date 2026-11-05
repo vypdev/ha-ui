@@ -24,6 +24,11 @@ symbol keys, array holes, invalid numbers and malformed text raise SelectInputEr
 invalid_select, with no input echo. `selectSelection` independently validates and freezes model
 values; `selectName` accepts inert text up to 128 points, empty allowed.
 
+The single picker also accepts `clearable` (boolean, default true) and inert `clearLabel`
+(1..256 points, default Clear selection). Optional selections retain an explicit keyboard/pointer
+clear action; required, disabled and already empty controls omit that action. Applications localize
+the clear name alongside their label, description and validation messages.
+
 Configuration and model updates may arrive in either order. A well-typed current/default model
 value missing from the current options, selecting a disabled option, or using the wrong mode is
 preserved, displayed without an invented replacement and explicitly invalid. `selectValidity`
@@ -35,9 +40,19 @@ form entries. This permits asynchronous option updates without silently changing
 
 The client-only `/select` entrypoint explicitly registers `vyp-ha-select` through registerSelect.
 The DOM-independent `/select-contracts` entrypoint has no browser/framework imports. The host
-owns one native select in Shadow DOM, an associated label, optional description and localized
-validation message. It uses the existing field geometry/theme tokens and native keyboard behavior.
-There is no custom menu, routing, HA API, application authorization or duplicate framework renderer.
+owns one renderer in Shadow DOM, an associated label, optional description and localized validation
+message. A single selection with `size=1` uses a native button with the combobox role and a separate
+listbox in a browser popover. Multiple selection and explicit `size>1` lists retain their native
+select during the next visual increment. There is no routing, HA API, application authorization or
+duplicate framework renderer. The form bridge and typed request protocol are shared across modes.
+
+Arrow keys and Home/End preview enabled options while DOM focus stays on the single combobox.
+Typeahead searches labels without coercing their values. Enter, Space and Tab commit one controlled
+request; Tab continues normal focus order, including the optional clear button. Escape closes the
+popup with the accepted model intact. Outside pointers, blur, disabling, reset, restoration and
+disconnect close it without a stray change request. Removed controls/options cannot act on a later
+configuration. The popup flips/clamps to the viewport and tracks scroll/resize; every listener is
+removed when it closes. Empty/all-disabled menus never turn an unavailable model into a clear request.
 
 `state`, controlled `value` and `defaultValue` are properties, not serialized attributes. `name`
 is reflected; disabled is a real boolean property/native presence attribute. `form` is a readonly
@@ -45,7 +60,8 @@ owner; the form ID attribute may select an external owner. ElementInternals owns
 name/value submission, disabled fieldsets, labels and state restoration. Null/empty selections
 have no entries. Successful selected options serialize String(value) in option order; multiple
 selection repeats the name. `selectEntries(value,state)` is the DOM-free policy for those successful entries. Primitive API types are retained in requests/model values, while HTML
-FormData remains strings. Opaque native option indexes distinguish numeric/string/boolean values.
+FormData remains strings. Render indexes distinguish primitive identities without becoming model
+values. The custom picker has no hidden native select or duplicate successful form control.
 
 `defaultValue` follows the initial model until the application writes value or accepts a user
 request. Reset emits a controlled request for the current default; the app acknowledges it.

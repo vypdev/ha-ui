@@ -62,12 +62,15 @@ support. Four button framework bindings pass actual compiled consumers; other en
 clicks the actual default submitter, preserving native application cancellation.
 
 
-The selector has a DOM-free closed value/options/validation policy and one form-associated native
-select. Core and four compiled framework consumers preserve typed values and native string FormData,
-single/multiple models, required validation, reset, disabled options/owners and cleanup. Eleven real
-catalog stories and the enlarged 64-combination static matrix cover the current selector. The local
-standalone native dropdown also ignores arrow activation; dropdown typeahead and visible-list arrows
-are verified, without claiming other engines or automatic history restoration. Details and exact
-bounds are in the [select contract](select-contract.md).
+The selector has a DOM-free closed value/options/validation policy and one form-associated shared
+renderer. The single size=1 picker now uses a native combobox button and separate popover listbox;
+multiple/explicit list modes retain their native select pending the next visual increment. Typed
+values, string FormData, controlled reset, validation, disabled owners and teardown retain the same
+public policy across all four bindings. Current source/browser tests cover picker preview/commit,
+clear, empty/unavailable selections and popup lifetime. The current reproducible five-package
+cohort, four compiled framework consumers, 76 original HA visual comparisons and twelve catalog
+form journeys across Chromium, Firefox and WebKit pass. The selector's small raster differences
+and remaining family/browser scope are explicit in [visual acceptance](visual-parity.md).
+Details are in the [select contract](select-contract.md).
 
 Appearance is an independent required gate: see [HA visual equivalence](visual-parity.md). Checkbox calibration and local font identity do not accept the other families.

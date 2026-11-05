@@ -80,11 +80,26 @@ the one registered core renderer. Their framework lifecycle and decorative proje
 no copied third-party component, CSS or second native-form controller.
 
 
-The selector adapts the same reviewed Gateway MIT field/select geometry at ui-catalog.css
-lines 143–146: a 56px minimum control, 16px padding and public semantic theme colors. Its native
-single/multiple select, typed primitive model policies, successful repeated entries, controlled
-requests/reset, state restoration and four framework bindings are authored here. No Gateway or
-private HA runtime, third-party component source, menu asset or icon is copied into this family.
+The initial native selector adapts the same reviewed Gateway MIT field/select geometry at
+ui-catalog.css lines143–146. Native multiple/explicit list modes retain that initial geometry while
+the filled single picker is calibrated separately against recorded public HA modules. Its typed
+primitive policies, successful repeated entries, controlled requests/reset, restoration and four
+framework bindings are authored here.
+
+The single filled picker adapts HA `ha-select`, `ha-picker-field`, `ha-combo-box-item`, `ha-dropdown`
+and `ha-dropdown-item` at the reviewed HA source revision above (Apache2.0), plus the reviewed Web
+Awesome dropdown styles (MIT). Original lazy selector entry6132 and every loaded public asset are
+fingerprinted in the [select reference](evidence/ha-select-reference.json). Each state uses a fresh
+document and unchanged original component functions. The source revision is not represented as the
+installed revision. Placeholder/error inputs use the documented public nested picker properties;
+the original wrapper does not forward them. Native combobox/listbox semantics, data-only keyboard
+preview, controlled form behavior and popup lifetime/positioning are authored here.
+
+The decorative menu-down and close paths are unmodified Material Design Icons7.4.47. Their
+[versioned upstream license](https://github.com/Templarian/MaterialDesign-JS/blob/v7.4.47/LICENSE)
+assigns Apache2.0 to icons; the original Pictogrammers license and existing full Apache text are
+retained in the core package. Both paths were compared with the versioned `mdi.js` source. No icon
+pack, upstream component runtime, HA API, remote font loader or private application state is imported.
 
 ## Measured HA checkbox and catalog fonts
 

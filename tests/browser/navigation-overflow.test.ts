@@ -19,7 +19,7 @@ for(const kind of ['navigation','panels'] as const)for(const rtl of [false,true]
  await next(host).click();await expect.poll(()=>Math.abs(bar.scrollLeft)).toBeGreaterThan(0);expect(host.state.selected).toBe('item-0');expect(received).toHaveLength(0);
  await expect.element(previous(host)).toBeVisible();bar.scrollLeft=rtl?-(bar.scrollWidth-bar.clientWidth):bar.scrollWidth-bar.clientWidth;
  await expect.element(next(host)).toHaveAttribute('aria-disabled','true');await expect.element(next(host)).not.toHaveAttribute('disabled');
- await expect.element(next(host)).toBeDisabled();items(host).at(-1)!.focus();await expect.element(next(host)).not.toBeInTheDocument();
+ items(host).at(-1)!.focus();await expect.element(next(host)).not.toBeInTheDocument();
  await previous(host).click();await expect.poll(()=>Math.abs(bar.scrollLeft)).toBeLessThan(bar.scrollWidth-bar.clientWidth);expect(received).toHaveLength(0);
 });
 test('resizing and changed labels add/remove arrows without duplicate or hidden keyboard targets',async()=>{
@@ -38,7 +38,7 @@ test('logical direction and localized control names update live in the same host
 });
 test('disabled navigation destinations keep link semantics and their name without a target',async()=>{
  const host=await mount();host.state=navigationState({...host.state,items:[{id:'locked',label:'Locked',href:'#locked',disabled:true}],selected:null});await host.updateComplete;
- const link=page.elementLocator(host).getByRole('link',{name:'Locked',exact:true});await expect.element(link).toBeDisabled();expect(items(host)[0].hasAttribute('href')).toBe(false);expect(items(host)[0].tabIndex).toBe(-1);
+ const link=page.elementLocator(host).getByRole('link',{name:'Locked',exact:true});await expect.element(link).toHaveAttribute('aria-disabled','true');expect(items(host)[0].hasAttribute('href')).toBe(false);expect(items(host)[0].tabIndex).toBe(-1);
 });
 
 const frame=()=>new Promise<void>(resolve=>requestAnimationFrame(()=>resolve()));
@@ -109,5 +109,5 @@ test('late events from a removed arrow cannot replace the current focused contro
  host.style.width='1000px';await expect.element(next(host)).not.toBeInTheDocument();host.style.width='240px';await expect.element(next(host)).toBeVisible();
  const current=host.shadowRoot!.querySelector<HTMLButtonElement>('.scroll-button')!;current.focus();retired.dispatchEvent(new FocusEvent('focus'));retired.dispatchEvent(new FocusEvent('blur'));
  const scroll=vi.spyOn(viewport(host),'scrollTo');retired.click();expect(scroll).not.toHaveBeenCalled();
- viewport(host).scrollLeft=viewport(host).scrollWidth-viewport(host).clientWidth;await expect.element(next(host)).toBeDisabled();expect(host.shadowRoot!.activeElement).toBe(current);
+ viewport(host).scrollLeft=viewport(host).scrollWidth-viewport(host).clientWidth;await expect.element(next(host)).toHaveAttribute('aria-disabled','true');expect(host.shadowRoot!.activeElement).toBe(current);
 });

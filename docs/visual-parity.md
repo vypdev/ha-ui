@@ -50,7 +50,7 @@ Consuming apps supply their fonts as HA does; the shared component performs no f
 | 1 | Checkbox and catalog font baseline | Candidate calibrated against measured HA states; source, packed and static gates are recorded separately |
 | 2 | Upper dashboard navigation | Text-only controls plus three icon/text presentations calibrated against measured HA states in both semantics; overflow calibrated separately below; custom theme/font breadth and installed-app acceptance remain required |
 | 3 | Buttons | Original HA variants/states, native target and four bindings are calibrated below; accessible application accent overrides remain an explicit palette difference |
-| 4 | Text fields and single/multiple selects | Filled text fields are being calibrated against original HA references below; native select presentation still requires calibration |
+| 4 | Text fields and single/multiple selects | Filled fields and the single picker have original HA reference gates below; multiple/chips/search and explicit list modes remain required |
 | 5 | Remaining families | Capture the current HA counterpart and establish the same reference before implementing their visual layer |
 | 6 | Gateway and Domus | Compare their real installed flows using the same accepted component cohort; app UX and human acceptance remain separate |
 
@@ -228,3 +228,43 @@ catalog field colors are checked independently with actual focused/hovered backg
 placeholder colors. Catalog overrides remain scoped to its field demonstrations and do not
 change original-token proof fixtures. See the [field contract](field-contract.md) for the
 controlled API, native blocker bookkeeping and the remaining input/application scope.
+
+## Filled single select and menu
+
+The [select reference](evidence/ha-select-reference.json) retains 38 original states per measured
+platform: empty/placeholder/filled, hover and keyboard focus, disabled, required, helper/error,
+narrow and long labels, RTL, optional clear and open menus with pointer or keyboard interaction.
+Two independent original campaigns agree for all 76 unmodified PNGs. Public HA module functions,
+recorded tokens and exact Roboto bytes run in fresh documents without application startup, HA API
+access or credentials. The reviewed source revision and installed public bundle identities remain
+distinct. Raw multiple/chips/search observations are retained for the following increment.
+
+The filled surface is at least 56px, with 4px top corners, a 1px underline, 12px/18.4px floating
+caption and 14px/22.4px value. Empty captions use 14px. Wrapping captions can grow the field. The
+menu has an 8px radius and 40px option rows. Original arrow and clear SVG geometry is retained,
+with a 44px native clear target. The authored combobox/listbox semantics preserve typed controlled
+requests, cancelability, reset, validation and successful native form entries across all four bindings.
+Keyboard preview, typeahead, commit/cancel, disabled choices and popup lifetime are tested separately
+from paint. Ordinary hover motion is 15ms; OS reduced motion caps it at 1ms and preserves explicit zero.
+
+The selector gate requires geometry within 0.1 CSS pixel and exact measured typography, colors,
+borders, radii and shadows. Whole original and candidate PNGs are decoded for read-only RGBA comparison.
+For this family, the owner's nearly-identical acceptance permits a maximum channel difference of
+6/255, a mean RGB channel difference of 0.01/255 and at most 1% changed pixels. All three bounds must
+pass, alpha must match exactly, and dimensions must agree. Images are never masked, blurred,
+resized or recomposited for acceptance. Unit counterexamples reject independent violations of every
+bound. Existing button, field and navigation exact raster gates retain their existing requirements.
+The retained images and per-state counters distinguish exact from nearly-identical results.
+
+Each open state records its actual opener. Pointer-open menus keep the pointer on the trigger;
+keyboard-open states use Shift+Tab and Enter before option hover or arrow navigation. An earlier
+Linux original experiment retained an MD ripple hover layer after pointer departure despite the
+native hover state clearing. Its event log recorded no pointerleave delivery. That observation is
+retained in the reference descriptor; the product uses normal primary-pointer enter/leave and no
+platform-specific hover workaround. Both accepted campaigns use the same explicit interaction protocol.
+
+Original HA tokens are measured separately from the accessible catalog palette. Eight additional
+default-rule axe scans cover light/dark open pointer, keyboard, error and empty menus in the actual
+catalog component. The catalog declares its accessible select token overrides. No accessibility
+rule is disabled. Single-picker calibration does not accept native multiple/list presentation,
+custom font/theme breadth, the full browser/framework matrix, installed applications or human UX.

@@ -56,14 +56,19 @@ test files: Vitest excludes collected test modules from coverage. Their render f
 imported from independently measured `*.example.ts` modules; architecture checks prohibit inline
 renderers or duplicate control markup in those test definitions. No runtime example is excluded.
 
-Vitest 5.1.0 adds each project's test include patterns to the shared resolved coverage exclusions;
-the official Storybook addon supplies its CSF test patterns. The strict inventory confirms that
-all 52 authored runtime modules appear, with no CSF test definitions. The reported contrary premise
-is tracked in [Copilot #895](https://github.com/vypdev/copilot/issues/895). Likewise, Vitest Browser's
-`expect.element().toBeDisabled()` combines native and ARIA-disabled state; navigation regressions
-retain this matcher and explicitly verify the ARIA-only edge state
-([Copilot #894](https://github.com/vypdev/copilot/issues/894)). The dependency boundary also checks
-CommonJS loaders and TypeScript import-equals declarations, rejecting nonliteral dependencies.
+Vitest5.1.0 automatically adds project test patterns to its resolved coverage exclusions. The
+configuration also names `stories/**/*.stories.ts` explicitly so the runtime inventory remains
+clear independently of that default. Recursive architecture checks require every CSF file to
+import its renderer from a covered runtime example. No production renderer, example, locale or
+palette is excluded. The earlier contrary runner premise is tracked in
+[Copilot #895](https://github.com/vypdev/copilot/issues/895).
+
+Navigation edge tests assert the exact ARIA-disabled attribute and absence of native disabled state,
+matching their retained-focus contract. The pinned Vitest Browser matcher also supports ARIA-disabled
+state; its previously reported contrary premise remains documented in
+[Copilot #894](https://github.com/vypdev/copilot/issues/894). Core imports are limited to local modules
+and the renderer's declared Lit dependency, including CommonJS and TypeScript import-equals forms;
+nonliteral loaders, bare Node builtins and undeclared server dependencies are rejected.
 
 The static gate builds the manager, autodocs and previews, then serves only the repository base
 `/ha-ui/`. It checks 128 locale/theme/width combinations with axe, real focus/overflow and manual

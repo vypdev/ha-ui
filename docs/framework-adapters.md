@@ -265,10 +265,13 @@ JSON or map records to distinct string IDs rather than infer a primitive type fr
 
 The source and actual compiled consumers exercise single/multiple selection, original request
 cancellation, programmatic writes, missing option updates, native entries/required validation,
-framework reset, disabled submission, EN/ES/themes and teardown/remount. Native dropdown typeahead
-and visible-list arrow navigation are exercised. On the local headless Chromium, dropdown arrows
-also leave a standalone native select unchanged; that observed driver/platform limitation is not
-represented as a component behavior fix or broader browser support claim.
+framework reset, disabled submission, EN/ES/themes and teardown/remount. The shared single picker
+now previews enabled options with arrows/Home/End and typeahead, then commits on Enter/Space/Tab;
+Escape preserves the model. Its source/browser cases pass through all four bindings. The native
+multiple and explicit visible-list modes retain the native renderer. The current single picker
+also passes the twice-reproducible five-package cohort and actual compiled React, Vue, Angular
+AOT with the official linker, and Svelte browser consumers. These journeys exercise the real
+combobox/options; they do not simulate a hidden native select.
 
 ## Checkbox binding contract
 

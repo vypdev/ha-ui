@@ -4,18 +4,18 @@ const options=[{value:1,label:'One'},{value:'1',label:'String one'},{value:false
 const state=(patch:Record<string,unknown>={})=>selectState({label:'Category',options,...patch});
 const invalid=(fn:()=>unknown)=>{try{fn();throw Error('Expected rejection');}catch(error){expect(error).toBeInstanceOf(SelectInputError);expect((error as SelectInputError).code).toBe('invalid_select');expect((error as Error).message).toBe('invalid_select');}};
 test('closed defaults keep one typed frozen configuration and multiple defaults use a native listbox',()=>{
- const value=state();expect(value).toEqual({label:'Category',options:options.map(option=>({...option,disabled:false})),description:'',placeholder:'Select an option',emptyMessage:'No options available.',error:'',required:false,multiple:false,size:1,requiredMessage:'Select an option.',unavailableMessage:'Select an available option.'});
+ const value=state();expect(value).toEqual({label:'Category',options:options.map(option=>({...option,disabled:false})),description:'',placeholder:'Select an option',emptyMessage:'No options available.',error:'',required:false,multiple:false,size:1,requiredMessage:'Select an option.',unavailableMessage:'Select an available option.',clearable:true,clearLabel:'Clear selection'});
  expect(Object.isFrozen(value)).toBe(true);expect(Object.isFrozen(value.options)).toBe(true);expect(value.options.every(Object.isFrozen)).toBe(true);expect(state({multiple:true}).size).toBe(4);expect(state({multiple:true,size:8}).size).toBe(8);expect(state({options:[]}).options).toEqual([]);
 });
 test('explicit localized state and literal markup stay inert and preserve primitive types',()=>{
  const value=state({label:'Categoría 🧹 <b>literal</b>',description:'Description',placeholder:'',emptyMessage:'No hay opciones.',error:'Review',required:true,multiple:true,size:20,requiredMessage:'Elige una opción.',unavailableMessage:'Elige una opción disponible.'});
- expect(value.label).toBe('Categoría 🧹 <b>literal</b>');expect(value.options.map(item=>item.value)).toEqual([1,'1',false,'']);expect(value.required).toBe(true);expect(value.placeholder).toBe('');
+ expect(value.label).toBe('Categoría 🧹 <b>literal</b>');expect(value.options.map(item=>item.value)).toEqual([1,'1',false,'']);expect(value.required).toBe(true);expect(value.placeholder).toBe('');expect(state({clearable:false,clearLabel:'Borrar selección'}).clearLabel).toBe('Borrar selección');expect(state({clearable:false}).clearable).toBe(false);
 });
 test.each([null,[],1,true,{}, {options}, {label:'Missing'}, {label:'Secret',options,extra:true}].map(raw=>({raw})))('rejects missing and malformed state: case %#',({raw})=>invalid(()=>selectState(raw)));
 test.each([null,{},'options',Array(1),[{value:1,label:'One'},{value:1,label:'Duplicate'}],[{value:0,label:'Zero'},{value:-0,label:'Duplicate zero'}],[{value:1}],[{value:1,label:'One',extra:1}],Array.from({length:257},(_,value)=>({value,label:'Option'}))].map(raw=>({raw})))('rejects malformed options: case %#',({raw})=>invalid(()=>state({options:raw})));
-test.each(['required','multiple'])('rejects nonboolean %s without coercion',key=>invalid(()=>state({[key]:'false'})));
+test.each(['required','multiple','clearable'])('rejects nonboolean %s without coercion',key=>invalid(()=>state({[key]:'false'})));
 test.each([0,21,1.5,NaN,Infinity,'1',null])('rejects invalid size %j',size=>invalid(()=>state({size})));
-test.each(['label','description','placeholder','emptyMessage','error','requiredMessage','unavailableMessage'])('rejects unsafe %s presentation',key=>invalid(()=>state({[key]:'Secret\ntext'})));
+test.each(['label','description','placeholder','emptyMessage','error','requiredMessage','unavailableMessage','clearLabel'])('rejects unsafe %s presentation',key=>invalid(()=>state({[key]:'Secret\ntext'})));
 test('rejects symbol/nonenumerable own keys and extra array properties',()=>{
  for(const raw of [Object.assign({label:'Category',options},{[Symbol('extra')]:1}),Object.defineProperty({label:'Category',options},'extra',{value:true})])invalid(()=>selectState(raw));
  invalid(()=>state({options:Object.assign([...options],{extra:true})}));invalid(()=>state({options:[{value:1,label:'One',disabled:'false'}]}));

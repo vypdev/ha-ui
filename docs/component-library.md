@@ -255,11 +255,11 @@ shared button in field forms and has twelve button stories, including all eight 
 
 ## Typed single/multiple select
 
-The [select contract](select-contract.md) defines the shared native selector and its pure policies.
+The [select contract](select-contract.md) defines the shared selector and its pure policies.
 It preserves string/number/boolean model values and frozen arrays, including distinct 1 and "1"
 options. Null is unselected. Missing/disabled options and mode mismatches preserve the model as an
 explicit invalid selection; no replacement is invented. Successful FormData entries remain strings
-and follow option order. Native keyboard, labels, localized errors, focus, validation, external form
+and follow option order. Keyboard preview/commit, labels, localized errors, focus, validation, external form
 owners, disabled fieldsets, reset and explicit typed restoration are exercised.
 
 All four [framework bindings](framework-adapters.md#select-binding-contract) delegate to that same
@@ -267,6 +267,16 @@ renderer. Angular includes its value-accessor/validator bridge and documented na
 opt-in. The catalog has eleven select stories covering single/multiple, required, disabled/error,
 missing/disabled options, empty lists, cancellation and Spanish dark/narrow content. Other families,
 framework SSR, broader browser engines and full application adoption remain required.
+
+The single `size=1` control now uses the shared HA filled picker and a separate combobox/listbox
+popup. Multiple and explicit list modes retain the native renderer until their next increment.
+The [independent original references](evidence/ha-select-reference.json) cover filled/empty,
+placeholder, hover/focus, disabled/required/error/help, narrow/long labels, RTL, optional clear and
+menu pointer/keyboard states. The current five-package cohort and four compiled framework consumers
+pass. All 76 original-state comparisons satisfy exact computed styles, 0.1px geometry and the
+documented selector-only nearly-identical raster bounds; existing exact visual gates also pass.
+Twelve catalog form journeys pass across Chromium, Firefox and WebKit. The [acceptance receipt](evidence/shared-ui-foundation.json)
+records this scope separately from the remaining multiple/list and application work.
 
 ## Controlled checkbox and visual acceptance
 
