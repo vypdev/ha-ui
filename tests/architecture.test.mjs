@@ -72,6 +72,7 @@ test('CI Check runs for every PR update with frozen tools and all implemented qu
   expect(image).toBe(`mcr.microsoft.com/playwright:v${playwright}-noble`);
   expect(digest).toMatch(/^sha256:[a-f0-9]{64}$/u);
   expect(job.container.options).toBe('--ipc=host');
+  expect(job.env.npm_config_store_dir).toBe('/tmp/ha-ui-pnpm-store');
   const commands = job.steps.flatMap(step => step.run ? [step.run] : []);
   expect(commands.some(command => command.startsWith('pnpm exec playwright install'))).toBe(false);
   for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm test', 'pnpm build', 'pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook','pnpm test:engines']) expect(commands).toContain(command);
@@ -164,6 +165,7 @@ test('Pages builds only the trusted default branch and grants write permissions 
   expect(build.if).toBe("github.ref == 'refs/heads/master'");expect(build.permissions).toBeUndefined();
   const quality = parse(readFileSync('.github/workflows/ci_check.yml', 'utf8')).jobs.quality;
   expect(build.container).toEqual(quality.container);
+  expect(build.env.npm_config_store_dir).toBe(quality.env.npm_config_store_dir);
   expect(deploy.container).toBeUndefined();
   expect(build.steps.some(step => step.run?.startsWith('pnpm exec playwright install'))).toBe(false);
   for(const command of ['pnpm install --frozen-lockfile --ignore-scripts','pnpm check','pnpm test','pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook','pnpm test:engines'])expect(build.steps.flatMap(step=>step.run?[step.run]:[])).toContain(command);
