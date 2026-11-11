@@ -97,6 +97,8 @@ pinned by digest to the version in the lockfile. The image supplies Chromium, Fi
 their system libraries. Each job still installs the project's exact Node and pnpm toolchain and
 uses the frozen dependency lock. The workspace and offline package fixtures share a
 container-local pnpm store even when their directories are on different mounts.
+The browser matrix temporarily matches the isolated job home ownership to the
+container user for Firefox and restores its owner when the step exits.
 
 The intended public destination is the repository Pages subpath `/ha-ui/`. Public hosting is pending
 until the complete feature can merge and Pages is enabled for Actions. The existence of a workflow
