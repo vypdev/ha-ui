@@ -5,18 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+  '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
 
 importers:
 
   .:
     dependencies:
       '@vypdev/ha-ui':
-        specifier: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
-        version: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+        specifier: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
+        version: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
       '@vypdev/ha-ui-vue':
-        specifier: file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz
-        version: file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz(vue@3.5.44(typescript@6.0.3))
+        specifier: file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.2.tgz
+        version: file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.2.tgz(vue@3.5.44(typescript@6.0.3))
       vue:
         specifier: 3.5.44
         version: 3.5.44(typescript@6.0.3)
@@ -83,15 +83,15 @@ packages:
   '@vue/shared@3.5.44':
     resolution: {integrity: sha512-H82XLH0DjmSOdbEwO15x3QTo1f5PWEtv237eLpYKc0mqLu+B8hnq16lFWmuBmNurkeiG3wr+oM1FhOll/YVFRg==}
 
-  '@vypdev/ha-ui-vue@file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-C1ccI0yUN24wsuANpVcSpVTpE+m+puWY0093paTYQUf9Fm+z+D489BL1xQRFBhNaAS6sdzBZF27HL5VLWKo10Q==, tarball: file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz}
-    version: 0.1.0-next.1
+  '@vypdev/ha-ui-vue@file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.2.tgz':
+    resolution: {integrity: sha512-C1ccI0yUN24wsuANpVcSpVTpE+m+puWY0093paTYQUf9Fm+z+D489BL1xQRFBhNaAS6sdzBZF27HL5VLWKo10Q==, tarball: file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.2.tgz}
+    version: 0.1.0-next.2
     peerDependencies:
       vue: 3.5.44
 
-  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-eQ0pPhKQBB9PEJkyeOMiRnWl6o3X6QdxH/mop65f0RSFtuQQX7OQLGMtsupDUziFzcqhigZUKDDV85berl8Cig==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
-    version: 0.1.0-next.1
+  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz':
+    resolution: {integrity: sha512-eQ0pPhKQBB9PEJkyeOMiRnWl6o3X6QdxH/mop65f0RSFtuQQX7OQLGMtsupDUziFzcqhigZUKDDV85berl8Cig==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz}
+    version: 0.1.0-next.2
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
@@ -223,12 +223,12 @@ snapshots:
 
   '@vue/shared@3.5.44': {}
 
-  '@vypdev/ha-ui-vue@file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.1.tgz(vue@3.5.44(typescript@6.0.3))':
+  '@vypdev/ha-ui-vue@file:../pack-1/vypdev-ha-ui-vue-0.1.0-next.2.tgz(vue@3.5.44(typescript@6.0.3))':
     dependencies:
-      '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+      '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
       vue: 3.5.44(typescript@6.0.3)
 
-  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
+  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz':
     dependencies:
       lit: 3.3.3
 

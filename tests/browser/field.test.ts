@@ -42,6 +42,20 @@ test('renders inert label/help/placeholder/error text and connects accessible de
   expect(field.shadowRoot!.getElementById('error')!.textContent).toBe('Review <b>this</b>');
   field.state=model();await field.updateComplete;expect(input(field).hasAttribute('aria-describedby')).toBe(false);expect(input(field).getAttribute('aria-invalid')).toBe('false');
 });
+test('updates the native decimal hint without changing focused controlled text or form data',async()=>{
+  const {field,form}=await mount();
+  const control=input(field);
+  expect(control.getAttribute('inputmode')).toBeNull();
+  field.focus();accept(field);
+  field.state=model({inputMode:'decimal'});await field.updateComplete;
+  expect(control.type).toBe('text');expect(control.inputMode).toBe('decimal');
+  await userEvent.keyboard('2,25');
+  expect(field.value).toBe('2,25');expect(entries(form)).toEqual([['task','2,25']]);
+  field.state=model();await field.updateComplete;
+  expect(control.getAttribute('inputmode')).toBeNull();
+  expect(field.shadowRoot!.activeElement).toBe(control);
+  expect(control.value).toBe('2,25');expect(entries(form)).toEqual([['task','2,25']]);
+});
 test('keeps accepted values controlled, requests once through shadow boundaries and supports cancellation',async()=>{
   const {field,form}=await mount();field.value='Accepted';await field.updateComplete;
   const received:FieldValueEvent[]=[];form.addEventListener('ha-value-request',event=>{received.push(event);event.preventDefault();});

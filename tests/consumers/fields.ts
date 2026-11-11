@@ -7,17 +7,18 @@ export async function exerciseField(page:Page){
   const textbox=page.getByRole('textbox',{name:'Task name',exact:true}),model=page.getByLabel('Field model'),events=page.getByLabel('Field events');
   const form=page.getByRole('form',{name:'Task form'});
   assert.equal(await textbox.inputValue(),'Kitchen');assert.equal(await model.textContent(),'Kitchen');
+  assert.equal(await textbox.getAttribute('inputmode'),'decimal');
   assert.equal(await page.locator('vyp-ha-field').getAttribute('state'),null);
   const geometry=await page.locator('vyp-ha-field').evaluate(host=>{const control=host.shadowRoot!.querySelector('[part=control]')!,input=host.shadowRoot!.querySelector('input')!,label=host.shadowRoot!.querySelector('label')!,box=control.getBoundingClientRect();return{x:box.x,y:box.y,paintedHeight:box.height,nativeHeight:input.getBoundingClientRect().height,labelSize:getComputedStyle(label).fontSize,blockers:host.querySelectorAll('input[slot=native-blocker]').length};});
   assert.equal(geometry.paintedHeight,56);assert.equal(geometry.nativeHeight,56);assert.equal(geometry.labelSize,'10px');assert.equal(geometry.blockers,1);
   await page.mouse.click(geometry.x+4,geometry.y+4);assert.equal(await textbox.evaluate(element=>element===(element.getRootNode() as ShadowRoot).activeElement),true);assert.equal(await events.textContent(),'0');
-  await textbox.fill('Laundry');await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='Laundry');
+  await textbox.fill('2,25');await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='2,25');
   assert.equal(await events.textContent(),'1');await textbox.press('Enter');
   await page.waitForFunction(()=>document.querySelector('output[aria-label="Saved task"]')!.textContent!=='');
-  assert.deepEqual(JSON.parse((await page.getByLabel('Saved task').textContent())!),[['task','Laundry'],['action','save']]);
+  assert.deepEqual(JSON.parse((await page.getByLabel('Saved task').textContent())!),[['task','2,25'],['action','save']]);
   await page.getByRole('button',{name:'Reject field changes',exact:true}).click();await textbox.fill('Rejected');
   await page.waitForFunction(()=>document.querySelector('output[aria-label="Field events"]')!.textContent==='2');
-  assert.equal(await textbox.inputValue(),'Laundry');assert.equal(await model.textContent(),'Laundry');assert.equal(await events.textContent(),'2');
+  assert.equal(await textbox.inputValue(),'2,25');assert.equal(await model.textContent(),'2,25');assert.equal(await events.textContent(),'2');
   await page.getByRole('button',{name:'Reject field changes',exact:true}).click();await page.getByRole('button',{name:'Set field value',exact:true}).click();
   await textbox.waitFor({state:'visible'});await page.waitForFunction(()=>document.querySelector<HaTextField>('vyp-ha-field')!.value==='Programmatic');
   assert.equal(await events.textContent(),'2');assert.notEqual(await page.locator('vyp-ha-field').getAttribute('value'),'Programmatic');
@@ -36,7 +37,7 @@ export async function exerciseField(page:Page){
   await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='Remounted');
   assert.equal(await events.textContent(),String(Number(before)+1));
   await page.getByRole('button',{name:'Reset task',exact:true}).click();await page.waitForFunction(()=>document.querySelector('output[aria-label="Field model"]')!.textContent==='Kitchen');
-  return {controlledModel:true,exactlyOnce:true,cancellation:true,programmaticWrite:true,nativeSubmitter:true,requiredValidation:true,disabledSubmission:true,frameworkReset:true,teardownAndRemount:true,materialGeometry:geometry,paintedGutterFocusWithoutModelIntent:true};
+  return {controlledModel:true,exactlyOnce:true,cancellation:true,programmaticWrite:true,nativeSubmitter:true,requiredValidation:true,disabledSubmission:true,frameworkReset:true,teardownAndRemount:true,materialGeometry:geometry,paintedGutterFocusWithoutModelIntent:true,decimalInputMode:true};
 }
 
 /** Verify the installed FACE's actual readonly submission contract, independently of framework validators. */

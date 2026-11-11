@@ -147,7 +147,8 @@ export class HaTextField extends LitElement {
     const described=[state.description?'help':'',message?'error':''].filter(Boolean).join(' ');
     return html`<div class="field" part="field" ?data-raised=${this.value.length>0||state.placeholder.length>0} ?data-disabled=${this.disabled||this.#formDisabled} ?data-invalid=${!!message}>
       <label class="label" part="label" for="control">${state.label+(state.required?'*':'')}</label>
-      <div class="control" part="control" @click=${()=>this.focus()}><input id="control" part="input" type="text" .value=${this.value} placeholder=${state.placeholder} ?required=${state.required}
+      <div class="control" part="control" @click=${()=>this.focus()}><input id="control" part="input" type="text" inputmode=${state.inputMode??nothing}
+        .value=${this.value} placeholder=${state.placeholder} ?required=${state.required}
         minlength=${state.minLength} maxlength=${state.maxLength} aria-label=${state.label} aria-invalid=${String(!!message)} aria-describedby=${described||nothing}
         @input=${this.#edit} @blur=${this.#reveal} @keydown=${this.#enter} @compositionstart=${this.#startComposition} @compositionend=${this.#endComposition}></div>
       <div class="hint" ?data-visible=${!!(state.required||state.description||message)}>

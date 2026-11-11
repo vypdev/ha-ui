@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+  '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
 
 importers:
 
@@ -21,11 +21,11 @@ importers:
         specifier: 7.3.1
         version: 7.3.1(svelte@5.57.3)(vite@8.3.5)
       '@vypdev/ha-ui':
-        specifier: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
-        version: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+        specifier: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
+        version: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
       '@vypdev/ha-ui-svelte':
-        specifier: file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz
-        version: file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz(svelte@5.57.3)
+        specifier: file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.2.tgz
+        version: file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.2.tgz(svelte@5.57.3)
       svelte:
         specifier: 5.57.3
         version: 5.57.3
@@ -204,15 +204,15 @@ packages:
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
-  '@vypdev/ha-ui-svelte@file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-cbgZfzGq5xxMHw5guOB8OmLSG490esyQX4/xZjhi3Fs30ytsGh2eJWkQ5gB5ANH2TMiVZm3wv+VaCDc6dKMWog==, tarball: file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz}
-    version: 0.1.0-next.1
+  '@vypdev/ha-ui-svelte@file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.2.tgz':
+    resolution: {integrity: sha512-cbgZfzGq5xxMHw5guOB8OmLSG490esyQX4/xZjhi3Fs30ytsGh2eJWkQ5gB5ANH2TMiVZm3wv+VaCDc6dKMWog==, tarball: file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.2.tgz}
+    version: 0.1.0-next.2
     peerDependencies:
       svelte: 5.57.3
 
-  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-hbYWDU7X71meaogXzz/u0tBUTKb9MNVS+yPFy5dH/aEOWr0TlQgXpbkYzf0CLoFlMGhdHq7co+ayQ7Yr6ujq5g==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
-    version: 0.1.0-next.1
+  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz':
+    resolution: {integrity: sha512-hbYWDU7X71meaogXzz/u0tBUTKb9MNVS+yPFy5dH/aEOWr0TlQgXpbkYzf0CLoFlMGhdHq7co+ayQ7Yr6ujq5g==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz}
+    version: 0.1.0-next.2
 
   acorn@8.19.0:
     resolution: {integrity: sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==}
@@ -584,12 +584,12 @@ snapshots:
 
   '@types/trusted-types@2.0.7': {}
 
-  '@vypdev/ha-ui-svelte@file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz(svelte@5.57.3)':
+  '@vypdev/ha-ui-svelte@file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.2.tgz(svelte@5.57.3)':
     dependencies:
-      '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+      '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
       svelte: 5.57.3
 
-  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
+  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz':
     dependencies:
       lit: 3.3.3
 

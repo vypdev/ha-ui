@@ -1,6 +1,7 @@
 import {presentationText} from './presentation-text.js';
 export interface TextFieldState {
   readonly label:string; readonly description:string; readonly placeholder:string;
+  readonly inputMode?:'decimal';
   readonly required:boolean; readonly readOnly:boolean; readonly minLength:number; readonly maxLength:number;
   readonly error:string; readonly requiredMessage:string; readonly tooShortMessage:string; readonly tooLongMessage:string;
 }
@@ -15,7 +16,7 @@ function length(value:unknown,fallback:number):number {
   return current;
 }
 export function textFieldState(raw:unknown):TextFieldState {
-  const keys=['label','description','placeholder','required','readOnly','minLength','maxLength','error','requiredMessage','tooShortMessage','tooLongMessage'];
+  const keys=['label','description','placeholder','inputMode','required','readOnly','minLength','maxLength','error','requiredMessage','tooShortMessage','tooLongMessage'];
   if(typeof raw!=='object'||raw===null||Array.isArray(raw)||!Object.hasOwn(raw,'label')||Object.keys(raw).some(key=>!keys.includes(key)))invalid();
   const source=raw as Record<string,unknown>;
   function text(key:string,maximum:number,empty:boolean,fallback:string):string {
@@ -28,7 +29,21 @@ export function textFieldState(raw:unknown):TextFieldState {
   }
   const minLength=length(source.minLength,0),maxLength=length(source.maxLength,16384);
   if(minLength>maxLength)invalid();
-  return Object.freeze({label:text('label',256,false,''),description:text('description',512,true,''),placeholder:text('placeholder',512,true,''),required:boolean('required'),readOnly:boolean('readOnly'),minLength,maxLength,error:text('error',512,true,''),requiredMessage:text('requiredMessage',512,false,'Enter a value.'),tooShortMessage:text('tooShortMessage',512,false,'Enter more characters.'),tooLongMessage:text('tooLongMessage',512,false,'Enter fewer characters.')});
+  const inputMode=source.inputMode;
+  if(inputMode!==undefined&&inputMode!=='decimal')invalid();
+  return Object.freeze({
+    label:text('label',256,false,''),
+    description:text('description',512,true,''),
+    placeholder:text('placeholder',512,true,''),
+    required:boolean('required'),
+    readOnly:boolean('readOnly'),
+    minLength,maxLength,
+    error:text('error',512,true,''),
+    requiredMessage:text('requiredMessage',512,false,'Enter a value.'),
+    tooShortMessage:text('tooShortMessage',512,false,'Enter more characters.'),
+    tooLongMessage:text('tooLongMessage',512,false,'Enter fewer characters.'),
+    ...(inputMode===undefined?{}:{inputMode}),
+  });
 }
 /** A literal single-line API value; no HTML parsing, normalization or diagnostic echo. */
 export function textFieldValue(value:unknown):string {
