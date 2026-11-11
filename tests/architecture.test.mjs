@@ -133,7 +133,7 @@ test('adapter manifests keep other frameworks out and retain the exact shared co
   for (const [framework,peer] of Object.entries(adapterFrameworks)) {
     const manifest=JSON.parse(readFileSync('packages/'+framework+'/package.json','utf8'));
     expect(Object.keys(manifest.peerDependencies)).toEqual(framework==='angular'?[peer,'@angular/forms']:[peer]);
-    expect(manifest.dependencies['@vypdev/ha-ui']).toBe(framework==='angular'?'0.1.0-next.1':'workspace:*');
+    expect(manifest.dependencies['@vypdev/ha-ui']).toBe(framework==='angular'?'0.1.0-next.2':'workspace:*');
     expect(Object.keys(manifest.dependencies).sort()).toEqual(framework==='angular'?['@vypdev/ha-ui','tslib']:['@vypdev/ha-ui']);
     expect(manifest.version).toBe(JSON.parse(readFileSync('packages/core/package.json','utf8')).version);
   }

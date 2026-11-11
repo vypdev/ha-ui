@@ -11,6 +11,11 @@ test('explicit valid values and literal multilingual text remain intact',()=>{
   const input=state({label:'Título 🧹 <script>literal</script>',description:'Description',placeholder:'A title',required:true,readOnly:true,minLength:2,maxLength:32,error:'Review this value',requiredMessage:'Introduce un valor.',tooShortMessage:'Introduce más caracteres.',tooLongMessage:'Introduce menos caracteres.'});
   expect(textFieldState(input)).toEqual(input);
 });
+test('accepts the opt-in decimal hint and preserves the omitted state',()=>{
+  expect(Object.hasOwn(textFieldState(state()),'inputMode')).toBe(false);
+  expect(textFieldState(state({inputMode:'decimal'})).inputMode).toBe('decimal');
+  for(const inputMode of ['text','numeric','',null,1])reject(()=>textFieldState(state({inputMode})));
+});
 test.each([null,undefined,[],true,'field',{},Object.create({label:'Inherited'}),state({html:'unsafe'})])('rejects malformed or extended configuration',value=>reject(()=>textFieldState(value)));
 test.each(['', ' ', 3, null, '\u0000', '\u007f', '\ud800', 'a'.repeat(257)])('rejects an invalid accessible label',label=>reject(()=>textFieldState(state({label}))));
 test.each(Array.from({length:32},(_,n)=>String.fromCodePoint(0x80+n)))('rejects every C1 label control',control=>reject(()=>textFieldState(state({label:'A'+control+'B'}))));

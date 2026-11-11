@@ -16,8 +16,8 @@ in React, Vue, Angular and Svelte. The compiled browser journeys pass the three 
 | axe-core | 4.14.0 | All static locale/theme/width combinations |
 | Playwright | 1.64.1 | Chromium 156.0.8078.4 component and clean packed-consumer tests |
 
-The core preview coordinate/version is package: @vypdev/ha-ui at 0.1.0-next.1. It is unpublished;
-its source contains the shared contracts and preview renderers above.
+The core preview package is `@vypdev/ha-ui`. Its manifest and the four adapter manifests
+record the exact cohort version. The source contains the shared contracts and preview renderers above.
 React 19.3.1, Vue 3.5.44, Angular 22.2.4 and Svelte 5.57.3 pass compiled Chromium fixtures
 using actual packages. They remain preview pins until the complete component and delivery gates
 pass. Production Next.js 16.4.5, Nuxt 4.6.4 and SvelteKit 3.1.1 verify the server shell and

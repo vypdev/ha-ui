@@ -5,18 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+  '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
 
 importers:
 
   .:
     dependencies:
       '@vypdev/ha-ui':
-        specifier: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
-        version: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+        specifier: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
+        version: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
       '@vypdev/ha-ui-react':
-        specifier: file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz
-        version: file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz(react@19.3.1)
+        specifier: file:../pack-1/vypdev-ha-ui-react-0.1.0-next.2.tgz
+        version: file:../pack-1/vypdev-ha-ui-react-0.1.0-next.2.tgz(react@19.3.1)
       react:
         specifier: 19.3.1
         version: 19.3.1
@@ -53,15 +53,15 @@ packages:
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
-  '@vypdev/ha-ui-react@file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-9L1HO9Lr5jlc7dowSlmU78DdLL90lIoi5pm/UNiadLeg+O5ci8WED/hTWClEiKL3wxfTbHm5mqGVpFxv6xIi5g==, tarball: file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz}
-    version: 0.1.0-next.1
+  '@vypdev/ha-ui-react@file:../pack-1/vypdev-ha-ui-react-0.1.0-next.2.tgz':
+    resolution: {integrity: sha512-9L1HO9Lr5jlc7dowSlmU78DdLL90lIoi5pm/UNiadLeg+O5ci8WED/hTWClEiKL3wxfTbHm5mqGVpFxv6xIi5g==, tarball: file:../pack-1/vypdev-ha-ui-react-0.1.0-next.2.tgz}
+    version: 0.1.0-next.2
     peerDependencies:
       react: 19.3.1
 
-  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
-    resolution: {integrity: sha512-eQ0pPhKQBB9PEJkyeOMiRnWl6o3X6QdxH/mop65f0RSFtuQQX7OQLGMtsupDUziFzcqhigZUKDDV85berl8Cig==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz}
-    version: 0.1.0-next.1
+  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz':
+    resolution: {integrity: sha512-eQ0pPhKQBB9PEJkyeOMiRnWl6o3X6QdxH/mop65f0RSFtuQQX7OQLGMtsupDUziFzcqhigZUKDDV85berl8Cig==, tarball: file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz}
+    version: 0.1.0-next.2
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
@@ -110,12 +110,12 @@ snapshots:
 
   '@types/trusted-types@2.0.7': {}
 
-  '@vypdev/ha-ui-react@file:../pack-1/vypdev-ha-ui-react-0.1.0-next.1.tgz(react@19.3.1)':
+  '@vypdev/ha-ui-react@file:../pack-1/vypdev-ha-ui-react-0.1.0-next.2.tgz(react@19.3.1)':
     dependencies:
-      '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz
+      '@vypdev/ha-ui': file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz
       react: 19.3.1
 
-  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz':
+  '@vypdev/ha-ui@file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz':
     dependencies:
       lit: 3.3.3
 

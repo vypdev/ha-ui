@@ -51,8 +51,8 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
     assert.equal(await readFile(join(folder,'pnpm-lock.yaml'),'utf8'),frozen);
     const installedRoot=join(folder,'node_modules/@vypdev/ha-ui-'+framework);
     const published=JSON.parse(await readFile(join(installedRoot,'package.json'),'utf8'));
-    assert.equal(published.version,'0.1.0-next.1');
-    assert.equal(published.dependencies['@vypdev/ha-ui'],'0.1.0-next.1');
+    assert.equal(published.version,'0.1.0-next.2');
+    assert.equal(published.dependencies['@vypdev/ha-ui'],'0.1.0-next.2');
     assert.doesNotMatch(JSON.stringify(published),/workspace:|file:/u,'Published metadata cannot retain fixture or workspace references');
     for (const source of globSync('packages/'+framework+'/src/**/*.{ts,svelte}',{cwd:root}))
       assert.deepEqual(await readFile(join(installedRoot,relative(join(root,'packages',framework),join(root,source)))),await readFile(join(root,source)),'Installed authored source must match '+source);
