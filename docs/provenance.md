@@ -237,6 +237,11 @@ branch and wait for its `CI Check` to succeed. Create a version tag such as
 `v0.1.0-next.1` at that production commit. [The npm workflow](../.github/workflows/npm_release.yml)
 starts automatically and uses the five tarballs retained by CI for that SHA.
 
+The packed-consumer step checks the clean Git checkout and exact CI revision
+before and after packaging. Its Git trust setting applies only to the checked-out
+workspace during that step. A local exploratory run can produce test archives
+without a release candidate record.
+
 Configure an npm Trusted Publisher for each coordinate in the table below. Use
 organization `vypdev`, repository `ha-ui`, workflow `npm_release.yml`, and environment
 `npm`. Enable direct publishing for that workflow. npm authorizes each write and

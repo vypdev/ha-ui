@@ -37,7 +37,14 @@ jobs:
       - run: pnpm check
       - run: pnpm test
       - run: pnpm build
-      - run: pnpm test:package
+      - name: Verify packed consumers and candidate provenance
+        env:
+          HA_UI_PACKED_EXPECTED_REVISION: ${{ github.sha }}
+        run: |
+          export GIT_CONFIG_COUNT=1
+          export GIT_CONFIG_KEY_0=safe.directory
+          export GIT_CONFIG_VALUE_0="$(pwd -P)"
+          pnpm test:package
       - run: pnpm test:ssr
       - run: pnpm storybook:build
       - name: Run the browser engine matrix
