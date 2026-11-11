@@ -76,6 +76,14 @@ test('CI Check runs for every PR update with frozen tools and all implemented qu
   const commands = job.steps.flatMap(step => step.run?.split('\n') ?? []);
   expect(commands.some(command => command.startsWith('pnpm exec playwright install'))).toBe(false);
   for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm test', 'pnpm build', 'pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook','pnpm test:engines']) expect(commands).toContain(command);
+  const packed = job.steps.find(step => step.name === 'Verify packed consumers and candidate provenance');
+  expect(packed.env.HA_UI_PACKED_EXPECTED_REVISION).toBe('${{ github.sha }}');
+  expect(packed.run.trim().split('\n')).toEqual([
+    'export GIT_CONFIG_COUNT=1',
+    'export GIT_CONFIG_KEY_0=safe.directory',
+    'export GIT_CONFIG_VALUE_0="$(pwd -P)"',
+    'pnpm test:package',
+  ]);
   expect(commands.indexOf('pnpm test:engines')).toBeLessThan(commands.indexOf('pnpm test:storybook'));
   const engines = job.steps.find(step => step.name === 'Run the browser engine matrix');
   expect(engines.shell).toBe('bash');

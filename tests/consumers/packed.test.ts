@@ -31,13 +31,26 @@ const execute = promisify(execFile);
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const digest = (bytes: Uint8Array) => createHash('sha256').update(bytes).digest('hex');
 
-async function pristineRevision(){
+async function pristineRevision() {
+  const expectedRevision = process.env.HA_UI_PACKED_EXPECTED_REVISION;
   try {
-    const status=await execute('git',['status','--porcelain=v1','--untracked-files=all'],{cwd:root});
-    if(status.stdout!=='')return null;
-    const {stdout}=await execute('git',['rev-parse','--verify','HEAD'],{cwd:root});
-    return stdout.trim();
-  }catch{return null;}
+    const {stdout: status} = await execute(
+      'git', ['status', '--porcelain=v1', '--untracked-files=all'], {cwd: root},
+    );
+    if (status !== '') {
+      if (expectedRevision) throw new Error('The CI package checkout has local changes');
+      return null;
+    }
+    const {stdout} = await execute('git', ['rev-parse', '--verify', 'HEAD'], {cwd: root});
+    const revision = stdout.trim();
+    if (expectedRevision) {
+      assert.equal(revision, expectedRevision, 'The CI package checkout has a different revision');
+    }
+    return revision;
+  } catch (error) {
+    if (expectedRevision) throw error;
+    return null;
+  }
 }
 
 test('the actual packed package is reproducible and passes clean DOM-free and real-browser consumers', {timeout: 180_000}, async () => {
