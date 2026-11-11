@@ -504,3 +504,146 @@ Decisions: one repo/visual implementation; required React/Vue/Angular/Svelte ada
 use; own Storybook; Domus owns UX except the common upper bar pattern. Rejected: duplicated visual
 libraries per framework, copying app components into Domus, or claiming Web Components alone prove
 framework support. Exact signatures and toolchain pins remain engineering gates for issue #7.
+
+## Decimal keyboard for controlled text fields
+
+- Status: Draft
+- Owners: ha-ui maintainers
+- Scope: Opt-in decimal input mode on the shared single-line text field
+- Open decisions blocking readiness: none
+
+### 1. Executive summary
+
+Consumers can ask the shared text field to suggest the device's decimal keyboard.
+The field continues to carry the exact controlled string.
+
+### 2. Problem, current behavior, and evidence
+
+The shared renderer uses a native text input with no decimal keyboard hint.
+Domus task base points need exact localized decimals on mobile in
+[Domus #111](https://github.com/vypdev/domus/issues/111).
+
+### 3. Actors, surfaces, and terminology
+
+Consumers use direct browser elements or one of the four existing framework
+adapters. The decimal mode is a native keyboard hint. The consumer owns
+numeric parsing, locale, precision and allowed range.
+
+### 4. Goals, non-goals, and fixed invariants
+
+| Requirement | Behavior |
+|---|---|
+| decimal-field-R01 | Accept an optional decimal input mode in the validated field state and apply it to the internal native text input. Omitted state preserves the existing text input behavior. |
+| decimal-field-R02 | Keep exact strings, form values, validation, focus and controlled events. Changing the hint updates the input without resetting its value. |
+| decimal-field-R03 | Verify direct and packed framework consumers and release one compatible prerelease cohort for the Domus journey. |
+
+### 5. Current versus proposed product journey
+
+The app opts in through its existing shared field state. A touch user can
+enter a local decimal separator. Desktop keyboard input, paste and editing
+continue to send the same controlled strings.
+
+### 6. Functional behavior and state model
+
+Allow the optional typed `inputMode: 'decimal'` state key. Reflect the
+selected hint on the internal input with native `inputmode`; omit the attribute
+when no mode is set. Reject unsupported state values using the existing
+field validation. Preserve `type="text"`.
+
+### 7. User-facing configuration
+
+Each application chooses the field mode and keeps its existing labels,
+description, validation and error content.
+
+### 8. Clean Architecture design
+
+Keep state validation in the framework-neutral field contract. The core
+renderer applies the native attribute. Framework adapters forward existing
+state and use the same renderer.
+
+### 9. UI/UX and content contract
+
+The hint targets mobile text entry. Retain the visible label, keyboard focus,
+error association, disabled state and native form behavior. A device chooses
+the actual keyboard layout.
+
+### 10. Failure, recovery, and cleanup
+
+Invalid configuration follows existing field errors. Input state changes
+retain the controlled value and leave the app's recovery flow in charge.
+
+### 11. Security, permissions, and privacy
+
+The renderer uses a validated literal attribute. Application authority and
+numeric validation remain with the consumer.
+
+### 12. Observability and operational UX
+
+Confirm the effective mode on the internal input in actual Chromium. Record
+the exact packed cohort and application version in adoption evidence.
+
+### 13. Compatibility, migration, rollout, and rollback
+
+The field key is optional. Existing source and rendered input continue to
+work with the field state absent. Publish the reviewed prerelease cohort
+through the repository's npm workflow. Applications pin an exact version.
+
+### 14. Testing strategy and numeric budget
+
+Minimum four distinct cases. Preserve every existing case and alias in the
+owning SDD. The following four fully qualified IDs are new.
+
+| Area | Minimum distinct cases | Behaviors/risks covered |
+|---|---:|---|
+| State contract | 1 | Observable scenarios in the case inventory. |
+| Browser and form | 1 | Observable scenarios in the case inventory. |
+| Packed consumers | 1 | Observable scenarios in the case inventory. |
+| Delivery | 1 | Observable scenarios in the case inventory. |
+| Total | 4 | Distinct inventory cases; repeated executions do not add cases. |
+
+| Case ID | Area | Requirements | Scenario |
+|---|---|---|---|
+| decimal-field-C01 | State contract | decimal-field-R01 | Omitted state remains valid, decimal is accepted and unsupported values fail through the existing validator. |
+| decimal-field-C02 | Browser and form | decimal-field-R01, decimal-field-R02 | Switch the decimal hint on and off in the real input. The text type, focus, separator and controlled form value survive. |
+| decimal-field-C03 | Packed consumers | decimal-field-R02, decimal-field-R03 | The compiled browser, React, Vue, Angular and Svelte consumers all receive the same native hint and retain controlled edit behavior. |
+| decimal-field-C04 | Delivery | decimal-field-R03 | Validate the exact published package cohort and the consuming Domus task form. |
+
+### 15. Documentation and discoverability
+
+[specs/shared-ui-foundation.md](shared-ui-foundation.md) · [docs/field-contract.md](../docs/field-contract.md) · [packages/core/src/field-contracts.ts](../packages/core/src/field-contracts.ts) · [packages/core/src/components/field.ts](../packages/core/src/components/field.ts)
+
+| Path | Change |
+|---|---|
+| specs/shared-ui-foundation.md | update |
+| docs/field-contract.md | update |
+| packages/core/src/field-contracts.ts | update |
+| packages/core/src/components/field.ts | update |
+
+### 16. Acceptance scenarios
+
+An app opts in and enters `2,25` on an accessible shared field. The input
+advertises decimal mode and the controlled app receives the original
+string. An existing text field continues to behave as before.
+
+### 17. Requirements traceability
+
+| Requirement | Cases |
+|---|---|
+| decimal-field-R01 | decimal-field-C01, decimal-field-C02 |
+| decimal-field-R02 | decimal-field-C02, decimal-field-C03 |
+| decimal-field-R03 | decimal-field-C03, decimal-field-C04 |
+
+### 18. Implementation sequence
+
+Add the validated optional state, map it to the native input, verify packed
+consumers, publish the cohort and exercise it in Domus.
+
+### 19. Definition of Done
+
+Pass the repository's exact-head checks and verify the published cohort in
+the scoped Domus workflow.
+
+### 20. References and decisions
+
+The shared field owns presentation and controlled text. Decimal points
+semantics stay in Domus. The existing adapters remain state bridges.
