@@ -8,6 +8,7 @@ import {exerciseInstalledCard} from '../consumers/cards.ts';
 import {exerciseInstalledCheckbox} from '../consumers/checkboxes.ts';
 import {exerciseInstalledDialog} from '../consumers/dialogs.ts';
 import {exerciseInstalledFeedback} from '../consumers/feedback.ts';
+import {exerciseInstalledDecimalField} from '../consumers/fields.ts';
 import {exerciseInstalledImplicitSubmit} from '../consumers/implicit-submit.ts';
 import {exerciseInstalledLayout} from '../consumers/layouts.ts';
 import {exerciseInstalledNavigationOverflow} from '../consumers/navigation-overflow.ts';
@@ -75,6 +76,7 @@ test('the compiled component families retain behavior in Chromium, Firefox and W
     const overflow=await exerciseInstalledNavigationOverflow(page);
     const forms=await exerciseCatalogForms(page,origin);
     const implicitSubmit=await exerciseInstalledImplicitSubmit(page);
+    const decimalField=await exerciseInstalledDecimalField(page);
     const checkbox=await exerciseInstalledCheckbox(page);
     const select=await exerciseInstalledSelect(page);
     await visit(page,origin,'overlays-dialog--default');
@@ -86,7 +88,7 @@ test('the compiled component families retain behavior in Chromium, Firefox and W
     await visit(page,origin,'feedback-status--default');
     const feedback=await exerciseInstalledFeedback(page);
     assert.deepEqual({errors,external,badAssets},{errors:[],external:[],badAssets:[]});
-    evidence.push({engine,version:browser.version(),panels,overflow,forms,implicitSubmit,checkbox,select,dialog,card,layout,feedback,errors,external,badAssets});
+    evidence.push({engine,version:browser.version(),panels,overflow,forms,implicitSubmit,decimalField,checkbox,select,dialog,card,layout,feedback,errors,external,badAssets});
    }finally{await browser.close();}
   });
   assert.equal(evidence.length,3,'Every supported browser family must pass');

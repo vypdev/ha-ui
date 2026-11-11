@@ -40,6 +40,34 @@ export async function exerciseField(page:Page){
   return {controlledModel:true,exactlyOnce:true,cancellation:true,programmaticWrite:true,nativeSubmitter:true,requiredValidation:true,disabledSubmission:true,frameworkReset:true,teardownAndRemount:true,materialGeometry:geometry,paintedGutterFocusWithoutModelIntent:true,decimalInputMode:true};
 }
 
+export async function exerciseInstalledDecimalField(page: Page) {
+  const formId = 'installed-decimal-field';
+  await page.evaluate(async id => {
+    const form = document.createElement('form');
+    form.id = id;
+    const field = document.createElement('vyp-ha-field');
+    field.state = {...field.state, label: 'Base points', inputMode: 'decimal'};
+    field.name = 'points';
+    field.addEventListener('ha-value-request', event => {field.value = event.detail.value;});
+    form.append(field);
+    document.body.append(form);
+    await field.updateComplete;
+  }, formId);
+  const form = page.locator('#' + formId);
+  try {
+    const input = form.getByRole('textbox', {name: 'Base points', exact: true});
+    assert.equal(await input.getAttribute('type'), 'text');
+    assert.equal(await input.getAttribute('inputmode'), 'decimal');
+    await input.fill('2,25');
+    assert.equal(await input.inputValue(), '2,25');
+    const entries = await form.evaluate(element => [...new FormData(element as HTMLFormElement)]);
+    assert.deepEqual(entries, [['points', '2,25']]);
+    return {inputMode: 'decimal', formValue: '2,25'};
+  } finally {
+    await form.evaluate(element => element.remove());
+  }
+}
+
 /** Verify the installed FACE's actual readonly submission contract, independently of framework validators. */
 export async function exerciseReadonlyField(page:Page){
   const observations=await page.evaluate(async()=>{
