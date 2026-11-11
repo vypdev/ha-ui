@@ -20,6 +20,11 @@ overrides include `--vyp-ha-field-radius`, `--vyp-ha-surface`, `--vyp-ha-surface
 an explicit zero remains zero. Clicking painted padding focuses an enabled or readonly input
 without producing an edit request. Disabled fields remain unfocusable.
 
+Set `inputMode: 'decimal'` in the field state to suggest a decimal keyboard on touch devices.
+The shared renderer applies the native `inputmode` hint to its text input. The controlled
+value and submitted form entry preserve the original string, including its decimal separator.
+Applications parse and validate the amount. Omitting the state key keeps the default text keyboard.
+
 The default input begins 16px after the painted control's left edge. A real click at (4,4)
 therefore tests the padding itself. The Chromium source test asserts that measured boundary
 before checking the exact control target. Scoped installed-core checks retain the native

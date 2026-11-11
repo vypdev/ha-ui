@@ -14,6 +14,11 @@ jobs:
   build:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble@sha256:2f05f8a734509a7b3f26a912639488ee08f58a7b292d14d62271bcff9038768f
+      options: --ipc=host
+    env:
+      npm_config_store_dir: /tmp/ha-ui-pnpm-store
     # The published catalog runs the same browser gates as CI.
     timeout-minutes: 20
     steps:
@@ -30,14 +35,19 @@ jobs:
           cache: false
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm check
-      - run: pnpm exec playwright install --with-deps chromium --only-shell
-      - run: pnpm exec playwright install --with-deps firefox webkit
       - run: pnpm test
       - run: pnpm test:package
       - run: pnpm test:ssr
       - run: pnpm storybook:build
+      - name: Run the browser engine matrix
+        shell: bash
+        run: |
+          test "$HOME" = /github/home
+          original_owner=$(stat -c '%u:%g' /github/home)
+          trap 'chown -- "$original_owner" /github/home' EXIT
+          chown -- "$(id -u):$(id -g)" /github/home
+          pnpm test:engines
       - run: pnpm test:storybook
-      - run: pnpm test:engines
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
           path: build/storybook

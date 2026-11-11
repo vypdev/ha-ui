@@ -11,8 +11,8 @@
     "start": "node build/index.js"
   },
   "dependencies": {
-    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.1.tgz",
-    "@vypdev/ha-ui-svelte": "file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.1.tgz",
+    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.2.tgz",
+    "@vypdev/ha-ui-svelte": "file:../pack-1/vypdev-ha-ui-svelte-0.1.0-next.2.tgz",
     "@sveltejs/kit": "3.1.1",
     "@sveltejs/adapter-node": "6.0.1",
     "@sveltejs/vite-plugin-svelte": "7.3.1",
