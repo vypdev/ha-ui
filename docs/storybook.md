@@ -92,6 +92,11 @@ coverage and browser evidence. This makes a candidate reviewable before merge. T
 workflow builds and rechecks trusted `master` before upload; only its deployment job receives Pages
 write and OIDC permission. It never executes PR code with deployment permissions.
 
+Both validation jobs use the [official Playwright Noble image](https://playwright.dev/docs/docker)
+pinned by digest to the version in the lockfile. The image supplies Chromium, Firefox, WebKit and
+their system libraries. Each job still installs the project's exact Node and pnpm toolchain and
+uses the frozen dependency lock.
+
 The intended public destination is the repository Pages subpath `/ha-ui/`. Public hosting is pending
 until the complete feature can merge and Pages is enabled for Actions. The existence of a workflow
 or a passing local build does not establish a deployed site. Do not merge an incomplete feature to
