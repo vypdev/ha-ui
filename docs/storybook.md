@@ -90,8 +90,8 @@ Every branch push to this repository runs `CI Check`, including strict types, fu
 the static catalog build and the static browser gate. An internal pull request shows CI for its pushed head.
 Bring the head up to date with the target branch before merging. Its retained artifact includes `build/storybook/`,
 coverage and browser evidence. This makes a candidate reviewable before merge. The separate Pages
-workflow builds and rechecks trusted `master` before upload; only its deployment job receives Pages
-write and OIDC permission. It never executes PR code with deployment permissions.
+workflow builds and rechecks trusted `master`, then creates the Pages archive inside the same Linux container.
+Only its deployment job receives Pages write and OIDC permission.
 
 Fork workflows require maintainer approval in GitHub.
 CI and the Pages build use Apple Silicon runners in the organization's `vypdev` group.
