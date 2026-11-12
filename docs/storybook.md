@@ -92,6 +92,11 @@ coverage and browser evidence. This makes a candidate reviewable before merge. T
 workflow builds and rechecks trusted `master` before upload; only its deployment job receives Pages
 write and OIDC permission. It never executes PR code with deployment permissions.
 
+The Pages build uses the Apple Silicon runner in the organization's `vypdev` group.
+It runs the verified Linux build in a job-specific Docker container and keeps the
+runner's Docker credentials outside the container. The Pages deployment job uses
+a GitHub-hosted runner for OIDC publication.
+
 Both validation jobs use the [official Playwright Noble image](https://playwright.dev/docs/docker)
 pinned by digest to the version in the lockfile. The image supplies Chromium, Firefox, WebKit and
 their system libraries. Each job still installs the project's exact Node and pnpm toolchain and

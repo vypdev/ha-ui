@@ -177,13 +177,33 @@ test('Pages builds only the trusted default branch and grants write permissions 
   const build=workflow.jobs.build,deploy=workflow.jobs.deploy;
   expect(build.if).toBe("github.ref == 'refs/heads/master'");expect(build.permissions).toBeUndefined();
   const quality = parse(readFileSync('.github/workflows/ci_check.yml', 'utf8')).jobs.quality;
-  expect(build.container).toEqual(quality.container);
-  expect(build.env.npm_config_store_dir).toBe(quality.env.npm_config_store_dir);
+  expect(build.container).toBeUndefined();
+  expect(build.env.HA_UI_PLAYWRIGHT_IMAGE).toBe('mcr.microsoft.com/playwright@sha256:f609973e8fd93f38a5ddfd706a65805294247dae8d81b2541c0afe2787746197');
+  expect(quality.container.image).toBe('mcr.microsoft.com/playwright:v1.64.1-noble@sha256:2f05f8a734509a7b3f26a912639488ee08f58a7b292d14d62271bcff9038768f');
   expect(deploy.container).toBeUndefined();
-  expect(build.steps.some(step => step.run?.startsWith('pnpm exec playwright install'))).toBe(false);
-  expect(build.steps.find(step=>step.name==='Run the browser engine matrix'))
-    .toEqual(quality.steps.find(step=>step.name==='Run the browser engine matrix'));
-  for(const command of ['pnpm install --frozen-lockfile --ignore-scripts','pnpm check','pnpm test','pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook','pnpm test:engines'])expect(build.steps.flatMap(step=>step.run?.split('\n')??[])).toContain(command);
+  expect(build.steps.some(step => step.run === 'bash .github/scripts/verify-storybook-pages.sh')).toBe(true);
+  const verify = readFileSync('.github/scripts/verify-storybook-pages.sh', 'utf8');
+  expect(verify).toContain('--platform linux/arm64');
+  expect(verify).toContain('--env npm_config_store_dir='+quality.env.npm_config_store_dir);
+  expect(verify).not.toContain('playwright install');
+  for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm test',
+    'pnpm test:package', 'pnpm test:ssr', 'pnpm storybook:build', 'pnpm test:storybook', 'pnpm test:engines']) {
+    expect(verify.split('\n').some(line => line.trimEnd().endsWith(' '+command))).toBe(true);
+  }
   expect(deploy.needs).toBe('build');expect(deploy.permissions).toEqual({pages:'write','id-token':'write'});
   expect(deploy.environment.name).toBe('github-pages');expect(workflow.concurrency['cancel-in-progress']).toBe(false);
+});
+
+test('publication preparation uses organization runners and OIDC jobs use GitHub runners', () => {
+  const pages = parse(readFileSync('.github/workflows/storybook_pages.yml', 'utf8'));
+  const npm = parse(readFileSync('.github/workflows/npm_release.yml', 'utf8'));
+  expect(pages.jobs.build['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'macOS', 'ARM64']});
+  expect(npm.jobs.candidate['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'codex', 'Linux']});
+  for (const job of [pages.jobs.build, npm.jobs.candidate]) {
+    expect(job.permissions?.['id-token']).toBeUndefined();
+  }
+  for (const job of [pages.jobs.deploy, npm.jobs.publish]) {
+    expect(job['runs-on']).toBe('ubuntu-latest');
+    expect(job.permissions['id-token']).toBe('write');
+  }
 });
