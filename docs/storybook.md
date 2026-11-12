@@ -86,13 +86,14 @@ shared fixes. No additional browser engine, owner HA installation or human accep
 
 ## Delivery
 
-Every PR update from a branch in this repository runs `CI Check`, including strict types, full coverage, compiled package consumers,
-static catalog build and the static browser gate. Its retained artifact includes `build/storybook/`,
+Every branch push to this repository runs `CI Check`, including strict types, full coverage, compiled package consumers,
+the static catalog build and the static browser gate. An internal pull request shows CI for its pushed head.
+Bring the head up to date with the target branch before merging. Its retained artifact includes `build/storybook/`,
 coverage and browser evidence. This makes a candidate reviewable before merge. The separate Pages
 workflow builds and rechecks trusted `master` before upload; only its deployment job receives Pages
 write and OIDC permission. It never executes PR code with deployment permissions.
 
-Fork workflows require maintainer approval in GitHub, and CI restricts execution to same-repository PRs.
+Fork workflows require maintainer approval in GitHub.
 CI and the Pages build use Apple Silicon runners in the organization's `vypdev` group.
 Each runs the Linux build in a job-specific Docker container and keeps the
 runner's Docker credentials outside the container. The Pages deployment job uses

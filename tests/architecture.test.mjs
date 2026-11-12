@@ -58,14 +58,12 @@ test('every actual core module respects the dependency boundary', () => {
     if (dependency.startsWith('.')) expect(relative(resolve('packages/core/src'), resolve(dirname(file), dependency)).startsWith('..')).toBe(false);
   }
 });
-test('CI Check runs for internal PR updates with frozen tools and all implemented quality gates', () => {
+test('CI Check runs on branch pushes with frozen tools and all implemented quality gates', () => {
   const workflow = parse(readFileSync('.github/workflows/ci_check.yml', 'utf8'));
   expect(workflow.name).toBe('CI Check');
-  expect(workflow.on.pull_request.types).toEqual(expect.arrayContaining(['opened','reopened','synchronize','ready_for_review','converted_to_draft']));
-  expect(workflow.on.pull_request.paths).toBeUndefined();
+  expect(workflow.on).toEqual({push: {branches: ['**']}});
   const job = workflow.jobs.quality;
   expect(job.name).toBe('CI Check');
-  expect(job.if).toBe("${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}");
   expect(job['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'macOS', 'ARM64']});
   expect(job['continue-on-error']).toBeUndefined();
   expect(job.steps.every(step => step['continue-on-error'] === undefined)).toBe(true);

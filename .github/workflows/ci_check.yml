@@ -1,11 +1,7 @@
 name: CI Check
 on:
-  pull_request:
-    types: [opened, reopened, synchronize, ready_for_review, converted_to_draft]
   push:
-    branches: [develop, master]
-  merge_group:
-    types: [checks_requested]
+    branches: ['**']
 env:
   STORYBOOK_DISABLE_TELEMETRY: "1"
 permissions:
@@ -13,7 +9,6 @@ permissions:
 jobs:
   quality:
     name: CI Check
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on:
       group: vypdev
       labels: [self-hosted, macOS, ARM64]
