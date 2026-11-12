@@ -58,37 +58,25 @@ test('every actual core module respects the dependency boundary', () => {
     if (dependency.startsWith('.')) expect(relative(resolve('packages/core/src'), resolve(dirname(file), dependency)).startsWith('..')).toBe(false);
   }
 });
-test('CI Check runs for every PR update with frozen tools and all implemented quality gates', () => {
+test('CI Check runs for internal PR updates with frozen tools and all implemented quality gates', () => {
   const workflow = parse(readFileSync('.github/workflows/ci_check.yml', 'utf8'));
   expect(workflow.name).toBe('CI Check');
   expect(workflow.on.pull_request.types).toEqual(expect.arrayContaining(['opened','reopened','synchronize','ready_for_review','converted_to_draft']));
   expect(workflow.on.pull_request.paths).toBeUndefined();
   const job = workflow.jobs.quality;
-  expect(job.name).toBe('CI Check'); expect(job.if).toBeUndefined();
+  expect(job.name).toBe('CI Check');
+  expect(job.if).toBe("${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}");
+  expect(job['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'macOS', 'ARM64']});
   expect(job['continue-on-error']).toBeUndefined();
   expect(job.steps.every(step => step['continue-on-error'] === undefined)).toBe(true);
-  const playwright = JSON.parse(readFileSync('package.json', 'utf8')).devDependencies.playwright;
-  const [image, digest] = job.container.image.split('@');
-  expect(image).toBe(`mcr.microsoft.com/playwright:v${playwright}-noble`);
-  expect(digest).toMatch(/^sha256:[a-f0-9]{64}$/u);
-  expect(job.container.options).toBe('--ipc=host');
-  expect(job.env.npm_config_store_dir).toBe('/tmp/ha-ui-pnpm-store');
   const commands = job.steps.flatMap(step => step.run?.split('\n') ?? []);
-  expect(commands.some(command => command.startsWith('pnpm exec playwright install'))).toBe(false);
-  for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm test', 'pnpm build', 'pnpm test:package','pnpm test:ssr','pnpm storybook:build','pnpm test:storybook','pnpm test:engines']) expect(commands).toContain(command);
-  const packed = job.steps.find(step => step.name === 'Verify packed consumers and candidate provenance');
+  const packed = job.steps.find(step => step.run === 'bash .github/scripts/verify-catalog.sh');
   expect(packed.env.HA_UI_PACKED_EXPECTED_REVISION).toBe('${{ github.sha }}');
-  expect(packed.run.trim().split('\n')).toEqual([
-    'export GIT_CONFIG_COUNT=1',
-    'export GIT_CONFIG_KEY_0=safe.directory',
-    'export GIT_CONFIG_VALUE_0="$(pwd -P)"',
-    'pnpm test:package',
-  ]);
-  expect(commands.indexOf('pnpm test:engines')).toBeLessThan(commands.indexOf('pnpm test:storybook'));
-  const engines = job.steps.find(step => step.name === 'Run the browser engine matrix');
-  expect(engines.shell).toBe('bash');
-  expect(engines.run).toContain('test "$HOME" = /github/home');
-  expect(engines.run).toContain('trap \'chown -- "$original_owner" /github/home\' EXIT');
+  const verify = readFileSync('.github/scripts/verify-catalog.sh', 'utf8');
+  expect(verify).toContain('--env HA_UI_PACKED_EXPECTED_REVISION');
+  expect(verify).toContain('GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0=/workspace pnpm test:package');
+  expect(verify).toContain('pnpm build');
+  expect(verify.indexOf('pnpm test:engines')).toBeLessThan(verify.indexOf('pnpm test:storybook'));
   const sdk = job.steps.find(step => step.with?.repository === 'vypdev/copilot');
   expect(sdk.with.ref).toBe('3e7ceea08e6131360e026937d1c0cc1b120472e0');
   expect(sdk.with['persist-credentials']).toBe(false);
@@ -179,12 +167,12 @@ test('Pages builds only the trusted default branch and grants write permissions 
   const quality = parse(readFileSync('.github/workflows/ci_check.yml', 'utf8')).jobs.quality;
   expect(build.container).toBeUndefined();
   expect(build.env.HA_UI_PLAYWRIGHT_IMAGE).toBe('mcr.microsoft.com/playwright@sha256:f609973e8fd93f38a5ddfd706a65805294247dae8d81b2541c0afe2787746197');
-  expect(quality.container.image).toBe('mcr.microsoft.com/playwright:v1.64.1-noble@sha256:2f05f8a734509a7b3f26a912639488ee08f58a7b292d14d62271bcff9038768f');
+  expect(quality.env.HA_UI_PLAYWRIGHT_IMAGE).toBe(build.env.HA_UI_PLAYWRIGHT_IMAGE);
   expect(deploy.container).toBeUndefined();
-  expect(build.steps.some(step => step.run === 'bash .github/scripts/verify-storybook-pages.sh')).toBe(true);
-  const verify = readFileSync('.github/scripts/verify-storybook-pages.sh', 'utf8');
+  expect(build.steps.some(step => step.run === 'bash .github/scripts/verify-catalog.sh')).toBe(true);
+  const verify = readFileSync('.github/scripts/verify-catalog.sh', 'utf8');
   expect(verify).toContain('--platform linux/arm64');
-  expect(verify).toContain('--env npm_config_store_dir='+quality.env.npm_config_store_dir);
+  expect(verify).toContain('--env npm_config_store_dir=/tmp/ha-ui-pnpm-store');
   expect(verify).not.toContain('playwright install');
   for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm test',
     'pnpm test:package', 'pnpm test:ssr', 'pnpm storybook:build', 'pnpm test:storybook', 'pnpm test:engines']) {
