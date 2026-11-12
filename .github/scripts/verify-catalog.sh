@@ -20,7 +20,7 @@ docker run --rm --init --interactive --name "$container" --platform linux/arm64 
   --workdir /workspace \
   --env CI=1 --env STORYBOOK_DISABLE_TELEMETRY=1 \
   --env npm_config_store_dir=/tmp/ha-ui-pnpm-store \
-  --env HA_UI_PACKED_EXPECTED_REVISION \
+  --env "HA_UI_PACKED_EXPECTED_REVISION=${HA_UI_PACKED_EXPECTED_REVISION:-}" \
   "${HA_UI_PLAYWRIGHT_IMAGE:?}" bash -euo pipefail <<'LINUX'
 HA_UI_NODE_VERSION=$(tr -d '\r\n' < .node-version)
 package_manager=$(node --print 'require("./package.json").packageManager')
@@ -34,7 +34,7 @@ npm exec --yes --package="node@$HA_UI_NODE_VERSION" --package="$package_manager"
   pnpm install --frozen-lockfile --ignore-scripts
   pnpm check
   pnpm test
-  if [ -n "${HA_UI_PACKED_EXPECTED_REVISION:-}" ]; then
+  if [ -n "$HA_UI_PACKED_EXPECTED_REVISION" ]; then
     pnpm build
   fi
   GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0=/workspace pnpm test:package

@@ -73,7 +73,8 @@ test('CI Check runs for internal PR updates with frozen tools and all implemente
   const packed = job.steps.find(step => step.run === 'bash .github/scripts/verify-catalog.sh');
   expect(packed.env.HA_UI_PACKED_EXPECTED_REVISION).toBe('${{ github.sha }}');
   const verify = readFileSync('.github/scripts/verify-catalog.sh', 'utf8');
-  expect(verify).toContain('--env HA_UI_PACKED_EXPECTED_REVISION');
+  expect(verify).toContain('--env "HA_UI_PACKED_EXPECTED_REVISION=${HA_UI_PACKED_EXPECTED_REVISION:-}"');
+  expect(verify).toContain('if [ -n "$HA_UI_PACKED_EXPECTED_REVISION" ]; then');
   expect(verify).toContain('GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=safe.directory GIT_CONFIG_VALUE_0=/workspace pnpm test:package');
   expect(verify).toContain('pnpm build');
   expect(verify.indexOf('pnpm test:engines')).toBeLessThan(verify.indexOf('pnpm test:storybook'));
