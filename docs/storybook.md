@@ -94,6 +94,9 @@ workflow builds and rechecks trusted `master`, then creates the Pages archive in
 Only its deployment job receives Pages write and OIDC permission.
 
 Fork workflows require maintainer approval in GitHub.
+The CI, Pages and npm workflows reference complete action release versions.
+GitHub runs the commits recorded in `.github/workflows/actions.lock`. Regenerate the lockfile with
+`gh actions-lock` and the changed workflow paths when updating action versions.
 CI and the Pages build use Apple Silicon runners in the organization's `vypdev` group.
 Each runs the Linux build in a job-specific Docker container and keeps the
 runner's Docker credentials outside the container. The Pages deployment job uses
