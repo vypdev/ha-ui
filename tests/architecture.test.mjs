@@ -173,6 +173,12 @@ test('Pages builds only the trusted default branch and grants write permissions 
   expect(verify).toContain('--platform linux/arm64');
   expect(verify).toContain('--env npm_config_store_dir=/tmp/ha-ui-pnpm-store');
   expect(verify).not.toContain('playwright install');
+  expect(verify.indexOf('tar --dereference --hard-dereference')).toBeGreaterThan(verify.indexOf('pnpm test:storybook'));
+  expect(verify).toContain('--directory build/storybook --create --file /workspace/build/artifact.tar');
+  const archive = build.steps.find(step => step.uses?.startsWith('actions/upload-artifact@'));
+  expect(archive.with).toEqual({
+    name: 'github-pages', path: 'build/artifact.tar', 'retention-days': 1, 'if-no-files-found': 'error',
+  });
   for (const command of ['pnpm install --frozen-lockfile --ignore-scripts', 'pnpm check', 'pnpm test',
     'pnpm test:package', 'pnpm test:ssr', 'pnpm storybook:build', 'pnpm test:storybook', 'pnpm test:engines']) {
     expect(verify.split('\n').some(line => line.trimEnd().endsWith(' '+command))).toBe(true);

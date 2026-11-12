@@ -43,4 +43,9 @@ npm exec --yes --package="node@$HA_UI_NODE_VERSION" --package="$package_manager"
   pnpm test:engines
   pnpm test:storybook
 '
+
+test -f build/storybook/index.html
+tar --dereference --hard-dereference \
+  --directory build/storybook --create --file /workspace/build/artifact.tar \
+  --exclude=.git --exclude=.github --exclude=".[^/]*" .
 LINUX
