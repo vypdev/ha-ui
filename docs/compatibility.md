@@ -33,7 +33,7 @@ Disabled defaults to false. Labels and links retain their original values; snaps
 Invalid/extra fields, conflicting selection and unsafe or credential-bearing links raise the bounded
 NavigationInputError with code invalid_navigation. This validates data, not authorization or rendering.
 
-CI Check runs for each PR head with no path filter. Current gates are strict types, all implemented
+CI Check runs for each branch push to this repository with no path filter. Current gates are strict types, all implemented
 tests, independent source-inventory coverage, architecture/CI contracts, compiled declarations, real Chromium component behavior, actual reproducible packed consumption with
 a DOM-free contract and a compiled browser client, and the original pinned Copilot catalog validator.
 The packed browser fixture exercises real links, panel slots, keyboard, live Spanish labels/theme,

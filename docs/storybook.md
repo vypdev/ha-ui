@@ -86,19 +86,24 @@ shared fixes. No additional browser engine, owner HA installation or human accep
 
 ## Delivery
 
-Every PR update runs `CI Check`, including strict types, full coverage, compiled package consumers,
-static catalog build and the static browser gate. Its retained artifact includes `build/storybook/`,
+Every branch push to this repository runs `CI Check`, including strict types, full coverage, compiled package consumers,
+the static catalog build and the static browser gate. An internal pull request shows CI for its pushed head.
+Bring the head up to date with the target branch before merging. Its retained artifact includes `build/storybook/`,
 coverage and browser evidence. This makes a candidate reviewable before merge. The separate Pages
-workflow builds and rechecks trusted `master` before upload; only its deployment job receives Pages
-write and OIDC permission. It never executes PR code with deployment permissions.
+workflow builds and rechecks trusted `master`, then creates the Pages archive inside the same Linux container.
+Only its deployment job receives Pages write and OIDC permission.
+
+Fork workflows require maintainer approval in GitHub.
+CI and the Pages build use Apple Silicon runners in the organization's `vypdev` group.
+Each runs the Linux build in a job-specific Docker container and keeps the
+runner's Docker credentials outside the container. The Pages deployment job uses
+a GitHub-hosted runner for OIDC publication.
 
 Both validation jobs use the [official Playwright Noble image](https://playwright.dev/docs/docker)
 pinned by digest to the version in the lockfile. The image supplies Chromium, Firefox, WebKit and
 their system libraries. Each job still installs the project's exact Node and pnpm toolchain and
 uses the frozen dependency lock. The workspace and offline package fixtures share a
 container-local pnpm store even when their directories are on different mounts.
-The browser matrix temporarily matches the isolated job home ownership to the
-container user for Firefox and restores its owner when the step exits.
 
 The intended public destination is the repository Pages subpath `/ha-ui/`. Public hosting is pending
 until the complete feature can merge and Pages is enabled for Actions. The existence of a workflow

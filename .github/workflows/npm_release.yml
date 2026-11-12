@@ -13,7 +13,9 @@ permissions:
 
 jobs:
   candidate:
-    runs-on: ubuntu-latest
+    runs-on:
+      group: vypdev
+      labels: [self-hosted, codex, Linux]
     timeout-minutes: 5
     permissions:
       actions: read
