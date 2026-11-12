@@ -187,9 +187,17 @@ test('Pages builds only the trusted default branch and grants write permissions 
   expect(deploy.environment.name).toBe('github-pages');expect(workflow.concurrency['cancel-in-progress']).toBe(false);
 });
 
-test('publication preparation uses organization runners and OIDC jobs use GitHub runners', () => {
+test('workflows name exact action releases and use GitHub runners for OIDC publication', () => {
+  const ci = parse(readFileSync('.github/workflows/ci_check.yml', 'utf8'));
   const pages = parse(readFileSync('.github/workflows/storybook_pages.yml', 'utf8'));
   const npm = parse(readFileSync('.github/workflows/npm_release.yml', 'utf8'));
+  for (const workflow of [ci, pages, npm]) {
+    for (const job of Object.values(workflow.jobs)) {
+      for (const step of job.steps.filter(step => step.uses)) {
+        expect(step.uses).toMatch(/^[\w/-]+@v[0-9]+\.[0-9]+\.[0-9]+$/u);
+      }
+    }
+  }
   expect(pages.jobs.build['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'macOS', 'ARM64']});
   expect(npm.jobs.candidate['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'codex', 'Linux']});
   for (const job of [pages.jobs.build, npm.jobs.candidate]) {
