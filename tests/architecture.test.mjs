@@ -188,14 +188,19 @@ test('Pages builds only the trusted default branch and grants write permissions 
 });
 
 test('workflows name exact action releases and use GitHub runners for OIDC publication', () => {
-  const ci = parse(readFileSync('.github/workflows/ci_check.yml', 'utf8'));
-  const pages = parse(readFileSync('.github/workflows/storybook_pages.yml', 'utf8'));
-  const npm = parse(readFileSync('.github/workflows/npm_release.yml', 'utf8'));
-  for (const workflow of [ci, pages, npm]) {
-    for (const job of Object.values(workflow.jobs)) {
-      for (const step of job.steps.filter(step => step.uses)) {
-        expect(step.uses).toMatch(/^[\w/-]+@v[0-9]+\.[0-9]+\.[0-9]+$/u);
-      }
+  const ciPath = '.github/workflows/ci_check.yml';
+  const pagesPath = '.github/workflows/storybook_pages.yml';
+  const npmPath = '.github/workflows/npm_release.yml';
+  const ci = parse(readFileSync(ciPath, 'utf8'));
+  const pages = parse(readFileSync(pagesPath, 'utf8'));
+  const npm = parse(readFileSync(npmPath, 'utf8'));
+  const lock = parse(readFileSync('.github/workflows/actions.lock', 'utf8'));
+  for (const [path, workflow] of [[ciPath, ci], [pagesPath, pages], [npmPath, npm]]) {
+    const refs = Object.values(workflow.jobs).flatMap(job => job.steps.map(step => step.uses).filter(Boolean));
+    expect([...new Set(refs)].sort()).toEqual([...lock.workflows[path]].sort());
+    for (const ref of refs) {
+      expect(ref).toMatch(/^[\w/-]+@v[0-9]+\.[0-9]+\.[0-9]+$/u);
+      expect(lock.dependencies[ref].commit).toMatch(/^sha1-[a-f0-9]{40}$/u);
     }
   }
   expect(pages.jobs.build['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'macOS', 'ARM64']});
