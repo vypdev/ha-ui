@@ -229,6 +229,27 @@ test('every installed workflow names complete external action releases', () => {
   }
 });
 
+test('installed workflow action steps have reviewed lockfile resolutions', () => {
+  const lock = parse(readFileSync('.github/workflows/actions.lock', 'utf8'));
+  for (const path of globSync('.github/workflows/*.{yml,yaml}')) {
+    const workflow = parse(readFileSync(path, 'utf8'));
+    const references = Object.values(workflow.jobs)
+      .flatMap(job => job.steps ?? [])
+      .map(step => step.uses)
+      .filter(reference => reference && !reference.startsWith('./'));
+    const lockedReferences = [...new Set(references.map(reference => {
+      const [action, version] = reference.split('@');
+      const repository = action.split('/').slice(0, 2).join('/').toLowerCase();
+      return `${repository}@${version}`;
+    }))].sort();
+    expect(Object.hasOwn(lock.workflows, path), path).toBe(true);
+    expect([...lock.workflows[path]].sort(), path).toEqual(lockedReferences);
+    for (const reference of lockedReferences) {
+      expect(lock.dependencies[reference].commit, reference).toMatch(/^sha1-[a-f0-9]{40}$/u);
+    }
+  }
+});
+
 test('installed workflow jobs use the organization pool with OIDC publishing on GitHub', () => {
   for (const path of globSync('.github/workflows/*.{yml,yaml}')) {
     const workflow = parse(readFileSync(path, 'utf8'));
