@@ -93,14 +93,17 @@ coverage and browser evidence. This makes a candidate reviewable before merge. T
 workflow builds and rechecks trusted `master`, then creates the Pages archive inside the same Linux container.
 Only its deployment job receives Pages write and OIDC permission.
 
-Fork workflows require maintainer approval in GitHub.
-The CI, Pages and npm workflows reference complete action release versions.
-GitHub runs the commits recorded in `.github/workflows/actions.lock`. Regenerate the lockfile with
+The self-hosted pool runs reviewed internal branches.
+Every installed workflow references complete action release versions, including the Copilot
+consumer snapshots and reusable workflow references. The architecture checks cover every file.
+The CI, Pages and npm action commits are recorded in `.github/workflows/actions.lock`. Regenerate it with
 `gh actions-lock` and the changed workflow paths when updating action versions.
 CI and the Pages build use Apple Silicon runners in the organization's `vypdev` group.
 Each runs the Linux build in a job-specific Docker container and keeps the
 runner's Docker credentials outside the container. The Pages deployment job uses
-a GitHub-hosted runner for OIDC publication.
+a GitHub-hosted runner for OIDC publication. Other installed jobs use the configured
+self-hosted group, with Linux labels for the Copilot jobs. Reusable workflow calls
+pass the same organization runner configuration to their runtime.
 
 Both validation jobs use the [official Playwright Noble image](https://playwright.dev/docs/docker)
 pinned by digest to the version in the lockfile. The image supplies Chromium, Firefox, WebKit and

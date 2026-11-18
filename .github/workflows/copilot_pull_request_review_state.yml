@@ -9,7 +9,9 @@ jobs:
   copilot-pull-request-review-state:
     if: ${{ (vars.COPILOT_BOT_LOGIN == '' || github.actor != vars.COPILOT_BOT_LOGIN) && github.event.pull_request.head.repo.full_name == github.repository }}
     name: Copilot - Pull Request Review State
-    runs-on: ubuntu-latest
+    runs-on:
+      group: vypdev
+      labels: [self-hosted, codex, Linux]
     timeout-minutes: 120
     concurrency:
       group: copilot-pr-${{ github.repository }}-${{ github.event.pull_request.number }}-review-state
@@ -19,7 +21,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.1.0
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -29,7 +31,7 @@ jobs:
       # Declare reviewed versions in .copilot/verification-prerequisites.json.
       # Optional trusted-main setup: VERIFICATION_SETUP=true and .github/actions/copilot-verification-setup/action.yml.
       # https://docs.page/vypdev/copilot/security-operations/operations/verification#repository-verification-prerequisites
-      - uses: vypdev/copilot@v3
+      - uses: vypdev/copilot@v3.10.13
         with:
           repository-locale: ${{ vars.REPOSITORY_LOCALE || 'en-US' }}
           issues-locale: ${{ vars.ISSUES_LOCALE || '' }}

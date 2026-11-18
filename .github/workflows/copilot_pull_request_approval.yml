@@ -15,7 +15,9 @@ on:
 jobs:
   observe-approval:
     name: Copilot - Pull Request Approval
-    runs-on: ubuntu-latest
+    runs-on:
+      group: vypdev
+      labels: [self-hosted, codex, Linux]
     timeout-minutes: 15
     concurrency:
       # Some workflow_run payloads omit the PR association. A repository-wide
@@ -30,7 +32,7 @@ jobs:
       pull-requests: read
     steps:
       - name: Observe current PR evidence without checking out PR code
-        uses: vypdev/copilot@v3
+        uses: vypdev/copilot@v3.10.13
         with:
           pr-approval-observer: 'true'
           pr-approval-pr-number: ${{ github.event.inputs.pr || '' }}
