@@ -96,8 +96,11 @@ Only its deployment job receives Pages write and OIDC permission.
 The self-hosted pool runs reviewed internal branches.
 Every installed workflow references complete action release versions, including the Copilot
 consumer snapshots and reusable workflow references. The architecture checks cover every file.
-The CI, Pages and npm action commits are recorded in `.github/workflows/actions.lock`. Regenerate it with
-`gh actions-lock` and the changed workflow paths when updating action versions.
+Installed action-step resolutions are recorded in `.github/workflows/actions.lock`. Regenerate it with
+`gh actions-lock` after changing an action reference and run `gh actions-lock --verify` to check coverage
+and provenance. GitHub enforces the recorded commits for onboarded workflows. Job-level reusable
+workflow calls retain their reviewed complete release tags and follow GitHub's separate reusable-workflow
+resolution, which the caller lockfile currently excludes.
 CI and the Pages build use Apple Silicon runners in the organization's `vypdev` group.
 Each runs the Linux build in a job-specific Docker container and keeps the
 runner's Docker credentials outside the container. The Pages deployment job uses
