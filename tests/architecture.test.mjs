@@ -187,9 +187,22 @@ test('Pages builds only the trusted default branch and grants write permissions 
   expect(deploy.environment.name).toBe('github-pages');expect(workflow.concurrency['cancel-in-progress']).toBe(false);
 });
 
-test('publication preparation uses organization runners and OIDC jobs use GitHub runners', () => {
-  const pages = parse(readFileSync('.github/workflows/storybook_pages.yml', 'utf8'));
-  const npm = parse(readFileSync('.github/workflows/npm_release.yml', 'utf8'));
+test('workflows name exact action releases and use GitHub runners for OIDC publication', () => {
+  const ciPath = '.github/workflows/ci_check.yml';
+  const pagesPath = '.github/workflows/storybook_pages.yml';
+  const npmPath = '.github/workflows/npm_release.yml';
+  const ci = parse(readFileSync(ciPath, 'utf8'));
+  const pages = parse(readFileSync(pagesPath, 'utf8'));
+  const npm = parse(readFileSync(npmPath, 'utf8'));
+  const lock = parse(readFileSync('.github/workflows/actions.lock', 'utf8'));
+  for (const [path, workflow] of [[ciPath, ci], [pagesPath, pages], [npmPath, npm]]) {
+    const refs = Object.values(workflow.jobs).flatMap(job => job.steps.map(step => step.uses).filter(Boolean));
+    expect([...new Set(refs)].sort()).toEqual([...lock.workflows[path]].sort());
+    for (const ref of refs) {
+      expect(ref).toMatch(/^[\w/-]+@v[0-9]+\.[0-9]+\.[0-9]+$/u);
+      expect(lock.dependencies[ref].commit).toMatch(/^sha1-[a-f0-9]{40}$/u);
+    }
+  }
   expect(pages.jobs.build['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'macOS', 'ARM64']});
   expect(npm.jobs.candidate['runs-on']).toEqual({group: 'vypdev', labels: ['self-hosted', 'codex', 'Linux']});
   for (const job of [pages.jobs.build, npm.jobs.candidate]) {
@@ -198,5 +211,61 @@ test('publication preparation uses organization runners and OIDC jobs use GitHub
   for (const job of [pages.jobs.deploy, npm.jobs.publish]) {
     expect(job['runs-on']).toBe('ubuntu-latest');
     expect(job.permissions['id-token']).toBe('write');
+  }
+});
+
+test('every installed workflow names complete external action releases', () => {
+  const paths = globSync('.github/workflows/*.{yml,yaml}');
+  expect(paths.length).toBeGreaterThan(0);
+  for (const path of paths) {
+    const workflow = parse(readFileSync(path, 'utf8'));
+    for (const job of Object.values(workflow.jobs)) {
+      const references = [job.uses, ...(job.steps ?? []).map(step => step.uses)].filter(Boolean);
+      for (const reference of references) {
+        if (reference.startsWith('./')) continue;
+        expect(reference, path).toMatch(/^[\w/.-]+@v[0-9]+\.[0-9]+\.[0-9]+$/u);
+      }
+    }
+  }
+});
+
+test('installed workflow action steps have reviewed lockfile resolutions', () => {
+  const lock = parse(readFileSync('.github/workflows/actions.lock', 'utf8'));
+  for (const path of globSync('.github/workflows/*.{yml,yaml}')) {
+    const workflow = parse(readFileSync(path, 'utf8'));
+    const references = Object.values(workflow.jobs)
+      .flatMap(job => job.steps ?? [])
+      .map(step => step.uses)
+      .filter(reference => reference && !reference.startsWith('./'));
+    const lockedReferences = [...new Set(references.map(reference => {
+      const [action, version] = reference.split('@');
+      const repository = action.split('/').slice(0, 2).join('/').toLowerCase();
+      return `${repository}@${version}`;
+    }))].sort();
+    expect(Object.hasOwn(lock.workflows, path), path).toBe(true);
+    expect([...lock.workflows[path]].sort(), path).toEqual(lockedReferences);
+    for (const reference of lockedReferences) {
+      expect(lock.dependencies[reference].commit, reference).toMatch(/^sha1-[a-f0-9]{40}$/u);
+    }
+  }
+});
+
+test('installed workflow jobs use the organization pool with OIDC publishing on GitHub', () => {
+  for (const path of globSync('.github/workflows/*.{yml,yaml}')) {
+    const workflow = parse(readFileSync(path, 'utf8'));
+    for (const job of Object.values(workflow.jobs)) {
+      if (job.uses) {
+        const runner = JSON.parse(job.with['runs-on']);
+        expect(runner.group, path).toBe('vypdev');
+        expect(runner.labels, path).toContain('self-hosted');
+        continue;
+      }
+      if (job.permissions?.['id-token'] === 'write') {
+        expect(job['runs-on'], path).toBe('ubuntu-latest');
+        continue;
+      }
+      expect(job['runs-on'].group, path).toBe('vypdev');
+      expect(job['runs-on'].labels, path).toContain('self-hosted');
+    }
   }
 });

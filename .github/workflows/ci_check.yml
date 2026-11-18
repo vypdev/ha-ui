@@ -18,7 +18,7 @@ jobs:
     # The catalog has its own phase deadlines; this job also verifies packages and SSR.
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
       - name: Validate the catalog and bind packed consumers to the checked commit
@@ -26,13 +26,13 @@ jobs:
         env:
           HA_UI_PACKED_EXPECTED_REVISION: ${{ github.sha }}
         run: bash .github/scripts/verify-catalog.sh
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version-file: .node-version
           package-manager-cache: false
       # Read the original catalog SDK at the reviewed revision; never rewrite it.
       - name: Read the original specification SDK
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7.0.1
         with:
           repository: vypdev/copilot
           ref: 3e7ceea08e6131360e026937d1c0cc1b120472e0
@@ -48,7 +48,7 @@ jobs:
           node -e "require('./.validation/copilot-sdk/src/infrastructure/specification_catalog_validator.cjs').main([], process.cwd())"
       - name: Retain source coverage and compiled package evidence
         if: ${{ always() }}
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: shared-ui-validation-${{ github.sha }}
           path: |
@@ -62,7 +62,7 @@ jobs:
           retention-days: 7
       - name: Retain the verified npm candidate for the production SHA
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: npm-candidate-${{ github.sha }}
           path: |
