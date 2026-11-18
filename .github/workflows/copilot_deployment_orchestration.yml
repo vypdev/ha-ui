@@ -8,7 +8,9 @@ jobs:
   resolve-operation:
     name: Resolve managed deployment ownership
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository && contains(github.event.pull_request.body || '', '<!-- copilot-deployment ') }}
-    runs-on: ubuntu-latest
+    runs-on:
+      group: vypdev
+      labels: [self-hosted, codex, Linux]
     timeout-minutes: 5
     permissions:
       contents: read
@@ -20,7 +22,7 @@ jobs:
     steps:
       - name: Prove managed operation identity
         id: identity
-        uses: actions/github-script@v9
+        uses: actions/github-script@v9.0.0
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
         with:
@@ -62,7 +64,9 @@ jobs:
     name: Advance durable deployment operation
     needs: resolve-operation
     if: ${{ needs.resolve-operation.result == 'success' }}
-    runs-on: ubuntu-latest
+    runs-on:
+      group: vypdev
+      labels: [self-hosted, codex, Linux]
     timeout-minutes: 15
     concurrency:
       group: copilot-deployment-${{ github.repository_id }}-${{ needs.resolve-operation.outputs.issue }}
@@ -75,13 +79,13 @@ jobs:
       actions: write
     steps:
       - name: Checkout trusted base branch
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.1.0
         with:
           persist-credentials: false
           ref: ${{ github.event.pull_request.base.ref }}
           fetch-depth: 1
       - name: Continue from current durable state
-        uses: vypdev/copilot@v3
+        uses: vypdev/copilot@v3.10.13
         with:
           single-action: continue_deployment_action
           single-action-issue: ${{ needs.resolve-operation.outputs.issue }}

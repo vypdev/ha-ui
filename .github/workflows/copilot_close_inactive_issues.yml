@@ -17,17 +17,19 @@ permissions:
 jobs:
   copilot-inactive-issues:
     name: Copilot - Close Inactive Issues
-    runs-on: ubuntu-latest
+    runs-on:
+      group: vypdev
+      labels: [self-hosted, codex, Linux]
     timeout-minutes: 120
     permissions:
       contents: read
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.1.0
         with:
           persist-credentials: false
 
-      - uses: vypdev/copilot@v3
+      - uses: vypdev/copilot@v3.10.13
         with:
           single-action: close_inactive_issues_action
           inactivity-threshold-hours: ${{ inputs.inactivity_threshold_hours || vars.INACTIVITY_THRESHOLD_HOURS || '168' }}

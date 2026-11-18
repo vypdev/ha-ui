@@ -213,3 +213,38 @@ test('workflows name exact action releases and use GitHub runners for OIDC publi
     expect(job.permissions['id-token']).toBe('write');
   }
 });
+
+test('every installed workflow names complete external action releases', () => {
+  const paths = globSync('.github/workflows/*.{yml,yaml}');
+  expect(paths.length).toBeGreaterThan(0);
+  for (const path of paths) {
+    const workflow = parse(readFileSync(path, 'utf8'));
+    for (const job of Object.values(workflow.jobs)) {
+      const references = [job.uses, ...(job.steps ?? []).map(step => step.uses)].filter(Boolean);
+      for (const reference of references) {
+        if (reference.startsWith('./')) continue;
+        expect(reference, path).toMatch(/^[\w/.-]+@v[0-9]+\.[0-9]+\.[0-9]+$/u);
+      }
+    }
+  }
+});
+
+test('installed workflow jobs use the organization pool with OIDC publishing on GitHub', () => {
+  for (const path of globSync('.github/workflows/*.{yml,yaml}')) {
+    const workflow = parse(readFileSync(path, 'utf8'));
+    for (const job of Object.values(workflow.jobs)) {
+      if (job.uses) {
+        const runner = JSON.parse(job.with['runs-on']);
+        expect(runner.group, path).toBe('vypdev');
+        expect(runner.labels, path).toContain('self-hosted');
+        continue;
+      }
+      if (job.permissions?.['id-token'] === 'write') {
+        expect(job['runs-on'], path).toBe('ubuntu-latest');
+        continue;
+      }
+      expect(job['runs-on'].group, path).toBe('vypdev');
+      expect(job['runs-on'].labels, path).toContain('self-hosted');
+    }
+  }
+});
