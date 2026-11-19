@@ -86,7 +86,7 @@ platform and architecture in `test-results/browser-matrix.json`. It exercises na
 Spanish navigation, real drag and keyboard activation in both directions, native form
 reset and submission, typed selects, projected dialog/card/row actions, responsive grids
 and feedback focus. It also compares the shared input's implicit Enter behavior directly
-with native inputs in the same engine. The card action follows the engine's native Tab
+with native inputs in the same engine. Card and row actions follow the engine's native Tab
 policy; Enter must work once the command has focus.
 
 The full accessibility and pixel comparison matrix uses the Chromium pins listed in the
