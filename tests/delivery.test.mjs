@@ -221,7 +221,7 @@ test('only an npm metadata 404 permits an initial publish',async()=>{
 
 test.each([
  ['different package','npm_version_identity_mismatch',metadata=>{metadata.name='@other/ha-ui';}],
- ['different version','npm_version_identity_mismatch',metadata=>{metadata.version='0.1.0-next.2';}],
+ ['different version','npm_version_identity_mismatch',metadata=>{metadata.version='0.1.0-next.3';}],
  ['foreign host','npm_tarball_origin_mismatch',metadata=>{metadata.dist.tarball='https://example.com/package.tgz';}],
  ['username','npm_tarball_origin_mismatch',metadata=>{metadata.dist.tarball=npmTarball.replace('https://','https://name@');}],
  ['password','npm_tarball_origin_mismatch',metadata=>{metadata.dist.tarball=npmTarball.replace('https://','https://:secret@');}],
@@ -244,7 +244,7 @@ test('npm prerelease rejects stale tags and an absent workflow identity before w
  }))});
  const input={record:preview,sourceRevision,lockSha256,tag:'v'+npmVersion,oidc:true,archives,...ports};
  await expect(publishNpmPrerelease({...input,tag:'v0.1.0'})).rejects.toThrow('npm_release_tag_mismatch');
- await expect(publishNpmPrerelease({...input,tag:'v0.1.0-next.2'})).rejects.toThrow('npm_release_tag_mismatch');
+ await expect(publishNpmPrerelease({...input,tag:'v0.1.0-next.3'})).rejects.toThrow('npm_release_tag_mismatch');
  await expect(publishNpmPrerelease({...input,record:{...preview,artifacts:[]}})).rejects.toThrow('npm_release_tag_mismatch');
  for(const invalid of ['00.1.0-next.1','0.01.0-next.1','0.1.00-next.1','0.1.0-next.01']){
   const invalidPreview=captureCandidate({sourceRevision,lockSha256,artifacts:packageCoordinates.map(coordinate=>({

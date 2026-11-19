@@ -1,16 +1,23 @@
 'use client';
 import {useState} from 'react';
-import {Tabs} from '@vypdev/ha-ui-react';
+import {Tabs,TextField} from '@vypdev/ha-ui-react';
 import {registerTabs} from '@vypdev/ha-ui/tabs';
-registerTabs();
+import {registerField} from '@vypdev/ha-ui/field';
+import {textFieldState} from '@vypdev/ha-ui/field-contracts';
+registerTabs();registerField();
+const barcodeState=textFieldState({label:'Barcode number',inputMode:'numeric'});
 
 export default function ClientTabs({initial}) {
   const [state,setState]=useState(initial),[count,setCount]=useState(0),[mounted,setMounted]=useState(true);
+  const [barcode,setBarcode]=useState('00012345');
   function select(event) {
     setCount(value=>value+1);
     setState(value=>({...value,selected:event.detail.id}));
   }
   return <>
+    <form aria-label="Barcode form">
+      <TextField state={barcodeState} value={barcode} name="barcode" onValueChange={setBarcode} />
+    </form>
     <button type="button" onClick={()=>setMounted(value=>!value)}>Toggle controls</button>
     <output aria-label="Selection requests">{count}</output>
     {mounted&&<Tabs state={state} onSelectionRequest={select}>

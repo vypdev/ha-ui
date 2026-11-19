@@ -56,6 +56,44 @@ test('updates the native decimal hint without changing focused controlled text o
   expect(field.shadowRoot!.activeElement).toBe(control);
   expect(control.value).toBe('2,25');expect(entries(form)).toEqual([['task','2,25']]);
 });
+test('numeric identifiers retain zeroes, form data and selection across hint updates', async () => {
+  const {field, form} = await mount({inputMode: 'numeric', required: true, maxLength: 14});
+  const control = input(field);
+  const identifier = '00036000291452';
+  field.defaultValue = '00012345';
+  accept(field);
+  field.focus();
+  control.select();
+  await userEvent.keyboard(identifier);
+  expect(control.type).toBe('text');
+  expect(control.inputMode).toBe('numeric');
+  expect(field.value).toBe(identifier);
+  expect(entries(form)).toEqual([['task', identifier]]);
+  control.setSelectionRange(2, 6, 'backward');
+  for (const inputMode of ['decimal', undefined, 'numeric'] as const) {
+    field.state = model({inputMode, required: true, maxLength: 14});
+    await field.updateComplete;
+    expect(control.getAttribute('inputmode')).toBe(inputMode ?? null);
+    expect(field.shadowRoot!.activeElement).toBe(control);
+    expect([control.selectionStart, control.selectionEnd, control.selectionDirection]).toEqual([2, 6, 'backward']);
+    expect(entries(form)).toEqual([['task', identifier]]);
+  }
+  const previous = field.state;
+  expect(() => {field.state = model({inputMode: 'tel'});}).toThrow(FieldInputError);
+  expect(field.state).toBe(previous);
+  field.readOnly = true;
+  await field.updateComplete;
+  expect(control.readOnly).toBe(true);
+  expect(entries(form)).toEqual([['task', identifier]]);
+  field.disabled = true;
+  expect(entries(form)).toEqual([]);
+  field.disabled = false;
+  field.readOnly = false;
+  form.reset();
+  expect(field.value).toBe('00012345');
+  field.value = '';
+  expect(field.validity.valueMissing).toBe(true);
+});
 test('keeps accepted values controlled, requests once through shadow boundaries and supports cancellation',async()=>{
   const {field,form}=await mount();field.value='Accepted';await field.updateComplete;
   const received:FieldValueEvent[]=[];form.addEventListener('ha-value-request',event=>{received.push(event);event.preventDefault();});
