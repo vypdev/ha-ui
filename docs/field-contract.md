@@ -25,6 +25,13 @@ The shared renderer applies the native `inputmode` hint to its text input. The c
 value and submitted form entry preserve the original string, including its decimal separator.
 Applications parse and validate the amount. Omitting the state key keeps the default text keyboard.
 
+Set `inputMode: 'numeric'` for an integer identifier such as a printed barcode number.
+The field retains `type="text"`, exact strings and leading zeroes through controlled
+requests, form submission, reset and hint changes. Applications own identifier
+validation and canonicalization. The catalog includes English and Spanish numeric
+examples. This behavior covers `numeric-field-C01` through `numeric-field-C05` in
+[the numeric field specification](../specs/numeric-text-field.md).
+
 The default input begins 16px after the painted control's left edge. A real click at (4,4)
 therefore tests the padding itself. The Chromium source test asserts that measured boundary
 before checking the exact control target. Scoped installed-core checks retain the native

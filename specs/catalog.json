@@ -10,7 +10,8 @@
       "lastVerified": "2026-11-05",
       "specs": [
         "specs/shared-ui-foundation.md",
-        "specs/shared-ui-framework-delivery.md"
+        "specs/shared-ui-framework-delivery.md",
+        "specs/numeric-text-field.md"
       ],
       "workflows": [
         ".github/workflows/copilot_issue.yml",

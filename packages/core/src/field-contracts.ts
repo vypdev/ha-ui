@@ -1,7 +1,7 @@
 import {presentationText} from './presentation-text.js';
 export interface TextFieldState {
   readonly label:string; readonly description:string; readonly placeholder:string;
-  readonly inputMode?:'decimal';
+  readonly inputMode?:'decimal'|'numeric';
   readonly required:boolean; readonly readOnly:boolean; readonly minLength:number; readonly maxLength:number;
   readonly error:string; readonly requiredMessage:string; readonly tooShortMessage:string; readonly tooLongMessage:string;
 }
@@ -30,7 +30,7 @@ export function textFieldState(raw:unknown):TextFieldState {
   const minLength=length(source.minLength,0),maxLength=length(source.maxLength,16384);
   if(minLength>maxLength)invalid();
   const inputMode=source.inputMode;
-  if(inputMode!==undefined&&inputMode!=='decimal')invalid();
+  if(inputMode!==undefined&&inputMode!=='decimal'&&inputMode!=='numeric')invalid();
   return Object.freeze({
     label:text('label',256,false,''),
     description:text('description',512,true,''),

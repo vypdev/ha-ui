@@ -24,6 +24,21 @@ export async function exerciseFrameworkLayout(page:Page,root:string,framework:st
 }
 
 export async function exerciseInstalledLayout(page:Page){
+ const probe = await page.evaluateHandle(() => {
+   const region = document.createElement('div');
+   const first = document.createElement('button');
+   const second = document.createElement('button');
+   first.textContent = 'Native row first';
+   second.textContent = 'Native row next';
+   region.append(first, second);
+   document.body.append(region);
+   first.focus();
+   return region;
+ });
+ await page.keyboard.press('Tab');
+ const nativeTab = await probe.evaluate(region => region.lastElementChild === document.activeElement);
+ await probe.evaluate(region => region.remove());
+ await probe.dispose();
  const id='packed-layout-fixture';
  await page.evaluate(async id=>{
   const grid=document.createElement('vyp-ha-grid') as HaGrid,list=document.createElement('div'),row=document.createElement('vyp-ha-row') as HaRow;
@@ -41,13 +56,15 @@ export async function exerciseInstalledLayout(page:Page){
   await grid.getByRole('region',{name:'Installed layout',exact:true}).waitFor();
   assert.equal(await surface.evaluate(element=>getComputedStyle(element).gridTemplateColumns.split(' ').length),3);
   await first.focus();await page.keyboard.press('Tab');
-  assert.equal(await action.evaluate(button=>button===document.activeElement),true);
+  assert.equal(await action.evaluate(button=>button===document.activeElement),nativeTab,
+    'Projected row commands follow the native button Tab policy');
+  if(!nativeTab)await action.focus();
   await grid.evaluate(element=>{(element as HTMLElement).style.width='300px';});
   assert.equal(await surface.evaluate(element=>getComputedStyle(element).gridTemplateColumns),'300px');
   assert.equal(await action.evaluate(button=>button===document.activeElement),true);
   await page.keyboard.press('Enter');await row.getByText('Reviewed kitchen supplies',{exact:true}).waitFor();
   assert.equal(await action.evaluate(button=>button===document.activeElement),true);
   assert.equal(await row.getByRole('listitem').count(),1);assert.equal(await row.locator('[part=description]').count(),0);
-  return{semanticRow:true,nativeKeyboard:true,responsiveColumns:true,focusRetained:true,liveRowState:true};
+  return{semanticRow:true,nativeKeyboard:true,nativeTab,nativeTabPolicyMatch:true,responsiveColumns:true,focusRetained:true,liveRowState:true};
  }finally{await grid.evaluate(element=>element.remove());}
 }
