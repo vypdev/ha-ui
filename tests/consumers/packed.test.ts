@@ -79,7 +79,7 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
         const path=join(destination,name);
         await writeFile(path,canonicalPackageArchive(await readFile(path)));
       }
-      archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.2.tgz'));
+      archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.3.tgz'));
       if(index===2)for(const file of names)assert.deepEqual(await readFile(join(scratch,'pack-1',file)),await readFile(join(destination,file)),'Every cohort coordinate must reproduce: '+file);
     }
     const cohort=[];
@@ -88,7 +88,7 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
       const bytes=await readFile(join(scratch,'pack-1',file));
       const packedMetadata=await execute('tar',['-xOf',join(scratch,'pack-1',file),'package/package.json']);
       const manifest=JSON.parse(packedMetadata.stdout);
-      assert.equal(manifest.version,'0.1.0-next.2');assert.doesNotMatch(packedMetadata.stdout,/workspace:|file:/u);
+      assert.equal(manifest.version,'0.1.0-next.3');assert.doesNotMatch(packedMetadata.stdout,/workspace:|file:/u);
       cohort.push({coordinate:manifest.name,version:manifest.version,sha256:digest(bytes),bytes:bytes.byteLength});
       artifacts.push({coordinate:manifest.name,version:manifest.version,bytes});
     }
@@ -147,7 +147,8 @@ if(checkboxChecked(false)||!checkboxValidity(false,checkboxState({label:'Notify'
 import {selectState,selectSelection,selectEntries,selectRestoreState,selectRestoreValue,type SelectSelection} from '@vypdev/ha-ui/select-contracts';
 const choice:SelectSelection=selectSelection([1,'1',false]);const choices=selectState({label:'Category',multiple:true,options:[{value:1,label:'Number'},{value:'1',label:'Text'},{value:false,label:'Other'}]});if(selectEntries(choice,choices).length!==3||!Array.isArray(selectRestoreValue(selectRestoreState(choice))))throw Error('Expected typed pure select policy');
 const action:ButtonType='submit';if(buttonState({label:'Save'}).loading||buttonPressDetail({type:action}).type!=='submit')throw Error('Expected pure button policy');
-const field=textFieldState({label:'Name',required:true});
+const field=textFieldState({label:'Name',required:true,inputMode:'numeric'});
+if(field.inputMode!=='numeric')throw Error('Expected numeric keyboard hint');
 if(!textFieldValidity('',field).flags.valueMissing)throw Error('Expected pure field validation');
 const request=fieldValueDetail({value:'Kitchen',reason:'input'});if(request.reason!=='input')throw Error('Expected typed request');
 const kind: NavigationKind = 'panels';
@@ -206,7 +207,7 @@ element.addEventListener('ha-selection-request',event=>{event.preventDefault();e
 document.querySelector('main')!.append(element);
 registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();
 const form=document.createElement('form'),field=document.createElement('vyp-ha-field');
-field.state=textFieldState({label:'Task name',description:'A name for this task.',required:true,inputMode:'decimal'});field.name='task';field.defaultValue='Kitchen';
+field.state=textFieldState({label:'Task name',description:'A name for this task.',required:true,inputMode:'numeric'});field.name='task';field.defaultValue='Kitchen';
 field.addEventListener('ha-value-request',event=>{if(!event.defaultPrevented)field.value=event.detail.value;});
 const save=document.createElement('vyp-ha-button');save.type='submit';save.name='action';save.value='save';save.state=buttonState({label:'Save task'});
 const reset=document.createElement('vyp-ha-button');reset.type='reset';reset.state=buttonState({label:'Reset task'});form.append(field,save,reset);
@@ -242,13 +243,13 @@ document.querySelector('main')!.append(form);`);
     assert.equal(await browserPage.getByRole('button',{name:'Nueva tarea',exact:true}).isVisible(),true);
     await browserPage.locator('vyp-ha-tabs').screenshot({path:resolve(root,'test-results/packed-panels-dark-es.png')});
     const textbox=browserPage.getByRole('textbox',{name:'Task name',exact:true});
-    assert.equal(await textbox.getAttribute('inputmode'),'decimal');
+    assert.equal(await textbox.getAttribute('inputmode'),'numeric');
     assert.equal(await textbox.inputValue(),'Kitchen');await textbox.fill('');await browserPage.getByRole('button',{name:'Save task',exact:true}).click();
     assert.equal(await textbox.getAttribute('aria-invalid'),'true');assert.equal(await browserPage.getByText('Enter a value.',{exact:true}).isVisible(),true);
     assert.equal(await browserPage.locator('form').getAttribute('data-submitted'),null);
-    await textbox.fill('2,25');await textbox.press('Enter');
+    await textbox.fill('00036000291452');await textbox.press('Enter');
     await browserPage.waitForFunction(()=>document.querySelector('form')!.dataset.submitted!==undefined);
-    assert.deepEqual(JSON.parse((await browserPage.locator('form').getAttribute('data-submitted'))!),[['task','2,25'],['action','save']]);
+    assert.deepEqual(JSON.parse((await browserPage.locator('form').getAttribute('data-submitted'))!),[['task','00036000291452'],['action','save']]);
     await browserPage.getByRole('button',{name:'Reset task',exact:true}).click();await browserPage.waitForFunction(()=>document.querySelector('vyp-ha-field')!.value==='Kitchen');assert.equal(await textbox.inputValue(),'Kitchen');
     await browserPage.evaluate(async()=>{
       const field=document.querySelector<HaTextField>('vyp-ha-field')!;

@@ -29,3 +29,34 @@ export const FocusedOptional:Story={args:{value:'',required:false,placeholder:''
 export const Error:Story={args:{error:true}};
 export const SpanishDarkNarrow:Story={globals:{locale:'es',theme:'dark',width:'narrow',motion:'reduced'}};
 export const EnglishFallback:Story={globals:{locale:'fr'}};
+
+export const NumericIdentifier: Story = {
+  args: {
+    value: '00036000291452', defaultValue: '00036000291452', inputMode: 'numeric',
+    label: 'Barcode number', description: 'Enter the digits printed below the barcode.',
+    placeholder: '00036000291452', requiredMessage: 'Enter a barcode number.',
+  },
+  play: async ({canvasElement}) => {
+    const field = canvasElement.querySelector<HaTextField>('vyp-ha-field')!;
+    await field.updateComplete;
+    const input = field.shadowRoot!.querySelector('input')!;
+    field.focus();
+    await expect(input.type).toBe('text');
+    await expect(input.inputMode).toBe('numeric');
+    await expect(field.shadowRoot!.activeElement).toBe(input);
+    await expect(input.getAttribute('aria-describedby')).toBe('help');
+    input.value = '00012345';
+    input.dispatchEvent(new InputEvent('input', {bubbles: true, composed: true}));
+    await waitFor(() => expect(field.value).toBe('00012345'));
+    await expect(new FormData(canvasElement.querySelector('form')!).get('task')).toBe('00012345');
+  },
+};
+export const SpanishNumericIdentifier: Story = {
+  ...NumericIdentifier,
+  args: {
+    ...NumericIdentifier.args, label: 'Número del código de barras',
+    description: 'Introduce los dígitos impresos bajo el código de barras.',
+    requiredMessage: 'Introduce un código de barras.',
+  },
+  globals: {locale: 'es', theme: 'dark', width: 'narrow', motion: 'reduced'},
+};

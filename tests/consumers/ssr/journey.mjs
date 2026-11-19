@@ -6,6 +6,7 @@ export async function exerciseSsrBoundary(browser,origin,framework){
  const markup=await response.text();
  assert.match(markup,new RegExp('<h1>'+framework.replace('.','\\.')+' server shell</h1>','u'));
  assert.match(markup,/<p data-client-fallback(?:="[^"]*")?>Loading household controls…<\/p>/u);
+ assert.doesNotMatch(markup,/<vyp-ha-field(?:\s|>)/u);
  assert.doesNotMatch(markup,/<vyp-ha-tabs(?:\s|>)/u,'The server shell must not render the browser control');
  const page=await browser.newPage({viewport:{width:360,height:640}});
  const errors=[],warnings=[],external=[];
@@ -17,6 +18,13 @@ export async function exerciseSsrBoundary(browser,origin,framework){
  });
  try{
   await page.goto(origin);
+  const barcode=page.getByRole('textbox',{name:'Barcode number',exact:true});
+  await barcode.waitFor();
+  assert.equal(await barcode.getAttribute('type'),'text');
+  assert.equal(await barcode.getAttribute('inputmode'),'numeric');
+  await barcode.fill('00036000291452');
+  assert.equal(await barcode.inputValue(),'00036000291452');
+  assert.deepEqual(await page.getByRole('form',{name:'Barcode form'}).evaluate(form=>[...new FormData(form)]),[['barcode','00036000291452']]);
   const root=page.locator('vyp-ha-tabs'),count=page.getByLabel('Selection requests');
   const overview=page.getByRole('tab',{name:'Overview',exact:true}),tasks=page.getByRole('tab',{name:'Tasks',exact:true});
   await overview.waitFor();
@@ -44,6 +52,6 @@ export async function exerciseSsrBoundary(browser,origin,framework){
   await page.getByRole('tabpanel',{name:'Tasks'}).waitFor();
   assert.equal(await count.textContent(),'3');
   assert.deepEqual({errors,warnings,external},{errors:[],warnings:[],external:[]});
-  return {serverShell:true,serverFallback:true,browserOnlyRegistration:true,keyboard:true,projectedPanels:true,uniqueRequests:true,unmountAndRemount:true,errors,warnings,external};
+  return {numericField:true,leadingZeroFormValue:true,serverShell:true,serverFallback:true,browserOnlyRegistration:true,keyboard:true,projectedPanels:true,uniqueRequests:true,unmountAndRemount:true,errors,warnings,external};
  }finally{await page.close();}
 }
