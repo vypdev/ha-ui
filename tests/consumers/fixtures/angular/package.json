@@ -4,8 +4,8 @@
   "type": "module",
   "packageManager": "pnpm@10.34.0",
   "dependencies": {
-    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.3.tgz",
-    "@vypdev/ha-ui-angular": "file:../pack-1/vypdev-ha-ui-angular-0.1.0-next.3.tgz",
+    "@vypdev/ha-ui": "file:../pack-1/vypdev-ha-ui-0.1.0-next.4.tgz",
+    "@vypdev/ha-ui-angular": "file:../pack-1/vypdev-ha-ui-angular-0.1.0-next.4.tgz",
     "@angular/core": "22.2.4",
     "@angular/common": "22.2.4",
     "@angular/compiler": "22.2.4",

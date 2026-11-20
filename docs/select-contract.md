@@ -67,6 +67,9 @@ disconnect close it without a stray change request. Removed controls/options can
 configuration. The popup flips/clamps to the viewport and tracks scroll/resize, including enclosing
 open shadow roots and slotted owners; every listener is
 removed when it closes. Empty/all-disabled menus never turn an unavailable model into a clear request.
+Scrolling a long menu preserves its position and does not reposition its anchor. An enclosing
+scroll or resize retains that offset within the final available menu height, so an offscreen
+option can be brought into view and selected without another row moving under the pointer.
 
 The multiple dropdown preserves model order in its chips and option order in successful entries.
 Selected values are excluded from search choices; search uses a trimmed case-insensitive label

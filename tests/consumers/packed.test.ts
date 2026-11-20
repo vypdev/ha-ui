@@ -20,7 +20,7 @@ import {chromium} from 'playwright';
 import {parse, stringify} from 'yaml';
 import type {HaTextField} from '../../packages/core/src/components/field.js';
 import {exerciseInstalledCheckbox} from './checkboxes.ts';
-import {exerciseInstalledSelect} from './selects.ts';
+import {exerciseInstalledLongSelect,exerciseInstalledSelect} from './selects.ts';
 import {exerciseReadonlyField} from './fields.ts';
 import {exerciseCoreButton} from './buttons.ts';
 import {exerciseInstalledImplicitSubmit} from './implicit-submit.ts';
@@ -79,7 +79,7 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
         const path=join(destination,name);
         await writeFile(path,canonicalPackageArchive(await readFile(path)));
       }
-      archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.3.tgz'));
+      archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.4.tgz'));
       if(index===2)for(const file of names)assert.deepEqual(await readFile(join(scratch,'pack-1',file)),await readFile(join(destination,file)),'Every cohort coordinate must reproduce: '+file);
     }
     const cohort=[];
@@ -88,7 +88,7 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
       const bytes=await readFile(join(scratch,'pack-1',file));
       const packedMetadata=await execute('tar',['-xOf',join(scratch,'pack-1',file),'package/package.json']);
       const manifest=JSON.parse(packedMetadata.stdout);
-      assert.equal(manifest.version,'0.1.0-next.3');assert.doesNotMatch(packedMetadata.stdout,/workspace:|file:/u);
+      assert.equal(manifest.version,'0.1.0-next.4');assert.doesNotMatch(packedMetadata.stdout,/workspace:|file:/u);
       cohort.push({coordinate:manifest.name,version:manifest.version,sha256:digest(bytes),bytes:bytes.byteLength});
       artifacts.push({coordinate:manifest.name,version:manifest.version,bytes});
     }
@@ -272,7 +272,13 @@ document.querySelector('main')!.append(form);`);
     const checkbox=await exerciseInstalledCheckbox(browserPage);
     await writeFile(resolve(root,'test-results/packed-checkbox.json'),JSON.stringify(checkbox,null,2)+'\n');
     const select=await exerciseInstalledSelect(browserPage);
-    await writeFile(resolve(root,'test-results/packed-select.json'),JSON.stringify(select,null,2)+'\n');
+    const touchPage=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,reducedMotion:'reduce'});
+    let touchSelect;
+    try{
+      await touchPage.goto(browserPage.url());await touchPage.waitForFunction(()=>Boolean(customElements.get('vyp-ha-select')));
+      touchSelect=await exerciseInstalledLongSelect(touchPage,true);
+    }finally{await touchPage.close();}
+    await writeFile(resolve(root,'test-results/packed-select.json'),JSON.stringify({...select,touchSelect},null,2)+'\n');
     const dialog=await exerciseInstalledDialog(browserPage);
     await writeFile(resolve(root,'test-results/packed-dialog.json'),JSON.stringify(dialog,null,2)+'\n');
     const card=await exerciseInstalledCard(browserPage);
