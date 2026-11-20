@@ -64,9 +64,37 @@ export async function exerciseInstalledSelect(page:Page){
  const multiple=page.getByRole('listbox',{name:'Packed category',exact:true});await multiple.selectOption(['0','1']);assert.deepEqual(await page.locator('#packed-core-select').evaluate(host=>(host as HaSelect).value),[1,'1']);await page.getByRole('button',{name:'Save packed category',exact:true}).click();assert.deepEqual(JSON.parse((await page.locator('#packed-select-proof').getAttribute('data-saved'))!),[['category','1'],['category','1']]);
  const result=await page.locator('#packed-core-select').evaluate(async element=>{const host=element as HaSelect;host.state={...host.state,multiple:false,size:1};host.formStateRestoreCallback('false','restore');await host.updateComplete;const restored=host.value;host.form!.reset();await host.updateComplete;return {restored,reset:host.value,entries:[...new FormData(host.form!)]};});assert.deepEqual(result,{restored:false,reset:1,entries:[['category','1']]});await page.locator('#packed-select-proof').evaluate(element=>element.remove());
  const ancestorScroll=await exerciseInstalledSelectScroll(page);
+ const longMenu=await exerciseInstalledLongSelect(page);
  const chipsDropdown=await exerciseInstalledSelectChips(page);
  const visibleLists=await exerciseInstalledSelectLists(page);
- return {typedSingleSelection:true,typedMultipleSelection:true,pickerTypeahead:true,nativeFormData:true,explicitTypedRestorationAndReset:result,ancestorScroll,chipsDropdown,visibleLists};
+ return {typedSingleSelection:true,typedMultipleSelection:true,pickerTypeahead:true,nativeFormData:true,explicitTypedRestorationAndReset:result,ancestorScroll,longMenu,chipsDropdown,visibleLists};
+}
+
+/** Real input against the compiled renderer, including an option below the menu viewport. */
+export async function exerciseInstalledLongSelect(page:Page,touch=false){
+ const results=[];
+ const target=touch?17:25;
+ for(const placement of ['top','bottom']){
+  await page.evaluate(async placement=>{
+   const form=document.createElement('form'),host=document.createElement('vyp-ha-select');form.id='packed-long-select-proof';
+   host.style.cssText='position:fixed;left:16px;width:280px;top:'+innerHeight*(placement==='top'?.65:.25)+'px';
+   host.state={...host.state,label:'Long products',options:Array.from({length:25},(_,index)=>({value:index+1,label:'Product '+(index+1),disabled:false}))};
+   host.name='product';host.value=1;host.dataset.requests='0';
+   host.addEventListener('ha-select-request',event=>{host.dataset.requests=String(Number(host.dataset.requests)+1);host.value=event.detail.value;});
+   form.append(host);document.body.append(form);await host.updateComplete;
+  },placement);
+  const host=page.locator('#packed-long-select-proof vyp-ha-select'),control=host.getByRole('combobox',{name:'Long products',exact:true});
+  await control.click();assert.equal(await host.evaluate(element=>element.shadowRoot!.getElementById('options')!.dataset.placement),placement);
+  const option=host.getByRole('option',{name:'Product '+target,exact:true});
+  if(touch)await option.tap();else await option.click();
+  const result=await host.evaluate(element=>{const host=element as HaSelect;return{value:host.value,requests:Number(host.dataset.requests),entries:[...new FormData(host.form!)],focus:host.shadowRoot!.activeElement?.id};});
+  assert.deepEqual(result,{value:target,requests:1,entries:[['product',String(target)]],focus:'control'});
+  await control.focus();await page.keyboard.press('Home');await page.keyboard.press('End');await page.keyboard.press('Escape');
+  assert.deepEqual(await host.evaluate(element=>({value:(element as HaSelect).value,requests:Number((element as HTMLElement).dataset.requests)})),{value:target,requests:1});
+  results.push({placement,...result,offscreenPointerSelection:true,touch,keyboardPreviewCancelled:true});
+  await page.locator('#packed-long-select-proof').evaluate(element=>element.remove());
+ }
+ return results;
 }
 
 /** Native radio and checkbox input from the installed renderer, with real pointer and keyboard actions. */

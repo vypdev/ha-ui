@@ -116,6 +116,26 @@ test('native nested non-bubbling scroll keeps the open menu attached through win
  await expect.poll(()=>surface.getBoundingClientRect().top).toBe(before-40);expect(events).toHaveLength(1);expect(events[0]).toEqual({target:panel,bubbles:false,trusted:true});
  expect(surface.getBoundingClientRect().top).toBe(combo(host).element().getBoundingClientRect().bottom);expect(seen).toHaveLength(0);
 });
+test.each(['top','bottom'] as const)('a long %s popup preserves native scrolling and selects the last option once',async placement=>{
+ const{host,seen}=await mount({options:Array.from({length:25},(_,index)=>({value:index+1,label:'Product '+(index+1)}))});
+ host.style.cssText='position:fixed;left:16px;width:320px;top:'+innerHeight*(placement==='top'?.65:.25)+'px';
+ host.addEventListener('ha-select-request',event=>{host.value=event.detail.value;});await combo(host).click();
+ const surface=host.shadowRoot!.getElementById('options')!,scrolls:Event[]=[];
+ expect(surface.dataset.placement).toBe(placement);expect(surface.scrollHeight).toBeGreaterThan(surface.clientHeight);
+ surface.addEventListener('scroll',event=>scrolls.push(event));
+ surface.scrollTop=surface.scrollHeight-surface.clientHeight;const requested=surface.scrollTop;
+ await new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve())));
+ expect(scrolls.length).toBeGreaterThan(0);expect(scrolls.every(event=>event.isTrusted&&!event.bubbles)).toBe(true);
+ expect(surface.scrollTop).toBe(requested);expect(seen).toHaveLength(0);expect(host.value).toBe(1);
+ window.dispatchEvent(new Event('resize'));
+ await new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve())));
+ expect(surface.scrollTop).toBe(requested);const settledScrolls=scrolls.length;
+ await new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve())));
+ expect(scrolls).toHaveLength(settledScrolls);
+ await list(host).getByRole('option',{name:'Product 25',exact:true}).click();
+ expect(host.value).toBe(25);expect(seen.map(event=>event.detail)).toEqual([{value:25,reason:'change'}]);
+ await expect.element(list(host)).not.toBeVisible();expect(host.shadowRoot!.activeElement).toBe(combo(host).element());
+});
 test.each([false,true])('native scrolling inside an enclosing shadow root tracks the anchor, slotted=%s',async slotted=>{
  const{host,form,seen}=await mount();const wrapper=document.createElement('div'),outer=wrapper.attachShadow({mode:'open'}),panel=document.createElement('div'),content=document.createElement('div'),spacer=document.createElement('div');
  panel.style.cssText='height:240px;width:400px;overflow:auto';content.style.height='800px';spacer.style.height='80px';content.append(spacer);
