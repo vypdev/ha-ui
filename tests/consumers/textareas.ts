@@ -11,6 +11,16 @@ export async function exerciseFrameworkTextArea(page:Page){
     await page.waitForFunction(expected=>document.querySelector('output[aria-label="Note model"]')!.textContent===expected,value);
     assert.equal(await textbox.inputValue(),value);
   };
+  const invalidSubmissionBlocked=async()=>{
+    const saved=await page.getByLabel('Saved note').textContent();
+    await host.evaluate(element=>{
+      const host=element as HTMLElement;host.dataset.validationBlocks='0';
+      host.addEventListener('invalid',()=>{host.dataset.validationBlocks='1';},{once:true});
+    });
+    await page.getByRole('button',{name:'Save note',exact:true}).click();
+    await page.waitForFunction(()=>document.querySelector('vyp-ha-textarea')!.getAttribute('data-validation-blocks')==='1',undefined,{timeout:3000});
+    assert.equal(await page.getByLabel('Saved note').textContent(),saved,'Invalid native submission must not replace the saved note');
+  };
   await textbox.waitFor();assert.equal(await textbox.inputValue(),'Initial\n😀');assert.equal(await events.textContent(),'0');
   assert.deepEqual(await form.evaluate(element=>[...new FormData(element as HTMLFormElement)]),[['note','Initial\n😀']]);
   await textbox.tap();assert.equal(await textbox.evaluate(element=>(element.getRootNode() as ShadowRoot).activeElement===element),true);
@@ -27,6 +37,10 @@ export async function exerciseFrameworkTextArea(page:Page){
   assert.equal(await textbox.getAttribute('maxlength'),null);
   await textbox.fill(boundary+'😀');await waitModel(boundary+'😀');
   assert.equal(await host.evaluate(element=>(element as HaTextArea).validity.tooLong),true);
+  await invalidSubmissionBlocked();
+  await textbox.fill('x');await waitModel('x');
+  assert.equal(await host.evaluate(element=>(element as HaTextArea).validity.tooShort),true);
+  await invalidSubmissionBlocked();
   await textbox.fill('');await waitModel('');
   await textbox.pressSequentially('First');await textbox.press('Enter');await textbox.pressSequentially('Second');await waitModel('First\nSecond');
   await page.getByRole('button',{name:'Reset note',exact:true}).click();await waitModel('Initial\n😀');
@@ -67,11 +81,11 @@ export async function exerciseFrameworkTextArea(page:Page){
   textbox=page.getByRole('textbox',{name:'Notas',exact:true});await textbox.waitFor();assert.equal(await textbox.inputValue(),'Remounted\n😀');
   await page.waitForFunction(()=>getComputedStyle(document.querySelector('vyp-ha-textarea')!.shadowRoot!.querySelector('textarea')!).color==='rgb(235, 235, 235)');
   assert.equal(await textbox.evaluate(element=>getComputedStyle(element).color),'rgb(235, 235, 235)');
-  await textbox.fill('');await page.getByRole('button',{name:'Save note',exact:true}).click();
+  await textbox.fill('');await invalidSubmissionBlocked();
   assert.equal(await page.getByText('Introduce una nota.',{exact:true}).isVisible(),true);assert.equal(await textbox.getAttribute('aria-describedby'),'help error');
   const geometry=await textbox.evaluate(element=>({width:element.getBoundingClientRect().width,height:element.getBoundingClientRect().height,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth}));
   assert.equal(geometry.viewport,390);assert.ok(geometry.height>=44);assert.ok(geometry.width>200);assert.ok(geometry.documentWidth<=geometry.viewport);
-  return {rapidNativeKeyboard:true,multilineControlledModel:true,trustedNewlineWithoutSubmission:true,inertText:true,unicode1000:true,codepointValidity:true,invalidAssignmentAtomic:true,nativeForm:true,readonlySuccessful:true,disabledAndFieldset:true,cancellation:true,restore:true,reset:true,programmaticWithoutIntent:true,exactlyOnceRemount:true,spanishDark:true,touch390:true,geometry};
+  return {rapidNativeKeyboard:true,multilineControlledModel:true,trustedNewlineWithoutSubmission:true,inertText:true,unicode1000:true,codepointValidity:true,invalidRequiredSubmissionBlocked:true,invalidLengthSubmissionsBlocked:true,invalidAssignmentAtomic:true,nativeForm:true,readonlySuccessful:true,disabledAndFieldset:true,cancellation:true,restore:true,reset:true,programmaticWithoutIntent:true,exactlyOnceRemount:true,spanishDark:true,touch390:true,geometry};
 }
 
 /** Pure DOM consumer of the same packed constructor, independent of a framework bridge. */

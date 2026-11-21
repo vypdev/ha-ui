@@ -108,6 +108,9 @@ synthetic user requests from a React render or lifecycle callback.
 Angular delegates validation to the core policy and reports `haTextArea` flags. Its
 native reset respects the Angular control's nullable/nonnullable default; its update
 strategy remains `change`, `blur` or `submit`. No adapter owns another visual renderer.
+Angular's forms module normally disables native form validation. Use `ngNativeValidate`
+for browser blocking, as in the maintained consumer, or guard persistence with the
+Angular form's validity. Displaying a validation message alone does not block saving.
 
 The `field`, `control`, `label`, `input`, `help` and `error` parts use the established
 HA/shared field color, surface, typography, border, radius and spacing tokens. Labels

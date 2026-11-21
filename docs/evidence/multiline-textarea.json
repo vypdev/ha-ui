@@ -396,5 +396,12 @@
     "finding": "https://github.com/vypdev/ha-ui/pull/43#discussion_r4654742409",
     "change": "C07 verifies publication/adoption under R6. Removed its unrelated R5 association in the case table and both reciprocal maps; R5 remains exercised by catalog/coverage C06.",
     "identityAndScope": "All six requirement definitions, eight case IDs, areas and scenario definitions, and twenty section headings are unchanged."
+  },
+  "angularNativeValidationReview": {
+    "finding": "https://github.com/vypdev/ha-ui/pull/43#discussion_r4654824595",
+    "counterexample": "The reactive Angular form lacked ngNativeValidate, so the browser emitted no invalid event for a too-long note and the save handler was not blocked.",
+    "correction": "The maintained Angular form opts into native constraint validation. All four actual packed framework consumers now require invalid events and unchanged saved data for required-empty, too-short and too-long notes.",
+    "observedResult": "pnpm check and pnpm test:package pass; React, Vue, Angular and Svelte each block all three invalid submissions.",
+    "packageBytes": "All five package digests remain identical to the fc7cb39 product CI candidate; this changes consumer setup, documentation and verification."
   }
 }
