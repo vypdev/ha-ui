@@ -11,7 +11,8 @@
       "specs": [
         "specs/shared-ui-foundation.md",
         "specs/shared-ui-framework-delivery.md",
-        "specs/numeric-text-field.md"
+        "specs/numeric-text-field.md",
+        "specs/multiline-textarea.md"
       ],
       "workflows": [
         ".github/workflows/copilot_issue.yml",
