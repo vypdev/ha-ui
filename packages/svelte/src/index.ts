@@ -17,3 +17,6 @@ export {default as Grid} from './Grid.svelte';
 export type {GridProps,RowProps} from './types.js';
 export {default as Feedback} from './Feedback.svelte';
 export type {FeedbackProps} from './types.js';
+
+export {default as TextArea} from './TextArea.svelte';
+export type {TextAreaProps} from './types.js';

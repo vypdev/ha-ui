@@ -14,6 +14,7 @@ test('does not define a tag or render on the server; registration rejects even a
 });
 
 import {registerField} from '../../packages/core/src/components/field.js';
+import {registerTextArea} from '../../packages/core/src/components/textarea.js';
 test('field registration rejects server rendering without defining its tag',()=>{
   expect(globalThis.customElements?.get('vyp-ha-field')).toBeUndefined();
   expect(()=>registerField()).toThrow('registerField requires a browser CustomElementRegistry');
@@ -26,6 +27,7 @@ test.each([
   ['vyp-ha-button',registerButton,'registerButton requires a browser CustomElementRegistry'],
   ['vyp-ha-tabs',registerTabs,'registerTabs requires a browser CustomElementRegistry'],
   ['vyp-ha-field',registerField,'registerField requires a browser CustomElementRegistry'],
+  ['vyp-ha-textarea',registerTextArea,'registerTextArea requires a browser CustomElementRegistry'],
   ['vyp-ha-dialog',registerDialog,'registerDialog requires a browser CustomElementRegistry'],
   ['vyp-ha-card',registerCard,'registerCard requires a browser CustomElementRegistry'],
   ['vyp-ha-row',registerRow,'Layout registration requires a browser CustomElementRegistry'],

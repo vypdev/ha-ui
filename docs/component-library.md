@@ -345,3 +345,10 @@ The [feedback contract](feedback-contract.md) covers inline notices, error annou
 empty states and loading. The application owns each update and any projected action. The
 renderer keeps the action outside the live announcement so that a native control retains its
 form, keyboard and focus behavior. No application service or timer runs inside the component.
+
+### Separate multiline control
+
+The bounded `vyp-ha-textarea` increment belongs to the existing shared foundation.
+Its [public contract](textarea-contract.md) and [native companion](../specs/multiline-textarea.md)
+preserve all existing owner requirements and cases. Package validation, reviewed
+cohort publication and actual Domus #157 adoption remain separately evidenced gates.

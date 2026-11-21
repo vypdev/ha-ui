@@ -1,3 +1,4 @@
+import {exerciseFrameworkTextArea} from './textareas.ts';
 import {exerciseFrameworkFeedback} from './feedback.ts';
 import {exerciseFrameworkLayout} from './layouts.ts';
 import {exerciseFrameworkCard} from './cards.ts';
@@ -51,8 +52,8 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
     assert.equal(await readFile(join(folder,'pnpm-lock.yaml'),'utf8'),frozen);
     const installedRoot=join(folder,'node_modules/@vypdev/ha-ui-'+framework);
     const published=JSON.parse(await readFile(join(installedRoot,'package.json'),'utf8'));
-    assert.equal(published.version,'0.1.0-next.4');
-    assert.equal(published.dependencies['@vypdev/ha-ui'],'0.1.0-next.4');
+    assert.equal(published.version,'0.1.0-next.5');
+    assert.equal(published.dependencies['@vypdev/ha-ui'],'0.1.0-next.5');
     assert.doesNotMatch(JSON.stringify(published),/workspace:|file:/u,'Published metadata cannot retain fixture or workspace references');
     for (const source of globSync('packages/'+framework+'/src/**/*.{ts,svelte}',{cwd:root}))
       assert.deepEqual(await readFile(join(installedRoot,relative(join(root,'packages',framework),join(root,source)))),await readFile(join(root,source)),'Installed authored source must match '+source);
@@ -158,8 +159,16 @@ export async function exerciseFrameworks(root:string,scratch:string,browser:Brow
       assert.equal(await page.getByText('Introduce un valor.',{exact:true}).isVisible(),true);
       assert.equal(await page.locator('vyp-ha-field #error').evaluate(element=>getComputedStyle(element).color),'rgb(242, 139, 130)');
       await page.locator('vyp-ha-field').screenshot({path:join(root,'test-results','packed-'+framework+'-field-error-dark-es.png')});
+      const notePage=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,reducedMotion:'reduce'});
+      let textArea;
+      try{
+        notePage.on('pageerror',error=>errors.push(error.message));
+        await notePage.goto('http://127.0.0.1:'+address.port+'/textarea.html');
+        textArea=await exerciseFrameworkTextArea(notePage);
+        await notePage.locator('vyp-ha-textarea').screenshot({path:join(root,'test-results','packed-'+framework+'-textarea-dark-es-390.png')});
+      }finally{await notePage.close();}
       assert.deepEqual(errors,[]);
-      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,nativeHostAttributes,navigationIcons,nestedSelectionIsolated:true,textField,button,select,checkbox,dialog,card,layout,feedback,browser:browser.version(),errors});
+      results.push({framework,compiled:true,frozenOfflineInstall:true,noForeignFramework:true,candidateArchives,props:true,events:true,slots:true,disabled:true,runtimeSpanishAndTheme:true,keyboard:true,teardownAndRemount:true,nativeHostAttributes,navigationIcons,nestedSelectionIsolated:true,textArea,textField,button,select,checkbox,dialog,card,layout,feedback,browser:browser.version(),errors});
       console.log('Packed '+framework+' compiler, bindings and real Chromium lifecycle passed');
     } finally {await page.close();await server.close();}
   }

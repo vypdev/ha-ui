@@ -1,6 +1,6 @@
 {
   "name": "@vypdev/ha-ui",
-  "version": "0.1.0-next.4",
+  "version": "0.1.0-next.5",
   "description": "Shared presentation contracts and components for Home Assistant applications",
   "type": "module",
   "license": "(MIT AND Apache-2.0 AND CC-BY-4.0)",
@@ -93,6 +93,14 @@
     "./feedback": {
       "types": "./dist/components/feedback.d.ts",
       "import": "./dist/components/feedback.js"
+    },
+    "./textarea-contracts": {
+      "types": "./dist/textarea-contracts.d.ts",
+      "import": "./dist/textarea-contracts.js"
+    },
+    "./textarea": {
+      "types": "./dist/components/textarea.d.ts",
+      "import": "./dist/components/textarea.js"
     }
   },
   "publishConfig": {

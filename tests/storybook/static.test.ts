@@ -36,7 +36,7 @@ test('the complete static catalog works at the repository subpath with local ass
   const root=resolve(process.env.STORYBOOK_OUTPUT_DIR??'build/storybook'),output=resolve('test-results/storybook');await mkdir(output,{recursive:true});
   const index=JSON.parse(await readFile(resolve(root,'index.json'),'utf8'));
   const entries=Object.values(index.entries) as {id:string;type:string}[];
-  assert.equal(entries.filter(entry=>entry.type==='story').length,94);assert.equal(entries.filter(entry=>entry.type==='docs').length,11);
+  assert.equal(entries.filter(entry=>entry.type==='story').length,102);assert.equal(entries.filter(entry=>entry.type==='docs').length,12);
   const fontFiles=(await readdir(resolve(root,'assets'))).filter(name=>/^NotoSansArabic-Regular-[A-Za-z0-9_-]+\.ttf$/u.test(name));
   assert.equal(fontFiles.length,1,'One local Arabic fallback is required');
   const font=JSON.parse(await readFile(resolve('docs/evidence/ha-card-reference.json'),'utf8')).arabicFont;

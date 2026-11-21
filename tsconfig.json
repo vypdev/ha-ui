@@ -74,6 +74,12 @@
       ],
       "@vypdev/ha-ui/feedback": [
         "./packages/core/src/components/feedback.ts"
+      ],
+      "@vypdev/ha-ui/textarea-contracts": [
+        "./packages/core/src/textarea-contracts.ts"
+      ],
+      "@vypdev/ha-ui/textarea": [
+        "./packages/core/src/components/textarea.ts"
       ]
     }
   },
