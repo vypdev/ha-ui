@@ -378,5 +378,18 @@
     "No full foundation completion or pixel parity with an independently measured HA textarea is claimed.",
     "No npm publication, Domus installed acceptance or Gateway adoption is claimed by this record.",
     "Original owner requirements, cases, aliases and reverse mappings remain owned by their existing specifications."
-  ]
+  ],
+  "productCI": {
+    "run": "https://github.com/vypdev/ha-ui/actions/runs/44940564198",
+    "sourceRevision": "fc7cb39c50477c4f38a2fff1125ed83fc8c40131",
+    "result": "SUCCESS; all source/packed/Lit/framework/SSR/browser/static/catalog checks passed with 100% global and per-file coverage",
+    "candidateSourceBound": true,
+    "publication": "Not published; final production CI candidate still required."
+  },
+  "reviewCheckpoint": {
+    "reviewedSource": "fc7cb39c50477c4f38a2fff1125ed83fc8c40131",
+    "finding": "https://github.com/vypdev/ha-ui/pull/43#discussion_r4654611204",
+    "correction": "Updated the historical admission inventory to identify the current implementation, verified component checks and still-pending publication/adoption. Native requirements and case rows are unchanged.",
+    "status": "Documentation correction prepared for same-head CI and re-review"
+  }
 }

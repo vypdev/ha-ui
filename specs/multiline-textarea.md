@@ -1,6 +1,6 @@
 # Add an accessible form-associated multiline text area
 
-- Status: Draft
+- Status: Implementation under review; cohort publication and Domus adoption pending
 - Catalog capability: shared-ui-foundation
 
 ## 1. Executive summary
@@ -12,6 +12,8 @@ Choose an accessible note field -> enter and validate multiline text -> retain i
 ```
 
 The text stays inert and literal in every state. The shared library owns presentation and accessibility; applications own domain rules, permissions, and recovery policy.
+
+Implementation checkpoint (2026-11-21): the separate core control, four adapters, catalog examples and executable consumers now exist. Their API and observed qualification are recorded in `docs/textarea-contract.md` and `docs/evidence/multiline-textarea.json`. Selected-source statements below describe the earlier native admission baseline; they do not describe the current implementation inventory. Component review, reviewed cohort publication and installed Domus adoption remain separate gates.
 
 ## 2. Problem, current behavior, and evidence
 
@@ -33,7 +35,7 @@ Domus #157 needs a shared note control for a protected shopping-request form tha
 - Framework delivery boundaries and retained ownership: `specs/shared-ui-framework-delivery.md`, sections 1–4.
 - Catalog status and registered owner: `specs/catalog.json`, capability `shared-ui-foundation`.
 - Concrete motivating journey: issue #42 and Domus issue #157.
-- Unknowns: The selected evidence does not establish an implemented textarea, its API, or acceptance of this requested behavior. These remain proposed requirements pending implementation and verification.
+- Admission evidence limitation: the selected baseline did not establish a textarea. Current implementation paths and local qualification are registered separately in the catalog and focused acceptance record; publication and installed Domus adoption remain pending.
 
 ## 3. Actors, surfaces, and terminology
 
@@ -112,7 +114,7 @@ This control adds no application-model or domain-validation configuration. The p
 
 Use three rows by default. Accept reviewed integer row values from 2 through 20 and reject values outside that range or non-integers. Default minimum length to zero and maximum length to the declared 16,384-codepoint bound; reject unsafe, negative, over-bound, or contradictory limits. The immutable value safety rules, inert literal rendering, and codepoint ceiling are not configurable. Required, read-only, disabled, label, description/help, placeholder, and localized validation content are explicit per-control inputs; do not add hidden library persistence or global locale state.
 
-For a normal configuration, use three rows and the default length bounds with an app-provided label and locale-specific messages. A meaningful alternative is a reviewed row count such as five and a narrower application maximum, provided it is at least the configured minimum and within the fixed ceiling. Apps retain locale and draft persistence. The concrete public property names, precedence details, and migration behavior require review in the new contract before implementation; do not infer them from the single-line `TextFieldState` in `packages/core/src/field-contracts.ts`.
+For a normal configuration, use three rows and the default length bounds with an app-provided label and locale-specific messages. A meaningful alternative is a reviewed row count such as five and a narrower application maximum, provided it is at least the configured minimum and within the fixed ceiling. Apps retain locale and draft persistence. The concrete public properties, precedence and recovery behavior are documented in `docs/textarea-contract.md` and exercised by the focused cases; do not infer them from the single-line `TextFieldState` in `packages/core/src/field-contracts.ts`.
 
 ## 8. Clean Architecture design
 
@@ -128,7 +130,7 @@ Keep the multiline value and event types separate from `textFieldValue` and `fie
 
 ### 8.3 Executable constraints and evidence
 
-Enforce dependency direction, framework isolation, and contract validity through the repository's architecture and contract checks, with new cases covering the multiline boundaries. Verify the shared renderer and each real adapter through direct and packed consumers, and verify server-import/client/hydration behavior in the named framework fixtures. The selected source establishes the existing contract and owner boundaries, but the concrete invocation and prerequisite for full SDK consistency verification are unverified here; publication acceptance must still observe that the specification satisfies the required format, internal and cross-document consistency is checked, and reciprocal catalog ownership, paths, and evidence agree with the generated view.
+Enforce dependency direction, framework isolation, and contract validity through the repository's architecture and contract checks, with new cases covering the multiline boundaries. Verify the shared renderer and each real adapter through direct and packed consumers, and verify server-import/client/hydration behavior in the named framework fixtures. The case mapping in `docs/evidence/multiline-textarea.json` records observed commands and results. The original pinned SDK invocation and source hashes are documented in `docs/component-library.md#catalog-validation`. Native SDD publication verifies format, and SDK validation checks catalog paths, ownership and the generated view; neither substitutes for semantic review or executed product acceptance.
 
 ## 9. UI/UX and content contract
 
@@ -154,7 +156,7 @@ The shared component introduces no application permissions, storage, analytics, 
 
 Users receive standard accessible labels, help, localized validation feedback, and native validity behavior. Consumers can inspect typed events and form state; failures identify the invalid constraint without echoing private field contents. The component has no background retry, remote telemetry, or application mutation. Framework interoperability evidence covers controlled values, multiline events, invalid values, forms, reset/restoration, disabled/read-only behavior, and lifecycle/remount.
 
-Maintain the documented framework matrix and exercise real packed-package consumers for direct DOM/Lit and React, Vue, Angular, and Svelte. Verify Next.js, Nuxt, and SvelteKit server-import, client-registration/mount, and hydration boundaries; framework interoperability alone does not establish SSR support. Consumer evidence records the tested package cohort, framework/browser versions, and results. Catalog examples and browser/consumer checks must cover the specified states, Unicode behavior, and both themes. The concrete repository invocation and prerequisites for the full browser and consumer checks remain unverified here; a declared script is not evidence that it was run or passed.
+Maintain the documented framework matrix and exercise real packed-package consumers for direct DOM/Lit and React, Vue, Angular, and Svelte. Verify Next.js, Nuxt, and SvelteKit server-import, client-registration/mount, and hydration boundaries; framework interoperability alone does not establish SSR support. Consumer evidence records the tested package cohort, framework/browser versions, and results. Catalog examples and browser/consumer checks must cover the specified states, Unicode behavior, and both themes. The focused acceptance record identifies the executed browser and consumer commands, exact local toolchain and results; final same-head CI and review remain required. A declared script alone is not evidence that it passed.
 
 ## 13. Compatibility, migration, rollout, and rollback
 
@@ -162,13 +164,13 @@ This is an additive, separate `vyp-ha-textarea` contract. Existing consumers ret
 
 No migration of existing field values or in-flight application data is required. Applications adopt the new control through their own reviewed changes and retain their existing drafts and recovery paths. Publish only through the documented reviewed version-cohort flow after component and review acceptance. Validate Domus #157 against that exact published cohort, including its multiline/Unicode entry and recovery journey, as a separate adoption gate. Package publication does not imply consumer adoption; retain the prior tested consumer artifact/lock for rollback and do not clear application data to make adoption pass.
 
-Publication acceptance keeps three observable outcomes: the specification satisfies the required format; internal and cross-document consistency is checked; reciprocal catalog ownership, paths, and evidence agree with the generated view. Keep these as publication constraints, separate from product behavior and the Domus adoption gate. The selected source documents a repository-specific first-increment command set and an original SDK catalog-validation procedure, but the concrete invocation and prerequisites for this new companion’s required specification-format, consistency, and generated-view ownership checks remain unverified. Do not treat another documentation check or a declared command as proof of those outcomes.
+Publication acceptance keeps three observable outcomes: the specification satisfies the required format; internal and cross-document consistency is checked; reciprocal catalog ownership, paths, and evidence agree with the generated view. Keep these as publication constraints, separate from product behavior and the Domus adoption gate. The native admission run linked in the focused acceptance record verified this companion’s SDD publication. The original pinned catalog SDK was subsequently executed against the actual repository; its invocation and identity are documented in the component guide. Catalog consistency, semantic review and product acceptance remain distinct outcomes.
 
 ## 14. Testing strategy and numeric budget
 
 The minimum is eight distinct cases, one for each independent behavior group in the admitted inventory. The groups cover the core DOM contract and Unicode handling; codepoint limits and narrow layout; browser form and accessibility behavior; framework adapters; packed-package and server consumers; catalog examples, coverage and consumer checks; publication and separate adoption; and specification publication consistency. These cases add focused textarea evidence and do not recount or replace the retained requirements or cases in `specs/shared-ui-foundation.md`, `specs/shared-ui-framework-delivery.md`, or `specs/numeric-text-field.md`.
 
-The complete supported global and per-file coverage requirement for core, contracts, adapters and integration code remains in force, as do the required browser and consumer checks. Acceptance requires observed results for each applicable check and human review of visual, touch-target and narrow-width behavior. The selected project declares `pnpm@10.34.0`, Node `>=24.20.0 <25`, and package scripts for checking, testing with coverage, building, packed consumers and SSR. Their definitions are visible in `package.json`; their full verification scope against this specification and a concrete invocation for SDK catalog consistency remain unverified. No project command is asserted as executed or passing. The publication consistency case records the three required observable outcomes: required format is satisfied, internal and cross-document consistency is checked, and reciprocal catalog ownership, paths and evidence agree with the generated view.
+The complete supported global and per-file coverage requirement for core, contracts, adapters and integration code remains in force, as do the required browser and consumer checks. Acceptance requires observed results for each applicable check and human review of visual, touch-target and narrow-width behavior. The selected project declares `pnpm@10.34.0`, Node `>=24.20.0 <25`, and package scripts for checking, testing with coverage, building, packed consumers and SSR. The focused acceptance record maps the executed checks to this companion’s cases and identifies the original SDK catalog-validation procedure. It reports local results and leaves reviewed publication and installed adoption pending. The publication consistency case records the three required observable outcomes: required format is satisfied, internal and cross-document consistency is checked, and reciprocal catalog ownership, paths and evidence agree with the generated view.
 
 | Area | Minimum distinct cases | Behaviors/risks covered |
 |---|---:|---|
@@ -197,7 +199,7 @@ The complete supported global and per-file coverage requirement for core, contra
 
 The textarea documentation must explain the separate `vyp-ha-textarea` contract, recommended defaults and bounds, accessible labeling and validation, native line-ending behavior, controlled updates, form/reset/restore behavior, framework usage, the supported framework matrix, and server-import/client/hydration boundaries. Provide catalog examples for normal, multiline/Unicode, validation, disabled and read-only states, with localized labels and both themes. Keep examples aligned with real consumer behavior. The retained component-library guidance and contract documentation in `docs/component-library.md`, `docs/field-contract.md`, and `docs/migration.md` inform existing package, field and migration conventions; they do not establish completed textarea documentation.
 
-The declared file inventory contains one prospective create row: `specs/multiline-textarea.md`. It is this companion specification; no implementation file is claimed to exist or registered as current evidence. A concrete invocation for validating the specification against the required format, and for SDK catalog consistency, remains unverified.
+The table below records the companion-specification create row from native admission. Current implementation and verification files are registered separately in `specs/catalog.json`, including `packages/core/src/textarea-contracts.ts`, `packages/core/src/components/textarea.ts` and all four adapters. Their observed component qualification is recorded in `docs/evidence/multiline-textarea.json`; reviewed publication and installed Domus adoption remain pending.
 
 | Path | Change |
 | --- | --- |
@@ -246,7 +248,7 @@ The core value, literal-text and compatibility evidence belongs to the direct co
 4. Deliver direct DOM/Lit use and React, Vue, Angular, and Svelte adapters. Verify controlled updates, typed multiline events, rejection of malformed event payloads before callbacks, forms, invalid values, disabled/read-only behavior, and lifecycle/remount. Then install packed artifacts in real consumers and verify the maintained framework matrix and Next.js, Nuxt, and SvelteKit server-import, client, and hydration boundaries. Framework interoperability by itself does not establish SSR support.
 5. Add catalog examples for normal, multiline/Unicode, validation, disabled, and read-only states, with localized labels and both themes. Verify complete supported global and per-file coverage for core, contracts, adapters, and integration code, plus the repository’s browser and consumer checks. Keep examples and evidence aligned with the implemented behavior.
 6. After component and review acceptance, follow the documented reviewed version-cohort publication flow. Separately validate Domus #157 against that exact published cohort, including multiline/Unicode entry and recovery. Publication evidence and consumer adoption are distinct outcomes.
-7. Before specification publication, check format and internal and cross-document consistency, and verify that reciprocal catalog ownership, paths, and evidence agree with the generated view. Preserve the explicit observable outcomes in section 19; structural counts and traceability do not establish semantic completeness or executed acceptance. The concrete invocation and any prerequisite for these checks remain unverified.
+7. Before specification publication, check format and internal and cross-document consistency, and verify that reciprocal catalog ownership, paths, and evidence agree with the generated view. Preserve the explicit observable outcomes in section 19; structural counts and traceability do not establish semantic completeness or executed acceptance. The original SDK invocation, source identity and observed result are recorded in the component guide and focused acceptance record; semantic review remains a separate gate.
 
 ## 19. Definition of Done
 
@@ -255,7 +257,7 @@ The core value, literal-text and compatibility evidence belongs to the direct co
 - [ ] Unicode acceptance and rejection, literal inert rendering, programmatic-value preservation, native user-edit line endings, codepoint limits, supplementary-character behavior, invalid limits, row bounds, and 390 px layout meet their observable criteria.
 - [ ] Accessible form behavior, validation, focus, reset and restoration, fieldset behavior, newline entry, theme readability, and responsive/touch criteria pass in direct use and every supported adapter.
 - [ ] Packed-package consumers and the maintained framework matrix pass; Next.js, Nuxt, and SvelteKit server-import/client/hydration boundaries have direct evidence.
-- [ ] Catalog examples and required global and per-file coverage, browser, and consumer checks pass. Concrete invocations and prerequisites remain unverified where not established by the selected source.
+- [ ] Catalog examples and required global and per-file coverage, browser, and consumer checks pass. Concrete invocations, toolchain prerequisites and observed results are recorded in the focused acceptance record.
 - [ ] The reviewed version cohort is published only after component and review acceptance, and Domus #157 is separately validated against that exact cohort with its multiline/Unicode and recovery journey.
 - [ ] The specification satisfies the required format.
 - [ ] Internal and cross-document consistency is checked.
@@ -268,4 +270,4 @@ The core value, literal-text and compatibility evidence belongs to the direct co
 - Retained owner: `specs/shared-ui-foundation.md`; framework delivery contract: `specs/shared-ui-framework-delivery.md`; existing single-line field contract: `specs/numeric-text-field.md`. This companion adds the bounded textarea delta and does not rewrite those owners.
 - Domus adoption target: https://github.com/vypdev/domus/issues/157. Validate adoption only against the exact reviewed published cohort; it remains separate from publication acceptance.
 - Decision: use a distinct textarea API with native multiline semantics and typed adapters. Preserve existing single-line validation and adapter APIs. Keep application models, permissions, and domain validation with consuming applications; keep text inert and literal.
-- Decisions still requiring implementation evidence include exact public signatures, framework and SSR behavior, coverage and consumer-check results, and the concrete invocation and prerequisites for specification publication checks. The selected source does not establish those outcomes.
+- Current implementation evidence: `docs/textarea-contract.md` defines the public API; `docs/evidence/multiline-textarea.json` maps observed source, packed, SSR, coverage, browser and catalog checks to the eight native cases. The reviewed version-cohort publication and exact published Domus adoption remain outstanding.
