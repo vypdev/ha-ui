@@ -36,3 +36,6 @@ export {Grid,Row} from './layout.js';
 export type {GridProps,RowProps} from './layout.js';
 export {Feedback} from './feedback.js';
 export type {FeedbackProps} from './feedback.js';
+
+export {TextArea} from './text-area.js';
+export type {TextAreaProps} from './text-area.js';

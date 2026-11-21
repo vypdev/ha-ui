@@ -1,3 +1,4 @@
+import {exerciseInstalledLitTextArea,exerciseInstalledTextArea} from './textareas.ts';
 import {inspectToolchain} from '../../tooling/compatibility.mjs';
 import {canonicalPackageArchive,captureCandidate,verifyCandidate} from '../../tooling/packaging.mjs';
 import {exerciseInstalledFeedback} from './feedback.ts';
@@ -79,7 +80,7 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
         const path=join(destination,name);
         await writeFile(path,canonicalPackageArchive(await readFile(path)));
       }
-      archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.4.tgz'));
+      archives.push(join(destination, 'vypdev-ha-ui-0.1.0-next.5.tgz'));
       if(index===2)for(const file of names)assert.deepEqual(await readFile(join(scratch,'pack-1',file)),await readFile(join(destination,file)),'Every cohort coordinate must reproduce: '+file);
     }
     const cohort=[];
@@ -88,14 +89,14 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
       const bytes=await readFile(join(scratch,'pack-1',file));
       const packedMetadata=await execute('tar',['-xOf',join(scratch,'pack-1',file),'package/package.json']);
       const manifest=JSON.parse(packedMetadata.stdout);
-      assert.equal(manifest.version,'0.1.0-next.4');assert.doesNotMatch(packedMetadata.stdout,/workspace:|file:/u);
+      assert.equal(manifest.version,'0.1.0-next.5');assert.doesNotMatch(packedMetadata.stdout,/workspace:|file:/u);
       cohort.push({coordinate:manifest.name,version:manifest.version,sha256:digest(bytes),bytes:bytes.byteLength});
       artifacts.push({coordinate:manifest.name,version:manifest.version,bytes});
     }
     const first = await readFile(archives[0]), second = await readFile(archives[1]);
     assert.deepEqual(first, second, 'Repeated independent builds must produce the same packed bytes');
     const consumer = join(scratch, 'consumer'); await mkdir(consumer);
-    await writeFile(join(consumer, 'package.json'), JSON.stringify({name:'packed-contract-fixture', private:true, type:'module', packageManager:'pnpm@10.34.0', dependencies:{'@vypdev/ha-ui':'file:'+archives[0]}}));
+    await writeFile(join(consumer, 'package.json'), JSON.stringify({name:'packed-contract-fixture', private:true, type:'module', packageManager:'pnpm@10.34.0', dependencies:{'@vypdev/ha-ui':'file:'+archives[0],lit:sourceLock.importers['packages/core'].dependencies.lit.specifier}}));
     const cache=join(scratch,'empty-metadata-cache');
     const configuration=stringify({packages:[],autoInstallPeers:false,cacheDir:cache});
     await writeFile(join(consumer,'pnpm-workspace.yaml'),configuration);
@@ -125,7 +126,7 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
     const archiveKey=manifest.name+'@'+fileVersion;
     packages[archiveKey]={resolution:{integrity:'sha512-'+createHash('sha512').update(first).digest('base64'),tarball:fileVersion},version:manifest.version};
     snapshots[archiveKey]={dependencies:runtime};
-    const frozenLock=stringify({lockfileVersion:sourceLock.lockfileVersion,settings:sourceLock.settings,importers:{'.':{dependencies:{[manifest.name]:{specifier:'file:'+archives[0],version:fileVersion}}}},packages,snapshots});
+    const frozenLock=stringify({lockfileVersion:sourceLock.lockfileVersion,settings:sourceLock.settings,importers:{'.':{dependencies:{[manifest.name]:{specifier:'file:'+archives[0],version:fileVersion},lit:{specifier:manifest.dependencies.lit,version:runtime.lit}}}},packages,snapshots});
     await writeFile(join(consumer,'pnpm-lock.yaml'),frozenLock);
     const cacheConfiguration=await execute('pnpm',['config','get','cache-dir'],{cwd:consumer}); assert.equal(cacheConfiguration.stdout.trim(),cache);
     await execute('pnpm', ['install', '--frozen-lockfile', '--offline', '--ignore-scripts'], {cwd: consumer});
@@ -133,6 +134,8 @@ test('the actual packed package is reproducible and passes clean DOM-free and re
     await assert.rejects(readFile(join(cache,'metadata-v1.3/registry.npmjs.org/lit.json')),{code:'ENOENT'});
     await writeFile(join(consumer, 'contract.ts'), `import {navigationState, type NavigationKind} from '@vypdev/ha-ui/contracts';
 import {textFieldState,textFieldValidity,fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
+import {textAreaState,textAreaValidity,textAreaValueDetail} from '@vypdev/ha-ui/textarea-contracts';
+if(textAreaValidity('😀'.repeat(1000),textAreaState({label:'Notes',maxLength:1000})).flags.tooLong||textAreaValueDetail({value:'Line one\\n😀',reason:'input'}).reason!=='input')throw Error('Expected pure multiline contract');
 import {buttonState,buttonPressDetail,type ButtonType} from '@vypdev/ha-ui/button-contracts';
 import {dialogState,dialogRequestDetail,type DialogAction} from '@vypdev/ha-ui/dialog-contracts';
 import {cardState,type CardHeadingLevel} from '@vypdev/ha-ui/card-contracts';
@@ -158,6 +161,8 @@ void selected;`);
     await execute(process.execPath, [resolve(root, 'node_modules/typescript/bin/tsc'), '-p', 'tsconfig.json'], {cwd: consumer});
     const probe = await execute(process.execPath, ['--input-type=module', '-e', `import {navigationState} from '@vypdev/ha-ui/contracts';
 import {fieldValueDetail} from '@vypdev/ha-ui/field-contracts';
+import {textAreaState,textAreaValueDetail} from '@vypdev/ha-ui/textarea-contracts';
+if(!Object.isFrozen(textAreaState({label:'Notes'}))||textAreaValueDetail({value:'Line one\\n😀',reason:'input'}).value!=='Line one\\n😀')throw Error('Expected DOM-free multiline contract');
 import {checkboxState,checkboxChecked} from '@vypdev/ha-ui/checkbox-contracts';
 if(!Object.isFrozen(checkboxState({label:'Notify'}))||checkboxChecked(true)!==true)throw Error('Expected DOM-free checkbox policy');
 import {selectSelection,selectRestoreValue,selectRestoreState} from '@vypdev/ha-ui/select-contracts';
@@ -180,7 +185,7 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
     assert.match(probe.stdout, /Packed contract imported without DOM globals/u);
     const installed = join(consumer, 'node_modules/@vypdev/ha-ui');
     const packageFiles=['LICENSE','NOTICE','LICENSES/Home-Assistant-Apache-2.0.txt','LICENSES/Font-Awesome-Free-7.0.0.txt','LICENSES/Web-Awesome-3.14.0-ha.2-MIT.txt'];
-    for (const module of ['contracts','index','presentation-text','field-contracts','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','components/select-list','checkbox-contracts','checkbox-mark','components/checkbox','components/implicit-submit','dialog-contracts','components/dialog','card-contracts','components/card','layout-contracts','components/layout','feedback-contracts','components/feedback']) {
+    for (const module of ['contracts','index','presentation-text','field-contracts','textarea-contracts','components/textarea','components/tabs','components/field','button-contracts','components/button','select-contracts','components/select','components/select-list','checkbox-contracts','checkbox-mark','components/checkbox','components/implicit-submit','dialog-contracts','components/dialog','card-contracts','components/card','layout-contracts','components/layout','feedback-contracts','components/feedback']) {
       packageFiles.push('src/'+module+'.ts');
       for (const suffix of ['.js','.js.map','.d.ts','.d.ts.map']) packageFiles.push('dist/'+module+suffix);
     }
@@ -190,6 +195,7 @@ console.log('Packed contract imported without DOM globals');`], {cwd: consumer})
     await fixtureFonts(root,consumer);
     await writeFile(join(consumer,'client.ts'), `import {registerTabs} from '@vypdev/ha-ui/tabs';
 import {registerField} from '@vypdev/ha-ui/field';
+import {registerTextArea} from '@vypdev/ha-ui/textarea';
 import {registerButton} from '@vypdev/ha-ui/button';
 import {registerSelect} from '@vypdev/ha-ui/select';
 import {registerCheckbox} from '@vypdev/ha-ui/checkbox';
@@ -205,7 +211,7 @@ const element=document.createElement('vyp-ha-tabs');
 element.state=navigationState({kind:'navigation',label:'Household sections',selected:'overview',items:[{id:'overview',label:'Overview',href:'#overview'},{id:'tasks',label:'Tasks',href:'#tasks'}]});
 element.addEventListener('ha-selection-request',event=>{event.preventDefault();element.state=navigationState({...element.state,selected:event.detail.id});});
 document.querySelector('main')!.append(element);
-registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();
+registerField();registerTextArea();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();
 const form=document.createElement('form'),field=document.createElement('vyp-ha-field');
 field.state=textFieldState({label:'Task name',description:'A name for this task.',required:true,inputMode:'numeric'});field.name='task';field.defaultValue='Kitchen';
 field.addEventListener('ha-value-request',event=>{if(!event.defaultPrevented)field.value=event.detail.value;});
@@ -213,7 +219,9 @@ const save=document.createElement('vyp-ha-button');save.type='submit';save.name=
 const reset=document.createElement('vyp-ha-button');reset.type='reset';reset.state=buttonState({label:'Reset task'});form.append(field,save,reset);
 form.addEventListener('submit',event=>{event.preventDefault();form.dataset.submitted=JSON.stringify([...new FormData(form,(event as SubmitEvent).submitter as HTMLButtonElement)]);});
 document.querySelector('main')!.append(form);`);
-    await writeFile(join(consumer,'client.tsconfig.json'),JSON.stringify({compilerOptions:{target:'ES2024',module:'NodeNext',moduleResolution:'NodeNext',strict:true,noEmit:true,lib:['ES2024','DOM'],types:[]},include:['client.ts']}));
+    await writeFile(join(consumer,'lit-textarea-client.ts'),await readFile(resolve(root,'tests/consumers/lit-textarea-client.ts')));
+    await writeFile(join(consumer,'lit-textarea.html'),'<html lang="en"><head><meta charset="utf-8"><title>Installed Lit textarea</title></head><body><main></main><script type="module" src="/lit-textarea-client.ts"></script></body></html>');
+    await writeFile(join(consumer,'client.tsconfig.json'),JSON.stringify({compilerOptions:{target:'ES2024',module:'NodeNext',moduleResolution:'NodeNext',strict:true,noEmit:true,lib:['ES2024','DOM'],types:[]},include:['client.ts','lit-textarea-client.ts']}));
     await execute(process.execPath,[resolve(root,'node_modules/typescript/bin/tsc'),'-p','client.tsconfig.json'],{cwd:consumer});
     server=await createServer({configFile:false,root:consumer,logLevel:'error',server:{host:'127.0.0.1',port:0}});
     await server.listen(); const address=server.httpServer!.address(); assert.ok(address && typeof address==='object');
@@ -264,7 +272,7 @@ document.querySelector('main')!.append(form);`);
     assert.deepEqual(errors,[]);
     const packedBrowser={engine:'chromium',version:browser.version(),compiledClient:true,navigation:true,panels:true,textField:{controlledInput:true,nativeSubmitter:true,requiredValidation:true,reset:true,disabledSubmission:true},runtimeSpanishAndTheme:true,reducedMotion:true,consoleErrors:errors};
     await mkdir(resolve(root, 'test-results'), {recursive:true});
-    await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data, navigation, text field and button; four field and button framework bindings are verified separately; broader controls and application adoption remain required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
+    await writeFile(resolve(root, 'test-results/packed-contract.json'), JSON.stringify({scope:'Core data and real browser controls, including the separate multiline textarea; four framework bindings, Lit and SSR are recorded separately; application adoption remains required',sha256:digest(first),bytes:first.byteLength,reproducible:true,cleanOfflineInstall:true,frozenRuntimeLock:true,isolatedMetadataCache:true,negativeWithoutLockRejected:true,compiledWithoutDomTypes:true,serverImport:true,packedBrowser},null,2)+'\n');
     const navigationIcons=await exerciseInstalledNavigationIcons(browserPage);
     const navigationOverflow=await exerciseInstalledNavigationOverflow(browserPage);
     await writeFile(resolve(root,'test-results/packed-navigation-overflow.json'),JSON.stringify(navigationOverflow,null,2)+'\n');
@@ -287,19 +295,25 @@ document.querySelector('main')!.append(form);`);
     await writeFile(resolve(root,'test-results/packed-layout.json'),JSON.stringify(layout,null,2)+'\n');
     const feedback=await exerciseInstalledFeedback(browserPage);
     await writeFile(resolve(root,'test-results/packed-feedback.json'),JSON.stringify(feedback,null,2)+'\n');
+    const textArea=await exerciseInstalledTextArea(browserPage);
+    await writeFile(resolve(root,'test-results/packed-textarea.json'),JSON.stringify(textArea,null,2)+'\n');
     const readonlyField=await exerciseReadonlyField(browserPage);
     await writeFile(resolve(root,'test-results/packed-readonly-field.json'),JSON.stringify(readonlyField,null,2)+'\n');
     const implicitSubmit=await exerciseInstalledImplicitSubmit(browserPage);
     await writeFile(resolve(root,'test-results/packed-implicit-submit.json'),JSON.stringify(implicitSubmit,null,2)+'\n');
     const coreButton=await exerciseCoreButton(browserPage,root);
     await writeFile(resolve(root,'test-results/packed-button.json'),JSON.stringify(coreButton,null,2)+'\n');
+    await browserPage.goto('http://127.0.0.1:'+address.port+'/lit-textarea.html');
+    const litTextArea=await exerciseInstalledLitTextArea(browserPage);
+    assert.deepEqual(errors,[]);
+    await writeFile(resolve(root,'test-results/packed-lit-textarea.json'),JSON.stringify(litTextArea,null,2)+'\n');
     await browserPage.close();await server.close();server=undefined;
     const frameworks=await exerciseFrameworks(root,scratch,browser);
-    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, text fields, buttons, checkboxes, typed selects, native dialogs, cards, layout and feedback with four framework bindings; framework SSR and application adoption remain required',frameworks},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-frameworks.json'),JSON.stringify({scope:'Navigation, single-line fields, multiline textarea, buttons, checkboxes, typed selects, native dialogs, cards, layout and feedback with four framework bindings; SSR is recorded separately and application adoption remains required',frameworks},null,2)+'\n');
     const sourceLockSha256=digest(sourceLockBytes);
     const candidate=sourceRevision!==null&&sourceRevision===await pristineRevision()?captureCandidate({sourceRevision,lockSha256:sourceLockSha256,artifacts}):null;
     if(candidate)verifyCandidate(candidate,{sourceRevision:candidate.sourceRevision,lockSha256:sourceLockSha256},coordinate=>artifacts.find(artifact=>artifact.coordinate===coordinate)?.bytes);
-    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, fields, buttons, checkboxes, typed selects, dialogs, cards, layout and feedback with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,toolchain,sourceLockSha256,candidate},null,2)+'\n');
+    await writeFile(resolve(root,'test-results/packed-cohort.json'),JSON.stringify({scope:'Unpublished navigation, fields, multiline textarea, buttons, checkboxes, typed selects, dialogs, cards, layout and feedback with four framework bindings; no registry publication or full capability acceptance',cohort,reproducible:true,toolchain,sourceLockSha256,candidate},null,2)+'\n');
     await mkdir(resolve(root,'test-results/packages'),{recursive:true});
     for(const file of (await readdir(join(scratch,'pack-1'))).filter(name=>name.endsWith('.tgz')))await writeFile(resolve(root,'test-results/packages',file),await readFile(join(scratch,'pack-1',file)));
     passed = true;

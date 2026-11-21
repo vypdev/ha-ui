@@ -28,3 +28,5 @@ export {Dialog} from './dialog.js';
 export {Card} from './card.js';
 export {Grid,Row} from './layout.js';
 export {Feedback} from './feedback.js';
+
+export {TextArea} from './text-area.js';

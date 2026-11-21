@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
-import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {mkdir,mkdtemp,readdir,readFile,rm,writeFile} from 'node:fs/promises';
 import {createServer} from 'node:http';
-import {extname,resolve,sep} from 'node:path';
+import {extname,join,resolve,sep} from 'node:path';
+import {tmpdir} from 'node:os';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
 import test from 'node:test';
 import {chromium,firefox,webkit,type Page} from 'playwright';
 import {exerciseInstalledCard} from '../consumers/cards.ts';
@@ -15,6 +18,7 @@ import {exerciseInstalledNavigationOverflow} from '../consumers/navigation-overf
 import {exerciseInstalledSelect} from '../consumers/selects.ts';
 import {exerciseCatalogForms} from './form-lifecycle.ts';
 import {waitForCatalogStory} from './lifecycle.ts';
+import {exerciseCatalogTextAreas} from './textareas.ts';
 
 async function visit(page:Page,origin:string,story:string,globals=''){
  await page.goto(origin+'/ha-ui/iframe.html?id='+story+'&viewMode=story'+globals);
@@ -53,6 +57,18 @@ async function serveStatic(build:string){
  return server;
 }
 
+async function isolatedMacFirefoxHome(){
+ const ownedHome=await mkdtemp(join(tmpdir(),'ha-ui-firefox-home-'));
+ return{env:{...process.env,CFFIXED_USER_HOME:ownedHome},dispose:async()=>{
+  // macOS adds deny-delete ACLs to its synthetic standard folders. Never follow links.
+  const directories=[ownedHome];
+  for(const directory of directories)for(const entry of await readdir(directory,{withFileTypes:true}))
+   if(entry.isDirectory())directories.push(join(directory,entry.name));
+  for(const directory of directories.reverse())await promisify(execFile)('/bin/chmod',['-N',directory]);
+  await rm(ownedHome,{recursive:true});
+ }};
+}
+
 test('the compiled component families retain behavior in Chromium, Firefox and WebKit',{timeout:240_000},async t=>{
  const build=resolve(process.env.STORYBOOK_OUTPUT_DIR??'build/storybook');
  const server=await serveStatic(build);
@@ -61,8 +77,11 @@ test('the compiled component families retain behavior in Chromium, Firefox and W
   const origin='http://127.0.0.1:'+address.port;
   const evidence:({engine:string;version:string}&Record<string,unknown>)[]=[];
   for(const [engine,launcher] of Object.entries({chromium,firefox,webkit}))await t.test(engine,{timeout:90_000},async()=>{
-   const browser=await launcher.launch();
+   // Firefox 157 on macOS otherwise resolves the personal app-data directory (Playwright #42768).
+   const isolated=engine==='firefox'&&process.platform==='darwin'?await isolatedMacFirefoxHome():null;
+   let browser:Awaited<ReturnType<typeof launcher.launch>>|undefined;
    try{
+    browser=await launcher.launch(isolated===null?{}:{env:isolated.env});
     const page=await browser.newPage({viewport:{width:360,height:760},reducedMotion:'reduce'});
     const errors:string[]=[],external:string[]=[],badAssets:string[]=[];
     page.on('pageerror',error=>errors.push(error.message));
@@ -87,9 +106,10 @@ test('the compiled component families retain behavior in Chromium, Firefox and W
     const layout=await exerciseInstalledLayout(page);
     await visit(page,origin,'feedback-status--default');
     const feedback=await exerciseInstalledFeedback(page);
+    const textArea=await exerciseCatalogTextAreas(page,origin,resolve('test-results'),engine);
     assert.deepEqual({errors,external,badAssets},{errors:[],external:[],badAssets:[]});
-    evidence.push({engine,version:browser.version(),panels,overflow,forms,implicitSubmit,decimalField,checkbox,select,dialog,card,layout,feedback,errors,external,badAssets});
-   }finally{await browser.close();}
+    evidence.push({engine,version:browser.version(),panels,overflow,forms,implicitSubmit,decimalField,textArea,checkbox,select,dialog,card,layout,feedback,errors,external,badAssets});
+   }finally{await browser?.close();await isolated?.dispose();}
   });
   assert.equal(evidence.length,3,'Every supported browser family must pass');
   const output=resolve(process.env.STORYBOOK_ENGINE_OUTPUT??'test-results');
