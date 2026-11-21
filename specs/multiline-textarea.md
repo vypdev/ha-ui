@@ -192,7 +192,7 @@ The complete supported global and per-file coverage requirement for core, contra
 | inventory1-C04 | Framework adapters | SDD-I42-U1-R1, SDD-I42-U1-R3, SDD-I42-U1-R4 | Use real React, Vue, Angular, and Svelte adapters with controlled values and multiline model events. Confirm malformed event payloads are rejected before callbacks, controlled updates are preserved, and disabled/readOnly, form, and lifecycle/remount behavior works in each adapter. |
 | inventory1-C05 | Packed and server consumers | SDD-I42-U1-R1, SDD-I42-U1-R4 | Install real packed-package consumers for direct DOM/Lit and React, Vue, Angular, and Svelte. Exercise multiline values, events, invalid values, forms, reset/restore, disabled/readOnly, and lifecycle/remount. Verify the maintained framework matrix and Next.js, Nuxt, and SvelteKit server-import/client/hydration boundaries. |
 | inventory1-C06 | Catalog, coverage, and consumer checks | SDD-I42-U1-R4, SDD-I42-U1-R5 | Inspect catalog examples for normal, multiline/Unicode, validation, disabled, and read-only states with localized labels and both themes. Verify required global and per-file coverage for core, contracts, adapters, and integration code, along with browser and consumer checks. |
-| inventory1-C07 | Publication and adoption | SDD-I42-U1-R5, SDD-I42-U1-R6 | After component and review acceptance, verify the reviewed version-cohort publication evidence and validate Domus #157 against that exact published cohort, including multiline/Unicode entry and recovery. Keep publication and Domus adoption as separate outcomes. |
+| inventory1-C07 | Publication and adoption | SDD-I42-U1-R6 | After component and review acceptance, verify the reviewed version-cohort publication evidence and validate Domus #157 against that exact published cohort, including multiline/Unicode entry and recovery. Keep publication and Domus adoption as separate outcomes. |
 | inventory1-C08 | Specification publication consistency | SDD-I42-U1-R6 | Observe that the specification satisfies the required format, internal and cross-document consistency is checked, and reciprocal catalog ownership, paths, and evidence agree with the generated view. |
 
 ## 15. Documentation and discoverability
@@ -226,7 +226,7 @@ The following mappings are reciprocal with the admitted case inventory; existing
 - `SDD-I42-U1-R2` — `inventory1-C01`, `inventory1-C02`.
 - `SDD-I42-U1-R3` — `inventory1-C02`, `inventory1-C03`, `inventory1-C04`.
 - `SDD-I42-U1-R4` — `inventory1-C02`, `inventory1-C03`, `inventory1-C04`, `inventory1-C05`, `inventory1-C06`.
-- `SDD-I42-U1-R5` — `inventory1-C06`, `inventory1-C07`.
+- `SDD-I42-U1-R5` — `inventory1-C06`.
 - `SDD-I42-U1-R6` — `inventory1-C07`, `inventory1-C08`.
 
 The core value, literal-text and compatibility evidence belongs to the direct contract case; limit and row behavior belongs to the limits/layout case; form semantics and visual accessibility belong to the browser case. Adapter, packed consumer, catalog/coverage, publication/adoption and specification consistency evidence is owned by the corresponding concrete journey described in section 16. This mapping is structural traceability, not evidence that implementation or acceptance checks have run.
@@ -237,7 +237,7 @@ The core value, literal-text and compatibility evidence belongs to the direct co
 | SDD-I42-U1-R2 | inventory1-C01, inventory1-C02 |
 | SDD-I42-U1-R3 | inventory1-C02, inventory1-C03, inventory1-C04 |
 | SDD-I42-U1-R4 | inventory1-C02, inventory1-C03, inventory1-C04, inventory1-C05, inventory1-C06 |
-| SDD-I42-U1-R5 | inventory1-C06, inventory1-C07 |
+| SDD-I42-U1-R5 | inventory1-C06 |
 | SDD-I42-U1-R6 | inventory1-C07, inventory1-C08 |
 
 ## 18. Implementation sequence

@@ -391,5 +391,10 @@
     "finding": "https://github.com/vypdev/ha-ui/pull/43#discussion_r4654611204",
     "correction": "Updated the historical admission inventory to identify the current implementation, verified component checks and still-pending publication/adoption. Native requirements and case rows are unchanged.",
     "status": "Documentation correction prepared for same-head CI and re-review"
+  },
+  "traceabilityReviewCorrection": {
+    "finding": "https://github.com/vypdev/ha-ui/pull/43#discussion_r4654742409",
+    "change": "C07 verifies publication/adoption under R6. Removed its unrelated R5 association in the case table and both reciprocal maps; R5 remains exercised by catalog/coverage C06.",
+    "identityAndScope": "All six requirement definitions, eight case IDs, areas and scenario definitions, and twenty section headings are unchanged."
   }
 }
