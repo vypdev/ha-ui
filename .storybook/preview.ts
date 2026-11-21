@@ -6,13 +6,14 @@ import {registerButton} from '@vypdev/ha-ui/button';
 import {registerCheckbox} from '@vypdev/ha-ui/checkbox';
 import {registerSelect} from '@vypdev/ha-ui/select';
 import {registerField} from '@vypdev/ha-ui/field';
+import {registerTextArea} from '@vypdev/ha-ui/textarea';
 import {registerDialog} from '@vypdev/ha-ui/dialog';
 import {registerCard} from '@vypdev/ha-ui/card';
 import {registerGrid,registerRow} from '@vypdev/ha-ui/layout';
 import {registerFeedback} from '@vypdev/ha-ui/feedback';
 import {catalogFrame} from '../stories/catalog-frame.js';
 const preview:Preview={
-  beforeAll:()=>{registerTabs();registerField();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();return observeCatalogCompletion(addons.getChannel(),document.documentElement);},decorators:[catalogFrame],
+  beforeAll:()=>{registerTabs();registerField();registerTextArea();registerButton();registerSelect();registerCheckbox();registerDialog();registerCard();registerGrid();registerRow();registerFeedback();return observeCatalogCompletion(addons.getChannel(),document.documentElement);},decorators:[catalogFrame],
   initialGlobals:{theme:'light',locale:'en',width:'wide',motion:'system'},
   globalTypes:{
     theme:{description:'HA-compatible theme',toolbar:{title:'Theme',icon:'circlehollow',items:[{value:'light',title:'Light'},{value:'dark',title:'Dark'}],dynamicTitle:true}},

@@ -62,6 +62,10 @@ native implicit-submission proxy, one required marker, simultaneous linked help/
 accessible fallback colors, logical geometry, public theme overrides and reduced motion.
 No HA/Web Awesome runtime, application state or network dependency is imported.
 
+Multiline textarea presentation reuses the attributed filled-field typography, surface and
+border tokens above. Its flowing label, native textarea geometry, codepoint constraints and
+model bridges are authored here. No additional upstream asset or runtime is introduced.
+
 Filled single-select and menu visuals adapt Home Assistant frontend ha-select, ha-picker-field,
 ha-combo-box-item and ha-dropdown/ha-dropdown-item (Apache License2.0), at the reviewed HA
 source revision above, plus the Web Awesome dropdown styles (MIT) at the reviewed artifact above:

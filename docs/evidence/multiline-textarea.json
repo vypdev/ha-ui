@@ -1,0 +1,407 @@
+{
+  "recordedAtUTC": "2026-11-21T19:20:50.396067+00:00",
+  "status": "Locally qualified implementation prepared for review; publication and Domus adoption pending",
+  "issue": "https://github.com/vypdev/ha-ui/issues/42",
+  "specification": "specs/multiline-textarea.md",
+  "capability": "shared-ui-foundation",
+  "capabilityComplete": false,
+  "preparedCohort": "0.1.0-next.5",
+  "nativeAdmission": {
+    "run": "https://github.com/vypdev/ha-ui/actions/runs/44931046010",
+    "verifiedSeed": "4c5ef9bfb54fa31286b87ce65020be796031a6f7",
+    "requirements": 6,
+    "cases": 8
+  },
+  "localToolchain": {
+    "node": "24.20.0",
+    "pnpm": "10.34.0",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "commands": [
+    {
+      "command": "pnpm check",
+      "result": "passed"
+    },
+    {
+      "command": "pnpm test",
+      "result": "passed"
+    },
+    {
+      "command": "pnpm test:package",
+      "result": "passed"
+    },
+    {
+      "command": "pnpm test:ssr",
+      "result": "passed"
+    },
+    {
+      "command": "pnpm storybook:build",
+      "result": "passed"
+    },
+    {
+      "command": "pnpm test:engines",
+      "result": "passed"
+    },
+    {
+      "command": "pnpm test:storybook",
+      "result": "passed"
+    }
+  ],
+  "coverage": {
+    "testFiles": 98,
+    "sourceTests": 1674,
+    "globalAndPerFile": "100% in all four metrics; every authored runtime file independently inventoried",
+    "metrics": {
+      "statements": {
+        "total": 3622,
+        "covered": 3622,
+        "pct": 100
+      },
+      "branches": {
+        "total": 2550,
+        "covered": 2550,
+        "pct": 100
+      },
+      "functions": {
+        "total": 883,
+        "covered": 883,
+        "pct": 100
+      },
+      "lines": {
+        "total": 1790,
+        "covered": 1790,
+        "pct": 100
+      }
+    },
+    "report": "coverage/coverage-summary.json"
+  },
+  "packedConsumers": {
+    "directDOM": "test-results/packed-textarea.json",
+    "lit": "test-results/packed-lit-textarea.json",
+    "adapters": [
+      {
+        "framework": "react",
+        "compiled": true,
+        "frozenOfflineInstall": true,
+        "textArea": {
+          "rapidNativeKeyboard": true,
+          "multilineControlledModel": true,
+          "trustedNewlineWithoutSubmission": true,
+          "inertText": true,
+          "unicode1000": true,
+          "codepointValidity": true,
+          "invalidAssignmentAtomic": true,
+          "nativeForm": true,
+          "readonlySuccessful": true,
+          "disabledAndFieldset": true,
+          "cancellation": true,
+          "restore": true,
+          "reset": true,
+          "programmaticWithoutIntent": true,
+          "exactlyOnceRemount": true,
+          "spanishDark": true,
+          "touch390": true,
+          "geometry": {
+            "width": 310,
+            "height": 67.171875,
+            "viewport": 390,
+            "documentWidth": 390
+          }
+        },
+        "errors": []
+      },
+      {
+        "framework": "vue",
+        "compiled": true,
+        "frozenOfflineInstall": true,
+        "textArea": {
+          "rapidNativeKeyboard": true,
+          "multilineControlledModel": true,
+          "trustedNewlineWithoutSubmission": true,
+          "inertText": true,
+          "unicode1000": true,
+          "codepointValidity": true,
+          "invalidAssignmentAtomic": true,
+          "nativeForm": true,
+          "readonlySuccessful": true,
+          "disabledAndFieldset": true,
+          "cancellation": true,
+          "restore": true,
+          "reset": true,
+          "programmaticWithoutIntent": true,
+          "exactlyOnceRemount": true,
+          "spanishDark": true,
+          "touch390": true,
+          "geometry": {
+            "width": 310,
+            "height": 67.171875,
+            "viewport": 390,
+            "documentWidth": 390
+          }
+        },
+        "errors": []
+      },
+      {
+        "framework": "angular",
+        "compiled": true,
+        "frozenOfflineInstall": true,
+        "textArea": {
+          "rapidNativeKeyboard": true,
+          "multilineControlledModel": true,
+          "trustedNewlineWithoutSubmission": true,
+          "inertText": true,
+          "unicode1000": true,
+          "codepointValidity": true,
+          "invalidAssignmentAtomic": true,
+          "nativeForm": true,
+          "readonlySuccessful": true,
+          "disabledAndFieldset": true,
+          "cancellation": true,
+          "restore": true,
+          "reset": true,
+          "programmaticWithoutIntent": true,
+          "exactlyOnceRemount": true,
+          "spanishDark": true,
+          "touch390": true,
+          "geometry": {
+            "width": 310,
+            "height": 67.171875,
+            "viewport": 390,
+            "documentWidth": 390
+          }
+        },
+        "errors": []
+      },
+      {
+        "framework": "svelte",
+        "compiled": true,
+        "frozenOfflineInstall": true,
+        "textArea": {
+          "rapidNativeKeyboard": true,
+          "multilineControlledModel": true,
+          "trustedNewlineWithoutSubmission": true,
+          "inertText": true,
+          "unicode1000": true,
+          "codepointValidity": true,
+          "invalidAssignmentAtomic": true,
+          "nativeForm": true,
+          "readonlySuccessful": true,
+          "disabledAndFieldset": true,
+          "cancellation": true,
+          "restore": true,
+          "reset": true,
+          "programmaticWithoutIntent": true,
+          "exactlyOnceRemount": true,
+          "spanishDark": true,
+          "touch390": true,
+          "geometry": {
+            "width": 310,
+            "height": 67.171875,
+            "viewport": 390,
+            "documentWidth": 390
+          }
+        },
+        "errors": []
+      }
+    ],
+    "cohort": "test-results/packed-cohort.json",
+    "reproducible": true,
+    "localSourceRevisionBound": false,
+    "releaseGate": "Only clean production CI may bind the candidate to its exact source revision and lock; exploratory local archives are not publication artifacts."
+  },
+  "serverConsumers": [
+    {
+      "framework": "Next.js",
+      "pin": "16.4.5",
+      "pureTextareaServerImport": true,
+      "multilineNativeForm": true,
+      "unicodeCodepoints": true,
+      "multilineReset": true,
+      "multilineRemountExactlyOnce": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "framework": "Nuxt",
+      "pin": "4.6.4",
+      "pureTextareaServerImport": true,
+      "multilineNativeForm": true,
+      "unicodeCodepoints": true,
+      "multilineReset": true,
+      "multilineRemountExactlyOnce": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "framework": "SvelteKit",
+      "pin": "3.1.1",
+      "pureTextareaServerImport": true,
+      "multilineNativeForm": true,
+      "unicodeCodepoints": true,
+      "multilineReset": true,
+      "multilineRemountExactlyOnce": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "156.0.8078.4",
+      "textareaCombinations": 24,
+      "axeViolations": 0,
+      "unexpectedErrors": []
+    },
+    {
+      "engine": "firefox",
+      "version": "157.0",
+      "textareaCombinations": 24,
+      "axeViolations": 0,
+      "unexpectedErrors": []
+    },
+    {
+      "engine": "webkit",
+      "version": "27.2",
+      "textareaCombinations": 24,
+      "axeViolations": 0,
+      "unexpectedErrors": []
+    }
+  ],
+  "catalog": {
+    "stories": 102,
+    "docs": 12,
+    "locales": [
+      "en",
+      "es"
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "textareaViewport": 390,
+    "staticChecks": 10,
+    "visualInspection": "Codex reviewed the light English default and dark Spanish error captures for readable labels, content and feedback without overlap; not owner acceptance of the full library.",
+    "representativeImages": [
+      "test-results/textarea-chromium-en-light-default.png",
+      "test-results/textarea-chromium-es-dark-error.png"
+    ]
+  },
+  "reactRapidTyping": {
+    "counterexample": "Real native typing First, Enter, Second retained only d before the new React bridge was corrected.",
+    "correction": "Validate the request then use react-dom flushSync only when native-event callbacks are present, before core controlled restoration.",
+    "qualifiedBy": [
+      "tests/browser/react-textarea.test.ts",
+      "tests/consumers/textareas.ts",
+      "tests/consumers/ssr/journey.mjs"
+    ],
+    "peer": "react-dom 19.3.1",
+    "singleLineAPIChanged": false
+  },
+  "caseMapping": [
+    {
+      "id": "inventory1-C01",
+      "status": "locally verified",
+      "tests": [
+        "tests/contracts/textarea.test.ts",
+        "tests/browser/textarea.test.ts",
+        "tests/consumers/packed.test.ts",
+        "tests/consumers/lit-textarea-client.ts"
+      ]
+    },
+    {
+      "id": "inventory1-C02",
+      "status": "locally verified",
+      "tests": [
+        "tests/contracts/textarea.test.ts",
+        "tests/browser/textarea.test.ts",
+        "tests/storybook/textareas.ts"
+      ]
+    },
+    {
+      "id": "inventory1-C03",
+      "status": "locally verified",
+      "tests": [
+        "tests/browser/textarea.test.ts",
+        "tests/storybook/textareas.ts",
+        "tests/consumers/textareas.ts"
+      ]
+    },
+    {
+      "id": "inventory1-C04",
+      "status": "locally verified",
+      "tests": [
+        "tests/browser/react-textarea.test.ts",
+        "tests/browser/vue-textarea.test.ts",
+        "tests/browser/angular-textarea.test.ts",
+        "tests/browser/svelte-textarea.test.mjs",
+        "tests/consumers/frameworks.ts"
+      ]
+    },
+    {
+      "id": "inventory1-C05",
+      "status": "locally verified",
+      "tests": [
+        "tests/consumers/packed.test.ts",
+        "tests/consumers/textareas.ts",
+        "tests/consumers/ssr.test.mjs",
+        "tests/consumers/ssr/journey.mjs"
+      ]
+    },
+    {
+      "id": "inventory1-C06",
+      "status": "locally verified; final same-head CI and review required",
+      "tests": [
+        "tests/coverage-evidence.test.mjs",
+        "tests/storybook/engines.test.ts",
+        "tests/storybook/static.test.ts",
+        "stories/textarea.stories.ts"
+      ]
+    },
+    {
+      "id": "inventory1-C07",
+      "status": "pending reviewed publication, then separate Domus #157 adoption",
+      "publicationWorkflow": ".github/workflows/npm_release.yml",
+      "consumerIssue": "https://github.com/vypdev/domus/issues/157"
+    },
+    {
+      "id": "inventory1-C08",
+      "status": "Native SDD publication verified; original pinned catalog SDK validation passed",
+      "nativeRun": 44931046010,
+      "catalogCommand": "node -e 'require(\"/absolute/path/to/verified/sdk/src/infrastructure/specification_catalog_validator.cjs\").main([], process.cwd())'",
+      "catalogSDKRevision": "3e7ceea08e6131360e026937d1c0cc1b120472e0",
+      "semanticLimit": "Catalog validation proves ownership, paths and generated-view consistency; it does not prove product semantics or adoption.",
+      "catalogResult": "specification catalog validation: PASS (1 capabilities)"
+    }
+  ],
+  "limitations": [
+    "No full foundation completion or pixel parity with an independently measured HA textarea is claimed.",
+    "No npm publication, Domus installed acceptance or Gateway adoption is claimed by this record.",
+    "Original owner requirements, cases, aliases and reverse mappings remain owned by their existing specifications."
+  ],
+  "productCI": {
+    "run": "https://github.com/vypdev/ha-ui/actions/runs/44940564198",
+    "sourceRevision": "fc7cb39c50477c4f38a2fff1125ed83fc8c40131",
+    "result": "SUCCESS; all source/packed/Lit/framework/SSR/browser/static/catalog checks passed with 100% global and per-file coverage",
+    "candidateSourceBound": true,
+    "publication": "Not published; final production CI candidate still required."
+  },
+  "reviewCheckpoint": {
+    "reviewedSource": "fc7cb39c50477c4f38a2fff1125ed83fc8c40131",
+    "finding": "https://github.com/vypdev/ha-ui/pull/43#discussion_r4654611204",
+    "correction": "Updated the historical admission inventory to identify the current implementation, verified component checks and still-pending publication/adoption. Native requirements and case rows are unchanged.",
+    "status": "Documentation correction prepared for same-head CI and re-review"
+  },
+  "traceabilityReviewCorrection": {
+    "finding": "https://github.com/vypdev/ha-ui/pull/43#discussion_r4654742409",
+    "change": "C07 verifies publication/adoption under R6. Removed its unrelated R5 association in the case table and both reciprocal maps; R5 remains exercised by catalog/coverage C06.",
+    "identityAndScope": "All six requirement definitions, eight case IDs, areas and scenario definitions, and twenty section headings are unchanged."
+  },
+  "angularNativeValidationReview": {
+    "finding": "https://github.com/vypdev/ha-ui/pull/43#discussion_r4654824595",
+    "counterexample": "The reactive Angular form lacked ngNativeValidate, so the browser emitted no invalid event for a too-long note and the save handler was not blocked.",
+    "correction": "The maintained Angular form opts into native constraint validation. All four actual packed framework consumers now require invalid events and unchanged saved data for required-empty, too-short and too-long notes.",
+    "observedResult": "pnpm check and pnpm test:package pass; React, Vue, Angular and Svelte each block all three invalid submissions.",
+    "packageBytes": "All five package digests remain identical to the fc7cb39 product CI candidate; this changes consumer setup, documentation and verification."
+  }
+}

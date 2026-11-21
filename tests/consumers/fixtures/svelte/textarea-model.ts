@@ -1,0 +1,4 @@
+import {textAreaState} from '@vypdev/ha-ui/textarea-contracts';
+export const initialNote='Initial\n😀';
+export const noteState=(spanish=false,readOnly=false)=>textAreaState({label:spanish?'Notas':'Notes',description:spanish?'Conserva los detalles en líneas separadas.':'Keep details on separate lines.',required:true,readOnly,minLength:2,maxLength:1000,requiredMessage:spanish?'Introduce una nota.':'Enter a note.'});
+export const noteTheme=(dark=false)=>({color:dark?'#ebebeb':'#1c1c1c',backgroundColor:dark?'#141414':'#ffffff',whiteSpace:'pre-wrap',overflowWrap:'anywhere','--error-color':dark?'#f28b82':'#b3261e','--primary-text-color':dark?'#ebebeb':'#1c1c1c','--secondary-text-color':dark?'#bdbdbd':'#595959','--card-background-color':dark?'#141414':'#ffffff','--divider-color':dark?'#8a8a8a':'#5e5e5e'});

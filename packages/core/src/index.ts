@@ -17,3 +17,6 @@ export {LayoutInputError,gridState,rowState} from './layout-contracts.js';
 export type {GridState,RowState} from './layout-contracts.js';
 export {FeedbackInputError,feedbackState} from './feedback-contracts.js';
 export type {FeedbackKind,FeedbackState,FeedbackTone} from './feedback-contracts.js';
+
+export {TEXTAREA_MAX_CODEPOINTS,TextAreaInputError,textAreaState,textAreaValue,textAreaName,textAreaValidity,textAreaValueDetail} from './textarea-contracts.js';
+export type {TextAreaState,TextAreaValidity,TextAreaValueReason,TextAreaValueDetail} from './textarea-contracts.js';

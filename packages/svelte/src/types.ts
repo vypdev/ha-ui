@@ -54,3 +54,10 @@ import type {FeedbackState} from '@vypdev/ha-ui/feedback-contracts';
 export interface FeedbackProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'>{
  state:FeedbackState;action?:Snippet;icon?:Snippet;
 }
+
+import type {TextAreaState} from '@vypdev/ha-ui/textarea-contracts';
+import type {TextAreaValueEvent} from '@vypdev/ha-ui/textarea';
+export interface TextAreaProps extends Pick<HTMLAttributes<HTMLElement>,'id'|'class'|'style'|'lang'|'dir'> {
+  state:TextAreaState;value:string;name?:string;defaultValue?:string;disabled?:boolean;form?:string;
+  onValueRequest?:(event:TextAreaValueEvent)=>void;onValueChange?:(value:string)=>void;
+}
