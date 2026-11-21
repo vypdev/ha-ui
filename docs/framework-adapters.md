@@ -352,3 +352,11 @@ The browser exercises projected panels, controlled keyboard selection, rerender,
 and remount. A detached adapter cannot call the application, and one interaction emits one
 selection request. Browser errors, warnings and unexpected requests fail each fixture.
 The core DOM renderer still requires a browser; do not render it directly on the server.
+
+## Multiline text areas
+
+Each adapter exports `TextArea` for the separate `vyp-ha-textarea` core. It preserves
+controlled multiline values and codepoint bounds without changing `TextField`. See
+[the textarea contract](textarea-contract.md) for model ports, native forms, localized
+validity, reset/restoration and the explicit server/client boundary. The packed
+consumer matrix includes a dedicated multiline form for every adapter.

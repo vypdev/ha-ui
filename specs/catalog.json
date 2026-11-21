@@ -43,7 +43,9 @@
         "packages/core/src/layout-contracts.ts",
         "packages/core/src/components/layout.ts",
         "packages/core/src/components/feedback.ts",
-        "packages/core/src/feedback-contracts.ts"
+        "packages/core/src/feedback-contracts.ts",
+        "packages/core/src/textarea-contracts.ts",
+        "packages/core/src/components/textarea.ts"
       ],
       "code": [
         "packages/core/src/contracts.ts",
@@ -129,7 +131,15 @@
         "stories/feedback.example.ts",
         "tooling/compatibility.mjs",
         "tooling/packaging.mjs",
-        "tooling/npm-prerelease.mjs"
+        "tooling/npm-prerelease.mjs",
+        "packages/angular/src/text-area.ts",
+        "packages/core/src/components/textarea.ts",
+        "packages/core/src/textarea-contracts.ts",
+        "packages/react/src/text-area.ts",
+        "packages/svelte/src/TextArea.svelte",
+        "packages/vue/src/text-area.ts",
+        "stories/textarea.example.ts",
+        "stories/textarea.stories.ts"
       ],
       "tests": [
         "tests/contracts/core.test.ts",
@@ -323,7 +333,31 @@
         "tests/consumers/ssr/fixtures/sveltekit/fixture.vite.config.js",
         "tests/consumers/ssr/journey.mjs",
         "tests/delivery.test.mjs",
-        "tests/storybook/engines.test.ts"
+        "tests/storybook/engines.test.ts",
+        "tests/browser/angular-textarea.test.ts",
+        "tests/browser/fixtures/SvelteTextArea.svelte",
+        "tests/browser/react-textarea.test.ts",
+        "tests/browser/svelte-textarea.test.mjs",
+        "tests/browser/textarea-framework-fixture.ts",
+        "tests/browser/textarea.test.ts",
+        "tests/browser/vue-textarea.test.ts",
+        "tests/consumers/fixtures/angular/textarea-client.ts",
+        "tests/consumers/fixtures/angular/textarea-model.ts",
+        "tests/consumers/fixtures/angular/textarea.html",
+        "tests/consumers/fixtures/react/textarea-client.ts",
+        "tests/consumers/fixtures/react/textarea-model.ts",
+        "tests/consumers/fixtures/react/textarea.html",
+        "tests/consumers/fixtures/svelte/TextAreaConsumer.svelte",
+        "tests/consumers/fixtures/svelte/textarea-client.ts",
+        "tests/consumers/fixtures/svelte/textarea-model.ts",
+        "tests/consumers/fixtures/svelte/textarea.html",
+        "tests/consumers/fixtures/vue/textarea-client.ts",
+        "tests/consumers/fixtures/vue/textarea-model.ts",
+        "tests/consumers/fixtures/vue/textarea.html",
+        "tests/consumers/lit-textarea-client.ts",
+        "tests/consumers/textareas.ts",
+        "tests/contracts/textarea.test.ts",
+        "tests/storybook/textareas.ts"
       ],
       "documentation": [
         "README.md",
@@ -359,7 +393,9 @@
         "docs/evidence/ha-feedback-reference.json",
         "docs/feedback-contract.md",
         "docs/migration.md",
-        "examples/consumers/README.md"
+        "examples/consumers/README.md",
+        "docs/textarea-contract.md",
+        "docs/evidence/multiline-textarea.json"
       ],
       "readiness": {
         "status": "draft",

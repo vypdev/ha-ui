@@ -1,6 +1,6 @@
 {
   "name": "@vypdev/ha-ui-svelte",
-  "version": "0.1.0-next.4",
+  "version": "0.1.0-next.5",
   "description": "Svelte bindings for the shared Home Assistant UI components",
   "type": "module",
   "license": "MIT",
